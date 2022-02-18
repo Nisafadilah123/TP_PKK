@@ -47,8 +47,8 @@ class AdminController extends Controller
         }
 
         // halaman data pokja4
-        public function pengguna(){
-            return view('pokja.data_pengguna');
+        public function data_pengguna(){
+            return view('admin_kel.data_pengguna');
         }
 
 }
