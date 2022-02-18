@@ -128,7 +128,7 @@
                   <p>
                     Data Master
                     <i class="fas fa-angle-left right"></i>
-                    <span class="badge badge-info right">6</span>
+                    {{-- <span class="badge badge-info right">6</span> --}}
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
@@ -140,25 +140,25 @@
                   </li>
                   {{-- </li> --}}
                   <li class="nav-item">
-                    <a href="/data_pokja1" class="nav-link">
+                    <a href="/data_pokja1" class="nav-link {{ Request::is('data_pokja1') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA I</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/data_pokja2" class="nav-link">
+                    <a href="/data_pokja2" class="nav-link {{ Request::is('data_pokja2') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA II</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="data_pokja3" class="nav-link">
+                    <a href="data_pokja3" class="nav-link {{ Request::is('data_pokja3') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA III</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="data_pokja4" class="nav-link">
+                    <a href="data_pokja4" class="nav-link {{ Request::is('data_pokja4') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA IV</p>
                     </a>

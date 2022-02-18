@@ -33,7 +33,7 @@ class AdminController extends Controller
 
         // halaman data pokja4
         public function data_pokja4(){
-            return view('pokja.data_pokja4');
+            return view('admin_kel.data_pokja4');
         }
 
         // halaman papan pokja1
@@ -42,13 +42,13 @@ class AdminController extends Controller
         // }
 
         // halaman data pokja4
-        public function laporan(){
-            return view('pokja.data_laporan');
+        public function data_laporan(){
+            return view('admin_kel.data_laporan');
         }
 
         // halaman data pokja4
         public function pengguna(){
             return view('pokja.data_pengguna');
         }
-        
+
 }
