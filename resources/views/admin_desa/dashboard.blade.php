@@ -1,4 +1,4 @@
-@extends('admin_kel.layout')
+@extends('admin_desa.layout')
 
 @section('title' , 'Dashboard | Admin Kelurahan')
 @section('bread' , 'Dashboard')

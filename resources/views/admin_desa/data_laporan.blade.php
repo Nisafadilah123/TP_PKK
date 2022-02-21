@@ -1,8 +1,8 @@
-@extends('admin_kel.layout')
+@extends('admin_desa.layout')
 
-@section('title', 'Data Wilayah Kelurahan | PKK Kab. Indramayu')
+@section('title', 'Data Laporan | PKK Kab. Indramayu')
 
-@section('bread', 'Data Wilayah Kelurahan')
+@section('bread', 'Data Laporan')
 @section('container')
 
     <!-- Main content -->
@@ -17,21 +17,21 @@
                 <div class="col-12 col-md-6 col-lg-12">
                     <div class="card">
 
-
                         <div class="card-body">
-
                             <div class="table-responsive">
-
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    <button type="button" class="btn btn-success">Tambah</button><br><br>
+                                    {{-- <button type="button" class="btn btn-success">Tambah</button><br><br> --}}
 
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                        <th>Kode Desa</th>
                                         <th>Nama Desa</th>
-                                        <th>Kode Kelurahan</th>
-                                        <th>Nama Kelurahan</th>
+                                        {{-- <th>Kode Kelurahan</th> --}}
+                                        <th>Data POKJA I</th>
+                                        <th>Data POKJA II</th>
+                                        <th>Data POKJA III</th>
+                                        <th>Data POKJA IV</th>
+                                        <th>Data Umum</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -41,12 +41,29 @@
                                     <tr>
                                         <td>1</td>
                                         <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                        <td>5</td>
+                                        {{-- <td>3</td> --}}
                                         <td>
-                                            <button type="button" class="btn btn-warning">Edit</button>
-                                            <button type="button" class="btn btn-danger">Hapus</button>
+                                            <button type="button" class="btn btn-primary">Detail</button>
+
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary">Detail</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary">Detail</button>
+
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary">Detail</button>
+
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary">Detail</button>
+
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-success">Cetak</button>
+                                            {{-- <button type="button" class="btn btn-danger">Hapus</button> --}}
                                         </td>
 
                                         {{-- <td style="vertical-align: middle;">{{$i++}}</td>

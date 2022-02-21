@@ -56,3 +56,4 @@ Route::get('/data_pokja3', [AdminController::class, 'data_pokja3']);
 Route::get('/data_pokja4', [AdminController::class, 'data_pokja4']);
 Route::get('/pengguna', [AdminController::class, 'data_pengguna']);
 Route::get('/laporan', [AdminController::class, 'data_laporan']);
+Route::get('/data_sekretariat', [AdminController::class, 'data_sekretariat']);

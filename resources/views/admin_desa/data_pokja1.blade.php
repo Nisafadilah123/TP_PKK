@@ -1,8 +1,8 @@
-@extends('admin_kel.layout')
+@extends('admin_desa.layout')
 
-@section('title', 'Data Pengguna | PKK Kab. Indramayu')
+@section('title', 'Data POKJA I | PKK Kab. Indramayu')
 
-@section('bread', 'Data Pengguna')
+@section('bread', 'Data POKJA I')
 @section('container')
 
     <!-- Main content -->
@@ -25,11 +25,12 @@
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Username</th>
-                                        <th>Email</th>
-                                        <th>Jabatan</th>
-                                        <th>Aksi</th>
+                                        <th>Nama Desa</th>
+                                        {{-- <th>Kode Kelurahan</th> --}}
+                                        <th>Jumlah Kader</th>
+                                        <th>Penghayatan Dan Pengamalan Pancasila</th>
+                                        <th>Gotong Royong</th>
+                                        {{-- <th>Aksi</th> --}}
                                     </tr>
                                     </thead>
 
@@ -38,13 +39,22 @@
                                     <tr>
                                         <td>1</td>
                                         <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                        <td>5</td>
+                                        {{-- <td>3</td> --}}
                                         <td>
-                                            <button type="button" class="btn btn-success">Edit</button>
-                                            <button type="button" class="btn btn-danger">Hapus</button>
+                                            <button type="button" class="btn btn-primary">Detail</button>
+
                                         </td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary">Detail</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary">Detail</button>
+
+                                        </td>
+                                        {{-- <td>
+                                            <button type="button" class="btn btn-warning">Edit</button>
+                                            <button type="button" class="btn btn-danger">Hapus</button>
+                                        </td> --}}
 
                                         {{-- <td style="vertical-align: middle;">{{$i++}}</td>
                                         <td style="vertical-align: middle;">{{$c->name}}</td>

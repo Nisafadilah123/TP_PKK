@@ -82,7 +82,7 @@
             class="brand-image img-circle elevation-3"
             style="opacity: 0.8"
           /> --}}
-          <span class="brand-text font-weight-light">PKK Kelurahan</span>
+          <span class="brand-text font-weight-light">PKK Desa</span>
         </a>
 
         <!-- Sidebar -->
@@ -97,7 +97,7 @@
               />
             </div>
             <div class="info">
-              <a href="#" class="d-block">Admin PKK Kelurahan</a>
+              <a href="#" class="d-block">Admin PKK Desa</a>
             </div>
           </div>
 
@@ -163,12 +163,12 @@
                       <p>Data POKJA IV</p>
                     </a>
                   </li>
-                  {{-- <li class="nav-item">
-                    <a href="sek.html" class="nav-link">
+                  <li class="nav-item">
+                    <a href="data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Sekretariat</p>
+                      <p>Data Sekretariat/Data Umum</p>
                     </a>
-                  </li> --}}
+                  </li>
 
                 </ul>
               </li>

@@ -1,8 +1,8 @@
-@extends('admin_kel.layout')
+@extends('admin_desa.layout')
 
-@section('title', 'Data POKJA IV | PKK Kab. Indramayu')
+@section('title', 'Data Pengguna | PKK Kab. Indramayu')
 
-@section('bread', 'Data POKJA IV')
+@section('bread', 'Data Pengguna')
 @section('container')
 
     <!-- Main content -->
@@ -20,17 +20,15 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    <button type="button" class="btn btn-success">Tambah</button><br><br>
+                                    {{-- <button type="button" class="btn btn-success">Tambah</button><br><br> --}}
 
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                        <th>Kode Desa</th>
-                                        <th>Kode Kelurahan</th>
-                                        <th>Jumlah Kader</th>
-                                        <th>Kesehatan Posyandu</th>
-                                        <th>Kelestarian Lingkungan Hidup</th>
-                                        <th>Perencanaan Sehat</th>
+                                        <th>Nama</th>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>Jabatan</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -41,23 +39,10 @@
                                         <td>1</td>
                                         <td>2</td>
                                         <td>3</td>
+                                        <td>4</td>
+                                        <td>5</td>
                                         <td>
-                                            <button type="button" class="btn btn-primary">Preview</button>
-
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary">Preview</button>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary">Preview</button>
-
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary">Preview</button>
-
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-warning">Edit</button>
+                                            <button type="button" class="btn btn-success">Edit</button>
                                             <button type="button" class="btn btn-danger">Hapus</button>
                                         </td>
 
