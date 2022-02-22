@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class pendidikan_pokja2Controller extends Controller
+class kader_khusus_pokja2Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,9 @@ class pendidikan_pokja2Controller extends Controller
      */
     public function index()
     {
-        // halaman pendidikan pokja 2
-        return view('admin_desa.sub_file_pokja_2.jml_kelompok');
+        // halaman kader khusus pokja 2
+        return view('admin_desa.sub_file_pokja_2.kader_khusus');
+
     }
 
     /**

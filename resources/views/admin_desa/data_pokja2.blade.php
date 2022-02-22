@@ -40,11 +40,11 @@
                                         <td>Gabus</td>
                                         {{-- <td>3</td> --}}
                                         <td>
-                                            <a href="/jml_kelompok" type="button" class="btn btn-primary">Detail</a>
+                                            <a href="/pendidikan" type="button" class="btn btn-primary">Detail</a>
 
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="/koperasi" type="button" class="btn btn-primary">Detail</a>
                                         </td>
                                         {{-- <td>
                                             <button type="button" class="btn btn-warning">Edit</button>

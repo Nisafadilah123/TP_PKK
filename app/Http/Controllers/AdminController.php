@@ -55,4 +55,9 @@ class AdminController extends Controller
         public function data_sekretariat(){
             return view('admin_desa.data_sekretariat');
         }
+
+        // halaman data koperasi
+        public function koperasi(){
+            return view('admin_desa.sub_file_pokja_2.koperasi');
+        }
 }

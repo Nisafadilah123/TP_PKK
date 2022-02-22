@@ -6,6 +6,11 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\admin_desa\data_pokja1\jml_kader_pokja1Controller;
 use App\Http\Controllers\admin_desa\data_pokja1\penghayatan_pokja1Controller;
 use App\Http\Controllers\admin_desa\data_pokja1\gotong_royong_pokja1Controller;
+use App\Http\Controllers\admin_desa\data_pokja2\bkb_pokja2Controller;
+use App\Http\Controllers\admin_desa\data_pokja2\kader_khusus_pokja2Controller;
+use App\Http\Controllers\admin_desa\data_pokja2\kader_umum_pokja2Controller;
+use App\Http\Controllers\admin_desa\data_pokja2\kehidupan_berkoperasi_pokja2Controller;
+use App\Http\Controllers\admin_desa\data_pokja2\kelompok_belajarController;
 use App\Http\Controllers\admin_desa\data_pokja2\pendidikan_pokja2Controller;
 use Illuminate\Support\Facades\Route;
 
@@ -60,6 +65,8 @@ Route::get('/data_pokja4', [AdminController::class, 'data_pokja4']);
 Route::get('/pengguna', [AdminController::class, 'data_pengguna']);
 Route::get('/laporan', [AdminController::class, 'data_laporan']);
 Route::get('/data_sekretariat', [AdminController::class, 'data_sekretariat']);
+Route::get('/koperasi', [AdminController::class, 'koperasi']);
+
 
 // form data_pokja1
 Route::resource('/jml_kader', jml_kader_pokja1Controller::class);
@@ -67,4 +74,9 @@ Route::resource('/penghayatan', penghayatan_pokja1Controller::class);
 Route::resource('/gotong_royong', gotong_royong_pokja1Controller::class);
 
 // form data_pokja2
-Route::resource('/jml_kelompok', pendidikan_pokja2Controller::class);
+Route::resource('/pendidikan', pendidikan_pokja2Controller::class);
+Route::resource('/bkb', bkb_pokja2Controller::class);
+Route::resource('/kader_khusus', kader_khusus_pokja2Controller::class);
+Route::resource('/kader_umum', kader_umum_pokja2Controller::class);
+Route::resource('/kehidupan_berkoperasi', kehidupan_berkoperasi_pokja2Controller::class);
+Route::resource('/kelompok_belajar', kelompok_belajarController::class);

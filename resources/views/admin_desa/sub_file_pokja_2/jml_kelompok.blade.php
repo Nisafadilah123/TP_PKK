@@ -24,17 +24,19 @@
 
                                     <thead>
                                         <tr>
-                                        <th>No</th>
-                                        <th>Nama Desa</th>
-                                        <th>Jml. warga yang masih 3 buta</th>
-                                        <th>jml. kelompok belajar</th>
-                                        <th>Paket A</th>
-                                        <th>Paket B</th>
-                                        <th>Paket C</th>
-                                        <th>KF</th>
-                                        <th>Paud/sejenis</th>
-                                        <th>Aksi</th>
-                                    </tr>
+                                            <th>No</th>
+                                            <th>Nama Desa</th>
+                                            <th>Jml. warga yang masih 3 buta</th>
+                                            <th>Jml. kelompok belajar</th>
+                                            <th>Jml. Taman Bacaan/Perpustakaan</th>
+                                            <th>BKB</th>
+                                            <th>Kader Khusus</th>
+                                            <th>Kader Umum yang Sudah Dilatih</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                        {{-- <tr>
+                                            <th>Aksi</th>
+                                        </tr> --}}
                                     </thead>
 
                                     <tbody>
@@ -42,22 +44,19 @@
                                     <tr>
                                         <td>1</td>
                                         <td>Gabus</td>
+                                        <td>2</td>
                                         <td>
-                                            <p>Jumlah Kel. Belajar :</p>
-                                            <p>Jumlah Warga Belajar :</p>
+                                            <a href="/kelompok_belajar" type="button" class="btn btn-primary">Detail</a>
+                                        </td>
+                                        <td>3</td>
+                                        <td>
+                                            <a href="/bkb" type="button" class="btn btn-primary">Detail</a>
                                         </td>
                                         <td>
-                                            <p>Jumlah Kel. Belajar :</p>
-                                            <p>Jumlah Warga Belajar :</p>
-                                        </td><td>
-                                            <p>Jumlah Kel. Belajar :</p>
-                                            <p>Jumlah Warga Belajar :</p>
-                                        </td><td>
-                                            <p>Jumlah Kel. Belajar :</p>
-                                            <p>Jumlah Warga Belajar :</p>
-                                        </td><td>
-                                            <p>Jumlah Kel. Belajar :</p>
-                                            <p>Jumlah Warga Belajar :</p>
+                                            <a href="/kader_khusus" type="button" class="btn btn-primary">Detail</a>
+                                        </td>
+                                        <td>
+                                            <a href="/kader_umum" type="button" class="btn btn-primary">Detail</a>
                                         </td>
                                         <td>
                                             <button type="button" class="btn btn-warning">Edit</button>
