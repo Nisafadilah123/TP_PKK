@@ -25,7 +25,7 @@
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                        <th>Nama Desa</th>
+                                        {{-- <th>Nama Desa</th> --}}
                                         {{-- <th>Kode Kelurahan</th> --}}
                                         <th>Jumlah Kader</th>
                                         <th>Penghayatan Dan Pengamalan Pancasila</th>
@@ -38,14 +38,14 @@
                                         {{-- @foreach ($candidate as $c) --}}
                                     <tr>
                                         <td>1</td>
-                                        <td>2</td>
+                                        {{-- <td>2</td> --}}
                                         {{-- <td>3</td> --}}
                                         <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="/jml_kader" type="button" class="btn btn-primary">Detail</a>
 
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="/penghayatan" type="button" class="btn btn-primary">Detail</a>
                                         </td>
                                         <td>
                                             <button type="button" class="btn btn-primary">Detail</button>

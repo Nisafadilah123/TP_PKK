@@ -1,8 +1,8 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Jumlah Kader POKJA I | PKK Kab. Indramayu')
+@section('title', 'Gotong Royong POKJA I | PKK Kab. Indramayu')
 
-@section('bread', 'Jumlah Kader POKJA I')
+@section('bread', 'Gotong Royong POKJA I')
 @section('container')
 
     <!-- Main content -->
@@ -26,9 +26,11 @@
                                         <tr>
                                         <th>No</th>
                                         <th>Nama Desa</th>
-                                        <th>PKBN</th>
-                                        <th>PKDRT</th>
-                                        <th>Pola Asuh</th>
+                                        <th>Kerja Bakti</th>
+                                        <th>Rukun Kematian</th>
+                                        <th>Keagamaan</th>
+                                        <th>Jimpitan</th>
+                                        <th>Arisan</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -41,7 +43,8 @@
                                         <td>3</td>
                                         <td>4</td>
                                         <td>7</td>
-
+                                        <td>5</td>
+                                        <td>6</td>
                                         <td>
                                             <button type="button" class="btn btn-warning">Edit</button>
                                             <button type="button" class="btn btn-danger">Hapus</button>

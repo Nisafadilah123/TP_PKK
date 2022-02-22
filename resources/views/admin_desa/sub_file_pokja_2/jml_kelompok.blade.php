@@ -1,8 +1,8 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Jumlah Kader POKJA I | PKK Kab. Indramayu')
+@section('title', 'Pendidikan dan Keterampilan POKJA II | PKK Kab. Indramayu')
 
-@section('bread', 'Jumlah Kader POKJA I')
+@section('bread', 'Pendidikan dan Keterampilan POKJA II')
 @section('container')
 
     <!-- Main content -->
@@ -26,9 +26,13 @@
                                         <tr>
                                         <th>No</th>
                                         <th>Nama Desa</th>
-                                        <th>PKBN</th>
-                                        <th>PKDRT</th>
-                                        <th>Pola Asuh</th>
+                                        <th>Jml. warga yang masih 3 buta</th>
+                                        <th>jml. kelompok belajar</th>
+                                        <th>Paket A</th>
+                                        <th>Paket B</th>
+                                        <th>Paket C</th>
+                                        <th>KF</th>
+                                        <th>Paud/sejenis</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -38,10 +42,23 @@
                                     <tr>
                                         <td>1</td>
                                         <td>Gabus</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                        <td>7</td>
-
+                                        <td>
+                                            <p>Jumlah Kel. Belajar :</p>
+                                            <p>Jumlah Warga Belajar :</p>
+                                        </td>
+                                        <td>
+                                            <p>Jumlah Kel. Belajar :</p>
+                                            <p>Jumlah Warga Belajar :</p>
+                                        </td><td>
+                                            <p>Jumlah Kel. Belajar :</p>
+                                            <p>Jumlah Warga Belajar :</p>
+                                        </td><td>
+                                            <p>Jumlah Kel. Belajar :</p>
+                                            <p>Jumlah Warga Belajar :</p>
+                                        </td><td>
+                                            <p>Jumlah Kel. Belajar :</p>
+                                            <p>Jumlah Warga Belajar :</p>
+                                        </td>
                                         <td>
                                             <button type="button" class="btn btn-warning">Edit</button>
                                             <button type="button" class="btn btn-danger">Hapus</button>

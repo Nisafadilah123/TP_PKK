@@ -37,10 +37,10 @@
                                         {{-- @foreach ($candidate as $c) --}}
                                     <tr>
                                         <td>1</td>
-                                        <td>2</td>
+                                        <td>Gabus</td>
                                         {{-- <td>3</td> --}}
                                         <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="/jml_kelompok" type="button" class="btn btn-primary">Detail</a>
 
                                         </td>
                                         <td>

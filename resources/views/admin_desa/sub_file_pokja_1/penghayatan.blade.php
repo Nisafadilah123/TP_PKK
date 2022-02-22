@@ -1,8 +1,8 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Jumlah Kader POKJA I | PKK Kab. Indramayu')
+@section('title', 'Penghayatan dan Pengamalan Pancasila POKJA I | PKK Kab. Indramayu')
 
-@section('bread', 'Jumlah Kader POKJA I')
+@section('bread', 'Penghayatan dan Pengamalan Pancasila POKJA I')
 @section('container')
 
     <!-- Main content -->
@@ -29,6 +29,7 @@
                                         <th>PKBN</th>
                                         <th>PKDRT</th>
                                         <th>Pola Asuh</th>
+                                        <th>Lansia</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -38,9 +39,23 @@
                                     <tr>
                                         <td>1</td>
                                         <td>Gabus</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                        <td>7</td>
+                                        <td>
+                                            <p>Jumlah Kel. Simulasi :</p>
+                                            <p>Jumlah Anggota :</p>
+                                        </td>
+                                        <td>
+                                            <p>Jumlah Kel. Simulasi :</p>
+                                            <p>Jumlah Anggota :</p>
+                                        </td>
+                                        <td>
+                                            <p>Jumlah Kel. Simulasi :</p>
+                                            <p>Jumlah Anggota :</p>
+                                        </td>
+                                        <td>
+                                            <p>Jumlah Kel. Simulasi :</p>
+                                            <p>Jumlah Anggota :</p>
+                                        </td>
+
 
                                         <td>
                                             <button type="button" class="btn btn-warning">Edit</button>
