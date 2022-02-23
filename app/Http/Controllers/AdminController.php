@@ -60,4 +60,16 @@ class AdminController extends Controller
         public function koperasi(){
             return view('admin_desa.sub_file_pokja_2.koperasi');
         }
+
+        // halaman data makanan pokok
+        public function makanan(){
+            return view('admin_desa.sub_file_pokja_3.makanan');
+        }
+
+        // halaman data pangan
+        public function pangan(){
+            return view('admin_desa.sub_file_pokja_3.pangan');
+        }
+
+
 }

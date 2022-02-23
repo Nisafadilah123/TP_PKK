@@ -25,8 +25,6 @@
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                        <th>Nama Desa</th>
-                                        {{-- <th>Kode Kelurahan</th> --}}
                                         <th>Pendidikan dan Keterampilan</th>
                                         <th>Pengembangan Kehidupan Beroperasi</th>
                                         {{-- <th>Aksi</th> --}}

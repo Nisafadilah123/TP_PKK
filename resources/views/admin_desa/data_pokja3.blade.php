@@ -31,7 +31,7 @@
                                         <th>Pangan</th>
                                         <th>Jumlah Industri Rumah Tangga</th>
                                         <th>Jumlah Rumah</th>
-                                        <th>Aksi</th>
+                                        {{-- <th>Aksi</th> --}}
                                     </tr>
                                     </thead>
 
@@ -42,18 +42,18 @@
                                         <td>2</td>
                                         {{-- <td>3</td> --}}
                                         <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="/kader" type="button" class="btn btn-primary">Detail</button>
 
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="/pangan" type="button" class="btn btn-primary">Detail</a>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="/industri" type="button" class="btn btn-primary">Detail</a>
 
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="/rumah" type="button" class="btn btn-primary">Detail</a>
 
                                         </td>
                                         {{-- <td>
