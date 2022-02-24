@@ -20,49 +20,68 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    {{-- <button type="button" class="btn btn-success">Tambah</button><br><br> --}}
+                                    <button type="button" class="btn btn-success">Tambah</button><br><br>
 
                                     <thead>
                                         <tr>
-                                        <th>No</th>
-                                        <th>Nama Desa</th>
-                                        <th>Jumlah Kelompok</th>
-                                        <th>Jumlah</th>
-                                        <th>Jumlah Jiwa</th>
-                                        <th>Jumlah Kader</th>
-                                        <th>Jumlah Tenaga Sekretariat</th>
-                                        {{-- <th>Aksi</th> --}}
+                                        <th rowspan="2">No</th>
+                                        <th rowspan="2">Nama Desa</th>
+                                        <th rowspan="2">Jumlah Kelompok</th>
+                                        <th rowspan="2">Jumlah</th>
+                                        <th rowspan="2">Jumlah Jiwa</th>
+                                        <th colspan="3">Jumlah Kader</th>
+                                        <th colspan="2">Jumlah Tenaga Sekretariat</th>
+                                        <th rowspan="2">Aksi</th>
                                     </tr>
+
+                                    <tr>
+                                        <th>Anggota TP PKK</th>
+                                        <th>Umum</th>
+                                        <th>Khusus</th>
+                                        <th>Honorer</th>
+                                        <th>Bantuan</th>
+                                    </tr>
+
                                     </thead>
 
                                     <tbody>
                                         {{-- @foreach ($candidate as $c) --}}
                                     <tr>
                                         <td>1</td>
-                                        <td>gabus</td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                        <td>Gabus</td>
+                                        <td>2</td>
 
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
-
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
-
-                                        </td>
+                                        <td>2</td>
+                                        <td>2</td>
+                                        <td>2</td>
+                                        <td>2</td>
+                                        <td>2</td>
+                                        <td>2</td>
+                                        <td>2</td>
 
                                         {{-- <td>
+                                            <button type="button" class="btn btn-primary">Detail</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary">Detail</button>
+
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary">Detail</button>
+
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary">Detail</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary">Detail</button>
+
+                                        </td> --}}
+
+                                        <td>
                                             <button type="button" class="btn btn-warning">Edit</button>
                                             <button type="button" class="btn btn-danger">Hapus</button>
-                                        </td> --}}
+                                        </td>
 
                                         {{-- <td style="vertical-align: middle;">{{$i++}}</td>
                                         <td style="vertical-align: middle;">{{$c->name}}</td>

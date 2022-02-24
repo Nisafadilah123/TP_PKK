@@ -42,3 +42,4 @@
 [0222/212708.733:ERROR:crashpad_client_win.cc(808)] not connected
 [0222/212708.829:ERROR:registration_protocol_win.cc(102)] CreateFile: The system cannot find the file specified. (0x2)
 [0222/212709.229:ERROR:crashpad_client_win.cc(808)] not connected
+[0223/192329.327:ERROR:registration_protocol_win.cc(102)] CreateFile: The system cannot find the file specified. (0x2)

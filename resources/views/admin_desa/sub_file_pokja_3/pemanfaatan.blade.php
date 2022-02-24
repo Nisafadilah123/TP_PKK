@@ -45,6 +45,11 @@
                                             <td>Gabus</td>
                                             <td>2</td>
                                             <td>3</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            
                                             <td>
                                                 <button type="button" class="btn btn-warning">Edit</button>
                                                 <button type="button" class="btn btn-danger">Hapus</button>

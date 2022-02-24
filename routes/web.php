@@ -17,6 +17,10 @@ use App\Http\Controllers\admin_desa\data_pokja3\makanan_pokja3Controller;
 use App\Http\Controllers\admin_desa\data_pokja3\pemanfaatan_pokja3Controller;
 use App\Http\Controllers\admin_desa\data_pokja3\industri_pokja3Controller;
 use App\Http\Controllers\admin_desa\data_pokja3\rumah_pokja3Controller;
+use App\Http\Controllers\admin_desa\data_pokja4\kader_pokja4Controller;
+use App\Http\Controllers\admin_desa\data_pokja4\kelestarian_pokja4Controller;
+use App\Http\Controllers\admin_desa\data_pokja4\kesehatan_pokja4Controller;
+use App\Http\Controllers\admin_desa\data_pokja4\perencanaan_pokja4Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -94,3 +98,9 @@ Route::resource('/makanan', makanan_pokja3Controller::class);
 Route::resource('/pemanfaatan', pemanfaatan_pokja3Controller::class);
 Route::resource('/industri', industri_pokja3Controller::class);
 Route::resource('/rumah', rumah_pokja3Controller::class);
+
+// form data_pokja4
+Route::resource('/kader_pokja4', kader_pokja4Controller::class);
+Route::resource('/kelestarian', kelestarian_pokja4Controller::class);
+Route::resource('/kesehatan', kesehatan_pokja4Controller::class);
+Route::resource('/perencanaan', perencanaan_pokja4Controller::class);

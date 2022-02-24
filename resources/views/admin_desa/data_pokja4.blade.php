@@ -25,13 +25,11 @@
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                        <th>Nama Desa</th>
-                                        {{-- <th>Kode Kelurahan</th> --}}
                                         <th>Jumlah Kader</th>
                                         <th>Kesehatan Posyandu</th>
                                         <th>Kelestarian Lingkungan Hidup</th>
                                         <th>Perencanaan Sehat</th>
-                                        <th>Aksi</th>
+                                        {{-- <th>Aksi</th> --}}
                                     </tr>
                                     </thead>
 
@@ -39,21 +37,19 @@
                                         {{-- @foreach ($candidate as $c) --}}
                                     <tr>
                                         <td>1</td>
-                                        <td>2</td>
-                                        {{-- <td>3</td> --}}
                                         <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="/kader_pokja4" type="button" class="btn btn-primary">Detail</button>
 
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="/kesehatan" type="button" class="btn btn-primary">Detail</button>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="/kelestarian" type="button" class="btn btn-primary">Detail</a>
 
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="/perencanaan" type="button" class="btn btn-primary">Detail</a>
 
                                         </td>
                                         {{-- <td>

@@ -1,8 +1,8 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Pangan POKJA III | PKK Kab. Indramayu')
+@section('title', 'Kesehatan Posyandu POKJA IV | PKK Kab. Indramayu')
 
-@section('bread', 'Pangan POKJA III')
+@section('bread', 'Kesehatan Posyandu POKJA IV')
 @section('container')
 
 <!-- Main content -->
@@ -20,14 +20,21 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    {{-- <button type="button" class="btn btn-success">Tambah</button><br><br> --}}
+                                    <button type="button" class="btn btn-success">Tambah</button><br><br>
 
                                     <thead>
                                         <tr>
-                                            <th>No.</th>
-                                            <th>Makanan Pokok</th>
-                                            <th>Pemanfaatan Pekarangan</th>
-
+                                            <th rowspan="2">No.</th>
+                                            <th rowspan="2">Nama Desa</th>
+                                            <th rowspan="2">Jumlah</th>
+                                            <th rowspan="2">Terintegrasi</th>
+                                            <th colspan="3">Lansia</th>
+                                            <th rowspan="2">Aksi</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Jumlah KLP</th>
+                                            <th>Jumlah Anggota</th>
+                                            <th>Jumlah yang Memiliki Kartu Berobat Gratis</th>
                                         </tr>
 
                                     </thead>
@@ -36,19 +43,16 @@
                                         {{-- @foreach ($candidate as $c) --}}
                                         <tr>
                                             <td>1</td>
-
+                                            <td>Gabus</td>
+                                            <td>2</td>
+                                            <td>3</td>
+                                            <td>4</td>
+                                            <td>5</td>
+                                            <td>6</td>
                                             <td>
-                                                <a href="/makanan" type="button" class="btn btn-primary">Detail</a>
-
-                                            </td>
-                                            <td>
-                                                <a href="/pemanfaatan" type="button" class="btn btn-primary">Detail</a>
-
-                                            </td>
-                                            {{-- <td>
                                                 <button type="button" class="btn btn-warning">Edit</button>
                                                 <button type="button" class="btn btn-danger">Hapus</button>
-                                            </td> --}}
+                                            </td>
 
                                             {{-- <td style="vertical-align: middle;">{{$i++}}</td>
                                             <td style="vertical-align: middle;">{{$c->name}}</td>

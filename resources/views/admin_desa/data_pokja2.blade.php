@@ -35,8 +35,6 @@
                                         {{-- @foreach ($candidate as $c) --}}
                                     <tr>
                                         <td>1</td>
-                                        <td>Gabus</td>
-                                        {{-- <td>3</td> --}}
                                         <td>
                                             <a href="/pendidikan" type="button" class="btn btn-primary">Detail</a>
 

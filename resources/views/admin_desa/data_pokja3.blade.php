@@ -25,8 +25,6 @@
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                        <th>Nama Desa</th>
-                                        {{-- <th>Kode Kelurahan</th> --}}
                                         <th>Jumlah Kader</th>
                                         <th>Pangan</th>
                                         <th>Jumlah Industri Rumah Tangga</th>
@@ -39,8 +37,6 @@
                                         {{-- @foreach ($candidate as $c) --}}
                                     <tr>
                                         <td>1</td>
-                                        <td>2</td>
-                                        {{-- <td>3</td> --}}
                                         <td>
                                             <a href="/kader" type="button" class="btn btn-primary">Detail</button>
 

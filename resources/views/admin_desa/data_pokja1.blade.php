@@ -48,7 +48,7 @@
                                             <a href="/penghayatan" type="button" class="btn btn-primary">Detail</a>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="/gotong_royong" type="button" class="btn btn-primary">Detail</button>
 
                                         </td>
                                         {{-- <td>
