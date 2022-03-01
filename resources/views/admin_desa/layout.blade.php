@@ -133,7 +133,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                    <a href="/data_wilayah" class="nav-link {{ Request::is('data_wilayah') ? 'active':'' }}" >
+                    <a href="/data_desa" class="nav-link {{ Request::is('data_desa') ? 'active':'' }}" >
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data wilayah Kelurahan</p>
                     </a>
@@ -1144,7 +1144,11 @@
     <script src="{{url('admin/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
     <script src="{{url('admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <script type="text/javascript">
+
     @stack('script-addon')
+    @include('sweetalert::alert')
 
     @yield('script')
 

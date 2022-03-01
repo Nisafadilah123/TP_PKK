@@ -1,6 +1,6 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Data Pengguna | PKK Kab. Indramayu')
+@section('title', 'Data Pengguna | Admin Desa PKK Kab. Indramayu')
 
 @section('bread', 'Data Pengguna')
 @section('container')

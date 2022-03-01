@@ -1,8 +1,8 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Data Wilayah Kelurahan | PKK Kab. Indramayu')
+@section('title', 'Data Wilayah Desa | Admin Desa PKK Kab. Indramayu')
 
-@section('bread', 'Data Wilayah Kelurahan')
+@section('bread', 'Data Wilayah Desa')
 @section('container')
 
     <!-- Main content -->
@@ -23,7 +23,7 @@
                             <div class="table-responsive">
 
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    <button type="button" class="btn btn-success">Tambah</button><br><br>
+                                    <a href="{{ url('data_desa/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
 
                                     <thead>
                                         <tr>
@@ -31,41 +31,52 @@
                                         <th>Kode Desa</th>
                                         <th>Nama Desa</th>
                                         <th>Aksi</th>
+                                        {{-- <th>Hapus</th> --}}
                                     </tr>
                                     </thead>
 
                                     <tbody>
-                                        {{-- @foreach ($candidate as $c) --}}
+                                        <?php $no=1;?>
+
+                                        @foreach ($desa as $c)
                                     <tr>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>5</td>
-                                        <td>
-                                            <button type="button" class="btn btn-warning">Edit</button>
-                                            <button type="button" class="btn btn-danger">Hapus</button>
-                                        </td>
+                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        <td style="vertical-align: middle;">{{$c->kode_desa}}</td>
+                                        <td style="vertical-align: middle;">{{$c->nama_desa}}</td>
 
-                                        {{-- <td style="vertical-align: middle;">{{$i++}}</td>
-                                        <td style="vertical-align: middle;">{{$c->name}}</td>
-                                        <td style="vertical-align: middle;">{{$c->address}}</td>
-                                        <td style="vertical-align: middle;">{{$c->position}}</td>
-                                        <td>
-                                            <a href="/opencv/{{$c->id}}" target="_blank" class="btn btn-primary">
-                                                View File <span class="glyphicon glyphicon-eye-open">
-                                            </a>
-                                        </td>
-                                        <td style="vertical-align: middle;">{{$c->status}}</td></td>
+                                            {{-- <td>
+                                                <form action="{{ url('data_desa/'.$c->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
 
-                                        <td style="width: 120px;text-align: center;vertical-align: middle; ">
-                                            <form action="/kandidat/{{$c->id}}" method="post">
-                                                @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger delete">Hapus</button>
+                                                    <a href="{{ url('data_desa/'.$c->id.'/edit') }}" class="btn btn-warning">Edit</a>
+
+                                                </form> --}}
+                                                {{-- <a href="{{ url('data_desa/'.$c->id) }}" class="btn btn-danger">Hapus</a> --}}
+                                            {{-- </td> --}}
+                                            {{-- <td>
+
+                                            </td> --}}
+                                        <td class="text-center">
+                                            <form action="{{ route('data_desa.destroy',$c->id) }}" method="POST">
+
+                                            {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
+
+                                                <a class="btn btn-primary btn-sm" href="{{ url('data_desa/'.$c->id.'/edit') }}">Edit</a>
+
                                                 @csrf
-                                                <button type="submit" class="btn btn-sm btn-primary btn-circle delete"><span class="far fa-trash-alt"></span></button>
-                                                <!-- <input type="submit" class="btn btn-danger btn-sm" value="Delete" onclick="return confirm('anda yakin ingin menghapus data?');"> -->
+                                                @method('DELETE')
+
+                                                <button type="submit" class="btn btn-danger btn-sm delete" >Delete</button>
                                             </form>
-                                        </td> --}}
+                                        </td>
+
+
                                     </tr>
-                                    {{-- @endforeach --}}
+                                    <?php $no++ ;?>
+
+                                    @endforeach
                                     </tbody>
 
                                 </table>
@@ -114,6 +125,27 @@
 $(document).ready( function () {
     $('.data').DataTable();
 } );
+</script>
+
+<script>
+    $('.delete').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+            title: `Apakah anda yakin ingin menghapus data ini ?`,
+              text: "Jika anda menghapusnya maka datanya akan di hapus secara permanen",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            }
+          });
+      });
+
 </script>
 
 @endpush

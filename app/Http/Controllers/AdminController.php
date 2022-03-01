@@ -11,10 +11,7 @@ class AdminController extends Controller
             return view('admin_desa.dashboard');
         }
 
-        // halaman data wilayah
-        public function data_wilayah(){
-            return view('admin_desa.data_wilayah');
-        }
+
 
         // halaman data pokja1
         public function data_pokja1(){

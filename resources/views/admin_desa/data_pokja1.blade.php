@@ -1,6 +1,6 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Data POKJA I | PKK Kab. Indramayu')
+@section('title', 'Data POKJA I | Admin Desa PKK Kab. Indramayu')
 
 @section('bread', 'Data POKJA I')
 @section('container')

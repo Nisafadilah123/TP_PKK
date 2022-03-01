@@ -1,6 +1,6 @@
 @extends('admin_desa.layout')
 
-@section('title' , 'Dashboard | Admin Kelurahan')
+@section('title' , 'Dashboard | Admin Desa')
 @section('bread' , 'Dashboard')
 
 @section('container')
@@ -23,7 +23,7 @@
               <div class="icon">
                 <i class="ion ion-location"></i>
               </div>
-              <a href="#" class="small-box-footer"
+              <a href="/data_desa" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>

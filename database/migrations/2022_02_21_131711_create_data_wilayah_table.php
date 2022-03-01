@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('data_wilayah', function (Blueprint $table) {
+        Schema::create('data_desa', function (Blueprint $table) {
             $table->id();
             $table->string('kode_desa');
             $table->string('nama_desa');

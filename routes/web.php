@@ -21,6 +21,7 @@ use App\Http\Controllers\admin_desa\data_pokja4\kader_pokja4Controller;
 use App\Http\Controllers\admin_desa\data_pokja4\kelestarian_pokja4Controller;
 use App\Http\Controllers\admin_desa\data_pokja4\kesehatan_pokja4Controller;
 use App\Http\Controllers\admin_desa\data_pokja4\perencanaan_pokja4Controller;
+use App\Http\Controllers\admin_desa\dataDesaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,7 +67,6 @@ Route::get('/data_umum', [PokjaController::class, 'data_umum']);
 
 // halaman admin desa
 Route::get('/dashboard', [AdminController::class, 'dashboard']);
-Route::get('/data_wilayah', [AdminController::class, 'data_wilayah']);
 Route::get('/data_pokja1', [AdminController::class, 'data_pokja1']);
 Route::get('/data_pokja2', [AdminController::class, 'data_pokja2']);
 Route::get('/data_pokja3', [AdminController::class, 'data_pokja3']);
@@ -104,3 +104,6 @@ Route::resource('/kader_pokja4', kader_pokja4Controller::class);
 Route::resource('/kelestarian', kelestarian_pokja4Controller::class);
 Route::resource('/kesehatan', kesehatan_pokja4Controller::class);
 Route::resource('/perencanaan', perencanaan_pokja4Controller::class);
+
+// form desa
+Route::resource('/data_desa', dataDesaController::class);
