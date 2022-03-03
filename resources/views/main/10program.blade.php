@@ -23,28 +23,28 @@
       <div class="container">
         <div class="card">
           <div class="card-body">
-            <h1>10 Program Pokok PKK</h1>
+            <h1 style="font-family: 'Times New Roman', Times, serif">10 Program Pokok PKK</h1>
             <br />
 
-            <h2>1. Penghayatan dan Pengamalan Pancasila</h2>
+            <h5 style="font-family: 'Times New Roman', Times, serif">1. Penghayatan dan Pengamalan Pancasila</h5>
             <br />
-            <h2>2. Gotong Royong</h2>
+            <h5 style="font-family: 'Times New Roman', Times, serif">2. Gotong Royong</h5>
             <br />
-            <h2>3.Pangan</h2>
+            <h5 style="font-family: 'Times New Roman', Times, serif">3.Pangan</h5>
             <br />
-            <h2>4. Sandang</h2>
+            <h5 style="font-family: 'Times New Roman', Times, serif">4. Sandang</h5>
             <br />
-            <h2>5. Perumahan dan Tata Laksana Rumah Tangga</h2>
+            <h5 style="font-family: 'Times New Roman', Times, serif">5. Perumahan dan Tata Laksana Rumah Tangga</h5>
             <br />
-            <h2>6. Pendidikan dan Keterampilan</h2>
+            <h5 style="font-family: 'Times New Roman', Times, serif">6. Pendidikan dan Keterampilan</h5>
             <br />
-            <h2>7. Kesehatan</h2>
+            <h5 style="font-family: 'Times New Roman', Times, serif">7. Kesehatan</h5>
             <br />
-            <h2>8. Pengembangan Kehidupan Berkoperasi</h2>
+            <h5 style="font-family: 'Times New Roman', Times, serif">8. Pengembangan Kehidupan Berkoperasi</h5>
             <br />
-            <h2>9. Kelestarian Lingkungan Hidup</h2>
+            <h5 style="font-family: 'Times New Roman', Times, serif">9. Kelestarian Lingkungan Hidup</h5>
             <br />
-            <h2>10. Perencanaan Sehat</h2>
+            <h5 style="font-family: 'Times New Roman', Times, serif">10. Perencanaan Sehat</h5>
             <br />
           </div>
         </div>

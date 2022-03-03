@@ -22,6 +22,7 @@ use App\Http\Controllers\admin_desa\data_pokja4\kelestarian_pokja4Controller;
 use App\Http\Controllers\admin_desa\data_pokja4\kesehatan_pokja4Controller;
 use App\Http\Controllers\admin_desa\data_pokja4\perencanaan_pokja4Controller;
 use App\Http\Controllers\admin_desa\dataDesaController;
+use App\Http\Controllers\AdminKabController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -78,6 +79,15 @@ Route::get('/koperasi', [AdminController::class, 'koperasi']);
 Route::get('/makanan', [AdminController::class, 'makanan']);
 Route::get('/pangan', [AdminController::class, 'pangan']);
 
+// halaman admin kab
+Route::get('/dashboard_kab', [AdminKabController::class, 'dashboard_kab']);
+Route::get('/data_pokja1_kab', [AdminKabController::class, 'data_pokja1_kab']);
+Route::get('/data_pokja2_kab', [AdminKabController::class, 'data_pokja2_kab']);
+Route::get('/data_pokja3_kab', [AdminKabController::class, 'data_pokja3_kab']);
+Route::get('/data_pokja4_kab', [AdminKabController::class, 'data_pokja4_kab']);
+Route::get('/pengguna_kab', [AdminKabController::class, 'data_pengguna_kab']);
+Route::get('/laporan_kab', [AdminKabController::class, 'data_laporan_kab']);
+Route::get('/data_sekretariat_kab', [AdminKabController::class, 'data_sekretariat_kab']);
 
 // form data_pokja1
 Route::resource('/jml_kader', jml_kader_pokja1Controller::class);
