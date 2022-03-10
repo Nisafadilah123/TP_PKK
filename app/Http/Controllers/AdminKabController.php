@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\BeritaKab;
 
 use Illuminate\Http\Request;
 
@@ -8,10 +9,10 @@ class AdminKabController extends Controller
 {
     // halaman dashboard
     public function dashboard_kab(){
-        return view('admin_kab.dashboard');
+        $berita = BeritaKab::count();
+
+        return view('admin_kab.dashboard', compact('berita'));
     }
-
-
 
     // halaman data pokja1
     public function data_pokja1_kab(){
@@ -47,4 +48,6 @@ class AdminKabController extends Controller
     public function data_sekretariat_kab(){
         return view('admin_kab.data_sekretariat');
     }
+
+    
 }

@@ -132,12 +132,12 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                     <a href="/data_desa" class="nav-link {{ Request::is('data_desa') ? 'active':'' }}" >
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data wilayah Kelurahan</p>
                     </a>
-                  </li>
+                  </li> --}}
                   {{-- </li> --}}
                   <li class="nav-item">
                     <a href="/data_pokja1" class="nav-link {{ Request::is('data_pokja1') ? 'active':'' }}">
@@ -1146,6 +1146,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script type="text/javascript">
+
+    </script>
 
     @stack('script-addon')
     @include('sweetalert::alert')

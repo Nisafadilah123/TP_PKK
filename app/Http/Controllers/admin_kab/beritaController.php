@@ -1,0 +1,172 @@
+<?php
+
+namespace App\Http\Controllers\admin_kab;
+use App\Http\Controllers\Controller;
+use App\Models\BeritaKab;
+use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+
+class beritaController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+        $beritaKab = BeritaKab::all();
+        return view('admin_kab.berita', compact('beritaKab'));
+
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        // halaman tambah data berita
+        return view('admin_kab.form.create_berita');
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        // proses penyimpanan untuk tambah data wilayah/desa
+        $request->validate([
+            'nama_berita' => 'required',
+            'desk' => 'required',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'tgl_publish' => 'required',
+            'penulis' => 'required',
+        ], [
+                'nama_berita.required' => 'Lengkapi Judul Berita yang ingin di publish',
+                'desk.required' => 'Lengkapi Deskripsi Berita yang ingin di publish',
+                'tgl_publish.required' => 'Lengkapi Judul Berita yang ingin di publish',
+                'penulis.required' => 'Lengkapi Deskripsi Berita yang ingin di publish',
+
+        ]);
+        $input = $request->all();
+
+
+        // cara 1
+        // $berita = new BeritaKab;
+        // $berita->nama_berita = $request->nama_berita;
+        // $berita->desk = $request->desk;
+        // $berita->tgl_publish = $request->tgl_publish;
+        // $berita->penulis = $request->penulis;
+
+        if ($image = $request->file('gambar')) {
+            $destinationPath = 'gambar/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['gambar'] = "$profileImage";
+        }
+
+        // $berita->save();
+
+        BeritaKab::create($input);
+        Alert::success('Berhasil', 'Data berhasil di tambahkan');
+        // dd($desa);
+        // Data_Desa::create($request->all());
+        // return redirect()->route('data_desa.index')
+        //                 ->with('success','Student created successfully.');
+
+
+        return redirect('/beritaKab');
+
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(BeritaKab $beritaKab)
+    {
+        //halaman edit
+        // dump($berita);
+        return view('admin_kab.form.edit_berita', compact('beritaKab'));
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, BeritaKab $beritaKab)
+    {
+        // proses penyimpanan untuk tambah data wilayah/desa
+        $request->validate([
+            'nama_berita' => 'required',
+            'desk' => 'required',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'tgl_publish' => 'required',
+            'penulis' => 'required',
+        ], [
+                'nama_berita.required' => 'Lengkapi Judul Berita yang ingin di publish',
+                'desk.required' => 'Lengkapi Deskripsi Berita yang ingin di publish',
+                'tgl_publish.required' => 'Lengkapi Judul Berita yang ingin di publish',
+                'penulis.required' => 'Lengkapi Deskripsi Berita yang ingin di publish',
+
+        ]);
+
+        $input = $request->all();
+        if ($image = $request->file('gambar')) {
+            $destinationPath = 'gambar/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['gambar'] = "$profileImage";
+        }else{
+            unset($input['gambar']);
+        }
+// dd($input);
+        $beritaKab->update($input);
+
+        Alert::success('Berhasil', 'Data berhasil di tambahkan');
+
+        return redirect('/beritaKab');
+
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(BeritaKab $beritaKab)
+    {
+        //
+        $beritaKab->delete();
+        // $data_desa->delete();
+
+        return redirect('/beritaKab')->with('status', 'sukses');
+
+    }
+}

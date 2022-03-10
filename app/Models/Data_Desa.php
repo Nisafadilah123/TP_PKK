@@ -12,7 +12,16 @@ class Data_Desa extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'kode_desa', 'nama_desa'
+       'id_kecamatan', 'kode_desa', 'nama_desa'
     ];
+
+    // public function kecamatan()
+    // {
+    //     return $this->belongsTo(DataKecamatan::class);
+    // }
+
+    public function kecamatan(){
+        return $this->hasMany(DataKecamatan::class, 'id_kecamatan', 'id');
+    }
 
 }

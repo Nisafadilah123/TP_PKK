@@ -1,6 +1,6 @@
 @extends('admin_kab.layout')
 
-@section('title' , 'Dashboard | Admin Desa')
+@section('title' , 'Dashboard | Admin Kabupaten')
 @section('bread' , 'Dashboard')
 
 @section('container')
@@ -16,14 +16,14 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3>{{$berita}}</h3>
 
-                <p>Data Wilayah</p>
+                <p>Data Berita</p>
               </div>
               <div class="icon">
-                <i class="ion ion-location"></i>
+                <i class="ion ion-folder"></i>
               </div>
-              <a href="/data_desa" class="small-box-footer"
+              <a href="/beritaKab" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>

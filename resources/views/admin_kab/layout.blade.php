@@ -75,14 +75,14 @@
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="/dashboard" class="brand-link">
+        <a href="/dashboard_kab" class="brand-link">
           {{-- <img
             src="dist/img/AdminLTELogo.png"
             alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3"
             style="opacity: 0.8"
           /> --}}
-          <span class="brand-text font-weight-light">PKK Desa</span>
+          <span class="brand-text font-weight-light">PKK Kabupaten</span>
         </a>
 
         <!-- Sidebar -->
@@ -97,7 +97,7 @@
               />
             </div>
             <div class="info">
-              <a href="#" class="d-block">Admin PKK Desa</a>
+              <a href="#" class="d-block">Admin PKK Kabupaten</a>
             </div>
           </div>
 
@@ -112,7 +112,7 @@
               <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item has-treeview">
-                <a href="/dashboard" class="nav-link {{ Request::is('dashboard') ? 'active':'' }}">
+                <a href="/dashboard_kab" class="nav-link {{ Request::is('dashboard_kab') ? 'active':'' }}">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>
                     Dashboard
@@ -132,39 +132,32 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                    <a href="/data_desa" class="nav-link {{ Request::is('data_desa') ? 'active':'' }}" >
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Data wilayah Kelurahan</p>
-                    </a>
-                  </li>
-                  {{-- </li> --}}
                   <li class="nav-item">
-                    <a href="/data_pokja1" class="nav-link {{ Request::is('data_pokja1') ? 'active':'' }}">
+                    <a href="/data_pokja1_kab" class="nav-link {{ Request::is('data_pokja1_kab') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA I</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/data_pokja2" class="nav-link {{ Request::is('data_pokja2') ? 'active':'' }}">
+                    <a href="/data_pokja2_kab" class="nav-link {{ Request::is('data_pokja2_kab') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA II</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="data_pokja3" class="nav-link {{ Request::is('data_pokja3') ? 'active':'' }}">
+                    <a href="/data_pokja3_kab" class="nav-link {{ Request::is('data_pokja3_kab') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA III</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="data_pokja4" class="nav-link {{ Request::is('data_pokja4') ? 'active':'' }}">
+                    <a href="/data_pokja4_kab" class="nav-link {{ Request::is('data_pokja4_kab') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA IV</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
+                    <a href="/data_sekretariat_kab" class="nav-link {{ Request::is('data_sekretariat_kab') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data Sekretariat/Data Umum</p>
                     </a>
@@ -173,18 +166,26 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="/laporan" class="nav-link">
+                <a href="/laporan_kab" class="nav-link">
                     <i class="nav-icon fas fa-folder-open"></i>
                   <p>Data Laporan</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="/pengguna" class="nav-link">
+                <a href="/pengguna_kab" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                   <p>Data Pengguna</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="/beritaKab" class="nav-link">
+                <i class="nav-icon fas fa-newspaper"></i>
+                  <p>Data Berita</p>
+                </a>
+              </li>
+
 
               <li class="nav-item">
                 <a href="https://adminlte.io/docs/3.0" class="nav-link">
@@ -1146,6 +1147,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
     <script type="text/javascript">
+
+    </script>
 
     @stack('script-addon')
     @include('sweetalert::alert')

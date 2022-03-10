@@ -1,14 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
+use App\Models\BeritaKab;
+use App\Http\Requests;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
     // halaman landing page
     public function home(){
-        return view('main.home');
+        $berita = BeritaKab::all();
+        dd($berita);
+        return view('main.home', ['berita'=>$berita]);
     }
 
     // halaman sejarah

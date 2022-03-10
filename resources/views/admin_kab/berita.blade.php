@@ -1,8 +1,8 @@
 @extends('admin_kab.layout')
 
-@section('title', 'Data Wilayah Desa | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Data Berita PKK | Admin Desa PKK Kab. Indramayu')
 
-@section('bread', 'Data Wilayah Desa')
+@section('bread', 'Data Berita PKK')
 @section('container')
 
     <!-- Main content -->
@@ -21,49 +21,53 @@
                         <div class="card-body">
 
                             <div class="table-responsive">
+                                <table id="example1" class="table table-bordered table-striped">
 
-                                <table class="table table-striped table-bordered data" id="add-row">
-                                    <a href="{{ url('data_desa/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
+                                {{-- <table class="table table-striped table-bordered data" id="add-row"> --}}
+                                    <a href="{{ url('beritaKab/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
 
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                        <th>Kode Desa</th>
-                                        <th>Nama Desa</th>
+                                        <th>Nama Berita</th>
+                                        <th>Deskripsi Berita</th>
+                                        <th>Gambar Berita</th>
+                                        <th>Tanggal Publsih Berita</th>
+                                        <th>Penulis Berita PKK</th>
                                         <th>Aksi</th>
-                                        {{-- <th>Hapus</th> --}}
                                     </tr>
                                     </thead>
 
                                     <tbody>
                                         <?php $no=1;?>
 
-                                        @foreach ($desa as $c)
+                                        @foreach ($beritaKab as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
-                                        <td style="vertical-align: middle;">{{$c->kode_desa}}</td>
-                                        <td style="vertical-align: middle;">{{$c->nama_desa}}</td>
+                                        <td style="vertical-align: middle;">{{$c->nama_berita}}</td>
+                                        <td style="vertical-align: middle;">{{$c->desk}}</td>
+                                        <td style="vertical-align: middle;"><img src="/gambar/{{$c->gambar}}" width="100px"></td>
+                                        <td style="vertical-align: middle;">{{$c->tgl_publish}}</td>
+                                        <td style="vertical-align: middle;">{{$c->penulis}}</td>
 
-                                            {{-- <td>
-                                                <form action="{{ url('data_desa/'.$c->id) }}" method="POST">
+                                           {{-- <td>
+                                                <form action="{{ url('beritaKab/'.$c->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
 
                                                     <button type="submit" class="btn btn-danger delete">Hapus</button>
-                                                    <a href="{{ url('data_desa/'.$c->id.'/edit') }}" class="btn btn-warning">Edit</a>
+                                                    <a href="{{ url('beritaKab/'.$c->id.'/edit') }}" class="btn btn-warning">Edit</a>
 
                                                 </form> --}}
                                                 {{-- <a href="{{ url('data_desa/'.$c->id) }}" class="btn btn-danger">Hapus</a> --}}
                                             {{-- </td> --}}
-                                            {{-- <td>
 
-                                            </td> --}}
                                         <td class="text-center">
-                                            <form action="{{ route('data_desa.destroy',$c->id) }}" method="POST">
+                                            <form action="{{ route('beritaKab.destroy',$c->id) }}" method="POST">
 
                                             {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
 
-                                                <a class="btn btn-primary btn-sm" href="{{ url('data_desa/'.$c->id.'/edit') }}">Edit</a>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('beritaKab/'.$c->id.'/edit') }}">Edit</a>
 
                                                 @csrf
                                                 @method('DELETE')
@@ -71,7 +75,6 @@
                                                 <button type="submit" class="btn btn-danger btn-sm delete" >Delete</button>
                                             </form>
                                         </td>
-
 
                                     </tr>
                                     <?php $no++ ;?>
@@ -98,34 +101,34 @@
   @endsection
 
   @push('script-addon')
-  {{-- <script>
+ <script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true,
       "autoWidth": false,
     });
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
+    // $('#example2').DataTable({
+    //   "paging": true,
+    //   "lengthChange": false,
+    //   "searching": false,
+    //   "ordering": true,
+    //   "info": true,
+    //   "autoWidth": false,
+    //   "responsive": true,
+    // });
   });
-</script> --}}
+</script>
 
 {{-- <script>
     $(document).ready(function () {
         $('.data').dataTable();
     });
 </script> --}}
-<script>
+{{-- <script>
 $(document).ready( function () {
     $('.data').DataTable();
 } );
-</script>
+</script> --}}
 
 <script>
     $('.delete').click(function(event) {

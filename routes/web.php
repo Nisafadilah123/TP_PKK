@@ -22,7 +22,9 @@ use App\Http\Controllers\admin_desa\data_pokja4\kelestarian_pokja4Controller;
 use App\Http\Controllers\admin_desa\data_pokja4\kesehatan_pokja4Controller;
 use App\Http\Controllers\admin_desa\data_pokja4\perencanaan_pokja4Controller;
 use App\Http\Controllers\admin_desa\dataDesaController;
+use App\Http\Controllers\admin_kab\beritaController;
 use App\Http\Controllers\AdminKabController;
+use App\Models\BeritaKab;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,7 +40,10 @@ use Illuminate\Support\Facades\Route;
 
 // halaman main
 Route::get('/', function () {
-    return view('main.home');
+    $berita = BeritaKab::all();
+    // dd($berita);
+
+    return view('main.home', ['berita'=>$berita]);
 });
 Route::get('/sejarah', [MainController::class, 'sejarah']);
 Route::get('/program', [MainController::class, 'program_pkk']);
@@ -117,3 +122,5 @@ Route::resource('/perencanaan', perencanaan_pokja4Controller::class);
 
 // form desa
 Route::resource('/data_desa', dataDesaController::class);
+
+Route::resource('/beritaKab', beritaController::class);
