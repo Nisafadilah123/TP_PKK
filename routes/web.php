@@ -24,6 +24,7 @@ use App\Http\Controllers\admin_desa\data_pokja4\perencanaan_pokja4Controller;
 use App\Http\Controllers\super_admin\dataDesaController;
 use App\Http\Controllers\admin_kab\beritaController;
 use App\Http\Controllers\AdminKabController;
+use App\Http\Controllers\super_admin\dataKecamtanController;
 use App\Http\Controllers\SuperAdminController;
 use App\Models\BeritaKab;
 use Illuminate\Support\Facades\Route;
@@ -134,7 +135,9 @@ Route::resource('/kelestarian', kelestarian_pokja4Controller::class);
 Route::resource('/kesehatan', kesehatan_pokja4Controller::class);
 Route::resource('/perencanaan', perencanaan_pokja4Controller::class);
 
-// form desa
-Route::resource('/data_desa', dataDesaController::class);
-
+//form berita admin kabupaten
 Route::resource('/beritaKab', beritaController::class);
+
+// form desa super admin
+Route::resource('/data_desa', dataDesaController::class);
+Route::resource('/data_kecamatan', dataKecamtanController::class);

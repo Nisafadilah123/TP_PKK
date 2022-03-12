@@ -50,17 +50,6 @@
                                         <td style="vertical-align: middle;">{{$c->tgl_publish}}</td>
                                         <td style="vertical-align: middle;">{{$c->penulis}}</td>
 
-                                           {{-- <td>
-                                                <form action="{{ url('beritaKab/'.$c->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-
-                                                    <button type="submit" class="btn btn-danger delete">Hapus</button>
-                                                    <a href="{{ url('beritaKab/'.$c->id.'/edit') }}" class="btn btn-warning">Edit</a>
-
-                                                </form> --}}
-                                                {{-- <a href="{{ url('data_desa/'.$c->id) }}" class="btn btn-danger">Hapus</a> --}}
-                                            {{-- </td> --}}
 
                                         <td class="text-center">
                                             <form action="{{ route('beritaKab.destroy',$c->id) }}" method="POST">

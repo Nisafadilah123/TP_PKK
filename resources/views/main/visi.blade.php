@@ -4,40 +4,66 @@
 
 @section('container')
 
-<main id="main">
-    <!-- ======= Breadcrumbs ======= -->
-    <section class="breadcrumbs">
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-          <!-- <h2>Inner Page</h2> -->
-          <ol>
+<section class="breadcrumbs">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <!-- <h2>Inner Page</h2> -->
+        <ol>
             <li><a href="/">Home</a></li>
             <li>Visi & Misi TP Kab. Indramayu</li>
-          </ol>
-        </div>
+        </ol>
       </div>
-    </section>
-    <!-- End Breadcrumbs -->
+<br><br>
+      <div class="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">
+                  </h5>
 
-    <section class="inner-page">
-      <div class="container">
-        <div class="card">
-          <div class="card-body">
-            <h1>Visi dan Misi TP Kab. Indramayu</h1>
+                  <p class="card-text">
+                    <h1>Visi dan Misi TP Kab. Indramayu</h1>
             <br />
             <h2>Visi</h2>
-            <p><h6>Terwujudnya keluarga yang beriman, bertaqwa kepada Tuhan Yang
-              Maha Esa, berakhlak mulia dan berbudi luhur, sehat sejahtera
-              lahir dan batin</h6></p><br>
+            <p style="font-family: 'Times New Roman', Times, serif">
+                Terwujudnya Keluarga Sehat, Cerdas, Berdaya, Beriman dan Bertaqwa Menuju</p><br>
             <h2>Misi</h2>
             <ul>
-              <li><h6>Meningkatkan pembentukan karakter</h6></li>
+              <li>
+                  <p>Membentuk Karakter Keluarga Melalui Pola Asuh yang Sesuai dengan Nilai Dasar Pancasila.</p></li>
+                  <li>
+                        <p>Meningkatkan Pendidikan dan Ekonomi Keluarga.</p>
+                  </li>
+                  <li>
+                      <p>Memperkuat Ketahanan Keluarga melalui Pemenuhan Pangan, Sandang, Rumah Sehat Layak Huni serta Tata Laksana Rumah Tangga.</p>
+                  </li>
+                  <li>
+                    <p>Meningkatkan Kesehatan, Kelestarian Lingkungan Hidup dan Perencanaan Sehat.</p>
+                  </li>
+                  <li>
+                    <p>Modernisasi Organisasi PKK dengan Memanfaatkan Teknologi Informasi.</p>
+                  </li>
+
             </ul>
+                  </p>
+
+
+                </div>
+              </div>
+
+
+            </div>
+            <!-- /.col-md-6 -->
+
+            <!-- /.col-md-6 -->
           </div>
-        </div>
+          <!-- /.row -->
+        </div><!-- /.container-fluid -->
       </div>
-    </section>
-  </main>
-  <!-- End #main -->
+
+    </div>
+  </section>
 
 @endsection

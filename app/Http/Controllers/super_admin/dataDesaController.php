@@ -16,9 +16,8 @@ class dataDesaController extends Controller
      */
     public function index()
     {
-        // halaman data wilayah
+        // halaman data desa
         $desa = Data_Desa::all();
-
         return view('super_admin.data_wilayah', compact('desa'));
     }
 
@@ -62,7 +61,6 @@ class dataDesaController extends Controller
         $desa->id_kecamatan = $request->id_kecamatan;
         $desa->kode_desa = $request->kode_desa;
         $desa->nama_desa = $request->nama_desa;
-        // $education->user_id = Auth::user()->id;
         $desa->save();
 
 
@@ -97,7 +95,7 @@ class dataDesaController extends Controller
      */
     public function edit(Data_Desa $data_desa)
     {
-        // halaman tambah data desa
+        // halaman edit data desa
         // dd($desa);
         // $kec = DB::table('data_kecamatan')->get();
         $kec = Data_Desa::with('kecamatan')->first();
@@ -115,7 +113,7 @@ class dataDesaController extends Controller
      */
     public function update(Request $request, Data_Desa $data_desa)
     {
-        //
+        //halaman proses edit data desa
         $request->validate([
             'id_kecamatan' => 'required',
             'kode_desa' => 'required',
@@ -139,7 +137,7 @@ class dataDesaController extends Controller
      */
     public function destroy($data_desa, Data_Desa $desa)
     {
-        //
+        //temukan id desa
         $desa::find($data_desa)->delete();
         // $data_desa->delete();
 

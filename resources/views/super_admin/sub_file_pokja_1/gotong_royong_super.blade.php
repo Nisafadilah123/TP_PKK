@@ -8,9 +8,6 @@
     <!-- Main content -->
     <div class="main-content">
     <section class="section">
-        {{-- <h1 class="section-header">
-            <div>Kandidat</div>
-        </h1> --}}
 
         <div class="section-body">
             <div class="row">

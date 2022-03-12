@@ -16,6 +16,6 @@ class DataKecamatan extends Model
     ];
 
     public function desa(){
-        return $this->hasMany(Data_Desa::class, 'id_kecamatan', 'id');
+        return $this->hasMany(Data_Desa::class);
     }
 }

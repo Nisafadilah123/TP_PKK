@@ -77,7 +77,7 @@
                       <a href="/baganmekpkk">Bagan Mekanisme Gerakkan PKK Di Indramayu</a>
                     </li>
                     <li>
-                      <a href="baganmekel">Bagan Mekanisme Gerakkan PKK Di Kelurahan</a>
+                      {{-- <a href="baganmekel">Bagan Mekanisme Gerakkan PKK Di Kelurahan</a> --}}
                     </li>
                   </ul>
                 </li>
@@ -91,11 +91,11 @@
                   <ul>
                     <li>
                       <a href="/pkk"
-                        >Bagan Struktur TP PKK Kabupaten dan Administrasi
+                        >Bagan Struktur TP PKK Kabupaten
                       </a>
                     </li>
                     <li>
-                      <a href="/baganmekel">Bagan Struktur PKK Kecamatan</a>
+                      {{-- <a href="/baganmekel">Bagan Struktur PKK Kecamatan</a> --}}
                     </li>
                   </ul>
                 </li>
@@ -195,7 +195,7 @@
             <img src="{{ url('../image/remove.png') }}" width="200px" />
           </div>
 
-          <div class="col-lg-2 col-md-6 footer-links">
+          {{-- <div class="col-lg-2 col-md-6 footer-links"> --}}
             <!-- <h4>Link Terkait</h4>
             <ul>
               <li>
@@ -216,30 +216,20 @@
                 <a href="#">Privacy policy</a>
               </li>
             </ul> -->
-          </div>
+          {{-- </div> --}}
 
-          <div class="col-lg-3 col-md-6 footer-links">
-            <!-- <h4>Our Services</h4>
-            <ul>
-              <li>
-                <i class="bx bx-chevron-right"></i> <a href="#">Web Design</a>
-              </li>
-              <li>
-                <i class="bx bx-chevron-right"></i>
-                <a href="#">Web Development</a>
-              </li>
-              <li>
-                <i class="bx bx-chevron-right"></i>
-                <a href="#">Product Management</a>
-              </li>
-              <li>
-                <i class="bx bx-chevron-right"></i> <a href="#">Marketing</a>
-              </li>
-              <li>
-                <i class="bx bx-chevron-right"></i>
-                <a href="#">Graphic Design</a>
-              </li>
-            </ul> -->
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Kontak Kami</h4>
+            <p style="color: black">Jalan Wiralodra No.53, Indramayu</p>
+              <p style="color: black">Telp : 0732874749</p>
+              <p style="color: black">E-mail : kabupatenindramayutppkk@gmail.com</p>
+              <div class="social-links text-left text-md-right pt-2 pt-md-0">
+                {{-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> --}}
+                <a href="https://www.facebook.com/profile.php?id=100075939237683" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="https://instagram.com/pkkkabupatenindramayu?utm_medium=copy_link" class="instagram"><i class="bx bxl-instagram"></i></a>
+                {{-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> --}}
+              </div>
           </div>
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
@@ -271,13 +261,7 @@
         </div>
 
       </div>
-      <!-- <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div> -->
+
     </div>
   </footer>
   <!-- End Footer -->

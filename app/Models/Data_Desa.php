@@ -15,13 +15,8 @@ class Data_Desa extends Model
        'id_kecamatan', 'kode_desa', 'nama_desa'
     ];
 
-    // public function kecamatan()
-    // {
-    //     return $this->belongsTo(DataKecamatan::class);
-    // }
-
     public function kecamatan(){
-        return $this->belongsTo(DataKecamatan::class);
+        return $this->belongsTo(DataKecamatan::class, 'id_kecamatan');
     }
 
 }

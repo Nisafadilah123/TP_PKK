@@ -101,13 +101,13 @@
             data-aos="fade-right"
             data-aos-delay="100"
           >
-            <img src="assets/img/about-video.jpg" class="img-fluid" alt="" />
-            <a
+            <img src="/image/6.jpg" class="img-fluid" alt="" />
+            {{-- <a
               href="https://www.youtube.com/watch?v=jDDaplaOz7Q"
               class="glightbox play-btn mb-4"
               data-vbtype="video"
               data-autoplay="true"
-            ></a>
+            ></a> --}}
           </div>
 
           <div

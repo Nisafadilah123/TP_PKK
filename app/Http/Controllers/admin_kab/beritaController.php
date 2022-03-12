@@ -16,7 +16,7 @@ class beritaController extends Controller
      */
     public function index()
     {
-        //
+        //halaman index berita
         $beritaKab = BeritaKab::all();
         return view('admin_kab.berita', compact('beritaKab'));
 
@@ -77,10 +77,6 @@ class beritaController extends Controller
 
         BeritaKab::create($input);
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
-        // dd($desa);
-        // Data_Desa::create($request->all());
-        // return redirect()->route('data_desa.index')
-        //                 ->with('success','Student created successfully.');
 
 
         return redirect('/beritaKab');
@@ -142,14 +138,6 @@ class beritaController extends Controller
             $beritaKab->tgl_publish =$request->tgl_publish;
             $beritaKab->penulis = $request->penulis;
 
-        // if ($image = $request->file('gambar')) {
-        //     $destinationPath = 'gambar/';
-        //     $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-        //     $image->move($destinationPath, $profileImage);
-        //     $input['gambar'] = $profileImage;
-        // }else{
-        //     unset($berita['gambar']);
-        // }
 
         if ($image = $request->file('gambar')) {
             $destinationPath = 'gambar/';
@@ -176,9 +164,8 @@ class beritaController extends Controller
      */
     public function destroy(BeritaKab $beritaKab)
     {
-        //
+        //halaman hapus
         $beritaKab->delete();
-        // $data_desa->delete();
 
         return redirect('/beritaKab')->with('status', 'sukses');
 
