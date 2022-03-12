@@ -1,4 +1,4 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
 @section('title', 'Edit Data Wilayah Desa | Admin Desa PKK Kab. Indramayu')
 
@@ -17,6 +17,17 @@
       {{-- @dump($data_desa) --}}
         @method('PUT')
         @csrf
+        <div class="card-body">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Kecamatan</label>
+              <input type="text" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Kode Desa" required value="{{ucfirst(old('id_kecamatan', $data_desa->kecamatan->id_kecamatan))}}" >
+                  <select class="form-control" id="id_kecamatan" name="id_kecamatan">
+                      @foreach ($kec as $c)
+                          <option value="{{$c->id }}">  {{$c->kecamatan->kode_kecamatan }}-{{ $c->kecamatan->nama_kecamatan }}</option>
+                      @endforeach
+                  </select>
+              </div>
+        </div>
 
         <div class="card-body">
           <div class="form-group">

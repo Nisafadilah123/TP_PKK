@@ -13,7 +13,7 @@
       </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <form action="{{ url ('/beritaKab', $beritaKab->id) }}" method="POST">
+      <form action="{{ url ('/beritaKab', $beritaKab->id) }}" method="POST" enctype="multipart/form-data">
       {{-- @dump($berita) --}}
         @method('PUT')
         @csrf
@@ -21,19 +21,19 @@
         <div class="card-body">
           <div class="form-group">
             <label>Nama Berita</label>
-            <input type="text" class="form-control" name="nama_berita" id="nama_berita" placeholder="Masukkan Kode Desa" required value="{{ucfirst(old('nama_berita', $beritaKab->nama_berita))}}" >
+            <input type="text" class="form-control" name="nama_berita" id="nama_berita" placeholder="Masukkan Nama Berita" required value="{{ucfirst(old('nama_berita', $beritaKab->nama_berita))}}" >
           </div>
           <div class="form-group">
             <label>Deskripsi Berita</label>
-            <input type="text" class="form-control" name="desk" id="desk" placeholder="Masukkan Nama Desa" required value="{{ucfirst(old('desk', $beritaKab->desk))}}">
+            <input type="text" class="form-control" name="desk" id="desk" placeholder="Masukkan Deskripsi Berita" required value="{{ucfirst(old('desk', $beritaKab->desk))}}">
           </div>
           <div class="form-group">
             <label>Tanggal Publsih Berita</label>
-            <input type="date" class="form-control" name="tgl_publish" id="tgl_publish" placeholder="Masukkan Deskripsi Berita" required value="{{ucfirst(old('tgl_publish', $beritaKab->tgl_publish))}}">
+            <input type="date" class="form-control" name="tgl_publish" id="tgl_publish" placeholder="Masukkan Tanggal Publsih Berita" required value="{{ucfirst(old('tgl_publish', $beritaKab->tgl_publish))}}">
           </div>
           <div class="form-group">
             <label>Penulis Berita</label>
-            <input type="text" class="form-control" name="penulis" id="penulis" placeholder="Masukkan Deskripsi Berita" required value="{{ucfirst(old('penulis', $beritaKab->penulis))}}">
+            <input type="text" class="form-control" name="penulis" id="penulis" placeholder="Masukkan Penulis Berita" required value="{{ucfirst(old('penulis', $beritaKab->penulis))}}">
           </div>
           <div class="form-group">
             <label>Gambar Berita</label>

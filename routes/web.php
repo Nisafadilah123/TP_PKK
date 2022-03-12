@@ -21,9 +21,10 @@ use App\Http\Controllers\admin_desa\data_pokja4\kader_pokja4Controller;
 use App\Http\Controllers\admin_desa\data_pokja4\kelestarian_pokja4Controller;
 use App\Http\Controllers\admin_desa\data_pokja4\kesehatan_pokja4Controller;
 use App\Http\Controllers\admin_desa\data_pokja4\perencanaan_pokja4Controller;
-use App\Http\Controllers\admin_desa\dataDesaController;
+use App\Http\Controllers\super_admin\dataDesaController;
 use App\Http\Controllers\admin_kab\beritaController;
 use App\Http\Controllers\AdminKabController;
+use App\Http\Controllers\SuperAdminController;
 use App\Models\BeritaKab;
 use Illuminate\Support\Facades\Route;
 
@@ -93,6 +94,19 @@ Route::get('/data_pokja4_kab', [AdminKabController::class, 'data_pokja4_kab']);
 Route::get('/pengguna_kab', [AdminKabController::class, 'data_pengguna_kab']);
 Route::get('/laporan_kab', [AdminKabController::class, 'data_laporan_kab']);
 Route::get('/data_sekretariat_kab', [AdminKabController::class, 'data_sekretariat_kab']);
+
+// halaman super admin
+Route::get('/dashboard_super', [SuperAdminController::class, 'dashboard_super']);
+Route::get('/data_pokja1_super', [SuperAdminController::class, 'data_pokja1_super']);
+Route::get('/data_pokja2_super', [SuperAdminController::class, 'data_pokja2_super']);
+Route::get('/data_pokja3_super', [SuperAdminController::class, 'data_pokja3_super']);
+Route::get('/data_pokja4_super', [SuperAdminController::class, 'data_pokja4_super']);
+Route::get('/pengguna_super', [SuperAdminController::class, 'data_pengguna_super']);
+Route::get('/laporan_super', [SuperAdminController::class, 'data_laporan_super']);
+Route::get('/data_sekretariat_super', [SuperAdminController::class, 'data_sekretariat_super']);
+Route::get('/koperasi_super', [SuperAdminController::class, 'koperasi_super']);
+Route::get('/makanan_super', [SuperAdminController::class, 'makanan_super']);
+Route::get('/pangan_super', [SuperAdminController::class, 'pangan_super']);
 
 // form data_pokja1
 Route::resource('/jml_kader', jml_kader_pokja1Controller::class);

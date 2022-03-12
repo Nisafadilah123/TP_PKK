@@ -21,7 +21,7 @@ class Data_Desa extends Model
     // }
 
     public function kecamatan(){
-        return $this->hasMany(DataKecamatan::class, 'id_kecamatan', 'id');
+        return $this->belongsTo(DataKecamatan::class);
     }
 
 }

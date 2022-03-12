@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin_kab;
 use App\Http\Controllers\Controller;
 use App\Models\BeritaKab;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class beritaController extends Controller
@@ -125,7 +126,6 @@ class beritaController extends Controller
         $request->validate([
             'nama_berita' => 'required',
             'desk' => 'required',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'tgl_publish' => 'required',
             'penulis' => 'required',
         ], [
@@ -135,18 +135,32 @@ class beritaController extends Controller
                 'penulis.required' => 'Lengkapi Deskripsi Berita yang ingin di publish',
 
         ]);
+// dd($berita);
+        // $input = $request->all();
+            $beritaKab->nama_berita = $request->nama_berita;
+            $beritaKab->desk = $request->desk;
+            $beritaKab->tgl_publish =$request->tgl_publish;
+            $beritaKab->penulis = $request->penulis;
 
-        $input = $request->all();
+        // if ($image = $request->file('gambar')) {
+        //     $destinationPath = 'gambar/';
+        //     $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+        //     $image->move($destinationPath, $profileImage);
+        //     $input['gambar'] = $profileImage;
+        // }else{
+        //     unset($berita['gambar']);
+        // }
+
         if ($image = $request->file('gambar')) {
             $destinationPath = 'gambar/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
-            $input['gambar'] = "$profileImage";
+
+            $beritaKab->gambar = $profileImage;
         }else{
-            unset($input['gambar']);
+            unset($beritaKab['gambar']);
         }
-// dd($input);
-        $beritaKab->update($input);
+        $beritaKab->save();
 
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
 

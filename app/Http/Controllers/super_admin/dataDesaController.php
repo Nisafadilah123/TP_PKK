@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin_desa;
+namespace App\Http\Controllers\super_admin;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
 use Illuminate\Http\Request;
@@ -19,7 +19,7 @@ class dataDesaController extends Controller
         // halaman data wilayah
         $desa = Data_Desa::all();
 
-        return view('admin_desa.data_wilayah', compact('desa'));
+        return view('super_admin.data_wilayah', compact('desa'));
     }
 
     /**
@@ -30,7 +30,9 @@ class dataDesaController extends Controller
     public function create()
     {
         // halaman tambah data desa
-        return view('admin_desa.form.create_desa');
+        $kec = DB::table('data_kecamatan')->get();
+
+        return view('super_admin.form.create_desa', compact('kec'));
 
     }
 
@@ -44,17 +46,20 @@ class dataDesaController extends Controller
     {
         // proses penyimpanan untuk tambah data wilayah/desa
         $request->validate([
+            'id_kecamatan' => 'required',
             'kode_desa' => 'required',
             'nama_desa' => 'required',
 
         ], [
-                'kode_desa.required' => 'Lengkapi Nama Institusi/Universitas Anda',
-                'nama_desa.required' => 'Lengkapi Tanggal Wisuda Anda',
+                'id_kecamatan.required' => 'Lengkapi Id Kecamatan',
+                'kode_desa.required' => 'Lengkapi Kode Desa',
+                'nama_desa.required' => 'Lengkapi Nama Desa',
 
         ]);
 
         // cara 1
         $desa = new Data_Desa;
+        $desa->id_kecamatan = $request->id_kecamatan;
         $desa->kode_desa = $request->kode_desa;
         $desa->nama_desa = $request->nama_desa;
         // $education->user_id = Auth::user()->id;
@@ -94,7 +99,10 @@ class dataDesaController extends Controller
     {
         // halaman tambah data desa
         // dd($desa);
-        return view('admin_desa.form.edit_desa', compact('data_desa'));
+        // $kec = DB::table('data_kecamatan')->get();
+        $kec = Data_Desa::with('kecamatan')->first();
+
+        return view('super_admin.form.edit_desa', compact('data_desa', 'kec'));
 
     }
 
@@ -109,14 +117,17 @@ class dataDesaController extends Controller
     {
         //
         $request->validate([
+            'id_kecamatan' => 'required',
             'kode_desa' => 'required',
             'nama_desa' => 'required',
         ]);
+        // $kec = DB::table('data_kecamatan')->get();
 
         $data_desa->update($request->all());
         Alert::success('Berhasil', 'Data berhasil di ubah');
 
-        return redirect('/data_desa');
+        // return redirect('/data_desa');
+        return view('super_admin.data_wilayah', compact('kec'));
 
     }
 

@@ -1,4 +1,4 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
 @section('title', 'Tambah Data Wilayah Desa | Admin Desa PKK Kab. Indramayu')
 
@@ -13,9 +13,19 @@
       </div>
       <!-- /.card-header -->
       <!-- form start -->
+
       <form action="{{ route('data_desa.store') }}" method="POST">
         @csrf
-
+        <div class="card-body">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Kecamatan</label>
+                  <select class="form-control" id="id_kecamatan" name="id_kecamatan">
+                      @foreach ($kec as $c)
+                          <option value="{{$c->id }}">  {{$c->kode_kecamatan }}-{{ $c->nama_kecamatan }}</option>
+                      @endforeach
+                  </select>
+              </div>
+        </div>
         <div class="card-body">
           <div class="form-group">
             <label>Kode Desa</label>
