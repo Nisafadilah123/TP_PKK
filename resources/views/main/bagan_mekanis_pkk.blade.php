@@ -16,4 +16,13 @@
     </div>
   </section>
 
+  <section class="inner-page">
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <img src="{{ url('../image/bagan.jpg') }}" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
 @endsection

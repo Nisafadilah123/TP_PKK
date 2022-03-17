@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Data_Desa;
 use Illuminate\Http\Request;
 
 class SuperAdminController extends Controller
 {
             // halaman dashboard
             public function dashboard_super(){
-                return view('super_admin.dashboard_super');
+                $desa = Data_Desa::count();
+
+                return view('super_admin.dashboard_super', compact('desa'));
             }
 
             // halaman data pokja1

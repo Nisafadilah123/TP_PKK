@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('data_desa', function (Blueprint $table) {
+        Schema::create('jml_kader', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_kecamatan')->unsigned();
-            $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan')->onUpdate('cascade');
+            $table->bigInteger('id_desa')->unsigned();
+            $table->foreign('id_desa')->references('id')->on('data_desa');
 
-            $table->string('kode_desa');
-            $table->string('nama_desa');
+            $table->integer('jml_kader_PKBN');
+            $table->integer('jml_kader_PKDRT');
+            $table->integer('jml_kader_pola_asuh');
+
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_desa');
+        Schema::dropIfExists('jml_kader');
     }
 };

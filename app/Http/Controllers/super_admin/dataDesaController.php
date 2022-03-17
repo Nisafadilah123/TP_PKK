@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\super_admin;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
+use App\Models\DataKecamatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -29,6 +30,7 @@ class dataDesaController extends Controller
     public function create()
     {
         // halaman tambah data desa
+        // ngambil data kecamatan
         $kec = DB::table('data_kecamatan')->get();
 
         return view('super_admin.form.create_desa', compact('kec'));
@@ -99,8 +101,9 @@ class dataDesaController extends Controller
         // dd($desa);
         // $kec = DB::table('data_kecamatan')->get();
         $kec = Data_Desa::with('kecamatan')->first();
+        $kecamatans = DataKecamatan::all();
 
-        return view('super_admin.form.edit_desa', compact('data_desa', 'kec'));
+        return view('super_admin.form.edit_desa', compact('data_desa', 'kec', 'kecamatans'));
 
     }
 
@@ -124,8 +127,8 @@ class dataDesaController extends Controller
         $data_desa->update($request->all());
         Alert::success('Berhasil', 'Data berhasil di ubah');
 
-        // return redirect('/data_desa');
-        return view('super_admin.data_wilayah', compact('kec'));
+        return redirect('/data_desa');
+        // return view('super_admin.data_wilayah');
 
     }
 

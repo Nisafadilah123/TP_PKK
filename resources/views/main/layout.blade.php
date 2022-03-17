@@ -77,7 +77,7 @@
                       <a href="/baganmekpkk">Bagan Mekanisme Gerakkan PKK Di Indramayu</a>
                     </li>
                     <li>
-                      {{-- <a href="baganmekel">Bagan Mekanisme Gerakkan PKK Di Kelurahan</a> --}}
+                      <a href="baganmekel">Bagan Mekanisme Gerakkan PKK Di Desa/Kelurahan</a>
                     </li>
                   </ul>
                 </li>

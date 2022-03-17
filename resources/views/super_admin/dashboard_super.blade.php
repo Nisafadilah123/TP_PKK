@@ -1,6 +1,6 @@
 @extends('super_admin.layout')
 
-@section('title' , 'Dashboard | Admin Desa')
+@section('title' , 'Dashboard | Super Admin')
 @section('bread' , 'Dashboard')
 
 @section('container')
@@ -12,13 +12,13 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          {{-- <div class="col-lg-3 col-6"> --}}
+          <div class="col-lg-3 col-6">
             <!-- small box -->
-            {{-- <div class="small-box bg-info">
+            <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3>{{$desa}}</h3>
 
-                <p>Data Wilayah</p>
+                <p>Data Desa</p>
               </div>
               <div class="icon">
                 <i class="ion ion-location"></i>
@@ -26,8 +26,8 @@
               <a href="/data_desa" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
-            </div> --}}
-          {{-- </div> --}}
+            </div>
+          </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->

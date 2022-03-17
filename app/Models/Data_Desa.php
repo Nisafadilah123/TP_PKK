@@ -19,4 +19,7 @@ class Data_Desa extends Model
         return $this->belongsTo(DataKecamatan::class, 'id_kecamatan');
     }
 
+    public function penghayatan(){
+        return $this->hasMany(Penghayatan::class);
+    }
 }

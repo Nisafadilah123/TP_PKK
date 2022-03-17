@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\admin_desa\data_pokja1;
 use App\Http\Controllers\Controller;
+use App\Models\Data_Desa;
+use App\Models\JmlKader;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class jml_kader_pokja1Controller extends Controller
 {
@@ -15,7 +19,9 @@ class jml_kader_pokja1Controller extends Controller
     public function index()
     {
         //halaman jml_kader
-        return view('admin_desa.sub_file_pokja_1.jml_kader');
+        // nama desa yang login
+        $desa = Data_Desa::all();
+        return view('admin_desa.sub_file_pokja_1.jml_kader', compact('desa'));
     }
 
     /**
@@ -25,7 +31,11 @@ class jml_kader_pokja1Controller extends Controller
      */
     public function create()
     {
-        //
+        // nama desa yang login
+        $desas = DB::table('data_desa')->get();
+
+        return view('admin_desa.form.create_jml_kader', compact('desas'));
+
     }
 
     /**
@@ -36,7 +46,40 @@ class jml_kader_pokja1Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+                // proses penyimpanan untuk tambah data wilayah/desa
+                $request->validate([
+                    'id_desa' => 'required',
+                    'jml_kader_PKBN' => 'required',
+                    'jml_kader_PKDRT' => 'required',
+                    'jml_kader_pola_asuh' => 'required',
+
+                ], [
+                        'id_desa.required' => 'Lengkapi Id Desa',
+                        'jml_kader_PKBN.required' => 'Lengkapi Jumlah Kader PKBN',
+                        'jml_kader_PKDRT.required' => 'Lengkapi Jumlah Kader PKDRT',
+                        'jml_kader_pola_asuh.required' => 'Lengkapi Jumlah Kader Pola Asuh',
+
+                ]);
+
+                // cara 1
+                $kader = new JmlKader;
+                $kader->id_desa = $request->id_desa;
+                $kader->jml_kader_PKBN = $request->jml_kader_PKBN;
+                $kader->jml_kader_PKDRT = $request->jml_kader_PKDRT;
+                $kader->jml_kader_pola_asuh = $request->jml_kader_pola_asuh;
+
+                $kader->save();
+
+
+                Alert::success('Berhasil', 'Data berhasil di tambahkan');
+                // dd($desa);
+                // Data_Desa::create($request->all());
+                // return redirect()->route('data_desa.index')
+                //                 ->with('success','Student created successfully.');
+
+
+                return redirect('/jml_kader');
+
     }
 
     /**

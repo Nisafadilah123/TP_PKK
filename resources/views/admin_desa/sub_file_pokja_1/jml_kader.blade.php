@@ -8,9 +8,6 @@
     <!-- Main content -->
     <div class="main-content">
     <section class="section">
-        {{-- <h1 class="section-header">
-            <div>Kandidat</div>
-        </h1> --}}
 
         <div class="section-body">
             <div class="row">
@@ -20,15 +17,15 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    <button type="button" class="btn btn-success">Tambah</button><br><br>
+                                    <a href="{{ url('jml_kader/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
 
                                     <thead>
                                         <tr>
                                         <th>No</th>
                                         <th>Nama Desa</th>
-                                        <th>PKBN</th>
-                                        <th>PKDRT</th>
-                                        <th>Pola Asuh</th>
+                                        <th>Jumlah Kader PKBN</th>
+                                        <th>Jumlah Kader PKDRT
+                                        <th>Jumlah Kader Pola Asuh</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -41,7 +38,6 @@
                                         <td>3</td>
                                         <td>4</td>
                                         <td>7</td>
-
                                         <td>
                                             <button type="button" class="btn btn-warning">Edit</button>
                                             <button type="button" class="btn btn-danger">Hapus</button>

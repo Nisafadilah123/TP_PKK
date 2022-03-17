@@ -11,7 +11,7 @@ class MainController extends Controller
     // halaman landing page
     public function home(){
         $berita = BeritaKab::all();
-        dd($berita);
+        // dd($berita);
         return view('main.home', ['berita'=>$berita]);
     }
 
@@ -62,7 +62,10 @@ class MainController extends Controller
 
     // halaman berita
     public function berita(){
-        return view('main.berita');
+        $beritas = BeritaKab::all();
+        // dd($beritas);
+
+        return view('main.berita', compact('beritas'));
     }
 
     // halaman agenda

@@ -172,7 +172,7 @@
 
               <img src="/gambar/{{$l->gambar}}" width="300px" class="img-fluid">
               {{-- mengarah ke halaman berita sesuai id --}}
-              <h1><a href="#">{{$l->nama_berita}}</a></h1>
+              <h1><a href="/berita">{{$l->nama_berita}}</a></h1>
               <h4>{{$l->penulis}} - {{ \Carbon\Carbon::parse($l->tgl_publish)->isoFormat('D MMMM Y') }}</h4>
             </div>
 

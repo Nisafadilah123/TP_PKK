@@ -26,10 +26,14 @@
                                         <tr>
                                         <th>No</th>
                                         <th>Nama Desa</th>
-                                        <th>PKBN</th>
-                                        <th>PKDRT</th>
-                                        <th>Pola Asuh</th>
-                                        <th>Lansia</th>
+                                        <th>Jumlah PKBN Kelompok Simulasi</th>
+                                        <th>Jumlah PKBN Kelompok Anggota</th>
+                                        <th>Jumlah PKDRT Kelompok Simulasi</th>
+                                        <th>Jumlah PKDRT Kelompok Anggota</th>
+                                        <th>Jumlah Pola Asuh Kelompok Simulasi</th>
+                                        <th>Jumlah Pola Asuh Kelompok Anggota</th>
+                                        <th>Jumlah Lansia Klp</th>
+                                        <th>Jumlah Lansia Anggota</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -39,24 +43,14 @@
                                     <tr>
                                         <td>1</td>
                                         <td>Gabus</td>
-                                        <td>
-                                            <p>Jumlah Kel. Simulasi :</p>
-                                            <p>Jumlah Anggota :</p>
-                                        </td>
-                                        <td>
-                                            <p>Jumlah Kel. Simulasi :</p>
-                                            <p>Jumlah Anggota :</p>
-                                        </td>
-                                        <td>
-                                            <p>Jumlah Kel. Simulasi :</p>
-                                            <p>Jumlah Anggota :</p>
-                                        </td>
-                                        <td>
-                                            <p>Jumlah Kel. Simulasi :</p>
-                                            <p>Jumlah Anggota :</p>
-                                        </td>
-
-
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>7</td>
+                                        <td>8</td>
+                                        <td>9</td>
+                                        <td>10</td>
+                                        <td>11</td>
+                                        <td>12</td>
                                         <td>
                                             <button type="button" class="btn btn-warning">Edit</button>
                                             <button type="button" class="btn btn-danger">Hapus</button>

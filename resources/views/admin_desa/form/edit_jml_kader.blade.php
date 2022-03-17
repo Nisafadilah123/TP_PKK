@@ -1,25 +1,25 @@
-@extends('super_admin.layout')
+@extends('admin_desa.layout')
 
-@section('title', 'Edit Data Wilayah Desa | Super Admin PKK Kab. Indramayu')
+@section('title', 'Edit Data Jumlah Kader | Admin Desa PKK Kab. Indramayu')
 
-@section('bread', 'Edit Data Wilayah Desa')
+@section('bread', 'Edit Data Jumlah Kader')
 @section('container')
 
 <div class="col-md-6">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Edit Data Desa</h3>
+        <h3 class="card-title">Edit Data Jumlah Kader</h3>
       </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <form action="{{ url ('/data_desa', $data_desa->id) }}" method="POST">
+      <form action="{{ url ('/jml_kader', $data_desa->id) }}" method="POST">
       {{-- @dump($data_desa) --}}
         @method('PUT')
         @csrf
         <div class="card-body">
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Kecamatan</label>
+                <label for="exampleFormControlSelect1">Nama Desa</label>
                 <select class="form-control" id="id_kecamatan" name="id_kecamatan">
                     @foreach ($kecamatans as $kecamatan)
                         <option value="{{ $kecamatan->id }}" {{ $kecamatan->id === $data_desa->id_kecamatan ? 'selected' : '' }}>
@@ -32,8 +32,8 @@
 
         <div class="card-body">
           <div class="form-group">
-            <label>Kode Desa</label>
-            <input type="text" class="form-control" name="kode_desa" id="kode_desa" placeholder="Masukkan Kode Desa" required value="{{ucfirst(old('kode_desa', $data_desa->kode_desa))}}" >
+            <label>Jumlah PKBN Simulasi</label>
+            <input type="text" class="form-control" name="jml_PKBN_simulasi" id="jml_PKBN_simulasi" placeholder="Masukkan Jumlah PKBN Simulasi" required>
           </div>
           <div class="form-group">
             <label>Nama Desa</label>

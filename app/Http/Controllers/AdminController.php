@@ -33,11 +33,6 @@ class AdminController extends Controller
             return view('admin_desa.data_pokja4');
         }
 
-        // halaman papan pokja1
-        // public function data_umum(){
-        //     return view('pokja.papan_sekre');
-        // }
-
         // halaman data pokja4
         public function data_laporan(){
             return view('admin_desa.data_laporan');
