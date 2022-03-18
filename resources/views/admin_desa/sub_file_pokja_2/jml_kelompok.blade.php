@@ -8,9 +8,7 @@
     <!-- Main content -->
     <div class="main-content">
     <section class="section">
-        {{-- <h1 class="section-header">
-            <div>Kandidat</div>
-        </h1> --}}
+        
 
         <div class="section-body">
             <div class="row">
@@ -27,16 +25,27 @@
                                             <th>No</th>
                                             <th>Nama Desa</th>
                                             <th>Jml. warga yang masih 3 buta</th>
-                                            <th>Jml. kelompok belajar</th>
+                                            <th>Jml. Paket A Kelompok Belajar</th>
+                                            <th>Jml. Paket A Warga Belajar</th>
+                                            <th>Jml. Paket B Kelompok Belajar</th>
+                                            <th>Jml. Paket B Warga Belajar</th>
+                                            <th>Jml. Paket C Kelompok Belajar</th>
+                                            <th>Jml. Paket C Warga Belajar</th>
+                                            <th>Jml. Paud</th>
                                             <th>Jml. Taman Bacaan/Perpustakaan</th>
-                                            <th>BKB</th>
-                                            <th>Kader Khusus</th>
-                                            <th>Kader Umum yang Sudah Dilatih</th>
+                                            <th>Jml. BKB Kelompok Belajar</th>
+                                            <th>Jml. BKB Ibu Peserta</th>
+                                            <th>Jml. BKB APE (SET)</th>
+                                            <th>Jml. BKB Kel. Simulasi</th>
+                                            <th>Jml. Kader Khusus KF</th>
+                                            <th>Jml. Kader Khusus Paud Sejenis</th>
+                                            <th>Jml. Kader Khusus BKB</th>
+                                            <th>Jml. Kader Khusus Koperasi</th>
+                                            <th>Jml. Kader Umum LP3 PKK</th>
+                                            <th>Jml. Kader Umum TPK 3 PKK</th>
+                                            <th>Jml. Kader Umum Damas PKK</th>
                                             <th>Aksi</th>
                                         </tr>
-                                        {{-- <tr>
-                                            <th>Aksi</th>
-                                        </tr> --}}
                                     </thead>
 
                                     <tbody>
@@ -45,7 +54,27 @@
                                         <td>1</td>
                                         <td>Gabus</td>
                                         <td>2</td>
-                                        <td>
+                                        <td>1</td>
+                                        <td>Gabus</td>
+                                        <td>2</td>
+                                        <td>1</td>
+                                        <td>Gabus</td>
+                                        <td>2</td>
+                                        <td>1</td>
+                                        <td>Gabus</td>
+                                        <td>2</td>
+                                        <td>1</td>
+                                        <td>Gabus</td>
+                                        <td>2</td>
+                                        <td>1</td>
+                                        <td>Gabus</td>
+                                        <td>2</td>
+                                        <td>1</td>
+                                        <td>Gabus</td>
+                                        <td>2</td>
+                                        <td>1</td>
+
+                                        {{-- <td>
                                             <a href="/kelompok_belajar" type="button" class="btn btn-primary">Detail</a>
                                         </td>
                                         <td>3</td>
@@ -57,31 +86,12 @@
                                         </td>
                                         <td>
                                             <a href="/kader_umum" type="button" class="btn btn-primary">Detail</a>
-                                        </td>
+                                        </td> --}}
                                         <td>
                                             <button type="button" class="btn btn-warning">Edit</button>
                                             <button type="button" class="btn btn-danger">Hapus</button>
                                         </td>
 
-                                        {{-- <td style="vertical-align: middle;">{{$i++}}</td>
-                                        <td style="vertical-align: middle;">{{$c->name}}</td>
-                                        <td style="vertical-align: middle;">{{$c->address}}</td>
-                                        <td style="vertical-align: middle;">{{$c->position}}</td>
-                                        <td>
-                                            <a href="/opencv/{{$c->id}}" target="_blank" class="btn btn-primary">
-                                                View File <span class="glyphicon glyphicon-eye-open">
-                                            </a>
-                                        </td>
-                                        <td style="vertical-align: middle;">{{$c->status}}</td></td>
-
-                                        <td style="width: 120px;text-align: center;vertical-align: middle; ">
-                                            <form action="/kandidat/{{$c->id}}" method="post">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit" class="btn btn-sm btn-primary btn-circle delete"><span class="far fa-trash-alt"></span></button>
-                                                <!-- <input type="submit" class="btn btn-danger btn-sm" value="Delete" onclick="return confirm('anda yakin ingin menghapus data?');"> -->
-                                            </form>
-                                        </td> --}}
                                     </tr>
                                     {{-- @endforeach --}}
                                     </tbody>

@@ -13,19 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('penghayatan', function (Blueprint $table) {
+        Schema::create('pangan', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_desa')->unsigned();
             $table->foreign('id_desa')->references('id')->on('data_desa');
 
-            $table->integer('jml_PKBN_simulasi');
-            $table->integer('jml_PKBN_anggota');
-            $table->integer('jml_PKDRT_simulasi');
-            $table->integer('jml_PKDRT_anggota');
-            $table->integer('jml_pola_asuh_klp');
-            $table->integer('jml_pola_asuh_anggota');
-            $table->integer('jml_lansia_klp');
-            $table->integer('jml_lansia_anggota');
+            $table->integer('jml_makanan_beras');
+            $table->integer('jml_makanan_nonberas');
+            $table->integer('jml_pemanfaatan_peternakan');
+            $table->integer('jml_pemanfaatan_perikanan');
+            $table->integer('jml_pemanfaatan_warung_hidup');
+            $table->integer('jml_pemanfaatan_limbung_hidup');
+            $table->integer('jml_pemanfaatan_toga');
+            $table->integer('jml_pemanfaatan_tanaman_keras');
 
             $table->timestamps();
         });
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penghayatan');
+        Schema::dropIfExists('pangan');
     }
 };

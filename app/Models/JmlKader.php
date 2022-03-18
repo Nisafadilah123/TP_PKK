@@ -19,7 +19,4 @@ class JmlKader extends Model
         return $this->belongsTo(Data_Desa::class, 'id_desa');
     }
 
-    public function jml_kader(){
-        return $this->hasMany(JmlKader::class);
-    }
 }

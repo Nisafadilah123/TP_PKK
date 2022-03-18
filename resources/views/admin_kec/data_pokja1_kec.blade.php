@@ -1,8 +1,8 @@
-@extends('admin_desa.layout')
+@extends('admin_kec.layout')
 
-@section('title', 'Data POKJA II | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Data POKJA I | Admin Kecamatan PKK Kab. Indramayu')
 
-@section('bread', 'Data POKJA II')
+@section('bread', 'Data POKJA I')
 @section('container')
 
     <!-- Main content -->
@@ -19,25 +19,30 @@
 
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered" id="add-row">
+                                <table class="table table-striped table-bordered " id="add-row">
 
                                     <thead>
                                         <tr>
-                                        <th>Pendidikan dan Keterampilan</th>
-                                        <th>Pengembangan Kehidupan Beroperasi</th>
+                                        <th>Jumlah Kader</th>
+                                        <th>Penghayatan Dan Pengamalan Pancasila</th>
+                                        <th>Gotong Royong</th>
                                     </tr>
                                     </thead>
 
                                     <tbody>
                                     <tr>
                                         <td>
-                                            <a href="/pendidikan" type="button" class="btn btn-primary">Detail</a>
+                                            <a href="/jml_kader" type="button" class="btn btn-primary">Detail</a>
 
                                         </td>
                                         <td>
-                                            <a href="/koperasi" type="button" class="btn btn-primary">Detail</a>
+                                            <a href="/penghayatan" type="button" class="btn btn-primary">Detail</a>
                                         </td>
-                                        
+                                        <td>
+                                            <a href="/gotong_royong" type="button" class="btn btn-primary">Detail</button>
+
+                                        </td>
+
                                     </tr>
                                     </tbody>
 

@@ -13,17 +13,17 @@
     >
       <div class="row justify-content-center">
         <div class="col-xl-7 col-lg-9 text-center">
-          <h4>
+          {{-- <h4>
             TENTANG PEMBERDAYAAN & KESEJAHTERAAN KELUARGA (PKK) KAB. INDRAMAYU
-          </h4>
+          </h4> --}}
           <!-- <h2>We are team of talented designers</h2> -->
         </div>
       </div>
-      <div class="text-center">
+      {{-- <div class="text-center">
         <a href="#about" class="btn-get-started scrollto"
           >Baca Selengkapnya</a
         >
-      </div>
+      </div> --}}
 
       <div class="row icon-boxes">
         <!-- <div
@@ -116,36 +116,9 @@
             data-aos-delay="100"
           >
             <h3>Tim Penggerak PKK Kabupaten Indramayu</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            <ul>
-              <li>
-                <i class="bx bx-check-double"></i> Ullamco laboris nisi ut
-                aliquip ex ea commodo consequat.
-              </li>
-              <li>
-                <i class="bx bx-check-double"></i> Duis aute irure dolor in
-                reprehenderit in voluptate velit.
-              </li>
-              <li>
-                <i class="bx bx-check-double"></i> Voluptate repellendus
-                pariatur reprehenderit corporis sint.
-              </li>
-              <li>
-                <i class="bx bx-check-double"></i> Ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate trideta storacalaperda mastiro
-                dolore eu fugiat nulla pariatur.
-              </li>
-            </ul>
+
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-              aute irure dolor in reprehenderit in voluptate velit esse cillum
-              dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum
+              Keluarga sebagai unit terkecil dalam masyarakat  mempunyai  peranan yang besar dalam proses pembangunan, karena kondisi suatu keluarga dapat dijadikan sebagai tolok ukur terhadap kesejahteraan masyarakat pada umumnya. Untuk dapat membina keluarga secara langsung dan menjangkau sasaran sebanyak mungkin, dibentuk Gerakan Pemberdayaan dan Kesejahteraan Keluarga (PKK), yang mekanisme gerakannya dikelola dan dilaksanakan oleh Tim Penggerak PKK di setiap jenjang.
             </p>
           </div>
         </div>

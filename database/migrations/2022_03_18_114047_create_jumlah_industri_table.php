@@ -13,15 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('jml_kader', function (Blueprint $table) {
+        Schema::create('jumlah_industri', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_desa')->unsigned();
-            $table->foreign('id_desa')->references('id')->on('data_desa')->onUpdate('cascade');
-
-            $table->integer('jml_kader_PKBN');
-            $table->integer('jml_kader_PKDRT');
-            $table->integer('jml_kader_pola_asuh');
-
             $table->timestamps();
         });
     }
@@ -33,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jml_kader');
+        Schema::dropIfExists('jumlah_industri');
     }
 };

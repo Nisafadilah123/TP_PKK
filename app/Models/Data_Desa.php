@@ -22,4 +22,12 @@ class Data_Desa extends Model
     public function penghayatan(){
         return $this->hasMany(Penghayatan::class);
     }
+
+    public function jml_kader(){
+        return $this->hasMany(JmlKader::class);
+    }
+
+    public function gotong_royong(){
+        return $this->hasMany(GotongRoyong::class);
+    }
 }

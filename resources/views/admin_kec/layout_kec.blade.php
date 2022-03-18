@@ -76,7 +76,13 @@
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="/dashboard" class="brand-link">
-          <span class="brand-text font-weight-light">Super Admin PKK</span>
+          {{-- <img
+            src="dist/img/AdminLTELogo.png"
+            alt="AdminLTE Logo"
+            class="brand-image img-circle elevation-3"
+            style="opacity: 0.8"
+          /> --}}
+          <span class="brand-text font-weight-light">PKK Kecamatan</span>
         </a>
 
         <!-- Sidebar -->
@@ -91,7 +97,7 @@
               />
             </div>
             <div class="info">
-              <a href="#" class="d-block">Super Admin PKK</a>
+              <a href="#" class="d-block">Admin PKK Kecamatan</a>
             </div>
           </div>
 
@@ -106,7 +112,7 @@
               <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item has-treeview">
-                <a href="/dashboard_super" class="nav-link {{ Request::is('dashboard_super') ? 'active':'' }}">
+                <a href="/dashboard" class="nav-link {{ Request::is('dashboard') ? 'active':'' }}">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>
                     Dashboard
@@ -126,44 +132,39 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                     <a href="/data_desa" class="nav-link {{ Request::is('data_desa') ? 'active':'' }}" >
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data Desa</p>
+                      <p>Data wilayah Kelurahan</p>
                     </a>
-                  </li>
+                  </li> --}}
+                  {{-- </li> --}}
                   <li class="nav-item">
-                    <a href="/data_kecamatan" class="nav-link {{ Request::is('data_kecamatan') ? 'active':'' }}" >
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Data Kecamatan</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/data_pokja1_super" class="nav-link {{ Request::is('data_pokja1_super') ? 'active':'' }}">
+                    <a href="/data_pokja1" class="nav-link {{ Request::is('data_pokja1') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA I</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/data_pokja2_super" class="nav-link {{ Request::is('data_pokja2_super') ? 'active':'' }}">
+                    <a href="/data_pokja2" class="nav-link {{ Request::is('data_pokja2') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA II</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="data_pokja3_super" class="nav-link {{ Request::is('data_pokja3_super') ? 'active':'' }}">
+                    <a href="data_pokja3" class="nav-link {{ Request::is('data_pokja3') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA III</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="data_pokja4_super" class="nav-link {{ Request::is('data_pokja4_super') ? 'active':'' }}">
+                    <a href="data_pokja4" class="nav-link {{ Request::is('data_pokja4') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA IV</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="data_sekretariat_super" class="nav-link {{ Request::is('data_sekretariat_super') ? 'active':'' }}">
+                    <a href="data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data Sekretariat/Data Umum</p>
                     </a>
@@ -172,16 +173,16 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="/laporan_super" class="nav-link">
+                <a href="/laporan" class="nav-link">
                     <i class="nav-icon fas fa-folder-open"></i>
                   <p>Data Laporan</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="/pengguna_super" class="nav-link">
+                <a href="/pengguna" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
-                  <p>Data Pengguna</p>
+                  <p>Data Anggota</p>
                 </a>
               </li>
 
@@ -200,7 +201,6 @@
       </aside>
 
 
-      <!-- /.content-wrapper -->
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -226,7 +226,7 @@
 
       <footer class="main-footer">
         <strong
-          >Copyright &copy; Super Admin PKK.</strong
+          >Copyright &copy; Admin PKK Kecamatan.</strong
         >
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">

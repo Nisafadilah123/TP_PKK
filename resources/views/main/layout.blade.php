@@ -170,7 +170,7 @@
                 <li><a href="/berita">Berita PKK</a></li>
                 <li><a href="/agenda">Agenda Kegiatan</a></li>
                 <li><a href="/galeri">Galeri Kegiatan</a></li>
-                <li><a href="/kontak">Kontak Kami</a></li>
+                {{-- <li><a href="/kontak">Kontak Kami</a></li> --}}
               </ul>
             </li>
             <!-- <li>

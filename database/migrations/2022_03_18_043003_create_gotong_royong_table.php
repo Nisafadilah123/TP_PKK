@@ -13,19 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('penghayatan', function (Blueprint $table) {
+        Schema::create('gotong_royong', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_desa')->unsigned();
             $table->foreign('id_desa')->references('id')->on('data_desa');
 
-            $table->integer('jml_PKBN_simulasi');
-            $table->integer('jml_PKBN_anggota');
-            $table->integer('jml_PKDRT_simulasi');
-            $table->integer('jml_PKDRT_anggota');
-            $table->integer('jml_pola_asuh_klp');
-            $table->integer('jml_pola_asuh_anggota');
-            $table->integer('jml_lansia_klp');
-            $table->integer('jml_lansia_anggota');
+            $table->integer('jml_gotong_kerja_bakti');
+            $table->integer('jml_gotong_rukun_kebaktian');
+            $table->integer('jml_gotong_keagamaan');
+            $table->integer('jml_gotong_jimpitan');
+            $table->integer('jml_gotong_arisan');
 
             $table->timestamps();
         });
@@ -38,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penghayatan');
+        Schema::dropIfExists('gotong_royong');
     }
 };

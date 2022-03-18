@@ -20,8 +20,10 @@ class jml_kader_pokja1Controller extends Controller
     {
         //halaman jml_kader
         // nama desa yang login
-        $desa = Data_Desa::all();
-        return view('admin_desa.sub_file_pokja_1.jml_kader', compact('desa'));
+        // $desa = Data_Desa::all();
+        $kader = JmlKader::with('desa')->get();
+        // dd($kader);
+        return view('admin_desa.sub_file_pokja_1.jml_kader', compact('kader'));
     }
 
     /**
@@ -34,7 +36,7 @@ class jml_kader_pokja1Controller extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.form.create_jml_kader', compact('desas'));
+        return view('admin_desa.sub_file_pokja_1.form.create_jml_kader', compact('desas'));
 
     }
 
@@ -46,39 +48,35 @@ class jml_kader_pokja1Controller extends Controller
      */
     public function store(Request $request)
     {
-                // proses penyimpanan untuk tambah data wilayah/desa
-                $request->validate([
-                    'id_desa' => 'required',
-                    'jml_kader_PKBN' => 'required',
-                    'jml_kader_PKDRT' => 'required',
-                    'jml_kader_pola_asuh' => 'required',
+        // proses penyimpanan untuk tambah data jml kader
+        $request->validate([
+            'id_desa' => 'required',
+            'jml_kader_PKBN' => 'required',
+            'jml_kader_PKDRT' => 'required',
+            'jml_kader_pola_asuh' => 'required',
 
-                ], [
-                        'id_desa.required' => 'Lengkapi Id Desa',
-                        'jml_kader_PKBN.required' => 'Lengkapi Jumlah Kader PKBN',
-                        'jml_kader_PKDRT.required' => 'Lengkapi Jumlah Kader PKDRT',
-                        'jml_kader_pola_asuh.required' => 'Lengkapi Jumlah Kader Pola Asuh',
+        ], [
+            'id_desa.required' => 'Lengkapi Id Desa',
+            'jml_kader_PKBN.required' => 'Lengkapi Jumlah Kader PKBN',
+            'jml_kader_PKDRT.required' => 'Lengkapi Jumlah Kader PKDRT',
+            'jml_kader_pola_asuh.required' => 'Lengkapi Jumlah Kader Pola Asuh',
 
                 ]);
 
-                // cara 1
-                $kader = new JmlKader;
-                $kader->id_desa = $request->id_desa;
-                $kader->jml_kader_PKBN = $request->jml_kader_PKBN;
-                $kader->jml_kader_PKDRT = $request->jml_kader_PKDRT;
-                $kader->jml_kader_pola_asuh = $request->jml_kader_pola_asuh;
+        // cara 1
+        $kader = new JmlKader;
+        $kader->id_desa = $request->id_desa;
+        $kader->jml_kader_PKBN = $request->jml_kader_PKBN;
+        $kader->jml_kader_PKDRT = $request->jml_kader_PKDRT;
+        $kader->jml_kader_pola_asuh = $request->jml_kader_pola_asuh;
 
-                $kader->save();
-
-
-                Alert::success('Berhasil', 'Data berhasil di tambahkan');
-                // dd($desa);
-                // Data_Desa::create($request->all());
-                // return redirect()->route('data_desa.index')
-                //                 ->with('success','Student created successfully.');
+        $kader->save();
 
 
-                return redirect('/jml_kader');
+        Alert::success('Berhasil', 'Data berhasil di tambahkan');
+        // dd($desa);
+
+        return redirect('/jml_kader');
 
     }
 
@@ -99,9 +97,14 @@ class jml_kader_pokja1Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(JmlKader $jml_kader)
     {
-        //
+        //halaman edit data jml_kader
+        $desa = JmlKader::with('desa')->first();
+        $desas = Data_Desa::all();
+
+        return view('admin_desa.sub_file_pokja_1.form.edit_jml_kader', compact('jml_kader','desa','desas'));
+
     }
 
     /**
@@ -111,9 +114,25 @@ class jml_kader_pokja1Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, JmlKader $jml_kader)
     {
-        //
+        // proses mengubah untuk tambah data jml kader
+        $request->validate([
+            'id_desa' => 'required',
+            'jml_kader_PKBN' => 'required',
+            'jml_kader_PKDRT' => 'required',
+            'jml_kader_pola_asuh' => 'required',
+
+
+        ]);
+
+        $jml_kader->update($request->all());
+
+        Alert::success('Berhasil', 'Data berhasil di ubah');
+        // dd($jml_kader);
+
+        return redirect('/jml_kader');
+
     }
 
     /**
@@ -122,8 +141,12 @@ class jml_kader_pokja1Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($jml_kader, JmlKader $kaders)
     {
-        //
+        //temukan id jml_kader
+        $kaders::find($jml_kader)->delete();
+
+        return redirect('/jml_kader')->with('status', 'sukses');
+
     }
 }

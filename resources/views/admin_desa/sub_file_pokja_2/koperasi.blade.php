@@ -24,18 +24,20 @@
 
                                     <thead>
                                         <tr>
-                                            <th rowspan="2">No.</th>
-                                            <th rowspan="2">Nama Desa</th>
-                                            <th colspan="4">Para Koperasi/Usaha Bersama/UP2K</th>
-                                            <th rowspan="2">Koperasi Berbadan Hukum</th>
-                                            <th rowspan="2">Aksi</th>
+                                            <th>No.</th>
+                                            <th>Nama Desa</th>
+                                            <th>Jml. Pemula Klp</th>
+                                            <th>Jml. Pemula Peserta</th>
+                                            <th>Jml. Madya Klp</th>
+                                            <th>Jml. Madya Peserta</th>
+                                            <th>Jml. Utama Klp</th>
+                                            <th>Jml. Utama Peserta</th>
+                                            <th>Jml. Mandiri Klp</th>
+                                            <th>Jml. Mandiri Peserta</th>
+                                            <th>Jml. Koperasi Klp</th>
+                                            <th>Jml. Koperasi Peserta</th>
                                         </tr>
-                                        <tr>
-                                            <th>Pemula</th>
-                                            <th>Madya</th>
-                                            <th>Utama</th>
-                                            <th>Mandiri</th>
-                                        </tr>
+                                        
                                     </thead>
 
                                     <tbody>

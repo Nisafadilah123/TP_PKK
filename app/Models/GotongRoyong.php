@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Penghayatan extends Model
+class GotongRoyong extends Model
 {
     use HasFactory;
-    protected $table = "penghayatan";
+    protected $table = "gotong_royong";
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_desa', 'jml_PKBN_simulasi', 'jml_PKBN_anggota', 'jml_PKDRT_simulasi', 'jml_PKDRT_anggota', 'jml_pola_asuh_simulasi', 'jml_pola_asuh_anggota'
+       'id_desa', 'jml_gotong_kerja_bakti', 'jml_gotong_rukun_kebaktian', 'jml_gotong_keagamaan', 'jml_gotong_jimpitan', 'jml_gotong_arisan'
     ];
 
     public function desa(){
         return $this->belongsTo(Data_Desa::class, 'id_desa');
     }
-
 }

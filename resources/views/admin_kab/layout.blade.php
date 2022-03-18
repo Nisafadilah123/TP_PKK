@@ -1088,7 +1088,7 @@
 
       <footer class="main-footer">
         <strong
-          >Copyright &copy; Admin PKK Desa.</strong
+          >Copyright &copy; Admin PKK Kabupaten.</strong
         >
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">

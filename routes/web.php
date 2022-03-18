@@ -86,6 +86,19 @@ Route::get('/koperasi', [AdminController::class, 'koperasi']);
 Route::get('/makanan', [AdminController::class, 'makanan']);
 Route::get('/pangan', [AdminController::class, 'pangan']);
 
+// halaman admin kec
+Route::get('/dashboard_kec', [AdminController::class, 'dashboard_kec']);
+Route::get('/data_pokja1_kec', [AdminController::class, 'data_pokja1_kec']);
+Route::get('/data_pokja2_kec', [AdminController::class, 'data_pokja2_kec']);
+Route::get('/data_pokja3_kec', [AdminController::class, 'data_pokja3_kec']);
+Route::get('/data_pokja4_kec', [AdminController::class, 'data_pokja4_kec']);
+Route::get('/pengguna_kec', [AdminController::class, 'data_pengguna_kec']);
+Route::get('/laporan_kec', [AdminController::class, 'data_laporan_kec']);
+Route::get('/data_sekretariat_kec', [AdminController::class, 'data_sekretariat_kec']);
+Route::get('/koperasi_kec', [AdminController::class, 'koperasi_kec']);
+Route::get('/makanan_kec', [AdminController::class, 'makanan_kec']);
+Route::get('/pangan_kec', [AdminController::class, 'pangan_kec']);
+
 // halaman admin kab
 Route::get('/dashboard_kab', [AdminKabController::class, 'dashboard_kab']);
 Route::get('/data_pokja1_kab', [AdminKabController::class, 'data_pokja1_kab']);

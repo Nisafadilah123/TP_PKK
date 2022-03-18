@@ -1,6 +1,6 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Tambah Data Jumlah Kader | Admin PKK Kab. Indramayu')
+@section('title', 'Tambah Data Jumlah Kader | Admin Desa PKK Kab. Indramayu')
 
 @section('bread', 'Tambah Data Jumlah Kader')
 @section('container')
@@ -46,7 +46,7 @@
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/data_desa" class="btn btn-outline-primary">
+          <a href="/jml_kader" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

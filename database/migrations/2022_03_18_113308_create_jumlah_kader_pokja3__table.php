@@ -13,19 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('penghayatan', function (Blueprint $table) {
+        Schema::create('jumlah_kader_pokja3_', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_desa')->unsigned();
             $table->foreign('id_desa')->references('id')->on('data_desa');
 
-            $table->integer('jml_PKBN_simulasi');
-            $table->integer('jml_PKBN_anggota');
-            $table->integer('jml_PKDRT_simulasi');
-            $table->integer('jml_PKDRT_anggota');
-            $table->integer('jml_pola_asuh_klp');
-            $table->integer('jml_pola_asuh_anggota');
-            $table->integer('jml_lansia_klp');
-            $table->integer('jml_lansia_anggota');
+            $table->integer('jml_pangan');
+            $table->integer('jml_sandang');
+            $table->integer('jml_tata_laksana');
 
             $table->timestamps();
         });
@@ -38,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penghayatan');
+        Schema::dropIfExists('jumlah_kader_pokja3_');
     }
 };
