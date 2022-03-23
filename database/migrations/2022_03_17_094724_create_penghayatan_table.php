@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('jml_PKBN_anggota');
             $table->integer('jml_PKDRT_simulasi');
             $table->integer('jml_PKDRT_anggota');
-            $table->integer('jml_pola_asuh_klp');
+            $table->integer('jml_pola_asuh_simulasi');
             $table->integer('jml_pola_asuh_anggota');
             $table->integer('jml_lansia_klp');
             $table->integer('jml_lansia_anggota');

@@ -98,7 +98,10 @@
                                         </td>
 
                                     </tr>
+
+                                    <?php $no++ ;?>
                                     @endforeach
+
                                     </tbody>
                                         {{-- <td>
                                             <a href="/kelompok_belajar" type="button" class="btn btn-primary">Detail</a>

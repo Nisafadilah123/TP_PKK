@@ -54,7 +54,7 @@ class PenghayatanDanPengamalanController extends Controller
             'jml_PKBN_anggota' => 'required',
             'jml_PKDRT_simulasi' => 'required',
             'jml_PKDRT_anggota' => 'required',
-            'jml_pola_asuh_klp' => 'required',
+            'jml_pola_asuh_simulasi' => 'required',
             'jml_pola_asuh_anggota' => 'required',
             'jml_lansia_klp' => 'required',
             'jml_lansia_anggota' => 'required',
@@ -65,7 +65,7 @@ class PenghayatanDanPengamalanController extends Controller
             'jml_PKBN_anggota.required' => 'Lengkapi Jumlah PKBN Anggota',
             'jml_PKDRT_simulasi.required' => 'Lengkapi Jumlah PKDRT Simulasi',
             'jml_PKDRT_anggota.required' => 'Lengkapi Jumlah PKDRT Anggota',
-            'jml_pola_asuh_klp.required' => 'Lengkapi Jumlah Pola Asuh KLP',
+            'jml_pola_asuh_simulasi.required' => 'Lengkapi Jumlah Pola Asuh Simulasi',
             'jml_pola_asuh_anggota.required' => 'Lengkapi Jumlah Pola Asuh Anggota',
             'jml_lansia_klp.required' => 'Lengkapi Jumlah Lansia KLP',
             'jml_lansia_anggota.required' => 'Lengkapi Jumlah Lansia Anggota',
@@ -79,7 +79,7 @@ class PenghayatanDanPengamalanController extends Controller
         $peng->jml_PKBN_anggota = $request->jml_PKBN_anggota;
         $peng->jml_PKDRT_simulasi = $request->jml_PKDRT_simulasi;
         $peng->jml_PKDRT_anggota = $request->jml_PKDRT_anggota;
-        $peng->jml_pola_asuh_klp = $request->jml_pola_asuh_klp;
+        $peng->jml_pola_asuh_simulasi = $request->jml_pola_asuh_simulasi;
         $peng->jml_pola_asuh_anggota = $request->jml_pola_asuh_anggota;
         $peng->jml_lansia_klp = $request->jml_lansia_klp;
         $peng->jml_lansia_anggota = $request->jml_lansia_anggota;
@@ -137,7 +137,7 @@ class PenghayatanDanPengamalanController extends Controller
         'jml_PKBN_anggota' => 'required',
         'jml_PKDRT_simulasi' => 'required',
         'jml_PKDRT_anggota' => 'required',
-        'jml_pola_asuh_klp' => 'required',
+        'jml_pola_asuh_simulasi' => 'required',
         'jml_pola_asuh_anggota' => 'required',
         'jml_lansia_klp' => 'required',
         'jml_lansia_anggota' => 'required',
@@ -146,7 +146,7 @@ class PenghayatanDanPengamalanController extends Controller
        $penghayatan->update($request->all());
 
        Alert::success('Berhasil', 'Data berhasil di ubah');
-       // dd($jml_kader);
+    //    dd($penghayatan);
 
        return redirect('/penghayatan');
 

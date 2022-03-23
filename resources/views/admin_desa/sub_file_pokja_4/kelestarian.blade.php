@@ -66,7 +66,9 @@
                                         </td>
 
                                     </tr>
+                                    <?php $no++ ;?>
                                     @endforeach
+
                                     </tbody>
 
                                 </table>

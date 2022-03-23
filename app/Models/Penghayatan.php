@@ -12,7 +12,7 @@ class Penghayatan extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_desa', 'jml_PKBN_simulasi', 'jml_PKBN_anggota', 'jml_PKDRT_simulasi', 'jml_PKDRT_anggota', 'jml_pola_asuh_simulasi', 'jml_pola_asuh_anggota'
+       'id_desa', 'jml_PKBN_simulasi', 'jml_PKBN_anggota', 'jml_PKDRT_simulasi', 'jml_PKDRT_anggota', 'jml_pola_asuh_simulasi', 'jml_pola_asuh_anggota','jml_lansia_klp', 'jml_lansia_anggota'
     ];
 
     public function desa(){

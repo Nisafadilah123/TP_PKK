@@ -14,7 +14,8 @@
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ route('jml_jiwa_umum.store') }}" method="POST">
+      <form action="{{ url ('/jml_jiwa_umum', $jml_jiwa_umum->id) }}" method="POST">
+        @method('PUT')
         @csrf
         <div class="card-body">
             <div class="form-group">

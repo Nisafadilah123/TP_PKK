@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminDesa\DataUmum;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
+use App\Models\JumlahKaderDataUmum;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -17,12 +18,12 @@ class JumlahKaderDataUmumController extends Controller
      */
     public function index()
     {
-                //halaman jumlah kader pokja 4
+        //halaman jumlah kader pokja 4
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $jumkad = JumlahKaderPokja4::with('desa')->get();
+        $jumkadum = JumlahKaderDataUmum::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_4.kader_pokja4', compact('jumkad'));
+        return view('admin_desa.sub_file_sekretariatja_4.jml_kader_data_umum', compact('jumkadum'));
     }
 
     /**
@@ -35,7 +36,7 @@ class JumlahKaderDataUmumController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_4.form.create_kader_pokja4', compact('desas'));
+        return view('admin_desa.sub_file_pokja_4.form.create_jml_kader_data_umum', compact('desas'));
 
     }
 
@@ -69,16 +70,16 @@ class JumlahKaderDataUmumController extends Controller
         ]);
 
         // cara 1
-        $jumkads = new JumlahKaderPokja4;
-        $jumkads->id_desa = $request->id_desa;
-        $jumkads->jml_kader_posyandu = $request->jml_kader_posyandu;
-        $jumkads->jml_kader_gizi = $request->jml_kader_gizi;
-        $jumkads->jml_kader_kesling = $request->jml_kader_kesling;
-        $jumkads->jml_kader_penyuluhan_narkoba = $request->jml_kader_penyuluhan_narkoba;
-        $jumkads->jml_kader_PHBS = $request->jml_kader_PHBS;
-        $jumkads->jml_kader_KB = $request->jml_kader_KB;
+        $jumkadums = new JumlahKaderDataUmum;
+        $jumkadums->id_desa = $request->id_desa;
+        $jumkadums->jml_kader_posyandu = $request->jml_kader_posyandu;
+        $jumkadums->jml_kader_gizi = $request->jml_kader_gizi;
+        $jumkadums->jml_kader_kesling = $request->jml_kader_kesling;
+        $jumkadums->jml_kader_penyuluhan_narkoba = $request->jml_kader_penyuluhan_narkoba;
+        $jumkadums->jml_kader_PHBS = $request->jml_kader_PHBS;
+        $jumkadums->jml_kader_KB = $request->jml_kader_KB;
 
-        $jumkads->save();
+        $jumkadums->save();
 
 
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
@@ -150,10 +151,10 @@ class JumlahKaderDataUmumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($kader_pokja4, JumlahKaderPokja4 $jumkads)
+    public function destroy($kader_pokja4, JumlahKaderPokja4 $jumkadums)
     {
         //temukan id kader_pokja4
-        $jumkads::find($kader_pokja4)->delete();
+        $jumkadums::find($kader_pokja4)->delete();
 
         return redirect('/kader_pokja4')->with('status', 'sukses');
 
