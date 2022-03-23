@@ -18,8 +18,8 @@ return new class extends Migration
             $table->bigInteger('id_desa')->unsigned();
             $table->foreign('id_desa')->references('id')->on('data_desa');
 
-            $table->integer('jml_krt');
-            $table->integer('jml_kk');
+            $table->integer('jml_krt_data_umum');
+            $table->integer('jml_kk_data_umum');
 
             $table->timestamps();
         });

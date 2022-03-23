@@ -1,8 +1,8 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Jumlah Kelompok Data Umum | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Jumlah Data Umum | Admin Desa PKK Kab. Indramayu')
 
-@section('bread', 'Jumlah Kelompok Data Umum')
+@section('bread', 'Jumlah Data Umum')
 @section('container')
 
 <!-- Main content -->
@@ -17,16 +17,14 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    <a href="{{ url('kelompok/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
+                                    <a href="{{ url('jml_data_umum/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
 
                                     <thead>
                                         <tr>
                                             <th>No.</th>
                                             <th>Nama Desa</th>
-                                            <th>PKK Dusun/Ling</th>
-                                            <th>PKK RW</th>
-                                            <th>PKK RT</th>
-                                            <th>Dasa Wisma</th>
+                                            <th>Jumlah Data Umum KRT</th>
+                                            <th>Jumlah Data Umum KK</th>
                                             <th>Aksi</th>
 
                                         </tr>
@@ -37,22 +35,20 @@
 
                                         <?php $no=1;?>
 
-                                        @foreach ($jumkel as $c)
+                                        @foreach ($jumum as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
                                         {{-- nama desa yang login --}}
                                         <td style="vertical-align: middle;">{{$c->desa->nama_desa}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_pkk_dusun}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_pkk_rw}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_pkk_rt}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_dasawisma}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_krt_data_umum}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_kk_data_umum}}</td>
 
                                         <td class="text-center">
-                                            <form action="{{ route('kelompok.destroy',$c->id) }}" method="POST">
+                                            <form action="{{ route('jml_data_umum.destroy',$c->id) }}" method="POST">
 
                                             {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
 
-                                                <a class="btn btn-primary btn-sm" href="{{ url('kelompok/'.$c->id.'/edit') }}">Edit</a>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('jml_data_umum/'.$c->id.'/edit') }}">Edit</a>
 
                                                 @csrf
                                                 @method('DELETE')

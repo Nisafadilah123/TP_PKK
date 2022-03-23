@@ -17,6 +17,8 @@ use App\Http\Controllers\AdminDesa\DataPokja4\KelestarianLingkunganHidupControll
 use App\Http\Controllers\AdminDesa\DataPokja4\KesehatanPosyanduController;
 use App\Http\Controllers\AdminDesa\DataPokja4\PerencanaanSehatController;
 use App\Http\Controllers\AdminDesa\DataUmum\JumlahKelompokUmumController;
+use App\Http\Controllers\AdminDesa\DataUmum\JumlahDataUmumController;
+use App\Http\Controllers\AdminDesa\DataUmum\JumlahJiwaDataUmumController;
 use App\Http\Controllers\AdminKab\BeritaController;
 use App\Http\Controllers\AdminKabController;
 use App\Http\Controllers\AdminKecController;
@@ -25,6 +27,7 @@ use App\Http\Controllers\SuperAdmin\DataDesaController;
 use App\Http\Controllers\SuperAdmin\DataKecamatanController;
 use App\Http\Controllers\SuperAdminController;
 use App\Models\BeritaKab;
+use App\Models\JumlahTenagaSekretariatDataUmum;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -147,6 +150,9 @@ Route::resource('/perencanaan', PerencanaanSehatController::class);
 
 // form data umum
 Route::resource('/kelompok', JumlahKelompokUmumController::class);
+Route::resource('/jml_data_umum', JumlahDataUmumController::class);
+Route::resource('/jml_jiwa_umum', JumlahJiwaDataUmumController::class);
+Route::resource('/jml_tenaga_umum', JumlahTenagaSekretariatDataUmum::class);
 
 //form berita admin kabupaten
 Route::resource('/beritaKab', BeritaController::class);

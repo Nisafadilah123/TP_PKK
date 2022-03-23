@@ -39,7 +39,7 @@
 
                                             </td>
                                             <td>
-                                                <a href="/jml_umum" type="button" class="btn btn-primary">Detail</a>
+                                                <a href="/jml_data_umum" type="button" class="btn btn-primary">Detail</a>
                                             </td>
                                             <td>
                                                 <a href="/jml_jiwa_umum" type="button" class="btn btn-primary">Detail</button>

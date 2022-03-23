@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class JumlahKelompok extends Model
+class JumlahTenagaSekretariatDataUmum extends Model
 {
     use HasFactory;
     protected $table = "jumlah_kelompok";
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_desa', 'jml_pkk_dusun', 'jml_pkk_rw', 'jml_pkk_rt', 'jml_dasawisma'
+       'id_desa', 'jml_jiwa_data_umum_laki', 'jml_jiwa_data_umum_perempuan'
     ];
 
     public function desa(){

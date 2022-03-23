@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('jumlah_kader_data_umum', function (Blueprint $table) {
+        Schema::create('jumlah_tenaga_sekretariat_data_umum', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_desa')->unsigned();
             $table->foreign('id_desa')->references('id')->on('data_desa');
 
-            $table->integer('jml_kader_anggota_pkk_laki_data_umum');
-            $table->integer('jml_kader_anggota_pkk_perempuan_data_umum');
-            $table->integer('jml_kader_umum_laki_data_umum');
-            $table->integer('jml_kader_umum_perempuan_data_umum');
+            $table->integer('jml_tenaga_honorer_laki');
+            $table->integer('jml_tenaga_honorer_perempuan');
+            $table->integer('jml_tenaga_bantuan_laki');
+            $table->integer('jml_tenaga_bantuan_perempuan');
 
             $table->timestamps();
         });
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jumlah_kader_data_umum');
+        Schema::dropIfExists('jumlah_tenaga_sekretariat_data_umum');
     }
 };

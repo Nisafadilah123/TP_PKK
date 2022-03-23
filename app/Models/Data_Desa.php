@@ -72,4 +72,20 @@ class Data_Desa extends Model
         return $this->hasMany(JumlahKelompok::class);
     }
 
+    public function jml_data_umum(){
+        return $this->hasMany(JumlahDataUmum::class);
+    }
+
+    public function jumlah_kader_data_umum(){
+        return $this->hasMany(JumlahKaderDataUmum::class);
+    }
+
+    public function jumlah_jiwa_data_umum(){
+        return $this->hasMany(JumlahJiwaDataUmum::class);
+    }
+
+    public function jumlah_tenaga_sekretariat(){
+        return $this->hasMany(JumlahTenagaSekretariatDataUmum::class);
+    }
+
 }
