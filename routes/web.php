@@ -1,29 +1,23 @@
 <?php
 
-use App\Http\Controllers\admin_desa\data_pokja1\GotongRoyongPokja1Controller;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PokjaController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\admin_desa\data_pokja1\jml_kader_pokja1Controller;
-use App\Http\Controllers\admin_desa\data_pokja1\penghayatan_pokja1Controller;
-use App\Http\Controllers\admin_desa\data_pokja2\bkb_pokja2Controller;
-use App\Http\Controllers\admin_desa\data_pokja2\kader_khusus_pokja2Controller;
-use App\Http\Controllers\admin_desa\data_pokja2\kader_umum_pokja2Controller;
-use App\Http\Controllers\admin_desa\data_pokja2\kehidupan_berkoperasi_pokja2Controller;
-use App\Http\Controllers\admin_desa\data_pokja2\kelompok_belajarController;
-use App\Http\Controllers\admin_desa\data_pokja2\pendidikan_pokja2Controller;
-use App\Http\Controllers\admin_desa\data_pokja3\kader_pokja3Controller;
-use App\Http\Controllers\admin_desa\data_pokja3\makanan_pokja3Controller;
-use App\Http\Controllers\admin_desa\data_pokja3\pemanfaatan_pokja3Controller;
-use App\Http\Controllers\admin_desa\data_pokja3\industri_pokja3Controller;
-use App\Http\Controllers\admin_desa\data_pokja3\PanganController;
-use App\Http\Controllers\admin_desa\data_pokja3\rumah_pokja3Controller;
-use App\Http\Controllers\admin_desa\data_pokja4\kader_pokja4Controller;
-use App\Http\Controllers\admin_desa\data_pokja4\kelestarian_pokja4Controller;
-use App\Http\Controllers\admin_desa\data_pokja4\kesehatan_pokja4Controller;
-use App\Http\Controllers\admin_desa\data_pokja4\perencanaan_pokja4Controller;
 use App\Http\Controllers\super_admin\dataDesaController;
 use App\Http\Controllers\admin_kab\beritaController;
+use App\Http\Controllers\AdminDesa\DataPokja1\GotongRoyongController;
+use App\Http\Controllers\AdminDesa\DataPokja1\JumlahKaderPokja1Controller;
+use App\Http\Controllers\AdminDesa\DataPokja1\PenghayatanDanPengamalanController;
+use App\Http\Controllers\AdminDesa\DataPokja2\KehidupanBerkoperasiController;
+use App\Http\Controllers\AdminDesa\DataPokja2\PendidikanController;
+use App\Http\Controllers\AdminDesa\DataPokja3\JumlahIndustriRumahTanggaController;
+use App\Http\Controllers\AdminDesa\DataPokja3\JumlahKaderPokja3Controller;
+use App\Http\Controllers\AdminDesa\DataPokja3\JumlahRumahController;
+use App\Http\Controllers\AdminDesa\DataPokja3\PanganController;
+use App\Http\Controllers\AdminDesa\DataPokja4\JumlahKaderPokja4Controller;
+use App\Http\Controllers\AdminDesa\DataPokja4\KelestarianLingkunganHidupController;
+use App\Http\Controllers\AdminDesa\DataPokja4\KesehatanPosyanduController;
+use App\Http\Controllers\AdminDesa\DataPokja4\PerencanaanSehatController;
 use App\Http\Controllers\AdminKabController;
 use App\Http\Controllers\AdminKecController;
 use App\Http\Controllers\super_admin\dataKecamtanController;
@@ -123,31 +117,31 @@ Route::get('/makanan_super', [SuperAdminController::class, 'makanan_super']);
 Route::get('/pangan_super', [SuperAdminController::class, 'pangan_super']);
 
 // form data_pokja1
-Route::resource('/jml_kader', jml_kader_pokja1Controller::class);
-Route::resource('/penghayatan', penghayatan_pokja1Controller::class);
-Route::resource('/gotong_royong', GotongRoyongPokja1Controller::class);
+Route::resource('/jml_kader', JumlahKaderPokja1Controller::class);
+Route::resource('/penghayatan', PenghayatanDanPengamalanController::class);
+Route::resource('/gotong_royong', GotongRoyongController::class);
 
 // form data_pokja2
-Route::resource('/pendidikan', pendidikan_pokja2Controller::class);
+Route::resource('/pendidikan', PendidikanController::class);
 // Route::resource('/bkb', bkb_pokja2Controller::class);
 // Route::resource('/kader_khusus', kader_khusus_pokja2Controller::class);
 // Route::resource('/kader_umum', kader_umum_pokja2Controller::class);
-Route::resource('/koperasi', kehidupan_berkoperasi_pokja2Controller::class);
+Route::resource('/koperasi', KehidupanBerkoperasiController::class);
 // Route::resource('/kelompok_belajar', kelompok_belajarController::class);
 
 // form data_pokja3
-Route::resource('/kader', kader_pokja3Controller::class);
+Route::resource('/kader', JumlahKaderPokja3Controller::class);
 // Route::resource('/makanan', makanan_pokja3Controller::class);
 // Route::resource('/pemanfaatan', pemanfaatan_pokja3Controller::class);
-Route::resource('/industri', industri_pokja3Controller::class);
-Route::resource('/rumah', rumah_pokja3Controller::class);
+Route::resource('/industri', JumlahIndustriRumahTanggaController::class);
+Route::resource('/rumah', JumlahRumahController::class);
 Route::resource('/pangan', PanganController::class);
 
 // form data_pokja4
-Route::resource('/kader_pokja4', kader_pokja4Controller::class);
-Route::resource('/kelestarian', kelestarian_pokja4Controller::class);
-Route::resource('/kesehatan', kesehatan_pokja4Controller::class);
-Route::resource('/perencanaan', perencanaan_pokja4Controller::class);
+Route::resource('/kader_pokja4', JumlahKaderPokja4Controller::class);
+Route::resource('/kelestarian', KelestarianLingkunganHidupController::class);
+Route::resource('/kesehatan', KesehatanPosyanduController::class);
+Route::resource('/perencanaan', PerencanaanSehatController::class);
 
 // form data umum
 

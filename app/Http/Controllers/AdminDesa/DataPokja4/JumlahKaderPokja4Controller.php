@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin_desa\data_pokja4;
+namespace App\Http\Controllers\AdminDesa\DataPokja4;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
 use App\Models\JumlahKaderPokja4;
@@ -9,7 +9,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Http\Request;
 
-class kader_pokja4Controller extends Controller
+class JumlahKaderPokja4Controller extends Controller
 {
     /**
      * Display a listing of the resource.

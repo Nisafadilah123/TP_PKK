@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin_desa\data_pokja4;
+namespace App\Http\Controllers\AdminDesa\DataPokja4;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Data_Desa;
@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
-class kelestarian_pokja4Controller extends Controller
+class KelestarianLingkunganHidupController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -148,7 +148,7 @@ class kelestarian_pokja4Controller extends Controller
         return redirect('/kelestarian');
 
     }
-                                          
+
     /**
      * Remove the specified resource from storage.
      *

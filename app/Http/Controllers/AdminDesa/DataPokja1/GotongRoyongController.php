@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin_desa\data_pokja1;
+namespace App\Http\Controllers\AdminDesa\DataPokja1;
 use App\Http\Controllers\Controller;
 use App\Models\GotongRoyong;
 use App\Models\Data_Desa;
@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class GotongRoyongPokja1Controller extends Controller
+class GotongRoyongController extends Controller
 {
     /**
      * Display a listing of the resource.

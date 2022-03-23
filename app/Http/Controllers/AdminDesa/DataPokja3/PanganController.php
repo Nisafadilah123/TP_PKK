@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin_desa\data_pokja3;
+namespace App\Http\Controllers\AdminDesa\DataPokja3;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
 use App\Models\Pangan;

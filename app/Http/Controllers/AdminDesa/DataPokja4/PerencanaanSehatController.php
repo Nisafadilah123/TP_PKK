@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin_desa\data_pokja4;
+namespace App\Http\Controllers\AdminDesa\DataPokja4;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Data_Desa;
@@ -8,7 +8,7 @@ use App\Models\PerencanaanSehat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class perencanaan_pokja4Controller extends Controller
+class PerencanaanSehatController extends Controller
 {
     /**
      * Display a listing of the resource.

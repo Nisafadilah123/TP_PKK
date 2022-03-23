@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\admin_desa\data_pokja3;
+namespace App\Http\Controllers\AdminDesa\DataPokja3;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
-use App\Models\JumlahRumah;
+use App\Models\JumlahKaderPokja3;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-use Illuminate\Http\Request;
-
-class rumah_pokja3Controller extends Controller
+class JumlahKaderPokja3Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +17,12 @@ class rumah_pokja3Controller extends Controller
      */
     public function index()
     {
-        //halaman industri pokja 3
+        //halaman jumlah kader pokja 3
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $rum = JumlahRumah::with('desa')->get();
+        $kad = JumlahKaderPokja3::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_3.rumah', compact('rum'));
+        return view('admin_desa.sub_file_pokja_3.kader', compact('kad'));
     }
 
     /**
@@ -36,7 +35,7 @@ class rumah_pokja3Controller extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_3.form.create_jml_rumah', compact('desas'));
+        return view('admin_desa.sub_file_pokja_3.form.create_kader', compact('desas'));
 
     }
 
@@ -48,31 +47,34 @@ class rumah_pokja3Controller extends Controller
      */
     public function store(Request $request)
     {
-        // proses penyimpanan untuk tambah data jml industri
+        // proses penyimpanan untuk tambah data jml kader
         $request->validate([
             'id_desa' => 'required',
-            'jml_rumah_sehat' => 'required',
-            'jml_rumah_kurang_sehat' => 'required',
+            'jml_kader_pangan' => 'required',
+            'jml_kader_sandang' => 'required',
+            'jml_kader_tata_laksana' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
-            'jml_rumah_sehat.required' => 'Lengkapi Jumlah Rumah Sehat',
-            'jml_rumah_kurang_sehat.required' => 'Lengkapi Jumlah Industri Kurang Sehat',
+            'jml_kader_pangan.required' => 'Lengkapi Jumlah kader Pangan',
+            'jml_kader_sandang.required' => 'Lengkapi Jumlah kader Sandang',
+            'jml_kader_tata_laksana.required' => 'Lengkapi Jumlah kader Tata Laksana',
 
         ]);
 
         // cara 1
-        $rums = new JumlahRumah;
-        $rums->id_desa = $request->id_desa;
-        $rums->jml_rumah_sehat = $request->jml_rumah_sehat;
-        $rums->jml_rumah_kurang_sehat = $request->jml_rumah_kurang_sehat;
+        $kads = new JumlahKaderPokja3;
+        $kads->id_desa = $request->id_desa;
+        $kads->jml_kader_pangan = $request->jml_kader_pangan;
+        $kads->jml_kader_sandang = $request->jml_kader_sandang;
+        $kads->jml_kader_tata_laksana = $request->jml_kader_tata_laksana;
 
-        $rums->save();
+        $kads->save();
 
 
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/rumah');
+        return redirect('/kader');
 
     }
 
@@ -93,13 +95,13 @@ class rumah_pokja3Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(JumlahRumah $rumah)
+    public function edit(JumlahKaderPokja3 $kader)
     {
-        //halaman edit data JumlahRumah
-        $desa = JumlahRumah::with('desa')->first();
+        //halaman edit data gotong_royong
+        $desa = JumlahKaderPokja3::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_3.form.edit_jml_rumah', compact('rumah','desa','desas'));
+        return view('admin_desa.sub_file_pokja_3.form.edit_kader', compact('kader','desa','desas'));
 
     }
 
@@ -110,23 +112,24 @@ class rumah_pokja3Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JumlahRumah $rumah)
+    public function update(Request $request, JumlahKaderPokja3 $kader)
     {
         // proses mengubah untuk tambah data jml kader
         $request->validate([
             'id_desa' => 'required',
-            'jml_rumah_sehat' => 'required',
-            'jml_rumah_kurang_sehat' => 'required',
+            'jml_kader_pangan' => 'required',
+            'jml_kader_sandang' => 'required',
+            'jml_kader_tata_laksana' => 'required',
 
 
         ]);
 
-        $rumah->update($request->all());
+        $kader->update($request->all());
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_kader);
 
-        return redirect('/rumah');
+        return redirect('/kader');
 
     }
 
@@ -136,12 +139,12 @@ class rumah_pokja3Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($rumah, JumlahRumah $rum)
+    public function destroy($kader, JumlahKaderPokja3 $kaders)
     {
-        //temukan id rumah
-        $rum::find($rumah)->delete();
+        //temukan id kader
+        $kaders::find($kader)->delete();
 
-        return redirect('/rumah')->with('status', 'sukses');
+        return redirect('/kader')->with('status', 'sukses');
 
 
     }

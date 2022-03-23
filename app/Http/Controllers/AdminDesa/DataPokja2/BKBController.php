@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\admin_desa\data_pokja2;
+namespace App\Http\Controllers\AdminDesa\DataPokja2;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class bkb_pokja2Controller extends Controller
+class BKBController extends Controller
 {
     /**
      * Display a listing of the resource.
