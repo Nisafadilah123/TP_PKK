@@ -1,52 +1,159 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Tambah Data Jumlah Kader | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Tambah Data Pengembangan Kehidupan Berkoperasi | Admin Desa PKK Kab. Indramayu')
 
-@section('bread', 'Tambah Data Jumlah Kader')
+@section('bread', 'Tambah Data Pengembangan Kehidupan Berkoperasi')
 @section('container')
 
-<div class="col-md-6">
+<div class="col-md-12">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Tambah Data Jumlah Kader</h3>
+        <h3 class="card-title">Tambah Data Pengembangan Kehidupan Berkoperasi</h3>
       </div>
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ route('jml_kader.store') }}" method="POST">
+      <form action="{{ route('koperasi.store') }}" method="POST">
         @csrf
-        <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Nama Desa</label>
+                            <select class="form-control" id="id_desa" name="id_desa">
+                                {{-- nama desa yang login --}}
+                                @foreach ($desas as $c)
+                                    <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+            </div>
+
+          <div class="col-md-4">
+          <div class="card-body">
             <div class="form-group">
-              <label for="exampleFormControlSelect1">Nama Desa</label>
-                  <select class="form-control" id="id_desa" name="id_desa">
-                      {{-- nama desa yang login --}}
-                      @foreach ($desas as $c)
-                          <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option>
-                      @endforeach
-                  </select>
-              </div>
+              <label>Jumlah Pemula KLP </label>
+              <input type="number" class="form-control" name="jml_pemula_klp" id="jml_pemula_klp" placeholder="Masukkan Jumlah Pemula KLP" required>
+            </div>
+          </div>
         </div>
-        <div class="card-body">
-          <div class="form-group">
-            <label>Jumlah Kader PKBN</label>
-            <input type="number" class="form-control" name="jml_kader_PKBN" id="jml_kader_PKBN" placeholder="Masukkan Jumlah Kader PKBN" required>
-          </div>
-          <div class="form-group">
-            <label>Jumlah Kader PKDRT</label>
-            <input type="number" class="form-control" name="jml_kader_PKDRT" id="jml_kader_PKDRT" placeholder="Masukkan Jumlah Kader PKDRT" required>
-          </div>
-          <div class="form-group">
-            <label>Jumlah Kader Pola Asuh</label>
-            <input type="number" class="form-control" name="jml_kader_pola_asuh" id="jml_kader_pola_asuh" placeholder="Masukkan Jumlah Kader Pola Asuh" required>
-          </div>
+        <div class="col-md-4">
+                <div class="card-body">
+
+                <div class="form-group">
+                    <label>Jumlah Pemula Peserta</label>
+                    <input type="number" class="form-control" name="jml_pemula_peserta" id="jml_pemula_peserta" placeholder="Masukkan Jumlah Pemula Peserta" required>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+                <div class="col-md-4">
+                    <div class="card-body">
+                    <div class="form-group">
+                        <label>Jumlah Madya KLP</label>
+                        <input type="number" class="form-control" name="jml_madya_klp" id="jml_madya_klp" placeholder="Masukkan Jumlah Madya KLP" required>
+                    </div>
+                    </div>
+                </div>
+
+            <div class="col-md-4">
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label>Jumlah Madya Peserta</label>
+                        <input type="number" class="form-control" name="jml_madya_peserta" id="jml_madya_peserta" placeholder="Masukkan Jumlah Madya Peserta" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card-body">
+
+                <div class="form-group">
+                    <label>Jumlah Utama KLP</label>
+                    <input type="number" class="form-control" name="jml_utama_klp" id="jml_utama_klp" placeholder="Masukkan Jumlah Utama KLP" required>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card-body">
+
+                <div class="form-group">
+                    <label>Jumlah Utama Peserta</label>
+                    <input type="number" class="form-control" name="jml_utama_peserta" id="jml_utama_peserta" placeholder="Masukkan Jumlah Utama Peserta" required>
+                </div>
+                </div>
+            </div>
+                <div class="col-md-4">
+                    <div class="card-body">
+                    <div class="form-group">
+                        <label>Jumlah Mandiri KLP</label>
+                        <input type="number" class="form-control" name="jml_mandiri_klp" id="jml_mandiri_klp" placeholder="Masukkan Jumlah Mandiri KLP" required>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card-body">
+                    <div class="form-group">
+                        <label>Jumlah Mandiri Peserta</label>
+                        <input type="number" class="form-control" name="jml_mandiri_peserta" id="jml_mandiri_peserta" placeholder="Masukkan Jumlah Mandiri Peserta" required>
+                    </div>
+                    </div>
+                </div>
+
 
         </div>
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label>Jumlah Koperasi KLP</label>
+                        <input type="number" class="form-control" name="jml_koperasi_klp" id="jml_koperasi_klp" placeholder="Masukkan Jumlah Koperasi KLP" required>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="card-body">
+
+                <div class="form-group">
+                    <label>Jumlah Koperasi Peserta</label>
+                    <input type="number" class="form-control" name="jml_koperasi_peserta" id="jml_koperasi_peserta" placeholder="Masukkan Jumlah Koperasi Peserta" required>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label>Jumlah Kader Umum Damas PKK</label>
+                        <input type="number" class="form-control" name="jml_kader_umum_damas" id="jml_kader_umum_damas" placeholder="Masukkan Jumlah Kader Umum Damas" required>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
         <!-- /.card-body -->
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/jml_kader" class="btn btn-outline-primary">
+          <a href="/pendidikan" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

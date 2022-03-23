@@ -9,7 +9,7 @@ class AdminKecController extends Controller
         // halaman dashboard
         public function dashboard_kec(){
 
-            return view('admin_kec.dashboard_kec', compact('berita'));
+            return view('admin_kec.dashboard_kec');
         }
 
         // halaman data pokja1

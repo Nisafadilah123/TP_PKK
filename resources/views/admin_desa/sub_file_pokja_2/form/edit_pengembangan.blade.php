@@ -1,56 +1,154 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Edit Data Jumlah Penghayatan dan Pengamalan Pancasila | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Edit Data Jumlah Pengembangan Kehidupan Berkoperasi | Admin Desa PKK Kab. Indramayu')
 
-@section('bread', 'Edit Data Jumlah Penghayatan dan Pengamalan Pancasila')
+@section('bread', 'Edit Data Jumlah Pengembangan Kehidupan Berkoperasi')
 @section('container')
 
-<div class="col-md-6">
+<div class="col-md-12">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Edit Data Jumlah Penghayatan dan Pengamalan Pancasila</h3>
+        <h3 class="card-title">Edit Data Jumlah Pengembangan Kehidupan Berkoperasi</h3>
       </div>
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ url ('/jml_kader', $jml_kader->id) }}" method="POST">
-        {{-- @dump($data_desa) --}}
-          @method('PUT')
-          @csrf
-        <div class="card-body">
+      <form action="{{ url('koperasi', $koperasi->id) }}" method="POST">
+        @method('PUT')
+
+        @csrf
+        <div class="row">
+            <div class="col-md-4">
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Nama Desa</label>
+                            <select class="form-control" id="id_desa" name="id_desa">
+                                    {{-- nama desa yang login --}}
+                                    @foreach ($desas as $d)
+                                    <option value="{{ $d->id }}" {{ $d->id === $koperasi->id_desa ? 'selected' : '' }}>
+                                        {{ $d->kode_desa }}-{{ $d->nama_desa }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+            </div>
+
+          <div class="col-md-4">
+          <div class="card-body">
             <div class="form-group">
-              <label for="exampleFormControlSelect1">Nama Desa</label>
-                  <select class="form-control" id="id_desa" name="id_desa">
-                      {{-- nama desa yang login --}}
-                      @foreach ($desas as $d)
-                      <option value="{{ $d->id }}" {{ $d->id === $jml_kader->id_desa ? 'selected' : '' }}>
-                          {{ $d->kode_desa }}-{{ $d->nama_desa }}
-                      </option>
-                  @endforeach
-                </select>
-              </div>
+              <label>Jumlah Pemula KLP </label>
+              <input type="number" class="form-control" name="jml_pemula_klp" id="jml_pemula_klp" placeholder="Masukkan Jumlah Pemula KLP" required value="{{ucfirst(old('jml_pemula_klp', $koperasi->jml_pemula_klp))}}">
+            </div>
+          </div>
         </div>
-        <div class="card-body">
-          <div class="form-group">
-            <label>Jumlah Kader PKBN</label>
-            <input type="number" class="form-control" name="jml_kader_PKBN" id="jml_kader_PKBN" placeholder="Masukkan Jumlah Kader PKBN" required value="{{ucfirst(old('jml_kader_PKBN', $jml_kader->jml_kader_PKBN))}}">
-          </div>
-          <div class="form-group">
-            <label>Jumlah Kader PKDRT</label>
-            <input type="number" class="form-control" name="jml_kader_PKDRT" id="jml_kader_PKDRT" placeholder="Masukkan Jumlah Kader PKDRT" required value="{{ucfirst(old('jml_kader_PKDRT', $jml_kader->jml_kader_PKDRT))}}">
-          </div>
-          <div class="form-group">
-            <label>Jumlah Kader Pola Asuh</label>
-            <input type="number" class="form-control" name="jml_kader_pola_asuh" id="jml_kader_pola_asuh" placeholder="Masukkan Jumlah Kader Pola Asuh" required value="{{ucfirst(old('jml_kader_pola_asuh', $jml_kader->jml_kader_pola_asuh))}}">
-          </div>
+        <div class="col-md-4">
+                <div class="card-body">
+
+                <div class="form-group">
+                    <label>Jumlah Pemula Peserta</label>
+                    <input type="number" class="form-control" name="jml_pemula_peserta" id="jml_pemula_peserta" placeholder="Masukkan Jumlah Pemula Peserta" required value="{{ucfirst(old('jml_pemula_peserta', $koperasi->jml_pemula_peserta))}}">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+                <div class="col-md-4">
+                    <div class="card-body">
+                    <div class="form-group">
+                        <label>Jumlah Madya KLP</label>
+                        <input type="number" class="form-control" name="jml_madya_klp" id="jml_madya_klp" placeholder="Masukkan Jumlah Madya KLP" required value="{{ucfirst(old('jml_madya_klp', $koperasi->jml_madya_klp))}}">
+                    </div>
+                    </div>
+                </div>
+
+            <div class="col-md-4">
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label>Jumlah Madya Peserta</label>
+                        <input type="number" class="form-control" name="jml_madya_peserta" id="jml_madya_klp" placeholder="Masukkan Jumlah Madya Peserta" required value="{{ucfirst(old('jml_madya_klp', $koperasi->jml_madya_klp))}}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card-body">
+
+                <div class="form-group">
+                    <label>Jumlah Utama KLP</label>
+                    <input type="number" class="form-control" name="jml_utama_klp" id="jml_utama_klp" placeholder="Masukkan Jumlah Utama KLP" required value="{{ucfirst(old('jml_utama_klp', $koperasi->jml_utama_klp))}}">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card-body">
+
+                <div class="form-group">
+                    <label>Jumlah Utama Peserta</label>
+                    <input type="number" class="form-control" name="jml_utama_peserta" id="jml_utama_peserta" placeholder="Masukkan Jumlah Utama Peserta" required value="{{ucfirst(old('jml_utama_peserta', $koperasi->jml_utama_peserta))}}">
+                </div>
+                </div>
+            </div>
+                <div class="col-md-4">
+                    <div class="card-body">
+                    <div class="form-group">
+                        <label>Jumlah Mandiri KLP</label>
+                        <input type="number" class="form-control" name="jml_mandiri_klp" id="jml_mandiri_klp" placeholder="Masukkan Jumlah Mandiri KLP" required value="{{ucfirst(old('jml_mandiri_klp', $koperasi->jml_mandiri_klp))}}">
+                    </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card-body">
+                    <div class="form-group">
+                        <label>Jumlah Mandiri Peserta</label>
+                        <input type="number" class="form-control" name="jml_mandiri_peserta" id="jml_mandiri_peserta" placeholder="Masukkan Jumlah Mandiri Peserta" required value="{{ucfirst(old('jml_mandiri_peserta', $koperasi->jml_mandiri_peserta))}}">
+                    </div>
+                    </div>
+                </div>
+
 
         </div>
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label>Jumlah Koperasi KLP</label>
+                        <input type="number" class="form-control" name="jml_koperasi_klp" id="jml_koperasi_klp" placeholder="Masukkan Jumlah Koperasi KLP" required value="{{ucfirst(old('jml_koperasi_klp', $koperasi->jml_koperasi_klp))}}">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="card-body">
+
+                <div class="form-group">
+                    <label>Jumlah Koperasi Peserta</label>
+                    <input type="number" class="form-control" name="jml_koperasi_peserta" id="jml_koperasi_peserta" placeholder="Masukkan Jumlah Koperasi Peserta" required value="{{ucfirst(old('jml_koperasi_peserta', $koperasi->jml_koperasi_peserta))}}">
+                </div>
+                </div>
+            </div>
+
+
+        </div>
+
         <!-- /.card-body -->
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/jml_kader" class="btn btn-outline-primary">
+          <a href="/koperasi" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

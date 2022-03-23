@@ -1,4 +1,4 @@
-@extends('admin_desa.layout')
+@extends('admin_kec.layout')
 
 @section('title', 'Data POKJA IV | Admin Kecamatan PKK Kab. Indramayu')
 

@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('jumlah_industri', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_desa')->unsigned();
+            $table->foreign('id_desa')->references('id')->on('data_desa');
+
+            $table->integer('jml_industri_pangan');
+            $table->integer('jml_industri_sandang');
+            $table->integer('jml_industri_jasa');
+
             $table->timestamps();
         });
     }

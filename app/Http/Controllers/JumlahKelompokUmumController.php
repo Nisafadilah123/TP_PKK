@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\admin_desa\data_umum;
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class kelompok_dataUmumController extends Controller
+class JumlahKelompokUmumController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,7 @@ class kelompok_dataUmumController extends Controller
      */
     public function index()
     {
-        // halaman kelompok umum
-        return view('admin_desa.sub_file_pokja_4.kelompok_umum');
-
+        //
     }
 
     /**

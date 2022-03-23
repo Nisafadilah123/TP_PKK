@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\admin_desa\data_pokja1\GotongRoyongPokja1Controller;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PokjaController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\admin_desa\data_pokja1\jml_kader_pokja1Controller;
 use App\Http\Controllers\admin_desa\data_pokja1\penghayatan_pokja1Controller;
-use App\Http\Controllers\admin_desa\data_pokja1\gotong_royong_pokja1Controller;
 use App\Http\Controllers\admin_desa\data_pokja2\bkb_pokja2Controller;
 use App\Http\Controllers\admin_desa\data_pokja2\kader_khusus_pokja2Controller;
 use App\Http\Controllers\admin_desa\data_pokja2\kader_umum_pokja2Controller;
@@ -16,6 +16,7 @@ use App\Http\Controllers\admin_desa\data_pokja3\kader_pokja3Controller;
 use App\Http\Controllers\admin_desa\data_pokja3\makanan_pokja3Controller;
 use App\Http\Controllers\admin_desa\data_pokja3\pemanfaatan_pokja3Controller;
 use App\Http\Controllers\admin_desa\data_pokja3\industri_pokja3Controller;
+use App\Http\Controllers\admin_desa\data_pokja3\PanganController;
 use App\Http\Controllers\admin_desa\data_pokja3\rumah_pokja3Controller;
 use App\Http\Controllers\admin_desa\data_pokja4\kader_pokja4Controller;
 use App\Http\Controllers\admin_desa\data_pokja4\kelestarian_pokja4Controller;
@@ -24,6 +25,7 @@ use App\Http\Controllers\admin_desa\data_pokja4\perencanaan_pokja4Controller;
 use App\Http\Controllers\super_admin\dataDesaController;
 use App\Http\Controllers\admin_kab\beritaController;
 use App\Http\Controllers\AdminKabController;
+use App\Http\Controllers\AdminKecController;
 use App\Http\Controllers\super_admin\dataKecamtanController;
 use App\Http\Controllers\SuperAdminController;
 use App\Models\BeritaKab;
@@ -82,22 +84,20 @@ Route::get('/data_pokja4', [AdminController::class, 'data_pokja4']);
 Route::get('/pengguna', [AdminController::class, 'data_pengguna']);
 Route::get('/laporan', [AdminController::class, 'data_laporan']);
 Route::get('/data_sekretariat', [AdminController::class, 'data_sekretariat']);
-Route::get('/koperasi', [AdminController::class, 'koperasi']);
 Route::get('/makanan', [AdminController::class, 'makanan']);
-Route::get('/pangan', [AdminController::class, 'pangan']);
 
 // halaman admin kec
-Route::get('/dashboard_kec', [AdminController::class, 'dashboard_kec']);
-Route::get('/data_pokja1_kec', [AdminController::class, 'data_pokja1_kec']);
-Route::get('/data_pokja2_kec', [AdminController::class, 'data_pokja2_kec']);
-Route::get('/data_pokja3_kec', [AdminController::class, 'data_pokja3_kec']);
-Route::get('/data_pokja4_kec', [AdminController::class, 'data_pokja4_kec']);
-Route::get('/pengguna_kec', [AdminController::class, 'data_pengguna_kec']);
-Route::get('/laporan_kec', [AdminController::class, 'data_laporan_kec']);
-Route::get('/data_sekretariat_kec', [AdminController::class, 'data_sekretariat_kec']);
-Route::get('/koperasi_kec', [AdminController::class, 'koperasi_kec']);
-Route::get('/makanan_kec', [AdminController::class, 'makanan_kec']);
-Route::get('/pangan_kec', [AdminController::class, 'pangan_kec']);
+Route::get('/dashboard_kec', [AdminKecController::class, 'dashboard_kec']);
+Route::get('/data_pokja1_kec', [AdminKecController::class, 'data_pokja1_kec']);
+Route::get('/data_pokja2_kec', [AdminKecController::class, 'data_pokja2_kec']);
+Route::get('/data_pokja3_kec', [AdminKecController::class, 'data_pokja3_kec']);
+Route::get('/data_pokja4_kec', [AdminKecController::class, 'data_pokja4_kec']);
+Route::get('/pengguna_kec', [AdminKecController::class, 'data_pengguna_kec']);
+Route::get('/laporan_kec', [AdminKecController::class, 'data_laporan_kec']);
+Route::get('/data_sekretariat_kec', [AdminKecController::class, 'data_sekretariat_kec']);
+Route::get('/koperasi_kec', [AdminKecController::class, 'koperasi_kec']);
+Route::get('/makanan_kec', [AdminKecController::class, 'makanan_kec']);
+Route::get('/pangan_kec', [AdminKecController::class, 'pangan_kec']);
 
 // halaman admin kab
 Route::get('/dashboard_kab', [AdminKabController::class, 'dashboard_kab']);
@@ -125,28 +125,31 @@ Route::get('/pangan_super', [SuperAdminController::class, 'pangan_super']);
 // form data_pokja1
 Route::resource('/jml_kader', jml_kader_pokja1Controller::class);
 Route::resource('/penghayatan', penghayatan_pokja1Controller::class);
-Route::resource('/gotong_royong', gotong_royong_pokja1Controller::class);
+Route::resource('/gotong_royong', GotongRoyongPokja1Controller::class);
 
 // form data_pokja2
 Route::resource('/pendidikan', pendidikan_pokja2Controller::class);
-Route::resource('/bkb', bkb_pokja2Controller::class);
-Route::resource('/kader_khusus', kader_khusus_pokja2Controller::class);
-Route::resource('/kader_umum', kader_umum_pokja2Controller::class);
-Route::resource('/kehidupan_berkoperasi', kehidupan_berkoperasi_pokja2Controller::class);
-Route::resource('/kelompok_belajar', kelompok_belajarController::class);
+// Route::resource('/bkb', bkb_pokja2Controller::class);
+// Route::resource('/kader_khusus', kader_khusus_pokja2Controller::class);
+// Route::resource('/kader_umum', kader_umum_pokja2Controller::class);
+Route::resource('/koperasi', kehidupan_berkoperasi_pokja2Controller::class);
+// Route::resource('/kelompok_belajar', kelompok_belajarController::class);
 
 // form data_pokja3
 Route::resource('/kader', kader_pokja3Controller::class);
-Route::resource('/makanan', makanan_pokja3Controller::class);
-Route::resource('/pemanfaatan', pemanfaatan_pokja3Controller::class);
+// Route::resource('/makanan', makanan_pokja3Controller::class);
+// Route::resource('/pemanfaatan', pemanfaatan_pokja3Controller::class);
 Route::resource('/industri', industri_pokja3Controller::class);
 Route::resource('/rumah', rumah_pokja3Controller::class);
+Route::resource('/pangan', PanganController::class);
 
 // form data_pokja4
 Route::resource('/kader_pokja4', kader_pokja4Controller::class);
 Route::resource('/kelestarian', kelestarian_pokja4Controller::class);
 Route::resource('/kesehatan', kesehatan_pokja4Controller::class);
 Route::resource('/perencanaan', perencanaan_pokja4Controller::class);
+
+// form data umum
 
 //form berita admin kabupaten
 Route::resource('/beritaKab', beritaController::class);

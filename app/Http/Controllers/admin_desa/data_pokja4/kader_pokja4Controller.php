@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\admin_desa\data_pokja4;
 use App\Http\Controllers\Controller;
+use App\Models\Data_Desa;
+use App\Models\JumlahKaderPokja4;
+use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Http\Request;
 
@@ -14,9 +18,12 @@ class kader_pokja4Controller extends Controller
      */
     public function index()
     {
-        // halaman kader pokja 4
-        return view('admin_desa.sub_file_pokja_4.kader_pokja4');
+        //halaman jumlah kader pokja 4
+        // nama desa yang login
+        // $desa = Data_Desa::all();
+        $jumkad = JumlahKaderPokja4::with('desa')->get();
 
+        return view('admin_desa.sub_file_pokja_4.kader_pokja4', compact('jumkad'));
     }
 
     /**
@@ -26,7 +33,11 @@ class kader_pokja4Controller extends Controller
      */
     public function create()
     {
-        //
+        // nama desa yang login
+        $desas = DB::table('data_desa')->get();
+
+        return view('admin_desa.sub_file_pokja_4.form.create_kader_pokja4', compact('desas'));
+
     }
 
     /**
@@ -37,7 +48,44 @@ class kader_pokja4Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // proses penyimpanan untuk tambah data jml kader
+        $request->validate([
+            'id_desa' => 'required',
+            'jml_kader_posyandu' => 'required',
+            'jml_kader_gizi' => 'required',
+            'jml_kader_kesling' => 'required',
+            'jml_kader_penyuluhan_narkoba' => 'required',
+            'jml_kader_PHBS' => 'required',
+            'jml_kader_KB' => 'required',
+
+        ], [
+            'id_desa.required' => 'Lengkapi Id Desa',
+            'jml_kader_posyandu.required' => 'Lengkapi Jumlah Kader Posyandu',
+            'jml_kader_gizi.required' => 'Lengkapi Jumlah Kader Gizi',
+            'jml_kader_kesling.required' => 'Lengkapi Jumlah kader Kesling',
+            'jml_kader_penyuluhan_narkoba.required' => 'Lengkapi Jumlah Kader Penyuluhan Narkoba',
+            'jml_kader_PHBS.required' => 'Lengkapi Jumlah Kader PHBS',
+            'jml_kader_KB.required' => 'Lengkapi Jumlah Kader KB',
+
+        ]);
+
+        // cara 1
+        $jumkads = new JumlahKaderPokja4;
+        $jumkads->id_desa = $request->id_desa;
+        $jumkads->jml_kader_posyandu = $request->jml_kader_posyandu;
+        $jumkads->jml_kader_gizi = $request->jml_kader_gizi;
+        $jumkads->jml_kader_kesling = $request->jml_kader_kesling;
+        $jumkads->jml_kader_penyuluhan_narkoba = $request->jml_kader_penyuluhan_narkoba;
+        $jumkads->jml_kader_PHBS = $request->jml_kader_PHBS;
+        $jumkads->jml_kader_KB = $request->jml_kader_KB;
+
+        $jumkads->save();
+
+
+        Alert::success('Berhasil', 'Data berhasil di tambahkan');
+
+        return redirect('/kader_pokja4');
+
     }
 
     /**
@@ -57,9 +105,14 @@ class kader_pokja4Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(JumlahKaderPokja4 $kader_pokja4)
     {
-        //
+        //halaman edit data gotong_royong
+        $desa = JumlahKaderPokja4::with('desa')->first();
+        $desas = Data_Desa::all();
+
+        return view('admin_desa.sub_file_pokja_4.form.edit_kader_pokja4', compact('kader_pokja4','desa','desas'));
+
     }
 
     /**
@@ -69,9 +122,27 @@ class kader_pokja4Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, JumlahKaderPokja4 $kader_pokja4)
     {
-        //
+        // proses mengubah untuk tambah data jml kader_pokja4
+        $request->validate([
+            'id_desa' => 'required',
+            'jml_kader_posyandu' => 'required',
+            'jml_kader_gizi' => 'required',
+            'jml_kader_kesling' => 'required',
+            'jml_kader_penyuluhan_narkoba' => 'required',
+            'jml_kader_PHBS' => 'required',
+            'jml_kader_KB' => 'required',
+
+        ]);
+
+        $kader_pokja4->update($request->all());
+
+        Alert::success('Berhasil', 'Data berhasil di ubah');
+        // dd($jml_kader_pokja4);
+
+        return redirect('/kader_pokja4');
+
     }
 
     /**
@@ -80,8 +151,13 @@ class kader_pokja4Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($kader_pokja4, JumlahKaderPokja4 $jumkads)
     {
-        //
+        //temukan id kader_pokja4
+        $jumkads::find($kader_pokja4)->delete();
+
+        return redirect('/kader_pokja4')->with('status', 'sukses');
+
+
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class gotong_royong_pokja1Controller extends Controller
+class GotongRoyongPokja1Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -106,9 +106,9 @@ class gotong_royong_pokja1Controller extends Controller
         //halaman edit data gotong_royong
         $desa = GotongRoyong::with('desa')->first();
         $desas = Data_Desa::all();
-        
+
         return view('admin_desa.sub_file_pokja_1.form.edit_gotong_royong', compact('gotong_royong','desa','desas'));
-        
+
     }
 
     /**
@@ -153,6 +153,6 @@ class gotong_royong_pokja1Controller extends Controller
         $gotong::find($gotong_royong)->delete();
 
         return redirect('/gotong_royong')->with('status', 'sukses');
-        
+
     }
 }
