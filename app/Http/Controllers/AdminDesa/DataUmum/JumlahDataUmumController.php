@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\AdminDesa\DataUmum;
+use App\Http\Controllers\Controller;
+use App\Models\Data_Desa;
+use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 
-class JumlahKelompokUmumController extends Controller
+class JumlahDataUmumController extends Controller
 {
     /**
      * Display a listing of the resource.

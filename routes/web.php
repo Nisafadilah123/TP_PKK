@@ -16,6 +16,7 @@ use App\Http\Controllers\AdminDesa\DataPokja4\JumlahKaderPokja4Controller;
 use App\Http\Controllers\AdminDesa\DataPokja4\KelestarianLingkunganHidupController;
 use App\Http\Controllers\AdminDesa\DataPokja4\KesehatanPosyanduController;
 use App\Http\Controllers\AdminDesa\DataPokja4\PerencanaanSehatController;
+use App\Http\Controllers\AdminDesa\DataUmum\JumlahKelompokUmumController;
 use App\Http\Controllers\AdminKab\BeritaController;
 use App\Http\Controllers\AdminKabController;
 use App\Http\Controllers\AdminKecController;
@@ -145,6 +146,7 @@ Route::resource('/kesehatan', KesehatanPosyanduController::class);
 Route::resource('/perencanaan', PerencanaanSehatController::class);
 
 // form data umum
+Route::resource('/kelompok', JumlahKelompokUmumController::class);
 
 //form berita admin kabupaten
 Route::resource('/beritaKab', BeritaController::class);

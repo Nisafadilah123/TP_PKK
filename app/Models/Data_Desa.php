@@ -68,4 +68,8 @@ class Data_Desa extends Model
         return $this->hasMany(PerencanaanSehat::class);
     }
 
+    public function jml_kelompok(){
+        return $this->hasMany(JumlahKelompok::class);
+    }
+
 }

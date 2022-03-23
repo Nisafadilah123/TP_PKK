@@ -43,8 +43,8 @@
                                         {{-- nama desa yang login --}}
                                         <td style="vertical-align: middle;">{{$c->desa->nama_desa}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_pkk_dusun}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_pkk_rt}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_pkk_rw}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_pkk_rt}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_dasawisma}}</td>
 
                                         <td class="text-center">
