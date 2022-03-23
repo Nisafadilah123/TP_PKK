@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\super_admin;
+namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
 use App\Models\DataKecamatan;
@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class dataDesaController extends Controller
+class DataDesaController extends Controller
 {
     /**
      * Display a listing of the resource.

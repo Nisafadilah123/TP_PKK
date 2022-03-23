@@ -3,8 +3,6 @@
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PokjaController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\super_admin\dataDesaController;
-use App\Http\Controllers\admin_kab\beritaController;
 use App\Http\Controllers\AdminDesa\DataPokja1\GotongRoyongController;
 use App\Http\Controllers\AdminDesa\DataPokja1\JumlahKaderPokja1Controller;
 use App\Http\Controllers\AdminDesa\DataPokja1\PenghayatanDanPengamalanController;
@@ -18,9 +16,12 @@ use App\Http\Controllers\AdminDesa\DataPokja4\JumlahKaderPokja4Controller;
 use App\Http\Controllers\AdminDesa\DataPokja4\KelestarianLingkunganHidupController;
 use App\Http\Controllers\AdminDesa\DataPokja4\KesehatanPosyanduController;
 use App\Http\Controllers\AdminDesa\DataPokja4\PerencanaanSehatController;
+use App\Http\Controllers\AdminKab\BeritaController;
 use App\Http\Controllers\AdminKabController;
 use App\Http\Controllers\AdminKecController;
 use App\Http\Controllers\super_admin\dataKecamtanController;
+use App\Http\Controllers\SuperAdmin\DataDesaController;
+use App\Http\Controllers\SuperAdmin\DataKecamatanController;
 use App\Http\Controllers\SuperAdminController;
 use App\Models\BeritaKab;
 use Illuminate\Support\Facades\Route;
@@ -146,8 +147,8 @@ Route::resource('/perencanaan', PerencanaanSehatController::class);
 // form data umum
 
 //form berita admin kabupaten
-Route::resource('/beritaKab', beritaController::class);
+Route::resource('/beritaKab', BeritaController::class);
 
 // form desa super admin
-Route::resource('/data_desa', dataDesaController::class);
-Route::resource('/data_kecamatan', dataKecamtanController::class);
+Route::resource('/data_desa', DataDesaController::class);
+Route::resource('/data_kecamatan', DataKecamatanController::class);

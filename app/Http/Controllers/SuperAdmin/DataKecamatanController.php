@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\super_admin;
+namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use App\Models\DataKecamatan;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class dataKecamtanController extends Controller
+class DataKecamatanController extends Controller
 {
     /**
      * Display a listing of the resource.
