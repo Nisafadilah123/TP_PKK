@@ -23,10 +23,10 @@
                                         <tr>
                                             <th>No.</th>
                                             <th>Nama Desa</th>
-                                            <th>Anggota Honorer Laki-laki</th>
-                                            <th>Anggota Honorer Perempuan</th>
-                                            <th>Anggota Bantuan Laki-laki</th>
-                                            <th>Anggota Bantuan Perempuan</th>
+                                            <th>Jumlah Tenaga Sekretariat Honorer Laki-laki</th>
+                                            <th>Jumlah Tenaga Sekretariat Honorer Perempuan</th>
+                                            <th>Jumlah Tenaga Sekretariat Bantuan Laki-laki</th>
+                                            <th>Jumlah Tenaga Sekretariat Bantuan Perempuan</th>
                                             <th>Aksi</th>
 
                                         </tr>
@@ -37,15 +37,15 @@
 
                                         <?php $no=1;?>
 
-                                        @foreach ($jumkel as $c)
+                                        @foreach ($jumten as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
                                         {{-- nama desa yang login --}}
                                         <td style="vertical-align: middle;">{{$c->desa->nama_desa}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_pkk_dusun}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_pkk_rw}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_pkk_rt}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_dasawisma}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_tenaga_honorer_laki}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_tenaga_honorer_perempuan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_tenaga_bantuan_laki}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_tenaga_bantuan_perempuan}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('jml_tenaga_umum.destroy',$c->id) }}" method="POST">

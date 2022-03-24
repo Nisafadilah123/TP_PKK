@@ -45,11 +45,11 @@
                                                 <a href="/jml_jiwa_umum" type="button" class="btn btn-primary">Detail</button>
                                             </td>
                                             <td>
-                                                <a href="/kelompok" type="button" class="btn btn-primary">Detail</a>
+                                                <a href="/jml_kader_umum" type="button" class="btn btn-primary">Detail</a>
 
                                             </td>
                                             <td>
-                                                <a href="/jml_umum" type="button" class="btn btn-primary">Detail</a>
+                                                <a href="/jml_tenaga_umum" type="button" class="btn btn-primary">Detail</a>
                                             </td>
                                         </tr>
 

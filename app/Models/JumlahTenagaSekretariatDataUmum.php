@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class JumlahTenagaSekretariatDataUmum extends Model
 {
     use HasFactory;
-    protected $table = "jumlah_kelompok";
+    protected $table = "jumlah_tenaga_sekretariat_data_umum";
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_desa', 'jml_jiwa_data_umum_laki', 'jml_jiwa_data_umum_perempuan'
+       'id_desa', 'jml_tenaga_honorer_laki', 'jml_tenaga_honorer_perempuan', 'jml_tenaga_bantuan_laki', 'jml_tenaga_bantuan_perempuan'
     ];
 
     public function desa(){

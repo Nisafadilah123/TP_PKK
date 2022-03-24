@@ -22,6 +22,8 @@ return new class extends Migration
             $table->integer('jml_kader_anggota_pkk_perempuan_data_umum');
             $table->integer('jml_kader_umum_laki_data_umum');
             $table->integer('jml_kader_umum_perempuan_data_umum');
+            $table->integer('jml_kader_khusus_laki_data_umum');
+            $table->integer('jml_kader_khusus_perempuan_data_umum');
 
             $table->timestamps();
         });
