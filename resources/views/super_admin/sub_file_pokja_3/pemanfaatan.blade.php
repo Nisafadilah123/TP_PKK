@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Pemanfaatan Pekarangan POKJA III | PKK Kab. Indramayu')
+@section('title', 'Pemanfaatan Pekarangan POKJA III | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Pemanfaatan Pekarangan POKJA III')
 @section('container')
@@ -49,7 +49,7 @@
                                             <td>3</td>
                                             <td>3</td>
                                             <td>3</td>
-                                            
+
                                             <td>
                                                 <button type="button" class="btn btn-warning">Edit</button>
                                                 <button type="button" class="btn btn-danger">Hapus</button>

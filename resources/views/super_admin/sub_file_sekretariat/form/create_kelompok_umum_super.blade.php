@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Tambah Data Jumlah Kelompok Data Umum | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Tambah Data Jumlah Kelompok Data Umum | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Tambah Data Jumlah Kelompok Data Umum')
 @section('container')
@@ -14,7 +14,7 @@
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ route('kelompok.store') }}" method="POST">
+      <form action="{{ route('kelompok_super.store') }}" method="POST">
         @csrf
         <div class="card-body">
             <div class="form-group">
@@ -50,7 +50,7 @@
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/kelompok" class="btn btn-outline-primary">
+          <a href="/kelompok_super" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

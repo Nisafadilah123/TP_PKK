@@ -1,6 +1,6 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Kelestarian Lingkungan Hidup POKJA IV | PKK Kab. Indramayu')
+@section('title', 'Kelestarian Lingkungan Hidup POKJA IV | Admin Desa PKK Kab. Indramayu')
 
 @section('bread', 'Kelestarian Lingkungan Hidup POKJA IV')
 @section('container')

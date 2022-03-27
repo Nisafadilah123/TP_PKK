@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Tambah Data Jumlah Kader POKJA III | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Tambah Data Jumlah Kader POKJA III | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Tambah Data Jumlah Kader POKJA III')
 @section('container')
@@ -14,7 +14,7 @@
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ route('kader.store') }}" method="POST">
+      <form action="{{ route('kader_super.store') }}" method="POST">
         @csrf
         <div class="card-body">
             <div class="form-group">
@@ -46,7 +46,7 @@
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/kader" class="btn btn-outline-primary">
+          <a href="/kader_super" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

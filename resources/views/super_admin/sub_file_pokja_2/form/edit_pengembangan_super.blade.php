@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Edit Data Jumlah Pengembangan Kehidupan Berkoperasi | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Edit Data Jumlah Pengembangan Kehidupan Berkoperasi | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Edit Data Jumlah Pengembangan Kehidupan Berkoperasi')
 @section('container')

@@ -1,6 +1,6 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Jumlah Kader POKJA IV | PKK Kab. Indramayu')
+@section('title', 'Jumlah Kader POKJA IV | Admin Desa PKK Kab. Indramayu')
 
 @section('bread', 'Jumlah Kader POKJA IV')
 @section('container')

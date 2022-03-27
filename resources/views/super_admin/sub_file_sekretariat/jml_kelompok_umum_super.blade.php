@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Jumlah Kelompok Data Umum | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Jumlah Kelompok Data Umum | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Jumlah Kelompok Data Umum')
 @section('container')
@@ -17,7 +17,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    <a href="{{ url('kelompok/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
+                                    <a href="{{ url('kelompok_super/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
 
                                     <thead>
                                         <tr>
@@ -48,11 +48,11 @@
                                         <td style="vertical-align: middle;">{{$c->jml_dasawisma}}</td>
 
                                         <td class="text-center">
-                                            <form action="{{ route('kelompok.destroy',$c->id) }}" method="POST">
+                                            <form action="{{ route('kelompok_super.destroy',$c->id) }}" method="POST">
 
                                             {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
 
-                                                <a class="btn btn-primary btn-sm" href="{{ url('kelompok/'.$c->id.'/edit') }}">Edit</a>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('kelompok_super/'.$c->id.'/edit') }}">Edit</a>
 
                                                 @csrf
                                                 @method('DELETE')

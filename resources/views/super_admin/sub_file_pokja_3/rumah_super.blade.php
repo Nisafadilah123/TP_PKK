@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Jumlah Rumah POKJA III | PKK Kab. Indramayu')
+@section('title', 'Jumlah Rumah POKJA III | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Jumlah Rumah POKJA III')
 @section('container')
@@ -20,7 +20,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    <a href="{{ url('rumah/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
+                                    <a href="{{ url('rumah_super/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
 
                                     <thead>
                                         <tr>
@@ -37,7 +37,7 @@
                                     <tbody>
                                         <?php $no=1;?>
 
-                                        @foreach ($rum as $c)
+                                        @foreach ($rumsup as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
                                         {{-- nama desa yang login --}}
@@ -46,11 +46,11 @@
                                         <td style="vertical-align: middle;">{{$c->jml_rumah_kurang_sehat}}</td>
 
                                         <td class="text-center">
-                                            <form action="{{ route('rumah.destroy',$c->id) }}" method="POST">
+                                            <form action="{{ route('rumah_super.destroy',$c->id) }}" method="POST">
 
                                             {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
 
-                                                <a class="btn btn-primary btn-sm" href="{{ url('rumah/'.$c->id.'/edit') }}">Edit</a>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('rumah_super/'.$c->id.'/edit') }}">Edit</a>
 
                                                 @csrf
                                                 @method('DELETE')

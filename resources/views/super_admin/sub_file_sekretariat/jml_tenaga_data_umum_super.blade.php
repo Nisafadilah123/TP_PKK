@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Jumlah Tenaga Sekretariat Data Umum | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Jumlah Tenaga Sekretariat Data Umum | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Jumlah Tenaga Sekretariat Data Umum')
 @section('container')
@@ -17,7 +17,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    <a href="{{ url('jml_tenaga_umum/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
+                                    <a href="{{ url('jml_tenaga_umum_super/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
 
                                     <thead>
                                         <tr>
@@ -48,11 +48,11 @@
                                         <td style="vertical-align: middle;">{{$c->jml_tenaga_bantuan_perempuan}}</td>
 
                                         <td class="text-center">
-                                            <form action="{{ route('jml_tenaga_umum.destroy',$c->id) }}" method="POST">
+                                            <form action="{{ route('jml_tenaga_umum_super.destroy',$c->id) }}" method="POST">
 
                                             {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
 
-                                                <a class="btn btn-primary btn-sm" href="{{ url('jml_tenaga_umum/'.$c->id.'/edit') }}">Edit</a>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('jml_tenaga_umum_super/'.$c->id.'/edit') }}">Edit</a>
 
                                                 @csrf
                                                 @method('DELETE')

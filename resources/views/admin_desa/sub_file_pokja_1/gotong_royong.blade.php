@@ -1,6 +1,6 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Gotong Royong POKJA I | PKK Kab. Indramayu')
+@section('title', 'Gotong Royong POKJA I | Admin Desa PKK Kab. Indramayu')
 
 @section('bread', 'Gotong Royong POKJA I')
 @section('container')

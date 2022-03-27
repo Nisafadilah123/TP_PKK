@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Tambah Data Jumlah Tenaga Data Umum | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Tambah Data Jumlah Tenaga Data Umum | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Tambah Data Jumlah Tenaga Data Umum')
 @section('container')
@@ -14,7 +14,7 @@
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ route('jml_tenaga_umum.store') }}" method="POST">
+      <form action="{{ route('jml_tenaga_umum_super.store') }}" method="POST">
         @csrf
         <div class="card-body">
             <div class="form-group">
@@ -50,7 +50,7 @@
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/jml_tenaga_umum" class="btn btn-outline-primary">
+          <a href="/jml_tenaga_umum_super" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Kesehatan Posyandu POKJA IV | PKK Kab. Indramayu')
+@section('title', 'Kesehatan Posyandu POKJA IV | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Kesehatan Posyandu POKJA IV')
 @section('container')
@@ -20,7 +20,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    <a href="{{ url('kesehatan/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
+                                    <a href="{{ url('kesehatan_super/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
 
                                     <thead>
                                         <tr>
@@ -38,7 +38,7 @@
                                     <tbody>
                                         <?php $no=1;?>
 
-                                        @foreach ($kes as $c)
+                                        @foreach ($kessup as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
                                         {{-- nama desa yang login --}}
@@ -50,11 +50,11 @@
                                         <td style="vertical-align: middle;">{{$c->jml_posyandu_lansia_memiliki_kartu}}</td>
 
                                         <td class="text-center">
-                                            <form action="{{ route('kesehatan.destroy',$c->id) }}" method="POST">
+                                            <form action="{{ route('kesehatan_super.destroy',$c->id) }}" method="POST">
 
                                             {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
 
-                                                <a class="btn btn-primary btn-sm" href="{{ url('kesehatan/'.$c->id.'/edit') }}">Edit</a>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('kesehatan_super/'.$c->id.'/edit') }}">Edit</a>
 
                                                 @csrf
                                                 @method('DELETE')

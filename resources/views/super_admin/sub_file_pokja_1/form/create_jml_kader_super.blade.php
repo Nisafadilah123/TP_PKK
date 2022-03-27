@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Tambah Data Jumlah Kader | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Tambah Data Jumlah Kader | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Tambah Data Jumlah Kader')
 @section('container')

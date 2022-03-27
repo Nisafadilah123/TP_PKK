@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Edit Data Jumlah Penghayatan dan Pengamalan Pancasila | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Edit Data Jumlah Penghayatan dan Pengamalan Pancasila | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Edit Data Jumlah Penghayatan dan Pengamalan Pancasila')
 @section('container')
@@ -14,7 +14,7 @@
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ url ('/rumah', $rumah->id) }}" method="POST">
+      <form action="{{ url ('/rumah_super', $rumah_super->id) }}" method="POST">
         {{-- @dump($data_desa) --}}
           @method('PUT')
           @csrf
@@ -24,7 +24,7 @@
                   <select class="form-control" id="id_desa" name="id_desa">
                       {{-- nama desa yang login --}}
                       @foreach ($desas as $d)
-                      <option value="{{ $d->id }}" {{ $d->id === $rumah->id_desa ? 'selected' : '' }}>
+                      <option value="{{ $d->id }}" {{ $d->id === $rumah_super->id_desa ? 'selected' : '' }}>
                           {{ $d->kode_desa }}-{{ $d->nama_desa }}
                       </option>
                   @endforeach
@@ -34,11 +34,11 @@
         <div class="card-body">
           <div class="form-group">
             <label>Jumlah Rumah Sehat</label>
-            <input type="number" class="form-control" name="jml_rumah_sehat" id="jml_rumah_sehat" placeholder="Masukkan Jumlah rumah PKBN" required value="{{ucfirst(old('jml_rumah_sehat', $rumah->jml_rumah_sehat))}}">
+            <input type="number" class="form-control" name="jml_rumah_sehat" id="jml_rumah_sehat" placeholder="Masukkan Jumlah rumah PKBN" required value="{{ucfirst(old('jml_rumah_sehat', $rumah_super->jml_rumah_sehat))}}">
           </div>
           <div class="form-group">
             <label>Jumlah Rumah Kurang Sehat</label>
-            <input type="number" class="form-control" name="jml_rumah_kurang_sehat" id="jml_rumah_kurang_sehat" placeholder="Masukkan Jumlah rumah PKDRT" required value="{{ucfirst(old('jml_rumah_kurang_sehat', $rumah->jml_rumah_kurang_sehat))}}">
+            <input type="number" class="form-control" name="jml_rumah_kurang_sehat" id="jml_rumah_kurang_sehat" placeholder="Masukkan Jumlah rumah PKDRT" required value="{{ucfirst(old('jml_rumah_kurang_sehat', $rumah_super->jml_rumah_kurang_sehat))}}">
           </div>
 
         </div>

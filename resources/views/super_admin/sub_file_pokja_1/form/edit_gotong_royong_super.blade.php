@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Edit Data Jumlah Gotong Royong | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Edit Data Jumlah Gotong Royong | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Edit Data Jumlah Gotong Royong')
 @section('container')

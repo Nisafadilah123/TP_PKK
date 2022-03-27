@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Tambah Data Kelestarian Lingkungan Hidup POKJA IV | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Tambah Data Kelestarian Lingkungan Hidup POKJA IV | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Tambah Data Kelestarian Lingkungan Hidup POKJA IV')
 @section('container')
@@ -14,7 +14,7 @@
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ route('kelestarian.store') }}" method="POST">
+      <form action="{{ route('kelestarian_super.store') }}" method="POST">
         @csrf
         <div class="row">
             <div class="col-sm-4">
@@ -113,7 +113,7 @@
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/kelestarian" class="btn btn-outline-primary">
+          <a href="/kelestarian_super" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

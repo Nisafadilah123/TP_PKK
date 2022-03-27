@@ -1,6 +1,6 @@
 @extends('super_admin.layout')
 
-@section('title', 'Gotong Royong POKJA I | PKK Kab. Indramayu')
+@section('title', 'Gotong Royong POKJA I | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Gotong Royong POKJA I')
 @section('container')

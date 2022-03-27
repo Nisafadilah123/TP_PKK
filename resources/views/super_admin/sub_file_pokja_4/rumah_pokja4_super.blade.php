@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Jumlah Rumah yang Memiliki POKJA IV | PKK Kab. Indramayu')
+@section('title', 'Jumlah Rumah yang Memiliki POKJA IV | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Jumlah Kader POKJA IV')
 @section('container')

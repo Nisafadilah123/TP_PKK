@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Tambah Data Jumlah Pangan POKJA III | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Tambah Data Jumlah Pangan POKJA III | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Tambah Data Jumlah pangan POKJA III')
 @section('container')
@@ -14,7 +14,7 @@
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ route('pangan.store') }}" method="POST">
+      <form action="{{ route('pangan_super.store') }}" method="POST">
         @csrf
 
         <div class="row">

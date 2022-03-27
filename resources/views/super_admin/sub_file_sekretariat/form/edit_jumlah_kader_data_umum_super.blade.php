@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Edit Data Jumlah Kader Data Umum | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Edit Data Jumlah Kader Data Umum | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Edit Data Jumlah Kader Data Umum')
 @section('container')
@@ -14,7 +14,7 @@
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ url ('/jml_kader_umum', $jml_kader_umum->id) }}" method="POST">
+      <form action="{{ url ('/jml_kader_umum_super', $jml_kader_umum_super->id) }}" method="POST">
         @method('PUT')
         @csrf
         <div class="row">
@@ -25,7 +25,7 @@
                             <select class="form-control" id="id_desa" name="id_desa">
                                 {{-- nama desa yang login --}}
                                 @foreach ($desas as $c)
-                                    <option value="{{ $c->id }}" {{ $c->id === $jml_kader_umum->id_desa ? 'selected' : '' }}>
+                                    <option value="{{ $c->id }}" {{ $c->id === $jml_kader_umum_super->id_desa ? 'selected' : '' }}>
                                         {{ $c->kode_desa }}-{{ $c->nama_desa }}
                                     </option>
                                 @endforeach
@@ -37,7 +37,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader Anggota TP PKK Laki-laki Data Umum</label>
-                        <input type="number" class="form-control" name="jml_kader_anggota_pkk_laki_data_umum" id="jml_kader_anggota_pkk_laki_data_umum" placeholder="Masukkan Jumlah Kader Anggota TP PKK Laki-laki Data Umum" required value="{{ucfirst(old('jml_kader_anggota_pkk_laki_data_umum', $jml_kader_umum->jml_kader_anggota_pkk_laki_data_umum))}}">
+                        <input type="number" class="form-control" name="jml_kader_anggota_pkk_laki_data_umum" id="jml_kader_anggota_pkk_laki_data_umum" placeholder="Masukkan Jumlah Kader Anggota TP PKK Laki-laki Data Umum" required value="{{ucfirst(old('jml_kader_anggota_pkk_laki_data_umum', $jml_kader_umum_super->jml_kader_anggota_pkk_laki_data_umum))}}">
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader Anggota TP PKK Perempuan Data Umum</label>
-                        <input type="number" class="form-control" name="jml_kader_anggota_pkk_perempuan_data_umum" id="jml_kader_anggota_pkk_perempuan_data_umum" placeholder="Masukkan Jumlah Kader Anggota TP PKK Perempuan Data Umum" required value="{{ucfirst(old('jml_kader_anggota_pkk_perempuan_data_umum', $jml_kader_umum->jml_kader_anggota_pkk_perempuan_data_umum))}}">
+                        <input type="number" class="form-control" name="jml_kader_anggota_pkk_perempuan_data_umum" id="jml_kader_anggota_pkk_perempuan_data_umum" placeholder="Masukkan Jumlah Kader Anggota TP PKK Perempuan Data Umum" required value="{{ucfirst(old('jml_kader_anggota_pkk_perempuan_data_umum', $jml_kader_umum_super->jml_kader_anggota_pkk_perempuan_data_umum))}}">
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 <div class="card-body">
                      <div class="form-group">
                         <label>Jumlah Kader Umum Laki-laki Data Umum</label>
-                        <input type="number" class="form-control" name="jml_kader_umum_laki_data_umum" id="jml_kader_umum_laki_data_umum" placeholder="Masukkan Jumlah Kader Umum Laki-laki Data Umum" required value="{{ucfirst(old('jml_kader_umum_laki_data_umum', $jml_kader_umum->jml_kader_umum_laki_data_umum))}}">
+                        <input type="number" class="form-control" name="jml_kader_umum_laki_data_umum" id="jml_kader_umum_laki_data_umum" placeholder="Masukkan Jumlah Kader Umum Laki-laki Data Umum" required value="{{ucfirst(old('jml_kader_umum_laki_data_umum', $jml_kader_umum_super->jml_kader_umum_laki_data_umum))}}">
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader Umum Perempuan Data Umum</label>
-                        <input type="number" class="form-control" name="jml_kader_umum_perempuan_data_umum" id="jml_kader_umum_perempuan_data_umum" placeholder="Masukkan Jumlah Kader Umum Perempuan Data Umum" required value="{{ucfirst(old('jml_kader_umum_perempuan_data_umum', $jml_kader_umum->jml_kader_umum_perempuan_data_umum))}}">
+                        <input type="number" class="form-control" name="jml_kader_umum_perempuan_data_umum" id="jml_kader_umum_perempuan_data_umum" placeholder="Masukkan Jumlah Kader Umum Perempuan Data Umum" required value="{{ucfirst(old('jml_kader_umum_perempuan_data_umum', $jml_kader_umum_super->jml_kader_umum_perempuan_data_umum))}}">
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader Khusus Laki-laki Data Umum</label>
-                        <input type="number" class="form-control" name="jml_kader_khusus_laki_data_umum" id="jml_kader_khusus_laki_data_umum" placeholder="Masukkan Jumlah Kader Khusus Laki-laki Data Umum" required value="{{ucfirst(old('jml_kader_khusus_laki_data_umum', $jml_kader_umum->jml_kader_khusus_laki_data_umum))}}">
+                        <input type="number" class="form-control" name="jml_kader_khusus_laki_data_umum" id="jml_kader_khusus_laki_data_umum" placeholder="Masukkan Jumlah Kader Khusus Laki-laki Data Umum" required value="{{ucfirst(old('jml_kader_khusus_laki_data_umum', $jml_kader_umum_super->jml_kader_khusus_laki_data_umum))}}">
                     </div>
                 </div>
             </div>
@@ -87,7 +87,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader Khusus Perempuan Data Umum</label>
-                        <input type="number" class="form-control" name="jml_kader_khusus_perempuan_data_umum" id="jml_kader_khusus_perempuan_data_umum" placeholder="Masukkan Jumlah Kader Khusus Perempuan Data Umum" required value="{{ucfirst(old('jml_kader_khusus_perempuan_data_umum', $jml_kader_umum->jml_kader_khusus_perempuan_data_umum))}}">
+                        <input type="number" class="form-control" name="jml_kader_khusus_perempuan_data_umum" id="jml_kader_khusus_perempuan_data_umum" placeholder="Masukkan Jumlah Kader Khusus Perempuan Data Umum" required value="{{ucfirst(old('jml_kader_khusus_perempuan_data_umum', $jml_kader_umum_super->jml_kader_khusus_perempuan_data_umum))}}">
                     </div>
 
                 </div>
@@ -98,7 +98,7 @@
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/jml_kader_umum" class="btn btn-outline-primary">
+          <a href="/jml_kader_umum_super" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

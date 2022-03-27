@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Tambah Data Jumlah Kader Data Umum | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Tambah Data Jumlah Kader Data Umum | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Tambah Data Jumlah Kader Data Umum')
 @section('container')
@@ -14,7 +14,7 @@
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ route('jml_kader_umum.store') }}" method="POST">
+      <form action="{{ route('jml_kader_umum_super.store') }}" method="POST">
         @csrf
         <div class="row">
             <div class="col-md-6">
@@ -95,7 +95,7 @@
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/jml_kader_umum" class="btn btn-outline-primary">
+          <a href="/jml_kader_umum_super" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

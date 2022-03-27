@@ -1,6 +1,6 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Penghayatan dan Pengamalan Pancasila POKJA I | PKK Kab. Indramayu')
+@section('title', 'Penghayatan dan Pengamalan Pancasila POKJA I | Admin Desa PKK Kab. Indramayu')
 
 @section('bread', 'Penghayatan dan Pengamalan Pancasila POKJA I')
 @section('container')

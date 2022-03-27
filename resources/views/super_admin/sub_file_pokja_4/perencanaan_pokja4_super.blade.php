@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Perencanaan Sehat POKJA IV | PKK Kab. Indramayu')
+@section('title', 'Perencanaan Sehat POKJA IV | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Perencanaan Sehat POKJA IV')
 @section('container')
@@ -20,7 +20,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    <a href="{{ url('perencanaan/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
+                                    <a href="{{ url('perencanaan_super/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
 
                                     <thead>
                                         <tr>
@@ -39,7 +39,7 @@
                                     <tbody>
                                         <?php $no=1;?>
 
-                                        @foreach ($per as $c)
+                                        @foreach ($persup as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
                                         {{-- nama desa yang login --}}
@@ -51,11 +51,11 @@
                                         <td style="vertical-align: middle;">{{$c->jml_kk_tabungan}}</td>
 
                                         <td class="text-center">
-                                            <form action="{{ route('perencanaan.destroy',$c->id) }}" method="POST">
+                                            <form action="{{ route('perencanaan_super.destroy',$c->id) }}" method="POST">
 
                                             {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
 
-                                                <a class="btn btn-primary btn-sm" href="{{ url('perencanaan/'.$c->id.'/edit') }}">Edit</a>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('perencanaan_super/'.$c->id.'/edit') }}">Edit</a>
 
                                                 @csrf
                                                 @method('DELETE')

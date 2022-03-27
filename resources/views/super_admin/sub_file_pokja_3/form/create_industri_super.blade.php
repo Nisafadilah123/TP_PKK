@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Tambah Data Jumlah Industri Rumah Tangga | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Tambah Data Jumlah Industri Rumah Tangga | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Tambah Data Jumlah Industri Rumah Tangga')
 @section('container')
