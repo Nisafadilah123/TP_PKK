@@ -14,7 +14,7 @@
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ route('pendidikan.store') }}" method="POST">
+      <form action="{{ route('pendidikan_super.store') }}" method="POST">
         @csrf
         <div class="row">
             <div class="col-md-4">
@@ -276,7 +276,7 @@
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/pendidikan" class="btn btn-outline-primary">
+          <a href="/pendidikan_super" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

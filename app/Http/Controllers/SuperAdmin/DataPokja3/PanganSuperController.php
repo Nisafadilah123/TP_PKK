@@ -110,13 +110,13 @@ class PanganSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pangan $pangan)
+    public function edit(Pangan $pangan_super)
     {
         //halaman edit data gotong_royong
         $desa = Pangan::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_3.form.edit_pangan_super', compact('pangan','desa','desas'));
+        return view('admin_desa.sub_file_pokja_3.form.edit_pangan_super', compact('pangan_super','desa','desas'));
 
     }
 
@@ -127,7 +127,7 @@ class PanganSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pangan $pangan)
+    public function update(Request $request, Pangan $pangan_super)
     {
         // proses mengubah untuk tambah data jml pangan
         $request->validate([
@@ -144,7 +144,7 @@ class PanganSuperController extends Controller
 
         ]);
 
-        $pangan->update($request->all());
+        $pangan_super->update($request->all());
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_pangan);
@@ -159,10 +159,10 @@ class PanganSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($pangan, Pangan $pangans)
+    public function destroy($pangan_super, Pangan $pangans)
     {
         //temukan id pangan
-        $pangans::find($pangan)->delete();
+        $pangans::find($pangan_super)->delete();
 
         return redirect('/pangan_super')->with('status', 'sukses');
 

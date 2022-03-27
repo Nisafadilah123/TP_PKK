@@ -9,7 +9,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Http\Request;
 
-class PendidikanController extends Controller
+class PendidikanSuperController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -156,13 +156,13 @@ class PendidikanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pendidikan $pendidikan)
+    public function edit(Pendidikan $pendidikan_super)
     {
                 //halaman edit data pendidikan
                 $desa = Pendidikan::with('desa')->first();
                 $desas = Data_Desa::all();
 
-                return view('admin_desa.sub_file_pokja_2.form.edit_pendidikan', compact('pendidikan','desa','desas'));
+                return view('admin_desa.sub_file_pokja_2.form.edit_pendidikan', compact('pendidikan_super','desa','desas'));
 
     }
 
@@ -173,7 +173,7 @@ class PendidikanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pendidikan $pendidikan)
+    public function update(Request $request, Pendidikan $pendidikan_super)
     {
                 // proses mengubah untuk tambah data pendidikan
                 $request->validate([
@@ -204,7 +204,7 @@ class PendidikanController extends Controller
 
                 ]);
 
-                $pendidikan->update($request->all());
+                $pendidikan_super->update($request->all());
 
                 Alert::success('Berhasil', 'Data berhasil di ubah');
                 // dd($jml_kader);
@@ -219,10 +219,10 @@ class PendidikanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($pendidikan, Pendidikan $pend)
+    public function destroy($pendidikan_super, Pendidikan $pend)
     {
         //temukan id gotong_royong
-        $pend::find($pendidikan)->delete();
+        $pend::find($pendidikan_super)->delete();
 
         return redirect('/pendidikan_super')->with('status', 'sukses');
 

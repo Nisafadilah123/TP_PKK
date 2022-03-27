@@ -93,13 +93,13 @@ class JumlahRumahSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(JumlahRumah $rumah)
+    public function edit(JumlahRumah $rumah_super)
     {
         //halaman edit data JumlahRumah
         $desa = JumlahRumah::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_3.form.edit_jml_rumah_super', compact('rumah','desa','desas'));
+        return view('admin_desa.sub_file_pokja_3.form.edit_jml_rumah_super', compact('rumah_super','desa','desas'));
 
     }
 
@@ -110,7 +110,7 @@ class JumlahRumahSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JumlahRumah $rumah)
+    public function update(Request $request, JumlahRumah $rumah_super)
     {
         // proses mengubah untuk tambah data jml kader
         $request->validate([
@@ -121,7 +121,7 @@ class JumlahRumahSuperController extends Controller
 
         ]);
 
-        $rumah->update($request->all());
+        $rumah_super->update($request->all());
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_kader);
@@ -136,10 +136,10 @@ class JumlahRumahSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($rumah, JumlahRumah $rum)
+    public function destroy($rumah_super, JumlahRumah $rum)
     {
         //temukan id rumah
-        $rum::find($rumah)->delete();
+        $rum::find($rumah_super)->delete();
 
         return redirect('/rumah_super')->with('status', 'sukses');
 

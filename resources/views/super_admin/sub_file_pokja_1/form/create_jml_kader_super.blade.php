@@ -14,7 +14,7 @@
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ route('jml_kader.store') }}" method="POST">
+      <form action="{{ route('jml_kader_super.store') }}" method="POST">
         @csrf
         <div class="card-body">
             <div class="form-group">

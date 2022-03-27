@@ -20,7 +20,7 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    <a href="{{ url('penghayatan/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
+                                    <a href="{{ url('penghayatan_super/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
 
                                     <thead>
                                         <tr>
@@ -41,7 +41,7 @@
                                     <tbody>
                                         <?php $no=1;?>
 
-                                        @foreach ($peng as $c)
+                                        @foreach ($pengsup as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
                                         {{-- nama desa yang login --}}
@@ -56,11 +56,11 @@
                                         <td style="vertical-align: middle;">{{$c->jml_lansia_anggota}}</td>
 
                                         <td class="text-center">
-                                            <form action="{{ route('penghayatan.destroy',$c->id) }}" method="POST">
+                                            <form action="{{ route('penghayatan_super.destroy',$c->id) }}" method="POST">
 
                                             {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
 
-                                                <a class="btn btn-primary btn-sm" href="{{ url('penghayatan/'.$c->id.'/edit') }}">Edit</a>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('penghayatan_super/'.$c->id.'/edit') }}">Edit</a>
 
                                                 @csrf
                                                 @method('DELETE')

@@ -108,13 +108,13 @@ class KelestarianLingkunganHidupSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kelestarian $kelestarian)
+    public function edit(Kelestarian $kelestarian_super)
     {
         //halaman edit data gotong_royong
         $desa = Kelestarian::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_4.form.edit_kelestarian_super', compact('kelestarian','desa','desas'));
+        return view('admin_desa.sub_file_pokja_4.form.edit_kelestarian_super', compact('kelestarian_super','desa','desas'));
 
     }
 
@@ -125,7 +125,7 @@ class KelestarianLingkunganHidupSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kelestarian $kelestarian)
+    public function update(Request $request, Kelestarian $kelestarian_super)
     {
         // proses mengubah untuk tambah data jml _pokja4
         $request->validate([
@@ -140,7 +140,7 @@ class KelestarianLingkunganHidupSuperController extends Controller
 
         ]);
 
-        $kelestarian->update($request->all());
+        $kelestarian_super->update($request->all());
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_kelestarian);
@@ -155,10 +155,10 @@ class KelestarianLingkunganHidupSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($kelestarian, Kelestarian $kels)
+    public function destroy($kelestarian_super, Kelestarian $kels)
     {
         //temukan id kelestarian
-        $kels::find($kelestarian)->delete();
+        $kels::find($kelestarian_super)->delete();
 
         return redirect('/kelestarian_super')->with('status', 'sukses');
 

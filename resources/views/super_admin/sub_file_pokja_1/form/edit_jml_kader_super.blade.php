@@ -14,7 +14,7 @@
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ url ('/jml_kader', $jml_kader->id) }}" method="POST">
+      <form action="{{ url ('/jml_kader_super', $jml_kader_super->id) }}" method="POST">
         {{-- @dump($data_desa) --}}
           @method('PUT')
           @csrf
@@ -24,7 +24,7 @@
                   <select class="form-control" id="id_desa" name="id_desa">
                       {{-- nama desa yang login --}}
                       @foreach ($desas as $d)
-                      <option value="{{ $d->id }}" {{ $d->id === $jml_kader->id_desa ? 'selected' : '' }}>
+                      <option value="{{ $d->id }}" {{ $d->id === $jml_kader_super->id_desa ? 'selected' : '' }}>
                           {{ $d->kode_desa }}-{{ $d->nama_desa }}
                       </option>
                   @endforeach
@@ -34,15 +34,15 @@
         <div class="card-body">
           <div class="form-group">
             <label>Jumlah Kader PKBN</label>
-            <input type="number" class="form-control" name="jml_kader_PKBN" id="jml_kader_PKBN" placeholder="Masukkan Jumlah Kader PKBN" required value="{{ucfirst(old('jml_kader_PKBN', $jml_kader->jml_kader_PKBN))}}">
+            <input type="number" class="form-control" name="jml_kader_PKBN" id="jml_kader_PKBN" placeholder="Masukkan Jumlah Kader PKBN" required value="{{ucfirst(old('jml_kader_PKBN', $jml_kader_super->jml_kader_PKBN))}}">
           </div>
           <div class="form-group">
             <label>Jumlah Kader PKDRT</label>
-            <input type="number" class="form-control" name="jml_kader_PKDRT" id="jml_kader_PKDRT" placeholder="Masukkan Jumlah Kader PKDRT" required value="{{ucfirst(old('jml_kader_PKDRT', $jml_kader->jml_kader_PKDRT))}}">
+            <input type="number" class="form-control" name="jml_kader_PKDRT" id="jml_kader_PKDRT" placeholder="Masukkan Jumlah Kader PKDRT" required value="{{ucfirst(old('jml_kader_PKDRT', $jml_kader_super->jml_kader_PKDRT))}}">
           </div>
           <div class="form-group">
             <label>Jumlah Kader Pola Asuh</label>
-            <input type="number" class="form-control" name="jml_kader_pola_asuh" id="jml_kader_pola_asuh" placeholder="Masukkan Jumlah Kader Pola Asuh" required value="{{ucfirst(old('jml_kader_pola_asuh', $jml_kader->jml_kader_pola_asuh))}}">
+            <input type="number" class="form-control" name="jml_kader_pola_asuh" id="jml_kader_pola_asuh" placeholder="Masukkan Jumlah Kader Pola Asuh" required value="{{ucfirst(old('jml_kader_pola_asuh', $jml_kader_super->jml_kader_pola_asuh))}}">
           </div>
 
         </div>
@@ -50,7 +50,7 @@
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/jml_kader" class="btn btn-outline-primary">
+          <a href="/jml_kader_super" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

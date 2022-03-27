@@ -105,13 +105,13 @@ class JumlahKaderPokja4SuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(JumlahKaderPokja4 $kader_pokja4)
+    public function edit(JumlahKaderPokja4 $kader_pokja4_super)
     {
         //halaman edit data gotong_royong
         $desa = JumlahKaderPokja4::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_4.form.edit_kader_pokja4_super', compact('kader_pokja4','desa','desas'));
+        return view('admin_desa.sub_file_pokja_4.form.edit_kader_pokja4_super', compact('kader_pokja4_super','desa','desas'));
 
     }
 
@@ -122,7 +122,7 @@ class JumlahKaderPokja4SuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JumlahKaderPokja4 $kader_pokja4)
+    public function update(Request $request, JumlahKaderPokja4 $kader_pokja4_super)
     {
         // proses mengubah untuk tambah data jml kader_pokja4
         $request->validate([
@@ -136,7 +136,7 @@ class JumlahKaderPokja4SuperController extends Controller
 
         ]);
 
-        $kader_pokja4->update($request->all());
+        $kader_pokja4_super->update($request->all());
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_kader_pokja4);
@@ -151,10 +151,10 @@ class JumlahKaderPokja4SuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($kader_pokja4, JumlahKaderPokja4 $jumkads)
+    public function destroy($kader_pokja4_super, JumlahKaderPokja4 $jumkads)
     {
         //temukan id kader_pokja4
-        $jumkads::find($kader_pokja4)->delete();
+        $jumkads::find($kader_pokja4_super)->delete();
 
         return redirect('/kader_pokja4_super')->with('status', 'sukses');
 

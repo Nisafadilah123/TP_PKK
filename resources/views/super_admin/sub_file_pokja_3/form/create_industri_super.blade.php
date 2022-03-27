@@ -14,7 +14,7 @@
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ route('industri.store') }}" method="POST">
+      <form action="{{ route('industri_super.store') }}" method="POST">
         @csrf
         <div class="card-body">
             <div class="form-group">
@@ -46,7 +46,7 @@
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/industri" class="btn btn-outline-primary">
+          <a href="/industri_super" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

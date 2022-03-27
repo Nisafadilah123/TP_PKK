@@ -105,13 +105,13 @@ class JumlahKaderDataUmumSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(JumlahKaderDataUmum $jml_kader_umum)
+    public function edit(JumlahKaderDataUmum $jml_kader_umum_super)
     {
         //halaman edit data gotong_royong
         $desa = JumlahKaderDataUmum::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_sekretariat.form.edit_jumlah_kader_data_umum_super', compact('jml_kader_umum','desa','desas'));
+        return view('admin_desa.sub_file_sekretariat.form.edit_jumlah_kader_data_umum_super', compact('jml_kader_umum_super','desa','desas'));
 
     }
 
@@ -122,7 +122,7 @@ class JumlahKaderDataUmumSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JumlahKaderDataUmum $jml_kader_umum)
+    public function update(Request $request, JumlahKaderDataUmum $jml_kader_umum_super)
     {
         // proses mengubah untuk tambah data jml jml_kader_umum
         $request->validate([
@@ -136,7 +136,7 @@ class JumlahKaderDataUmumSuperController extends Controller
 
         ]);
 
-        $jml_kader_umum->update($request->all());
+        $jml_kader_umum_super->update($request->all());
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_jml_kader_umum);
@@ -151,10 +151,10 @@ class JumlahKaderDataUmumSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($jml_kader_umum, JumlahKaderDataUmum $jumkadums)
+    public function destroy($jml_kader_umum_super, JumlahKaderDataUmum $jumkadums)
     {
         //temukan id jml_kader_umum
-        $jumkadums::find($jml_kader_umum)->delete();
+        $jumkadums::find($jml_kader_umum_super)->delete();
 
         return redirect('/jml_kader_umum_super')->with('status', 'sukses');
 

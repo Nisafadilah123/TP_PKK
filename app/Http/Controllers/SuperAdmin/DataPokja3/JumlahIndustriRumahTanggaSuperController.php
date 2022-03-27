@@ -95,13 +95,13 @@ class JumlahIndustriRumahTanggaSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(JumlahIndustri $industri)
+    public function edit(JumlahIndustri $industri_super)
     {
         //halaman edit data gotong_royong
         $desa = JumlahIndustri::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_3.form.edit_industri_super', compact('industri','desa','desas'));
+        return view('admin_desa.sub_file_pokja_3.form.edit_industri_super', compact('industri_super','desa','desas'));
 
     }
 
@@ -112,7 +112,7 @@ class JumlahIndustriRumahTanggaSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JumlahIndustri $industri)
+    public function update(Request $request, JumlahIndustri $industri_super)
     {
         // proses mengubah untuk tambah data jml kader
         $request->validate([
@@ -124,7 +124,7 @@ class JumlahIndustriRumahTanggaSuperController extends Controller
 
         ]);
 
-        $industri->update($request->all());
+        $industri_super->update($request->all());
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_kader);
@@ -139,10 +139,10 @@ class JumlahIndustriRumahTanggaSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($industri, JumlahIndustri $indu)
+    public function destroy($industri_super, JumlahIndustri $indu)
     {
         //temukan id industri
-        $indu::find($industri)->delete();
+        $indu::find($industri_super)->delete();
 
         return redirect('/industri_super')->with('status', 'sukses');
 

@@ -14,7 +14,7 @@
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ route('penghayatan.store') }}" method="POST">
+      <form action="{{ route('penghayatan_super.store') }}" method="POST">
         @csrf
         <div class="row">
             <div class="col-md-4">

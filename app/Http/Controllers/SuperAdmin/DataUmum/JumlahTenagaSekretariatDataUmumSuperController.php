@@ -99,7 +99,7 @@ class JumlahTenagaSekretariatDataUmumSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(JumlahTenagaSekretariatDataUmum $jml_tenaga_umum)
+    public function edit(JumlahTenagaSekretariatDataUmum $jml_tenaga_umum_super)
     {
         //halaman edit data gotong_royong
         $desa = JumlahTenagaSekretariatDataUmum::with('desa')->first();
@@ -116,7 +116,7 @@ class JumlahTenagaSekretariatDataUmumSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JumlahTenagaSekretariatDataUmum $jml_tenaga_umum)
+    public function update(Request $request, JumlahTenagaSekretariatDataUmum $jml_tenaga_umum_super)
     {
         // proses mengubah untuk tambah data jml jml_tenaga_umum
         $request->validate([
@@ -128,7 +128,7 @@ class JumlahTenagaSekretariatDataUmumSuperController extends Controller
 
         ]);
 
-        $jml_tenaga_umum->update($request->all());
+        $jml_tenaga_umum_super->update($request->all());
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_kader_pokja4);
@@ -143,10 +143,10 @@ class JumlahTenagaSekretariatDataUmumSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($jml_tenaga_umum, JumlahTenagaSekretariatDataUmum $jumtens)
+    public function destroy($jml_tenaga_umum_super, JumlahTenagaSekretariatDataUmum $jumtens)
     {
         //temukan id jml_tenaga_umum
-        $jumtens::find($jml_tenaga_umum)->delete();
+        $jumtens::find($jml_tenaga_umum_super)->delete();
 
         return redirect('/jml_tenaga_umum_super')->with('status', 'sukses');
 

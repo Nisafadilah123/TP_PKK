@@ -102,7 +102,7 @@ class PerencanaanSehatSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(PerencanaanSehat $perencanaan)
+    public function edit(PerencanaanSehat $perencanaan_super)
     {
         //halaman edit data gotong_royong
         $desa = PerencanaanSehat::with('desa')->first();
@@ -119,7 +119,7 @@ class PerencanaanSehatSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PerencanaanSehat $perencanaan)
+    public function update(Request $request, PerencanaanSehat $perencanaan_super)
     {
         // proses mengubah untuk tambah data jml _pokja4
         $request->validate([
@@ -132,7 +132,7 @@ class PerencanaanSehatSuperController extends Controller
 
         ]);
 
-        $perencanaan->update($request->all());
+        $perencanaan_super->update($request->all());
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_perencanaan);
@@ -147,10 +147,10 @@ class PerencanaanSehatSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($perecanaan, PerencanaanSehat $pers)
+    public function destroy($perencanaan_super, PerencanaanSehat $pers)
     {
         //temukan id PerecanaanSehat
-        $pers::find($perecanaan)->delete();
+        $pers::find($perencanaan_super)->delete();
 
         return redirect('/perencanaan_super')->with('status', 'sukses');
 

@@ -99,13 +99,13 @@ class JumlahKelompokUmumSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(JumlahKelompok $kelompok)
+    public function edit(JumlahKelompok $kelompok_super)
     {
         //halaman edit data gotong_royong
         $desa = JumlahKelompok::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_sekretariat.form.edit_kelompok_umum_super', compact('kelompok','desa','desas'));
+        return view('admin_desa.sub_file_sekretariat.form.edit_kelompok_umum_super', compact('kelompok_super','desa','desas'));
 
     }
 
@@ -116,7 +116,7 @@ class JumlahKelompokUmumSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JumlahKelompok $kelompok)
+    public function update(Request $request, JumlahKelompok $kelompok_super)
     {
         // proses mengubah untuk tambah data jml kelompok
         $request->validate([
@@ -128,7 +128,7 @@ class JumlahKelompokUmumSuperController extends Controller
 
         ]);
 
-        $kelompok->update($request->all());
+        $kelompok_super->update($request->all());
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_kelompok);
@@ -143,10 +143,10 @@ class JumlahKelompokUmumSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($kelompok, JumlahKelompok $jumkel)
+    public function destroy($kelompok_super, JumlahKelompok $jumkel)
     {
         //temukan id kelompok
-        $jumkel::find($kelompok)->delete();
+        $jumkel::find($kelompok_super)->delete();
 
         return redirect('/kelompok_super')->with('status', 'sukses');
 

@@ -92,13 +92,13 @@ class JumlahJiwaDataUmumSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(JumlahJiwaDataUmum $jml_jiwa_umum)
+    public function edit(JumlahJiwaDataUmum $jml_jiwa_umum_super)
     {
         //halaman edit data gotong_royong
         $desa = JumlahJiwaDataUmum::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_sekretariat.form.edit_jumlah_jiwa_data_umum_super', compact('jml_jiwa_umum','desa','desas'));
+        return view('admin_desa.sub_file_sekretariat.form.edit_jumlah_jiwa_data_umum_super', compact('jml_jiwa_umum_super','desa','desas'));
 
     }
 
@@ -109,7 +109,7 @@ class JumlahJiwaDataUmumSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JumlahJiwaDataUmum $jml_jiwa_umum)
+    public function update(Request $request, JumlahJiwaDataUmum $jml_jiwa_umum_super)
     {
         // proses mengubah untuk tambah data jml jml_jiwa_umum
         $request->validate([
@@ -119,7 +119,7 @@ class JumlahJiwaDataUmumSuperController extends Controller
 
         ]);
 
-        $jml_jiwa_umum->update($request->all());
+        $jml_jiwa_umum_super->update($request->all());
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_jml_jiwa_umum);
@@ -134,10 +134,10 @@ class JumlahJiwaDataUmumSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($jml_jiwa_umum, JumlahJiwaDataUmum $jumjis)
+    public function destroy($jml_jiwa_umum_super, JumlahJiwaDataUmum $jumjis)
     {
         //temukan id jml_jiwa_umum
-        $jumjis::find($jml_jiwa_umum)->delete();
+        $jumjis::find($jml_jiwa_umum_super)->delete();
 
         return redirect('/jml_jiwa_umum_super')->with('status', 'sukses');
 

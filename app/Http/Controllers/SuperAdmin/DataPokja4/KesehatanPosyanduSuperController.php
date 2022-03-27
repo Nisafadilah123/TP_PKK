@@ -102,13 +102,13 @@ class KesehatanPosyanduSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kesehatan $kesehatan)
+    public function edit(Kesehatan $kesehatan_super)
     {
         //halaman edit data gotong_royong
         $desa = Kesehatan::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_4.form.edit_kesehatan_super', compact('kesehatan','desa','desas'));
+        return view('admin_desa.sub_file_pokja_4.form.edit_kesehatan_super', compact('kesehatan_super','desa','desas'));
 
     }
 
@@ -119,7 +119,7 @@ class KesehatanPosyanduSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kesehatan $kesehatan)
+    public function update(Request $request, Kesehatan $kesehatan_super)
     {
         // proses mengubah untuk tambah data jml _pokja4
         $request->validate([
@@ -132,7 +132,7 @@ class KesehatanPosyanduSuperController extends Controller
 
         ]);
 
-        $kesehatan->update($request->all());
+        $kesehatan_super->update($request->all());
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_kesehatan);
@@ -147,10 +147,10 @@ class KesehatanPosyanduSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($kesehatan, Kesehatan $kes)
+    public function destroy($kesehatan_super, Kesehatan $kes)
     {
         //temukan id kesehatan
-        $kes::find($kesehatan)->delete();
+        $kes::find($kesehatan_super)->delete();
 
         return redirect('/kesehatan_super')->with('status', 'sukses');
 

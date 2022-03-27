@@ -14,7 +14,7 @@
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ url('pendidikan', $pendidikan->id) }}" method="POST">
+      <form action="{{ url('pendidikan_super', $pendidikan_super->id) }}" method="POST">
         @method('PUT')
 
         @csrf
@@ -27,7 +27,7 @@
                             <select class="form-control" id="id_desa" name="id_desa">
                                     {{-- nama desa yang login --}}
                                     @foreach ($desas as $d)
-                                    <option value="{{ $d->id }}" {{ $d->id === $pendidikan->id_desa ? 'selected' : '' }}>
+                                    <option value="{{ $d->id }}" {{ $d->id === $pendidikan_super->id_desa ? 'selected' : '' }}>
                                         {{ $d->kode_desa }}-{{ $d->nama_desa }}
                                     </option>
                                 @endforeach
@@ -40,7 +40,7 @@
           <div class="card-body">
             <div class="form-group">
               <label>Jumlah warga yang masih 3 buta</label>
-              <input type="number" class="form-control" name="jml_warga_buta" id="jml_warga_buta" placeholder="Masukkan Jumlah warga yang masih 3 buta" required  value="{{ucfirst(old('jml_warga_buta', $pendidikan->jml_warga_buta))}}">
+              <input type="number" class="form-control" name="jml_warga_buta" id="jml_warga_buta" placeholder="Masukkan Jumlah warga yang masih 3 buta" required  value="{{ucfirst(old('jml_warga_buta', $pendidikan_super->jml_warga_buta))}}">
             </div>
           </div>
         </div>
@@ -49,7 +49,7 @@
 
                 <div class="form-group">
                     <label>Jumlah Paket A Kelompok Belajar</label>
-                    <input type="number" class="form-control" name="jml_pktA_kel_belajar" id="jml_pktA_kel_belajar" placeholder="Masukkan Jumlah Paket A Kelompok Belajar" required value="{{ucfirst(old('jml_pktA_kel_belajar', $pendidikan->jml_pktA_kel_belajar))}}">
+                    <input type="number" class="form-control" name="jml_pktA_kel_belajar" id="jml_pktA_kel_belajar" placeholder="Masukkan Jumlah Paket A Kelompok Belajar" required value="{{ucfirst(old('jml_pktA_kel_belajar', $pendidikan_super->jml_pktA_kel_belajar))}}">
                 </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                     <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Paket A Warga Belajar</label>
-                        <input type="number" class="form-control" name="jml_pktA_warga_belajar" id="jml_pktA_warga_belajar" placeholder="Masukkan Jumlah Paket A Warga Belajar" required value="{{ucfirst(old('jml_pktA_warga_belajar', $pendidikan->jml_pktA_warga_belajar))}}">
+                        <input type="number" class="form-control" name="jml_pktA_warga_belajar" id="jml_pktA_warga_belajar" placeholder="Masukkan Jumlah Paket A Warga Belajar" required value="{{ucfirst(old('jml_pktA_warga_belajar', $pendidikan_super->jml_pktA_warga_belajar))}}">
                     </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
 
                     <div class="form-group">
                         <label>Jumlah Paket B Kelompok Belajar</label>
-                        <input type="number" class="form-control" name="jml_pktB_kel_belajar" id="jml_pktB_kel_belajar" placeholder="Masukkan Jumlah Paket B Kelompok Belajar" required value="{{ucfirst(old('jml_pktB_kel_belajar', $pendidikan->jml_pktB_kel_belajar))}}">
+                        <input type="number" class="form-control" name="jml_pktB_kel_belajar" id="jml_pktB_kel_belajar" placeholder="Masukkan Jumlah Paket B Kelompok Belajar" required value="{{ucfirst(old('jml_pktB_kel_belajar', $pendidikan_super->jml_pktB_kel_belajar))}}">
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
 
                 <div class="form-group">
                     <label>Jumlah Paket B Warga Belajar</label>
-                    <input type="number" class="form-control" name="jml_pktB_warga_belajar" id="jml_pktB_warga_belajar" placeholder="Masukkan Jumlah Paket B Warga Belajar" required value="{{ucfirst(old('jml_pktB_warga_belajar', $pendidikan->jml_pktB_warga_belajar))}}">
+                    <input type="number" class="form-control" name="jml_pktB_warga_belajar" id="jml_pktB_warga_belajar" placeholder="Masukkan Jumlah Paket B Warga Belajar" required value="{{ucfirst(old('jml_pktB_warga_belajar', $pendidikan_super->jml_pktB_warga_belajar))}}">
                 </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
 
                 <div class="form-group">
                     <label>Jumlah Paket C Kelompok Belajar</label>
-                    <input type="number" class="form-control" name="jml_pktC_kel_belajar" id="jml_pktC_kel_belajar" placeholder="Masukkan Jumlah Paket C Kelompok Belajar" required value="{{ucfirst(old('jml_pktC_kel_belajar', $pendidikan->jml_pktC_kel_belajar))}}">
+                    <input type="number" class="form-control" name="jml_pktC_kel_belajar" id="jml_pktC_kel_belajar" placeholder="Masukkan Jumlah Paket C Kelompok Belajar" required value="{{ucfirst(old('jml_pktC_kel_belajar', $pendidikan_super->jml_pktC_kel_belajar))}}">
                 </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                     <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Paket C Warga Belajar</label>
-                        <input type="number" class="form-control" name="jml_pktC_warga_belajar" id="jml_pktC_warga_belajar" placeholder="Masukkan Jumlah Paket C Warga Belajar" required value="{{ucfirst(old('jml_pktC_warga_belajar', $pendidikan->jml_pktC_warga_belajar))}}">
+                        <input type="number" class="form-control" name="jml_pktC_warga_belajar" id="jml_pktC_warga_belajar" placeholder="Masukkan Jumlah Paket C Warga Belajar" required value="{{ucfirst(old('jml_pktC_warga_belajar', $pendidikan_super->jml_pktC_warga_belajar))}}">
                     </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                     <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah KF Kelompok Belajar</label>
-                        <input type="number" class="form-control" name="jml_KF_kel_belajar" id="jml_KF_kel_belajar" placeholder="Masukkan Jumlah KF Kelompok Belajar" required value="{{ucfirst(old('jml_KF_kel_belajar', $pendidikan->jml_KF_kel_belajar))}}">
+                        <input type="number" class="form-control" name="jml_KF_kel_belajar" id="jml_KF_kel_belajar" placeholder="Masukkan Jumlah KF Kelompok Belajar" required value="{{ucfirst(old('jml_KF_kel_belajar', $pendidikan_super->jml_KF_kel_belajar))}}">
                     </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                 <div class="card-body">
                 <div class="form-group">
                     <label>Jumlah KF Warga Belajar</label>
-                    <input type="number" class="form-control" name="jml_KF_warga_belajar" id="jml_KF_warga_belajar" placeholder="Masukkan Jumlah KF Warga Belajar" required value="{{ucfirst(old('jml_KF_warga_belajar', $pendidikan->jml_KF_warga_belajar))}}">
+                    <input type="number" class="form-control" name="jml_KF_warga_belajar" id="jml_KF_warga_belajar" placeholder="Masukkan Jumlah KF Warga Belajar" required value="{{ucfirst(old('jml_KF_warga_belajar', $pendidikan_super->jml_KF_warga_belajar))}}">
                 </div>
                 </div>
             </div>
@@ -133,7 +133,7 @@
 
                     <div class="form-group">
                         <label>Jumlah PAUD</label>
-                        <input type="number" class="form-control" name="jml_paud" id="jml_paud" placeholder="Masukkan Jumlah PAUD" required value="{{ucfirst(old('jml_paud', $pendidikan->jml_paud))}}">
+                        <input type="number" class="form-control" name="jml_paud" id="jml_paud" placeholder="Masukkan Jumlah PAUD" required value="{{ucfirst(old('jml_paud', $pendidikan_super->jml_paud))}}">
                     </div>
                 </div>
             </div>
@@ -143,7 +143,7 @@
 
                 <div class="form-group">
                     <label>Jumlah Taman Bacaan/Perpustakaan</label>
-                    <input type="number" class="form-control" name="jml_taman_bacaan" id="jml_taman_bacaan" placeholder="Masukkan Jumlah Taman Bacaan/Perpustakaan" required value="{{ucfirst(old('jml_taman_bacaan', $pendidikan->jml_taman_bacaan))}}">
+                    <input type="number" class="form-control" name="jml_taman_bacaan" id="jml_taman_bacaan" placeholder="Masukkan Jumlah Taman Bacaan/Perpustakaan" required value="{{ucfirst(old('jml_taman_bacaan', $pendidikan_super->jml_taman_bacaan))}}">
                 </div>
                 </div>
             </div>
@@ -155,7 +155,7 @@
 
                 <div class="form-group">
                     <label>Jumlah BKB Kelompok Belajar</label>
-                    <input type="number" class="form-control" name="jml_BKB_kel_belajar" id="jml_BKB_kel_belajar" placeholder="Masukkan Jumlah BKB Kelompok Belajar" required value="{{ucfirst(old('jml_BKB_kel_belajar', $pendidikan->jml_BKB_kel_belajar))}}">
+                    <input type="number" class="form-control" name="jml_BKB_kel_belajar" id="jml_BKB_kel_belajar" placeholder="Masukkan Jumlah BKB Kelompok Belajar" required value="{{ucfirst(old('jml_BKB_kel_belajar', $pendidikan_super->jml_BKB_kel_belajar))}}">
                 </div>
                 </div>
             </div>
@@ -163,7 +163,7 @@
                     <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah BKB Ibu Peserta</label>
-                        <input type="number" class="form-control" name="jml_BKB_ibu_peserta" id="jml_BKB_ibu_peserta" placeholder="Masukkan Jumlah BKB Kelompok Belajar" required value="{{ucfirst(old('jml_BKB_ibu_peserta', $pendidikan->jml_BKB_ibu_peserta))}}">
+                        <input type="number" class="form-control" name="jml_BKB_ibu_peserta" id="jml_BKB_ibu_peserta" placeholder="Masukkan Jumlah BKB Kelompok Belajar" required value="{{ucfirst(old('jml_BKB_ibu_peserta', $pendidikan_super->jml_BKB_ibu_peserta))}}">
                     </div>
                     </div>
                 </div>
@@ -172,7 +172,7 @@
 
                         <div class="form-group">
                             <label>Jumlah BKB APE (SET)</label>
-                            <input type="number" class="form-control" name="jml_BKB_ape" id="jml_BKB_ape" placeholder="Masukkan Jumlah BKB APE (SET)" required value="{{ucfirst(old('jml_BKB_ape', $pendidikan->jml_BKB_ape))}}">
+                            <input type="number" class="form-control" name="jml_BKB_ape" id="jml_BKB_ape" placeholder="Masukkan Jumlah BKB APE (SET)" required value="{{ucfirst(old('jml_BKB_ape', $pendidikan_super->jml_BKB_ape))}}">
                         </div>
                     </div>
                 </div>
@@ -186,7 +186,7 @@
 
                 <div class="form-group">
                     <label>Jumlah BKB Kel. Simulasi</label>
-                    <input type="number" class="form-control" name="jml_BKB_kel_simulasi" id="jml_BKB_kel_simulasi" placeholder="Masukkan Jumlah Gotong Arisan" required value="{{ucfirst(old('jml_BKB_kel_simulasi', $pendidikan->jml_BKB_kel_simulasi))}}">
+                    <input type="number" class="form-control" name="jml_BKB_kel_simulasi" id="jml_BKB_kel_simulasi" placeholder="Masukkan Jumlah Gotong Arisan" required value="{{ucfirst(old('jml_BKB_kel_simulasi', $pendidikan_super->jml_BKB_kel_simulasi))}}">
                 </div>
                 </div>
             </div>
@@ -196,7 +196,7 @@
 
                 <div class="form-group">
                     <label>Jumlah Kader Khusus KF</label>
-                    <input type="number" class="form-control" name="jml_kader_khusus_KF" id="jml_kader_khusus_KF" placeholder="Masukkan Jumlah Kader Khusus KF" required value="{{ucfirst(old('jml_kader_khusus_KF', $pendidikan->jml_kader_khusus_KF))}}">
+                    <input type="number" class="form-control" name="jml_kader_khusus_KF" id="jml_kader_khusus_KF" placeholder="Masukkan Jumlah Kader Khusus KF" required value="{{ucfirst(old('jml_kader_khusus_KF', $pendidikan_super->jml_kader_khusus_KF))}}">
                 </div>
                 </div>
             </div>

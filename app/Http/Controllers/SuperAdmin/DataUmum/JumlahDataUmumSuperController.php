@@ -20,9 +20,9 @@ class JumlahDataUmumSuperController extends Controller
         //halaman jumlah kelompok data umum
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $jumum = JumlahDataUmum::with('desa')->get();
+        $jumumsup = JumlahDataUmum::with('desa')->get();
 
-        return view('admin_desa.sub_file_sekretariat.jml_data_umum_super', compact('jumum'));
+        return view('admin_desa.sub_file_sekretariat.jml_data_umum_super', compact('jumumsup'));
     }
 
     /**
@@ -90,13 +90,13 @@ class JumlahDataUmumSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(JumlahDataUmum $jml_data_umum)
+    public function edit(JumlahDataUmum $jml_data_umum_super)
     {
         //halaman edit data gotong_royong
         $desa = JumlahDataUmum::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_sekretariat.form.edit_jumlah_data_umum_super', compact('jml_data_umum','desa','desas'));
+        return view('admin_desa.sub_file_sekretariat.form.edit_jumlah_data_umum_super', compact('jml_data_umum_super','desa','desas'));
 
     }
 
@@ -107,7 +107,7 @@ class JumlahDataUmumSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JumlahDataUmum $jml_data_umum)
+    public function update(Request $request, JumlahDataUmum $jml_data_umum_super)
     {
         // proses mengubah untuk tambah data jml jml_data_umum
         $request->validate([
@@ -116,7 +116,7 @@ class JumlahDataUmumSuperController extends Controller
             'jml_kk_data_umum' => 'required',
         ]);
 
-        $jml_data_umum->update($request->all());
+        $jml_data_umum_super->update($request->all());
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_jml_data_umum);
@@ -131,10 +131,10 @@ class JumlahDataUmumSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($jml_data_umum, JumlahDataUmum $jumums)
+    public function destroy($jml_data_umum_super, JumlahDataUmum $jumums)
     {
         //temukan id jml_data_umum
-        $jumums::find($jml_data_umum)->delete();
+        $jumums::find($jml_data_umum_super)->delete();
 
         return redirect('/jml_data_umum_super')->with('status', 'sukses');
 

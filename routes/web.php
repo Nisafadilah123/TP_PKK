@@ -28,6 +28,23 @@ use App\Http\Controllers\super_admin\dataKecamtanController;
 use App\Http\Controllers\SuperAdmin\DataDesaController;
 use App\Http\Controllers\SuperAdmin\DataKecamatanController;
 use App\Http\Controllers\SuperAdmin\DataPokja1\GotongRoyongSuperController;
+use App\Http\Controllers\SuperAdmin\DataPokja1\JumlahKaderPokja1SuperController;
+use App\Http\Controllers\SuperAdmin\DataPokja1\PenghayatanDanPengamalanSuperController;
+use App\Http\Controllers\SuperAdmin\DataPokja2\KehidupanBerkoperasiSuperController;
+use App\Http\Controllers\SuperAdmin\DataPokja2\PendidikanSuperController;
+use App\Http\Controllers\SuperAdmin\DataPokja3\JumlahIndustriRumahTanggaSuperController;
+use App\Http\Controllers\SuperAdmin\DataPokja3\JumlahKaderPokja3SuperController;
+use App\Http\Controllers\SuperAdmin\DataPokja3\JumlahRumahSuperController;
+use App\Http\Controllers\SuperAdmin\DataPokja3\PanganSuperController;
+use App\Http\Controllers\SuperAdmin\DataPokja4\JumlahKaderPokja4SuperController;
+use App\Http\Controllers\SuperAdmin\DataPokja4\KelestarianLingkunganHidupSuperController;
+use App\Http\Controllers\SuperAdmin\DataPokja4\KesehatanPosyanduSuperController;
+use App\Http\Controllers\SuperAdmin\DataPokja4\PerencanaanSehatSuperController;
+use App\Http\Controllers\SuperAdmin\DataUmum\JumlahDataUmumSuperController;
+use App\Http\Controllers\SuperAdmin\DataUmum\JumlahJiwaDataUmumSuperController;
+use App\Http\Controllers\SuperAdmin\DataUmum\JumlahKaderDataUmumSuperController;
+use App\Http\Controllers\SuperAdmin\DataUmum\JumlahKelompokUmumSuperController;
+use App\Http\Controllers\SuperAdmin\DataUmum\JumlahTenagaSekretariatDataUmumSuperController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Middleware\Authenticate;
 use App\Models\BeritaKab;
@@ -164,38 +181,38 @@ Route::middleware(['auth', 'user_type:superadmin'])->group(function () {
     Route::get('/pangan_super', [SuperAdminController::class, 'pangan_super']);
 
     // form data_pokja1
-    Route::resource('/jml_kader', JumlahKaderPokja1Controller::class);
-    Route::resource('/penghayatan', PenghayatanDanPengamalanController::class);
+    Route::resource('/jml_kader_super', JumlahKaderPokja1SuperController::class);
+    Route::resource('/penghayatan_super', PenghayatanDanPengamalanSuperController::class);
     Route::resource('/gotong_royong_super', GotongRoyongSuperController::class);
 
     // form data_pokja2
-    Route::resource('/pendidikan', PendidikanController::class);
+    Route::resource('/pendidikan_super', PendidikanSuperController::class);
     // Route::resource('/bkb', bkb_pokja2Controller::class);
     // Route::resource('/kader_khusus', kader_khusus_pokja2Controller::class);
     // Route::resource('/kader_umum', kader_umum_pokja2Controller::class);
-    Route::resource('/koperasi', KehidupanBerkoperasiController::class);
+    Route::resource('/koperasi_super', KehidupanBerkoperasiSuperController::class);
     // Route::resource('/kelompok_belajar', kelompok_belajarController::class);
 
     // form data_pokja3
-    Route::resource('/kader', JumlahKaderPokja3Controller::class);
+    Route::resource('/kader_super', JumlahKaderPokja3SuperController::class);
     // Route::resource('/makanan', makanan_pokja3Controller::class);
     // Route::resource('/pemanfaatan', pemanfaatan_pokja3Controller::class);
-    Route::resource('/industri', JumlahIndustriRumahTanggaController::class);
-    Route::resource('/rumah', JumlahRumahController::class);
-    Route::resource('/pangan', PanganController::class);
+    Route::resource('/industri_super', JumlahIndustriRumahTanggaSuperController::class);
+    Route::resource('/rumah_super', JumlahRumahSuperController::class);
+    Route::resource('/pangan_super', PanganSuperController::class);
 
     // form data_pokja4
-    Route::resource('/kader_pokja4', JumlahKaderPokja4Controller::class);
-    Route::resource('/kelestarian', KelestarianLingkunganHidupController::class);
-    Route::resource('/kesehatan', KesehatanPosyanduController::class);
-    Route::resource('/perencanaan', PerencanaanSehatController::class);
+    Route::resource('/kader_pokja4_super', JumlahKaderPokja4SuperController::class);
+    Route::resource('/kelestarian_super', KelestarianLingkunganHidupSuperController::class);
+    Route::resource('/kesehatan_super', KesehatanPosyanduSuperController::class);
+    Route::resource('/perencanaan_super', PerencanaanSehatSuperController::class);
 
     // form data umum
-    Route::resource('/kelompok', JumlahKelompokUmumController::class);
-    Route::resource('/jml_data_umum', JumlahDataUmumController::class);
-    Route::resource('/jml_jiwa_umum', JumlahJiwaDataUmumController::class);
-    Route::resource('/jml_tenaga_umum', JumlahTenagaSekretariatDataUmumController::class);
-    Route::resource('/jml_kader_umum', JumlahKaderDataUmumController::class);
+    Route::resource('/kelompok_super', JumlahKelompokUmumSuperController::class);
+    Route::resource('/jml_data_umum_super', JumlahDataUmumSuperController::class);
+    Route::resource('/jml_jiwa_umum_super', JumlahJiwaDataUmumSuperController::class);
+    Route::resource('/jml_tenaga_umum_super', JumlahTenagaSekretariatDataUmumSuperController::class);
+    Route::resource('/jml_kader_umum_super', JumlahKaderDataUmumSuperController::class);
 });
 
 

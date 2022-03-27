@@ -25,7 +25,7 @@ class JumlahKaderPokja1SuperController extends Controller
             ->get();
 
         // dd($kader);
-        return view('admin_desa.sub_file_pokja_1.jml_kader_super', compact('kadersup'));
+        return view('super_admin.sub_file_pokja_1.jml_kader_super', compact('kadersup'));
     }
 
     /**
@@ -39,7 +39,7 @@ class JumlahKaderPokja1SuperController extends Controller
         $desas = DB::table('data_desa')
             ->get();
 
-        return view('admin_desa.sub_file_pokja_1.form.create_jml_kader_super', compact('desas'));
+        return view('super_admin.sub_file_pokja_1.form.create_jml_kader_super', compact('desas'));
 
     }
 
@@ -100,14 +100,13 @@ class JumlahKaderPokja1SuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(JmlKader $jml_kader)
+    public function edit(JmlKader $jml_kader_super)
     {
         //halaman edit data jml_kader
         $desa = JmlKader::with('desa')->first();
-        $desas = Data_Desa::where('id', auth()->user()->id_desa)
-            ->get();
+        $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_1.form.edit_jml_kader_super', compact('jml_kader','desa','desas'));
+        return view('super_admin.sub_file_pokja_1.form.edit_jml_kader_super', compact('jml_kader_super','desa','desas'));
 
     }
 
@@ -118,7 +117,7 @@ class JumlahKaderPokja1SuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JmlKader $jml_kader)
+    public function update(Request $request, JmlKader $jml_kader_super)
     {
         // proses mengubah untuk tambah data jml kader
         $request->validate([
@@ -130,7 +129,7 @@ class JumlahKaderPokja1SuperController extends Controller
 
         ]);
 
-        $jml_kader->update($request->all());
+        $jml_kader_super->update($request->all());
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_kader);
@@ -145,10 +144,10 @@ class JumlahKaderPokja1SuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($jml_kader, JmlKader $kaders)
+    public function destroy($jml_kader_super, JmlKader $kaders)
     {
         //temukan id jml_kader
-        $kaders::find($jml_kader)->delete();
+        $kaders::find($jml_kader_super)->delete();
 
         return redirect('/jml_kader_super')->with('status', 'sukses');
 

@@ -35,7 +35,7 @@ class PenghayatanDanPengamalanSuperController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_1.form.create_penghayatan_super', compact('desas'));
+        return view('super_admin.sub_file_pokja_1.form.create_penghayatan_super', compact('desas'));
 
     }
 
@@ -111,13 +111,13 @@ class PenghayatanDanPengamalanSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Penghayatan $penghayatan)
+    public function edit(Penghayatan $penghayatan_super)
     {
         //halaman edit data jml_kader
         $desa = Penghayatan::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_1.form.edit_penghayatan_super', compact('penghayatan','desa','desas'));
+        return view('super_admin.sub_file_pokja_1.form.edit_penghayatan_super', compact('penghayatan_super','desa','desas'));
 
     }
 
@@ -128,7 +128,7 @@ class PenghayatanDanPengamalanSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Penghayatan $penghayatan)
+    public function update(Request $request, Penghayatan $penghayatan_super)
     {
         // proses penyimpanan untuk tambah data penghayatan
         $request->validate([
@@ -143,7 +143,7 @@ class PenghayatanDanPengamalanSuperController extends Controller
         'jml_lansia_anggota' => 'required',
        ]);
 
-       $penghayatan->update($request->all());
+       $penghayatan_super->update($request->all());
 
        Alert::success('Berhasil', 'Data berhasil di ubah');
     //    dd($penghayatan);
@@ -158,10 +158,10 @@ class PenghayatanDanPengamalanSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($penghayatan, Penghayatan $peng)
+    public function destroy($penghayatan_super, Penghayatan $peng)
     {
         //temukan id penghayatan
-        $peng::find($penghayatan)->delete();
+        $peng::find($penghayatan_super)->delete();
 
         return redirect('/penghayatan_super')->with('status', 'sukses');
 

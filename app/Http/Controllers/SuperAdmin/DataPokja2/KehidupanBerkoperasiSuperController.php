@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class KehidupanBerkoperasiController extends Controller
+class KehidupanBerkoperasiSuperController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -116,13 +116,13 @@ class KehidupanBerkoperasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Koperasi $koperasi)
+    public function edit(Koperasi $koperasi_super)
     {
         //halaman edit data Koperasi
         $desa = Koperasi::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_2.form.edit_pengembangan_super', compact('koperasi','desa','desas'));
+        return view('admin_desa.sub_file_pokja_2.form.edit_pengembangan_super', compact('koperasi_super','desa','desas'));
 
     }
 
@@ -133,7 +133,7 @@ class KehidupanBerkoperasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Koperasi $koperasi)
+    public function update(Request $request, Koperasi $koperasi_super)
     {
                 // proses mengubah untuk tambah data pendidikan
                 $request->validate([
@@ -150,7 +150,7 @@ class KehidupanBerkoperasiController extends Controller
                     'jml_koperasi_peserta' => 'required',
                 ]);
 
-                $koperasi->update($request->all());
+                $koperasi_super->update($request->all());
 
                 Alert::success('Berhasil', 'Data berhasil di ubah');
                 // dd($jml_kader);
@@ -165,10 +165,10 @@ class KehidupanBerkoperasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($koperasi, Koperasi $kop)
+    public function destroy($koperasi_super, Koperasi $kop)
     {
         //temukan id gotong_royong
-        $kop::find($koperasi)->delete();
+        $kop::find($koperasi_super)->delete();
 
         return redirect('/koperasi_super')->with('status', 'sukses');
 
