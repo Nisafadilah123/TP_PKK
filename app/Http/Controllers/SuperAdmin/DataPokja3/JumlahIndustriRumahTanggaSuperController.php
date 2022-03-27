@@ -53,12 +53,14 @@ class JumlahIndustriRumahTanggaSuperController extends Controller
             'jml_industri_pangan' => 'required',
             'jml_industri_sandang' => 'required',
             'jml_industri_jasa' => 'required',
+            'periode' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
             'jml_industri_pangan.required' => 'Lengkapi Jumlah Industri Pangan',
             'jml_industri_sandang.required' => 'Lengkapi Jumlah Industri Sandang',
             'jml_industri_jasa.required' => 'Lengkapi Jumlah Industri Jasa',
+            'periode.required' => 'Lengkapi Periode',
 
         ]);
 
@@ -68,6 +70,7 @@ class JumlahIndustriRumahTanggaSuperController extends Controller
         $inds->jml_industri_pangan = $request->jml_industri_pangan;
         $inds->jml_industri_sandang = $request->jml_industri_sandang;
         $inds->jml_industri_jasa = $request->jml_industri_jasa;
+        $inds->periode = $request->periode;
 
         $inds->save();
 
@@ -120,6 +123,7 @@ class JumlahIndustriRumahTanggaSuperController extends Controller
             'jml_industri_pangan' => 'required',
             'jml_industri_sandang' => 'required',
             'jml_industri_jasa' => 'required',
+            'periode' => 'required',
 
 
         ]);

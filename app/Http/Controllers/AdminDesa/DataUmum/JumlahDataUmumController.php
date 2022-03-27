@@ -52,10 +52,14 @@ class JumlahDataUmumController extends Controller
             'id_desa' => 'required',
             'jml_krt_data_umum' => 'required',
             'jml_kk_data_umum' => 'required',
+            'periode' => 'required',
+
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
             'jml_krt_data_umum.required' => 'Lengkapi Jumlah KRT Data Umum',
             'jml_kk_data_umum.required' => 'Lengkapi Jumlah KK Data Umum',
+            'periode.required' => 'Lengkapi Jumlah KK Data Umum',
+
         ]);
 
         // cara 1
@@ -63,6 +67,7 @@ class JumlahDataUmumController extends Controller
         $jumums->id_desa = $request->id_desa;
         $jumums->jml_krt_data_umum = $request->jml_krt_data_umum;
         $jumums->jml_kk_data_umum = $request->jml_kk_data_umum;
+        $jumums->periode = $request->periode;
 
         $jumums->save();
 
@@ -114,6 +119,8 @@ class JumlahDataUmumController extends Controller
             'id_desa' => 'required',
             'jml_krt_data_umum' => 'required',
             'jml_kk_data_umum' => 'required',
+            'periode' => 'required',
+
         ]);
 
         $jml_data_umum->update($request->all());

@@ -12,7 +12,7 @@ class JumlahDataUmum extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_desa', 'jml_krt_data_umum', 'jml_kk_data_umum'
+       'id_desa', 'jml_krt_data_umum', 'jml_kk_data_umum', 'periode'
     ];
 
     public function desa(){

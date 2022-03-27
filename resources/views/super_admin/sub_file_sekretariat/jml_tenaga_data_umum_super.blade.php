@@ -19,7 +19,7 @@
                                 <table class="table table-striped table-bordered data" id="add-row">
                                     <a href="{{ url('jml_tenaga_umum_super/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
 
-                                    <thead>
+                                    <thead> 
                                         <tr>
                                             <th>No.</th>
                                             <th>Nama Desa</th>

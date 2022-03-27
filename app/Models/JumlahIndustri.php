@@ -12,7 +12,7 @@ class JumlahIndustri extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_desa', 'jml_industri_pangan', 'jml_industri_sandang', 'jml_industri_jasa'
+       'id_desa', 'jml_industri_pangan', 'jml_industri_sandang', 'jml_industri_jasa', 'periode'
     ];
 
     public function desa(){

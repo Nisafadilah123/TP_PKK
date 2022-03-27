@@ -56,6 +56,7 @@ class PerencanaanSehatSuperController extends Controller
             'jml_anggota_akseptor_laki' => 'required',
             'jml_anggota_akseptor_perempuan' => 'required',
             'jml_kk_tabungan' => 'required',
+            'periode' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
@@ -64,6 +65,7 @@ class PerencanaanSehatSuperController extends Controller
             'jml_anggota_akseptor_laki.required' => 'Lengkapi Jumlah Anggota Akseptor Laki-laki',
             'jml_anggota_akseptor_perempuan.required' => 'Lengkapi Jumlah Anggota Akseptor Perempuan',
             'jml_kk_tabungan.required' => 'Lengkapi Jumlah KK Yang Memiliki Tabungan',
+            'periode.required' => 'Lengkapi Periode',
 
         ]);
 
@@ -75,6 +77,7 @@ class PerencanaanSehatSuperController extends Controller
         $pers->jml_anggota_akseptor_laki = $request->jml_anggota_akseptor_laki;
         $pers->jml_anggota_akseptor_perempuan = $request->jml_anggota_akseptor_perempuan;
         $pers->jml_kk_tabungan = $request->jml_kk_tabungan;
+        $pers->periode = $request->periode;
 
         $pers->save();
 
@@ -129,6 +132,7 @@ class PerencanaanSehatSuperController extends Controller
             'jml_anggota_akseptor_laki' => 'required',
             'jml_anggota_akseptor_perempuan' => 'required',
             'jml_kk_tabungan' => 'required',
+            'periode' => 'required',
 
         ]);
 

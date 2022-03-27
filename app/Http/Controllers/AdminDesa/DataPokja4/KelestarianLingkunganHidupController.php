@@ -58,6 +58,7 @@ class KelestarianLingkunganHidupController extends Controller
             'jml_krt_pdam' => 'required',
             'jml_krt_sumur' => 'required',
             'jml_krt_lain' => 'required',
+            'periode' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
@@ -68,6 +69,7 @@ class KelestarianLingkunganHidupController extends Controller
             'jml_krt_pdam.required' => 'Lengkapi Jumlah KRT Yang Menggunakan Air PDAM',
             'jml_krt_sumur.required' => 'Lengkapi Jumlah KRT Yang Menggunakan Air Sumur',
             'jml_krt_lain.required' => 'Lengkapi Jumlah KRT Yang Menggunakan Air Lain-lain',
+            'periode.required' => 'Lengkapi Periode',
 
         ]);
 
@@ -81,6 +83,7 @@ class KelestarianLingkunganHidupController extends Controller
         $kels->jml_krt_pdam = $request->jml_krt_pdam;
         $kels->jml_krt_sumur = $request->jml_krt_sumur;
         $kels->jml_krt_lain = $request->jml_krt_lain;
+        $kels->periode = $request->periode;
 
         $kels->save();
 
@@ -137,6 +140,7 @@ class KelestarianLingkunganHidupController extends Controller
             'jml_krt_pdam' => 'required',
             'jml_krt_sumur' => 'required',
             'jml_krt_lain' => 'required',
+            'periode' => 'required',
 
         ]);
 

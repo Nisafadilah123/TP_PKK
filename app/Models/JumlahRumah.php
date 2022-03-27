@@ -12,7 +12,7 @@ class JumlahRumah extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_desa', 'jml_rumah_sehat', 'jml_rumah_kurang_sehat'
+       'id_desa', 'jml_rumah_sehat', 'jml_rumah_kurang_sehat', 'periode'
     ];
 
     public function desa(){

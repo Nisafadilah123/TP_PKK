@@ -12,7 +12,7 @@ class JmlKader extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_desa', 'jml_kader_PKBN', 'jml_kader_PKDRT', 'jml_kader_pola_asuh'
+       'id_desa', 'jml_kader_PKBN', 'jml_kader_PKDRT', 'jml_kader_pola_asuh','periode'
     ];
 
     public function desa(){

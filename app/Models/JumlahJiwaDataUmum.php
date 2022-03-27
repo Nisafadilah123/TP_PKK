@@ -12,7 +12,7 @@ class JumlahJiwaDataUmum extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_desa', 'jml_jiwa_data_umum_laki', 'jml_jiwa_data_umum_perempuan'
+       'id_desa', 'jml_jiwa_data_umum_laki', 'jml_jiwa_data_umum_perempuan','periode'
     ];
 
     public function desa(){

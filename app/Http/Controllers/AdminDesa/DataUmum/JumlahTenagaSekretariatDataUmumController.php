@@ -55,6 +55,7 @@ class JumlahTenagaSekretariatDataUmumController extends Controller
             'jml_tenaga_honorer_perempuan' => 'required',
             'jml_tenaga_bantuan_laki' => 'required',
             'jml_tenaga_bantuan_perempuan' => 'required',
+            'periode' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
@@ -62,6 +63,7 @@ class JumlahTenagaSekretariatDataUmumController extends Controller
             'jml_tenaga_honorer_perempuan.required' => 'Lengkapi Jumlah Tenaga Sekretariat Honorer Perempuan',
             'jml_tenaga_bantuan_laki.required' => 'Lengkapi Jumlah Tenaga Sekretariat Bantuan Laki-laki',
             'jml_tenaga_bantuan_perempuan.required' => 'Lengkapi Jumlah Tenaga Sekretariat Bantuan Perempuan',
+            'periode.required' => 'Lengkapi Periode',
 
         ]);
 
@@ -72,6 +74,7 @@ class JumlahTenagaSekretariatDataUmumController extends Controller
         $jumtens->jml_tenaga_honorer_perempuan = $request->jml_tenaga_honorer_perempuan;
         $jumtens->jml_tenaga_bantuan_laki = $request->jml_tenaga_bantuan_laki;
         $jumtens->jml_tenaga_bantuan_perempuan = $request->jml_tenaga_bantuan_perempuan;
+        $jumtens->periode = $request->periode;
 
         $jumtens->save();
 
@@ -125,6 +128,7 @@ class JumlahTenagaSekretariatDataUmumController extends Controller
             'jml_tenaga_honorer_perempuan' => 'required',
             'jml_tenaga_bantuan_laki' => 'required',
             'jml_tenaga_bantuan_perempuan' => 'required',
+            'periode' => 'required',
 
         ]);
 

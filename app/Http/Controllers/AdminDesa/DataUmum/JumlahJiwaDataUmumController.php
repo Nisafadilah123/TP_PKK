@@ -53,11 +53,14 @@ class JumlahJiwaDataUmumController extends Controller
             'id_desa' => 'required',
             'jml_jiwa_data_umum_laki' => 'required',
             'jml_jiwa_data_umum_perempuan' => 'required',
+            'periode' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
             'jml_jiwa_data_umum_laki.required' => 'Lengkapi Jumlah Jiwa Data Umum Laki-laki',
             'jml_jiwa_data_umum_perempuan.required' => 'Lengkapi Jumlah Jiwa Data Umum Perempuan',
+            'periode.required' => 'Lengkapi Periode',
+
         ]);
 
         // cara 1
@@ -65,6 +68,7 @@ class JumlahJiwaDataUmumController extends Controller
         $jumjis->id_desa = $request->id_desa;
         $jumjis->jml_jiwa_data_umum_laki = $request->jml_jiwa_data_umum_laki;
         $jumjis->jml_jiwa_data_umum_perempuan = $request->jml_jiwa_data_umum_perempuan;
+        $jumjis->periode = $request->periode;
 
         $jumjis->save();
 
@@ -116,6 +120,7 @@ class JumlahJiwaDataUmumController extends Controller
             'id_desa' => 'required',
             'jml_jiwa_data_umum_laki' => 'required',
             'jml_jiwa_data_umum_perempuan' => 'required',
+            'periode' => 'required',
 
         ]);
 

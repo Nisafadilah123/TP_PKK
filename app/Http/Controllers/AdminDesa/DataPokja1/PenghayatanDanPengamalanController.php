@@ -58,7 +58,7 @@ class PenghayatanDanPengamalanController extends Controller
             'jml_pola_asuh_anggota' => 'required',
             'jml_lansia_klp' => 'required',
             'jml_lansia_anggota' => 'required',
-
+            'periode'=>'required'
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
             'jml_PKBN_simulasi.required' => 'Lengkapi Jumlah PKBN Simulasi',
@@ -69,6 +69,7 @@ class PenghayatanDanPengamalanController extends Controller
             'jml_pola_asuh_anggota.required' => 'Lengkapi Jumlah Pola Asuh Anggota',
             'jml_lansia_klp.required' => 'Lengkapi Jumlah Lansia KLP',
             'jml_lansia_anggota.required' => 'Lengkapi Jumlah Lansia Anggota',
+            'periode.required' => 'Lengkapi Periode',
 
         ]);
 
@@ -83,6 +84,7 @@ class PenghayatanDanPengamalanController extends Controller
         $peng->jml_pola_asuh_anggota = $request->jml_pola_asuh_anggota;
         $peng->jml_lansia_klp = $request->jml_lansia_klp;
         $peng->jml_lansia_anggota = $request->jml_lansia_anggota;
+        $peng->periode = $request->periode;
 
         $peng->save();
 
@@ -141,6 +143,8 @@ class PenghayatanDanPengamalanController extends Controller
         'jml_pola_asuh_anggota' => 'required',
         'jml_lansia_klp' => 'required',
         'jml_lansia_anggota' => 'required',
+        'periode' => 'required',
+
        ]);
 
        $penghayatan->update($request->all());

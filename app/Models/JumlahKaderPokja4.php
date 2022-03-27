@@ -12,7 +12,7 @@ class JumlahKaderPokja4 extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_desa', 'jml_posyandu', 'jml_gizi', 'jml_kesling', 'jml_penyuluhan_narkoba', 'jml_PHBS', 'jml_KB'
+       'id_desa', 'jml_posyandu', 'jml_gizi', 'jml_kesling', 'jml_penyuluhan_narkoba', 'jml_PHBS', 'jml_KB','periode'
     ];
 
     public function desa(){

@@ -55,6 +55,7 @@ class JumlahKelompokUmumController extends Controller
             'jml_pkk_rw' => 'required',
             'jml_pkk_rt' => 'required',
             'jml_dasawisma' => 'required',
+            'periode' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
@@ -62,6 +63,7 @@ class JumlahKelompokUmumController extends Controller
             'jml_pkk_rw.required' => 'Lengkapi Jumlah Kelompok PKK RW',
             'jml_pkk_rt.required' => 'Lengkapi Jumlah Kelompok PKK RT',
             'jml_dasawisma.required' => 'Lengkapi Jumlah Kelompok Dasawisma',
+            'periode.required' => 'Lengkapi Periode',
 
         ]);
 
@@ -72,6 +74,7 @@ class JumlahKelompokUmumController extends Controller
         $jumkel->jml_pkk_rw = $request->jml_pkk_rw;
         $jumkel->jml_pkk_rt = $request->jml_pkk_rt;
         $jumkel->jml_dasawisma = $request->jml_dasawisma;
+        $jumkel->periode = $request->periode;
 
         $jumkel->save();
 
@@ -125,6 +128,7 @@ class JumlahKelompokUmumController extends Controller
             'jml_pkk_rw' => 'required',
             'jml_pkk_rt' => 'required',
             'jml_dasawisma' => 'required',
+            'periode' => 'required',
 
         ]);
 

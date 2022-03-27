@@ -57,6 +57,7 @@ class JumlahKaderDataUmumSuperController extends Controller
             'jml_kader_umum_perempuan_data_umum' => 'required',
             'jml_kader_khusus_laki_data_umum' => 'required',
             'jml_kader_khusus_perempuan_data_umum' => 'required',
+            'periode' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
@@ -66,6 +67,7 @@ class JumlahKaderDataUmumSuperController extends Controller
             'jml_kader_umum_perempuan_data_umum.required' => 'Lengkapi Jumlah Kader Anggota TP PKK Laki-laki Data Umum',
             'jml_kader_khusus_laki_data_umum.required' => 'Lengkapi Jumlah Kader Anggota TP PKK Laki-laki Data Umum',
             'jml_kader_khusus_perempuan_data_umum.required' => 'Lengkapi Jumlah Kader Anggota TP PKK Laki-laki Data Umum',
+            'periode.required' => 'Lengkapi Periode',
 
         ]);
 
@@ -78,6 +80,7 @@ class JumlahKaderDataUmumSuperController extends Controller
         $jumkadums->jml_kader_umum_perempuan_data_umum = $request->jml_kader_umum_perempuan_data_umum;
         $jumkadums->jml_kader_khusus_laki_data_umum = $request->jml_kader_khusus_laki_data_umum;
         $jumkadums->jml_kader_khusus_perempuan_data_umum = $request->jml_kader_khusus_perempuan_data_umum;
+        $jumkadums->periode = $request->periode;
 
         $jumkadums->save();
 
@@ -133,6 +136,7 @@ class JumlahKaderDataUmumSuperController extends Controller
             'jml_kader_umum_perempuan_data_umum' => 'required',
             'jml_kader_khusus_laki_data_umum' => 'required',
             'jml_kader_khusus_perempuan_data_umum' => 'required',
+            'periode' => 'required',
 
         ]);
 

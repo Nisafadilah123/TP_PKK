@@ -57,6 +57,7 @@ class JumlahKaderPokja4Controller extends Controller
             'jml_kader_penyuluhan_narkoba' => 'required',
             'jml_kader_PHBS' => 'required',
             'jml_kader_KB' => 'required',
+            'periode' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
@@ -66,6 +67,7 @@ class JumlahKaderPokja4Controller extends Controller
             'jml_kader_penyuluhan_narkoba.required' => 'Lengkapi Jumlah Kader Penyuluhan Narkoba',
             'jml_kader_PHBS.required' => 'Lengkapi Jumlah Kader PHBS',
             'jml_kader_KB.required' => 'Lengkapi Jumlah Kader KB',
+            'periode.required' => 'Lengkapi Periode',
 
         ]);
 
@@ -78,6 +80,7 @@ class JumlahKaderPokja4Controller extends Controller
         $jumkads->jml_kader_penyuluhan_narkoba = $request->jml_kader_penyuluhan_narkoba;
         $jumkads->jml_kader_PHBS = $request->jml_kader_PHBS;
         $jumkads->jml_kader_KB = $request->jml_kader_KB;
+        $jumkads->periode = $request->periode;
 
         $jumkads->save();
 
@@ -133,6 +136,7 @@ class JumlahKaderPokja4Controller extends Controller
             'jml_kader_penyuluhan_narkoba' => 'required',
             'jml_kader_PHBS' => 'required',
             'jml_kader_KB' => 'required',
+            'periode' => 'required',
 
         ]);
 

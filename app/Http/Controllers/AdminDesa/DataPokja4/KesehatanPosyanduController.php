@@ -56,6 +56,7 @@ class KesehatanPosyanduController extends Controller
             'jml_posyandu_lansia_klp' => 'required',
             'jml_posyandu_lansia_anggota' => 'required',
             'jml_posyandu_lansia_memiliki_kartu' => 'required',
+            'periode' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
@@ -64,6 +65,7 @@ class KesehatanPosyanduController extends Controller
             'jml_posyandu_lansia_klp.required' => 'Lengkapi Jumlah Posyandu Lansia KLP',
             'jml_posyandu_lansia_anggota.required' => 'Lengkapi Jumlah Posyandu Lansia Anggota',
             'jml_posyandu_lansia_memiliki_kartu.required' => 'Lengkapi Jumlah Posyandu Lansia Memiliki Kartu Berobat Gratis',
+            'periode.required' => 'Lengkapi Periode',
 
         ]);
 
@@ -75,6 +77,7 @@ class KesehatanPosyanduController extends Controller
         $kes->jml_posyandu_lansia_klp = $request->jml_posyandu_lansia_klp;
         $kes->jml_posyandu_lansia_anggota = $request->jml_posyandu_lansia_anggota;
         $kes->jml_posyandu_lansia_memiliki_kartu = $request->jml_posyandu_lansia_memiliki_kartu;
+        $kes->periode = $request->periode;
 
         $kes->save();
 
@@ -129,6 +132,7 @@ class KesehatanPosyanduController extends Controller
             'jml_posyandu_lansia_klp' => 'required',
             'jml_posyandu_lansia_anggota' => 'required',
             'jml_posyandu_lansia_memiliki_kartu' => 'required',
+            'periode' => 'required',
 
         ]);
 

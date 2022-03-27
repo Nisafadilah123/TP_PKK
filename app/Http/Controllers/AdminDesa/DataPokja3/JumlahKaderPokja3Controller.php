@@ -53,12 +53,14 @@ class JumlahKaderPokja3Controller extends Controller
             'jml_kader_pangan' => 'required',
             'jml_kader_sandang' => 'required',
             'jml_kader_tata_laksana' => 'required',
+            'periode' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
             'jml_kader_pangan.required' => 'Lengkapi Jumlah kader Pangan',
             'jml_kader_sandang.required' => 'Lengkapi Jumlah kader Sandang',
             'jml_kader_tata_laksana.required' => 'Lengkapi Jumlah kader Tata Laksana',
+            'periode.required' => 'Lengkapi Periode',
 
         ]);
 
@@ -68,6 +70,7 @@ class JumlahKaderPokja3Controller extends Controller
         $kads->jml_kader_pangan = $request->jml_kader_pangan;
         $kads->jml_kader_sandang = $request->jml_kader_sandang;
         $kads->jml_kader_tata_laksana = $request->jml_kader_tata_laksana;
+        $kads->periode = $request->periode;
 
         $kads->save();
 
@@ -120,6 +123,7 @@ class JumlahKaderPokja3Controller extends Controller
             'jml_kader_pangan' => 'required',
             'jml_kader_sandang' => 'required',
             'jml_kader_tata_laksana' => 'required',
+            'periode' => 'required',
 
 
         ]);

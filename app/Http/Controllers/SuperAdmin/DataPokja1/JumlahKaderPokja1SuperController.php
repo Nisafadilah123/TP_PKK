@@ -57,12 +57,14 @@ class JumlahKaderPokja1SuperController extends Controller
             'jml_kader_PKBN' => 'required',
             'jml_kader_PKDRT' => 'required',
             'jml_kader_pola_asuh' => 'required',
+            'periode' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
             'jml_kader_PKBN.required' => 'Lengkapi Jumlah Kader PKBN',
             'jml_kader_PKDRT.required' => 'Lengkapi Jumlah Kader PKDRT',
             'jml_kader_pola_asuh.required' => 'Lengkapi Jumlah Kader Pola Asuh',
+            'periode.required' => 'Lengkapi Periode',
 
                 ]);
 
@@ -72,6 +74,7 @@ class JumlahKaderPokja1SuperController extends Controller
         $kader->jml_kader_PKBN = $request->jml_kader_PKBN;
         $kader->jml_kader_PKDRT = $request->jml_kader_PKDRT;
         $kader->jml_kader_pola_asuh = $request->jml_kader_pola_asuh;
+        $kader->periode = $request->periode;
 
         $kader->save();
 
@@ -125,6 +128,7 @@ class JumlahKaderPokja1SuperController extends Controller
             'jml_kader_PKBN' => 'required',
             'jml_kader_PKDRT' => 'required',
             'jml_kader_pola_asuh' => 'required',
+            'periode' => 'required',
 
 
         ]);

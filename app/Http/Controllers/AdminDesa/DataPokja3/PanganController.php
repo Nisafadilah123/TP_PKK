@@ -58,6 +58,7 @@ class PanganController extends Controller
             'jml_pemanfaatan_limbung_hidup' => 'required',
             'jml_pemanfaatan_toga' => 'required',
             'jml_pemanfaatan_tanaman_keras' => 'required',
+            'periode' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
@@ -69,6 +70,7 @@ class PanganController extends Controller
             'jml_pemanfaatan_limbung_hidup.required' => 'Lengkapi Jumlah Pangan Pemanfaatan Limbung Hidup',
             'jml_pemanfaatan_toga.required' => 'Lengkapi Jumlah Pangan Pemanfaatan TOGA',
             'jml_pemanfaatan_tanaman_keras.required' => 'Lengkapi Jumlah Pangan Pemanfaatan Tanaman Keras',
+            'periode.required' => 'Lengkapi Periode',
 
         ]);
 
@@ -83,6 +85,7 @@ class PanganController extends Controller
         $kads->jml_pemanfaatan_limbung_hidup = $request->jml_pemanfaatan_limbung_hidup;
         $kads->jml_pemanfaatan_toga = $request->jml_pemanfaatan_toga;
         $kads->jml_pemanfaatan_tanaman_keras = $request->jml_pemanfaatan_tanaman_keras;
+        $kads->periode = $request->periode;
 
         $kads->save();
 
@@ -140,6 +143,7 @@ class PanganController extends Controller
             'jml_pemanfaatan_limbung_hidup' => 'required',
             'jml_pemanfaatan_toga' => 'required',
             'jml_pemanfaatan_tanaman_keras' => 'required',
+            'periode' => 'required',
 
 
         ]);

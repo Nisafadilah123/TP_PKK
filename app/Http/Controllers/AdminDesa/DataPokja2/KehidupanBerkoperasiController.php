@@ -60,6 +60,7 @@ class KehidupanBerkoperasiController extends Controller
             'jml_mandiri_peserta' => 'required',
             'jml_koperasi_klp' => 'required',
             'jml_koperasi_peserta' => 'required',
+            'periode' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
@@ -73,6 +74,7 @@ class KehidupanBerkoperasiController extends Controller
             'jml_mandiri_peserta.required' => 'Lengkapi Mandiri Peserta',
             'jml_koperasi_klp.required' => 'Lengkapi Jumlah Koperasi KLP',
             'jml_koperasi_peserta.required' => 'Lengkapi Jumlah Koperasi Peserta',
+            'periode.required' => 'Lengkapi Periode',
 
         ]);
 
@@ -89,6 +91,7 @@ class KehidupanBerkoperasiController extends Controller
         $kop->jml_mandiri_peserta = $request->jml_mandiri_peserta;
         $kop->jml_koperasi_klp = $request->jml_koperasi_klp;
         $kop->jml_koperasi_peserta = $request->jml_koperasi_peserta;
+        $kop->periode = $request->periode;
 
         $kop->save();
 
@@ -148,6 +151,8 @@ class KehidupanBerkoperasiController extends Controller
                     'jml_mandiri_peserta' => 'required',
                     'jml_koperasi_klp' => 'required',
                     'jml_koperasi_peserta' => 'required',
+                    'periode' => 'required',
+
                 ]);
 
                 $koperasi->update($request->all());

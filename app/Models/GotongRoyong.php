@@ -12,7 +12,7 @@ class GotongRoyong extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_desa', 'jml_gotong_kerja_bakti', 'jml_gotong_rukun_kebaktian', 'jml_gotong_keagamaan', 'jml_gotong_jimpitan', 'jml_gotong_arisan'
+       'id_desa', 'jml_gotong_kerja_bakti', 'jml_gotong_rukun_kebaktian', 'jml_gotong_keagamaan', 'jml_gotong_jimpitan', 'jml_gotong_arisan','periode'
     ];
 
     public function desa(){

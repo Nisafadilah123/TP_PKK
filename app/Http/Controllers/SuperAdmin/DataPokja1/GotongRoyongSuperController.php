@@ -55,6 +55,7 @@ class GotongRoyongSuperController extends Controller
             'jml_gotong_keagamaan' => 'required',
             'jml_gotong_jimpitan' => 'required',
             'jml_gotong_arisan' => 'required',
+            'periode' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
@@ -63,6 +64,7 @@ class GotongRoyongSuperController extends Controller
             'jml_gotong_keagamaan.required' => 'Lengkapi Jumlah Keagamaan',
             'jml_gotong_jimpitan.required' => 'Lengkapi Jumlah Jimpitan',
             'jml_gotong_arisan.required' => 'Lengkapi Jumlah Arisan',
+            'periode.required' => 'Lengkapi Periode',
 
         ]);
 
@@ -74,6 +76,7 @@ class GotongRoyongSuperController extends Controller
         $gotongs->jml_gotong_keagamaan = $request->jml_gotong_keagamaan;
         $gotongs->jml_gotong_jimpitan = $request->jml_gotong_jimpitan;
         $gotongs->jml_gotong_arisan = $request->jml_gotong_arisan;
+        $gotongs->periode = $request->periode;
 
         $gotongs->save();
 
@@ -128,6 +131,7 @@ class GotongRoyongSuperController extends Controller
             'jml_gotong_keagamaan' => 'required',
             'jml_gotong_jimpitan' => 'required',
             'jml_gotong_arisan' => 'required',
+            'periode' => 'required',
 
 
         ]);

@@ -53,11 +53,13 @@ class JumlahRumahSuperController extends Controller
             'id_desa' => 'required',
             'jml_rumah_sehat' => 'required',
             'jml_rumah_kurang_sehat' => 'required',
+            'periode' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
             'jml_rumah_sehat.required' => 'Lengkapi Jumlah Rumah Sehat',
             'jml_rumah_kurang_sehat.required' => 'Lengkapi Jumlah Industri Kurang Sehat',
+            'periode.required' => 'Lengkapi Periode',
 
         ]);
 
@@ -66,6 +68,7 @@ class JumlahRumahSuperController extends Controller
         $rums->id_desa = $request->id_desa;
         $rums->jml_rumah_sehat = $request->jml_rumah_sehat;
         $rums->jml_rumah_kurang_sehat = $request->jml_rumah_kurang_sehat;
+        $rums->periode = $request->periode;
 
         $rums->save();
 
@@ -117,6 +120,7 @@ class JumlahRumahSuperController extends Controller
             'id_desa' => 'required',
             'jml_rumah_sehat' => 'required',
             'jml_rumah_kurang_sehat' => 'required',
+            'periode' => 'required',
 
 
         ]);

@@ -13,7 +13,7 @@ class JumlahKaderDataUmum extends Model
 
     protected $fillable = [
        'id_desa', 'jml_kader_anggota_pkk_laki',	'jml_kader_anggota_pkk_perempuan',	'jml_kader_umum_laki',	'jml_kader_umum_perempuan',
-       	'jml_kader_khusus_laki', 'jml_kader_khusus_perempuan'
+       	'jml_kader_khusus_laki', 'jml_kader_khusus_perempuan', 'periode'
     ];
 
     public function desa(){

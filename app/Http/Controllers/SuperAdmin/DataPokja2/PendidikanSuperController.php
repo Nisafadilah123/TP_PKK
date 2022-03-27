@@ -74,6 +74,7 @@ class PendidikanSuperController extends Controller
             'jml_kader_umum_LP3' => 'required',
             'jml_kader_umum_TPK' => 'required',
             'jml_kader_umum_damas' => 'required',
+            'periode' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
@@ -100,6 +101,7 @@ class PendidikanSuperController extends Controller
             'jml_kader_umum_LP3.required' => 'Lengkapi Jumlah Kader Umum LP3',
             'jml_kader_umum_TPK.required' => 'Lengkapi Jumlah Kader Umum TPK',
             'jml_kader_umum_damas.required' => 'Lengkapi Jumlah Kader Khusus Damas',
+            'periode.required' => 'Lengkapi Periode',
 
         ]);
 
@@ -129,6 +131,7 @@ class PendidikanSuperController extends Controller
         $pends->jml_kader_umum_LP3 = $request->jml_kader_umum_LP3;
         $pends->jml_kader_umum_TPK = $request->jml_kader_umum_TPK;
         $pends->jml_kader_umum_damas = $request->jml_kader_umum_damas;
+        $pends->periode = $request->periode;
 
         $pends->save();
 
@@ -201,6 +204,7 @@ class PendidikanSuperController extends Controller
                     'jml_kader_umum_LP3' => 'required',
                     'jml_kader_umum_TPK' => 'required',
                     'jml_kader_umum_damas' => 'required',
+                    'periode' => 'required',
 
                 ]);
 

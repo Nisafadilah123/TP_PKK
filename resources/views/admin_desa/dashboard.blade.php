@@ -34,14 +34,14 @@
             <div class="small-box bg-success">
               <div class="inner">
                 {{-- <h3>53<sup style="font-size: 20px">%</sup></h3> --}}
-                <h3>150</h3>
+                {{-- <h3>150</h3> --}}
 
                 <p>Data POKJA I</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>
               </div>
-              <a href="#" class="small-box-footer"
+              <a href="/data_pokja1" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
@@ -51,14 +51,14 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>44</h3>
+                {{-- <h3>44</h3> --}}
 
                 <p>Data POKJA II</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>
               </div>
-              <a href="#" class="small-box-footer"
+              <a href="/data_pokja2" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
@@ -68,39 +68,58 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>65</h3>
+                {{-- <h3>65</h3> --}}
 
                 <p>Data POKJA III</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>
               </div>
-              <a href="#" class="small-box-footer"
+              <a href="/data_pokja3" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
-          <!-- ./col -->
-        </div>
 
-        <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>150</h3>
+                {{-- <h3>150</h3> --}}
 
                 <p>Data POKJA IV</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>
               </div>
-              <a href="#" class="small-box-footer"
+              <a href="/data_pokja4" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
+
           <!-- ./col -->
+        </div>
+
+        <div class="row">
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                {{-- <h3>150</h3> --}}
+
+                <p>Data Sekretariat</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-folder"></i>
+              </div>
+              <a href="/data_sekretariat" class="small-box-footer"
+                >More info <i class="fas fa-arrow-circle-right"></i
+              ></a>
+            </div>
+          </div>
+
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-danger">
@@ -113,13 +132,13 @@
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="#" class="small-box-footer"
+              <a href="/data_laporan" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          {{-- <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
@@ -134,7 +153,7 @@
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
-          </div>
+          </div> --}}
           <!-- ./col -->
           {{-- <div class="col-lg-3 col-6">
             <!-- small box -->

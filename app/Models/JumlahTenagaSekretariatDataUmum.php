@@ -12,7 +12,7 @@ class JumlahTenagaSekretariatDataUmum extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_desa', 'jml_tenaga_honorer_laki', 'jml_tenaga_honorer_perempuan', 'jml_tenaga_bantuan_laki', 'jml_tenaga_bantuan_perempuan'
+       'id_desa', 'jml_tenaga_honorer_laki', 'jml_tenaga_honorer_perempuan', 'jml_tenaga_bantuan_laki', 'jml_tenaga_bantuan_perempuan','periode'
     ];
 
     public function desa(){
