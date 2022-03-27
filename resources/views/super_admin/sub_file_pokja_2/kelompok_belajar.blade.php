@@ -1,8 +1,8 @@
-@extends('super_admin.layout')
+@extends('admin_desa.layout')
 
-@section('title', 'Pemanfaatan Pekarangan POKJA III | PKK Kab. Indramayu')
+@section('title', 'Kelompok Belajar POKJA II | PKK Kab. Indramayu')
 
-@section('bread', 'Pemanfaatan Pekarangan POKJA III')
+@section('bread', 'Kelompok Belajar POKJA II')
 @section('container')
 
 <!-- Main content -->
@@ -26,12 +26,11 @@
                                         <tr>
                                             <th>No.</th>
                                             <th>Nama Desa</th>
-                                            <th>Peternakan</th>
-                                            <th>Perikanana</th>
-                                            <th>Warung Hidup</th>
-                                            <th>Limbung Hidup</th>
-                                            <th>TOGA</th>
-                                            <th>Tanaman Beras</th>
+                                            <th>Paket A</th>
+                                            <th>Paket B</th>
+                                            <th>Paket C</th>
+                                            <th>KF</th>
+                                            <th>Paud/sejenis</th>
                                             <th>Aksi</th>
 
                                         </tr>
@@ -43,13 +42,24 @@
                                         <tr>
                                             <td>1</td>
                                             <td>Gabus</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>3</td>
-                                            <td>3</td>
-                                            <td>3</td>
-                                            <td>3</td>
-
+                                            <td>
+                                                <p>Kel. Belajar :</p>
+                                                <p>Warga Belajar :</p>
+                                            </td>
+                                            <td>
+                                                <p>Kel. Belajar :</p>
+                                                <p>Warga Belajar :</p>
+                                            </td>
+                                            <td>
+                                                <p>Kel. Belajar :</p>
+                                                <p>Warga Belajar :</p>
+                                            </td><td>
+                                                <p>Kel. Belajar :</p>
+                                                <p>Warga Belajar :</p>
+                                            </td><td>
+                                                <p>Kel. Belajar :</p>
+                                                <p>Warga Belajar :</p>
+                                            </td>
                                             <td>
                                                 <button type="button" class="btn btn-warning">Edit</button>
                                                 <button type="button" class="btn btn-danger">Hapus</button>

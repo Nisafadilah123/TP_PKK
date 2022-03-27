@@ -1,4 +1,4 @@
-@extends('super_admin.layout')
+@extends('admin_desa.layout')
 
 @section('title', 'Kesehatan Posyandu POKJA IV | PKK Kab. Indramayu')
 
@@ -20,64 +20,53 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    <button type="button" class="btn btn-success">Tambah</button><br><br>
+                                    <a href="{{ url('kesehatan/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
 
                                     <thead>
                                         <tr>
-                                            <th rowspan="2">No.</th>
-                                            <th rowspan="2">Nama Desa</th>
-                                            <th rowspan="2">Jumlah</th>
-                                            <th rowspan="2">Terintegrasi</th>
-                                            <th colspan="3">Lansia</th>
-                                            <th rowspan="2">Aksi</th>
+                                            <th>No.</th>
+                                            <th>Nama Desa</th>
+                                            <th>Jumlah Posyandu</th>
+                                            <th>Jumlah Posyandu Terintegrasi</th>
+                                            <th>Jumlah Posyandu Lansia KLP</th>
+                                            <th>Jumlah Posyandu Lansia Anggota</th>
+                                            <th>Jumlah Posyandu Lansia Yang Memiliki Kartu Berobat</th>
+                                            <th>Aksi</th>
                                         </tr>
-                                        <tr>
-                                            <th>Jumlah KLP</th>
-                                            <th>Jumlah Anggota</th>
-                                            <th>Jumlah yang Memiliki Kartu Berobat Gratis</th>
-                                        </tr>
-
                                     </thead>
 
                                     <tbody>
-                                        {{-- @foreach ($candidate as $c) --}}
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Gabus</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning">Edit</button>
-                                                <button type="button" class="btn btn-danger">Hapus</button>
-                                            </td>
+                                        <?php $no=1;?>
 
-                                            {{-- <td style="vertical-align: middle;">{{$i++}}</td>
-                                            <td style="vertical-align: middle;">{{$c->name}}</td>
-                                            <td style="vertical-align: middle;">{{$c->address}}</td>
-                                            <td style="vertical-align: middle;">{{$c->position}}</td>
-                                            <td>
-                                                <a href="/opencv/{{$c->id}}" target="_blank" class="btn btn-primary">
-                                                    View File <span class="glyphicon glyphicon-eye-open">
-                                                </a>
-                                            </td>
-                                            <td style="vertical-align: middle;">{{$c->status}}</td>
-                                            </td>
+                                        @foreach ($kes as $c)
+                                    <tr>
+                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        {{-- nama desa yang login --}}
+                                        <td style="vertical-align: middle;">{{$c->desa->nama_desa}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_posyandu}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_posyandu_terintegrasi}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_posyandu_lansia_klp}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_posyandu_lansia_anggota}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_posyandu_lansia_memiliki_kartu}}</td>
 
-                                            <td style="width: 120px;text-align: center;vertical-align: middle; ">
-                                                <form action="/kandidat/{{$c->id}}" method="post">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button type="submit"
-                                                        class="btn btn-sm btn-primary btn-circle delete"><span
-                                                            class="far fa-trash-alt"></span></button>
-                                                    <!-- <input type="submit" class="btn btn-danger btn-sm" value="Delete" onclick="return confirm('anda yakin ingin menghapus data?');"> -->
-                                                </form>
-                                            </td> --}}
-                                        </tr>
-                                        {{-- @endforeach --}}
+                                        <td class="text-center">
+                                            <form action="{{ route('kesehatan.destroy',$c->id) }}" method="POST">
+
+                                            {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
+
+                                                <a class="btn btn-primary btn-sm" href="{{ url('kesehatan/'.$c->id.'/edit') }}">Edit</a>
+
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit" class="btn btn-danger btn-sm delete">Delete</button>
+                                            </form>
+                                        </td>
+
+                                    </tr>
+                                    <?php $no++ ;?>
+                                    @endforeach
+
                                     </tbody>
 
                                 </table>
@@ -99,29 +88,25 @@
 @endsection
 
 @push('script-addon')
-{{-- <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script> --}}
-
-{{-- <script>
-    $(document).ready(function () {
-        $('.data').dataTable();
-    });
-</script> --}}
+<script>
+    $('.delete').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+            title: `Apakah anda yakin ingin menghapus data ini ?`,
+              text: "Jika anda menghapusnya maka datanya akan di hapus secara permanen",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            }
+          });
+      });
+</script>
 <script>
 $(document).ready(function() {
     $('.data').DataTable();

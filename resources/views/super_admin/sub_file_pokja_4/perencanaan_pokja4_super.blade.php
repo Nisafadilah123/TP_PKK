@@ -1,4 +1,4 @@
-@extends('super_admin.layout')
+@extends('admin_desa.layout')
 
 @section('title', 'Perencanaan Sehat POKJA IV | PKK Kab. Indramayu')
 
@@ -20,66 +20,54 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    <button type="button" class="btn btn-success">Tambah</button><br><br>
+                                    <a href="{{ url('perencanaan/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
 
                                     <thead>
                                         <tr>
-                                            <th rowspan="2">No.</th>
-                                            <th rowspan="2">Nama Desa</th>
-                                            <th rowspan="2">Jumlah PUS</th>
-                                            <th rowspan="2">Jumlah WUS</th>
-                                            <th colspan="2">Jumlah Akseptor</th>
-                                            <th rowspan="2">Jumlah KK yang memiliki Tabungan</th>
-                                            <th rowspan="2">Aksi</th>
-
-                                        </tr>
-                                        <tr>
-                                            <th>L</th>
-                                            <th>P</th>
+                                            <th>No.</th>
+                                            <th>Nama Desa</th>
+                                            <th>Jumlah PUS</th>
+                                            <th>Jumlah WUS</th>
+                                            <th>Jumlah Akseptor Laki-laki</th>
+                                            <th>Jumlah Akseptor Perempuan</th>
+                                            <th>Jumlah KK yang memiliki Tabungan</th>
+                                            <th>Aksi</th>
 
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        {{-- @foreach ($candidate as $c) --}}
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Gabus</td>
-                                            <td>3</td>
-                                            <td>3</td>
+                                        <?php $no=1;?>
 
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning">Edit</button>
-                                                <button type="button" class="btn btn-danger">Hapus</button>
-                                            </td>
+                                        @foreach ($per as $c)
+                                    <tr>
+                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        {{-- nama desa yang login --}}
+                                        <td style="vertical-align: middle;">{{$c->desa->nama_desa}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_PUS}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_WUS}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_anggota_akseptor_laki}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_anggota_akseptor_perempuan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_kk_tabungan}}</td>
 
-                                            {{-- <td style="vertical-align: middle;">{{$i++}}</td>
-                                            <td style="vertical-align: middle;">{{$c->name}}</td>
-                                            <td style="vertical-align: middle;">{{$c->address}}</td>
-                                            <td style="vertical-align: middle;">{{$c->position}}</td>
-                                            <td>
-                                                <a href="/opencv/{{$c->id}}" target="_blank" class="btn btn-primary">
-                                                    View File <span class="glyphicon glyphicon-eye-open">
-                                                </a>
-                                            </td>
-                                            <td style="vertical-align: middle;">{{$c->status}}</td>
-                                            </td>
+                                        <td class="text-center">
+                                            <form action="{{ route('perencanaan.destroy',$c->id) }}" method="POST">
 
-                                            <td style="width: 120px;text-align: center;vertical-align: middle; ">
-                                                <form action="/kandidat/{{$c->id}}" method="post">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button type="submit"
-                                                        class="btn btn-sm btn-primary btn-circle delete"><span
-                                                            class="far fa-trash-alt"></span></button>
-                                                    <!-- <input type="submit" class="btn btn-danger btn-sm" value="Delete" onclick="return confirm('anda yakin ingin menghapus data?');"> -->
-                                                </form>
-                                            </td> --}}
-                                        </tr>
-                                        {{-- @endforeach --}}
+                                            {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
+
+                                                <a class="btn btn-primary btn-sm" href="{{ url('perencanaan/'.$c->id.'/edit') }}">Edit</a>
+
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit" class="btn btn-danger btn-sm delete">Delete</button>
+                                            </form>
+                                        </td>
+
+                                    </tr>
+                                    <?php $no++ ;?>
+                                    @endforeach
+
                                     </tbody>
 
                                 </table>

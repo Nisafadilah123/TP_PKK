@@ -1,4 +1,4 @@
-@extends('super_admin.layout')
+@extends('admin_desa.layout')
 
 @section('title', 'Penghayatan dan Pengamalan Pancasila POKJA I | PKK Kab. Indramayu')
 
@@ -20,69 +20,59 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    <button type="button" class="btn btn-success">Tambah</button><br><br>
+                                    <a href="{{ url('penghayatan/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
 
                                     <thead>
                                         <tr>
                                         <th>No</th>
                                         <th>Nama Desa</th>
-                                        <th>PKBN</th>
-                                        <th>PKDRT</th>
-                                        <th>Pola Asuh</th>
-                                        <th>Lansia</th>
+                                        <th>Jumlah PKBN Kelompok Simulasi</th>
+                                        <th>Jumlah PKBN Kelompok Anggota</th>
+                                        <th>Jumlah PKDRT Kelompok Simulasi</th>
+                                        <th>Jumlah PKDRT Kelompok Anggota</th>
+                                        <th>Jumlah Pola Asuh Kelompok Simulasi</th>
+                                        <th>Jumlah Pola Asuh Kelompok Anggota</th>
+                                        <th>Jumlah Lansia Klp</th>
+                                        <th>Jumlah Lansia Anggota</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
 
                                     <tbody>
-                                        {{-- @foreach ($candidate as $c) --}}
+                                        <?php $no=1;?>
+
+                                        @foreach ($peng as $c)
                                     <tr>
-                                        <td>1</td>
-                                        <td>Gabus</td>
-                                        <td>
-                                            <p>Jumlah Kel. Simulasi :</p>
-                                            <p>Jumlah Anggota :</p>
-                                        </td>
-                                        <td>
-                                            <p>Jumlah Kel. Simulasi :</p>
-                                            <p>Jumlah Anggota :</p>
-                                        </td>
-                                        <td>
-                                            <p>Jumlah Kel. Simulasi :</p>
-                                            <p>Jumlah Anggota :</p>
-                                        </td>
-                                        <td>
-                                            <p>Jumlah Kel. Simulasi :</p>
-                                            <p>Jumlah Anggota :</p>
-                                        </td>
+                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        {{-- nama desa yang login --}}
+                                        <td style="vertical-align: middle;">{{$c->desa->nama_desa}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_PKBN_simulasi}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_PKBN_anggota}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_PKDRT_simulasi}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_PKDRT_anggota}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_pola_asuh_klp}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_pola_asuh_anggota}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_lansia_klp}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_lansia_anggota}}</td>
 
+                                        <td class="text-center">
+                                            <form action="{{ route('penghayatan.destroy',$c->id) }}" method="POST">
 
-                                        <td>
-                                            <button type="button" class="btn btn-warning">Edit</button>
-                                            <button type="button" class="btn btn-danger">Hapus</button>
-                                        </td>
+                                            {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
 
-                                        {{-- <td style="vertical-align: middle;">{{$i++}}</td>
-                                        <td style="vertical-align: middle;">{{$c->name}}</td>
-                                        <td style="vertical-align: middle;">{{$c->address}}</td>
-                                        <td style="vertical-align: middle;">{{$c->position}}</td>
-                                        <td>
-                                            <a href="/opencv/{{$c->id}}" target="_blank" class="btn btn-primary">
-                                                View File <span class="glyphicon glyphicon-eye-open">
-                                            </a>
-                                        </td>
-                                        <td style="vertical-align: middle;">{{$c->status}}</td></td>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('penghayatan/'.$c->id.'/edit') }}">Edit</a>
 
-                                        <td style="width: 120px;text-align: center;vertical-align: middle; ">
-                                            <form action="/kandidat/{{$c->id}}" method="post">
-                                                @method('DELETE')
                                                 @csrf
-                                                <button type="submit" class="btn btn-sm btn-primary btn-circle delete"><span class="far fa-trash-alt"></span></button>
-                                                <!-- <input type="submit" class="btn btn-danger btn-sm" value="Delete" onclick="return confirm('anda yakin ingin menghapus data?');"> -->
+                                                @method('DELETE')
+
+                                                <button type="submit" class="btn btn-danger btn-sm delete">Delete</button>
                                             </form>
-                                        </td> --}}
+                                        </td>
                                     </tr>
-                                    {{-- @endforeach --}}
+
+                                    <?php $no++ ;?>
+                                    @endforeach
+
                                     </tbody>
 
                                 </table>
@@ -104,33 +94,30 @@
   @endsection
 
   @push('script-addon')
-  {{-- <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script> --}}
 
-{{-- <script>
-    $(document).ready(function () {
-        $('.data').dataTable();
-    });
-</script> --}}
 <script>
 $(document).ready( function () {
     $('.data').DataTable();
 } );
+</script>
+<script>
+    $('.delete').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+            title: `Apakah anda yakin ingin menghapus data ini ?`,
+              text: "Jika anda menghapusnya maka datanya akan di hapus secara permanen",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            }
+          });
+      });
 </script>
 
 @endpush

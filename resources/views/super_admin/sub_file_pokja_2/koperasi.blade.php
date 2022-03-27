@@ -1,8 +1,8 @@
-@extends('super_admin.layout')
+@extends('admin_desa.layout')
 
-@section('title', 'Kader Umum yang Sudah Dilatih POKJA II | PKK Kab. Indramayu')
+@section('title', 'Para Koperasi/Usaha Bersama/UP2K POKJA II | PKK Kab. Indramayu')
 
-@section('bread', 'Kader Umum yang Sudah Dilatih POKJA II')
+@section('bread', 'Para Koperasi/Usaha Bersama/UP2K POKJA II')
 @section('container')
 
 <!-- Main content -->
@@ -24,14 +24,20 @@
 
                                     <thead>
                                         <tr>
-                                            <th>No</th>
+                                            <th>No.</th>
                                             <th>Nama Desa</th>
-                                            <th>LP3 PKK</th>
-                                            <th>TPK 3 PKK</th>
-                                            <th>Damas PKK</th>
-                                            <th>Aksi</th>
+                                            <th>Jml. Pemula Klp</th>
+                                            <th>Jml. Pemula Peserta</th>
+                                            <th>Jml. Madya Klp</th>
+                                            <th>Jml. Madya Peserta</th>
+                                            <th>Jml. Utama Klp</th>
+                                            <th>Jml. Utama Peserta</th>
+                                            <th>Jml. Mandiri Klp</th>
+                                            <th>Jml. Mandiri Peserta</th>
+                                            <th>Jml. Koperasi Klp</th>
+                                            <th>Jml. Koperasi Peserta</th>
                                         </tr>
-
+                                        
                                     </thead>
 
                                     <tbody>
@@ -39,9 +45,26 @@
                                         <tr>
                                             <td>1</td>
                                             <td>Gabus</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
+                                            <td>
+                                                <p>Jml KLP :</p>
+                                                <p>Jml Peserta :</p>
+                                            </td>
+                                            <td>
+                                                <p>Jml KLP :</p>
+                                                <p>Jml Peserta :</p>
+                                            </td>
+                                            <td>
+                                                <p>Jml KLP :</p>
+                                                <p>Jml Peserta :</p>
+                                            </td>
+                                            <td>
+                                                <p>Jml KLP :</p>
+                                                <p>Jml Peserta :</p>
+                                            </td>
+                                            <td>
+                                                <p>Jml KLP :</p>
+                                                <p>Jml Peserta :</p>
+                                            </td>
                                             <td>
                                                 <button type="button" class="btn btn-warning">Edit</button>
                                                 <button type="button" class="btn btn-danger">Hapus</button>

@@ -1,4 +1,4 @@
-@extends('super_admin.layout')
+@extends('admin_desa.layout')
 
 @section('title', 'Bina Keluarga Balita POKJA II | PKK Kab. Indramayu')
 

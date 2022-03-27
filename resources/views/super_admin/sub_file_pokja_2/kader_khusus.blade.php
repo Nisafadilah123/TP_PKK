@@ -1,8 +1,8 @@
-@extends('super_admin.layout')
+@extends('admin_desa.layout')
 
-@section('title', 'Makanan Pokok POKJA III | PKK Kab. Indramayu')
+@section('title', 'Kader Khusus POKJA II | PKK Kab. Indramayu')
 
-@section('bread', 'Makanan Pokok POKJA III')
+@section('bread', 'Kader Khusus POKJA II')
 @section('container')
 
 <!-- Main content -->
@@ -24,12 +24,13 @@
 
                                     <thead>
                                         <tr>
-                                            <th>No.</th>
+                                            <th>No</th>
                                             <th>Nama Desa</th>
-                                            <th>Beras</th>
-                                            <th>Non Beras</th>
+                                            <th>Tutor</th>
+                                            <th>BKB</th>
+                                            <th>Koperasi</th>
+                                            <th>Keterampilan</th>
                                             <th>Aksi</th>
-
                                         </tr>
 
                                     </thead>
@@ -39,8 +40,13 @@
                                         <tr>
                                             <td>1</td>
                                             <td>Gabus</td>
+                                            <td>
+                                                <p>KF :</p>
+                                                <p>Paud Sejenis :</p>
+                                            </td>
                                             <td>2</td>
                                             <td>3</td>
+                                            <td>4</td>
                                             <td>
                                                 <button type="button" class="btn btn-warning">Edit</button>
                                                 <button type="button" class="btn btn-danger">Hapus</button>

@@ -1,8 +1,8 @@
-@extends('super_admin.layout')
+@extends('admin_desa.layout')
 
-@section('title', 'Pangan POKJA III | PKK Kab. Indramayu')
+@section('title', 'Jumlah Pangan POKJA III | PKK Kab. Indramayu')
 
-@section('bread', 'Pangan POKJA III')
+@section('bread', 'Jumlah Pangan POKJA III')
 @section('container')
 
 <!-- Main content -->
@@ -20,60 +20,61 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    {{-- <button type="button" class="btn btn-success">Tambah</button><br><br> --}}
+                                    <a href="{{ url('pangan/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
 
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Makanan Pokok</th>
-                                            <th>Pemanfaatan Pekarangan</th>
-
+                                            <th>Nama Desa</th>
+                                            <th>Jumlah Pangan Makanan Beras</th>
+                                            <th>Jumlah Pangan Makanan Non Beras</th>
+                                            <th>Jumlah Pangan Pemanfaatan Peternak</th>
+                                            <th>Jumlah Pangan Pemanfaatan Perikanan</th>
+                                            <th>Jumlah Pangan Pemanfaatan Warung Hidup</th>
+                                            <th>Jumlah Pangan Pemanfaatan Limbung Hidup</th>
+                                            <th>Jumlah Pangan Pemanfaatan TOGA</th>
+                                            <th>Jumlah Pangan Pemanfaatan Tanaman Keras</th>
+                                            <th>Aksi</th>
                                         </tr>
 
                                     </thead>
 
                                     <tbody>
-                                        {{-- @foreach ($candidate as $c) --}}
-                                        <tr>
-                                            <td>1</td>
+                                        <?php $no=1;?>
 
-                                            <td>
-                                                <a href="/makanan" type="button" class="btn btn-primary">Detail</a>
+                                        @foreach ($pang as $c)
 
-                                            </td>
-                                            <td>
-                                                <a href="/pemanfaatan" type="button" class="btn btn-primary">Detail</a>
+                                    <tr>
+                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        {{-- nama desa yang login --}}
+                                        <td style="vertical-align: middle;">{{$c->desa->nama_desa}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_makanan_beras}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_makanan_nonberas}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_pemanfaatan_peternakan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_pemanfaatan_perikanan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_pemanfaatan_warung_hidup}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_pemanfaatan_limbung_hidup}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_pemanfaatan_toga}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jml_pemanfaatan_tanaman_keras}}</td>
 
-                                            </td>
-                                            {{-- <td>
-                                                <button type="button" class="btn btn-warning">Edit</button>
-                                                <button type="button" class="btn btn-danger">Hapus</button>
-                                            </td> --}}
+                                        <td class="text-center">
+                                            <form action="{{ route('pangan.destroy',$c->id) }}" method="POST">
 
-                                            {{-- <td style="vertical-align: middle;">{{$i++}}</td>
-                                            <td style="vertical-align: middle;">{{$c->name}}</td>
-                                            <td style="vertical-align: middle;">{{$c->address}}</td>
-                                            <td style="vertical-align: middle;">{{$c->position}}</td>
-                                            <td>
-                                                <a href="/opencv/{{$c->id}}" target="_blank" class="btn btn-primary">
-                                                    View File <span class="glyphicon glyphicon-eye-open">
-                                                </a>
-                                            </td>
-                                            <td style="vertical-align: middle;">{{$c->status}}</td>
-                                            </td>
+                                            {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
 
-                                            <td style="width: 120px;text-align: center;vertical-align: middle; ">
-                                                <form action="/kandidat/{{$c->id}}" method="post">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button type="submit"
-                                                        class="btn btn-sm btn-primary btn-circle delete"><span
-                                                            class="far fa-trash-alt"></span></button>
-                                                    <!-- <input type="submit" class="btn btn-danger btn-sm" value="Delete" onclick="return confirm('anda yakin ingin menghapus data?');"> -->
-                                                </form>
-                                            </td> --}}
-                                        </tr>
-                                        {{-- @endforeach --}}
+                                                <a class="btn btn-primary btn-sm" href="{{ url('pangan/'.$c->id.'/edit') }}">Edit</a>
+
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit" class="btn btn-danger btn-sm delete">Delete</button>
+                                            </form>
+                                        </td>
+
+                                    </tr>
+                                    <?php $no++ ;?>
+                                    @endforeach
+
                                     </tbody>
 
                                 </table>
@@ -95,29 +96,26 @@
 @endsection
 
 @push('script-addon')
-{{-- <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script> --}}
+<script>
+    $('.delete').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+            title: `Apakah anda yakin ingin menghapus data ini ?`,
+              text: "Jika anda menghapusnya maka datanya akan di hapus secara permanen",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            }
+          });
+      });
+</script>
 
-{{-- <script>
-    $(document).ready(function () {
-        $('.data').dataTable();
-    });
-</script> --}}
 <script>
 $(document).ready(function() {
     $('.data').DataTable();
