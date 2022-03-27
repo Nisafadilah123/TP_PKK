@@ -35,7 +35,7 @@ class GotongRoyongSuperController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('super_admin.sub_file_pokja_1.form.create_gotong_royong', compact('desas'));
+        return view('super_admin.sub_file_pokja_1.form.create_gotong_royong_super', compact('desas'));
 
     }
 
@@ -80,7 +80,7 @@ class GotongRoyongSuperController extends Controller
 
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/gotong_royong');
+        return redirect('/gotong_royong_super');
 
     }
 
@@ -101,13 +101,13 @@ class GotongRoyongSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(GotongRoyong $gotong_royong)
+    public function edit(GotongRoyong $gotong_royong_super)
     {
-        //halaman edit data gotong_royong
+        //halaman edit data gotong_royong_super
         $desa = GotongRoyong::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('super_admin.sub_file_pokja_1.form.edit_gotong_royong', compact('gotong_royong','desa','desas'));
+        return view('super_admin.sub_file_pokja_1.form.edit_gotong_royong_super', compact('gotong_royong_super','desa','desas'));
 
     }
 
@@ -118,7 +118,7 @@ class GotongRoyongSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GotongRoyong $gotong_royong)
+    public function update(Request $request, GotongRoyong $gotong_royong_super)
     {
         // proses mengubah untuk tambah data jml kader
         $request->validate([
@@ -132,12 +132,12 @@ class GotongRoyongSuperController extends Controller
 
         ]);
 
-        $gotong_royong->update($request->all());
+        $gotong_royong_super->update($request->all());
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_kader);
 
-        return redirect('/gotong_royong');
+        return redirect('/gotong_royong_super');
 
     }
 
@@ -147,12 +147,12 @@ class GotongRoyongSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($gotong_royong, GotongRoyong $gotong)
+    public function destroy($gotong_royong_super, GotongRoyong $gotong)
     {
-        //temukan id gotong_royong
-        $gotong::find($gotong_royong)->delete();
+        //temukan id gotong_royong_super
+        $gotong::find($gotong_royong_super)->delete();
 
-        return redirect('/gotong_royong')->with('status', 'sukses');
+        return redirect('/gotong_royong_super')->with('status', 'sukses');
 
     }
 }
