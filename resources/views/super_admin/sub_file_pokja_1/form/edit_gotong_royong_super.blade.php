@@ -14,7 +14,7 @@
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ url ('/gotong_royong', $gotong_royong->id) }}" method="POST">
+      <form action="{{ url ('/gotong_royong_super', $gotong_royong->id) }}" method="POST">
       @method('PUT')
 
         @csrf
@@ -87,7 +87,7 @@
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/gotong_royong" class="btn btn-outline-primary">
+          <a href="/gotong_royong_super" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

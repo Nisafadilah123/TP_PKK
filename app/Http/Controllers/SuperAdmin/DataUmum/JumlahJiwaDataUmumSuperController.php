@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\AdminDesa\DataPokja3;
+namespace App\Http\Controllers\SuperAdmin\DataUmum;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
-use App\Models\JumlahKaderPokja3;
-use Illuminate\Http\Request;
+use App\Models\JumlahJiwaDataUmum;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class JumlahKaderPokja3Controller extends Controller
+use Illuminate\Http\Request;
+
+class JumlahJiwaDataUmumSuperController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +18,12 @@ class JumlahKaderPokja3Controller extends Controller
      */
     public function index()
     {
-        //halaman jumlah kader pokja 3
+               //halaman jumlah kader pokja 4
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $kad = JumlahKaderPokja3::with('desa')->get();
+        $jumjisup = JumlahJiwaDataUmum::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_3.kader', compact('kad'));
+        return view('admin_desa.sub_file_sekretariat.jml_jiwa_data_umum_super', compact('jumjisup'));
     }
 
     /**
@@ -35,7 +36,7 @@ class JumlahKaderPokja3Controller extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_3.form.create_kader', compact('desas'));
+        return view('admin_desa.sub_file_sekretariat.form.create_jumlah_jiwa_data_umum_super', compact('desas'));
 
     }
 
@@ -50,31 +51,27 @@ class JumlahKaderPokja3Controller extends Controller
         // proses penyimpanan untuk tambah data jml kader
         $request->validate([
             'id_desa' => 'required',
-            'jml_kader_pangan' => 'required',
-            'jml_kader_sandang' => 'required',
-            'jml_kader_tata_laksana' => 'required',
+            'jml_jiwa_data_umum_laki' => 'required',
+            'jml_jiwa_data_umum_perempuan' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
-            'jml_kader_pangan.required' => 'Lengkapi Jumlah kader Pangan',
-            'jml_kader_sandang.required' => 'Lengkapi Jumlah kader Sandang',
-            'jml_kader_tata_laksana.required' => 'Lengkapi Jumlah kader Tata Laksana',
-
+            'jml_jiwa_data_umum_laki.required' => 'Lengkapi Jumlah Jiwa Data Umum Laki-laki',
+            'jml_jiwa_data_umum_perempuan.required' => 'Lengkapi Jumlah Jiwa Data Umum Perempuan',
         ]);
 
         // cara 1
-        $kads = new JumlahKaderPokja3;
-        $kads->id_desa = $request->id_desa;
-        $kads->jml_kader_pangan = $request->jml_kader_pangan;
-        $kads->jml_kader_sandang = $request->jml_kader_sandang;
-        $kads->jml_kader_tata_laksana = $request->jml_kader_tata_laksana;
+        $jumjis = new JumlahJiwaDataUmum;
+        $jumjis->id_desa = $request->id_desa;
+        $jumjis->jml_jiwa_data_umum_laki = $request->jml_jiwa_data_umum_laki;
+        $jumjis->jml_jiwa_data_umum_perempuan = $request->jml_jiwa_data_umum_perempuan;
 
-        $kads->save();
+        $jumjis->save();
 
 
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/kader');
+        return redirect('/jml_jiwa_umum_super');
 
     }
 
@@ -95,13 +92,13 @@ class JumlahKaderPokja3Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(JumlahKaderPokja3 $kader)
+    public function edit(JumlahJiwaDataUmum $jml_jiwa_umum)
     {
         //halaman edit data gotong_royong
-        $desa = JumlahKaderPokja3::with('desa')->first();
+        $desa = JumlahJiwaDataUmum::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_3.form.edit_kader', compact('kader','desa','desas'));
+        return view('admin_desa.sub_file_sekretariat.form.edit_jumlah_jiwa_data_umum_super', compact('jml_jiwa_umum','desa','desas'));
 
     }
 
@@ -112,24 +109,22 @@ class JumlahKaderPokja3Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JumlahKaderPokja3 $kader)
+    public function update(Request $request, JumlahJiwaDataUmum $jml_jiwa_umum)
     {
-        // proses mengubah untuk tambah data jml kader
+        // proses mengubah untuk tambah data jml jml_jiwa_umum
         $request->validate([
             'id_desa' => 'required',
-            'jml_kader_pangan' => 'required',
-            'jml_kader_sandang' => 'required',
-            'jml_kader_tata_laksana' => 'required',
-
+            'jml_jiwa_data_umum_laki' => 'required',
+            'jml_jiwa_data_umum_perempuan' => 'required',
 
         ]);
 
-        $kader->update($request->all());
+        $jml_jiwa_umum->update($request->all());
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_kader);
+        // dd($jml_jml_jiwa_umum);
 
-        return redirect('/kader');
+        return redirect('/jml_jiwa_umum_super');
 
     }
 
@@ -139,12 +134,12 @@ class JumlahKaderPokja3Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($kader, JumlahKaderPokja3 $kaders)
+    public function destroy($jml_jiwa_umum, JumlahJiwaDataUmum $jumjis)
     {
-        //temukan id kader
-        $kaders::find($kader)->delete();
+        //temukan id jml_jiwa_umum
+        $jumjis::find($jml_jiwa_umum)->delete();
 
-        return redirect('/kader')->with('status', 'sukses');
+        return redirect('/jml_jiwa_umum_super')->with('status', 'sukses');
 
 
     }

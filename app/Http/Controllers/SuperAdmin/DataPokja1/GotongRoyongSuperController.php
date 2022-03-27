@@ -101,13 +101,13 @@ class GotongRoyongSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(GotongRoyong $gotong_royong_super)
+    public function edit(GotongRoyong $gotong_royong)
     {
         //halaman edit data gotong_royong_super
         $desa = GotongRoyong::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('super_admin.sub_file_pokja_1.form.edit_gotong_royong_super', compact('gotong_royong_super','desa','desas'));
+        return view('super_admin.sub_file_pokja_1.form.edit_gotong_royong_super', compact('gotong_royong','desa','desas'));
 
     }
 
@@ -118,7 +118,7 @@ class GotongRoyongSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GotongRoyong $gotong_royong_super)
+    public function update(Request $request, GotongRoyong $gotong_royong)
     {
         // proses mengubah untuk tambah data jml kader
         $request->validate([
@@ -132,7 +132,7 @@ class GotongRoyongSuperController extends Controller
 
         ]);
 
-        $gotong_royong_super->update($request->all());
+        $gotong_royong->update($request->all());
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_kader);
@@ -147,10 +147,10 @@ class GotongRoyongSuperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($gotong_royong_super, GotongRoyong $gotong)
+    public function destroy($gotong_royong, GotongRoyong $gotong)
     {
         //temukan id gotong_royong_super
-        $gotong::find($gotong_royong_super)->delete();
+        $gotong::find($gotong_royong)->delete();
 
         return redirect('/gotong_royong_super')->with('status', 'sukses');
 

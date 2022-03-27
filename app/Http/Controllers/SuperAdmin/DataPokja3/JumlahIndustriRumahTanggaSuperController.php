@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AdminDesa\DataPokja3;
+namespace App\Http\Controllers\SuperAdmin\DataPokja3;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
 use App\Models\JumlahIndustri;
@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class JumlahIndustriRumahTanggaController extends Controller
+class JumlahIndustriRumahTanggaSuperController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +20,9 @@ class JumlahIndustriRumahTanggaController extends Controller
         //halaman industri pokja 3
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $ind = JumlahIndustri::with('desa')->get();
+        $indsup = JumlahIndustri::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_3.industri', compact('ind'));
+        return view('admin_desa.sub_file_pokja_3.industri_super', compact('indsup'));
     }
 
     /**
@@ -35,7 +35,7 @@ class JumlahIndustriRumahTanggaController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_3.form.create_industri', compact('desas'));
+        return view('admin_desa.sub_file_pokja_3.form.create_industri_super', compact('desas'));
 
     }
 
@@ -74,7 +74,7 @@ class JumlahIndustriRumahTanggaController extends Controller
 
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/industri');
+        return redirect('/industri_super');
 
     }
 
@@ -101,7 +101,7 @@ class JumlahIndustriRumahTanggaController extends Controller
         $desa = JumlahIndustri::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_3.form.edit_industri', compact('industri','desa','desas'));
+        return view('admin_desa.sub_file_pokja_3.form.edit_industri_super', compact('industri','desa','desas'));
 
     }
 
@@ -129,7 +129,7 @@ class JumlahIndustriRumahTanggaController extends Controller
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_kader);
 
-        return redirect('/industri');
+        return redirect('/industri_super');
 
     }
 
@@ -144,7 +144,7 @@ class JumlahIndustriRumahTanggaController extends Controller
         //temukan id industri
         $indu::find($industri)->delete();
 
-        return redirect('/industri')->with('status', 'sukses');
+        return redirect('/industri_super')->with('status', 'sukses');
 
 
     }}

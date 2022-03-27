@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AdminDesa\DataPokja4;
+namespace App\Http\Controllers\SuperAdmin\DataPokja4;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
 use App\Models\JumlahKaderPokja4;
@@ -9,7 +9,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Http\Request;
 
-class JumlahKaderPokja4Controller extends Controller
+class JumlahKaderPokja4SuperController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,9 +21,9 @@ class JumlahKaderPokja4Controller extends Controller
         //halaman jumlah kader pokja 4
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $jumkad = JumlahKaderPokja4::with('desa')->get();
+        $jumkadsup = JumlahKaderPokja4::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_4.kader_pokja4', compact('jumkad'));
+        return view('admin_desa.sub_file_pokja_4.kader_pokja4_super', compact('jumkadsup'));
     }
 
     /**
@@ -36,7 +36,7 @@ class JumlahKaderPokja4Controller extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_4.form.create_kader_pokja4', compact('desas'));
+        return view('admin_desa.sub_file_pokja_4.form.create_kader_pokja4_super', compact('desas'));
 
     }
 
@@ -84,7 +84,7 @@ class JumlahKaderPokja4Controller extends Controller
 
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/kader_pokja4');
+        return redirect('/kader_pokja4_super');
 
     }
 
@@ -111,7 +111,7 @@ class JumlahKaderPokja4Controller extends Controller
         $desa = JumlahKaderPokja4::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_4.form.edit_kader_pokja4', compact('kader_pokja4','desa','desas'));
+        return view('admin_desa.sub_file_pokja_4.form.edit_kader_pokja4_super', compact('kader_pokja4','desa','desas'));
 
     }
 
@@ -141,7 +141,7 @@ class JumlahKaderPokja4Controller extends Controller
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_kader_pokja4);
 
-        return redirect('/kader_pokja4');
+        return redirect('/kader_pokja4_super');
 
     }
 
@@ -156,7 +156,7 @@ class JumlahKaderPokja4Controller extends Controller
         //temukan id kader_pokja4
         $jumkads::find($kader_pokja4)->delete();
 
-        return redirect('/kader_pokja4')->with('status', 'sukses');
+        return redirect('/kader_pokja4_super')->with('status', 'sukses');
 
 
     }

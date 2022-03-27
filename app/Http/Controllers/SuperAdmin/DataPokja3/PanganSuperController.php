@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AdminDesa\DataPokja3;
+namespace App\Http\Controllers\SuperAdmin\DataPokja3;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
 use App\Models\Pangan;
@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class PanganController extends Controller
+class PanganSuperController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +20,9 @@ class PanganController extends Controller
         //halaman jumlah pangan pokja 3
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $pang = Pangan::with('desa')->get();
+        $pangsup = Pangan::with('desa')->get();
         // dd($pang);
-        return view('admin_desa.sub_file_pokja_3.pangan', compact('pang'));
+        return view('admin_desa.sub_file_pokja_3.pangan_super', compact('pangsup'));
     }
 
     /**
@@ -35,7 +35,7 @@ class PanganController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_3.form.create_pangan', compact('desas'));
+        return view('admin_desa.sub_file_pokja_3.form.create_pangan_super', compact('desas'));
 
     }
 
@@ -89,7 +89,7 @@ class PanganController extends Controller
 
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/pangan');
+        return redirect('/pangan_super');
 
     }
 
@@ -116,7 +116,7 @@ class PanganController extends Controller
         $desa = Pangan::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_3.form.edit_pangan', compact('pangan','desa','desas'));
+        return view('admin_desa.sub_file_pokja_3.form.edit_pangan_super', compact('pangan','desa','desas'));
 
     }
 
@@ -149,7 +149,7 @@ class PanganController extends Controller
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_pangan);
 
-        return redirect('/pangan');
+        return redirect('/pangan_super');
 
     }
 
@@ -164,7 +164,7 @@ class PanganController extends Controller
         //temukan id pangan
         $pangans::find($pangan)->delete();
 
-        return redirect('/pangan')->with('status', 'sukses');
+        return redirect('/pangan_super')->with('status', 'sukses');
 
 
     }

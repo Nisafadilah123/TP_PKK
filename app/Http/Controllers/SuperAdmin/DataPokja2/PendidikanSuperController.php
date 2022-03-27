@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AdminDesa\DataPokja2;
+namespace App\Http\Controllers\SuperAdmin\DataPokja2;
 use App\Http\Controllers\Controller;
 use App\Models\Pendidikan;
 use App\Models\Data_Desa;
@@ -21,9 +21,9 @@ class PendidikanController extends Controller
         // halaman pendidikan pokja 2
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $pend = Pendidikan::with('desa')->get();
+        $pendsup = Pendidikan::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_2.jml_kelompok', compact('pend'));
+        return view('admin_desa.sub_file_pokja_2.jml_kelompok_super', compact('pendsup'));
     }
 
     /**
@@ -36,7 +36,7 @@ class PendidikanController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_2.form.create_pendidikan', compact('desas'));
+        return view('admin_desa.sub_file_pokja_2.form.create_pendidikan_super', compact('desas'));
 
     }
 
@@ -135,7 +135,7 @@ class PendidikanController extends Controller
 
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/pendidikan');
+        return redirect('/pendidikan_super');
 
     }
 
@@ -209,7 +209,7 @@ class PendidikanController extends Controller
                 Alert::success('Berhasil', 'Data berhasil di ubah');
                 // dd($jml_kader);
 
-                return redirect('/pendidikan');
+                return redirect('/pendidikan_super');
 
     }
 
@@ -224,7 +224,7 @@ class PendidikanController extends Controller
         //temukan id gotong_royong
         $pend::find($pendidikan)->delete();
 
-        return redirect('/pendidikan')->with('status', 'sukses');
+        return redirect('/pendidikan_super')->with('status', 'sukses');
 
     }
 }

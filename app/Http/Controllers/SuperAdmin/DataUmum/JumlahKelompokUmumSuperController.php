@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AdminDesa\DataUmum;
+namespace App\Http\Controllers\SuperAdmin\DataUmum;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
 use App\Models\JumlahKelompok;
@@ -9,7 +9,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Http\Request;
 
-class JumlahKelompokUmumController extends Controller
+class JumlahKelompokUmumSuperController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,9 +21,9 @@ class JumlahKelompokUmumController extends Controller
         //halaman jumlah kelompok
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $jumkel = JumlahKelompok::with('desa')->get();
+        $jumkelsup = JumlahKelompok::with('desa')->get();
 
-        return view('admin_desa.sub_file_sekretariat.jml_kelompok_umum', compact('jumkel'));
+        return view('admin_desa.sub_file_sekretariat.jml_kelompok_umum_super', compact('jumkelsup'));
     }
 
     /**
@@ -36,7 +36,7 @@ class JumlahKelompokUmumController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_sekretariat.form.create_kelompok_umum', compact('desas'));
+        return view('admin_desa.sub_file_sekretariat.form.create_kelompok_umum_super', compact('desas'));
 
     }
 
@@ -78,7 +78,7 @@ class JumlahKelompokUmumController extends Controller
 
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/kelompok');
+        return redirect('/kelompok_super');
 
     }
 
@@ -105,7 +105,7 @@ class JumlahKelompokUmumController extends Controller
         $desa = JumlahKelompok::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_sekretariat.form.edit_kelompok_umum', compact('kelompok','desa','desas'));
+        return view('admin_desa.sub_file_sekretariat.form.edit_kelompok_umum_super', compact('kelompok','desa','desas'));
 
     }
 
@@ -133,7 +133,7 @@ class JumlahKelompokUmumController extends Controller
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_kelompok);
 
-        return redirect('/kelompok');
+        return redirect('/kelompok_super');
 
     }
 
@@ -148,7 +148,7 @@ class JumlahKelompokUmumController extends Controller
         //temukan id kelompok
         $jumkel::find($kelompok)->delete();
 
-        return redirect('/kelompok')->with('status', 'sukses');
+        return redirect('/kelompok_super')->with('status', 'sukses');
 
 
     }

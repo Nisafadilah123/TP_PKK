@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AdminDesa\DataPokja4;
+namespace App\Http\Controllers\SuperAdmin\DataPokja4;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Data_Desa;
@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
-class KelestarianLingkunganHidupController extends Controller
+class KelestarianLingkunganHidupSuperController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,9 +21,9 @@ class KelestarianLingkunganHidupController extends Controller
         //halaman jumlah Kelestarian pokja 4
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $kel = Kelestarian::with('desa')->get();
+        $kelsup = Kelestarian::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_4.kelestarian', compact('kel'));
+        return view('admin_desa.sub_file_pokja_4.kelestarian_super', compact('kelsup'));
     }
 
     /**
@@ -36,7 +36,7 @@ class KelestarianLingkunganHidupController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_4.form.create_kelestarian', compact('desas'));
+        return view('admin_desa.sub_file_pokja_4.form.create_kelestarian_super', compact('desas'));
 
     }
 
@@ -87,7 +87,7 @@ class KelestarianLingkunganHidupController extends Controller
 
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/kelestarian');
+        return redirect('/kelestarian_super');
 
     }
 
@@ -114,7 +114,7 @@ class KelestarianLingkunganHidupController extends Controller
         $desa = Kelestarian::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_4.form.edit_kelestarian', compact('kelestarian','desa','desas'));
+        return view('admin_desa.sub_file_pokja_4.form.edit_kelestarian_super', compact('kelestarian','desa','desas'));
 
     }
 
@@ -145,7 +145,7 @@ class KelestarianLingkunganHidupController extends Controller
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_kelestarian);
 
-        return redirect('/kelestarian');
+        return redirect('/kelestarian_super');
 
     }
 
@@ -160,7 +160,7 @@ class KelestarianLingkunganHidupController extends Controller
         //temukan id kelestarian
         $kels::find($kelestarian)->delete();
 
-        return redirect('/kelestarian')->with('status', 'sukses');
+        return redirect('/kelestarian_super')->with('status', 'sukses');
 
 
     }

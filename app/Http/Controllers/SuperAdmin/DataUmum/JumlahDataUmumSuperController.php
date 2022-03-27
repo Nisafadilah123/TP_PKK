@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AdminDesa\DataUmum;
+namespace App\Http\Controllers\SuperAdmin\DataUmum;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
 use App\Models\JumlahDataUmum;
@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 
-class JumlahDataUmumController extends Controller
+class JumlahDataUmumSuperController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,7 +22,7 @@ class JumlahDataUmumController extends Controller
         // $desa = Data_Desa::all();
         $jumum = JumlahDataUmum::with('desa')->get();
 
-        return view('admin_desa.sub_file_sekretariat.jml_data_umum', compact('jumum'));
+        return view('admin_desa.sub_file_sekretariat.jml_data_umum_super', compact('jumum'));
     }
 
     /**
@@ -35,7 +35,7 @@ class JumlahDataUmumController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_sekretariat.form.create_jumlah_data_umum', compact('desas'));
+        return view('admin_desa.sub_file_sekretariat.form.create_jumlah_data_umum_super', compact('desas'));
 
     }
 
@@ -69,7 +69,7 @@ class JumlahDataUmumController extends Controller
 
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/jml_data_umum');
+        return redirect('/jml_data_umum_super');
 
     }
 
@@ -96,7 +96,7 @@ class JumlahDataUmumController extends Controller
         $desa = JumlahDataUmum::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_sekretariat.form.edit_jumlah_data_umum', compact('jml_data_umum','desa','desas'));
+        return view('admin_desa.sub_file_sekretariat.form.edit_jumlah_data_umum_super', compact('jml_data_umum','desa','desas'));
 
     }
 
@@ -121,7 +121,7 @@ class JumlahDataUmumController extends Controller
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_jml_data_umum);
 
-        return redirect('/jml_data_umum');
+        return redirect('/jml_data_umum_super');
 
     }
 
@@ -136,7 +136,7 @@ class JumlahDataUmumController extends Controller
         //temukan id jml_data_umum
         $jumums::find($jml_data_umum)->delete();
 
-        return redirect('/jml_data_umum')->with('status', 'sukses');
+        return redirect('/jml_data_umum_super')->with('status', 'sukses');
 
 
     }}

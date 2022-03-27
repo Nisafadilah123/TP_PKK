@@ -20,9 +20,9 @@ class PenghayatanDanPengamalanSuperController extends Controller
         //halaman penghayatan pokja 1
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $peng = Penghayatan::with('desa')->get();
+        $pengsup = Penghayatan::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_1.penghayatan', compact('peng'));
+        return view('admin_desa.sub_file_pokja_1.penghayatan_super', compact('pengsup'));
     }
 
     /**
@@ -35,7 +35,7 @@ class PenghayatanDanPengamalanSuperController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_1.form.create_penghayatan', compact('desas'));
+        return view('admin_desa.sub_file_pokja_1.form.create_penghayatan_super', compact('desas'));
 
     }
 
@@ -90,7 +90,7 @@ class PenghayatanDanPengamalanSuperController extends Controller
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
         // dd($desa);
 
-        return redirect('/penghayatan');
+        return redirect('/penghayatan_super');
 
     }
 
@@ -117,7 +117,7 @@ class PenghayatanDanPengamalanSuperController extends Controller
         $desa = Penghayatan::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_1.form.edit_penghayatan', compact('penghayatan','desa','desas'));
+        return view('admin_desa.sub_file_pokja_1.form.edit_penghayatan_super', compact('penghayatan','desa','desas'));
 
     }
 
@@ -148,7 +148,7 @@ class PenghayatanDanPengamalanSuperController extends Controller
        Alert::success('Berhasil', 'Data berhasil di ubah');
     //    dd($penghayatan);
 
-       return redirect('/penghayatan');
+       return redirect('/penghayatan_super');
 
     }
 
@@ -163,7 +163,7 @@ class PenghayatanDanPengamalanSuperController extends Controller
         //temukan id penghayatan
         $peng::find($penghayatan)->delete();
 
-        return redirect('/penghayatan')->with('status', 'sukses');
+        return redirect('/penghayatan_super')->with('status', 'sukses');
 
     }
 }

@@ -21,11 +21,11 @@ class JumlahKaderPokja1SuperController extends Controller
         //halaman jml_kader
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $kader = JmlKader::with('desa')
-            ->where('id_desa', auth()->user()->id_desa)
+        $kadersup = JmlKader::with('desa')
             ->get();
+
         // dd($kader);
-        return view('admin_desa.sub_file_pokja_1.jml_kader', compact('kader'));
+        return view('admin_desa.sub_file_pokja_1.jml_kader_super', compact('kadersup'));
     }
 
     /**
@@ -37,10 +37,9 @@ class JumlahKaderPokja1SuperController extends Controller
     {
         // nama desa yang login
         $desas = DB::table('data_desa')
-            ->where('id', auth()->user()->id_desa)
             ->get();
 
-        return view('admin_desa.sub_file_pokja_1.form.create_jml_kader', compact('desas'));
+        return view('admin_desa.sub_file_pokja_1.form.create_jml_kader_super', compact('desas'));
 
     }
 
@@ -80,7 +79,7 @@ class JumlahKaderPokja1SuperController extends Controller
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
         // dd($desa);
 
-        return redirect('/jml_kader');
+        return redirect('/jml_kader_super');
 
     }
 
@@ -108,7 +107,7 @@ class JumlahKaderPokja1SuperController extends Controller
         $desas = Data_Desa::where('id', auth()->user()->id_desa)
             ->get();
 
-        return view('admin_desa.sub_file_pokja_1.form.edit_jml_kader', compact('jml_kader','desa','desas'));
+        return view('admin_desa.sub_file_pokja_1.form.edit_jml_kader_super', compact('jml_kader','desa','desas'));
 
     }
 
@@ -136,7 +135,7 @@ class JumlahKaderPokja1SuperController extends Controller
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_kader);
 
-        return redirect('/jml_kader');
+        return redirect('/jml_kader_super');
 
     }
 
@@ -151,7 +150,7 @@ class JumlahKaderPokja1SuperController extends Controller
         //temukan id jml_kader
         $kaders::find($jml_kader)->delete();
 
-        return redirect('/jml_kader')->with('status', 'sukses');
+        return redirect('/jml_kader_super')->with('status', 'sukses');
 
     }
 }

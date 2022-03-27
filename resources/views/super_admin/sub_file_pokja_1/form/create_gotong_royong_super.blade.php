@@ -1,6 +1,6 @@
-@extends('admin_desa.layout')
+@extends('super_admin.layout')
 
-@section('title', 'Tambah Data Jumlah Gotong Royong | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Tambah Data Jumlah Gotong Royong | Super Admin PKK Kab. Indramayu')
 
 @section('bread', 'Tambah Data Jumlah Gotong Royong')
 @section('container')
@@ -14,7 +14,7 @@
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ route('gotong_royong.store') }}" method="POST">
+      <form action="{{ route('gotong_royong_super.store') }}" method="POST">
         @csrf
         <div class="row">
             <div class="col-md-4">
@@ -83,7 +83,7 @@
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/gotong_royong" class="btn btn-outline-primary">
+          <a href="/gotong_royong_super" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

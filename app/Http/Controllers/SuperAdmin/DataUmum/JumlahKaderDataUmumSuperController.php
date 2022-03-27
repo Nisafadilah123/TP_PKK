@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AdminDesa\DataUmum;
+namespace App\Http\Controllers\SuperAdmin\DataUmum;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
 use App\Models\JumlahKaderDataUmum;
@@ -9,7 +9,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Http\Request;
 
-class JumlahKaderDataUmumController extends Controller
+class JumlahKaderDataUmumSuperController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,9 +21,9 @@ class JumlahKaderDataUmumController extends Controller
         //halaman jumlah kader pokja 4
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $jumkadum = JumlahKaderDataUmum::with('desa')->get();
+        $jumkadumsup = JumlahKaderDataUmum::with('desa')->get();
 
-        return view('admin_desa.sub_file_sekretariat.jml_kader_data_umum', compact('jumkadum'));
+        return view('admin_desa.sub_file_sekretariat.jml_kader_data_umum_super', compact('jumkadumsup'));
     }
 
     /**
@@ -36,7 +36,7 @@ class JumlahKaderDataUmumController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_sekretariat.form.create_jumlah_kader_data_umum', compact('desas'));
+        return view('admin_desa.sub_file_sekretariat.form.create_jumlah_kader_data_umum_super', compact('desas'));
 
     }
 
@@ -84,7 +84,7 @@ class JumlahKaderDataUmumController extends Controller
 
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/jml_kader_umum');
+        return redirect('/jml_kader_umum_super');
 
     }
 
@@ -111,7 +111,7 @@ class JumlahKaderDataUmumController extends Controller
         $desa = JumlahKaderDataUmum::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_sekretariat.form.edit_jumlah_kader_data_umum', compact('jml_kader_umum','desa','desas'));
+        return view('admin_desa.sub_file_sekretariat.form.edit_jumlah_kader_data_umum_super', compact('jml_kader_umum','desa','desas'));
 
     }
 
@@ -141,7 +141,7 @@ class JumlahKaderDataUmumController extends Controller
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_jml_kader_umum);
 
-        return redirect('/jml_kader_umum');
+        return redirect('/jml_kader_umum_super');
 
     }
 
@@ -156,7 +156,7 @@ class JumlahKaderDataUmumController extends Controller
         //temukan id jml_kader_umum
         $jumkadums::find($jml_kader_umum)->delete();
 
-        return redirect('/jml_kader_umum')->with('status', 'sukses');
+        return redirect('/jml_kader_umum_super')->with('status', 'sukses');
 
 
     }

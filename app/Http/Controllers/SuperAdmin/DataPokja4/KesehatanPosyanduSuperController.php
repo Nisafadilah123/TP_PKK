@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AdminDesa\DataPokja4;
+namespace App\Http\Controllers\SuperAdmin\DataPokja4;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
 use App\Models\Kesehatan;
@@ -9,7 +9,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class KesehatanPosyanduController extends Controller
+class KesehatanPosyanduSuperController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,9 +21,9 @@ class KesehatanPosyanduController extends Controller
         //halaman jumlah kesehatan posyandu pokja 4
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $kes = Kesehatan::with('desa')->get();
+        $kessup = Kesehatan::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_4.kesehatan', compact('kes'));
+        return view('admin_desa.sub_file_pokja_4.kesehatan_super', compact('kessup'));
     }
 
     /**
@@ -36,7 +36,7 @@ class KesehatanPosyanduController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_4.form.create_kesehatan', compact('desas'));
+        return view('admin_desa.sub_file_pokja_4.form.create_kesehatan_super', compact('desas'));
 
     }
 
@@ -81,7 +81,7 @@ class KesehatanPosyanduController extends Controller
 
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/kesehatan');
+        return redirect('/kesehatan_super');
 
     }
 
@@ -108,7 +108,7 @@ class KesehatanPosyanduController extends Controller
         $desa = Kesehatan::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_4.form.edit_kesehatan', compact('kesehatan','desa','desas'));
+        return view('admin_desa.sub_file_pokja_4.form.edit_kesehatan_super', compact('kesehatan','desa','desas'));
 
     }
 
@@ -137,7 +137,7 @@ class KesehatanPosyanduController extends Controller
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_kesehatan);
 
-        return redirect('/kesehatan');
+        return redirect('/kesehatan_super');
 
     }
 
@@ -152,7 +152,7 @@ class KesehatanPosyanduController extends Controller
         //temukan id kesehatan
         $kes::find($kesehatan)->delete();
 
-        return redirect('/kesehatan')->with('status', 'sukses');
+        return redirect('/kesehatan_super')->with('status', 'sukses');
 
 
     }

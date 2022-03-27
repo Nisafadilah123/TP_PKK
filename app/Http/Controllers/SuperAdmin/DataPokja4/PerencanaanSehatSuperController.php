@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AdminDesa\DataPokja4;
+namespace App\Http\Controllers\SuperAdmin\DataPokja4;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Data_Desa;
@@ -8,7 +8,7 @@ use App\Models\PerencanaanSehat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PerencanaanSehatController extends Controller
+class PerencanaanSehatSuperController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,9 +21,9 @@ class PerencanaanSehatController extends Controller
         //halaman jumlah perencanaan pokja 4
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $per = PerencanaanSehat::with('desa')->get();
+        $persup = PerencanaanSehat::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_4.perencanaan_pokja4', compact('per'));
+        return view('admin_desa.sub_file_pokja_4.perencanaan_pokja4_super', compact('persup'));
     }
 
     /**
@@ -36,7 +36,7 @@ class PerencanaanSehatController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_4.form.create_perencanaan', compact('desas'));
+        return view('admin_desa.sub_file_pokja_4.form.create_perencanaan_super', compact('desas'));
 
     }
 
@@ -81,7 +81,7 @@ class PerencanaanSehatController extends Controller
 
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/perencanaan');
+        return redirect('/perencanaan_super');
 
     }
 
@@ -108,7 +108,7 @@ class PerencanaanSehatController extends Controller
         $desa = PerencanaanSehat::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_4.form.edit_perencanaan', compact('perencanaan','desa','desas'));
+        return view('admin_desa.sub_file_pokja_4.form.edit_perencanaan_super', compact('perencanaan','desa','desas'));
 
     }
 
@@ -137,7 +137,7 @@ class PerencanaanSehatController extends Controller
         Alert::success('Berhasil', 'Data berhasil di ubah');
         // dd($jml_perencanaan);
 
-        return redirect('/perencanaan');
+        return redirect('/perencanaan_super');
 
     }
 
@@ -152,7 +152,7 @@ class PerencanaanSehatController extends Controller
         //temukan id PerecanaanSehat
         $pers::find($perecanaan)->delete();
 
-        return redirect('/perencanaan')->with('status', 'sukses');
+        return redirect('/perencanaan_super')->with('status', 'sukses');
 
 
     }

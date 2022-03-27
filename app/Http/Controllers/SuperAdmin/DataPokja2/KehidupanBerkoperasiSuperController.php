@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AdminDesa\DataPokja2;
+namespace App\Http\Controllers\SuperAdmin\DataPokja2;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
 use App\Models\Koperasi;
@@ -20,9 +20,9 @@ class KehidupanBerkoperasiController extends Controller
         // halaman koperasi pokja 2
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $kop = Koperasi::with('desa')->get();
+        $kopsup = Koperasi::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_2.kehidupan_berkoperasi', compact('kop'));
+        return view('admin_desa.sub_file_pokja_2.kehidupan_berkoperasi_super', compact('kopsup'));
     }
 
     /**
@@ -35,7 +35,7 @@ class KehidupanBerkoperasiController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_2.form.create_pengembangan', compact('desas'));
+        return view('admin_desa.sub_file_pokja_2.form.create_pengembangan_super', compact('desas'));
 
     }
 
@@ -95,7 +95,7 @@ class KehidupanBerkoperasiController extends Controller
 
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/koperasi');
+        return redirect('/koperasi_super');
 
     }
 
@@ -122,7 +122,7 @@ class KehidupanBerkoperasiController extends Controller
         $desa = Koperasi::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_2.form.edit_pengembangan', compact('koperasi','desa','desas'));
+        return view('admin_desa.sub_file_pokja_2.form.edit_pengembangan_super', compact('koperasi','desa','desas'));
 
     }
 
@@ -155,7 +155,7 @@ class KehidupanBerkoperasiController extends Controller
                 Alert::success('Berhasil', 'Data berhasil di ubah');
                 // dd($jml_kader);
 
-                return redirect('/koperasi');
+                return redirect('/koperasi_super');
 
     }
 
@@ -170,6 +170,6 @@ class KehidupanBerkoperasiController extends Controller
         //temukan id gotong_royong
         $kop::find($koperasi)->delete();
 
-        return redirect('/koperasi')->with('status', 'sukses');
+        return redirect('/koperasi_super')->with('status', 'sukses');
 
     }}
