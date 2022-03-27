@@ -28,7 +28,9 @@ use App\Http\Controllers\super_admin\dataKecamtanController;
 use App\Http\Controllers\SuperAdmin\DataDesaController;
 use App\Http\Controllers\SuperAdmin\DataKecamatanController;
 use App\Http\Controllers\SuperAdminController;
+use App\Http\Middleware\Authenticate;
 use App\Models\BeritaKab;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -76,15 +78,51 @@ Route::get('/sekretariat', [PokjaController::class, 'sekretariat']);
 Route::get('/data_umum', [PokjaController::class, 'data_umum']);
 
 // halaman admin desa
-Route::get('/dashboard', [AdminController::class, 'dashboard']);
-Route::get('/data_pokja1', [AdminController::class, 'data_pokja1']);
-Route::get('/data_pokja2', [AdminController::class, 'data_pokja2']);
-Route::get('/data_pokja3', [AdminController::class, 'data_pokja3']);
-Route::get('/data_pokja4', [AdminController::class, 'data_pokja4']);
-Route::get('/pengguna', [AdminController::class, 'data_pengguna']);
-Route::get('/laporan', [AdminController::class, 'data_laporan']);
-Route::get('/data_sekretariat', [AdminController::class, 'data_sekretariat']);
-Route::get('/makanan', [AdminController::class, 'makanan']);
+Route::middleware(['auth', 'user_type:admin_desa'])->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard']);
+    Route::get('/data_pokja1', [AdminController::class, 'data_pokja1']);
+    Route::get('/data_pokja2', [AdminController::class, 'data_pokja2']);
+    Route::get('/data_pokja3', [AdminController::class, 'data_pokja3']);
+    Route::get('/data_pokja4', [AdminController::class, 'data_pokja4']);
+    Route::get('/pengguna', [AdminController::class, 'data_pengguna']);
+    Route::get('/laporan', [AdminController::class, 'data_laporan']);
+    Route::get('/data_sekretariat', [AdminController::class, 'data_sekretariat']);
+    // Route::get('/makanan', [AdminController::class, 'makanan']);
+
+    // form data_pokja1
+    Route::resource('/jml_kader', JumlahKaderPokja1Controller::class);
+    Route::resource('/penghayatan', PenghayatanDanPengamalanController::class);
+    Route::resource('/gotong_royong', GotongRoyongController::class);
+
+    // form data_pokja2
+    Route::resource('/pendidikan', PendidikanController::class);
+    // Route::resource('/bkb', bkb_pokja2Controller::class);
+    // Route::resource('/kader_khusus', kader_khusus_pokja2Controller::class);
+    // Route::resource('/kader_umum', kader_umum_pokja2Controller::class);
+    Route::resource('/koperasi', KehidupanBerkoperasiController::class);
+    // Route::resource('/kelompok_belajar', kelompok_belajarController::class);
+
+    // form data_pokja3
+    Route::resource('/kader', JumlahKaderPokja3Controller::class);
+    // Route::resource('/makanan', makanan_pokja3Controller::class);
+    // Route::resource('/pemanfaatan', pemanfaatan_pokja3Controller::class);
+    Route::resource('/industri', JumlahIndustriRumahTanggaController::class);
+    Route::resource('/rumah', JumlahRumahController::class);
+    Route::resource('/pangan', PanganController::class);
+
+    // form data_pokja4
+    Route::resource('/kader_pokja4', JumlahKaderPokja4Controller::class);
+    Route::resource('/kelestarian', KelestarianLingkunganHidupController::class);
+    Route::resource('/kesehatan', KesehatanPosyanduController::class);
+    Route::resource('/perencanaan', PerencanaanSehatController::class);
+
+    // form data umum
+    Route::resource('/kelompok', JumlahKelompokUmumController::class);
+    Route::resource('/jml_data_umum', JumlahDataUmumController::class);
+    Route::resource('/jml_jiwa_umum', JumlahJiwaDataUmumController::class);
+    Route::resource('/jml_tenaga_umum', JumlahTenagaSekretariatDataUmumController::class);
+    Route::resource('/jml_kader_umum', JumlahKaderDataUmumController::class);
+});
 
 // halaman admin kec
 Route::get('/dashboard_kec', [AdminKecController::class, 'dashboard_kec']);
@@ -110,6 +148,8 @@ Route::get('/laporan_kab', [AdminKabController::class, 'data_laporan_kab']);
 Route::get('/data_sekretariat_kab', [AdminKabController::class, 'data_sekretariat_kab']);
 
 // halaman super admin
+Route::middleware(['auth', 'user_type:superadmin'])->group(function () {
+
 Route::get('/dashboard_super', [SuperAdminController::class, 'dashboard_super']);
 Route::get('/data_pokja1_super', [SuperAdminController::class, 'data_pokja1_super']);
 Route::get('/data_pokja2_super', [SuperAdminController::class, 'data_pokja2_super']);
@@ -122,39 +162,9 @@ Route::get('/koperasi_super', [SuperAdminController::class, 'koperasi_super']);
 Route::get('/makanan_super', [SuperAdminController::class, 'makanan_super']);
 Route::get('/pangan_super', [SuperAdminController::class, 'pangan_super']);
 
-// form data_pokja1
-Route::resource('/jml_kader', JumlahKaderPokja1Controller::class);
-Route::resource('/penghayatan', PenghayatanDanPengamalanController::class);
-Route::resource('/gotong_royong', GotongRoyongController::class);
+});
 
-// form data_pokja2
-Route::resource('/pendidikan', PendidikanController::class);
-// Route::resource('/bkb', bkb_pokja2Controller::class);
-// Route::resource('/kader_khusus', kader_khusus_pokja2Controller::class);
-// Route::resource('/kader_umum', kader_umum_pokja2Controller::class);
-Route::resource('/koperasi', KehidupanBerkoperasiController::class);
-// Route::resource('/kelompok_belajar', kelompok_belajarController::class);
 
-// form data_pokja3
-Route::resource('/kader', JumlahKaderPokja3Controller::class);
-// Route::resource('/makanan', makanan_pokja3Controller::class);
-// Route::resource('/pemanfaatan', pemanfaatan_pokja3Controller::class);
-Route::resource('/industri', JumlahIndustriRumahTanggaController::class);
-Route::resource('/rumah', JumlahRumahController::class);
-Route::resource('/pangan', PanganController::class);
-
-// form data_pokja4
-Route::resource('/kader_pokja4', JumlahKaderPokja4Controller::class);
-Route::resource('/kelestarian', KelestarianLingkunganHidupController::class);
-Route::resource('/kesehatan', KesehatanPosyanduController::class);
-Route::resource('/perencanaan', PerencanaanSehatController::class);
-
-// form data umum
-Route::resource('/kelompok', JumlahKelompokUmumController::class);
-Route::resource('/jml_data_umum', JumlahDataUmumController::class);
-Route::resource('/jml_jiwa_umum', JumlahJiwaDataUmumController::class);
-Route::resource('/jml_tenaga_umum', JumlahTenagaSekretariatDataUmumController::class);
-Route::resource('/jml_kader_umum', JumlahKaderDataUmumController::class);
 
 //form berita admin kabupaten
 Route::resource('/beritaKab', BeritaController::class);
@@ -162,3 +172,6 @@ Route::resource('/beritaKab', BeritaController::class);
 // form desa super admin
 Route::resource('/data_desa', DataDesaController::class);
 Route::resource('/data_kecamatan', DataKecamatanController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

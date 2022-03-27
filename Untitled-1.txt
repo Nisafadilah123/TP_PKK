@@ -1,0 +1,10 @@
+Role:
+1. Super Admin
+2. Admin PKK Desa
+
+User:
+kecamatan_id, desa_id
+1. superadmin@gmail.com
+2. admin.kecamatan.anjatan@gmail.com, kecamatan_id = 1 (Anjatan), desa_id = null
+3. admin.desa.anjatan@gmail.com, kecamatan_id = 1 (Anjatan), desa_id = 1 (Anjatan)
+4. admin.kecamatan.arahan@gmail.com, kecamatan_id = 2 (Arahan), desa_id = null

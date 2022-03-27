@@ -21,7 +21,9 @@ class JumlahKaderPokja1Controller extends Controller
         //halaman jml_kader
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $kader = JmlKader::with('desa')->get();
+        $kader = JmlKader::with('desa')
+            ->where('id_desa', auth()->user()->id_desa)
+            ->get();
         // dd($kader);
         return view('admin_desa.sub_file_pokja_1.jml_kader', compact('kader'));
     }
@@ -34,7 +36,9 @@ class JumlahKaderPokja1Controller extends Controller
     public function create()
     {
         // nama desa yang login
-        $desas = DB::table('data_desa')->get();
+        $desas = DB::table('data_desa')
+            ->where('id', auth()->user()->id_desa)
+            ->get();
 
         return view('admin_desa.sub_file_pokja_1.form.create_jml_kader', compact('desas'));
 
@@ -101,7 +105,8 @@ class JumlahKaderPokja1Controller extends Controller
     {
         //halaman edit data jml_kader
         $desa = JmlKader::with('desa')->first();
-        $desas = Data_Desa::all();
+        $desas = Data_Desa::where('id', auth()->user()->id_desa)
+            ->get();
 
         return view('admin_desa.sub_file_pokja_1.form.edit_jml_kader', compact('jml_kader','desa','desas'));
 
