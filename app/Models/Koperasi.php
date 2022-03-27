@@ -13,7 +13,7 @@ class Koperasi extends Model
 
     protected $fillable = [
        'id_desa', 'jml_pemula_klp', 'jml_pemula_peserta', 'jml_madya_klp', 'jml_madya_peserta', 'jml_utama_klp', 'jml_utama_peserta', 'jml_mandiri_klp', 'jml_mandiri_peserta',	'jml_koperasi_klp',
-       	'jml_koperasi_peserta'
+       	'jml_koperasi_peserta', 'periode'
     ];
 
     public function desa(){

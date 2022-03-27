@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('jml_kader_penyuluhan_narkoba');
             $table->integer('jml_kader_PHBS');
             $table->integer('jml_kader_KB');
+            $table->integer('periode');
 
             $table->timestamps();
         });

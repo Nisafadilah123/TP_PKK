@@ -41,6 +41,7 @@ return new class extends Migration
             $table->integer('jml_kader_umum_LP3');
             $table->integer('jml_kader_umum_TPK');
             $table->integer('jml_kader_umum_damas');
+            $table->integer('periode');
 
             $table->timestamps();
         });

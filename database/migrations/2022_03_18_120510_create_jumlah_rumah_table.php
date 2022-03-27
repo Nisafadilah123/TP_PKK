@@ -20,6 +20,7 @@ return new class extends Migration
 
             $table->integer('jml_rumah_sehat');
             $table->integer('jml_rumah_kurang_sehat');
+            $table->integer('periode');
 
             $table->timestamps();
         });

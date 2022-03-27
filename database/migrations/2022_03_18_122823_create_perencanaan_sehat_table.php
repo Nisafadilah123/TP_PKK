@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('jml_anggota_akseptor_laki');
             $table->integer('jml_anggota_akseptor_perempuan');
             $table->integer('jml_kk_tabungan');
+            $table->integer('periode');
 
             $table->timestamps();
         });

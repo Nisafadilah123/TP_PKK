@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('jml_kader_PKBN');
             $table->integer('jml_kader_PKDRT');
             $table->integer('jml_kader_pola_asuh');
+            $table->integer('periode');
 
             $table->timestamps();
         });

@@ -20,6 +20,7 @@ return new class extends Migration
 
             $table->integer('jml_krt_data_umum');
             $table->integer('jml_kk_data_umum');
+            $table->integer('periode');
 
             $table->timestamps();
         });

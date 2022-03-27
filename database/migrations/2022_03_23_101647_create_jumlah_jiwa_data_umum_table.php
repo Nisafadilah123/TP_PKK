@@ -20,6 +20,7 @@ return new class extends Migration
 
             $table->integer('jml_jiwa_data_umum_laki');
             $table->integer('jml_jiwa_data_umum_perempuan');
+            $table->integer('periode');
 
             $table->timestamps();
         });

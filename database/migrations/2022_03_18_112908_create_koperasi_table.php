@@ -28,6 +28,7 @@ return new class extends Migration
             $table->integer('jml_mandiri_peserta');
             $table->integer('jml_koperasi_klp');
             $table->integer('jml_koperasi_peserta');
+            $table->integer('periode');
 
             $table->timestamps();
         });

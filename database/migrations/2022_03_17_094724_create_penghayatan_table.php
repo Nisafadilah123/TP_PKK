@@ -26,6 +26,7 @@ return new class extends Migration
             $table->integer('jml_pola_asuh_anggota');
             $table->integer('jml_lansia_klp');
             $table->integer('jml_lansia_anggota');
+            $table->integer('periode');
 
             $table->timestamps();
         });

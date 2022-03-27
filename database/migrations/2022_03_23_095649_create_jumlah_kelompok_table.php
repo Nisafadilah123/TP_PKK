@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('jml_pkk_rw');
             $table->integer('jml_pkk_rt');
             $table->integer('jml_dasawisma');
+            $table->integer('periode');
 
             $table->timestamps();
         });

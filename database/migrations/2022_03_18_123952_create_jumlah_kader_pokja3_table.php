@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('jml_kader_pangan');
             $table->integer('jml_kader_sandang');
             $table->integer('jml_kader_tata_laksana');
+            $table->integer('periode');
 
             $table->timestamps();
         });

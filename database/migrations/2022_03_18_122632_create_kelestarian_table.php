@@ -25,6 +25,7 @@ return new class extends Migration
             $table->integer('jml_krt_pdam');
             $table->integer('jml_krt_sumur');
             $table->integer('jml_krt_lain');
+            $table->integer('periode');
 
             $table->timestamps();
         });

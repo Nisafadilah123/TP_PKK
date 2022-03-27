@@ -13,7 +13,7 @@ class Pangan extends Model
 
     protected $fillable = [
        'id_desa', 'jml_makanan_beras', 'jml_makanan_nonberas', 'jml_pemanfaatan_peternakan', 'jml_pemanfaatan_perikanan', 'jml_pemanfaatan_warung_hidup', 'jml_pemanfaatan_limbung_hidup', 'jml_pemanfaatan_toga',
-        'jml_pemanfaatan_tanaman_keras'
+        'jml_pemanfaatan_tanaman_keras','periode'
     ];
 
     public function desa(){

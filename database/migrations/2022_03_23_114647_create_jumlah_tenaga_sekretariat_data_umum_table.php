@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('jml_tenaga_honorer_perempuan');
             $table->integer('jml_tenaga_bantuan_laki');
             $table->integer('jml_tenaga_bantuan_perempuan');
+            $table->integer('periode');
 
             $table->timestamps();
         });

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('jml_industri_pangan');
             $table->integer('jml_industri_sandang');
             $table->integer('jml_industri_jasa');
+            $table->integer('periode');
 
             $table->timestamps();
         });

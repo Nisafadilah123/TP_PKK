@@ -26,6 +26,7 @@ return new class extends Migration
             $table->integer('jml_pemanfaatan_limbung_hidup');
             $table->integer('jml_pemanfaatan_toga');
             $table->integer('jml_pemanfaatan_tanaman_keras');
+            $table->integer('periode');
 
             $table->timestamps();
         });

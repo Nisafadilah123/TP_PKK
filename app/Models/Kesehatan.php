@@ -12,7 +12,7 @@ class Kesehatan extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_desa', 'jml_posyandu', 'jml_posyandu_terintegrasi', 'jml_posyandu_lansia_klp', 'jml_posyandu_lansia_anggota', 'jml_posyandu_lansia_memiliki_kartu'
+       'id_desa', 'jml_posyandu', 'jml_posyandu_terintegrasi', 'jml_posyandu_lansia_klp', 'jml_posyandu_lansia_anggota', 'jml_posyandu_lansia_memiliki_kartu', 'periode'
     ];
 
     public function desa(){

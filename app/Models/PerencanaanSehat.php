@@ -12,7 +12,7 @@ class PerencanaanSehat extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_desa', 'jml_PUS', 'jml_WUS',	'jml_anggota_akseptor_laki', 'jml_anggota_akseptor_perempuan', 'jml_kk_tabungan'
+       'id_desa', 'jml_PUS', 'jml_WUS',	'jml_anggota_akseptor_laki', 'jml_anggota_akseptor_perempuan', 'jml_kk_tabungan','periode'
     ];
 
     public function desa(){

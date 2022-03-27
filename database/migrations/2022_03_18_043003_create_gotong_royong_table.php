@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('jml_gotong_keagamaan');
             $table->integer('jml_gotong_jimpitan');
             $table->integer('jml_gotong_arisan');
+            $table->integer('periode');
 
             $table->timestamps();
         });

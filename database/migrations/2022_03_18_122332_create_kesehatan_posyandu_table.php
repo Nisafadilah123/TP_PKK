@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('jml_posyandu_lansia_klp');
             $table->integer('jml_posyandu_lansia_anggota');
             $table->integer('jml_posyandu_lansia_memiliki_kartu');
+            $table->integer('periode');
 
             $table->timestamps();
         });
