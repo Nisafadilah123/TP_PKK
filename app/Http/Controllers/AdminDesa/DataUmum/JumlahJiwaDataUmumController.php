@@ -22,7 +22,7 @@ class JumlahJiwaDataUmumController extends Controller
         // nama desa yang login
         // $desa = Data_Desa::all();
         $jumji = JumlahJiwaDataUmum::with('desa')
-        ->where('id', auth()->user()->id_desa)
+        ->where('id_desa', auth()->user()->id_desa)
         ->get();
 
         return view('admin_desa.sub_file_sekretariat.jml_jiwa_data_umum', compact('jumji'));

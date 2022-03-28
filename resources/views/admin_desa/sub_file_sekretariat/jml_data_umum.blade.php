@@ -25,6 +25,7 @@
                                             <th>Nama Desa</th>
                                             <th>Jumlah Data Umum KRT</th>
                                             <th>Jumlah Data Umum KK</th>
+                                            <th>Periode</th>
                                             <th>Aksi</th>
 
                                         </tr>
@@ -42,6 +43,7 @@
                                         <td style="vertical-align: middle;">{{$c->desa->nama_desa}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_krt_data_umum}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_kk_data_umum}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('jml_data_umum.destroy',$c->id) }}" method="POST">

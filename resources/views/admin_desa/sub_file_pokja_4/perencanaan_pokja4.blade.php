@@ -31,6 +31,7 @@
                                             <th>Jumlah Akseptor Laki-laki</th>
                                             <th>Jumlah Akseptor Perempuan</th>
                                             <th>Jumlah KK yang memiliki Tabungan</th>
+                                            <th>Periode</th>
                                             <th>Aksi</th>
 
                                         </tr>
@@ -49,6 +50,7 @@
                                         <td style="vertical-align: middle;">{{$c->jml_anggota_akseptor_laki}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_anggota_akseptor_perempuan}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_kk_tabungan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('perencanaan.destroy',$c->id) }}" method="POST">
@@ -89,29 +91,25 @@
 @endsection
 
 @push('script-addon')
-{{-- <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script> --}}
-
-{{-- <script>
-    $(document).ready(function () {
-        $('.data').dataTable();
-    });
-</script> --}}
+<script>
+    $('.delete').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+            title: `Apakah anda yakin ingin menghapus data ini ?`,
+              text: "Jika anda menghapusnya maka datanya akan di hapus secara permanen",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            }
+          });
+      });
+</script>
 <script>
 $(document).ready(function() {
     $('.data').DataTable();

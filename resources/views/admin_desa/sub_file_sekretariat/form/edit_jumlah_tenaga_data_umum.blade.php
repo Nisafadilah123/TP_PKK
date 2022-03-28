@@ -20,14 +20,14 @@
         <div class="card-body">
             <div class="form-group">
               <label for="exampleFormControlSelect1">Nama Desa</label>
-                  <select class="form-control" id="id_desa" name="id_desa">
-                      {{-- nama desa yang login --}}
-                      @foreach ($desas as $c)
-                        <option value="{{ $c->id }}" {{ $c->id === $jml_tenaga_umum->id_desa ? 'selected' : '' }}>
-                            {{ $c->kode_desa }}-{{ $c->nama_desa }}
-                        </option>
-                    @endforeach
-                  </select>
+                     {{-- <select class="form-control" id="id_desa" name="id_desa"> --}}
+                        {{-- nama desa yang login --}}
+                        @foreach ($desas as $c)
+                        {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
+                            <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                            <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
+                        @endforeach
+                        {{-- </select> --}}
               </div>
         </div>
         <div class="card-body">
@@ -47,7 +47,10 @@
             <label>Jumlah Tenaga Sekretariat Data Umum Bantuan Perempuan</label>
             <input type="number" class="form-control" name="jml_tenaga_bantuan_perempuan" id="jml_tenaga_bantuan_perempuan" placeholder="Masukkan Jumlah Tenaga Sekretariat Data Umum Bantuan Perempuan" required value="{{ucfirst(old('jml_tenaga_bantuan_perempuan', $jml_tenaga_umum->jml_tenaga_bantuan_perempuan))}}">
           </div>
-
+          <div class="form-group">
+            <label>Periode</label>
+            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $jml_tenaga_umum->periode))}}">
+          </div>
         </div>
         <!-- /.card-body -->
 

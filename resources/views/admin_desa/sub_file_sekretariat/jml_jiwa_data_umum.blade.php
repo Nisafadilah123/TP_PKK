@@ -25,6 +25,7 @@
                                             <th>Nama Desa</th>
                                             <th>Jumlah Jiwa Data Umum KRT</th>
                                             <th>Jumlah Jiwa Data Umum Perempuan</th>
+                                            <th>Periode</th>
                                             <th>Aksi</th>
 
                                         </tr>
@@ -42,6 +43,7 @@
                                         <td style="vertical-align: middle;">{{$c->desa->nama_desa}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_jiwa_data_umum_laki}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_jiwa_data_umum_perempuan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('jml_jiwa_umum.destroy',$c->id) }}" method="POST">

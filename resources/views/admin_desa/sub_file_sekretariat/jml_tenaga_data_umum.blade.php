@@ -27,6 +27,7 @@
                                             <th>Jumlah Tenaga Sekretariat Honorer Perempuan</th>
                                             <th>Jumlah Tenaga Sekretariat Bantuan Laki-laki</th>
                                             <th>Jumlah Tenaga Sekretariat Bantuan Perempuan</th>
+                                            <th>Periode</th>
                                             <th>Aksi</th>
 
                                         </tr>
@@ -46,6 +47,7 @@
                                         <td style="vertical-align: middle;">{{$c->jml_tenaga_honorer_perempuan}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_tenaga_bantuan_laki}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_tenaga_bantuan_perempuan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('jml_tenaga_umum.destroy',$c->id) }}" method="POST">

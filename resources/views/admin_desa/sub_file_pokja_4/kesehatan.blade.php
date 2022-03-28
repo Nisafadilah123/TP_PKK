@@ -31,6 +31,7 @@
                                             <th>Jumlah Posyandu Lansia KLP</th>
                                             <th>Jumlah Posyandu Lansia Anggota</th>
                                             <th>Jumlah Posyandu Lansia Yang Memiliki Kartu Berobat</th>
+                                            <th>Periode</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -48,6 +49,7 @@
                                         <td style="vertical-align: middle;">{{$c->jml_posyandu_lansia_klp}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_posyandu_lansia_anggota}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_posyandu_lansia_memiliki_kartu}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('kesehatan.destroy',$c->id) }}" method="POST">

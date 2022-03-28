@@ -29,6 +29,7 @@
                                             <th>Jumlah Kader Anggota Umum Perempuan</th>
                                             <th>Jumlah Kader Anggota Khusus Laki-laki</th>
                                             <th>Jumlah Kader Anggota Khusus Perempuan</th>
+                                            <th>Periode</th>
                                             <th>Aksi</th>
 
                                         </tr>
@@ -50,6 +51,7 @@
                                         <td style="vertical-align: middle;">{{$c->jml_kader_umum_perempuan_data_umum}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_kader_khusus_laki_data_umum}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_kader_khusus_perempuan_data_umum}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('jml_kader_umum.destroy',$c->id) }}" method="POST">

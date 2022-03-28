@@ -37,7 +37,7 @@ class JumlahKaderDataUmumController extends Controller
     {
         // nama desa yang login
         $desas = DB::table('data_desa')
-        ->where('id_desa', auth()->user()->id_desa)
+        ->where('id', auth()->user()->id_desa)
         ->get();
 
         return view('admin_desa.sub_file_sekretariat.form.create_jumlah_kader_data_umum', compact('desas'));
