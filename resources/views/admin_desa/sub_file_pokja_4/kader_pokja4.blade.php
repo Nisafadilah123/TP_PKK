@@ -29,6 +29,7 @@
                                             <th>Penyuluhan Narkoba</th>
                                             <th>PHBS</th>
                                             <th>KB</th>
+                                            <th>Periode</th>
                                             <th>Aksi</th>
 
                                         </tr>
@@ -50,6 +51,7 @@
                                         <td style="vertical-align: middle;">{{$c->jml_kader_penyuluhan_narkoba}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_kader_PHBS}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_kader_KB}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('kader_pokja4.destroy',$c->id) }}" method="POST">

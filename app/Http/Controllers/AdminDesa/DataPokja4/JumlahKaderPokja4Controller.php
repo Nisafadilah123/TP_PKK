@@ -21,7 +21,9 @@ class JumlahKaderPokja4Controller extends Controller
         //halaman jumlah kader pokja 4
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $jumkad = JumlahKaderPokja4::with('desa')->get();
+        $jumkad = JumlahKaderPokja4::with('desa')
+        ->where('id_desa', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_pokja_4.kader_pokja4', compact('jumkad'));
     }
@@ -34,7 +36,9 @@ class JumlahKaderPokja4Controller extends Controller
     public function create()
     {
         // nama desa yang login
-        $desas = DB::table('data_desa')->get();
+        $desas = DB::table('data_desa')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_pokja_4.form.create_kader_pokja4', compact('desas'));
 
@@ -112,7 +116,8 @@ class JumlahKaderPokja4Controller extends Controller
     {
         //halaman edit data gotong_royong
         $desa = JumlahKaderPokja4::with('desa')->first();
-        $desas = Data_Desa::all();
+        $desas = Data_Desa::where('id', auth()->user()->id_desa)
+            ->get();
 
         return view('admin_desa.sub_file_pokja_4.form.edit_kader_pokja4', compact('kader_pokja4','desa','desas'));
 
@@ -141,9 +146,9 @@ class JumlahKaderPokja4Controller extends Controller
         ]);
 
         $kader_pokja4->update($request->all());
+        // dd($kader_pokja4);
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_kader_pokja4);
 
         return redirect('/kader_pokja4');
 

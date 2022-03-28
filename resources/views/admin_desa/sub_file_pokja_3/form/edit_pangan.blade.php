@@ -24,14 +24,14 @@
                 <div class="card-body">
                     <div class="form-group">
                     <label for="exampleFormControlSelect1">Nama Desa</label>
-                        <select class="form-control" id="id_desa" name="id_desa">
-                            {{-- nama desa yang login --}}
-                            @foreach ($desas as $c)
-                            <option value="{{ $c->id }}" {{ $c->id === $pangan->id_desa ? 'selected' : '' }}>
-                                {{ $c->kode_desa }}-{{ $c->nama_desa }}
-                            </option>
-                                  @endforeach
-                        </select>
+                       {{-- <select class="form-control" id="id_desa" name="id_desa"> --}}
+                {{-- nama desa yang login --}}
+                    @foreach ($desas as $c)
+                    {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
+                        <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
+                     @endforeach
+                    {{-- </select> --}}
                     </div>
                 </div>
             </div>
@@ -108,6 +108,14 @@
                     <div class="form-group">
                         <label>Jumlah Pangan Pemanfaatan Tanaman Keras</label>
                         <input type="number" class="form-control" name="jml_pemanfaatan_tanaman_keras" id="jml_pemanfaatan_tanaman_keras" placeholder="Masukkan Jumlah Pangan Pemanfaatan Tanaman Keras" required value="{{ucfirst(old('jml_pemanfaatan_tanaman_keras', $pangan->jml_pemanfaatan_tanaman_keras))}}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Periode</label>
+                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Jumlah Pangan Pemanfaatan Tanaman Keras" required value="{{ucfirst(old('periode', $pangan->periode))}}">
                     </div>
                 </div>
             </div>

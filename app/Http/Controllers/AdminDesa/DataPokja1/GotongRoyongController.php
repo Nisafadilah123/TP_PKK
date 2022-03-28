@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\GotongRoyong;
 use App\Models\Data_Desa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -20,7 +21,9 @@ class GotongRoyongController extends Controller
         //halaman penghayatan pokja 1
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $gotong = GotongRoyong::with('desa')->get();
+        $gotong = GotongRoyong::with('desa')
+            ->where('id_desa', auth()->user()->id_desa)
+            ->get();
 
         return view('admin_desa.sub_file_pokja_1.gotong_royong', compact('gotong'));
     }
@@ -33,8 +36,11 @@ class GotongRoyongController extends Controller
     public function create()
     {
         // nama desa yang login
-        $desas = DB::table('data_desa')->get();
+        $desas = DB::table('data_desa')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
 
+            // dd($desas);
         return view('admin_desa.sub_file_pokja_1.form.create_gotong_royong', compact('desas'));
 
     }
@@ -108,7 +114,8 @@ class GotongRoyongController extends Controller
     {
         //halaman edit data gotong_royong
         $desa = GotongRoyong::with('desa')->first();
-        $desas = Data_Desa::all();
+        $desas = Data_Desa::where('id', auth()->user()->id_desa)
+            ->get();
 
         return view('admin_desa.sub_file_pokja_1.form.edit_gotong_royong', compact('gotong_royong','desa','desas'));
 

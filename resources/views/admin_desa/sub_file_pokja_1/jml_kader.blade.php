@@ -42,7 +42,7 @@
                                         <td style="vertical-align: middle;">{{$c->jml_kader_PKBN}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_kader_PKDRT}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_kader_pola_asuh}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_kader_periode}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('jml_kader.destroy',$c->id) }}" method="POST">

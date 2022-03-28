@@ -23,15 +23,21 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Nama Desa</label>
-                            <select class="form-control" id="id_desa" name="id_desa">
-                                {{-- nama desa yang login --}}
-                                @foreach ($desas as $d)
-                                <option value="{{ $d->id }}" {{ $d->id === $penghayatan->id_desa ? 'selected' : '' }}>
-                                    {{ $d->kode_desa }}-{{ $d->nama_desa }}
-                                </option>
+                    {{-- <select class="form-control" id="id_desa" name="id_desa"> --}}
+                      {{-- nama desa yang login --}}
+                      {{-- @foreach ($desas as $d)
+                      <option value="{{ $d->id }}" {{ $d->id === $jml_kader->id_desa ? 'selected' : '' }}>
+                          {{ $d->kode_desa }}-{{ $d->nama_desa }}
+                      </option>
+                  @endforeach --}}
+                            @foreach ($desas as $c)
+                                {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
+                                <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                                <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
+
                             @endforeach
-                            </select>
-                        </div>
+                {{-- </select> --}}
+                    </div>
                 </div>
             </div>
             <div class="col-md-3">
@@ -110,7 +116,14 @@
                     </div>
                 </div>
             </div>
-          </div>
+            <div class="col-md-3">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Periode</label>
+                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Jumlah Lansia Anggota" required value="{{ucfirst(old('periode', $penghayatan->periode))}}">
+                    </div>
+                </div>
+            </div>
           </div>
 
         <!-- /.card-body -->

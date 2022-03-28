@@ -8,9 +8,7 @@
 <!-- Main content -->
 <div class="main-content">
     <section class="section">
-        {{-- <h1 class="section-header">
-            <div>Kandidat</div>
-        </h1> --}}
+
 
         <div class="section-body">
             <div class="row">
@@ -34,6 +32,7 @@
                                             <th>Jumlah Pangan Pemanfaatan Limbung Hidup</th>
                                             <th>Jumlah Pangan Pemanfaatan TOGA</th>
                                             <th>Jumlah Pangan Pemanfaatan Tanaman Keras</th>
+                                            <th>Periode</th>
                                             <th>Aksi</th>
                                         </tr>
 
@@ -56,6 +55,7 @@
                                         <td style="vertical-align: middle;">{{$c->jml_pemanfaatan_limbung_hidup}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_pemanfaatan_toga}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_pemanfaatan_tanaman_keras}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('pangan.destroy',$c->id) }}" method="POST">

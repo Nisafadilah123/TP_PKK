@@ -19,12 +19,14 @@
         <div class="card-body">
             <div class="form-group">
               <label for="exampleFormControlSelect1">Nama Desa</label>
-                  <select class="form-control" id="id_desa" name="id_desa">
-                      {{-- nama desa yang login --}}
-                      @foreach ($desas as $c)
-                          <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option>
-                      @endforeach
-                  </select>
+             {{-- <select class="form-control" id="id_desa" name="id_desa"> --}}
+                {{-- nama desa yang login --}}
+                    @foreach ($desas as $c)
+                    {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
+                        <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
+                     @endforeach
+                    {{-- </select> --}}
               </div>
         </div>
         <div class="card-body">
@@ -34,7 +36,11 @@
           </div>
           <div class="form-group">
             <label>Jumlah Rumah Kurang Sehat</label>
-            <input type="number" class="form-control" name="jml_rumah_kurang_sehat" id="jml_rumah_sehat" placeholder="Masukkan Jumlah Rumah Kurang Sehat" required>
+            <input type="number" class="form-control" name="jml_rumah_kurang_sehat" id="jml_rumah_kurang_sehat" placeholder="Masukkan Jumlah Rumah Kurang Sehat" required>
+          </div>
+          <div class="form-group">
+            <label>Periode</label>
+            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Jumlah Rumah Kurang Sehat" required>
           </div>
 
         </div>

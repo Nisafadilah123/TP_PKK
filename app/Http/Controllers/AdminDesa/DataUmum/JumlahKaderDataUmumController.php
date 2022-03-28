@@ -21,7 +21,9 @@ class JumlahKaderDataUmumController extends Controller
         //halaman jumlah kader pokja 4
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $jumkadum = JumlahKaderDataUmum::with('desa')->get();
+        $jumkadum = JumlahKaderDataUmum::with('desa')
+        ->where('id_desa', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_sekretariat.jml_kader_data_umum', compact('jumkadum'));
     }
@@ -34,7 +36,9 @@ class JumlahKaderDataUmumController extends Controller
     public function create()
     {
         // nama desa yang login
-        $desas = DB::table('data_desa')->get();
+        $desas = DB::table('data_desa')
+        ->where('id_desa', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_sekretariat.form.create_jumlah_kader_data_umum', compact('desas'));
 
@@ -112,7 +116,8 @@ class JumlahKaderDataUmumController extends Controller
     {
         //halaman edit data gotong_royong
         $desa = JumlahKaderDataUmum::with('desa')->first();
-        $desas = Data_Desa::all();
+        $desas = Data_Desa::where('id', auth()->user()->id_desa)
+            ->get();
 
         return view('admin_desa.sub_file_sekretariat.form.edit_jumlah_kader_data_umum', compact('jml_kader_umum','desa','desas'));
 

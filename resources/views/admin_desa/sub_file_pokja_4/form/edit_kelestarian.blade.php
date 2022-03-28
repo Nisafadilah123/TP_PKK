@@ -22,14 +22,14 @@
                 <div class="card-body">
                     <div class="form-group">
                     <label for="exampleFormControlSelect1">Nama Desa</label>
-                        <select class="form-control" id="id_desa" name="id_desa">
-                            {{-- nama desa yang login --}}
-                            @foreach ($desas as $c)
-                            <option value="{{ $c->id }}" {{ $c->id === $kelestarian->id_desa ? 'selected' : '' }}>
-                                {{ $c->kode_desa }}-{{ $c->nama_desa }}
-                            </option>
-                            @endforeach
-                        </select>
+                          {{-- <select class="form-control" id="id_desa" name="id_desa"> --}}
+                        {{-- nama desa yang login --}}
+                        @foreach ($desas as $c)
+                        {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
+                            <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                            <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
+                        @endforeach
+                        {{-- </select> --}}
                     </div>
                 </div>
             </div>
@@ -109,7 +109,14 @@
                     </div>
                 </div>
             </div>
-
+            <div class="col-sm-4">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Periode</label>
+                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $kelestarian->periode))}}">
+                    </div>
+                </div>
+            </div>
        </div>
         </div>
         <!-- /.card-body -->

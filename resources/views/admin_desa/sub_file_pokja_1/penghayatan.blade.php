@@ -34,6 +34,7 @@
                                         <th>Jumlah Pola Asuh Kelompok Anggota</th>
                                         <th>Jumlah Lansia Klp</th>
                                         <th>Jumlah Lansia Anggota</th>
+                                        <th>Periode</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -54,6 +55,7 @@
                                         <td style="vertical-align: middle;">{{$c->jml_pola_asuh_anggota}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_lansia_klp}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_lansia_anggota}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('penghayatan.destroy',$c->id) }}" method="POST">

@@ -21,7 +21,9 @@ class PendidikanController extends Controller
         // halaman pendidikan pokja 2
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $pend = Pendidikan::with('desa')->get();
+        $pend = Pendidikan::with('desa')
+        ->where('id_desa', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_pokja_2.jml_kelompok', compact('pend'));
     }
@@ -34,7 +36,9 @@ class PendidikanController extends Controller
     public function create()
     {
         // nama desa yang login
-        $desas = DB::table('data_desa')->get();
+        $desas = DB::table('data_desa')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_pokja_2.form.create_pendidikan', compact('desas'));
 
@@ -163,7 +167,8 @@ class PendidikanController extends Controller
     {
                 //halaman edit data pendidikan
                 $desa = Pendidikan::with('desa')->first();
-                $desas = Data_Desa::all();
+                $desas = Data_Desa::where('id', auth()->user()->id_desa)
+                ->get();
 
                 return view('admin_desa.sub_file_pokja_2.form.edit_pendidikan', compact('pendidikan','desa','desas'));
 

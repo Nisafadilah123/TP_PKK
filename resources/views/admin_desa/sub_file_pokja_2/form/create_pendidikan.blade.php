@@ -17,52 +17,54 @@
       <form action="{{ route('pendidikan.store') }}" method="POST">
         @csrf
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
 
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Nama Desa</label>
-                            <select class="form-control" id="id_desa" name="id_desa">
+                                {{-- <select class="form-control" id="id_desa" name="id_desa"> --}}
                                 {{-- nama desa yang login --}}
                                 @foreach ($desas as $c)
-                                    <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option>
+                                    {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
+                                    <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+
+                                    <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
+
                                 @endforeach
-                            </select>
+                            {{-- </select> --}}
                         </div>
                     </div>
             </div>
 
-          <div class="col-md-4">
-          <div class="card-body">
-            <div class="form-group">
-              <label>Jumlah warga yang masih 3 buta</label>
-              <input type="number" class="form-control" name="jml_warga_buta" id="jml_warga_buta" placeholder="Masukkan Jumlah warga yang masih 3 buta" required>
+            <div class="col-md-3">
+                <div class="card-body">
+                    <div class="form-group">
+                    <label>Jumlah warga yang masih 3 buta</label>
+                    <input type="number" class="form-control" name="jml_warga_buta" id="jml_warga_buta" placeholder="Masukkan Jumlah warga yang masih 3 buta" required>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
 
+                    <div class="form-group">
+                        <label>Jumlah Paket A Kelompok Belajar</label>
+                        <input type="number" class="form-control" name="jml_pktA_kel_belajar" id="jml_pktA_kel_belajar" placeholder="Masukkan Jumlah Paket A Kelompok Belajar" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-body">
                 <div class="form-group">
-                    <label>Jumlah Paket A Kelompok Belajar</label>
-                    <input type="number" class="form-control" name="jml_pktA_kel_belajar" id="jml_pktA_kel_belajar" placeholder="Masukkan Jumlah Paket A Kelompok Belajar" required>
+                    <label>Jumlah Paket A Warga Belajar</label>
+                    <input type="number" class="form-control" name="jml_pktA_warga_belajar" id="jml_pktA_warga_belajar" placeholder="Masukkan Jumlah Paket A Warga Belajar" required>
                 </div>
                 </div>
             </div>
         </div>
 
         <div class="row">
-
-                <div class="col-md-4">
-                    <div class="card-body">
-                    <div class="form-group">
-                        <label>Jumlah Paket A Warga Belajar</label>
-                        <input type="number" class="form-control" name="jml_pktA_warga_belajar" id="jml_pktA_warga_belajar" placeholder="Masukkan Jumlah Paket A Warga Belajar" required>
-                    </div>
-                    </div>
-                </div>
-
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
 
                     <div class="form-group">
@@ -72,7 +74,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
 
                 <div class="form-group">
@@ -81,10 +83,8 @@
                 </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
 
                 <div class="form-group">
@@ -93,7 +93,7 @@
                 </div>
                 </div>
             </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Paket C Warga Belajar</label>
@@ -102,7 +102,11 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+        </div>
+
+        <div class="row">
+
+                <div class="col-md-3">
                     <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah KF Kelompok Belajar</label>
@@ -111,11 +115,7 @@
                     </div>
                 </div>
 
-
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
                 <div class="form-group">
                     <label>Jumlah KF Warga Belajar</label>
@@ -124,7 +124,7 @@
                 </div>
             </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                 <div class="card-body">
 
                     <div class="form-group">
@@ -134,7 +134,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
 
                 <div class="form-group">
@@ -146,7 +146,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
 
                 <div class="form-group">
@@ -155,7 +155,7 @@
                 </div>
                 </div>
             </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah BKB Ibu Peserta</label>
@@ -163,7 +163,7 @@
                     </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card-body">
 
                         <div class="form-group">
@@ -172,22 +172,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-3">
+                    <div class="card-body">
 
+                    <div class="form-group">
+                        <label>Jumlah BKB Kel. Simulasi</label>
+                        <input type="number" class="form-control" name="jml_BKB_kel_simulasi" id="jml_BKB_kel_simulasi" placeholder="Masukkan Jumlah Gotong Arisan" required>
+                    </div>
+                    </div>
+                </div>
         </div>
 
         <div class="row">
-
-            <div class="col-md-4">
-                <div class="card-body">
-
-                <div class="form-group">
-                    <label>Jumlah BKB Kel. Simulasi</label>
-                    <input type="number" class="form-control" name="jml_BKB_kel_simulasi" id="jml_BKB_kel_simulasi" placeholder="Masukkan Jumlah Gotong Arisan" required>
-                </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
 
                 <div class="form-group">
@@ -196,7 +193,7 @@
                 </div>
                 </div>
             </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader Khusus Paud Sejenis</label>
@@ -204,10 +201,8 @@
                     </div>
                     </div>
                 </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
 
                     <div class="form-group">
@@ -217,7 +212,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
 
                 <div class="form-group">
@@ -226,7 +221,10 @@
                 </div>
                 </div>
             </div>
-            <div class="col-md-4">
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
                 <div class="card-body">
 
                     <div class="form-group">
@@ -235,11 +233,7 @@
                     </div>
                 </div>
             </div>
-
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
 
                     <div class="form-group">
@@ -250,7 +244,7 @@
             </div>
 
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
 
                 <div class="form-group">
@@ -259,7 +253,7 @@
                 </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
 
                     <div class="form-group">
@@ -268,7 +262,15 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-3">
+                <div class="card-body">
 
+                    <div class="form-group">
+                        <label>Periode</label>
+                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+                    </div>
+                </div>
+            </div>
 
         </div>
 

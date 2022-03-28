@@ -19,12 +19,16 @@
         <div class="card-body">
             <div class="form-group">
               <label for="exampleFormControlSelect1">Nama Desa</label>
-                  <select class="form-control" id="id_desa" name="id_desa">
-                      {{-- nama desa yang login --}}
-                      @foreach ($desas as $c)
-                          <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option>
-                      @endforeach
-                  </select>
+                 {{-- <select class="form-control" id="id_desa" name="id_desa"> --}}
+                {{-- nama desa yang login --}}
+                @foreach ($desas as $c)
+                {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
+                  <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+
+                  <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
+
+                @endforeach
+                {{-- </select> --}}
               </div>
         </div>
         <div class="card-body">
@@ -40,7 +44,10 @@
             <label>Jumlah Kader Pola Asuh</label>
             <input type="number" class="form-control" name="jml_kader_pola_asuh" id="jml_kader_pola_asuh" placeholder="Masukkan Jumlah Kader Pola Asuh" required>
           </div>
-
+          <div class="form-group">
+            <label>Periode</label>
+            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+          </div>
         </div>
         <!-- /.card-body -->
 

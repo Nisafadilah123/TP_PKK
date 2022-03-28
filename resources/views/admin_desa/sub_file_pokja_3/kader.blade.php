@@ -27,15 +27,13 @@
                                             <th>Pangan</th>
                                             <th>Sandang</th>
                                             <th>Tata Laksana</th>
+                                            <th>Periode</th>
                                             <th>Aksi</th>
-
                                         </tr>
-
                                     </thead>
 
                                     <tbody>
                                         <?php $no=1;?>
-
                                         @foreach ($kad as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
@@ -44,6 +42,7 @@
                                         <td style="vertical-align: middle;">{{$c->jml_kader_pangan}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_kader_sandang}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_kader_tata_laksana}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('kader.destroy',$c->id) }}" method="POST">

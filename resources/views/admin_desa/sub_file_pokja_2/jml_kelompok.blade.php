@@ -47,6 +47,7 @@
                                             <th>Jml. Kader Umum LP3 PKK</th>
                                             <th>Jml. Kader Umum TPK 3 PKK</th>
                                             <th>Jml. Kader Umum Damas PKK</th>
+                                            <th>Periode</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -82,6 +83,7 @@
                                         <td style="vertical-align: middle;">{{$c->jml_kader_umum_LP3}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_kader_umum_TPK}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_kader_umum_damas}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('pendidikan.destroy',$c->id) }}" method="POST">

@@ -152,19 +152,19 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="data_pokja3" class="nav-link {{ Request::is('data_pokja3') ? 'active':'' }}">
+                    <a href="/data_pokja3" class="nav-link {{ Request::is('data_pokja3') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA III</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="data_pokja4" class="nav-link {{ Request::is('data_pokja4') ? 'active':'' }}">
+                    <a href="/data_pokja4" class="nav-link {{ Request::is('data_pokja4') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA IV</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
+                    <a href="/data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data Sekretariat/Data Umum</p>
                     </a>

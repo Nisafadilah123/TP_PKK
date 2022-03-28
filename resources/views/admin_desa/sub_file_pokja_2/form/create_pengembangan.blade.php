@@ -17,52 +17,53 @@
       <form action="{{ route('koperasi.store') }}" method="POST">
         @csrf
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
 
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Nama Desa</label>
-                            <select class="form-control" id="id_desa" name="id_desa">
+                        {{-- <select class="form-control" id="id_desa" name="id_desa"> --}}
                                 {{-- nama desa yang login --}}
                                 @foreach ($desas as $c)
-                                    <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option>
+                                    {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
+                                    <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+
+                                    <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
+
                                 @endforeach
-                            </select>
+                            {{-- </select> --}}
                         </div>
                     </div>
             </div>
 
-          <div class="col-md-4">
-          <div class="card-body">
-            <div class="form-group">
-              <label>Jumlah Pemula KLP </label>
-              <input type="number" class="form-control" name="jml_pemula_klp" id="jml_pemula_klp" placeholder="Masukkan Jumlah Pemula KLP" required>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
-
-                <div class="form-group">
-                    <label>Jumlah Pemula Peserta</label>
-                    <input type="number" class="form-control" name="jml_pemula_peserta" id="jml_pemula_peserta" placeholder="Masukkan Jumlah Pemula Peserta" required>
+                    <div class="form-group">
+                        <label>Jumlah Pemula KLP </label>
+                        <input type="number" class="form-control" name="jml_pemula_klp" id="jml_pemula_klp" placeholder="Masukkan Jumlah Pemula KLP" required>
+                    </div>
                 </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Jumlah Pemula Peserta</label>
+                        <input type="number" class="form-control" name="jml_pemula_peserta" id="jml_pemula_peserta" placeholder="Masukkan Jumlah Pemula Peserta" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Jumlah Madya KLP</label>
+                        <input type="number" class="form-control" name="jml_madya_klp" id="jml_madya_klp" placeholder="Masukkan Jumlah Madya KLP" required>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="row">
-
-                <div class="col-md-4">
-                    <div class="card-body">
-                    <div class="form-group">
-                        <label>Jumlah Madya KLP</label>
-                        <input type="number" class="form-control" name="jml_madya_klp" id="jml_madya_klp" placeholder="Masukkan Jumlah Madya KLP" required>
-                    </div>
-                    </div>
-                </div>
-
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
 
                     <div class="form-group">
@@ -72,7 +73,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
 
                 <div class="form-group">
@@ -81,10 +82,7 @@
                 </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
 
                 <div class="form-group">
@@ -93,7 +91,7 @@
                 </div>
                 </div>
             </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Mandiri KLP</label>
@@ -101,8 +99,10 @@
                     </div>
                     </div>
                 </div>
+        </div>
 
-                <div class="col-md-4">
+        <div class="row">
+                <div class="col-md-3">
                     <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Mandiri Peserta</label>
@@ -110,45 +110,35 @@
                     </div>
                     </div>
                 </div>
+                <div class="col-md-3">
+                    <div class="card-body">
 
-
-        </div>
-
-
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card-body">
-
-                    <div class="form-group">
-                        <label>Jumlah Koperasi KLP</label>
-                        <input type="number" class="form-control" name="jml_koperasi_klp" id="jml_koperasi_klp" placeholder="Masukkan Jumlah Koperasi KLP" required>
+                        <div class="form-group">
+                            <label>Jumlah Koperasi KLP</label>
+                            <input type="number" class="form-control" name="jml_koperasi_klp" id="jml_koperasi_klp" placeholder="Masukkan Jumlah Koperasi KLP" required>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-
-            <div class="col-md-4">
-                <div class="card-body">
-
-                <div class="form-group">
-                    <label>Jumlah Koperasi Peserta</label>
-                    <input type="number" class="form-control" name="jml_koperasi_peserta" id="jml_koperasi_peserta" placeholder="Masukkan Jumlah Koperasi Peserta" required>
-                </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card-body">
+                <div class="col-md-3">
+                    <div class="card-body">
 
                     <div class="form-group">
-                        <label>Jumlah Kader Umum Damas PKK</label>
-                        <input type="number" class="form-control" name="jml_kader_umum_damas" id="jml_kader_umum_damas" placeholder="Masukkan Jumlah Kader Umum Damas" required>
+                        <label>Jumlah Koperasi Peserta</label>
+                        <input type="number" class="form-control" name="jml_koperasi_peserta" id="jml_koperasi_peserta" placeholder="Masukkan Jumlah Koperasi Peserta" required>
+                    </div>
                     </div>
                 </div>
-            </div>
 
+                <div class="col-md-3">
+                    <div class="card-body">
 
+                        <div class="form-group">
+                            <label>Periode</label>
+                            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+                        </div>
+                    </div>
+                </div>
         </div>
-
         <!-- /.card-body -->
 
         <div class="card-footer">

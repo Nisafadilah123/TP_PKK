@@ -21,7 +21,9 @@ class JumlahRumahController extends Controller
         //halaman industri pokja 3
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $rum = JumlahRumah::with('desa')->get();
+        $rum = JumlahRumah::with('desa')
+        ->where('id_desa', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_pokja_3.rumah', compact('rum'));
     }
@@ -34,7 +36,9 @@ class JumlahRumahController extends Controller
     public function create()
     {
         // nama desa yang login
-        $desas = DB::table('data_desa')->get();
+        $desas = DB::table('data_desa')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_pokja_3.form.create_jml_rumah', compact('desas'));
 
@@ -100,7 +104,8 @@ class JumlahRumahController extends Controller
     {
         //halaman edit data JumlahRumah
         $desa = JumlahRumah::with('desa')->first();
-        $desas = Data_Desa::all();
+        $desas = Data_Desa::where('id', auth()->user()->id_desa)
+            ->get();
 
         return view('admin_desa.sub_file_pokja_3.form.edit_jml_rumah', compact('rumah','desa','desas'));
 

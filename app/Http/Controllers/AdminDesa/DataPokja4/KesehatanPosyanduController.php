@@ -21,7 +21,9 @@ class KesehatanPosyanduController extends Controller
         //halaman jumlah kesehatan posyandu pokja 4
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $kes = Kesehatan::with('desa')->get();
+        $kes = Kesehatan::with('desa')
+        ->where('id_desa', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_pokja_4.kesehatan', compact('kes'));
     }
@@ -34,7 +36,9 @@ class KesehatanPosyanduController extends Controller
     public function create()
     {
         // nama desa yang login
-        $desas = DB::table('data_desa')->get();
+        $desas = DB::table('data_desa')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_pokja_4.form.create_kesehatan', compact('desas'));
 
@@ -109,8 +113,8 @@ class KesehatanPosyanduController extends Controller
     {
         //halaman edit data gotong_royong
         $desa = Kesehatan::with('desa')->first();
-        $desas = Data_Desa::all();
-
+        $desas = Data_Desa::where('id', auth()->user()->id_desa)
+        ->get();
         return view('admin_desa.sub_file_pokja_4.form.edit_kesehatan', compact('kesehatan','desa','desas'));
 
     }

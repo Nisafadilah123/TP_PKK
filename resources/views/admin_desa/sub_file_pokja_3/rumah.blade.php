@@ -28,6 +28,7 @@
                                             <th>Nama Desa</th>
                                             <th>Sehat</th>
                                             <th>Kurang Sehat</th>
+                                            <th>Periode</th>
                                             <th>Aksi</th>
 
                                         </tr>
@@ -44,6 +45,7 @@
                                         <td style="vertical-align: middle;">{{$c->desa->nama_desa}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_rumah_sehat}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_rumah_kurang_sehat}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('rumah.destroy',$c->id) }}" method="POST">

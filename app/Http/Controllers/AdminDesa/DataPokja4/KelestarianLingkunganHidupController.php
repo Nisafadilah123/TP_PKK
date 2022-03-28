@@ -21,7 +21,9 @@ class KelestarianLingkunganHidupController extends Controller
         //halaman jumlah Kelestarian pokja 4
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $kel = Kelestarian::with('desa')->get();
+        $kel = Kelestarian::with('desa')
+        ->where('id_desa', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_pokja_4.kelestarian', compact('kel'));
     }
@@ -34,7 +36,9 @@ class KelestarianLingkunganHidupController extends Controller
     public function create()
     {
         // nama desa yang login
-        $desas = DB::table('data_desa')->get();
+        $desas = DB::table('data_desa')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_pokja_4.form.create_kelestarian', compact('desas'));
 
@@ -115,8 +119,8 @@ class KelestarianLingkunganHidupController extends Controller
     {
         //halaman edit data gotong_royong
         $desa = Kelestarian::with('desa')->first();
-        $desas = Data_Desa::all();
-
+        $desas = Data_Desa::where('id', auth()->user()->id_desa)
+        ->get();
         return view('admin_desa.sub_file_pokja_4.form.edit_kelestarian', compact('kelestarian','desa','desas'));
 
     }

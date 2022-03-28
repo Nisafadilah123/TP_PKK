@@ -21,7 +21,9 @@ class PerencanaanSehatController extends Controller
         //halaman jumlah perencanaan pokja 4
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $per = PerencanaanSehat::with('desa')->get();
+        $per = PerencanaanSehat::with('desa')
+        ->where('id_desa', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_pokja_4.perencanaan_pokja4', compact('per'));
     }
@@ -34,7 +36,9 @@ class PerencanaanSehatController extends Controller
     public function create()
     {
         // nama desa yang login
-        $desas = DB::table('data_desa')->get();
+        $desas = DB::table('data_desa')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_pokja_4.form.create_perencanaan', compact('desas'));
 
@@ -109,7 +113,8 @@ class PerencanaanSehatController extends Controller
     {
         //halaman edit data gotong_royong
         $desa = PerencanaanSehat::with('desa')->first();
-        $desas = Data_Desa::all();
+        $desas = Data_Desa::where('id', auth()->user()->id_desa)
+            ->get();
 
         return view('admin_desa.sub_file_pokja_4.form.edit_perencanaan', compact('perencanaan','desa','desas'));
 

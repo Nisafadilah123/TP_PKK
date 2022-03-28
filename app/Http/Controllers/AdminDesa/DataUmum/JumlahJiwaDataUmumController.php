@@ -18,10 +18,12 @@ class JumlahJiwaDataUmumController extends Controller
      */
     public function index()
     {
-               //halaman jumlah kader pokja 4
+        //halaman jumlah kader pokja 4
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $jumji = JumlahJiwaDataUmum::with('desa')->get();
+        $jumji = JumlahJiwaDataUmum::with('desa')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_sekretariat.jml_jiwa_data_umum', compact('jumji'));
     }
@@ -34,7 +36,9 @@ class JumlahJiwaDataUmumController extends Controller
     public function create()
     {
         // nama desa yang login
-        $desas = DB::table('data_desa')->get();
+        $desas = DB::table('data_desa')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_sekretariat.form.create_jumlah_jiwa_data_umum', compact('desas'));
 
@@ -100,7 +104,8 @@ class JumlahJiwaDataUmumController extends Controller
     {
         //halaman edit data gotong_royong
         $desa = JumlahJiwaDataUmum::with('desa')->first();
-        $desas = Data_Desa::all();
+        $desas = Data_Desa::where('id', auth()->user()->id_desa)
+            ->get();
 
         return view('admin_desa.sub_file_sekretariat.form.edit_jumlah_jiwa_data_umum', compact('jml_jiwa_umum','desa','desas'));
 

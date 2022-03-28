@@ -20,7 +20,9 @@ class KehidupanBerkoperasiController extends Controller
         // halaman koperasi pokja 2
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $kop = Koperasi::with('desa')->get();
+        $kop = Koperasi::with('desa')
+        ->where('id_desa', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_pokja_2.kehidupan_berkoperasi', compact('kop'));
     }
@@ -33,7 +35,9 @@ class KehidupanBerkoperasiController extends Controller
     public function create()
     {
         // nama desa yang login
-        $desas = DB::table('data_desa')->get();
+        $desas = DB::table('data_desa')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_pokja_2.form.create_pengembangan', compact('desas'));
 
@@ -123,7 +127,8 @@ class KehidupanBerkoperasiController extends Controller
     {
         //halaman edit data Koperasi
         $desa = Koperasi::with('desa')->first();
-        $desas = Data_Desa::all();
+        $desas = Data_Desa::where('id', auth()->user()->id_desa)
+            ->get();
 
         return view('admin_desa.sub_file_pokja_2.form.edit_pengembangan', compact('koperasi','desa','desas'));
 

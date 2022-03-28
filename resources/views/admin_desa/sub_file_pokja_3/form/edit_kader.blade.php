@@ -21,14 +21,14 @@
         <div class="card-body">
             <div class="form-group">
               <label for="exampleFormControlSelect1">Nama Desa</label>
-                  <select class="form-control" id="id_desa" name="id_desa">
-                      {{-- nama desa yang login --}}
-                      @foreach ($desas as $d)
-                      <option value="{{ $d->id }}" {{ $d->id === $kader->id_desa ? 'selected' : '' }}>
-                          {{ $d->kode_desa }}-{{ $d->nama_desa }}
-                      </option>
-                  @endforeach
-                  </select>
+                 {{-- <select class="form-control" id="id_desa" name="id_desa"> --}}
+                {{-- nama desa yang login --}}
+                @foreach ($desas as $c)
+                {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
+                    <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                    <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
+                 @endforeach
+                {{-- </select> --}}
               </div>
         </div>
         <div class="card-body">
@@ -43,6 +43,10 @@
           <div class="form-group">
             <label>Jumlah Kader Tata Laksana</label>
             <input type="number" class="form-control" name="jml_kader_tata_laksana" id="jml_kader_tata_laksana" placeholder="Masukkan Jumlah Kader Tata Laksana" required value="{{ucfirst(old('jml_kader_tata_laksana', $kader->jml_kader_tata_laksana))}}">
+          </div>
+          <div class="form-group">
+            <label>Periode</label>
+            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $kader->periode))}}">
           </div>
         </div>
         <!-- /.card-body -->

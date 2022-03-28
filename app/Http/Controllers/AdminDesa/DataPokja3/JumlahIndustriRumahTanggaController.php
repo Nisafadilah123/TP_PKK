@@ -20,7 +20,9 @@ class JumlahIndustriRumahTanggaController extends Controller
         //halaman industri pokja 3
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $ind = JumlahIndustri::with('desa')->get();
+        $ind = JumlahIndustri::with('desa')
+        ->where('id_desa', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_pokja_3.industri', compact('ind'));
     }
@@ -33,7 +35,9 @@ class JumlahIndustriRumahTanggaController extends Controller
     public function create()
     {
         // nama desa yang login
-        $desas = DB::table('data_desa')->get();
+        $desas = DB::table('data_desa')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_pokja_3.form.create_industri', compact('desas'));
 
@@ -102,7 +106,8 @@ class JumlahIndustriRumahTanggaController extends Controller
     {
         //halaman edit data gotong_royong
         $desa = JumlahIndustri::with('desa')->first();
-        $desas = Data_Desa::all();
+        $desas = Data_Desa::where('id', auth()->user()->id_desa)
+            ->get();
 
         return view('admin_desa.sub_file_pokja_3.form.edit_industri', compact('industri','desa','desas'));
 

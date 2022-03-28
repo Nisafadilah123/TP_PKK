@@ -20,7 +20,10 @@ class PenghayatanDanPengamalanController extends Controller
         //halaman penghayatan pokja 1
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $peng = Penghayatan::with('desa')->get();
+        $peng = Penghayatan::with('desa')
+        ->where('id_desa', auth()->user()->id_desa)
+
+        ->get();
 
         return view('admin_desa.sub_file_pokja_1.penghayatan', compact('peng'));
     }
@@ -33,8 +36,10 @@ class PenghayatanDanPengamalanController extends Controller
     public function create()
     {
         // nama desa yang login
-        $desas = DB::table('data_desa')->get();
-
+        // $desas = DB::table('data_desa')->get();
+        $desas = DB::table('data_desa')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
         return view('admin_desa.sub_file_pokja_1.form.create_penghayatan', compact('desas'));
 
     }
@@ -75,6 +80,7 @@ class PenghayatanDanPengamalanController extends Controller
 
         // cara 1
         $peng = new Penghayatan;
+
         $peng->id_desa = $request->id_desa;
         $peng->jml_PKBN_simulasi = $request->jml_PKBN_simulasi;
         $peng->jml_PKBN_anggota = $request->jml_PKBN_anggota;
@@ -85,12 +91,12 @@ class PenghayatanDanPengamalanController extends Controller
         $peng->jml_lansia_klp = $request->jml_lansia_klp;
         $peng->jml_lansia_anggota = $request->jml_lansia_anggota;
         $peng->periode = $request->periode;
+        // dd($peng);
 
         $peng->save();
 
 
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
-        // dd($desa);
 
         return redirect('/penghayatan');
 
@@ -117,7 +123,8 @@ class PenghayatanDanPengamalanController extends Controller
     {
         //halaman edit data jml_kader
         $desa = Penghayatan::with('desa')->first();
-        $desas = Data_Desa::all();
+        $desas = Data_Desa::where('id', auth()->user()->id_desa)
+            ->get();
 
         return view('admin_desa.sub_file_pokja_1.form.edit_penghayatan', compact('penghayatan','desa','desas'));
 

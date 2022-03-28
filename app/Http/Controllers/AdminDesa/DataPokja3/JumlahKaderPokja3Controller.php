@@ -20,7 +20,9 @@ class JumlahKaderPokja3Controller extends Controller
         //halaman jumlah kader pokja 3
         // nama desa yang login
         // $desa = Data_Desa::all();
-        $kad = JumlahKaderPokja3::with('desa')->get();
+        $kad = JumlahKaderPokja3::with('desa')
+        ->where('id_desa', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_pokja_3.kader', compact('kad'));
     }
@@ -33,7 +35,9 @@ class JumlahKaderPokja3Controller extends Controller
     public function create()
     {
         // nama desa yang login
-        $desas = DB::table('data_desa')->get();
+        $desas = DB::table('data_desa')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
 
         return view('admin_desa.sub_file_pokja_3.form.create_kader', compact('desas'));
 
@@ -102,7 +106,8 @@ class JumlahKaderPokja3Controller extends Controller
     {
         //halaman edit data gotong_royong
         $desa = JumlahKaderPokja3::with('desa')->first();
-        $desas = Data_Desa::all();
+        $desas = Data_Desa::where('id', auth()->user()->id_desa)
+            ->get();
 
         return view('admin_desa.sub_file_pokja_3.form.edit_kader', compact('kader','desa','desas'));
 
