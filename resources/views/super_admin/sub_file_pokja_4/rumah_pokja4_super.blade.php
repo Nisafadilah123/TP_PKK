@@ -31,6 +31,7 @@
                                             <th>Kesling</th>
                                             <th>KB</th>
                                             <th>Penyuluhan Narkoba</th>
+                                            <th>Periode</th>
                                             <th>Aksi</th>
 
                                         </tr>
@@ -97,29 +98,25 @@
 @endsection
 
 @push('script-addon')
-{{-- <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script> --}}
-
-{{-- <script>
-    $(document).ready(function () {
-        $('.data').dataTable();
-    });
-</script> --}}
+<script>
+    $('.delete').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+            title: `Apakah anda yakin ingin menghapus data ini ?`,
+              text: "Jika anda menghapusnya maka datanya akan di hapus secara permanen",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            }
+          });
+      });
+</script>
 <script>
 $(document).ready(function() {
     $('.data').DataTable();

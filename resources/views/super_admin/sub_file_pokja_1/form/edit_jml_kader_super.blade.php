@@ -1,15 +1,15 @@
 @extends('super_admin.layout')
 
-@section('title', 'Edit Data Jumlah Penghayatan dan Pengamalan Pancasila | Super Admin PKK Kab. Indramayu')
+@section('title', 'Edit Data Jumlah Kader POKJA I | Super Admin PKK Kab. Indramayu')
 
-@section('bread', 'Edit Data Jumlah Penghayatan dan Pengamalan Pancasila')
+@section('bread', 'Edit Data Jumlah Kader POKJA I')
 @section('container')
 
 <div class="col-md-6">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Edit Data Jumlah Penghayatan dan Pengamalan Pancasila</h3>
+        <h3 class="card-title">Edit Data Jumlah Kader POKJA I</h3>
       </div>
       <!-- /.card-header -->
       <!-- form start -->
@@ -44,7 +44,10 @@
             <label>Jumlah Kader Pola Asuh</label>
             <input type="number" class="form-control" name="jml_kader_pola_asuh" id="jml_kader_pola_asuh" placeholder="Masukkan Jumlah Kader Pola Asuh" required value="{{ucfirst(old('jml_kader_pola_asuh', $jml_kader_super->jml_kader_pola_asuh))}}">
           </div>
-
+          <div class="form-group">
+            <label>Periode</label>
+            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $jml_kader_super->periode))}}">
+          </div>
         </div>
         <!-- /.card-body -->
 

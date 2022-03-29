@@ -1,15 +1,15 @@
 @extends('super_admin.layout')
 
-@section('title', 'Tambah Data Jumlah Kader | Super Admin PKK Kab. Indramayu')
+@section('title', 'Tambah Data Jumlah Kader POKJA I | Super Admin PKK Kab. Indramayu')
 
-@section('bread', 'Tambah Data Jumlah Kader')
+@section('bread', 'Tambah Data Jumlah Kader POKJA I')
 @section('container')
 
 <div class="col-md-6">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Tambah Data Jumlah Kader</h3>
+        <h3 class="card-title">Tambah Data Jumlah Kader POKJA I</h3>
       </div>
       <!-- /.card-header -->
       <!-- form start -->
@@ -40,7 +40,10 @@
             <label>Jumlah Kader Pola Asuh</label>
             <input type="number" class="form-control" name="jml_kader_pola_asuh" id="jml_kader_pola_asuh" placeholder="Masukkan Jumlah Kader Pola Asuh" required>
           </div>
-
+          <div class="form-group">
+            <label>Periode</label>
+            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+          </div>
         </div>
         <!-- /.card-body -->
 

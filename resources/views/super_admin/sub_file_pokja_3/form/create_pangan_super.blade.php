@@ -107,13 +107,19 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Periode</label>
+                    <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+                </div>
+            </div>
         </div>
 
         <!-- /.card-body -->
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/pangan" class="btn btn-outline-primary">
+          <a href="/pangan_super" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

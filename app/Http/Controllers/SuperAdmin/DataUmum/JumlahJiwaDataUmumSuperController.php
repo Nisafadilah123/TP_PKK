@@ -23,7 +23,7 @@ class JumlahJiwaDataUmumSuperController extends Controller
         // $desa = Data_Desa::all();
         $jumjisup = JumlahJiwaDataUmum::with('desa')->get();
 
-        return view('admin_desa.sub_file_sekretariat.jml_jiwa_data_umum_super', compact('jumjisup'));
+        return view('super_admin.sub_file_sekretariat.jml_jiwa_data_umum_super', compact('jumjisup'));
     }
 
     /**
@@ -36,7 +36,7 @@ class JumlahJiwaDataUmumSuperController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_sekretariat.form.create_jumlah_jiwa_data_umum_super', compact('desas'));
+        return view('super_admin.sub_file_sekretariat.form.create_jumlah_jiwa_data_umum_super', compact('desas'));
 
     }
 
@@ -102,7 +102,7 @@ class JumlahJiwaDataUmumSuperController extends Controller
         $desa = JumlahJiwaDataUmum::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_sekretariat.form.edit_jumlah_jiwa_data_umum_super', compact('jml_jiwa_umum_super','desa','desas'));
+        return view('super_admin.sub_file_sekretariat.form.edit_jumlah_jiwa_data_umum_super', compact('jml_jiwa_umum_super','desa','desas'));
 
     }
 

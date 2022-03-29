@@ -23,7 +23,7 @@ class PendidikanSuperController extends Controller
         // $desa = Data_Desa::all();
         $pendsup = Pendidikan::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_2.jml_kelompok_super', compact('pendsup'));
+        return view('super_admin.sub_file_pokja_2.jml_kelompok_super', compact('pendsup'));
     }
 
     /**
@@ -36,7 +36,7 @@ class PendidikanSuperController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_2.form.create_pendidikan_super', compact('desas'));
+        return view('super_admin.sub_file_pokja_2.form.create_pendidikan_super', compact('desas'));
 
     }
 
@@ -165,7 +165,7 @@ class PendidikanSuperController extends Controller
                 $desa = Pendidikan::with('desa')->first();
                 $desas = Data_Desa::all();
 
-                return view('admin_desa.sub_file_pokja_2.form.edit_pendidikan', compact('pendidikan_super','desa','desas'));
+                return view('super_admin.sub_file_pokja_2.form.edit_pendidikan_super', compact('pendidikan_super','desa','desas'));
 
     }
 

@@ -22,7 +22,7 @@ class KehidupanBerkoperasiSuperController extends Controller
         // $desa = Data_Desa::all();
         $kopsup = Koperasi::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_2.kehidupan_berkoperasi_super', compact('kopsup'));
+        return view('super_admin.sub_file_pokja_2.kehidupan_berkoperasi_super', compact('kopsup'));
     }
 
     /**
@@ -35,7 +35,7 @@ class KehidupanBerkoperasiSuperController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_2.form.create_pengembangan_super', compact('desas'));
+        return view('super_admin.sub_file_pokja_2.form.create_pengembangan_super', compact('desas'));
 
     }
 
@@ -125,7 +125,7 @@ class KehidupanBerkoperasiSuperController extends Controller
         $desa = Koperasi::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_2.form.edit_pengembangan_super', compact('koperasi_super','desa','desas'));
+        return view('super_admin.sub_file_pokja_2.form.edit_pengembangan_super', compact('koperasi_super','desa','desas'));
 
     }
 

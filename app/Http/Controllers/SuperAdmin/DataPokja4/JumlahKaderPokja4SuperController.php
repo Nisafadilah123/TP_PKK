@@ -23,7 +23,7 @@ class JumlahKaderPokja4SuperController extends Controller
         // $desa = Data_Desa::all();
         $jumkadsup = JumlahKaderPokja4::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_4.kader_pokja4_super', compact('jumkadsup'));
+        return view('super_admin.sub_file_pokja_4.kader_pokja4_super', compact('jumkadsup'));
     }
 
     /**
@@ -36,7 +36,7 @@ class JumlahKaderPokja4SuperController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_4.form.create_kader_pokja4_super', compact('desas'));
+        return view('super_admin.sub_file_pokja_4.form.create_kader_pokja4_super', compact('desas'));
 
     }
 
@@ -114,7 +114,7 @@ class JumlahKaderPokja4SuperController extends Controller
         $desa = JumlahKaderPokja4::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_4.form.edit_kader_pokja4_super', compact('kader_pokja4_super','desa','desas'));
+        return view('super_admin.sub_file_pokja_4.form.edit_kader_pokja4_super', compact('kader_pokja4_super','desa','desas'));
 
     }
 

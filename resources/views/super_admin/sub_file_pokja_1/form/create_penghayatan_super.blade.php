@@ -17,7 +17,7 @@
       <form action="{{ route('penghayatan_super.store') }}" method="POST">
         @csrf
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
                     <div class="form-group">
                     <label for="exampleFormControlSelect1">Nama Desa</label>
@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah PKBN Simulasi</label>
@@ -40,7 +40,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah PKBN Anggota</label>
@@ -48,10 +48,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah PKDRT Simulasi</label>
@@ -60,7 +57,10 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah PKDRT Anggota</label>
@@ -69,18 +69,15 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
                     <div class="form-group">
-                        <label>Jumlah Pola Asuh KLP</label>
-                        <input type="number" class="form-control" name="jml_pola_asuh_klp" id="jml_pola_asuh_klp" placeholder="Masukkan Jumlah Pola Asuh KLP" required>
+                        <label>Jumlah Pola Asuh Simulasi</label>
+                        <input type="number" class="form-control" name="jml_pola_asuh_simulasi" id="jml_pola_asuh_simulasi" placeholder="Masukkan Jumlah Pola Asuh Simulasi" required>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pola Asuh Anggota</label>
@@ -89,7 +86,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Lansia KLP</label>
@@ -97,19 +94,30 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-md-4">
+        <div class="row">
+
+
+            <div class="col-md-3">
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Lansia Anggota</label>
                         <input type="number" class="form-control" name="jml_lansia_anggota" id="jml_lansia_anggota" placeholder="Masukkan Jumlah Lansia Anggota" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Periode</label>
+                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
                     </div>
 
                 </div>
             </div>
         </div>
 
-        </div>
         <!-- /.card-body -->
 
         <div class="card-footer">

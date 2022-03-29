@@ -36,7 +36,7 @@
                                             <th>Jml. Mandiri Peserta</th>
                                             <th>Jml. Koperasi KLP</th>
                                             <th>Jml. Koperasi Peserta</th>
-
+                                            <th>Periode</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -59,6 +59,7 @@
                                         <td style="vertical-align: middle;">{{$c->jml_mandiri_peserta}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_koperasi_klp}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_koperasi_peserta}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('koperasi_super.destroy',$c->id) }}" method="POST">

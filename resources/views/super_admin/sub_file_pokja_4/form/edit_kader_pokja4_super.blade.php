@@ -97,9 +97,17 @@
                     </div>
                 </div>
             </div>
-
+            <div class="col-sm-4">
+                <div class="card-body">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label>Periode</label>
+                            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $kader_pokja4_super->periode))}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
        </div>
-        </div>
         <!-- /.card-body -->
 
         <div class="card-footer">

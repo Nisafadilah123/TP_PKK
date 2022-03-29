@@ -40,6 +40,10 @@
             <label>Jumlah kader Tata Laksana</label>
             <input type="number" class="form-control" name="jml_kader_tata_laksana" id="jml_kader_tata_laksana" placeholder="Masukkan Jumlah kader Tata Laksana" required>
           </div>
+          <div class="form-group">
+            <label>Periode</label>
+            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+          </div>
 
         </div>
         <!-- /.card-body -->

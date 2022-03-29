@@ -23,7 +23,7 @@ class JumlahRumahSuperController extends Controller
         // $desa = Data_Desa::all();
         $rumsup = JumlahRumah::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_3.rumah_super', compact('rumsup'));
+        return view('super_admin.sub_file_pokja_3.rumah_super', compact('rumsup'));
     }
 
     /**
@@ -36,7 +36,7 @@ class JumlahRumahSuperController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_3.form.create_jml_rumah_super', compact('desas'));
+        return view('super_admin.sub_file_pokja_3.form.create_jml_rumah_super', compact('desas'));
 
     }
 
@@ -102,7 +102,7 @@ class JumlahRumahSuperController extends Controller
         $desa = JumlahRumah::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_3.form.edit_jml_rumah_super', compact('rumah_super','desa','desas'));
+        return view('super_admin.sub_file_pokja_3.form.edit_jml_rumah_super', compact('rumah_super','desa','desas'));
 
     }
 

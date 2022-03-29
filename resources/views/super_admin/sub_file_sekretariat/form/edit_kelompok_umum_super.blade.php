@@ -47,7 +47,11 @@
             <label>Jumlah Kelompok Dasawisma</label>
             <input type="number" class="form-control" name="jml_dasawisma" id="jml_dasawisma" placeholder="Masukkan Jumlah Kelompok Dasawisma" required value="{{ucfirst(old('jml_dasawisma', $kelompok_super->jml_dasawisma))}}">
           </div>
-
+          <div class="form-group">
+            <label>Periode</label>
+            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $kelompok_super->periode))}}">
+          </div>
+            
         </div>
         <!-- /.card-body -->
 

@@ -23,7 +23,7 @@ class JumlahTenagaSekretariatDataUmumSuperController extends Controller
         // $desa = Data_Desa::all();
         $jumtensup = JumlahTenagaSekretariatDataUmum::with('desa')->get();
 
-        return view('admin_desa.sub_file_sekretariat.jml_tenaga_data_umum_super', compact('jumtensup'));
+        return view('super_admin.sub_file_sekretariat.jml_tenaga_data_umum_super', compact('jumtensup'));
     }
 
     /**
@@ -36,7 +36,7 @@ class JumlahTenagaSekretariatDataUmumSuperController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_sekretariat.form.create_jumlah_tenaga_data_umum_super', compact('desas'));
+        return view('super_admin.sub_file_sekretariat.form.create_jumlah_tenaga_data_umum_super', compact('desas'));
 
     }
 
@@ -108,7 +108,7 @@ class JumlahTenagaSekretariatDataUmumSuperController extends Controller
         $desa = JumlahTenagaSekretariatDataUmum::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_sekretariat.form.edit_jumlah_tenaga_data_umum_super', compact('jml_tenaga_umum','desa','desas'));
+        return view('super_admin.sub_file_sekretariat.form.edit_jumlah_tenaga_data_umum_super', compact('jml_tenaga_umum','desa','desas'));
 
     }
 

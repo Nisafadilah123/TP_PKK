@@ -22,7 +22,7 @@ class PenghayatanDanPengamalanSuperController extends Controller
         // $desa = Data_Desa::all();
         $pengsup = Penghayatan::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_1.penghayatan_super', compact('pengsup'));
+        return view('super_admin.sub_file_pokja_1.penghayatan_super', compact('pengsup'));
     }
 
     /**

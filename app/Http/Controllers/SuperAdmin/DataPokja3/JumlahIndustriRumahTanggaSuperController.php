@@ -22,7 +22,7 @@ class JumlahIndustriRumahTanggaSuperController extends Controller
         // $desa = Data_Desa::all();
         $indsup = JumlahIndustri::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_3.industri_super', compact('indsup'));
+        return view('super_admin.sub_file_pokja_3.industri_super', compact('indsup'));
     }
 
     /**
@@ -35,7 +35,7 @@ class JumlahIndustriRumahTanggaSuperController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_3.form.create_industri_super', compact('desas'));
+        return view('super_admin.sub_file_pokja_3.form.create_industri_super', compact('desas'));
 
     }
 
@@ -104,7 +104,7 @@ class JumlahIndustriRumahTanggaSuperController extends Controller
         $desa = JumlahIndustri::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_3.form.edit_industri_super', compact('industri_super','desa','desas'));
+        return view('super_admin.sub_file_pokja_3.form.edit_industri_super', compact('industri_super','desa','desas'));
 
     }
 

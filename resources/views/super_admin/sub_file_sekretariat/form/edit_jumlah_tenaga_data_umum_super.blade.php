@@ -47,7 +47,11 @@
             <label>Jumlah Tenaga Sekretariat Data Umum Bantuan Perempuan</label>
             <input type="number" class="form-control" name="jml_tenaga_bantuan_perempuan" id="jml_tenaga_bantuan_perempuan" placeholder="Masukkan Jumlah Tenaga Sekretariat Data Umum Bantuan Perempuan" required value="{{ucfirst(old('jml_tenaga_bantuan_perempuan', $jml_tenaga_umum_super->jml_tenaga_bantuan_perempuan))}}">
           </div>
-
+          <div class="form-group">
+            <label>Periode</label>
+            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $jml_tenaga_umum_super->periode))}}">
+          </div>
+  
         </div>
         <!-- /.card-body -->
 

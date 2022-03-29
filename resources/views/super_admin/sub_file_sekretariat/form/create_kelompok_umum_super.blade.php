@@ -44,7 +44,10 @@
             <label>Jumlah Kelompok Dasawisma</label>
             <input type="number" class="form-control" name="jml_dasawisma" id="jml_dasawisma" placeholder="Masukkan Jumlah Kelompok Dasawisma" required>
           </div>
-
+          <div class="form-group">
+            <label>Periode</label>
+            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+          </div>
         </div>
         <!-- /.card-body -->
 

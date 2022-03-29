@@ -23,7 +23,7 @@ class JumlahKaderDataUmumSuperController extends Controller
         // $desa = Data_Desa::all();
         $jumkadumsup = JumlahKaderDataUmum::with('desa')->get();
 
-        return view('admin_desa.sub_file_sekretariat.jml_kader_data_umum_super', compact('jumkadumsup'));
+        return view('super_admin.sub_file_sekretariat.jml_kader_data_umum_super', compact('jumkadumsup'));
     }
 
     /**
@@ -36,7 +36,7 @@ class JumlahKaderDataUmumSuperController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_sekretariat.form.create_jumlah_kader_data_umum_super', compact('desas'));
+        return view('super_admin.sub_file_sekretariat.form.create_jumlah_kader_data_umum_super', compact('desas'));
 
     }
 
@@ -114,7 +114,7 @@ class JumlahKaderDataUmumSuperController extends Controller
         $desa = JumlahKaderDataUmum::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_sekretariat.form.edit_jumlah_kader_data_umum_super', compact('jml_kader_umum_super','desa','desas'));
+        return view('super_admin.sub_file_sekretariat.form.edit_jumlah_kader_data_umum_super', compact('jml_kader_umum_super','desa','desas'));
 
     }
 
@@ -141,9 +141,9 @@ class JumlahKaderDataUmumSuperController extends Controller
         ]);
 
         $jml_kader_umum_super->update($request->all());
+        // dd($jml_kader_umum_super);
 
         Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_jml_kader_umum);
 
         return redirect('/jml_kader_umum_super');
 

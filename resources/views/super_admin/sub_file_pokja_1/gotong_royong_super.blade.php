@@ -31,6 +31,7 @@
                                         <th>Jumlah Keagamaan</th>
                                         <th>Jumlah Jimpitan</th>
                                         <th>Jumlah Arisan</th>
+                                        <th>Periode</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -48,6 +49,7 @@
                                         <td style="vertical-align: middle;">{{$c->jml_gotong_keagamaan}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_gotong_jimpitan}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_gotong_arisan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('gotong_royong_super.destroy',$c->id) }}" method="POST">

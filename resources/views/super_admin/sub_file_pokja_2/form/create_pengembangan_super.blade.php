@@ -120,8 +120,8 @@
                 <div class="card-body">
 
                     <div class="form-group">
-                        <label>Jumlah Koperas_superi KLP</label>
-                        <input type="number" class="form-control" name="jml_koperas_superi_klp" id="jml_koperas_superi_klp" placeholder="Masukkan Jumlah Koperas_superi KLP" required>
+                        <label>Jumlah Koperasi KLP</label>
+                        <input type="number" class="form-control" name="jml_koperasi_klp" id="jml_koperasi_klp" placeholder="Masukkan Jumlah Koperasi KLP" required>
                     </div>
                 </div>
             </div>
@@ -131,7 +131,7 @@
                 <div class="card-body">
 
                 <div class="form-group">
-                    <label>Jumlah Koperas_superi Peserta</label>
+                    <label>Jumlah Koperasi Peserta</label>
                     <input type="number" class="form-control" name="jml_koperasi_peserta" id="jml_koperasi_peserta" placeholder="Masukkan Jumlah Koperasi Peserta" required>
                 </div>
                 </div>
@@ -140,8 +140,8 @@
                 <div class="card-body">
 
                     <div class="form-group">
-                        <label>Jumlah Kader Umum Damas PKK</label>
-                        <input type="number" class="form-control" name="jml_kader_umum_damas" id="jml_kader_umum_damas" placeholder="Masukkan Jumlah Kader Umum Damas" required>
+                        <label>Periode</label>
+                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
                     </div>
                 </div>
             </div>

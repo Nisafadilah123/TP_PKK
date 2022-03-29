@@ -38,7 +38,11 @@
           </div>
           <div class="form-group">
             <label>Jumlah Industri Jasa</label>
-            <input type="number" class="form-control" name="jml_industri_jasa" id="jml_industri_jas" placeholder="Masukkan Jumlah industri Jasa" required>
+            <input type="number" class="form-control" name="jml_industri_jasa" id="jml_industri_jasa" placeholder="Masukkan Jumlah industri Jasa" required>
+          </div>
+          <div class="form-group">
+            <label>Periode</label>
+            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
           </div>
 
         </div>

@@ -39,7 +39,10 @@
             <label>Jumlah KK Data Umum</label>
             <input type="number" class="form-control" name="jml_kk_data_umum" id="jml_kk_data_umum" placeholder="Masukkan Jumlah KK Data Umum" required value="{{ucfirst(old('jml_kk_data_umum', $jml_data_umum_super->jml_kk_data_umum))}}">
           </div>
-
+          <div class="form-group">
+            <label>Periode</label>
+            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $jml_data_umum_super->periode))}}">
+          </div>
         </div>
         <!-- /.card-body -->
 

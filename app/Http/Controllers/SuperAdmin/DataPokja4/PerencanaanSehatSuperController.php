@@ -23,7 +23,7 @@ class PerencanaanSehatSuperController extends Controller
         // $desa = Data_Desa::all();
         $persup = PerencanaanSehat::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_4.perencanaan_pokja4_super', compact('persup'));
+        return view('super_admin.sub_file_pokja_4.perencanaan_pokja4_super', compact('persup'));
     }
 
     /**
@@ -36,7 +36,7 @@ class PerencanaanSehatSuperController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_4.form.create_perencanaan_super', compact('desas'));
+        return view('super_admin.sub_file_pokja_4.form.create_perencanaan_super', compact('desas'));
 
     }
 
@@ -111,7 +111,7 @@ class PerencanaanSehatSuperController extends Controller
         $desa = PerencanaanSehat::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_4.form.edit_perencanaan_super', compact('perencanaan','desa','desas'));
+        return view('super_admin.sub_file_pokja_4.form.edit_perencanaan_super', compact('perencanaan_super','desa','desas'));
 
     }
 

@@ -23,7 +23,7 @@ class KesehatanPosyanduSuperController extends Controller
         // $desa = Data_Desa::all();
         $kessup = Kesehatan::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_4.kesehatan_super', compact('kessup'));
+        return view('super_admin.sub_file_pokja_4.kesehatan_super', compact('kessup'));
     }
 
     /**
@@ -36,7 +36,7 @@ class KesehatanPosyanduSuperController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_4.form.create_kesehatan_super', compact('desas'));
+        return view('super_admin.sub_file_pokja_4.form.create_kesehatan_super', compact('desas'));
 
     }
 
@@ -111,7 +111,7 @@ class KesehatanPosyanduSuperController extends Controller
         $desa = Kesehatan::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_4.form.edit_kesehatan_super', compact('kesehatan_super','desa','desas'));
+        return view('super_admin.sub_file_pokja_4.form.edit_kesehatan_super', compact('kesehatan_super','desa','desas'));
 
     }
 

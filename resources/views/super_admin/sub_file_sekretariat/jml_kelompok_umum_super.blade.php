@@ -27,6 +27,7 @@
                                             <th>PKK RW</th>
                                             <th>PKK RT</th>
                                             <th>Dasa Wisma</th>
+                                            <th>Periode</th>
                                             <th>Aksi</th>
 
                                         </tr>
@@ -37,7 +38,7 @@
 
                                         <?php $no=1;?>
 
-                                        @foreach ($jumkel as $c)
+                                        @foreach ($jumkelsup as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
                                         {{-- nama desa yang login --}}
@@ -46,6 +47,7 @@
                                         <td style="vertical-align: middle;">{{$c->jml_pkk_rw}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_pkk_rt}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_dasawisma}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('kelompok_super.destroy',$c->id) }}" method="POST">

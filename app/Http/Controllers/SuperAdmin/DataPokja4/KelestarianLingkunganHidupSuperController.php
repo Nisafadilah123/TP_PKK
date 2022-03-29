@@ -23,7 +23,7 @@ class KelestarianLingkunganHidupSuperController extends Controller
         // $desa = Data_Desa::all();
         $kelsup = Kelestarian::with('desa')->get();
 
-        return view('admin_desa.sub_file_pokja_4.kelestarian_super', compact('kelsup'));
+        return view('super_admin.sub_file_pokja_4.kelestarian_super', compact('kelsup'));
     }
 
     /**
@@ -36,7 +36,7 @@ class KelestarianLingkunganHidupSuperController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_pokja_4.form.create_kelestarian_super', compact('desas'));
+        return view('super_admin.sub_file_pokja_4.form.create_kelestarian_super', compact('desas'));
 
     }
 
@@ -117,7 +117,7 @@ class KelestarianLingkunganHidupSuperController extends Controller
         $desa = Kelestarian::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_pokja_4.form.edit_kelestarian_super', compact('kelestarian_super','desa','desas'));
+        return view('super_admin.sub_file_pokja_4.form.edit_kelestarian_super', compact('kelestarian_super','desa','desas'));
 
     }
 

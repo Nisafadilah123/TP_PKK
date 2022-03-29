@@ -44,6 +44,11 @@
             <label>Jumlah Kader Tata Laksana</label>
             <input type="number" class="form-control" name="jml_kader_tata_laksana" id="jml_kader_tata_laksana" placeholder="Masukkan Jumlah Kader Tata Laksana" required value="{{ucfirst(old('jml_kader_tata_laksana', $kader_super->jml_kader_tata_laksana))}}">
           </div>
+          <div class="form-group">
+            <label>Periode</label>
+            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $kader_super->periode))}}">
+          </div>
+
         </div>
         <!-- /.card-body -->
 

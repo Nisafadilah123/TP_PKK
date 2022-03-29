@@ -82,6 +82,15 @@
 
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Periode</label>
+                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $gotong_royong_super->periode))}}">
+                    </div>
+
+                </div>
+            </div>
         </div>
         <!-- /.card-body -->
 

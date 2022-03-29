@@ -30,7 +30,7 @@
                                             <th>Jumlah KRT yang Menggunakan Air PDAM</th>
                                             <th>Jumlah KRT yang Menggunakan Air Sumur</th>
                                             <th>Jumlah KRT yang Menggunakan Air Lain-lain</th>
-
+                                            <th>Periode</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -50,6 +50,7 @@
                                         <td style="vertical-align: middle;">{{$c->jml_krt_pdam}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_krt_sumur}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_krt_lain}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('kelestarian_super.destroy',$c->id) }}" method="POST">

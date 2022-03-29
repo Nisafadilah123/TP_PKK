@@ -36,7 +36,10 @@
             <label>Jumlah Jiwa Data Umum Perempuan</label>
             <input type="number" class="form-control" name="jml_jiwa_data_umum_perempuan" id="jml_jiwa_data_umum_perempuan" placeholder="Masukkan Jumlah Jiwa Data Umum Perempuan" required>
           </div>
-
+          <div class="form-group">
+            <label>Periode</label>
+            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+          </div>
         </div>
         <!-- /.card-body -->
 

@@ -23,7 +23,7 @@ class JumlahKelompokUmumSuperController extends Controller
         // $desa = Data_Desa::all();
         $jumkelsup = JumlahKelompok::with('desa')->get();
 
-        return view('admin_desa.sub_file_sekretariat.jml_kelompok_umum_super', compact('jumkelsup'));
+        return view('super_admin.sub_file_sekretariat.jml_kelompok_umum_super', compact('jumkelsup'));
     }
 
     /**
@@ -36,7 +36,7 @@ class JumlahKelompokUmumSuperController extends Controller
         // nama desa yang login
         $desas = DB::table('data_desa')->get();
 
-        return view('admin_desa.sub_file_sekretariat.form.create_kelompok_umum_super', compact('desas'));
+        return view('super_admin.sub_file_sekretariat.form.create_kelompok_umum_super', compact('desas'));
 
     }
 
@@ -108,7 +108,7 @@ class JumlahKelompokUmumSuperController extends Controller
         $desa = JumlahKelompok::with('desa')->first();
         $desas = Data_Desa::all();
 
-        return view('admin_desa.sub_file_sekretariat.form.edit_kelompok_umum_super', compact('kelompok_super','desa','desas'));
+        return view('super_admin.sub_file_sekretariat.form.edit_kelompok_umum_super', compact('kelompok_super','desa','desas'));
 
     }
 

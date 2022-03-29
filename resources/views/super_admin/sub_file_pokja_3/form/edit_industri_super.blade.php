@@ -44,6 +44,11 @@
             <label>Jumlah Industri Jasa</label>
             <input type="number" class="form-control" name="jml_industri_jasa" id="jml_industri_jasa" placeholder="Masukkan Jumlah Industri Jasa" required value="{{ucfirst(old('jml_industri_jasa', $industri_super->jml_industri_jasa))}}">
           </div>
+          <div class="form-group">
+            <label>Periode</label>
+            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $industri_super->periode))}}">
+          </div>
+
         </div>
         <!-- /.card-body -->
 

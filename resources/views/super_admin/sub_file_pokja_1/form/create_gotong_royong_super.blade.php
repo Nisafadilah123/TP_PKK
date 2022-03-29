@@ -75,7 +75,14 @@
                         <label>Jumlah Gotong Arisan</label>
                         <input type="number" class="form-control" name="jml_gotong_arisan" id="jml_gotong_arisan" placeholder="Masukkan Jumlah Gotong Arisan" required>
                     </div>
-
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Periode</label>
+                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+                    </div>
                 </div>
             </div>
         </div>

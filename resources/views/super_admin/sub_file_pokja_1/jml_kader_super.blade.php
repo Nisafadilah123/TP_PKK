@@ -26,6 +26,7 @@
                                         <th>Jumlah Kader PKBN</th>
                                         <th>Jumlah Kader PKDRT
                                         <th>Jumlah Kader Pola Asuh</th>
+                                        <th>Periode</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -41,6 +42,8 @@
                                         <td style="vertical-align: middle;">{{$c->jml_kader_PKBN}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_kader_PKDRT}}</td>
                                         <td style="vertical-align: middle;">{{$c->jml_kader_pola_asuh}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
+
                                         <td class="text-center">
                                             <form action="{{ route('jml_kader_super.destroy',$c->id) }}" method="POST">
 

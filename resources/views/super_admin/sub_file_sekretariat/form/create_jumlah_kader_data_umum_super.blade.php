@@ -86,7 +86,14 @@
                         <label>Jumlah Kader Khusus Perempuan Data Umum</label>
                         <input type="number" class="form-control" name="jml_kader_khusus_perempuan_data_umum" id="jml_kader_khusus_perempuan_data_umum" placeholder="Masukkan Jumlah Kader Khusus Perempuan Data Umum" required>
                     </div>
-
+                </div>
+            </div>
+           <div class="col-md-6">
+               <div class="card-body">
+                    <div class="form-group">
+                        <label>Periode</label>
+                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+                    </div>
                 </div>
             </div>
         </div>
