@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class DashboardSuperController extends Controller
 {
+    //
     /**
      * Create a new controller instance.
      *
@@ -24,13 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         // return view('home');
-        return view('admin_desa.dashboard');
-
-    }
-    public function super()
-    {
-        // return view('home');
-        return view('super_admin.dashboard_super');
+                return view('super_admin.dashboard_super');
 
     }
 }

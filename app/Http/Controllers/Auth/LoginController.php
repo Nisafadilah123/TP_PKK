@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -27,9 +28,22 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
     // protected $redirectTo = RouteServiceProvider::dashboard;
-
+    public function authenticated(){
+        if (Auth::user()->user_type == 'superadmin') {
+            return redirect('/dashboard_super')->with('status', 'selamat datang');
+        }
+        elseif (Auth::user()->user_type == 'admin_desa') {
+            return redirect('/dashboard')->with('status', 'selamat datang');
+        }
+        elseif ( Auth::user()->user_type == 'admin_kecamatan') {
+            return redirect('/dashboard_kec')->with('status', 'selamat datang');
+        }
+        else {
+            return redirect('/dashboard_kab')->with('status', 'selamat datang');
+        }
+    }
     /**
      * Create a new controller instance.
      *

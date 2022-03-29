@@ -24,6 +24,8 @@ use App\Http\Controllers\AdminDesa\DataUmum\JumlahTenagaSekretariatDataUmumContr
 use App\Http\Controllers\AdminKab\BeritaController;
 use App\Http\Controllers\AdminKabController;
 use App\Http\Controllers\AdminKecController;
+use App\Http\Controllers\DashboardSuperController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\super_admin\dataKecamtanController;
 use App\Http\Controllers\SuperAdmin\DataDesaController;
 use App\Http\Controllers\SuperAdmin\DataKecamatanController;
@@ -166,8 +168,7 @@ Route::get('/laporan_kab', [AdminKabController::class, 'data_laporan_kab']);
 Route::get('/data_sekretariat_kab', [AdminKabController::class, 'data_sekretariat_kab']);
 
 // halaman super admin
-Route::middleware(['auth', 'user_type:superadmin'])->group(function () {
-
+Route::middleware(['auth', 'user_type:superadmin'])->group(function(){
     Route::get('/dashboard_super', [SuperAdminController::class, 'dashboard_super']);
     Route::get('/data_pokja1_super', [SuperAdminController::class, 'data_pokja1_super']);
     Route::get('/data_pokja2_super', [SuperAdminController::class, 'data_pokja2_super']);
@@ -213,6 +214,11 @@ Route::middleware(['auth', 'user_type:superadmin'])->group(function () {
     Route::resource('/jml_jiwa_umum_super', JumlahJiwaDataUmumSuperController::class);
     Route::resource('/jml_tenaga_umum_super', JumlahTenagaSekretariatDataUmumSuperController::class);
     Route::resource('/jml_kader_umum_super', JumlahKaderDataUmumSuperController::class);
+
+    // form desa super admin
+    Route::resource('/data_desa', DataDesaController::class);
+    Route::resource('/data_kecamatan', DataKecamatanController::class);
+
 });
 
 
@@ -220,9 +226,9 @@ Route::middleware(['auth', 'user_type:superadmin'])->group(function () {
 //form berita admin kabupaten
 Route::resource('/beritaKab', BeritaController::class);
 
-// form desa super admin
-Route::resource('/data_desa', DataDesaController::class);
-Route::resource('/data_kecamatan', DataKecamatanController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/super_admin', [App\Http\Controllers\HomeController::class, 'super'])->name('super_admin');
+
+// Route::get('/super_admin', [DashboardSuperController::class, 'index'])->name('super_admin');

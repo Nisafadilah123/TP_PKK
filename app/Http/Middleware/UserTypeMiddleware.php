@@ -20,6 +20,7 @@ class UserTypeMiddleware
         if ($user = auth()->user()) {
             if ($user->user_type !== $userType) {
                 return abort(403);
+                // return redirect('login');
             }
         }
 
