@@ -1,8 +1,8 @@
 @extends('super_admin.layout')
 
-@section('title', 'Data Laporan PKK Desa | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Data Laporan Kegiatan POKJA TP PKK | Super Admin PKK Kab. Indramayu')
 
-@section('bread', 'Data Laporan')
+@section('bread', 'Data Laporan Kegiatan POKJA TP PKK')
 @section('container')
 
     <!-- Main content -->

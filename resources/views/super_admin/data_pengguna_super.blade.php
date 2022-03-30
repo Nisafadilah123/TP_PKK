@@ -1,72 +1,72 @@
 @extends('super_admin.layout')
 
-@section('title', 'Data Pengguna | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Data Pengguna Sistem Kegiatan POKJA TP PKK | Suuper Admin PKK Kab. Indramayu')
 
-@section('bread', 'Data Pengguna')
+@section('bread', 'Data Pengguna Sistem Kegiatan POKJA TP PKK')
 @section('container')
 
     <!-- Main content -->
     <div class="main-content">
     <section class="section">
-        {{-- <h1 class="section-header">
-            <div>Kandidat</div>
-        </h1> --}}
 
         <div class="section-body">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-12">
                     <div class="card">
 
+
                         <div class="card-body">
+
                             <div class="table-responsive">
+
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    {{-- <button type="button" class="btn btn-success">Tambah</button><br><br> --}}
+                                    <a href="{{ url('data_pengguna_super/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
 
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                        <th>Nama</th>
                                         <th>Username</th>
                                         <th>Email</th>
-                                        <th>Jabatan</th>
+                                        <th>Password</th>
+                                        <th>User Type</th>
+                                        <th>Nama Desa</th>
+                                        <th>Nama Kecamatan</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
 
                                     <tbody>
-                                        {{-- @foreach ($candidate as $c) --}}
+                                        <?php $no=1;?>
+
+                                        @foreach ($users as $c)
                                     <tr>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                        <td>5</td>
-                                        <td>
-                                            <button type="button" class="btn btn-success">Edit</button>
-                                            <button type="button" class="btn btn-danger">Hapus</button>
-                                        </td>
-
-                                        {{-- <td style="vertical-align: middle;">{{$i++}}</td>
+                                        <td style="vertical-align: middle;">{{ $no }}</td>
                                         <td style="vertical-align: middle;">{{$c->name}}</td>
-                                        <td style="vertical-align: middle;">{{$c->address}}</td>
-                                        <td style="vertical-align: middle;">{{$c->position}}</td>
-                                        <td>
-                                            <a href="/opencv/{{$c->id}}" target="_blank" class="btn btn-primary">
-                                                View File <span class="glyphicon glyphicon-eye-open">
-                                            </a>
-                                        </td>
-                                        <td style="vertical-align: middle;">{{$c->status}}</td></td>
+                                        <td style="vertical-align: middle;">{{$c->email}}</td>
+                                        <td style="vertical-align: middle;">{{$c->password}}</td>
+                                        <td style="vertical-align: middle;">{{$c->user_type}}</td>
+                                        <td style="vertical-align: middle;">Desa</td>
+                                        <td style="vertical-align: middle;">Kecamatan</td>
 
-                                        <td style="width: 120px;text-align: center;vertical-align: middle; ">
-                                            <form action="/kandidat/{{$c->id}}" method="post">
-                                                @method('DELETE')
+                                        <td class="text-center">
+                                            <form action="{{ route('data_pengguna_super.destroy',$c->id) }}" method="POST">
+
+                                            {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
+
+                                                <a class="btn btn-primary btn-sm" href="{{ url('data_pengguna_super/'.$c->id.'/edit') }}">Edit</a>
+
                                                 @csrf
-                                                <button type="submit" class="btn btn-sm btn-primary btn-circle delete"><span class="far fa-trash-alt"></span></button>
-                                                <!-- <input type="submit" class="btn btn-danger btn-sm" value="Delete" onclick="return confirm('anda yakin ingin menghapus data?');"> -->
+                                                @method('DELETE')
+
+                                                <button type="submit" class="btn btn-danger btn-sm delete" >Delete</button>
                                             </form>
-                                        </td> --}}
+                                        </td>
+
+
                                     </tr>
-                                    {{-- @endforeach --}}
+                                    <?php $no++ ;?>
+
+                                    @endforeach
                                     </tbody>
 
                                 </table>
@@ -88,33 +88,32 @@
   @endsection
 
   @push('script-addon')
-  {{-- <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script> --}}
 
-{{-- <script>
-    $(document).ready(function () {
-        $('.data').dataTable();
-    });
-</script> --}}
 <script>
 $(document).ready( function () {
     $('.data').DataTable();
 } );
+</script>
+
+<script>
+    $('.delete').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+            title: `Apakah anda yakin ingin menghapus data ini ?`,
+              text: "Jika anda menghapusnya maka datanya akan di hapus secara permanen",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            }
+          });
+      });
+
 </script>
 
 @endpush

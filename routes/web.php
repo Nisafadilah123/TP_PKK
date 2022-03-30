@@ -47,6 +47,7 @@ use App\Http\Controllers\SuperAdmin\DataUmum\JumlahJiwaDataUmumSuperController;
 use App\Http\Controllers\SuperAdmin\DataUmum\JumlahKaderDataUmumSuperController;
 use App\Http\Controllers\SuperAdmin\DataUmum\JumlahKelompokUmumSuperController;
 use App\Http\Controllers\SuperAdmin\DataUmum\JumlahTenagaSekretariatDataUmumSuperController;
+use App\Http\Controllers\SuperAdmin\UserController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Middleware\Authenticate;
 use App\Models\BeritaKab;
@@ -174,7 +175,6 @@ Route::middleware(['auth', 'user_type:superadmin'])->group(function(){
     Route::get('/data_pokja2_super', [SuperAdminController::class, 'data_pokja2_super']);
     Route::get('/data_pokja3_super', [SuperAdminController::class, 'data_pokja3_super']);
     Route::get('/data_pokja4_super', [SuperAdminController::class, 'data_pokja4_super']);
-    Route::get('/pengguna_super', [SuperAdminController::class, 'data_pengguna_super']);
     Route::get('/laporan_super', [SuperAdminController::class, 'data_laporan_super']);
     Route::get('/data_sekretariat_super', [SuperAdminController::class, 'data_sekretariat_super']);
     Route::get('/koperasi_super', [SuperAdminController::class, 'koperasi_super']);
@@ -218,6 +218,7 @@ Route::middleware(['auth', 'user_type:superadmin'])->group(function(){
     // form desa super admin
     Route::resource('/data_desa', DataDesaController::class);
     Route::resource('/data_kecamatan', DataKecamatanController::class);
+    Route::resource('/data_pengguna_super', UserController::class);
 
 });
 

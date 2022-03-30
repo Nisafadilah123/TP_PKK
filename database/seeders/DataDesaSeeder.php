@@ -17,6 +17,8 @@ class DataDesaSeeder extends Seeder
     {
         //database data desa seed
         DB::table('data_desa')->insert([
+            // id kecamatan =>'1',
+
         [
             'id_kecamatan'=>'1',
             'kode_desa'=>'32.12.23.2001',
@@ -82,6 +84,9 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.23.2007',
             'nama_desa'=>'Wanguk'
         ],
+
+        // id kecamatan =>'2',
+
         [
             'id_kecamatan'=>'2',
             'kode_desa'=>'32.12.19.2001',
@@ -122,6 +127,9 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.19.2008',
             'nama_desa'=>'Tawangsari'
         ],
+
+        // id kecamatan =>'3',
+
         [
             'id_kecamatan'=>'3',
             'kode_desa'=>'32.12.14.2007',
@@ -172,6 +180,9 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.14.2006',
             'nama_desa'=>'Tegalurung'
         ],
+
+        // id kecamatan =>'4',
+
         [
             'id_kecamatan'=>'4',
             'kode_desa'=>'32.12.06.2015',
@@ -212,6 +223,9 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.06.2018',
             'nama_desa'=>'Wanasari'
         ],
+
+        // id_kecamatan =>'5',
+
         [
             'id_kecamatan'=>'5',
             'kode_desa'=>'32.12.22.2005',
@@ -252,6 +266,9 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.22.2002',
             'nama_desa'=>'Sidamulya'
         ],
+
+        // id kecamatan =>'6',
+
         [
             'id_kecamatan'=>'6',
             'kode_desa'=>'32.12.17.2001',
@@ -282,6 +299,9 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.17.2005',
             'nama_desa'=>'Panyingkiran Lor'
         ],
+
+        // id kecamatan =>'7',
+
         [
             'id_kecamatan'=>'7',
             'kode_desa'=>'32.12.04.2004',
@@ -367,6 +387,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.03.2004',
             'nama_desa'=>'Sekar Mulya'
         ],
+
+        // id kecamatan =>'9',
         [
             'id_kecamatan'=>'9',
             'kode_desa'=>'32.12.25.2006',
@@ -452,6 +474,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.01.2010',
             'nama_desa'=>'Wanakaya'
         ],
+
+        // id kecamatan =>'11',
         [
             'id_kecamatan'=>'11',
             'kode_desa'=>'32.12.15.2011',
@@ -542,6 +566,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.15.1008',
             'nama_desa'=>'Kel. Paoman'
         ],
+
+        // id kecamatan =>'12',
         [
             'id_kecamatan'=>'12',
             'kode_desa'=>'32.12.13.2004',
@@ -677,6 +703,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.11.2009',
             'nama_desa'=>'Tinumpuk'
         ],
+
+        // kecamatan kandanghaur
         [
             'id_kecamatan'=>'14',
             'kode_desa'=>'32.12.21.2008',
@@ -742,6 +770,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.21.2006',
             'nama_desa'=>'Wirapanjunan'
         ],
+
+        // id kecamatan =>'15',
         [
             'id_kecamatan'=>'15',
             'kode_desa'=>'32.12.10.2011',
@@ -797,6 +827,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.10.2009',
             'nama_desa'=>'Tanjungsari'
         ],
+
+        // id kecamatan =>'16',
         [
             'id_kecamatan'=>'16',
             'kode_desa'=>'32.12.28.2001',
@@ -832,6 +864,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.28.2005',
             'nama_desa'=>'Kedokanbunderwetan'
         ],
+
+        //'id_kecamatan'=>'17',
         [
             'id_kecamatan'=>'17',
             'kode_desa'=>'32.12.08.2011',
@@ -897,6 +931,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.08.2007',
             'nama_desa'=>'Tulungagung'
         ],
+
+        // id kecamatan =>'18',
         [
             'id_kecamatan'=>'18',
             'kode_desa'=>'32.12.09.2004',
@@ -997,6 +1033,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.02.2005',
             'nama_desa'=>'Temiyang'
         ],
+
+        // id kecamatan =>'20'
         [
             'id_kecamatan'=>'20',
             'kode_desa'=>'32.12.05.2010',
@@ -1052,6 +1090,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.05.2001',
             'nama_desa'=>'Tunggul Payung'
         ],
+
+        // 'id_kecamatan'=>'21',
         [
             'id_kecamatan'=>'21',
             'kode_desa'=>'32.12.18.2008',
@@ -1108,7 +1148,7 @@ class DataDesaSeeder extends Seeder
             'nama_desa'=>'Sindangkerta'
         ],
         [
-            'id_kecamatan'=>'22',
+            'id_kecamatan'=>'21',
             'kode_desa'=>'32.12.18.2006',
             'nama_desa'=>'Waru'
         ],
@@ -1117,6 +1157,7 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.20.2009',
             'nama_desa'=>'Cemara'
         ],
+        // 'id_kecamatan'=>'22',
         [
             'id_kecamatan'=>'22',
             'kode_desa'=>'32.12.20.2013',
@@ -1177,6 +1218,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.20.2012',
             'nama_desa'=>'Santing'
         ],
+
+        // id kecamatan =>'23',
         [
             'id_kecamatan'=>'23',
             'kode_desa'=>'32.12.29.2001',
@@ -1207,6 +1250,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.29.2006',
             'nama_desa'=>'Totoran'
         ],
+
+        // 'id_kecamatan'=>'24'
         [
             'id_kecamatan'=>'24',
             'kode_desa'=>'32.12.31.2007',
@@ -1235,8 +1280,7 @@ class DataDesaSeeder extends Seeder
         [
             'id_kecamatan'=>'24',
             'kode_desa'=>'32.12.31.2003',
-            'nama_desa'=>'Patrol Baru
-            '
+            'nama_desa'=>'Patrol Baru'
         ],
         [
             'id_kecamatan'=>'24',
@@ -1248,6 +1292,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.31.2008',
             'nama_desa'=>'Sukahaji'
         ],
+
+        // 'id_kecamatan'=>'25',
         [
             'id_kecamatan'=>'25',
             'kode_desa'=>'32.12.16.2009',
@@ -1298,6 +1344,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.16.2014',
             'nama_desa'=>'Wanantara'
         ],
+
+        // 'id_kecamatan'=>'26',
         [
             'id_kecamatan'=>'26',
             'kode_desa'=>'32.12.12.2002',
@@ -1374,6 +1422,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.27.2002',
             'nama_desa'=>'Bondan'
         ],
+
+        // 'id_kecamatan'=>'27',
         [
             'id_kecamatan'=>'27',
             'kode_desa'=>'32.12.27.2006',
@@ -1404,6 +1454,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.27.2005',
             'nama_desa'=>'Tersana'
         ],
+
+        // 'id_kecamatan'=>'28',
         [
             'id_kecamatan'=>'28',
             'kode_desa'=>'32.12.24.2001',
@@ -1444,6 +1496,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.24.2003',
             'nama_desa'=>'Ujunggebang'
         ],
+
+        // 'id_kecamatan'=>'29',
         [
             'id_kecamatan'=>'29',
             'kode_desa'=>'32.12.26.2007',
@@ -1489,6 +1543,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.26.2005',
             'nama_desa'=>'Rajasinga'
         ],
+
+        // 'id_kecamatan'=>'30',
         [
             'id_kecamatan'=>'30',
             'kode_desa'=>'32.12.30.2001',
@@ -1554,6 +1610,8 @@ class DataDesaSeeder extends Seeder
             'kode_desa'=>'32.12.30.2010',
             'nama_desa'=>'Tukdana'
         ],
+
+        // 'id_kecamatan'=>'31',
         [
             'id_kecamatan'=>'31',
             'kode_desa'=>'32.12.07.2006',

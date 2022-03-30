@@ -44,10 +44,10 @@ class SuperAdminController extends Controller
                 return view('super_admin.data_laporan_super');
             }
 
-            // halaman data pokja4
-            public function data_pengguna_super(){
-                return view('super_admin.data_pengguna_super');
-            }
+            // // halaman data pokja4
+            // public function data_pengguna_super(){
+            //     return view('super_admin.data_pengguna_super');
+            // }
 
             // halaman data sekretariat
             public function data_sekretariat_super(){

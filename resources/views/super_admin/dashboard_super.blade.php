@@ -146,8 +146,22 @@
               ></a>
             </div>
           </div>
-          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                {{-- <h3>150</h3> --}}
 
+                <p>Data Sekretariat/Data Umum</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-folder"></i>
+              </div>
+              <a href="data_sekretariat_super" class="small-box-footer"
+                >More info <i class="fas fa-arrow-circle-right"></i
+              ></a>
+            </div>
+          </div>
           <!-- ./col -->
 
         </div>

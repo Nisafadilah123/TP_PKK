@@ -74,15 +74,19 @@
 
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <!-- Brand Logo -->
-        <a href="/dashboard" class="brand-link">
-          <span class="brand-text font-weight-light">Super Admin PKK</span>
-        </a>
-
+        <a href="/dashboard_super" class="brand-link">
+            <img
+              src="{{ url ('image/remove.png') }}"
+              alt="AdminLTE Logo"
+              class="brand-image img-circle elevation-3"
+              style="opacity: 0.8"
+            />
+            <span class="brand-text font-weight-light">Super Admin TP PKK</span>
+          </a>
         <!-- Sidebar -->
         <div class="sidebar">
           <!-- Sidebar user panel (optional) -->
-          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          {{-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
               <img
                 src="{{ url ('image/remove.png') }}"
@@ -93,7 +97,7 @@
             <div class="info">
               <a href="#" class="d-block">Super Admin PKK</a>
             </div>
-          </div>
+          </div> --}}
 
           <!-- Sidebar Menu -->
           <nav class="mt-2">
@@ -151,19 +155,19 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="data_pokja3_super" class="nav-link {{ Request::is('data_pokja3_super') ? 'active':'' }}">
+                    <a href="/data_pokja3_super" class="nav-link {{ Request::is('data_pokja3_super') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA III</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="data_pokja4_super" class="nav-link {{ Request::is('data_pokja4_super') ? 'active':'' }}">
+                    <a href="/data_pokja4_super" class="nav-link {{ Request::is('data_pokja4_super') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA IV</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="data_sekretariat_super" class="nav-link {{ Request::is('data_sekretariat_super') ? 'active':'' }}">
+                    <a href="/data_sekretariat_super" class="nav-link {{ Request::is('data_sekretariat_super') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data Sekretariat/Data Umum</p>
                     </a>
@@ -179,7 +183,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="/pengguna_super" class="nav-link">
+                <a href="/data_pengguna_super" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                   <p>Data Pengguna</p>
                 </a>
