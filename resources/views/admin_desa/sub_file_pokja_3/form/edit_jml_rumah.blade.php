@@ -34,15 +34,15 @@
         <div class="card-body">
           <div class="form-group">
             <label>Jumlah Rumah Sehat</label>
-            <input type="number" class="form-control" name="jml_rumah_sehat" id="jml_rumah_sehat" placeholder="Masukkan Jumlah Rumah Sehat" required value="{{ucfirst(old('jml_rumah_sehat', $rumah->jml_rumah_sehat))}}">
+            <input min="0" type="number" class="form-control" name="jml_rumah_sehat" id="jml_rumah_sehat" placeholder="Masukkan Jumlah Rumah Sehat" required value="{{ucfirst(old('jml_rumah_sehat', $rumah->jml_rumah_sehat))}}">
           </div>
           <div class="form-group">
             <label>Jumlah Rumah Kurang Sehat</label>
-            <input type="number" class="form-control" name="jml_rumah_kurang_sehat" id="jml_rumah_kurang_sehat" placeholder="Masukkan Jumlah Rumah Kurang Sehat " required value="{{ucfirst(old('jml_rumah_kurang_sehat', $rumah->jml_rumah_kurang_sehat))}}">
+            <input min="0" type="number" class="form-control" name="jml_rumah_kurang_sehat" id="jml_rumah_kurang_sehat" placeholder="Masukkan Jumlah Rumah Kurang Sehat " required value="{{ucfirst(old('jml_rumah_kurang_sehat', $rumah->jml_rumah_kurang_sehat))}}">
           </div>
           <div class="form-group">
             <label>Periode</label>
-            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $rumah->periode))}}">
+            <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $rumah->periode))}}">
           </div>
         </div>
         <!-- /.card-body -->

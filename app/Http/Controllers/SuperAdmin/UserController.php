@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
+use App\Models\Data_Desa;
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -18,7 +20,13 @@ class UserController extends Controller
     {
         //halaman tampil data tabel user
         $users = User::all();
-        return view('super_admin.data_pengguna_super', compact('users'));
+        $desa = Data_Desa::all();
+
+        // $users = User::with('desa','kecamatan')->get();
+        // $desa = Data_Desa::with('kecamatan')->get();
+dd($desa);
+
+        return view('super_admin.data_pengguna_super', compact('users', 'desa'));
     }
 
     /**

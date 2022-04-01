@@ -45,7 +45,9 @@
                                         <td style="vertical-align: middle;">{{$c->email}}</td>
                                         <td style="vertical-align: middle;">{{$c->password}}</td>
                                         <td style="vertical-align: middle;">{{$c->user_type}}</td>
+                                        <td style="vertical-align: middle;">{{$c->desa->nama_desa}}</td>
                                         <td style="vertical-align: middle;">Desa</td>
+
                                         <td style="vertical-align: middle;">Kecamatan</td>
 
                                         <td class="text-center">

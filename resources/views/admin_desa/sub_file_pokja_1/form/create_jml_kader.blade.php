@@ -34,19 +34,29 @@
         <div class="card-body">
           <div class="form-group">
             <label>Jumlah Kader PKBN</label>
-            <input type="number" class="form-control" name="jml_kader_PKBN" id="jml_kader_PKBN" placeholder="Masukkan Jumlah Kader PKBN" required>
+            <input min="0" type="number" class="form-control" name="jml_kader_PKBN" id="jml_kader_PKBN" placeholder="Masukkan Jumlah Kader PKBN" required>
           </div>
           <div class="form-group">
             <label>Jumlah Kader PKDRT</label>
-            <input type="number" class="form-control" name="jml_kader_PKDRT" id="jml_kader_PKDRT" placeholder="Masukkan Jumlah Kader PKDRT" required>
+            <input min="0" type="number" class="form-control" name="jml_kader_PKDRT" id="jml_kader_PKDRT" placeholder="Masukkan Jumlah Kader PKDRT" required>
           </div>
           <div class="form-group">
             <label>Jumlah Kader Pola Asuh</label>
-            <input type="number" class="form-control" name="jml_kader_pola_asuh" id="jml_kader_pola_asuh" placeholder="Masukkan Jumlah Kader Pola Asuh" required>
+            <input min="0" type="number" class="form-control" name="jml_kader_pola_asuh" id="jml_kader_pola_asuh" placeholder="Masukkan Jumlah Kader Pola Asuh" required>
           </div>
           <div class="form-group">
             <label>Periode</label>
-            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+            {{-- <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
+            <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+              <option value="0" selected> Pilih Tahun</option>
+                <?php
+                  $year = date('Y');
+                  $min = $year ;
+                  $max = $year + 20;
+                  for( $i=$min; $i<=$max; $i++ ) {
+                    echo '<option value='.$i.'>'.$i.'</option>';
+                  }?>
+            </select>
           </div>
         </div>
         <!-- /.card-body -->

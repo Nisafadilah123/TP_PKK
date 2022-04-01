@@ -33,23 +33,23 @@
         <div class="card-body">
           <div class="form-group">
             <label>Jumlah Tenaga Sekretariat Data Umum Honorer Laki-laki</label>
-            <input type="number" class="form-control" name="jml_tenaga_honorer_laki" id="jml_tenaga_honorer_laki" placeholder="Masukkan Jumlah Tenaga Sekretariat Data Umum Honorer Laki-laki" required value="{{ucfirst(old('jml_tenaga_honorer_laki', $jml_tenaga_umum_super->jml_tenaga_honorer_laki))}}">
+            <input min="0" type="number" class="form-control" name="jml_tenaga_honorer_laki" id="jml_tenaga_honorer_laki" placeholder="Masukkan Jumlah Tenaga Sekretariat Data Umum Honorer Laki-laki" required value="{{ucfirst(old('jml_tenaga_honorer_laki', $jml_tenaga_umum_super->jml_tenaga_honorer_laki))}}">
           </div>
           <div class="form-group">
             <label>Jumlah Tenaga Sekretariat Data Umum Honorer Perempuan</label>
-            <input type="number" class="form-control" name="jml_tenaga_honorer_perempuan" id="jml_tenaga_honorer_perempuan" placeholder="Masukkan Jumlah Tenaga Sekretariat Data Umum Honorer Perempuan" required value="{{ucfirst(old('jml_tenaga_honorer_perempuan', $jml_tenaga_umum_super->jml_tenaga_honorer_perempuan))}}">
+            <input min="0" type="number" class="form-control" name="jml_tenaga_honorer_perempuan" id="jml_tenaga_honorer_perempuan" placeholder="Masukkan Jumlah Tenaga Sekretariat Data Umum Honorer Perempuan" required value="{{ucfirst(old('jml_tenaga_honorer_perempuan', $jml_tenaga_umum_super->jml_tenaga_honorer_perempuan))}}">
           </div>
           <div class="form-group">
             <label>Jumlah Tenaga Sekretariat Data Umum Bantuan Laki-laki</label>
-            <input type="number" class="form-control" name="jml_tenaga_bantuan_laki" id="jml_tenaga_bantuan_laki" placeholder="Masukkan Jumlah Tenaga Sekretariat Data Umum Bantuan Laki-laki" required value="{{ucfirst(old('jml_tenaga_bantuan_laki', $jml_tenaga_umum_super->jml_tenaga_bantuan_laki))}}">
+            <input min="0" type="number" class="form-control" name="jml_tenaga_bantuan_laki" id="jml_tenaga_bantuan_laki" placeholder="Masukkan Jumlah Tenaga Sekretariat Data Umum Bantuan Laki-laki" required value="{{ucfirst(old('jml_tenaga_bantuan_laki', $jml_tenaga_umum_super->jml_tenaga_bantuan_laki))}}">
           </div>
           <div class="form-group">
             <label>Jumlah Tenaga Sekretariat Data Umum Bantuan Perempuan</label>
-            <input type="number" class="form-control" name="jml_tenaga_bantuan_perempuan" id="jml_tenaga_bantuan_perempuan" placeholder="Masukkan Jumlah Tenaga Sekretariat Data Umum Bantuan Perempuan" required value="{{ucfirst(old('jml_tenaga_bantuan_perempuan', $jml_tenaga_umum_super->jml_tenaga_bantuan_perempuan))}}">
+            <input min="0" type="number" class="form-control" name="jml_tenaga_bantuan_perempuan" id="jml_tenaga_bantuan_perempuan" placeholder="Masukkan Jumlah Tenaga Sekretariat Data Umum Bantuan Perempuan" required value="{{ucfirst(old('jml_tenaga_bantuan_perempuan', $jml_tenaga_umum_super->jml_tenaga_bantuan_perempuan))}}">
           </div>
           <div class="form-group">
             <label>Periode</label>
-            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $jml_tenaga_umum_super->periode))}}">
+            <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $jml_tenaga_umum_super->periode))}}">
           </div>
   
         </div>

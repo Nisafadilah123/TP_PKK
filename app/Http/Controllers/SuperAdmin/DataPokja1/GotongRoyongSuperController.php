@@ -47,8 +47,17 @@ class GotongRoyongSuperController extends Controller
      */
     public function store(Request $request)
     {
+
         // proses penyimpanan untuk tambah data jml kader
-        $request->validate([
+        $pesan = [ 'id_desa.required' => 'Lengkapi Id Desa',
+             'jml_gotong_kerja_bakti.required' => 'Lengkapi Jumlah Kerja Bakti',
+             'jml_gotong_rukun_kebaktian.required' => 'Lengkapi Jumlah Rukun Kebaktian',
+             'jml_gotong_keagamaan.required' => 'Lengkapi Jumlah Keagamaan',
+             'jml_gotong_jimpitan.required' => 'Lengkapi Jumlah Jimpitan',
+             'jml_gotong_arisan.required' => 'Lengkapi Jumlah Arisan',
+             'periode.required' => 'Lengkapi Periode',
+    ];
+        $this->validate($request,[
             'id_desa' => 'required',
             'jml_gotong_kerja_bakti' => 'required',
             'jml_gotong_rukun_kebaktian' => 'required',
@@ -56,17 +65,26 @@ class GotongRoyongSuperController extends Controller
             'jml_gotong_jimpitan' => 'required',
             'jml_gotong_arisan' => 'required',
             'periode' => 'required',
+        ], $pesan);
+        // $request->validate([
+        //     'id_desa' => 'required',
+        //     'jml_gotong_kerja_bakti' => 'required',
+        //     'jml_gotong_rukun_kebaktian' => 'required',
+        //     'jml_gotong_keagamaan' => 'required',
+        //     'jml_gotong_jimpitan' => 'required',
+        //     'jml_gotong_arisan' => 'required',
+        //     'periode' => 'required',
 
-        ], [
-            'id_desa.required' => 'Lengkapi Id Desa',
-            'jml_gotong_kerja_bakti.required' => 'Lengkapi Jumlah Kerja Bakti',
-            'jml_gotong_rukun_kebaktian.required' => 'Lengkapi Jumlah Rukun Kebaktian',
-            'jml_gotong_keagamaan.required' => 'Lengkapi Jumlah Keagamaan',
-            'jml_gotong_jimpitan.required' => 'Lengkapi Jumlah Jimpitan',
-            'jml_gotong_arisan.required' => 'Lengkapi Jumlah Arisan',
-            'periode.required' => 'Lengkapi Periode',
+        // ], [
+        //     'id_desa.required' => 'Lengkapi Id Desa',
+        //     'jml_gotong_kerja_bakti.required' => 'Lengkapi Jumlah Kerja Bakti',
+        //     'jml_gotong_rukun_kebaktian.required' => 'Lengkapi Jumlah Rukun Kebaktian',
+        //     'jml_gotong_keagamaan.required' => 'Lengkapi Jumlah Keagamaan',
+        //     'jml_gotong_jimpitan.required' => 'Lengkapi Jumlah Jimpitan',
+        //     'jml_gotong_arisan.required' => 'Lengkapi Jumlah Arisan',
+        //     'periode.required' => 'Lengkapi Periode',
 
-        ]);
+        // ]);
 
         // cara 1
         $gotongs = new GotongRoyong;

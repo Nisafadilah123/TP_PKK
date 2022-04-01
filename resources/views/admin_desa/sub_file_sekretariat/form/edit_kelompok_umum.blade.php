@@ -33,23 +33,23 @@
         <div class="card-body">
           <div class="form-group">
             <label>Jumlah Kelompok PKK Dusun</label>
-            <input type="number" class="form-control" name="jml_pkk_dusun" id="jml_pkk_dusun" placeholder="Masukkan Jumlah Kelompok PKK Dusun" required value="{{ucfirst(old('jml_pkk_dusun', $kelompok->jml_pkk_dusun))}}">
+            <input min="0" type="number" class="form-control" name="jml_pkk_dusun" id="jml_pkk_dusun" placeholder="Masukkan Jumlah Kelompok PKK Dusun" required value="{{ucfirst(old('jml_pkk_dusun', $kelompok->jml_pkk_dusun))}}">
           </div>
           <div class="form-group">
             <label>Jumlah Kelompok PKK RW</label>
-            <input type="number" class="form-control" name="jml_pkk_rw" id="jml_pkk_rw" placeholder="Masukkan Jumlah Kelompok PKK RW" required value="{{ucfirst(old('jml_pkk_rw', $kelompok->jml_pkk_rw))}}">
+            <input min="0" type="number" class="form-control" name="jml_pkk_rw" id="jml_pkk_rw" placeholder="Masukkan Jumlah Kelompok PKK RW" required value="{{ucfirst(old('jml_pkk_rw', $kelompok->jml_pkk_rw))}}">
           </div>
           <div class="form-group">
             <label>Jumlah Kelompok PKK RT</label>
-            <input type="number" class="form-control" name="jml_pkk_rt" id="jml_pkk_rt" placeholder="Masukkan Jumlah Kelompok PKK RT" required value="{{ucfirst(old('jml_pkk_rt', $kelompok->jml_pkk_rt))}}">
+            <input min="0" type="number" class="form-control" name="jml_pkk_rt" id="jml_pkk_rt" placeholder="Masukkan Jumlah Kelompok PKK RT" required value="{{ucfirst(old('jml_pkk_rt', $kelompok->jml_pkk_rt))}}">
           </div>
           <div class="form-group">
             <label>Jumlah Kelompok Dasawisma</label>
-            <input type="number" class="form-control" name="jml_dasawisma" id="jml_dasawisma" placeholder="Masukkan Jumlah Kelompok Dasawisma" required value="{{ucfirst(old('jml_dasawisma', $kelompok->jml_dasawisma))}}">
+            <input min="0" type="number" class="form-control" name="jml_dasawisma" id="jml_dasawisma" placeholder="Masukkan Jumlah Kelompok Dasawisma" required value="{{ucfirst(old('jml_dasawisma', $kelompok->jml_dasawisma))}}">
           </div>
           <div class="form-group">
             <label>Periode</label>
-            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $kelompok->periode))}}">
+            <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $kelompok->periode))}}">
           </div>
         </div>
         <!-- /.card-body -->

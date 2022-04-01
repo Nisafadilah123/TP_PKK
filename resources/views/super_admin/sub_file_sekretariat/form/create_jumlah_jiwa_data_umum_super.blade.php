@@ -30,15 +30,25 @@
         <div class="card-body">
           <div class="form-group">
             <label>Jumlah Jiwa Data Umum Laki-laki</label>
-            <input type="number" class="form-control" name="jml_jiwa_data_umum_laki" id="jml_jiwa_data_umum_laki" placeholder="Masukkan Jumlah Jiwa Data Umum Laki-laki" required>
+            <input min="0" type="number" class="form-control" name="jml_jiwa_data_umum_laki" id="jml_jiwa_data_umum_laki" placeholder="Masukkan Jumlah Jiwa Data Umum Laki-laki" required>
           </div>
           <div class="form-group">
             <label>Jumlah Jiwa Data Umum Perempuan</label>
-            <input type="number" class="form-control" name="jml_jiwa_data_umum_perempuan" id="jml_jiwa_data_umum_perempuan" placeholder="Masukkan Jumlah Jiwa Data Umum Perempuan" required>
+            <input min="0" type="number" class="form-control" name="jml_jiwa_data_umum_perempuan" id="jml_jiwa_data_umum_perempuan" placeholder="Masukkan Jumlah Jiwa Data Umum Perempuan" required>
           </div>
           <div class="form-group">
             <label>Periode</label>
-            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+            {{-- <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
+                        <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                            <option value="0" selected> Pilih Tahun</option>
+                                <?php
+                                $year = date('Y');
+                                $min = $year ;
+                                    $max = $year + 20;
+                                for( $i=$min; $i<=$max; $i++ ) {
+                                echo '<option value='.$i.'>'.$i.'</option>';
+                            }?>
+                        </select>
           </div>
         </div>
         <!-- /.card-body -->

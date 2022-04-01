@@ -30,23 +30,33 @@
         <div class="card-body">
           <div class="form-group">
             <label>Jumlah Kelompok PKK Dusun</label>
-            <input type="number" class="form-control" name="jml_pkk_dusun" id="jml_pkk_dusun" placeholder="Masukkan Jumlah Kelompok PKK Dusun" required>
+            <input min="0" type="number" class="form-control" name="jml_pkk_dusun" id="jml_pkk_dusun" placeholder="Masukkan Jumlah Kelompok PKK Dusun" required>
           </div>
           <div class="form-group">
             <label>Jumlah Kelompok PKK RW</label>
-            <input type="number" class="form-control" name="jml_pkk_rw" id="jml_pkk_rw" placeholder="Masukkan Jumlah Kelompok PKK RW" required>
+            <input min="0" type="number" class="form-control" name="jml_pkk_rw" id="jml_pkk_rw" placeholder="Masukkan Jumlah Kelompok PKK RW" required>
           </div>
           <div class="form-group">
             <label>Jumlah Kelompok PKK RT</label>
-            <input type="number" class="form-control" name="jml_pkk_rt" id="jml_pkk_rt" placeholder="Masukkan Jumlah Kelompok PKK RT" required>
+            <input min="0" type="number" class="form-control" name="jml_pkk_rt" id="jml_pkk_rt" placeholder="Masukkan Jumlah Kelompok PKK RT" required>
           </div>
           <div class="form-group">
             <label>Jumlah Kelompok Dasawisma</label>
-            <input type="number" class="form-control" name="jml_dasawisma" id="jml_dasawisma" placeholder="Masukkan Jumlah Kelompok Dasawisma" required>
+            <input min="0" type="number" class="form-control" name="jml_dasawisma" id="jml_dasawisma" placeholder="Masukkan Jumlah Kelompok Dasawisma" required>
           </div>
           <div class="form-group">
             <label>Periode</label>
-            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+            {{-- <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
+                        <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                            <option value="0" selected> Pilih Tahun</option>
+                                <?php
+                                $year = date('Y');
+                                $min = $year ;
+                                    $max = $year + 20;
+                                for( $i=$min; $i<=$max; $i++ ) {
+                                echo '<option value='.$i.'>'.$i.'</option>';
+                            }?>
+                        </select>
           </div>
         </div>
         <!-- /.card-body -->

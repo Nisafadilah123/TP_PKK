@@ -34,19 +34,19 @@
         <div class="card-body">
           <div class="form-group">
             <label>Jumlah Kader Sandang</label>
-            <input type="number" class="form-control" name="jml_kader_sandang" id="jml_kader_sandang" placeholder="Masukkan Jumlah Kader Sandang" required value="{{ucfirst(old('jml_kader_sandang', $kader->jml_kader_sandang))}}">
+            <input min="0" type="number" class="form-control" name="jml_kader_sandang" id="jml_kader_sandang" placeholder="Masukkan Jumlah Kader Sandang" required value="{{ucfirst(old('jml_kader_sandang', $kader->jml_kader_sandang))}}">
           </div>
           <div class="form-group">
             <label>Jumlah Kader Pangan</label>
-            <input type="number" class="form-control" name="jml_kader_pangan" id="jml_kader_pangan" placeholder="Masukkan Jumlah Kader Pangan" required value="{{ucfirst(old('jml_kader_pangan', $kader->jml_kader_pangan))}}">
+            <input min="0" type="number" class="form-control" name="jml_kader_pangan" id="jml_kader_pangan" placeholder="Masukkan Jumlah Kader Pangan" required value="{{ucfirst(old('jml_kader_pangan', $kader->jml_kader_pangan))}}">
           </div>
           <div class="form-group">
             <label>Jumlah Kader Tata Laksana</label>
-            <input type="number" class="form-control" name="jml_kader_tata_laksana" id="jml_kader_tata_laksana" placeholder="Masukkan Jumlah Kader Tata Laksana" required value="{{ucfirst(old('jml_kader_tata_laksana', $kader->jml_kader_tata_laksana))}}">
+            <input min="0" type="number" class="form-control" name="jml_kader_tata_laksana" id="jml_kader_tata_laksana" placeholder="Masukkan Jumlah Kader Tata Laksana" required value="{{ucfirst(old('jml_kader_tata_laksana', $kader->jml_kader_tata_laksana))}}">
           </div>
           <div class="form-group">
             <label>Periode</label>
-            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $kader->periode))}}">
+            <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $kader->periode))}}">
           </div>
         </div>
         <!-- /.card-body -->

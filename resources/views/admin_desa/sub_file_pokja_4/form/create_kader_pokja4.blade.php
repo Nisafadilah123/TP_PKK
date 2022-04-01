@@ -37,7 +37,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader Posyandu</label>
-                        <input type="number" class="form-control" name="jml_kader_posyandu" id="jml_kader_posyandu" placeholder="Masukkan Jumlah Kader Posyandu" required>
+                        <input min="0" type="number" class="form-control" name="jml_kader_posyandu" id="jml_kader_posyandu" placeholder="Masukkan Jumlah Kader Posyandu" required>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader Gizi</label>
-                        <input type="number" class="form-control" name="jml_kader_gizi" id="jml_kader_gizi" placeholder="Masukkan Jumlah Kader Gizi" required>
+                        <input min="0" type="number" class="form-control" name="jml_kader_gizi" id="jml_kader_gizi" placeholder="Masukkan Jumlah Kader Gizi" required>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label>Jumlah Kader Kesling</label>
-                            <input type="number" class="form-control" name="jml_kader_kesling" id="jml_kader_kesling" placeholder="Masukkan Jumlah Kader Kesling" required>
+                            <input min="0" type="number" class="form-control" name="jml_kader_kesling" id="jml_kader_kesling" placeholder="Masukkan Jumlah Kader Kesling" required>
                         </div>
 
                     </div>
@@ -69,7 +69,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader Penyuluhan Narkoba</label>
-                        <input type="number" class="form-control" name="jml_kader_penyuluhan_narkoba" id="jml_kader_penyuluhan_narkoba" placeholder="Masukkan Jumlah Kader Penyuluhan Narkoba" required>
+                        <input min="0" type="number" class="form-control" name="jml_kader_penyuluhan_narkoba" id="jml_kader_penyuluhan_narkoba" placeholder="Masukkan Jumlah Kader Penyuluhan Narkoba" required>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader PHBS</label>
-                        <input type="number" class="form-control" name="jml_kader_PHBS" id="jml_kader_PHBS" placeholder="Masukkan Jumlah Kader PHBS" required>
+                        <input min="0" type="number" class="form-control" name="jml_kader_PHBS" id="jml_kader_PHBS" placeholder="Masukkan Jumlah Kader PHBS" required>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label>Jumlah Kader KB</label>
-                            <input type="number" class="form-control" name="jml_kader_KB" id="jml_kader_KB" placeholder="Masukkan Jumlah Kader KB" required>
+                            <input min="0" type="number" class="form-control" name="jml_kader_KB" id="jml_kader_KB" placeholder="Masukkan Jumlah Kader KB" required>
                         </div>
 
                     </div>
@@ -100,7 +100,17 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Periode</label>
-                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+                        {{-- <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
+                        <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                            <option value="0" selected> Pilih Tahun</option>
+                                <?php
+                                $year = date('Y');
+                                $min = $year ;
+                                    $max = $year + 20;
+                                for( $i=$min; $i<=$max; $i++ ) {
+                                echo '<option value='.$i.'>'.$i.'</option>';
+                            }?>
+                        </select>
                     </div>
                 </div>
             </div>

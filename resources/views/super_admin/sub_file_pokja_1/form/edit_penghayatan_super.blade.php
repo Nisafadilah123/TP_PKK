@@ -38,7 +38,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah PKBN Simulasi</label>
-                        <input type="number" class="form-control" name="jml_PKBN_simulasi" id="jml_PKBN_simulasi" placeholder="Masukkan Jumlah PKBN Simulasi" required value="{{ucfirst(old('jml_PKBN_simulasi', $penghayatan_super->jml_PKBN_simulasi))}}">
+                        <input min="0" type="number" class="form-control" name="jml_PKBN_simulasi" id="jml_PKBN_simulasi" placeholder="Masukkan Jumlah PKBN Simulasi" required value="{{ucfirst(old('jml_PKBN_simulasi', $penghayatan_super->jml_PKBN_simulasi))}}">
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah PKBN Anggota</label>
-                        <input type="number" class="form-control" name="jml_PKBN_anggota" id="jml_PKBN_anggota" placeholder="Masukkan Jumlah PKBN Anggota" required value="{{ucfirst(old('jml_PKBN_simulasi', $penghayatan_super->jml_PKBN_anggota))}}">
+                        <input min="0" type="number" class="form-control" name="jml_PKBN_anggota" id="jml_PKBN_anggota" placeholder="Masukkan Jumlah PKBN Anggota" required value="{{ucfirst(old('jml_PKBN_simulasi', $penghayatan_super->jml_PKBN_anggota))}}">
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah PKDRT Simulasi</label>
-                        <input type="number" class="form-control" name="jml_PKDRT_simulasi" id="jml_PKDRT_simulasi" placeholder="Masukkan Jumlah PKDRT Simulasi" required value="{{ucfirst(old('jml_PKDRT_simulasi', $penghayatan_super->jml_PKDRT_simulasi))}}">
+                        <input min="0" type="number" class="form-control" name="jml_PKDRT_simulasi" id="jml_PKDRT_simulasi" placeholder="Masukkan Jumlah PKDRT Simulasi" required value="{{ucfirst(old('jml_PKDRT_simulasi', $penghayatan_super->jml_PKDRT_simulasi))}}">
                     </div>
 
                 </div>
@@ -68,7 +68,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah PKDRT Anggota</label>
-                        <input type="number" class="form-control" name="jml_PKDRT_anggota" id="jml_PKDRT_anggota" placeholder="Masukkan Jumlah PKDRT Anggota" required value="{{ucfirst(old('jml_PKDRT_anggota', $penghayatan_super->jml_PKDRT_anggota))}}">
+                        <input min="0" type="number" class="form-control" name="jml_PKDRT_anggota" id="jml_PKDRT_anggota" placeholder="Masukkan Jumlah PKDRT Anggota" required value="{{ucfirst(old('jml_PKDRT_anggota', $penghayatan_super->jml_PKDRT_anggota))}}">
                     </div>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>Jumlah Pola Asuh Simulasi</label>
-                            <input type="number" class="form-control" name="jml_pola_asuh_simulasi" id="jml_pola_asuh_simulasi" placeholder="Masukkan Jumlah Pola Asuh KLP" required value="{{ucfirst(old('jml_pola_asuh_simulasi', $penghayatan_super->jml_pola_asuh_simulasi))}}">
+                            <input min="0" type="number" class="form-control" name="jml_pola_asuh_simulasi" id="jml_pola_asuh_simulasi" placeholder="Masukkan Jumlah Pola Asuh KLP" required value="{{ucfirst(old('jml_pola_asuh_simulasi', $penghayatan_super->jml_pola_asuh_simulasi))}}">
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>Jumlah Pola Asuh Anggota</label>
-                            <input type="number" class="form-control" name="jml_pola_asuh_anggota" id="jml_pola_asuh_anggota" placeholder="Masukkan Jumlah Pola Asuh Anggota" required value="{{ucfirst(old('jml_pola_asuh_anggota', $penghayatan_super->jml_pola_asuh_anggota))}}">
+                            <input min="0" type="number" class="form-control" name="jml_pola_asuh_anggota" id="jml_pola_asuh_anggota" placeholder="Masukkan Jumlah Pola Asuh Anggota" required value="{{ucfirst(old('jml_pola_asuh_anggota', $penghayatan_super->jml_pola_asuh_anggota))}}">
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>Jumlah Lansia KLP</label>
-                            <input type="number" class="form-control" name="jml_lansia_klp" id="jml_lansia_klp" placeholder="Masukkan Jumlah Lansia KLP" required value="{{ucfirst(old('jml_lansia_klp', $penghayatan_super->jml_lansia_klp))}}">
+                            <input min="0" type="number" class="form-control" name="jml_lansia_klp" id="jml_lansia_klp" placeholder="Masukkan Jumlah Lansia KLP" required value="{{ucfirst(old('jml_lansia_klp', $penghayatan_super->jml_lansia_klp))}}">
                         </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Lansia Anggota</label>
-                        <input type="number" class="form-control" name="jml_lansia_anggota" id="jml_lansia_anggota" placeholder="Masukkan Jumlah Lansia Anggota" required value="{{ucfirst(old('jml_lansia_anggota', $penghayatan_super->jml_lansia_anggota))}}">
+                        <input min="0" type="number" class="form-control" name="jml_lansia_anggota" id="jml_lansia_anggota" placeholder="Masukkan Jumlah Lansia Anggota" required value="{{ucfirst(old('jml_lansia_anggota', $penghayatan_super->jml_lansia_anggota))}}">
                     </div>
                 </div>
             </div>
@@ -114,7 +114,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Periode</label>
-                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $penghayatan_super->periode))}}">
+                        <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $penghayatan_super->periode))}}">
                     </div>
                 </div>
             </div>

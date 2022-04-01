@@ -39,7 +39,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Gotong Kerja Bakti</label>
-                        <input type="number" class="form-control" name="jml_gotong_kerja_bakti" id="jml_gotong_kerja_bakti" placeholder="Masukkan Jumlah Gotong Kerja Bakti" required value="{{ucfirst(old('jml_gotong_kerja_bakti', $gotong_royong_super->jml_gotong_kerja_bakti))}}">
+                        <input min="0" type="number" class="form-control" name="jml_gotong_kerja_bakti" id="jml_gotong_kerja_bakti" placeholder="Masukkan Jumlah Gotong Kerja Bakti" required value="{{ucfirst(old('jml_gotong_kerja_bakti', $gotong_royong_super->jml_gotong_kerja_bakti))}}">
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Gotong Rukun Kebaktian</label>
-                        <input type="number" class="form-control" name="jml_gotong_rukun_kebaktian" id="jml_gotong_rukun_kebaktian" placeholder="Masukkan Jumlah Gotong Rukun Kebaktian" required value="{{ucfirst(old('jml_gotong_rukun_kebaktian', $gotong_royong_super->jml_gotong_rukun_kebaktian))}}">
+                        <input min="0" type="number" class="form-control" name="jml_gotong_rukun_kebaktian" id="jml_gotong_rukun_kebaktian" placeholder="Masukkan Jumlah Gotong Rukun Kebaktian" required value="{{ucfirst(old('jml_gotong_rukun_kebaktian', $gotong_royong_super->jml_gotong_rukun_kebaktian))}}">
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Gotong Keagamaan</label>
-                        <input type="number" class="form-control" name="jml_gotong_keagamaan" id="jml_gotong_keagamaan" placeholder="Masukkan Jumlah Gotong Keagamaan" required value="{{ucfirst(old('jml_gotong_keagamaan', $gotong_royong_super->jml_gotong_keagamaan))}}">
+                        <input min="0" type="number" class="form-control" name="jml_gotong_keagamaan" id="jml_gotong_keagamaan" placeholder="Masukkan Jumlah Gotong Keagamaan" required value="{{ucfirst(old('jml_gotong_keagamaan', $gotong_royong_super->jml_gotong_keagamaan))}}">
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Gotong Jimpitan</label>
-                        <input type="number" class="form-control" name="jml_gotong_jimpitan" id="jml_gotong_jimpitan" placeholder="Masukkan Jumlah Gotong Jimpitan" required value="{{ucfirst(old('jml_gotong_jimpitan', $gotong_royong_super->jml_gotong_jimpitan))}}">
+                        <input min="0" type="number" class="form-control" name="jml_gotong_jimpitan" id="jml_gotong_jimpitan" placeholder="Masukkan Jumlah Gotong Jimpitan" required value="{{ucfirst(old('jml_gotong_jimpitan', $gotong_royong_super->jml_gotong_jimpitan))}}">
                     </div>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Gotong Arisan</label>
-                        <input type="number" class="form-control" name="jml_gotong_arisan" id="jml_gotong_arisan" placeholder="Masukkan Jumlah Gotong Arisan" required value="{{ucfirst(old('jml_gotong_arisan', $gotong_royong_super->jml_gotong_arisan))}}">
+                        <input min="0" type="number" class="form-control" name="jml_gotong_arisan" id="jml_gotong_arisan" placeholder="Masukkan Jumlah Gotong Arisan" required value="{{ucfirst(old('jml_gotong_arisan', $gotong_royong_super->jml_gotong_arisan))}}">
                     </div>
 
                 </div>
@@ -86,7 +86,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Periode</label>
-                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $gotong_royong_super->periode))}}">
+                        <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $gotong_royong_super->periode))}}">
                     </div>
 
                 </div>

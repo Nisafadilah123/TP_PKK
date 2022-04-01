@@ -39,7 +39,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah PKBN Simulasi</label>
-                        <input type="number" class="form-control" name="jml_PKBN_simulasi" id="jml_PKBN_simulasi" placeholder="Masukkan Jumlah PKBN Simulasi" required>
+                        <input min="0" type="number" class="form-control" name="jml_PKBN_simulasi" id="jml_PKBN_simulasi" placeholder="Masukkan Jumlah PKBN Simulasi" required>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah PKBN Anggota</label>
-                        <input type="number" class="form-control" name="jml_PKBN_anggota" id="jml_PKBN_anggota" placeholder="Masukkan Jumlah PKBN Anggota" required>
+                        <input min="0" type="number" class="form-control" name="jml_PKBN_anggota" id="jml_PKBN_anggota" placeholder="Masukkan Jumlah PKBN Anggota" required>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah PKDRT Simulasi</label>
-                        <input type="number" class="form-control" name="jml_PKDRT_simulasi" id="jml_PKDRT_simulasi" placeholder="Masukkan Jumlah PKDRT Simulasi" required>
+                        <input min="0" type="number" class="form-control" name="jml_PKDRT_simulasi" id="jml_PKDRT_simulasi" placeholder="Masukkan Jumlah PKDRT Simulasi" required>
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah PKDRT Anggota</label>
-                        <input type="number" class="form-control" name="jml_PKDRT_anggota" id="jml_PKDRT_anggota" placeholder="Masukkan Jumlah PKDRT Anggota" required>
+                        <input min="0" type="number" class="form-control" name="jml_PKDRT_anggota" id="jml_PKDRT_anggota" placeholder="Masukkan Jumlah PKDRT Anggota" required>
                     </div>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pola Asuh KLP</label>
-                        <input type="number" class="form-control" name="jml_pola_asuh_simulasi" id="jml_pola_asuh_simulasi" placeholder="Masukkan Jumlah Pola Asuh Simulasi" required>
+                        <input min="0" type="number" class="form-control" name="jml_pola_asuh_simulasi" id="jml_pola_asuh_simulasi" placeholder="Masukkan Jumlah Pola Asuh Simulasi" required>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pola Asuh Anggota</label>
-                        <input type="number" class="form-control" name="jml_pola_asuh_anggota" id="jml_pola_asuh_anggota" placeholder="Masukkan Jumlah Pola Asuh Anggota" required>
+                        <input min="0" type="number" class="form-control" name="jml_pola_asuh_anggota" id="jml_pola_asuh_anggota" placeholder="Masukkan Jumlah Pola Asuh Anggota" required>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Lansia KLP</label>
-                        <input type="number" class="form-control" name="jml_lansia_klp" id="jml_lansia_klp" placeholder="Masukkan Jumlah Lansia KLP" required>
+                        <input min="0" type="number" class="form-control" name="jml_lansia_klp" id="jml_lansia_klp" placeholder="Masukkan Jumlah Lansia KLP" required>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Lansia Anggota</label>
-                        <input type="number" class="form-control" name="jml_lansia_anggota" id="jml_lansia_anggota" placeholder="Masukkan Jumlah Lansia Anggota" required>
+                        <input min="0" type="number" class="form-control" name="jml_lansia_anggota" id="jml_lansia_anggota" placeholder="Masukkan Jumlah Lansia Anggota" required>
                     </div>
 
                 </div>
@@ -115,7 +115,17 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Periode</label>
-                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+                        {{-- <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
+                        <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                            <option value="0" selected> Pilih Tahun</option>
+                                <?php
+                                $year = date('Y');
+                                $min = $year ;
+                                    $max = $year + 20;
+                                for( $i=$min; $i<=$max; $i++ ) {
+                                echo '<option value='.$i.'>'.$i.'</option>';
+                            }?>
+                        </select>
                     </div>
 
                 </div>

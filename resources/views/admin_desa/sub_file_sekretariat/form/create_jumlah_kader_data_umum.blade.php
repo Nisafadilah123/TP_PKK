@@ -36,7 +36,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader Anggota TP PKK Laki-laki Data Umum</label>
-                        <input type="number" class="form-control" name="jml_kader_anggota_pkk_laki_data_umum" id="jml_kader_anggota_pkk_laki_data_umum" placeholder="Masukkan Jumlah Kader Anggota TP PKK Laki-laki Data Umum" required>
+                        <input min="0" type="number" class="form-control" name="jml_kader_anggota_pkk_laki_data_umum" id="jml_kader_anggota_pkk_laki_data_umum" placeholder="Masukkan Jumlah Kader Anggota TP PKK Laki-laki Data Umum" required>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader Anggota TP PKK Perempuan Data Umum</label>
-                        <input type="number" class="form-control" name="jml_kader_anggota_pkk_perempuan_data_umum" id="jml_kader_anggota_pkk_perempuan_data_umum" placeholder="Masukkan Jumlah Kader Anggota TP PKK Perempuan Data Umum" required>
+                        <input min="0" type="number" class="form-control" name="jml_kader_anggota_pkk_perempuan_data_umum" id="jml_kader_anggota_pkk_perempuan_data_umum" placeholder="Masukkan Jumlah Kader Anggota TP PKK Perempuan Data Umum" required>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                 <div class="card-body">
                      <div class="form-group">
                         <label>Jumlah Kader Umum Laki-laki Data Umum</label>
-                        <input type="number" class="form-control" name="jml_kader_umum_laki_data_umum" id="jml_kader_umum_laki_data_umum" placeholder="Masukkan Jumlah Kader Umum Laki-laki Data Umum" required>
+                        <input min="0" type="number" class="form-control" name="jml_kader_umum_laki_data_umum" id="jml_kader_umum_laki_data_umum" placeholder="Masukkan Jumlah Kader Umum Laki-laki Data Umum" required>
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader Umum Perempuan Data Umum</label>
-                        <input type="number" class="form-control" name="jml_kader_umum_perempuan_data_umum" id="jml_kader_umum_perempuan_data_umum" placeholder="Masukkan Jumlah Kader Umum Perempuan Data Umum" required>
+                        <input min="0" type="number" class="form-control" name="jml_kader_umum_perempuan_data_umum" id="jml_kader_umum_perempuan_data_umum" placeholder="Masukkan Jumlah Kader Umum Perempuan Data Umum" required>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader Khusus Laki-laki Data Umum</label>
-                        <input type="number" class="form-control" name="jml_kader_khusus_laki_data_umum" id="jml_kader_khusus_laki_data_umum" placeholder="Masukkan Jumlah Kader Khusus Laki-laki Data Umum" required>
+                        <input min="0" type="number" class="form-control" name="jml_kader_khusus_laki_data_umum" id="jml_kader_khusus_laki_data_umum" placeholder="Masukkan Jumlah Kader Khusus Laki-laki Data Umum" required>
                     </div>
                 </div>
             </div>
@@ -86,7 +86,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader Khusus Perempuan Data Umum</label>
-                        <input type="number" class="form-control" name="jml_kader_khusus_perempuan_data_umum" id="jml_kader_khusus_perempuan_data_umum" placeholder="Masukkan Jumlah Kader Khusus Perempuan Data Umum" required>
+                        <input min="0" type="number" class="form-control" name="jml_kader_khusus_perempuan_data_umum" id="jml_kader_khusus_perempuan_data_umum" placeholder="Masukkan Jumlah Kader Khusus Perempuan Data Umum" required>
                     </div>
 
                 </div>
@@ -95,9 +95,18 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Periode</label>
-                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+                        {{-- <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
+                        <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                            <option value="0" selected> Pilih Tahun</option>
+                                <?php
+                                $year = date('Y');
+                                $min = $year ;
+                                    $max = $year + 20;
+                                for( $i=$min; $i<=$max; $i++ ) {
+                                echo '<option value='.$i.'>'.$i.'</option>';
+                            }?>
+                        </select>
                     </div>
-
                 </div>
             </div>
         </div>

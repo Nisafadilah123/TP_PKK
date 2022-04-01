@@ -36,7 +36,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pangan Makanan Beras</label>
-                        <input type="number" class="form-control" name="jml_makanan_beras" id="jml_makanan_beras" placeholder="Masukkan Jumlah Pangan Makanan Beras" required>
+                        <input min="0" type="number" class="form-control" name="jml_makanan_beras" id="jml_makanan_beras" placeholder="Masukkan Jumlah Pangan Makanan Beras" required>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pangan Makanan Non Beras</label>
-                        <input type="number" class="form-control" name="jml_makanan_nonberas" id="jml_makanan_nonberas" placeholder="Masukkan Jumlah Pangan Makanan Non Beras" required>
+                        <input min="0" type="number" class="form-control" name="jml_makanan_nonberas" id="jml_makanan_nonberas" placeholder="Masukkan Jumlah Pangan Makanan Non Beras" required>
                       </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pangan Pemanfaatan Peternak</label>
-                        <input type="number" class="form-control" name="jml_pemanfaatan_peternakan" id="jml_pemanfaatan_peternakan" placeholder="Masukkan Jumlah Pangan Pemanfaatan Peternakan" required>
+                        <input min="0" type="number" class="form-control" name="jml_pemanfaatan_peternakan" id="jml_pemanfaatan_peternakan" placeholder="Masukkan Jumlah Pangan Pemanfaatan Peternakan" required>
                     </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pangan Pemanfaatan Perikanan</label>
-                        <input type="number" class="form-control" name="jml_pemanfaatan_perikanan" id="jml_pemanfaatan_perikanan" placeholder="Masukkan Jumlah Pangan Pemanfaatan Perikanan" required>
+                        <input min="0" type="number" class="form-control" name="jml_pemanfaatan_perikanan" id="jml_pemanfaatan_perikanan" placeholder="Masukkan Jumlah Pangan Pemanfaatan Perikanan" required>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pangan Pemanfaatan Warung Hidup</label>
-                        <input type="number" class="form-control" name="jml_pemanfaatan_warung_hidup" id="jml_pemanfaatan_warung_hidup" placeholder="Masukkan Jumlah Pangan Pemanfaatan Warung Hidup" required>
+                        <input min="0" type="number" class="form-control" name="jml_pemanfaatan_warung_hidup" id="jml_pemanfaatan_warung_hidup" placeholder="Masukkan Jumlah Pangan Pemanfaatan Warung Hidup" required>
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pangan Pemanfaatan Limbung Hidup</label>
-                        <input type="number" class="form-control" name="jml_pemanfaatan_limbung_hidup" id="jml_pemanfaatan_limbung_hidup" placeholder="Masukkan Jumlah Pangan Pemanfaatan Limbung Hidup" required>
+                        <input min="0" type="number" class="form-control" name="jml_pemanfaatan_limbung_hidup" id="jml_pemanfaatan_limbung_hidup" placeholder="Masukkan Jumlah Pangan Pemanfaatan Limbung Hidup" required>
                     </div>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pangan Pemanfaatan TOGA</label>
-                        <input type="number" class="form-control" name="jml_pemanfaatan_toga" id="jml_pemanfaatan_toga" placeholder="Masukkan Jumlah Pangan Pemanfaatan TOGA" required>
+                        <input min="0" type="number" class="form-control" name="jml_pemanfaatan_toga" id="jml_pemanfaatan_toga" placeholder="Masukkan Jumlah Pangan Pemanfaatan TOGA" required>
                     </div>
                 </div>
             </div>
@@ -103,14 +103,24 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pangan Pemanfaatan Tanaman Keras</label>
-                        <input type="number" class="form-control" name="jml_pemanfaatan_tanaman_keras" id="jml_pemanfaatan_tanaman_keras" placeholder="Masukkan Jumlah Pangan Pemanfaatan Tanaman Keras" required>
+                        <input min="0" type="number" class="form-control" name="jml_pemanfaatan_tanaman_keras" id="jml_pemanfaatan_tanaman_keras" placeholder="Masukkan Jumlah Pangan Pemanfaatan Tanaman Keras" required>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Periode</label>
-                    <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+                        {{-- <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
+                        <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                            <option value="0" selected> Pilih Tahun</option>
+                                <?php
+                                $year = date('Y');
+                                $min = $year ;
+                                    $max = $year + 20;
+                                for( $i=$min; $i<=$max; $i++ ) {
+                                echo '<option value='.$i.'>'.$i.'</option>';
+                            }?>
+                        </select>
                 </div>
             </div>
         </div>

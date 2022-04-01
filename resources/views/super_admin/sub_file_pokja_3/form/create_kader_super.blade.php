@@ -30,21 +30,30 @@
         <div class="card-body">
           <div class="form-group">
             <label>Jumlah kader Pangan</label>
-            <input type="number" class="form-control" name="jml_kader_pangan" id="jml_kader_pangan" placeholder="Masukkan Jumlah kader Pangan" required>
+            <input min="0" type="number" class="form-control" name="jml_kader_pangan" id="jml_kader_pangan" placeholder="Masukkan Jumlah kader Pangan" required>
           </div>
           <div class="form-group">
             <label>Jumlah kader Sandang</label>
-            <input type="number" class="form-control" name="jml_kader_sandang" id="jml_kader_sandang" placeholder="Masukkan Jumlah kader Sandang" required>
+            <input min="0" type="number" class="form-control" name="jml_kader_sandang" id="jml_kader_sandang" placeholder="Masukkan Jumlah kader Sandang" required>
           </div>
           <div class="form-group">
             <label>Jumlah kader Tata Laksana</label>
-            <input type="number" class="form-control" name="jml_kader_tata_laksana" id="jml_kader_tata_laksana" placeholder="Masukkan Jumlah kader Tata Laksana" required>
+            <input min="0" type="number" class="form-control" name="jml_kader_tata_laksana" id="jml_kader_tata_laksana" placeholder="Masukkan Jumlah kader Tata Laksana" required>
           </div>
           <div class="form-group">
             <label>Periode</label>
-            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+              {{-- <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
+                        <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                            <option value="0" selected> Pilih Tahun</option>
+                                <?php
+                                $year = date('Y');
+                                $min = $year ;
+                                    $max = $year + 20;
+                                for( $i=$min; $i<=$max; $i++ ) {
+                                echo '<option value='.$i.'>'.$i.'</option>';
+                            }?>
+                        </select>
           </div>
-
         </div>
         <!-- /.card-body -->
 

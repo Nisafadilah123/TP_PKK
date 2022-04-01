@@ -18,4 +18,7 @@ class DataKecamatan extends Model
     public function desa(){
         return $this->hasMany(Data_Desa::class);
     }
+    public function user(){
+        return $this->hasMany(User::class);
+    }
 }

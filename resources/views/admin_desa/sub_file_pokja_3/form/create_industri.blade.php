@@ -23,8 +23,8 @@
                     {{-- nama desa yang login --}}
                 @foreach ($desas as $c)
                 {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
-                    <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
-                    <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
+                    <input min="0" type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                    <input min="0" type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
                 @endforeach
              {{-- </select> --}}
               </div>
@@ -32,19 +32,29 @@
         <div class="card-body">
           <div class="form-group">
             <label>Jumlah Industri Pangan</label>
-            <input type="number" class="form-control" name="jml_industri_pangan" id="jml_industri_pangan" placeholder="Masukkan Jumlah industri Pangan" required>
+            <input min="0" type="number" class="form-control" name="jml_industri_pangan" id="jml_industri_pangan" placeholder="Masukkan Jumlah industri Pangan" required>
           </div>
           <div class="form-group">
             <label>Jumlah Industri Sandang</label>
-            <input type="number" class="form-control" name="jml_industri_sandang" id="jml_industri_sandang" placeholder="Masukkan Jumlah industri Sandang" required>
+            <input min="0" type="number" class="form-control" name="jml_industri_sandang" id="jml_industri_sandang" placeholder="Masukkan Jumlah industri Sandang" required>
           </div>
           <div class="form-group">
             <label>Jumlah Industri Jasa</label>
-            <input type="number" class="form-control" name="jml_industri_jasa" id="jml_industri_jasa" placeholder="Masukkan Jumlah industri Jasa" required>
+            <input min="0" type="number" class="form-control" name="jml_industri_jasa" id="jml_industri_jasa" placeholder="Masukkan Jumlah industri Jasa" required>
           </div>
           <div class="form-group">
             <label>Periode</label>
-            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+            {{-- <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
+              <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                <option value="0" selected> Pilih Tahun</option>
+                  <?php
+                    $year = date('Y');
+                    $min = $year ;
+                    $max = $year + 20;
+                      for( $i=$min; $i<=$max; $i++ ) {
+                      echo '<option value='.$i.'>'.$i.'</option>';
+                  }?>
+               </select>
           </div>
         </div>
         <!-- /.card-body -->

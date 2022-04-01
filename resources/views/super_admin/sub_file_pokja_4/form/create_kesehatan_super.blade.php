@@ -35,7 +35,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Posyandu</label>
-                        <input type="number" class="form-control" name="jml_posyandu" id="jml_posyandu" placeholder="Masukkan Jumlah Posyandu" required>
+                        <input min="0" type="number" class="form-control" name="jml_posyandu" id="jml_posyandu" placeholder="Masukkan Jumlah Posyandu" required>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Posyandu Terintegrasi</label>
-                        <input type="number" class="form-control" name="jml_posyandu_terintegrasi" id="jml_posyandu_terintegrasi" placeholder="Masukkan Jumlah Posyandu Terintegrasi" required>
+                        <input min="0" type="number" class="form-control" name="jml_posyandu_terintegrasi" id="jml_posyandu_terintegrasi" placeholder="Masukkan Jumlah Posyandu Terintegrasi" required>
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label>Jumlah Posyandu Lansia KLP</label>
-                            <input type="number" class="form-control" name="jml_posyandu_lansia_klp" id="jml_posyandu_lansia_klp" placeholder="Masukkan Jumlah Posyandu Lansia KLP" required>
+                            <input min="0" type="number" class="form-control" name="jml_posyandu_lansia_klp" id="jml_posyandu_lansia_klp" placeholder="Masukkan Jumlah Posyandu Lansia KLP" required>
                         </div>
 
                     </div>
@@ -67,7 +67,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Posyandu Lansia Anggota</label>
-                        <input type="number" class="form-control" name="jml_posyandu_lansia_anggota" id="jml_posyandu_lansia_anggota" placeholder="Masukkan Jumlah Posyandu Lansia Anggota" required>
+                        <input min="0" type="number" class="form-control" name="jml_posyandu_lansia_anggota" id="jml_posyandu_lansia_anggota" placeholder="Masukkan Jumlah Posyandu Lansia Anggota" required>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Posyandu Lansia Memiliki Kartu Berobat Gratis</label>
-                        <input type="number" class="form-control" name="jml_posyandu_lansia_memiliki_kartu" id="jml_posyandu_lansia_memiliki_kartu" placeholder="Masukkan Jumlah Posyandu Lansia Memiliki Kartu Berobat Gratis" required>
+                        <input min="0" type="number" class="form-control" name="jml_posyandu_lansia_memiliki_kartu" id="jml_posyandu_lansia_memiliki_kartu" placeholder="Masukkan Jumlah Posyandu Lansia Memiliki Kartu Berobat Gratis" required>
                     </div>
                 </div>
             </div>
@@ -85,9 +85,18 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label>Periode</label>
-                            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+                            {{-- <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
+                            <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                                <option value="0" selected> Pilih Tahun</option>
+                                    <?php
+                                    $year = date('Y');
+                                    $min = $year ;
+                                        $max = $year + 20;
+                                    for( $i=$min; $i<=$max; $i++ ) {
+                                    echo '<option value='.$i.'>'.$i.'</option>';
+                                }?>
+                            </select>
                         </div>
-
                     </div>
                 </div>
             </div>

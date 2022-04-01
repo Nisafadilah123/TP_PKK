@@ -34,19 +34,19 @@
         <div class="card-body">
           <div class="form-group">
             <label>Jumlah Industri Sandang</label>
-            <input type="number" class="form-control" name="jml_industri_sandang" id="jml_industri_sandang" placeholder="Masukkan Jumlah Industri Sandang" required value="{{ucfirst(old('jml_industri_sandang', $industri->jml_industri_sandang))}}">
+            <input min="0" type="number" class="form-control" name="jml_industri_sandang" id="jml_industri_sandang" placeholder="Masukkan Jumlah Industri Sandang" required value="{{ucfirst(old('jml_industri_sandang', $industri->jml_industri_sandang))}}">
           </div>
           <div class="form-group">
             <label>Jumlah Industri Pangan</label>
-            <input type="number" class="form-control" name="jml_industri_pangan" id="jml_industri_pangan" placeholder="Masukkan Jumlah Industri Pangan" required value="{{ucfirst(old('jml_industri_pangan', $industri->jml_industri_pangan))}}">
+            <input min="0" type="number" class="form-control" name="jml_industri_pangan" id="jml_industri_pangan" placeholder="Masukkan Jumlah Industri Pangan" required value="{{ucfirst(old('jml_industri_pangan', $industri->jml_industri_pangan))}}">
           </div>
           <div class="form-group">
             <label>Jumlah Industri Jasa</label>
-            <input type="number" class="form-control" name="jml_industri_jasa" id="jml_industri_jasa" placeholder="Masukkan Jumlah Industri Jasa" required value="{{ucfirst(old('jml_industri_jasa', $industri->jml_industri_jasa))}}">
+            <input min="0" type="number" class="form-control" name="jml_industri_jasa" id="jml_industri_jasa" placeholder="Masukkan Jumlah Industri Jasa" required value="{{ucfirst(old('jml_industri_jasa', $industri->jml_industri_jasa))}}">
           </div>
           <div class="form-group">
             <label>Periode</label>
-            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $industri->periode))}}">
+            <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $industri->periode))}}">
           </div>
         </div>
         <!-- /.card-body -->

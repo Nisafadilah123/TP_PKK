@@ -36,7 +36,7 @@
           <div class="card-body">
             <div class="form-group">
               <label>Jumlah Pemula KLP </label>
-              <input type="number" class="form-control" name="jml_pemula_klp" id="jml_pemula_klp" placeholder="Masukkan Jumlah Pemula KLP" required>
+              <input min="0" type="number" class="form-control" name="jml_pemula_klp" id="jml_pemula_klp" placeholder="Masukkan Jumlah Pemula KLP" required>
             </div>
           </div>
         </div>
@@ -45,7 +45,7 @@
 
                 <div class="form-group">
                     <label>Jumlah Pemula Peserta</label>
-                    <input type="number" class="form-control" name="jml_pemula_peserta" id="jml_pemula_peserta" placeholder="Masukkan Jumlah Pemula Peserta" required>
+                    <input min="0" type="number" class="form-control" name="jml_pemula_peserta" id="jml_pemula_peserta" placeholder="Masukkan Jumlah Pemula Peserta" required>
                 </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                     <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Madya KLP</label>
-                        <input type="number" class="form-control" name="jml_madya_klp" id="jml_madya_klp" placeholder="Masukkan Jumlah Madya KLP" required>
+                        <input min="0" type="number" class="form-control" name="jml_madya_klp" id="jml_madya_klp" placeholder="Masukkan Jumlah Madya KLP" required>
                     </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
 
                     <div class="form-group">
                         <label>Jumlah Madya Peserta</label>
-                        <input type="number" class="form-control" name="jml_madya_peserta" id="jml_madya_peserta" placeholder="Masukkan Jumlah Madya Peserta" required>
+                        <input min="0" type="number" class="form-control" name="jml_madya_peserta" id="jml_madya_peserta" placeholder="Masukkan Jumlah Madya Peserta" required>
                     </div>
                 </div>
             </div>
@@ -77,7 +77,7 @@
 
                 <div class="form-group">
                     <label>Jumlah Utama KLP</label>
-                    <input type="number" class="form-control" name="jml_utama_klp" id="jml_utama_klp" placeholder="Masukkan Jumlah Utama KLP" required>
+                    <input min="0" type="number" class="form-control" name="jml_utama_klp" id="jml_utama_klp" placeholder="Masukkan Jumlah Utama KLP" required>
                 </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@
 
                 <div class="form-group">
                     <label>Jumlah Utama Peserta</label>
-                    <input type="number" class="form-control" name="jml_utama_peserta" id="jml_utama_peserta" placeholder="Masukkan Jumlah Utama Peserta" required>
+                    <input min="0" type="number" class="form-control" name="jml_utama_peserta" id="jml_utama_peserta" placeholder="Masukkan Jumlah Utama Peserta" required>
                 </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@
                     <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Mandiri KLP</label>
-                        <input type="number" class="form-control" name="jml_mandiri_klp" id="jml_mandiri_klp" placeholder="Masukkan Jumlah Mandiri KLP" required>
+                        <input min="0" type="number" class="form-control" name="jml_mandiri_klp" id="jml_mandiri_klp" placeholder="Masukkan Jumlah Mandiri KLP" required>
                     </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                     <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Mandiri Peserta</label>
-                        <input type="number" class="form-control" name="jml_mandiri_peserta" id="jml_mandiri_peserta" placeholder="Masukkan Jumlah Mandiri Peserta" required>
+                        <input min="0" type="number" class="form-control" name="jml_mandiri_peserta" id="jml_mandiri_peserta" placeholder="Masukkan Jumlah Mandiri Peserta" required>
                     </div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
 
                     <div class="form-group">
                         <label>Jumlah Koperasi KLP</label>
-                        <input type="number" class="form-control" name="jml_koperasi_klp" id="jml_koperasi_klp" placeholder="Masukkan Jumlah Koperasi KLP" required>
+                        <input min="0" type="number" class="form-control" name="jml_koperasi_klp" id="jml_koperasi_klp" placeholder="Masukkan Jumlah Koperasi KLP" required>
                     </div>
                 </div>
             </div>
@@ -132,7 +132,7 @@
 
                 <div class="form-group">
                     <label>Jumlah Koperasi Peserta</label>
-                    <input type="number" class="form-control" name="jml_koperasi_peserta" id="jml_koperasi_peserta" placeholder="Masukkan Jumlah Koperasi Peserta" required>
+                    <input min="0" type="number" class="form-control" name="jml_koperasi_peserta" id="jml_koperasi_peserta" placeholder="Masukkan Jumlah Koperasi Peserta" required>
                 </div>
                 </div>
             </div>
@@ -141,7 +141,17 @@
 
                     <div class="form-group">
                         <label>Periode</label>
-                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+                        {{-- <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
+                        <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                            <option value="0" selected> Pilih Tahun</option>
+                                <?php
+                                $year = date('Y');
+                                $min = $year ;
+                                    $max = $year + 20;
+                                for( $i=$min; $i<=$max; $i++ ) {
+                                echo '<option value='.$i.'>'.$i.'</option>';
+                            }?>
+                        </select>
                     </div>
                 </div>
             </div>

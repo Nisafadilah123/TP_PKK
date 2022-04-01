@@ -38,7 +38,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Rumah Yang Memiliki Jamban</label>
-                        <input type="number" class="form-control" name="jml_rumah_jamban" id="jml_rumah_jamban" placeholder="Masukkan Jumlah Rumah Yang Memiliki Jamban" required value="{{ucfirst(old('jml_rumah_jamban', $kelestarian_super->jml_rumah_jamban))}}">
+                        <input min="0" type="number" class="form-control" name="jml_rumah_jamban" id="jml_rumah_jamban" placeholder="Masukkan Jumlah Rumah Yang Memiliki Jamban" required value="{{ucfirst(old('jml_rumah_jamban', $kelestarian_super->jml_rumah_jamban))}}">
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Rumah Yang Memiliki SPAL</label>
-                        <input type="number" class="form-control" name="jml_rumah_spal" id="jml_rumah_spal" placeholder="Masukkan Jumlah Rumah Yang Memiliki SPAL" required value="{{ucfirst(old('jml_rumah_spal', $kelestarian_super->jml_rumah_spal))}}">
+                        <input min="0" type="number" class="form-control" name="jml_rumah_spal" id="jml_rumah_spal" placeholder="Masukkan Jumlah Rumah Yang Memiliki SPAL" required value="{{ucfirst(old('jml_rumah_spal', $kelestarian_super->jml_rumah_spal))}}">
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                     <div class="form-group">
                         <div class="form-group">
                         <label>Jumlah Rumah Yang Memiliki Tempat Pembuangan Sampah</label>
-                            <input type="number" class="form-control" name="jml_rumah_tempat_sampah" id="jml_rumah_tempat_sampah" placeholder="Masukkan Jumlah Rumah Yang Memiliki Tempat Pembuangan Sampah" required value="{{ucfirst(old('jml_rumah_tempat_sampah', $kelestarian_super->jml_rumah_tempat_sampah))}}">
+                            <input min="0" type="number" class="form-control" name="jml_rumah_tempat_sampah" id="jml_rumah_tempat_sampah" placeholder="Masukkan Jumlah Rumah Yang Memiliki Tempat Pembuangan Sampah" required value="{{ucfirst(old('jml_rumah_tempat_sampah', $kelestarian_super->jml_rumah_tempat_sampah))}}">
                         </div>
 
                     </div>
@@ -70,7 +70,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Rumah Yang Memiliki MCK</label>
-                        <input type="number" class="form-control" name="jml_mck" id="jml_mck" placeholder="Masukkan Jumlah Rumah Yang Memiliki MCK" required value="{{ucfirst(old('jml_mck', $kelestarian_super->jml_mck))}}">
+                        <input min="0" type="number" class="form-control" name="jml_mck" id="jml_mck" placeholder="Masukkan Jumlah Rumah Yang Memiliki MCK" required value="{{ucfirst(old('jml_mck', $kelestarian_super->jml_mck))}}">
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah KRT Yang Menggunakan Air PDAM</label>
-                        <input type="number" class="form-control" name="jml_krt_pdam" id="jml_krt_pdam" placeholder="Masukkan Jumlah KRT Yang Menggunakan Air PDAM" required value="{{ucfirst(old('jml_krt_pdam', $kelestarian_super->jml_krt_pdam))}}">
+                        <input min="0" type="number" class="form-control" name="jml_krt_pdam" id="jml_krt_pdam" placeholder="Masukkan Jumlah KRT Yang Menggunakan Air PDAM" required value="{{ucfirst(old('jml_krt_pdam', $kelestarian_super->jml_krt_pdam))}}">
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label>Jumlah KRT Yang Menggunakan Air Sumur</label>
-                            <input type="number" class="form-control" name="jml_krt_sumur" id="jml_krt_sumur" placeholder="Masukkan Jumlah Jumlah KRT Yang Menggunakan Air Sumur" required value="{{ucfirst(old('jml_krt_sumur', $kelestarian_super->jml_krt_sumur))}}">
+                            <input min="0" type="number" class="form-control" name="jml_krt_sumur" id="jml_krt_sumur" placeholder="Masukkan Jumlah Jumlah KRT Yang Menggunakan Air Sumur" required value="{{ucfirst(old('jml_krt_sumur', $kelestarian_super->jml_krt_sumur))}}">
                         </div>
 
                     </div>
@@ -103,7 +103,7 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label>Jumlah KRT Yang Menggunakan Air Lain-lain</label>
-                            <input type="number" class="form-control" name="jml_krt_lain" id="jml_krt_lain" placeholder="Masukkan Jumlah Jumlah KRT Yang Menggunakan Air Lain-lain" required value="{{ucfirst(old('jml_krt_lain', $kelestarian_super->jml_krt_lain))}}">
+                            <input min="0" type="number" class="form-control" name="jml_krt_lain" id="jml_krt_lain" placeholder="Masukkan Jumlah Jumlah KRT Yang Menggunakan Air Lain-lain" required value="{{ucfirst(old('jml_krt_lain', $kelestarian_super->jml_krt_lain))}}">
                         </div>
 
                     </div>
@@ -114,7 +114,7 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label>Periode</label>
-                            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $kelestarian_super->periode))}}">
+                            <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $kelestarian_super->periode))}}">
                         </div>
                     </div>
                 </div>

@@ -38,7 +38,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader Posyandu</label>
-                        <input type="number" class="form-control" name="jml_kader_posyandu" id="jml_kader_posyandu" placeholder="Masukkan Jumlah Kader Posyandu" required value="{{ucfirst(old('jml_kader_posyandu', $kader_pokja4->jml_kader_posyandu))}}">
+                        <input min="0" type="number" class="form-control" name="jml_kader_posyandu" id="jml_kader_posyandu" placeholder="Masukkan Jumlah Kader Posyandu" required value="{{ucfirst(old('jml_kader_posyandu', $kader_pokja4->jml_kader_posyandu))}}">
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader Gizi</label>
-                        <input type="number" class="form-control" name="jml_kader_gizi" id="jml_kader_gizi" placeholder="Masukkan Jumlah Kader Gizi" required value="{{ucfirst(old('jml_kader_gizi', $kader_pokja4->jml_kader_gizi))}}">
+                        <input min="0" type="number" class="form-control" name="jml_kader_gizi" id="jml_kader_gizi" placeholder="Masukkan Jumlah Kader Gizi" required value="{{ucfirst(old('jml_kader_gizi', $kader_pokja4->jml_kader_gizi))}}">
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label>Jumlah Kader Kesling</label>
-                            <input type="number" class="form-control" name="jml_kader_kesling" id="jml_kader_kesling" placeholder="Masukkan Jumlah Kader Kesling" required value="{{ucfirst(old('jml_kader_kesling', $kader_pokja4->jml_kader_kesling))}}">
+                            <input min="0" type="number" class="form-control" name="jml_kader_kesling" id="jml_kader_kesling" placeholder="Masukkan Jumlah Kader Kesling" required value="{{ucfirst(old('jml_kader_kesling', $kader_pokja4->jml_kader_kesling))}}">
                         </div>
 
                     </div>
@@ -70,7 +70,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader Penyuluhan Narkoba</label>
-                        <input type="number" class="form-control" name="jml_kader_penyuluhan_narkoba" id="jml_kader_penyuluhan_narkoba" placeholder="Masukkan Jumlah Kader Penyuluhan Narkoba" required value="{{ucfirst(old('jml_kader_penyuluhan_narkoba', $kader_pokja4->jml_kader_penyuluhan_narkoba))}}">
+                        <input min="0" type="number" class="form-control" name="jml_kader_penyuluhan_narkoba" id="jml_kader_penyuluhan_narkoba" placeholder="Masukkan Jumlah Kader Penyuluhan Narkoba" required value="{{ucfirst(old('jml_kader_penyuluhan_narkoba', $kader_pokja4->jml_kader_penyuluhan_narkoba))}}">
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Kader PHBS</label>
-                        <input type="number" class="form-control" name="jml_kader_PHBS" id="jml_kader_PHBS" placeholder="Masukkan Jumlah Kader PHBS" required value="{{ucfirst(old('jml_kader_PHBS', $kader_pokja4->jml_kader_PHBS))}}">
+                        <input min="0" type="number" class="form-control" name="jml_kader_PHBS" id="jml_kader_PHBS" placeholder="Masukkan Jumlah Kader PHBS" required value="{{ucfirst(old('jml_kader_PHBS', $kader_pokja4->jml_kader_PHBS))}}">
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label>Jumlah Kader KB</label>
-                            <input type="number" class="form-control" name="jml_kader_KB" id="jml_kader_KB" placeholder="Masukkan Jumlah Kader KB" required value="{{ucfirst(old('jml_kader_KB', $kader_pokja4->jml_kader_KB))}}">
+                            <input min="0" type="number" class="form-control" name="jml_kader_KB" id="jml_kader_KB" placeholder="Masukkan Jumlah Kader KB" required value="{{ucfirst(old('jml_kader_KB', $kader_pokja4->jml_kader_KB))}}">
                         </div>
 
                     </div>
@@ -101,7 +101,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Periode</label>
-                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $kader_pokja4->periode))}}">
+                        <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $kader_pokja4->periode))}}">
                     </div>
                 </div>
             </div>

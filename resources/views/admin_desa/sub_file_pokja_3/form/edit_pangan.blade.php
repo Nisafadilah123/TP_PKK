@@ -40,7 +40,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pangan Makanan Beras</label>
-                        <input type="number" class="form-control" name="jml_makanan_beras" id="jml_makanan_beras" placeholder="Masukkan Jumlah Pangan Makanan Beras" required value="{{ucfirst(old('jml_makanan_beras', $pangan->jml_makanan_beras))}}">
+                        <input min="0" type="number" class="form-control" name="jml_makanan_beras" id="jml_makanan_beras" placeholder="Masukkan Jumlah Pangan Makanan Beras" required value="{{ucfirst(old('jml_makanan_beras', $pangan->jml_makanan_beras))}}">
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pangan Makanan Non Beras</label>
-                        <input type="number" class="form-control" name="jml_makanan_nonberas" id="jml_makanan_nonberas" placeholder="Masukkan Jumlah Pangan Makanan Non Beras" required value="{{ucfirst(old('jml_makanan_nonberas', $pangan->jml_makanan_nonberas))}}">
+                        <input min="0" type="number" class="form-control" name="jml_makanan_nonberas" id="jml_makanan_nonberas" placeholder="Masukkan Jumlah Pangan Makanan Non Beras" required value="{{ucfirst(old('jml_makanan_nonberas', $pangan->jml_makanan_nonberas))}}">
                       </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pangan Pemanfaatan Peternak</label>
-                        <input type="number" class="form-control" name="jml_pemanfaatan_peternakan" id="jml_pemanfaatan_peternakan" placeholder="Masukkan Jumlah Pangan Pemanfaatan Peternakan" required value="{{ucfirst(old('jml_pemanfaatan_peternakan', $pangan->jml_pemanfaatan_peternakan))}}">
+                        <input min="0" type="number" class="form-control" name="jml_pemanfaatan_peternakan" id="jml_pemanfaatan_peternakan" placeholder="Masukkan Jumlah Pangan Pemanfaatan Peternakan" required value="{{ucfirst(old('jml_pemanfaatan_peternakan', $pangan->jml_pemanfaatan_peternakan))}}">
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pangan Pemanfaatan Perikanan</label>
-                        <input type="number" class="form-control" name="jml_pemanfaatan_perikanan" id="jml_pemanfaatan_perikanan" placeholder="Masukkan Jumlah Pangan Pemanfaatan Perikanan" required value="{{ucfirst(old('jml_pemanfaatan_perikanan', $pangan->jml_pemanfaatan_perikanan))}}">
+                        <input min="0" type="number" class="form-control" name="jml_pemanfaatan_perikanan" id="jml_pemanfaatan_perikanan" placeholder="Masukkan Jumlah Pangan Pemanfaatan Perikanan" required value="{{ucfirst(old('jml_pemanfaatan_perikanan', $pangan->jml_pemanfaatan_perikanan))}}">
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pangan Pemanfaatan Warung Hidup</label>
-                        <input type="number" class="form-control" name="jml_pemanfaatan_warung_hidup" id="jml_pemanfaatan_warung_hidup" placeholder="Masukkan Jumlah Pangan Pemanfaatan Warung Hidup" required value="{{ucfirst(old('jml_pemanfaatan_warung_hidup', $pangan->jml_pemanfaatan_warung_hidup))}}">
+                        <input min="0" type="number" class="form-control" name="jml_pemanfaatan_warung_hidup" id="jml_pemanfaatan_warung_hidup" placeholder="Masukkan Jumlah Pangan Pemanfaatan Warung Hidup" required value="{{ucfirst(old('jml_pemanfaatan_warung_hidup', $pangan->jml_pemanfaatan_warung_hidup))}}">
                     </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pangan Pemanfaatan Limbung Hidup</label>
-                        <input type="number" class="form-control" name="jml_pemanfaatan_limbung_hidup" id="jml_pemanfaatan_limbung_hidup" placeholder="Masukkan Jumlah Pangan Pemanfaatan Limbung Hidup" required value="{{ucfirst(old('jml_pemanfaatan_limbung_hidup', $pangan->jml_pemanfaatan_limbung_hidup))}}">
+                        <input min="0" type="number" class="form-control" name="jml_pemanfaatan_limbung_hidup" id="jml_pemanfaatan_limbung_hidup" placeholder="Masukkan Jumlah Pangan Pemanfaatan Limbung Hidup" required value="{{ucfirst(old('jml_pemanfaatan_limbung_hidup', $pangan->jml_pemanfaatan_limbung_hidup))}}">
                     </div>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pangan Pemanfaatan TOGA</label>
-                        <input type="number" class="form-control" name="jml_pemanfaatan_toga" id="jml_pemanfaatan_toga" placeholder="Masukkan Jumlah Pangan Pemanfaatan TOGA" required value="{{ucfirst(old('jml_pemanfaatan_toga', $pangan->jml_pemanfaatan_toga))}}">
+                        <input min="0" type="number" class="form-control" name="jml_pemanfaatan_toga" id="jml_pemanfaatan_toga" placeholder="Masukkan Jumlah Pangan Pemanfaatan TOGA" required value="{{ucfirst(old('jml_pemanfaatan_toga', $pangan->jml_pemanfaatan_toga))}}">
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Pangan Pemanfaatan Tanaman Keras</label>
-                        <input type="number" class="form-control" name="jml_pemanfaatan_tanaman_keras" id="jml_pemanfaatan_tanaman_keras" placeholder="Masukkan Jumlah Pangan Pemanfaatan Tanaman Keras" required value="{{ucfirst(old('jml_pemanfaatan_tanaman_keras', $pangan->jml_pemanfaatan_tanaman_keras))}}">
+                        <input min="0" type="number" class="form-control" name="jml_pemanfaatan_tanaman_keras" id="jml_pemanfaatan_tanaman_keras" placeholder="Masukkan Jumlah Pangan Pemanfaatan Tanaman Keras" required value="{{ucfirst(old('jml_pemanfaatan_tanaman_keras', $pangan->jml_pemanfaatan_tanaman_keras))}}">
                     </div>
                 </div>
             </div>
@@ -115,7 +115,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Periode</label>
-                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Jumlah Pangan Pemanfaatan Tanaman Keras" required value="{{ucfirst(old('periode', $pangan->periode))}}">
+                        <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Jumlah Pangan Pemanfaatan Tanaman Keras" required value="{{ucfirst(old('periode', $pangan->periode))}}">
                     </div>
                 </div>
             </div>

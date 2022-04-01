@@ -34,19 +34,19 @@
         <div class="card-body">
           <div class="form-group">
             <label>Jumlah Kader PKBN</label>
-            <input type="number" class="form-control" name="jml_kader_PKBN" id="jml_kader_PKBN" placeholder="Masukkan Jumlah Kader PKBN" required value="{{ucfirst(old('jml_kader_PKBN', $jml_kader_super->jml_kader_PKBN))}}">
+            <input min="0" type="number" class="form-control" name="jml_kader_PKBN" id="jml_kader_PKBN" placeholder="Masukkan Jumlah Kader PKBN" required value="{{ucfirst(old('jml_kader_PKBN', $jml_kader_super->jml_kader_PKBN))}}">
           </div>
           <div class="form-group">
             <label>Jumlah Kader PKDRT</label>
-            <input type="number" class="form-control" name="jml_kader_PKDRT" id="jml_kader_PKDRT" placeholder="Masukkan Jumlah Kader PKDRT" required value="{{ucfirst(old('jml_kader_PKDRT', $jml_kader_super->jml_kader_PKDRT))}}">
+            <input min="0" type="number" class="form-control" name="jml_kader_PKDRT" id="jml_kader_PKDRT" placeholder="Masukkan Jumlah Kader PKDRT" required value="{{ucfirst(old('jml_kader_PKDRT', $jml_kader_super->jml_kader_PKDRT))}}">
           </div>
           <div class="form-group">
             <label>Jumlah Kader Pola Asuh</label>
-            <input type="number" class="form-control" name="jml_kader_pola_asuh" id="jml_kader_pola_asuh" placeholder="Masukkan Jumlah Kader Pola Asuh" required value="{{ucfirst(old('jml_kader_pola_asuh', $jml_kader_super->jml_kader_pola_asuh))}}">
+            <input min="0" type="number" class="form-control" name="jml_kader_pola_asuh" id="jml_kader_pola_asuh" placeholder="Masukkan Jumlah Kader Pola Asuh" required value="{{ucfirst(old('jml_kader_pola_asuh', $jml_kader_super->jml_kader_pola_asuh))}}">
           </div>
           <div class="form-group">
             <label>Periode</label>
-            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $jml_kader_super->periode))}}">
+            <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $jml_kader_super->periode))}}">
           </div>
         </div>
         <!-- /.card-body -->

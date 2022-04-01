@@ -39,7 +39,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Gotong Kerja Bakti</label>
-                        <input type="number" class="form-control" name="jml_gotong_kerja_bakti" id="jml_gotong_kerja_bakti" placeholder="Masukkan Jumlah Gotong Kerja Bakti" required>
+                        <input min="0" type="number" class="form-control" name="jml_gotong_kerja_bakti" id="jml_gotong_kerja_bakti" placeholder="Masukkan Jumlah Gotong Kerja Bakti" required>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Gotong Rukun Kebaktian</label>
-                        <input type="number" class="form-control" name="jml_gotong_rukun_kebaktian" id="jml_gotong_rukun_kebaktian" placeholder="Masukkan Jumlah Gotong Rukun Kebaktian" required>
+                        <input min="0" type="number" class="form-control" name="jml_gotong_rukun_kebaktian" id="jml_gotong_rukun_kebaktian" placeholder="Masukkan Jumlah Gotong Rukun Kebaktian" required>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Gotong Keagamaan</label>
-                        <input type="number" class="form-control" name="jml_gotong_keagamaan" id="jml_gotong_keagamaan" placeholder="Masukkan Jumlah Gotong Keagamaan" required>
+                        <input min="0" type="number" class="form-control" name="jml_gotong_keagamaan" id="jml_gotong_keagamaan" placeholder="Masukkan Jumlah Gotong Keagamaan" required>
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Gotong Jimpitan</label>
-                        <input type="number" class="form-control" name="jml_gotong_jimpitan" id="jml_gotong_jimpitan" placeholder="Masukkan Jumlah Gotong Jimpitan" required>
+                        <input min="0" type="number" class="form-control" name="jml_gotong_jimpitan" id="jml_gotong_jimpitan" placeholder="Masukkan Jumlah Gotong Jimpitan" required>
                     </div>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Gotong Arisan</label>
-                        <input type="number" class="form-control" name="jml_gotong_arisan" id="jml_gotong_arisan" placeholder="Masukkan Jumlah Gotong Arisan" required>
+                        <input min="0" type="number" class="form-control" name="jml_gotong_arisan" id="jml_gotong_arisan" placeholder="Masukkan Jumlah Gotong Arisan" required>
                     </div>
 
                 </div>
@@ -87,7 +87,17 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Periode</label>
-                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+                        {{-- <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
+                        <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                            <option value="0" selected> Pilih Tahun</option>
+                                <?php
+                                $year = date('Y');
+                                $min = $year ;
+                                    $max = $year + 20;
+                                for( $i=$min; $i<=$max; $i++ ) {
+                                echo '<option value='.$i.'>'.$i.'</option>';
+                            }?>
+                        </select>
                     </div>
 
                 </div>

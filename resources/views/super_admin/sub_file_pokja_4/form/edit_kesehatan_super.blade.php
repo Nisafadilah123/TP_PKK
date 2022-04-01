@@ -38,7 +38,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Posyandu</label>
-                        <input type="number" class="form-control" name="jml_posyandu" id="jml_posyandu" placeholder="Masukkan Jumlah Posyandu" required value="{{ucfirst(old('jml_posyandu', $kesehatan_super->jml_posyandu))}}">
+                        <input min="0" type="number" class="form-control" name="jml_posyandu" id="jml_posyandu" placeholder="Masukkan Jumlah Posyandu" required value="{{ucfirst(old('jml_posyandu', $kesehatan_super->jml_posyandu))}}">
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Posyandu Terintegrasi</label>
-                        <input type="number" class="form-control" name="jml_posyandu_terintegrasi" id="jml_posyandu_terintegrasi" placeholder="Masukkan Jumlah Posyandu Terintegrasi" required value="{{ucfirst(old('jml_posyandu_terintegrasi', $kesehatan_super->jml_posyandu_terintegrasi))}}">
+                        <input min="0" type="number" class="form-control" name="jml_posyandu_terintegrasi" id="jml_posyandu_terintegrasi" placeholder="Masukkan Jumlah Posyandu Terintegrasi" required value="{{ucfirst(old('jml_posyandu_terintegrasi', $kesehatan_super->jml_posyandu_terintegrasi))}}">
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label>Jumlah Posyandu Lansia KLP</label>
-                            <input type="number" class="form-control" name="jml_posyandu_lansia_klp" id="jml_posyandu_lansia_klp" placeholder="Masukkan Jumlah Posyandu Lansia KLP" required value="{{ucfirst(old('jml_posyandu_lansia_klp', $kesehatan_super->jml_posyandu_lansia_klp))}}">
+                            <input min="0" type="number" class="form-control" name="jml_posyandu_lansia_klp" id="jml_posyandu_lansia_klp" placeholder="Masukkan Jumlah Posyandu Lansia KLP" required value="{{ucfirst(old('jml_posyandu_lansia_klp', $kesehatan_super->jml_posyandu_lansia_klp))}}">
                         </div>
 
                     </div>
@@ -70,7 +70,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Posyandu Lansia Anggota</label>
-                        <input type="number" class="form-control" name="jml_posyandu_lansia_anggota" id="jml_posyandu_lansia_anggota" placeholder="Masukkan Jumlah Posyandu Lansia Anggota" required value="{{ucfirst(old('jml_posyandu_lansia_anggota', $kesehatan_super->jml_posyandu_lansia_anggota))}}">
+                        <input min="0" type="number" class="form-control" name="jml_posyandu_lansia_anggota" id="jml_posyandu_lansia_anggota" placeholder="Masukkan Jumlah Posyandu Lansia Anggota" required value="{{ucfirst(old('jml_posyandu_lansia_anggota', $kesehatan_super->jml_posyandu_lansia_anggota))}}">
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Jumlah Posyandu Lansia Memiliki Kartu Berobat Gratis</label>
-                        <input type="number" class="form-control" name="jml_posyandu_lansia_memiliki_kartu" id="jml_posyandu_lansia_memiliki_kartu" placeholder="Masukkan Jumlah Posyandu Lansia Memiliki Kartu Berobat Gratis" required value="{{ucfirst(old('jml_posyandu_lansia_memiliki_kartu', $kesehatan_super->jml_posyandu_lansia_memiliki_kartu))}}">
+                        <input min="0" type="number" class="form-control" name="jml_posyandu_lansia_memiliki_kartu" id="jml_posyandu_lansia_memiliki_kartu" placeholder="Masukkan Jumlah Posyandu Lansia Memiliki Kartu Berobat Gratis" required value="{{ucfirst(old('jml_posyandu_lansia_memiliki_kartu', $kesehatan_super->jml_posyandu_lansia_memiliki_kartu))}}">
                     </div>
                 </div>
             </div>
@@ -87,7 +87,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Periode</label>
-                        <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $kesehatan_super->periode))}}">
+                        <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $kesehatan_super->periode))}}">
                     </div>
                 </div>
             </div>

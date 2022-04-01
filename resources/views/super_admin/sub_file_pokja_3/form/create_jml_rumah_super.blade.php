@@ -30,17 +30,26 @@
         <div class="card-body">
           <div class="form-group">
             <label>Jumlah Rumah Sehat</label>
-            <input type="number" class="form-control" name="jml_rumah_sehat" id="jml_rumah_sehat" placeholder="Masukkan Jumlah Rumah Sehat" required>
+            <input min="0" type="number" class="form-control" name="jml_rumah_sehat" id="jml_rumah_sehat" placeholder="Masukkan Jumlah Rumah Sehat" required>
           </div>
           <div class="form-group">
             <label>Jumlah Rumah Kurang Sehat</label>
-            <input type="number" class="form-control" name="jml_rumah_kurang_sehat" id="jml_rumah_kurang_sehat" placeholder="Masukkan Jumlah Rumah Kurang Sehat" required>
+            <input min="0" type="number" class="form-control" name="jml_rumah_kurang_sehat" id="jml_rumah_kurang_sehat" placeholder="Masukkan Jumlah Rumah Kurang Sehat" required>
           </div>
           <div class="form-group">
             <label>Periode</label>
-            <input type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required>
+            {{-- <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
+                        <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                            <option value="0" selected> Pilih Tahun</option>
+                                <?php
+                                $year = date('Y');
+                                $min = $year ;
+                                    $max = $year + 20;
+                                for( $i=$min; $i<=$max; $i++ ) {
+                                echo '<option value='.$i.'>'.$i.'</option>';
+                            }?>
+                        </select>
           </div>
-
         </div>
         <!-- /.card-body -->
 

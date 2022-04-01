@@ -23,7 +23,10 @@ return new class extends Migration
             $table->bigInteger('id_kecamatan')->unsigned()->nullable();
             // $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan');
             $table->bigInteger('id_desa')->unsigned()->nullable();
+            // $table->bigInteger('id_desa')->unsigned();
             // $table->foreign('id_desa')->references('id')->on('data_desa');
+            // $table->foreignId('id_desa')->constrained('data_desa');
+
             $table->rememberToken();
             $table->timestamps();
         });
