@@ -115,7 +115,16 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Periode</label>
-                        <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('periode', $pangan_super->periode))}}">
+                        <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                            <option value="0" {{ $pangan_super->periode ? 'selected' : '' }}>{{ $pangan_super->periode }}</option>
+                                <?php
+                                $year = date('Y');
+                                $min = $year ;
+                                    $max = $year + 20;
+                                for( $i=$min; $i<=$max; $i++ ) {
+                                echo '<option value='.$i.'>'.$i.'</option>';
+                            }?>
+                        </select>
                     </div>
                 </div>
             </div>

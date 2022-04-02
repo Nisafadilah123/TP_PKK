@@ -241,7 +241,16 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Periode</label>
-                        <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Jumlah Kader Umum Damas" required value="{{ucfirst(old('periode', $pendidikan_super->periode))}}">
+                        <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                            <option value="0" {{ $pendidikan_super->periode ? 'selected' : '' }}>{{ $pendidikan_super->periode }}</option>
+                                <?php
+                                $year = date('Y');
+                                $min = $year ;
+                                    $max = $year + 20;
+                                for( $i=$min; $i<=$max; $i++ ) {
+                                echo '<option value='.$i.'>'.$i.'</option>';
+                            }?>
+                        </select>
                     </div>
                 </div>
             </div>
