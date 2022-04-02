@@ -66,21 +66,26 @@ class JumlahJiwaDataUmumController extends Controller
             'periode.required' => 'Lengkapi Periode',
 
         ]);
+        $insert=DB::table('jumlah_jiwa_data_umum')->where('periode', $request->periode)->first();
+        if ($insert != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        // cara 1
-        $jumjis = new JumlahJiwaDataUmum;
-        $jumjis->id_desa = $request->id_desa;
-        $jumjis->jml_jiwa_data_umum_laki = $request->jml_jiwa_data_umum_laki;
-        $jumjis->jml_jiwa_data_umum_perempuan = $request->jml_jiwa_data_umum_perempuan;
-        $jumjis->periode = $request->periode;
+            return redirect('/jml_jiwa_umum');
+        }
+        else {
+            // cara 1
+            $jumjis = new JumlahJiwaDataUmum;
+            $jumjis->id_desa = $request->id_desa;
+            $jumjis->jml_jiwa_data_umum_laki = $request->jml_jiwa_data_umum_laki;
+            $jumjis->jml_jiwa_data_umum_perempuan = $request->jml_jiwa_data_umum_perempuan;
+            $jumjis->periode = $request->periode;
 
-        $jumjis->save();
+            $jumjis->save();
 
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
-
-        return redirect('/jml_jiwa_umum');
-
+            return redirect('/jml_jiwa_umum');
+        }
     }
 
     /**
@@ -126,16 +131,21 @@ class JumlahJiwaDataUmumController extends Controller
             'jml_jiwa_data_umum_laki' => 'required',
             'jml_jiwa_data_umum_perempuan' => 'required',
             'periode' => 'required',
-
         ]);
+        $update=DB::table('jumlah_jiwa_data_umum')->where('periode', $request->periode)->first();
+        if ($update != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        $jml_jiwa_umum->update($request->all());
+            return redirect('/jml_jiwa_umum');
+        }
+        else {
+            $jml_jiwa_umum->update($request->all());
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_jml_jiwa_umum);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_jml_jiwa_umum);
 
-        return redirect('/jml_jiwa_umum');
-
+            return redirect('/jml_jiwa_umum');
+        }
     }
 
     /**

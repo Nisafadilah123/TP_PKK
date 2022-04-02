@@ -40,7 +40,7 @@ class GotongRoyongController extends Controller
         ->where('id', auth()->user()->id_desa)
         ->get();
 
-            // dd($desas);
+        // dd($desas);
         return view('admin_desa.sub_file_pokja_1.form.create_gotong_royong', compact('desas'));
 
     }
@@ -75,22 +75,28 @@ class GotongRoyongController extends Controller
         ]);
 
         // cara 1
-        $gotongs = new GotongRoyong;
-        $gotongs->id_desa = $request->id_desa;
-        $gotongs->jml_gotong_kerja_bakti = $request->jml_gotong_kerja_bakti;
-        $gotongs->jml_gotong_rukun_kebaktian = $request->jml_gotong_rukun_kebaktian;
-        $gotongs->jml_gotong_keagamaan = $request->jml_gotong_keagamaan;
-        $gotongs->jml_gotong_jimpitan = $request->jml_gotong_jimpitan;
-        $gotongs->jml_gotong_arisan = $request->jml_gotong_arisan;
-        $gotongs->periode = $request->periode;
+        $insert=DB::table('gotong_royong')->where('periode', $request->periode)->first();
+        if ($insert != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Periode. Periode Sudah Ada ');
 
-        $gotongs->save();
+            return redirect('/gotong_royong');
+        }
+        else {
+            $gotongs = new GotongRoyong;
+            $gotongs->id_desa = $request->id_desa;
+            $gotongs->jml_gotong_kerja_bakti = $request->jml_gotong_kerja_bakti;
+            $gotongs->jml_gotong_rukun_kebaktian = $request->jml_gotong_rukun_kebaktian;
+            $gotongs->jml_gotong_keagamaan = $request->jml_gotong_keagamaan;
+            $gotongs->jml_gotong_jimpitan = $request->jml_gotong_jimpitan;
+            $gotongs->jml_gotong_arisan = $request->jml_gotong_arisan;
+            $gotongs->periode = $request->periode;
 
+            $gotongs->save();
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/gotong_royong');
-
+            return redirect('/gotong_royong');
+        }
     }
 
     /**
@@ -118,7 +124,6 @@ class GotongRoyongController extends Controller
             ->get();
 
         return view('admin_desa.sub_file_pokja_1.form.edit_gotong_royong', compact('gotong_royong','desa','desas'));
-
     }
 
     /**
@@ -139,17 +144,21 @@ class GotongRoyongController extends Controller
             'jml_gotong_jimpitan' => 'required',
             'jml_gotong_arisan' => 'required',
             'periode' => 'required',
-
-
         ]);
+        $update=DB::table('gotong_royong')->where('periode', $request->periode)->first();
+        if ($update != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        $gotong_royong->update($request->all());
+            return redirect('/gotong_royong');
+        }
+        else {
+            $gotong_royong->update($request->all());
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_kader);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_kader);
 
-        return redirect('/gotong_royong');
-
+            return redirect('/gotong_royong');
+        }
     }
 
     /**

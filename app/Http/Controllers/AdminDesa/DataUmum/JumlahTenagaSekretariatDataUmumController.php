@@ -70,23 +70,28 @@ class JumlahTenagaSekretariatDataUmumController extends Controller
             'periode.required' => 'Lengkapi Periode',
 
         ]);
+        $insert=DB::table('jumlah_tenaga_sekretariat_data_umum')->where('periode', $request->periode)->first();
+        if ($insert != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        // cara 1
-        $jumtens = new JumlahTenagaSekretariatDataUmum;
-        $jumtens->id_desa = $request->id_desa;
-        $jumtens->jml_tenaga_honorer_laki = $request->jml_tenaga_honorer_laki;
-        $jumtens->jml_tenaga_honorer_perempuan = $request->jml_tenaga_honorer_perempuan;
-        $jumtens->jml_tenaga_bantuan_laki = $request->jml_tenaga_bantuan_laki;
-        $jumtens->jml_tenaga_bantuan_perempuan = $request->jml_tenaga_bantuan_perempuan;
-        $jumtens->periode = $request->periode;
+            return redirect('/jml_tenaga_umum');
+        }
+        else {
+            // cara 1
+            $jumtens = new JumlahTenagaSekretariatDataUmum;
+            $jumtens->id_desa = $request->id_desa;
+            $jumtens->jml_tenaga_honorer_laki = $request->jml_tenaga_honorer_laki;
+            $jumtens->jml_tenaga_honorer_perempuan = $request->jml_tenaga_honorer_perempuan;
+            $jumtens->jml_tenaga_bantuan_laki = $request->jml_tenaga_bantuan_laki;
+            $jumtens->jml_tenaga_bantuan_perempuan = $request->jml_tenaga_bantuan_perempuan;
+            $jumtens->periode = $request->periode;
 
-        $jumtens->save();
+            $jumtens->save();
 
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
-
-        return redirect('/jml_tenaga_umum');
-
+            return redirect('/jml_tenaga_umum');
+        }
     }
 
     /**
@@ -134,16 +139,21 @@ class JumlahTenagaSekretariatDataUmumController extends Controller
             'jml_tenaga_bantuan_laki' => 'required',
             'jml_tenaga_bantuan_perempuan' => 'required',
             'periode' => 'required',
-
         ]);
+        $update=DB::table('jumlah_tenaga_sekretariat_data_umum')->where('periode', $request->periode)->first();
+        if ($update != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        $jml_tenaga_umum->update($request->all());
+            return redirect('/jml_tenaga_umum');
+        }
+        else {
+            $jml_tenaga_umum->update($request->all());
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_kader_pokja4);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_kader_pokja4);
 
-        return redirect('/jml_tenaga_umum');
-
+            return redirect('/jml_tenaga_umum');
+        }
     }
 
     /**

@@ -67,22 +67,29 @@ class JumlahKaderPokja3Controller extends Controller
             'periode.required' => 'Lengkapi Periode',
 
         ]);
+        $insert=DB::table('jumlah_kader_pokja3')->where('periode', $request->periode)->first();
+        if ($insert != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        // cara 1
-        $kads = new JumlahKaderPokja3;
-        $kads->id_desa = $request->id_desa;
-        $kads->jml_kader_pangan = $request->jml_kader_pangan;
-        $kads->jml_kader_sandang = $request->jml_kader_sandang;
-        $kads->jml_kader_tata_laksana = $request->jml_kader_tata_laksana;
-        $kads->periode = $request->periode;
+            return redirect('/kader');
 
-        $kads->save();
+        }
+        else {
+            // cara 1
+            $kads = new JumlahKaderPokja3;
+            $kads->id_desa = $request->id_desa;
+            $kads->jml_kader_pangan = $request->jml_kader_pangan;
+            $kads->jml_kader_sandang = $request->jml_kader_sandang;
+            $kads->jml_kader_tata_laksana = $request->jml_kader_tata_laksana;
+            $kads->periode = $request->periode;
+
+            $kads->save();
 
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/kader');
-
+            return redirect('/kader');
+        }
     }
 
     /**
@@ -129,17 +136,22 @@ class JumlahKaderPokja3Controller extends Controller
             'jml_kader_sandang' => 'required',
             'jml_kader_tata_laksana' => 'required',
             'periode' => 'required',
-
-
         ]);
+        $update=DB::table('jumlah_kader_pokja3')->where('periode', $request->periode)->first();
+        if ($update != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        $kader->update($request->all());
+            return redirect('/kader');
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_kader);
+        }
+        else {
+            $kader->update($request->all());
 
-        return redirect('/kader');
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_kader);
 
+            return redirect('/kader');
+        }
     }
 
     /**

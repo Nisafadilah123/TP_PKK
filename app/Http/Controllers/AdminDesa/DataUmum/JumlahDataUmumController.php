@@ -65,21 +65,27 @@ class JumlahDataUmumController extends Controller
             'periode.required' => 'Lengkapi Jumlah KK Data Umum',
 
         ]);
+        $insert=DB::table('jumlah_data_umum')->where('periode', $request->periode)->first();
+        if ($insert != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        // cara 1
-        $jumums = new JumlahDataUmum;
-        $jumums->id_desa = $request->id_desa;
-        $jumums->jml_krt_data_umum = $request->jml_krt_data_umum;
-        $jumums->jml_kk_data_umum = $request->jml_kk_data_umum;
-        $jumums->periode = $request->periode;
+            return redirect('/jml_data_umum');
+        }
+        else {
+            // cara 1
+            $jumums = new JumlahDataUmum;
+            $jumums->id_desa = $request->id_desa;
+            $jumums->jml_krt_data_umum = $request->jml_krt_data_umum;
+            $jumums->jml_kk_data_umum = $request->jml_kk_data_umum;
+            $jumums->periode = $request->periode;
 
-        $jumums->save();
+            $jumums->save();
 
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/jml_data_umum');
-
+            return redirect('/jml_data_umum');
+        }
     }
 
     /**
@@ -125,16 +131,21 @@ class JumlahDataUmumController extends Controller
             'jml_krt_data_umum' => 'required',
             'jml_kk_data_umum' => 'required',
             'periode' => 'required',
-
         ]);
+        $update=DB::table('jumlah_data_umum')->where('periode', $request->periode)->first();
+        if ($update != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        $jml_data_umum->update($request->all());
+            return redirect('/jml_data_umum');
+        }
+        else {
+            $jml_data_umum->update($request->all());
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_jml_data_umum);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_jml_data_umum);
 
-        return redirect('/jml_data_umum');
-
+            return redirect('/jml_data_umum');
+        }
     }
 
     /**

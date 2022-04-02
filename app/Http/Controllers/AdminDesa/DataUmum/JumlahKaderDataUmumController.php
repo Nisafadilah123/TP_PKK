@@ -74,25 +74,30 @@ class JumlahKaderDataUmumController extends Controller
             'periode.required' => 'Lengkapi Periode',
 
         ]);
+        $insert=DB::table('jumlah_kader_data_umum')->where('periode', $request->periode)->first();
+        if ($insert != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        // cara 1
-        $jumkadums = new JumlahKaderDataUmum;
-        $jumkadums->id_desa = $request->id_desa;
-        $jumkadums->jml_kader_anggota_pkk_laki_data_umum = $request->jml_kader_anggota_pkk_laki_data_umum;
-        $jumkadums->jml_kader_anggota_pkk_perempuan_data_umum = $request->jml_kader_anggota_pkk_perempuan_data_umum;
-        $jumkadums->jml_kader_umum_laki_data_umum = $request->jml_kader_umum_laki_data_umum;
-        $jumkadums->jml_kader_umum_perempuan_data_umum = $request->jml_kader_umum_perempuan_data_umum;
-        $jumkadums->jml_kader_khusus_laki_data_umum = $request->jml_kader_khusus_laki_data_umum;
-        $jumkadums->jml_kader_khusus_perempuan_data_umum = $request->jml_kader_khusus_perempuan_data_umum;
-        $jumkadums->periode = $request->periode;
+            return redirect('/jml_kader_umum');
+        }
+        else {
+            // cara 1
+            $jumkadums = new JumlahKaderDataUmum;
+            $jumkadums->id_desa = $request->id_desa;
+            $jumkadums->jml_kader_anggota_pkk_laki_data_umum = $request->jml_kader_anggota_pkk_laki_data_umum;
+            $jumkadums->jml_kader_anggota_pkk_perempuan_data_umum = $request->jml_kader_anggota_pkk_perempuan_data_umum;
+            $jumkadums->jml_kader_umum_laki_data_umum = $request->jml_kader_umum_laki_data_umum;
+            $jumkadums->jml_kader_umum_perempuan_data_umum = $request->jml_kader_umum_perempuan_data_umum;
+            $jumkadums->jml_kader_khusus_laki_data_umum = $request->jml_kader_khusus_laki_data_umum;
+            $jumkadums->jml_kader_khusus_perempuan_data_umum = $request->jml_kader_khusus_perempuan_data_umum;
+            $jumkadums->periode = $request->periode;
 
-        $jumkadums->save();
+            $jumkadums->save();
 
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
-
-        return redirect('/jml_kader_umum');
-
+            return redirect('/jml_kader_umum');
+        }
     }
 
     /**
@@ -144,14 +149,20 @@ class JumlahKaderDataUmumController extends Controller
             'periode' => 'required',
 
         ]);
+        $update=DB::table('jumlah_kader_data_umum')->where('periode', $request->periode)->first();
+        if ($update != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        $jml_kader_umum->update($request->all());
+            return redirect('/jml_kader_umum');
+        }
+        else {
+            $jml_kader_umum->update($request->all());
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_jml_kader_umum);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_jml_kader_umum);
 
-        return redirect('/jml_kader_umum');
-
+            return redirect('/jml_kader_umum');
+        }
     }
 
     /**

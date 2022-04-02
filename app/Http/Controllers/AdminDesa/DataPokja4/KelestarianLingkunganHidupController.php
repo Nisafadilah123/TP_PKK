@@ -76,26 +76,31 @@ class KelestarianLingkunganHidupController extends Controller
             'periode.required' => 'Lengkapi Periode',
 
         ]);
+        $insert=DB::table('kelestarian')->where('periode', $request->periode)->first();
+        if ($insert != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        // cara 1
-        $kels = new Kelestarian;
-        $kels->id_desa = $request->id_desa;
-        $kels->jml_rumah_jamban = $request->jml_rumah_jamban;
-        $kels->jml_rumah_spal = $request->jml_rumah_spal;
-        $kels->jml_rumah_tempat_sampah = $request->jml_rumah_tempat_sampah;
-        $kels->jml_mck = $request->jml_mck;
-        $kels->jml_krt_pdam = $request->jml_krt_pdam;
-        $kels->jml_krt_sumur = $request->jml_krt_sumur;
-        $kels->jml_krt_lain = $request->jml_krt_lain;
-        $kels->periode = $request->periode;
+            return redirect('/kelestarian');
+        }
+        else {
+            // cara 1
+            $kels = new Kelestarian;
+            $kels->id_desa = $request->id_desa;
+            $kels->jml_rumah_jamban = $request->jml_rumah_jamban;
+            $kels->jml_rumah_spal = $request->jml_rumah_spal;
+            $kels->jml_rumah_tempat_sampah = $request->jml_rumah_tempat_sampah;
+            $kels->jml_mck = $request->jml_mck;
+            $kels->jml_krt_pdam = $request->jml_krt_pdam;
+            $kels->jml_krt_sumur = $request->jml_krt_sumur;
+            $kels->jml_krt_lain = $request->jml_krt_lain;
+            $kels->periode = $request->periode;
 
-        $kels->save();
+            $kels->save();
 
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
-
-        return redirect('/kelestarian');
-
+            return redirect('/kelestarian');
+        }
     }
 
     /**
@@ -145,16 +150,21 @@ class KelestarianLingkunganHidupController extends Controller
             'jml_krt_sumur' => 'required',
             'jml_krt_lain' => 'required',
             'periode' => 'required',
-
         ]);
+        $update=DB::table('kelestarian')->where('periode', $request->periode)->first();
+        if ($update != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        $kelestarian->update($request->all());
+            return redirect('/kelestarian');
+        }
+        else {
+            $kelestarian->update($request->all());
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_kelestarian);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_kelestarian);
 
-        return redirect('/kelestarian');
-
+            return redirect('/kelestarian');
+        }
     }
 
     /**

@@ -67,22 +67,29 @@ class JumlahIndustriRumahTanggaController extends Controller
             'periode.required' => 'Lengkapi Periode',
 
         ]);
+        $insert=DB::table('jml_industri')->where('periode', $request->periode)->first();
+        if ($insert != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        // cara 1
-        $inds = new JumlahIndustri;
-        $inds->id_desa = $request->id_desa;
-        $inds->jml_industri_pangan = $request->jml_industri_pangan;
-        $inds->jml_industri_sandang = $request->jml_industri_sandang;
-        $inds->jml_industri_jasa = $request->jml_industri_jasa;
-        $inds->periode = $request->periode;
+            return redirect('/industri');
 
-        $inds->save();
+        }
+        else {
+            // cara 1
+            $inds = new JumlahIndustri;
+            $inds->id_desa = $request->id_desa;
+            $inds->jml_industri_pangan = $request->jml_industri_pangan;
+            $inds->jml_industri_sandang = $request->jml_industri_sandang;
+            $inds->jml_industri_jasa = $request->jml_industri_jasa;
+            $inds->periode = $request->periode;
+
+            $inds->save();
 
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/industri');
-
+            return redirect('/industri');
+        }
     }
 
     /**
@@ -129,17 +136,22 @@ class JumlahIndustriRumahTanggaController extends Controller
             'jml_industri_sandang' => 'required',
             'jml_industri_jasa' => 'required',
             'periode' => 'required',
-
-
         ]);
+        $update=DB::table('jml_industri')->where('periode', $request->periode)->first();
+        if ($update != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        $industri->update($request->all());
+            return redirect('/industri');
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_kader);
+        }
+        else {
+            $industri->update($request->all());
 
-        return redirect('/industri');
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_kader);
 
+            return redirect('/industri');
+        }
     }
 
     /**

@@ -81,29 +81,36 @@ class KehidupanBerkoperasiController extends Controller
             'periode.required' => 'Lengkapi Periode',
 
         ]);
+        $insert=DB::table('koperasi')->where('periode', $request->periode)->first();
+        if ($insert != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        // cara 1
-        $kop = new Koperasi;
-        $kop->id_desa = $request->id_desa;
-        $kop->jml_pemula_klp = $request->jml_pemula_klp;
-        $kop->jml_pemula_peserta = $request->jml_pemula_peserta;
-        $kop->jml_madya_klp = $request->jml_madya_klp;
-        $kop->jml_madya_peserta = $request->jml_madya_peserta;
-        $kop->jml_utama_klp = $request->jml_utama_klp;
-        $kop->jml_utama_peserta = $request->jml_utama_peserta;
-        $kop->jml_mandiri_klp = $request->jml_mandiri_klp;
-        $kop->jml_mandiri_peserta = $request->jml_mandiri_peserta;
-        $kop->jml_koperasi_klp = $request->jml_koperasi_klp;
-        $kop->jml_koperasi_peserta = $request->jml_koperasi_peserta;
-        $kop->periode = $request->periode;
+            return redirect('/koperasi');
 
-        $kop->save();
+        }
+        else {
+            // cara 1
+            $kop = new Koperasi;
+            $kop->id_desa = $request->id_desa;
+            $kop->jml_pemula_klp = $request->jml_pemula_klp;
+            $kop->jml_pemula_peserta = $request->jml_pemula_peserta;
+            $kop->jml_madya_klp = $request->jml_madya_klp;
+            $kop->jml_madya_peserta = $request->jml_madya_peserta;
+            $kop->jml_utama_klp = $request->jml_utama_klp;
+            $kop->jml_utama_peserta = $request->jml_utama_peserta;
+            $kop->jml_mandiri_klp = $request->jml_mandiri_klp;
+            $kop->jml_mandiri_peserta = $request->jml_mandiri_peserta;
+            $kop->jml_koperasi_klp = $request->jml_koperasi_klp;
+            $kop->jml_koperasi_peserta = $request->jml_koperasi_peserta;
+            $kop->periode = $request->periode;
+
+            $kop->save();
 
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/koperasi');
-
+            return redirect('/koperasi');
+        }
     }
 
     /**
@@ -143,30 +150,37 @@ class KehidupanBerkoperasiController extends Controller
      */
     public function update(Request $request, Koperasi $koperasi)
     {
-                // proses mengubah untuk tambah data pendidikan
-                $request->validate([
-                    'id_desa' => 'required',
-                    'jml_pemula_klp' => 'required',
-                    'jml_pemula_peserta' => 'required',
-                    'jml_madya_klp' => 'required',
-                    'jml_madya_peserta' => 'required',
-                    'jml_utama_klp' => 'required',
-                    'jml_utama_peserta' => 'required',
-                    'jml_mandiri_klp' => 'required',
-                    'jml_mandiri_peserta' => 'required',
-                    'jml_koperasi_klp' => 'required',
-                    'jml_koperasi_peserta' => 'required',
-                    'periode' => 'required',
+        // proses mengubah untuk tambah data pendidikan
+        $request->validate([
+            'id_desa' => 'required',
+            'jml_pemula_klp' => 'required',
+            'jml_pemula_peserta' => 'required',
+            'jml_madya_klp' => 'required',
+            'jml_madya_peserta' => 'required',
+            'jml_utama_klp' => 'required',
+            'jml_utama_peserta' => 'required',
+            'jml_mandiri_klp' => 'required',
+            'jml_mandiri_peserta' => 'required',
+            'jml_koperasi_klp' => 'required',
+            'jml_koperasi_peserta' => 'required',
+            'periode' => 'required',
 
-                ]);
+        ]);
+        $update=DB::table('koperasi')->where('periode', $request->periode)->first();
+        if ($update != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-                $koperasi->update($request->all());
+            return redirect('/koperasi');
 
-                Alert::success('Berhasil', 'Data berhasil di ubah');
-                // dd($jml_kader);
+        }
+        else {
+            $koperasi->update($request->all());
 
-                return redirect('/koperasi');
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_kader);
 
+            return redirect('/koperasi');
+        }
     }
 
     /**

@@ -70,23 +70,28 @@ class JumlahKelompokUmumController extends Controller
             'periode.required' => 'Lengkapi Periode',
 
         ]);
+        $insert=DB::table('jumlah_kelompok')->where('periode', $request->periode)->first();
+        if ($insert != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        // cara 1
-        $jumkel = new JumlahKelompok;
-        $jumkel->id_desa = $request->id_desa;
-        $jumkel->jml_pkk_dusun = $request->jml_pkk_dusun;
-        $jumkel->jml_pkk_rw = $request->jml_pkk_rw;
-        $jumkel->jml_pkk_rt = $request->jml_pkk_rt;
-        $jumkel->jml_dasawisma = $request->jml_dasawisma;
-        $jumkel->periode = $request->periode;
+            return redirect('/kelompok');
+        }
+        else {
+            // cara 1
+            $jumkel = new JumlahKelompok;
+            $jumkel->id_desa = $request->id_desa;
+            $jumkel->jml_pkk_dusun = $request->jml_pkk_dusun;
+            $jumkel->jml_pkk_rw = $request->jml_pkk_rw;
+            $jumkel->jml_pkk_rt = $request->jml_pkk_rt;
+            $jumkel->jml_dasawisma = $request->jml_dasawisma;
+            $jumkel->periode = $request->periode;
 
-        $jumkel->save();
+            $jumkel->save();
 
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
-
-        return redirect('/kelompok');
-
+            return redirect('/kelompok');
+        }
     }
 
     /**
@@ -134,16 +139,21 @@ class JumlahKelompokUmumController extends Controller
             'jml_pkk_rt' => 'required',
             'jml_dasawisma' => 'required',
             'periode' => 'required',
-
         ]);
+        $update=DB::table('jumlah_kelompok')->where('periode', $request->periode)->first();
+        if ($update != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        $kelompok->update($request->all());
+            return redirect('/kelompok');
+        }
+        else {
+            $kelompok->update($request->all());
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_kelompok);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_kelompok);
 
-        return redirect('/kelompok');
-
+            return redirect('/kelompok');
+        }
     }
 
     /**

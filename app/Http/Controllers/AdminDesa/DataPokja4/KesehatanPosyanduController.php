@@ -70,26 +70,30 @@ class KesehatanPosyanduController extends Controller
             'jml_posyandu_lansia_anggota.required' => 'Lengkapi Jumlah Posyandu Lansia Anggota',
             'jml_posyandu_lansia_memiliki_kartu.required' => 'Lengkapi Jumlah Posyandu Lansia Memiliki Kartu Berobat Gratis',
             'periode.required' => 'Lengkapi Periode',
-
         ]);
+        $insert=DB::table('kesehatan')->where('periode', $request->periode)->first();
+        if ($insert != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        // cara 1
-        $kes = new Kesehatan;
-        $kes->id_desa = $request->id_desa;
-        $kes->jml_posyandu = $request->jml_posyandu;
-        $kes->jml_posyandu_terintegrasi = $request->jml_posyandu_terintegrasi;
-        $kes->jml_posyandu_lansia_klp = $request->jml_posyandu_lansia_klp;
-        $kes->jml_posyandu_lansia_anggota = $request->jml_posyandu_lansia_anggota;
-        $kes->jml_posyandu_lansia_memiliki_kartu = $request->jml_posyandu_lansia_memiliki_kartu;
-        $kes->periode = $request->periode;
+            return redirect('/kesehatan');
+        }
+        else {
+            // cara 1
+            $kes = new Kesehatan;
+            $kes->id_desa = $request->id_desa;
+            $kes->jml_posyandu = $request->jml_posyandu;
+            $kes->jml_posyandu_terintegrasi = $request->jml_posyandu_terintegrasi;
+            $kes->jml_posyandu_lansia_klp = $request->jml_posyandu_lansia_klp;
+            $kes->jml_posyandu_lansia_anggota = $request->jml_posyandu_lansia_anggota;
+            $kes->jml_posyandu_lansia_memiliki_kartu = $request->jml_posyandu_lansia_memiliki_kartu;
+            $kes->periode = $request->periode;
 
-        $kes->save();
+            $kes->save();
 
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
-
-        return redirect('/kesehatan');
-
+            return redirect('/kesehatan');
+        }
     }
 
     /**
@@ -137,16 +141,21 @@ class KesehatanPosyanduController extends Controller
             'jml_posyandu_lansia_anggota' => 'required',
             'jml_posyandu_lansia_memiliki_kartu' => 'required',
             'periode' => 'required',
-
         ]);
+        $update=DB::table('kesehatan')->where('periode', $request->periode)->first();
+        if ($update != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        $kesehatan->update($request->all());
+            return redirect('/kesehatan');
+        }
+        else {
+            $kesehatan->update($request->all());
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_kesehatan);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_kesehatan);
 
-        return redirect('/kesehatan');
-
+            return redirect('/kesehatan');
+        }
     }
 
     /**

@@ -77,29 +77,35 @@ class PenghayatanDanPengamalanController extends Controller
             'periode.required' => 'Lengkapi Periode',
 
         ]);
+        $insert=DB::table('penghayatan')->where('periode', $request->periode)->first();
+        if ($insert != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        // cara 1
-        $peng = new Penghayatan;
+            return redirect('/penghayatan');
 
-        $peng->id_desa = $request->id_desa;
-        $peng->jml_PKBN_simulasi = $request->jml_PKBN_simulasi;
-        $peng->jml_PKBN_anggota = $request->jml_PKBN_anggota;
-        $peng->jml_PKDRT_simulasi = $request->jml_PKDRT_simulasi;
-        $peng->jml_PKDRT_anggota = $request->jml_PKDRT_anggota;
-        $peng->jml_pola_asuh_simulasi = $request->jml_pola_asuh_simulasi;
-        $peng->jml_pola_asuh_anggota = $request->jml_pola_asuh_anggota;
-        $peng->jml_lansia_klp = $request->jml_lansia_klp;
-        $peng->jml_lansia_anggota = $request->jml_lansia_anggota;
-        $peng->periode = $request->periode;
-        // dd($peng);
+        }
+        else {
+            // cara 1
+            $peng = new Penghayatan;
+            $peng->id_desa = $request->id_desa;
+            $peng->jml_PKBN_simulasi = $request->jml_PKBN_simulasi;
+            $peng->jml_PKBN_anggota = $request->jml_PKBN_anggota;
+            $peng->jml_PKDRT_simulasi = $request->jml_PKDRT_simulasi;
+            $peng->jml_PKDRT_anggota = $request->jml_PKDRT_anggota;
+            $peng->jml_pola_asuh_simulasi = $request->jml_pola_asuh_simulasi;
+            $peng->jml_pola_asuh_anggota = $request->jml_pola_asuh_anggota;
+            $peng->jml_lansia_klp = $request->jml_lansia_klp;
+            $peng->jml_lansia_anggota = $request->jml_lansia_anggota;
+            $peng->periode = $request->periode;
+            // dd($peng);
 
-        $peng->save();
+            $peng->save();
 
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/penghayatan');
-
+            return redirect('/penghayatan');
+        }
     }
 
     /**
@@ -141,26 +147,34 @@ class PenghayatanDanPengamalanController extends Controller
     {
         // proses penyimpanan untuk tambah data penghayatan
         $request->validate([
-        'id_desa' => 'required',
-        'jml_PKBN_simulasi' => 'required',
-        'jml_PKBN_anggota' => 'required',
-        'jml_PKDRT_simulasi' => 'required',
-        'jml_PKDRT_anggota' => 'required',
-        'jml_pola_asuh_simulasi' => 'required',
-        'jml_pola_asuh_anggota' => 'required',
-        'jml_lansia_klp' => 'required',
-        'jml_lansia_anggota' => 'required',
-        'periode' => 'required',
+            'id_desa' => 'required',
+            'jml_PKBN_simulasi' => 'required',
+            'jml_PKBN_anggota' => 'required',
+            'jml_PKDRT_simulasi' => 'required',
+            'jml_PKDRT_anggota' => 'required',
+            'jml_pola_asuh_simulasi' => 'required',
+            'jml_pola_asuh_anggota' => 'required',
+            'jml_lansia_klp' => 'required',
+            'jml_lansia_anggota' => 'required',
+            'periode' => 'required',
 
        ]);
+       $update=DB::table('penghayatan')->where('periode', $request->periode)->first();
+       if ($update != null) {
+           Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-       $penghayatan->update($request->all());
+           return redirect('/penghayatan');
 
-       Alert::success('Berhasil', 'Data berhasil di ubah');
-    //    dd($penghayatan);
+       }
+       else {
 
-       return redirect('/penghayatan');
+            $penghayatan->update($request->all());
 
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            //    dd($penghayatan);
+
+            return redirect('/penghayatan');
+       }
     }
 
     /**

@@ -74,25 +74,30 @@ class JumlahKaderPokja4Controller extends Controller
             'periode.required' => 'Lengkapi Periode',
 
         ]);
+        $insert=DB::table('jumlah_kader_pokja4')->where('periode', $request->periode)->first();
+        if ($insert != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        // cara 1
-        $jumkads = new JumlahKaderPokja4;
-        $jumkads->id_desa = $request->id_desa;
-        $jumkads->jml_kader_posyandu = $request->jml_kader_posyandu;
-        $jumkads->jml_kader_gizi = $request->jml_kader_gizi;
-        $jumkads->jml_kader_kesling = $request->jml_kader_kesling;
-        $jumkads->jml_kader_penyuluhan_narkoba = $request->jml_kader_penyuluhan_narkoba;
-        $jumkads->jml_kader_PHBS = $request->jml_kader_PHBS;
-        $jumkads->jml_kader_KB = $request->jml_kader_KB;
-        $jumkads->periode = $request->periode;
+            return redirect('/kader_pokja4');
+        }
+        else {
+            // cara 1
+            $jumkads = new JumlahKaderPokja4;
+            $jumkads->id_desa = $request->id_desa;
+            $jumkads->jml_kader_posyandu = $request->jml_kader_posyandu;
+            $jumkads->jml_kader_gizi = $request->jml_kader_gizi;
+            $jumkads->jml_kader_kesling = $request->jml_kader_kesling;
+            $jumkads->jml_kader_penyuluhan_narkoba = $request->jml_kader_penyuluhan_narkoba;
+            $jumkads->jml_kader_PHBS = $request->jml_kader_PHBS;
+            $jumkads->jml_kader_KB = $request->jml_kader_KB;
+            $jumkads->periode = $request->periode;
 
-        $jumkads->save();
+            $jumkads->save();
 
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
-
-        return redirect('/kader_pokja4');
-
+            return redirect('/kader_pokja4');
+        }
     }
 
     /**
@@ -142,16 +147,21 @@ class JumlahKaderPokja4Controller extends Controller
             'jml_kader_PHBS' => 'required',
             'jml_kader_KB' => 'required',
             'periode' => 'required',
-
         ]);
+        $update=DB::table('jumlah_kader_pokja4')->where('periode', $request->periode)->first();
+        if ($update != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        $kader_pokja4->update($request->all());
-        // dd($kader_pokja4);
+            return redirect('/kader_pokja4');
+        }
+        else {
+            $kader_pokja4->update($request->all());
+            // dd($kader_pokja4);
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
+            Alert::success('Berhasil', 'Data berhasil di ubah');
 
-        return redirect('/kader_pokja4');
-
+            return redirect('/kader_pokja4');
+        }
     }
 
     /**

@@ -72,23 +72,30 @@ class PerencanaanSehatController extends Controller
             'periode.required' => 'Lengkapi Periode',
 
         ]);
+        $insert=DB::table('perencanaan')->where('periode', $request->periode)->first();
+        if ($insert != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        // cara 1
-        $pers = new PerencanaanSehat;
-        $pers->id_desa = $request->id_desa;
-        $pers->jml_PUS = $request->jml_PUS;
-        $pers->jml_WUS = $request->jml_WUS;
-        $pers->jml_anggota_akseptor_laki = $request->jml_anggota_akseptor_laki;
-        $pers->jml_anggota_akseptor_perempuan = $request->jml_anggota_akseptor_perempuan;
-        $pers->jml_kk_tabungan = $request->jml_kk_tabungan;
-        $pers->periode = $request->periode;
+            return redirect('/perencanaan');
+        }
+        else {
+            // cara 1
+            $pers = new PerencanaanSehat;
+            $pers->id_desa = $request->id_desa;
+            $pers->jml_PUS = $request->jml_PUS;
+            $pers->jml_WUS = $request->jml_WUS;
+            $pers->jml_anggota_akseptor_laki = $request->jml_anggota_akseptor_laki;
+            $pers->jml_anggota_akseptor_perempuan = $request->jml_anggota_akseptor_perempuan;
+            $pers->jml_kk_tabungan = $request->jml_kk_tabungan;
+            $pers->periode = $request->periode;
 
-        $pers->save();
+            $pers->save();
 
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/perencanaan');
+            return redirect('/perencanaan');
+        }
 
     }
 
@@ -138,16 +145,21 @@ class PerencanaanSehatController extends Controller
             'jml_anggota_akseptor_perempuan' => 'required',
             'jml_kk_tabungan' => 'required',
             'periode' => 'required',
-
         ]);
+        $update=DB::table('perencanaan')->where('periode', $request->periode)->first();
+        if ($update != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        $perencanaan->update($request->all());
+            return redirect('/perencanaan');
+        }
+        else {
+            $perencanaan->update($request->all());
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_perencanaan);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_perencanaan);
 
-        return redirect('/perencanaan');
-
+            return redirect('/perencanaan');
+        }
     }
 
     /**
