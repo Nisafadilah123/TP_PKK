@@ -121,23 +121,29 @@
                 </div>
             </div>
 
-
             <div class="col-md-3">
                 <div class="card-body">
-
-                <div class="form-group">
-                    <label>Jumlah Koperasi Peserta</label>
-                    <input min="0" type="number" class="form-control" name="jml_koperasi_peserta" id="jml_koperasi_peserta" placeholder="Masukkan Jumlah Koperasi Peserta" required value="{{ucfirst(old('jml_koperasi_peserta', $koperasi->jml_koperasi_peserta))}}">
-                </div>
+                    <div class="form-group">
+                        <label>Jumlah Koperasi Peserta</label>
+                        <input min="0" type="number" class="form-control" name="jml_koperasi_peserta" id="jml_koperasi_peserta" placeholder="Masukkan Jumlah Koperasi Peserta" required value="{{ucfirst(old('jml_koperasi_peserta', $koperasi->jml_koperasi_peserta))}}">
+                    </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card-body">
-
                     <div class="form-group">
                         <label>Periode</label>
-                        <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required value="{{ucfirst(old('jml_koperasi_peserta', $koperasi->jml_koperasi_peserta))}}">
-                    </div>
+                        <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                            <option value="0" {{ $koperasi->periode ? 'selected' : '' }}>{{ $koperasi->periode }}</option>
+                                <?php
+                                $year = date('Y');
+                                $min = $year ;
+                                    $max = $year + 20;
+                                for( $i=$min; $i<=$max; $i++ ) {
+                                echo '<option value='.$i.'>'.$i.'</option>';
+                            }?>
+                        </select>
+                  </div>
                 </div>
             </div>
 

@@ -52,9 +52,17 @@
           </div>
           <div class="form-group">
             <label>Periode</label>
-            <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Jumlah Kader Pola Asuh" required value="{{ucfirst(old('periode', $jml_kader->periode))}}">
-          </div>
-
+                <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                    <option value="0" {{ $jml_kader->periode ? 'selected' : '' }}>{{ $jml_kader->periode }}</option>
+                        <?php
+                        $year = date('Y');
+                        $min = $year ;
+                            $max = $year + 20;
+                        for( $i=$min; $i<=$max; $i++ ) {
+                        echo '<option value='.$i.'>'.$i.'</option>';
+                    }?>
+                </select>
+         </div>
         </div>
         <!-- /.card-body -->
 
