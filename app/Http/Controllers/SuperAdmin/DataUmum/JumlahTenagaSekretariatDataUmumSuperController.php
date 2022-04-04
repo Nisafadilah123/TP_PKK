@@ -66,23 +66,28 @@ class JumlahTenagaSekretariatDataUmumSuperController extends Controller
             'periode' => 'Lengkapi Periode',
 
         ]);
+        $insert=DB::table('jumlah_tenaga_sekretariat_data_umum')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($insert)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        // cara 1
-        $jumtens = new JumlahTenagaSekretariatDataUmum;
-        $jumtens->id_desa = $request->id_desa;
-        $jumtens->jml_tenaga_honorer_laki = $request->jml_tenaga_honorer_laki;
-        $jumtens->jml_tenaga_honorer_perempuan = $request->jml_tenaga_honorer_perempuan;
-        $jumtens->jml_tenaga_bantuan_laki = $request->jml_tenaga_bantuan_laki;
-        $jumtens->jml_tenaga_bantuan_perempuan = $request->jml_tenaga_bantuan_perempuan;
-        $jumtens->periode = $request->periode;
+            return redirect('/jml_tenaga_umum_super');
+        }
+        else {
+            // cara 1
+            $jumtens = new JumlahTenagaSekretariatDataUmum;
+            $jumtens->id_desa = $request->id_desa;
+            $jumtens->jml_tenaga_honorer_laki = $request->jml_tenaga_honorer_laki;
+            $jumtens->jml_tenaga_honorer_perempuan = $request->jml_tenaga_honorer_perempuan;
+            $jumtens->jml_tenaga_bantuan_laki = $request->jml_tenaga_bantuan_laki;
+            $jumtens->jml_tenaga_bantuan_perempuan = $request->jml_tenaga_bantuan_perempuan;
+            $jumtens->periode = $request->periode;
 
-        $jumtens->save();
+            $jumtens->save();
 
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
-
-        return redirect('/jml_tenaga_umum_super');
-
+            return redirect('/jml_tenaga_umum_super');
+        }
     }
 
     /**
@@ -129,16 +134,21 @@ class JumlahTenagaSekretariatDataUmumSuperController extends Controller
             'jml_tenaga_bantuan_laki' => 'required',
             'jml_tenaga_bantuan_perempuan' => 'required',
             'periode' => 'required',
-
         ]);
+        $update=DB::table('jumlah_tenaga_sekretariat_data_umum')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($update)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        $jml_tenaga_umum_super->update($request->all());
+            return redirect('/jml_tenaga_umum_super');
+        }
+        else {
+            $jml_tenaga_umum_super->update($request->all());
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_kader_pokja4);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_kader_pokja4);
 
-        return redirect('/jml_tenaga_umum_super');
-
+            return redirect('/jml_tenaga_umum_super');
+        }
     }
 
     /**

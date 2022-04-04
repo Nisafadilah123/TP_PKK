@@ -59,7 +59,6 @@ class PanganSuperController extends Controller
             'jml_pemanfaatan_toga' => 'required',
             'jml_pemanfaatan_tanaman_keras' => 'required',
             'periode' => 'required',
-
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
             'jml_makanan_beras.required' => 'Lengkapi Jumlah Pangan Makanan Beras',
@@ -71,29 +70,33 @@ class PanganSuperController extends Controller
             'jml_pemanfaatan_toga.required' => 'Lengkapi Jumlah Pangan Pemanfaatan TOGA',
             'jml_pemanfaatan_tanaman_keras.required' => 'Lengkapi Jumlah Pangan Pemanfaatan Tanaman Keras',
             'periode' => 'Lengkapi Periode',
-
         ]);
+        $insert=DB::table('pangan')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($insert)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
+            return redirect('/pangan_super');
+        }
+        else {
         // cara 1
-        $kads = new Pangan;
-        $kads->id_desa = $request->id_desa;
-        $kads->jml_makanan_beras = $request->jml_makanan_beras;
-        $kads->jml_makanan_nonberas = $request->jml_makanan_nonberas;
-        $kads->jml_pemanfaatan_peternakan = $request->jml_pemanfaatan_peternakan;
-        $kads->jml_pemanfaatan_perikanan = $request->jml_pemanfaatan_perikanan;
-        $kads->jml_pemanfaatan_warung_hidup = $request->jml_pemanfaatan_warung_hidup;
-        $kads->jml_pemanfaatan_limbung_hidup = $request->jml_pemanfaatan_limbung_hidup;
-        $kads->jml_pemanfaatan_toga = $request->jml_pemanfaatan_toga;
-        $kads->jml_pemanfaatan_tanaman_keras = $request->jml_pemanfaatan_tanaman_keras;
-        $kads->periode = $request->periode;
+            $kads = new Pangan;
+            $kads->id_desa = $request->id_desa;
+            $kads->jml_makanan_beras = $request->jml_makanan_beras;
+            $kads->jml_makanan_nonberas = $request->jml_makanan_nonberas;
+            $kads->jml_pemanfaatan_peternakan = $request->jml_pemanfaatan_peternakan;
+            $kads->jml_pemanfaatan_perikanan = $request->jml_pemanfaatan_perikanan;
+            $kads->jml_pemanfaatan_warung_hidup = $request->jml_pemanfaatan_warung_hidup;
+            $kads->jml_pemanfaatan_limbung_hidup = $request->jml_pemanfaatan_limbung_hidup;
+            $kads->jml_pemanfaatan_toga = $request->jml_pemanfaatan_toga;
+            $kads->jml_pemanfaatan_tanaman_keras = $request->jml_pemanfaatan_tanaman_keras;
+            $kads->periode = $request->periode;
 
-        $kads->save();
+            $kads->save();
 
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
-
-        return redirect('/pangan_super');
-
+            return redirect('/pangan_super');
+        }
     }
 
     /**
@@ -144,17 +147,21 @@ class PanganSuperController extends Controller
             'jml_pemanfaatan_toga' => 'required',
             'jml_pemanfaatan_tanaman_keras' => 'required',
             'periode' => 'required',
-
-
         ]);
+        $update=DB::table('pangan')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($update)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        $pangan_super->update($request->all());
+            return redirect('/pangan_super');
+        }
+        else {
+            $pangan_super->update($request->all());
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_pangan);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_pangan);
 
-        return redirect('/pangan_super');
-
+            return redirect('/pangan_super');
+        }
     }
 
     /**

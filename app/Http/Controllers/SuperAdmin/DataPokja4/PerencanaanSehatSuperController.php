@@ -68,24 +68,29 @@ class PerencanaanSehatSuperController extends Controller
             'periode.required' => 'Lengkapi Periode',
 
         ]);
+        $insert=DB::table('perencanaan')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($insert)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        // cara 1
-        $pers = new PerencanaanSehat;
-        $pers->id_desa = $request->id_desa;
-        $pers->jml_PUS = $request->jml_PUS;
-        $pers->jml_WUS = $request->jml_WUS;
-        $pers->jml_anggota_akseptor_laki = $request->jml_anggota_akseptor_laki;
-        $pers->jml_anggota_akseptor_perempuan = $request->jml_anggota_akseptor_perempuan;
-        $pers->jml_kk_tabungan = $request->jml_kk_tabungan;
-        $pers->periode = $request->periode;
+            return redirect('/perencanaan_super');
+        }
+        else {
+            // cara 1
+            $pers = new PerencanaanSehat;
+            $pers->id_desa = $request->id_desa;
+            $pers->jml_PUS = $request->jml_PUS;
+            $pers->jml_WUS = $request->jml_WUS;
+            $pers->jml_anggota_akseptor_laki = $request->jml_anggota_akseptor_laki;
+            $pers->jml_anggota_akseptor_perempuan = $request->jml_anggota_akseptor_perempuan;
+            $pers->jml_kk_tabungan = $request->jml_kk_tabungan;
+            $pers->periode = $request->periode;
 
-        $pers->save();
+            $pers->save();
 
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
-
-        return redirect('/perencanaan_super');
-
+            return redirect('/perencanaan_super');
+        }
     }
 
     /**
@@ -133,16 +138,21 @@ class PerencanaanSehatSuperController extends Controller
             'jml_anggota_akseptor_perempuan' => 'required',
             'jml_kk_tabungan' => 'required',
             'periode' => 'required',
-
         ]);
+        $update=DB::table('perencanaan')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($update)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        $perencanaan_super->update($request->all());
+            return redirect('/perencanaan_super');
+        }
+        else {
+            $perencanaan_super->update($request->all());
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_perencanaan);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_perencanaan);
 
-        return redirect('/perencanaan_super');
-
+            return redirect('/perencanaan_super');
+        }
     }
 
     /**

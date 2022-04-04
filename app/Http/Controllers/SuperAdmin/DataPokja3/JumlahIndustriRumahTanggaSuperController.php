@@ -63,22 +63,27 @@ class JumlahIndustriRumahTanggaSuperController extends Controller
             'periode.required' => 'Lengkapi Periode',
 
         ]);
+        $insert=DB::table('jml_industri')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($insert)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        // cara 1
-        $inds = new JumlahIndustri;
-        $inds->id_desa = $request->id_desa;
-        $inds->jml_industri_pangan = $request->jml_industri_pangan;
-        $inds->jml_industri_sandang = $request->jml_industri_sandang;
-        $inds->jml_industri_jasa = $request->jml_industri_jasa;
-        $inds->periode = $request->periode;
+            return redirect('/industri_super');
+        }
+        else {
+            // cara 1
+            $inds = new JumlahIndustri;
+            $inds->id_desa = $request->id_desa;
+            $inds->jml_industri_pangan = $request->jml_industri_pangan;
+            $inds->jml_industri_sandang = $request->jml_industri_sandang;
+            $inds->jml_industri_jasa = $request->jml_industri_jasa;
+            $inds->periode = $request->periode;
 
-        $inds->save();
+            $inds->save();
 
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
-
-        return redirect('/industri_super');
-
+            return redirect('/industri_super');
+        }
     }
 
     /**
@@ -124,17 +129,21 @@ class JumlahIndustriRumahTanggaSuperController extends Controller
             'jml_industri_sandang' => 'required',
             'jml_industri_jasa' => 'required',
             'periode' => 'required',
-
-
         ]);
+        $update=DB::table('jml_industri')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($update)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        $industri_super->update($request->all());
+            return redirect('/industri_super');
+        }
+        else {
+            $industri_super->update($request->all());
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_kader);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_kader);
 
-        return redirect('/industri_super');
-
+            return redirect('/industri_super');
+        }
     }
 
     /**

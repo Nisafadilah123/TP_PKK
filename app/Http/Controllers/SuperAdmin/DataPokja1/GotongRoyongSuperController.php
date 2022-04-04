@@ -85,23 +85,30 @@ class GotongRoyongSuperController extends Controller
         //     'periode.required' => 'Lengkapi Periode',
 
         // ]);
+        $insert=DB::table('gotong_royong')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if (!empty($insert)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        // cara 1
-        $gotongs = new GotongRoyong;
-        $gotongs->id_desa = $request->id_desa;
-        $gotongs->jml_gotong_kerja_bakti = $request->jml_gotong_kerja_bakti;
-        $gotongs->jml_gotong_rukun_kebaktian = $request->jml_gotong_rukun_kebaktian;
-        $gotongs->jml_gotong_keagamaan = $request->jml_gotong_keagamaan;
-        $gotongs->jml_gotong_jimpitan = $request->jml_gotong_jimpitan;
-        $gotongs->jml_gotong_arisan = $request->jml_gotong_arisan;
-        $gotongs->periode = $request->periode;
+            return redirect('/gotong_royong_super');
+        }
+        else {
+            // cara 1
+            $gotongs = new GotongRoyong;
+            $gotongs->id_desa = $request->id_desa;
+            $gotongs->jml_gotong_kerja_bakti = $request->jml_gotong_kerja_bakti;
+            $gotongs->jml_gotong_rukun_kebaktian = $request->jml_gotong_rukun_kebaktian;
+            $gotongs->jml_gotong_keagamaan = $request->jml_gotong_keagamaan;
+            $gotongs->jml_gotong_jimpitan = $request->jml_gotong_jimpitan;
+            $gotongs->jml_gotong_arisan = $request->jml_gotong_arisan;
+            $gotongs->periode = $request->periode;
 
-        $gotongs->save();
+            $gotongs->save();
 
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        return redirect('/gotong_royong_super');
+            return redirect('/gotong_royong_super');
+        }
 
     }
 
@@ -150,17 +157,21 @@ class GotongRoyongSuperController extends Controller
             'jml_gotong_jimpitan' => 'required',
             'jml_gotong_arisan' => 'required',
             'periode' => 'required',
-
-
         ]);
+        $update=DB::table('gotong_royong')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if (!empty($update)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        $gotong_royong_super->update($request->all());
+            return redirect('/gotong_royong_super');
+        }
+        else {
+            $gotong_royong_super->update($request->all());
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_kader);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_kader);
 
-        return redirect('/gotong_royong_super');
-
+            return redirect('/gotong_royong_super');
+        }
     }
 
     /**

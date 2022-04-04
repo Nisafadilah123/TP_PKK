@@ -67,23 +67,28 @@ class JumlahKaderPokja1SuperController extends Controller
             'periode.required' => 'Lengkapi Periode',
 
                 ]);
+        $insert=DB::table('jml_kader')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($insert)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        // cara 1
-        $kader = new JmlKader;
-        $kader->id_desa = $request->id_desa;
-        $kader->jml_kader_PKBN = $request->jml_kader_PKBN;
-        $kader->jml_kader_PKDRT = $request->jml_kader_PKDRT;
-        $kader->jml_kader_pola_asuh = $request->jml_kader_pola_asuh;
-        $kader->periode = $request->periode;
+            return redirect('/jml_kader_super');
+        }
+        else {
+            // cara 1
+            $kader = new JmlKader;
+            $kader->id_desa = $request->id_desa;
+            $kader->jml_kader_PKBN = $request->jml_kader_PKBN;
+            $kader->jml_kader_PKDRT = $request->jml_kader_PKDRT;
+            $kader->jml_kader_pola_asuh = $request->jml_kader_pola_asuh;
+            $kader->periode = $request->periode;
 
-        $kader->save();
+            $kader->save();
 
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
+            // dd($desa);
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
-        // dd($desa);
-
-        return redirect('/jml_kader_super');
-
+            return redirect('/jml_kader_super');
+        }
     }
 
     /**
@@ -129,17 +134,21 @@ class JumlahKaderPokja1SuperController extends Controller
             'jml_kader_PKDRT' => 'required',
             'jml_kader_pola_asuh' => 'required',
             'periode' => 'required',
-
-
         ]);
+        $update=DB::table('jml_kader')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty ($update)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        $jml_kader_super->update($request->all());
+            return redirect('/jml_kader');
+        }
+        else {
+            $jml_kader_super->update($request->all());
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_kader);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_kader);
 
-        return redirect('/jml_kader_super');
-
+            return redirect('/jml_kader_super');
+        }
     }
 
     /**

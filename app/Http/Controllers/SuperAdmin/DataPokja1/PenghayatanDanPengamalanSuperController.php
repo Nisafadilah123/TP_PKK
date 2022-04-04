@@ -73,28 +73,33 @@ class PenghayatanDanPengamalanSuperController extends Controller
             'periode.required' => 'Lengkapi Periode',
 
         ]);
+        $insert=DB::table('penghayatan')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($insert)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        // cara 1
-        $peng = new Penghayatan;
-        $peng->id_desa = $request->id_desa;
-        $peng->jml_PKBN_simulasi = $request->jml_PKBN_simulasi;
-        $peng->jml_PKBN_anggota = $request->jml_PKBN_anggota;
-        $peng->jml_PKDRT_simulasi = $request->jml_PKDRT_simulasi;
-        $peng->jml_PKDRT_anggota = $request->jml_PKDRT_anggota;
-        $peng->jml_pola_asuh_simulasi = $request->jml_pola_asuh_simulasi;
-        $peng->jml_pola_asuh_anggota = $request->jml_pola_asuh_anggota;
-        $peng->jml_lansia_klp = $request->jml_lansia_klp;
-        $peng->jml_lansia_anggota = $request->jml_lansia_anggota;
-        $peng->periode = $request->periode;
+            return redirect('/penghayatan_super');
+        }
+        else {
+            // cara 1
+            $peng = new Penghayatan;
+            $peng->id_desa = $request->id_desa;
+            $peng->jml_PKBN_simulasi = $request->jml_PKBN_simulasi;
+            $peng->jml_PKBN_anggota = $request->jml_PKBN_anggota;
+            $peng->jml_PKDRT_simulasi = $request->jml_PKDRT_simulasi;
+            $peng->jml_PKDRT_anggota = $request->jml_PKDRT_anggota;
+            $peng->jml_pola_asuh_simulasi = $request->jml_pola_asuh_simulasi;
+            $peng->jml_pola_asuh_anggota = $request->jml_pola_asuh_anggota;
+            $peng->jml_lansia_klp = $request->jml_lansia_klp;
+            $peng->jml_lansia_anggota = $request->jml_lansia_anggota;
+            $peng->periode = $request->periode;
 
-        $peng->save();
+            $peng->save();
 
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
+            // dd($desa);
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
-        // dd($desa);
-
-        return redirect('/penghayatan_super');
-
+            return redirect('/penghayatan_super');
+        }
     }
 
     /**
@@ -145,16 +150,21 @@ class PenghayatanDanPengamalanSuperController extends Controller
         'jml_lansia_klp' => 'required',
         'jml_lansia_anggota' => 'required',
         'periode' => 'required',
-
        ]);
+       $update=DB::table('penghayatan')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+       if (!empty($update)) {
+        Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-       $penghayatan_super->update($request->all());
+           return redirect('/penghayatan_super');
+       }
+       else {
+            $penghayatan_super->update($request->all());
 
-       Alert::success('Berhasil', 'Data berhasil di ubah');
-    //    dd($penghayatan);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            //    dd($penghayatan);
 
-       return redirect('/penghayatan_super');
-
+            return redirect('/penghayatan_super');
+       }
     }
 
     /**

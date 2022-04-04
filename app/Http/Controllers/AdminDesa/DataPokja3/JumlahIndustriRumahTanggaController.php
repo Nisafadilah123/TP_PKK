@@ -58,7 +58,6 @@ class JumlahIndustriRumahTanggaController extends Controller
             'jml_industri_sandang' => 'required',
             'jml_industri_jasa' => 'required',
             'periode' => 'required',
-
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
             'jml_industri_pangan.required' => 'Lengkapi Jumlah Industri Pangan',
@@ -72,7 +71,6 @@ class JumlahIndustriRumahTanggaController extends Controller
             Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
             return redirect('/industri');
-
         }
         else {
             // cara 1

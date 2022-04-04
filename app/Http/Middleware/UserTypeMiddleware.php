@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use Closure;
 use Illuminate\Http\Request;
@@ -19,8 +20,10 @@ class UserTypeMiddleware
     {
         if ($user = auth()->user()) {
             if ($user->user_type !== $userType) {
-                return abort(403);
-                // return redirect('login');
+                // return abort(403);
+                Alert::error('Gagal', 'Anda Harus login terlebih dahu');
+
+                return redirect('login');
             }
         }
 

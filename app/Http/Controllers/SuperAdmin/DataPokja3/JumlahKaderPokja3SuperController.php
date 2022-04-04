@@ -54,31 +54,34 @@ class JumlahKaderPokja3SuperController extends Controller
             'jml_kader_sandang' => 'required',
             'jml_kader_tata_laksana' => 'required',
             'periode' => 'required',
-
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
             'jml_kader_pangan.required' => 'Lengkapi Jumlah kader Pangan',
             'jml_kader_sandang.required' => 'Lengkapi Jumlah kader Sandang',
             'jml_kader_tata_laksana.required' => 'Lengkapi Jumlah kader Tata Laksana',
             'periode.required' => 'Lengkapi Periode',
-
         ]);
+        $insert=DB::table('jumlah_kader_pokja3')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($insert)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        // cara 1
-        $kads = new JumlahKaderPokja3;
-        $kads->id_desa = $request->id_desa;
-        $kads->jml_kader_pangan = $request->jml_kader_pangan;
-        $kads->jml_kader_sandang = $request->jml_kader_sandang;
-        $kads->jml_kader_tata_laksana = $request->jml_kader_tata_laksana;
-        $kads->periode = $request->periode;
+            return redirect('/kader_super');
+        }
+        else {
+            // cara 1
+            $kads = new JumlahKaderPokja3;
+            $kads->id_desa = $request->id_desa;
+            $kads->jml_kader_pangan = $request->jml_kader_pangan;
+            $kads->jml_kader_sandang = $request->jml_kader_sandang;
+            $kads->jml_kader_tata_laksana = $request->jml_kader_tata_laksana;
+            $kads->periode = $request->periode;
 
-        $kads->save();
+            $kads->save();
 
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
-
-        return redirect('/kader_super');
-
+            return redirect('/kader_super');
+        }
     }
 
     /**
@@ -124,17 +127,21 @@ class JumlahKaderPokja3SuperController extends Controller
             'jml_kader_sandang' => 'required',
             'jml_kader_tata_laksana' => 'required',
             'periode' => 'required',
-
-
         ]);
+        $update=DB::table('jumlah_kader_pokja3')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($update)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        $kader_super->update($request->all());
+            return redirect('/kader_super');
+        }
+        else {
+            $kader_super->update($request->all());
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_kader);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_kader);
 
-        return redirect('/kader_super');
-
+            return redirect('/kader_super');
+        }
     }
 
     /**

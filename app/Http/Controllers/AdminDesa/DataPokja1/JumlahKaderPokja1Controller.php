@@ -73,7 +73,6 @@ class JumlahKaderPokja1Controller extends Controller
             Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Periode. Periode Sudah Ada ');
 
             return redirect('/jml_kader');
-
         }
         else {
             // cara 1

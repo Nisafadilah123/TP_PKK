@@ -53,29 +53,32 @@ class JumlahDataUmumSuperController extends Controller
             'jml_krt_data_umum' => 'required',
             'jml_kk_data_umum' => 'required',
             'periode' => 'required',
-
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
             'jml_krt_data_umum.required' => 'Lengkapi Jumlah KRT Data Umum',
             'jml_kk_data_umum.required' => 'Lengkapi Jumlah KK Data Umum',
             'periode.required' => 'Lengkapi Periode',
-
         ]);
+        $insert=DB::table('jumlah_data_umum')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($insert)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
+            return redirect('/jml_data_umum_super');
+        }
+        else {
         // cara 1
-        $jumums = new JumlahDataUmum;
-        $jumums->id_desa = $request->id_desa;
-        $jumums->jml_krt_data_umum = $request->jml_krt_data_umum;
-        $jumums->jml_kk_data_umum = $request->jml_kk_data_umum;
-        $jumums->periode = $request->periode;
+            $jumums = new JumlahDataUmum;
+            $jumums->id_desa = $request->id_desa;
+            $jumums->jml_krt_data_umum = $request->jml_krt_data_umum;
+            $jumums->jml_kk_data_umum = $request->jml_kk_data_umum;
+            $jumums->periode = $request->periode;
 
-        $jumums->save();
+            $jumums->save();
 
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
-
-        return redirect('/jml_data_umum_super');
-
+            return redirect('/jml_data_umum_super');
+        }
     }
 
     /**
@@ -122,14 +125,20 @@ class JumlahDataUmumSuperController extends Controller
             'periode' => 'required',
 
         ]);
+        $update=DB::table('jumlah_data_umum')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($update)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        $jml_data_umum_super->update($request->all());
+            return redirect('/jml_data_umum_super');
+        }
+        else {
+            $jml_data_umum_super->update($request->all());
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_jml_data_umum);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_jml_data_umum);
 
-        return redirect('/jml_data_umum_super');
-
+            return redirect('/jml_data_umum_super');
+        }
     }
 
     /**

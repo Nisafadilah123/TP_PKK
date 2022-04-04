@@ -56,7 +56,6 @@ class JumlahKelompokUmumSuperController extends Controller
             'jml_pkk_rt' => 'required',
             'jml_dasawisma' => 'required',
             'periode' => 'required',
-
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
             'jml_pkk_dusun.required' => 'Lengkapi Jumlah Kelompok PKK Dusun',
@@ -64,25 +63,29 @@ class JumlahKelompokUmumSuperController extends Controller
             'jml_pkk_rt.required' => 'Lengkapi Jumlah Kelompok PKK RT',
             'jml_dasawisma.required' => 'Lengkapi Jumlah Kelompok Dasawisma',
             'periode.required' => 'Lengkapi Periode',
-
         ]);
+        $insert=DB::table('jumlah_kelompok')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($insert)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        // cara 1
-        $jumkel = new JumlahKelompok;
-        $jumkel->id_desa = $request->id_desa;
-        $jumkel->jml_pkk_dusun = $request->jml_pkk_dusun;
-        $jumkel->jml_pkk_rw = $request->jml_pkk_rw;
-        $jumkel->jml_pkk_rt = $request->jml_pkk_rt;
-        $jumkel->jml_dasawisma = $request->jml_dasawisma;
-        $jumkel->periode = $request->periode;
+            return redirect('/kelompok_super');
+        }
+        else {
+            // cara 1
+            $jumkel = new JumlahKelompok;
+            $jumkel->id_desa = $request->id_desa;
+            $jumkel->jml_pkk_dusun = $request->jml_pkk_dusun;
+            $jumkel->jml_pkk_rw = $request->jml_pkk_rw;
+            $jumkel->jml_pkk_rt = $request->jml_pkk_rt;
+            $jumkel->jml_dasawisma = $request->jml_dasawisma;
+            $jumkel->periode = $request->periode;
 
-        $jumkel->save();
+            $jumkel->save();
 
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
-
-        return redirect('/kelompok_super');
-
+            return redirect('/kelompok_super');
+        }
     }
 
     /**
@@ -129,16 +132,21 @@ class JumlahKelompokUmumSuperController extends Controller
             'jml_pkk_rt' => 'required',
             'jml_dasawisma' => 'required',
             'periode' => 'required',
-
         ]);
+        $update=DB::table('jumlah_kelompok')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($update)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        $kelompok_super->update($request->all());
+            return redirect('/kelompok_super');
+        }
+        else {
+            $kelompok_super->update($request->all());
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_kelompok);
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_kelompok);
 
-        return redirect('/kelompok_super');
-
+            return redirect('/kelompok_super');
+        }
     }
 
     /**

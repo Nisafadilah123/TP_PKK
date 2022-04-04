@@ -24,7 +24,7 @@ class UserController extends Controller
 
         // $users = User::with('desa','kecamatan')->get();
         // $desa = Data_Desa::with('kecamatan')->get();
-dd($desa);
+// dd($desa);
 
         return view('super_admin.data_pengguna_super', compact('users', 'desa'));
     }

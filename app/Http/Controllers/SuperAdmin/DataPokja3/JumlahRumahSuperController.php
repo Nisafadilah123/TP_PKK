@@ -62,21 +62,26 @@ class JumlahRumahSuperController extends Controller
             'periode.required' => 'Lengkapi Periode',
 
         ]);
+        $insert=DB::table('jumlah_rumah')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($insert)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        // cara 1
-        $rums = new JumlahRumah;
-        $rums->id_desa = $request->id_desa;
-        $rums->jml_rumah_sehat = $request->jml_rumah_sehat;
-        $rums->jml_rumah_kurang_sehat = $request->jml_rumah_kurang_sehat;
-        $rums->periode = $request->periode;
+            return redirect('/rumah_super');
+        }
+        else {
+            // cara 1
+            $rums = new JumlahRumah;
+            $rums->id_desa = $request->id_desa;
+            $rums->jml_rumah_sehat = $request->jml_rumah_sehat;
+            $rums->jml_rumah_kurang_sehat = $request->jml_rumah_kurang_sehat;
+            $rums->periode = $request->periode;
 
-        $rums->save();
+            $rums->save();
 
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
-
-        return redirect('/rumah_super');
-
+            return redirect('/rumah_super');
+        }
     }
 
     /**
@@ -121,17 +126,22 @@ class JumlahRumahSuperController extends Controller
             'jml_rumah_sehat' => 'required',
             'jml_rumah_kurang_sehat' => 'required',
             'periode' => 'required',
-
-
         ]);
+        $update=DB::table('jumlah_rumah')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($update)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        $rumah_super->update($request->all());
+            return redirect('/rumah_super');
+        }
+        else {
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
-        // dd($jml_kader);
+            $rumah_super->update($request->all());
 
-        return redirect('/rumah_super');
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_kader);
 
+            return redirect('/rumah_super');
+        }
     }
 
     /**

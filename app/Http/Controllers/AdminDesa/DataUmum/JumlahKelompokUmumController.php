@@ -60,7 +60,6 @@ class JumlahKelompokUmumController extends Controller
             'jml_pkk_rt' => 'required',
             'jml_dasawisma' => 'required',
             'periode' => 'required',
-
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
             'jml_pkk_dusun.required' => 'Lengkapi Jumlah Kelompok PKK Dusun',
@@ -68,7 +67,6 @@ class JumlahKelompokUmumController extends Controller
             'jml_pkk_rt.required' => 'Lengkapi Jumlah Kelompok PKK RT',
             'jml_dasawisma.required' => 'Lengkapi Jumlah Kelompok Dasawisma',
             'periode.required' => 'Lengkapi Periode',
-
         ]);
         $insert=DB::table('jumlah_kelompok')->where('periode', $request->periode)->first();
         if ($insert != null) {

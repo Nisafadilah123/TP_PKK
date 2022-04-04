@@ -58,7 +58,6 @@ class JumlahKaderDataUmumSuperController extends Controller
             'jml_kader_khusus_laki_data_umum' => 'required',
             'jml_kader_khusus_perempuan_data_umum' => 'required',
             'periode' => 'required',
-
         ], [
             'id_desa.required' => 'Lengkapi Id Desa',
             'jml_kader_anggota_pkk_laki_data_umum.required' => 'Lengkapi Jumlah Kader Anggota TP PKK Laki-laki Data Umum',
@@ -68,27 +67,31 @@ class JumlahKaderDataUmumSuperController extends Controller
             'jml_kader_khusus_laki_data_umum.required' => 'Lengkapi Jumlah Kader Anggota TP PKK Laki-laki Data Umum',
             'jml_kader_khusus_perempuan_data_umum.required' => 'Lengkapi Jumlah Kader Anggota TP PKK Laki-laki Data Umum',
             'periode.required' => 'Lengkapi Periode',
-
         ]);
+        $insert=DB::table('jumlah_kader_data_umum')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($insert)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        // cara 1
-        $jumkadums = new JumlahKaderDataUmum;
-        $jumkadums->id_desa = $request->id_desa;
-        $jumkadums->jml_kader_anggota_pkk_laki_data_umum = $request->jml_kader_anggota_pkk_laki_data_umum;
-        $jumkadums->jml_kader_anggota_pkk_perempuan_data_umum = $request->jml_kader_anggota_pkk_perempuan_data_umum;
-        $jumkadums->jml_kader_umum_laki_data_umum = $request->jml_kader_umum_laki_data_umum;
-        $jumkadums->jml_kader_umum_perempuan_data_umum = $request->jml_kader_umum_perempuan_data_umum;
-        $jumkadums->jml_kader_khusus_laki_data_umum = $request->jml_kader_khusus_laki_data_umum;
-        $jumkadums->jml_kader_khusus_perempuan_data_umum = $request->jml_kader_khusus_perempuan_data_umum;
-        $jumkadums->periode = $request->periode;
+            return redirect('/jml_kader_umum_super');
+        }
+        else {
+            // cara 1
+            $jumkadums = new JumlahKaderDataUmum;
+            $jumkadums->id_desa = $request->id_desa;
+            $jumkadums->jml_kader_anggota_pkk_laki_data_umum = $request->jml_kader_anggota_pkk_laki_data_umum;
+            $jumkadums->jml_kader_anggota_pkk_perempuan_data_umum = $request->jml_kader_anggota_pkk_perempuan_data_umum;
+            $jumkadums->jml_kader_umum_laki_data_umum = $request->jml_kader_umum_laki_data_umum;
+            $jumkadums->jml_kader_umum_perempuan_data_umum = $request->jml_kader_umum_perempuan_data_umum;
+            $jumkadums->jml_kader_khusus_laki_data_umum = $request->jml_kader_khusus_laki_data_umum;
+            $jumkadums->jml_kader_khusus_perempuan_data_umum = $request->jml_kader_khusus_perempuan_data_umum;
+            $jumkadums->periode = $request->periode;
 
-        $jumkadums->save();
+            $jumkadums->save();
 
+            Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
-
-        return redirect('/jml_kader_umum_super');
-
+            return redirect('/jml_kader_umum_super');
+        }
     }
 
     /**
@@ -137,16 +140,21 @@ class JumlahKaderDataUmumSuperController extends Controller
             'jml_kader_khusus_laki_data_umum' => 'required',
             'jml_kader_khusus_perempuan_data_umum' => 'required',
             'periode' => 'required',
-
         ]);
+        $update=DB::table('jumlah_kader_data_umum')->where('id_desa', $request->id_desa)->where('periode', $request->periode)->first();
+        if ( !empty($update)) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menginputkan Satu kali Data Desa Per Periode. Periode Desa Sudah Ada ');
 
-        $jml_kader_umum_super->update($request->all());
-        // dd($jml_kader_umum_super);
+            return redirect('/jml_kader_umum_super');
+        }
+        else {
+            $jml_kader_umum_super->update($request->all());
+            // dd($jml_kader_umum_super);
 
-        Alert::success('Berhasil', 'Data berhasil di ubah');
+            Alert::success('Berhasil', 'Data berhasil di ubah');
 
-        return redirect('/jml_kader_umum_super');
-
+            return redirect('/jml_kader_umum_super');
+        }
     }
 
     /**
