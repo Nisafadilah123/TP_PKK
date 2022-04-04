@@ -175,6 +175,45 @@
 
                 </ul>
               </li>
+
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Data Laporan
+                    <i class="fas fa-angle-left right"></i>
+                    {{-- <span class="badge badge-info right">6</span> --}}
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="/data_pokja1_super" class="nav-link {{ Request::is('data_pokja1_super') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Laporan POKJA Desa </p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/data_pokja2_super" class="nav-link {{ Request::is('data_pokja2_super') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Laporan Data Umum Desa</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/data_pokja3_super" class="nav-link {{ Request::is('data_pokja3_super') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Laporan POKJA Kecamatan</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/data_pokja4_super" class="nav-link {{ Request::is('data_pokja4_super') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Laporan Data Umum Kecamatan</p>
+                    </a>
+                  </li>
+
+                </ul>
+              </li>
+
               <li class="nav-item">
                 <a href="/laporan_super" class="nav-link">
                     <i class="nav-icon fas fa-folder-open"></i>

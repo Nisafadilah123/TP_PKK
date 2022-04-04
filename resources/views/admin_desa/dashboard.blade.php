@@ -108,7 +108,7 @@
             <div class="small-box bg-danger">
               <div class="inner">
                 {{-- <h3>53<sup style="font-size: 20px">%</sup></h3> --}}
-                <h3>44</h3>
+                {{-- <h3>44</h3> --}}
 
                 <p>Data Laporan</p>
               </div>

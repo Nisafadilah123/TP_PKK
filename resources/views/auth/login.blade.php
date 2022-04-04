@@ -54,9 +54,21 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#contohModal">
                                     {{ __('Login') }}
                                 </button>
+
+                                <div class="modal fade" id="contohModal" role="dialog" arialabelledby="modalLabel" area-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+
+                                           {{-- <img src="/asset/sukses.png" width="" height="" alt="..."> --}}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">

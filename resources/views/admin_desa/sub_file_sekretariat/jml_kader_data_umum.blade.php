@@ -17,7 +17,39 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    <a href="{{ url('jml_kader_umum/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
+                                    <div class="row">
+                                        <div class="col-md-1">
+                                           <a href="{{ url('jml_kader_umum/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <!-- Tombol yang memicu modal -->
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSaya">
+                                                Klik Info
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                        <!-- Contoh Modal -->
+                                        <div class="modal fade" id="modalSaya" tabindex="-1" role="dialog" aria-labelledby="modalSayaLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalSayaLabel">Info Kategori Kegiatan POKJA I</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h6 style="font-colour:red">* Kader PKBN (Pembinaan Kesadaran Bela Negara)</h6>
+                                                    <h6 style="font-colour:red">* Kader PKDRT (Pencegahan Kekerasan Dalam Rumah Tangga)</h6>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                    <button type="button" class="btn btn-primary">Oke</button>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
 
                                     <thead>
                                         <tr>
