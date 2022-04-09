@@ -26,7 +26,7 @@
                                             <!-- Tombol yang memicu modal -->
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSaya">
                                                 Klik Info
-                                            </button>
+                                            </button><br><br>
                                         </div>
                                     </div>
 
@@ -42,11 +42,10 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <h6 style="font-colour:red">* TOGA (Tanamaan Obat Keluarga)</h6>
-                                                    <h6 style="font-colour:red">* Kader PKDRT (Pencegahan Kekerasan Dalam Rumah Tangga)</h6>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                                    <button type="button" class="btn btn-primary">Oke</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Oke</button>
+                                                    {{-- <button type="button" class="btn btn-primary">Oke</button> --}}
                                                 </div>
                                             </div>
                                             </div>

@@ -24,12 +24,12 @@
                                         <div class="col-md-1">
                                             <a href="{{ url('industri/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
                                         </div>
-                                        <div class="col-md-1">
+                                        {{-- <div class="col-md-1">
                                             <!-- Tombol yang memicu modal -->
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSaya">
                                                 Klik Info
                                             </button>
-                                        </div>
+                                        </div> --}}
                                     </div>
 
                                         <!-- Contoh Modal -->
@@ -43,7 +43,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <h6 style="font-colour:red">* Kader PKBN (Pembinaan Kesadaran Bela Negara)</h6>
+                                                    <h6 style="font-colour:red">*  PKBN (Pembinaan Kesadaran Bela Negara)</h6>
                                                     <h6 style="font-colour:red">* Kader PKDRT (Pencegahan Kekerasan Dalam Rumah Tangga)</h6>
                                                 </div>
                                                 <div class="modal-footer">

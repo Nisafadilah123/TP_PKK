@@ -79,8 +79,8 @@ class MainController extends Controller
     }
 
     // halaman galeri
-    public function kontak(){
-        return view('main.kontak');
+    public function about(){
+        return view('main.about');
     }
 
 

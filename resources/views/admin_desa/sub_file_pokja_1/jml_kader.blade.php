@@ -25,7 +25,7 @@
                                             <!-- Tombol yang memicu modal -->
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSaya">
                                                 Klik Info
-                                            </button>
+                                            </button><br><br>
                                         </div>
                                     </div>
 
@@ -44,8 +44,8 @@
                                                     <h6 style="font-colour:red">* Kader PKDRT (Pencegahan Kekerasan Dalam Rumah Tangga)</h6>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                                    <button type="button" class="btn btn-primary">Oke</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Oke</button>
+                                                    {{-- <button type="button" class="btn btn-primary">Oke</button> --}}
                                                 </div>
                                             </div>
                                             </div>

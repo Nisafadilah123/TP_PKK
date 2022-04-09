@@ -21,12 +21,12 @@
                                         <div class="col-md-1">
                                            <a href="{{ url('jml_tenaga_umum/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
                                         </div>
-                                        <div class="col-md-1">
+                                        {{-- <div class="col-md-1">
                                             <!-- Tombol yang memicu modal -->
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSaya">
                                                 Klik Info
                                             </button>
-                                        </div>
+                                        </div> --}}
                                     </div>
 
                                         <!-- Contoh Modal -->

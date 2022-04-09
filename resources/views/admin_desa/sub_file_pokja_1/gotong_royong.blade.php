@@ -24,12 +24,12 @@
                                         <div class="col-md-1">
                                             <a href="{{ url('gotong_royong/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
                                         </div>
-                                        <div class="col-md-1">
+                                        {{-- <div class="col-md-1">
                                             <!-- Tombol yang memicu modal -->
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSaya">
                                                 Klik Info
                                             </button>
-                                        </div>
+                                        </div> --}}
                                     </div>
 
                                         <!-- Contoh Modal -->
@@ -43,7 +43,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <h1 style="font-colour:red">*</h1>Ha, ini modal sederhana.liklik
+                                                        <h1 style="font-colour:red">*</h1>klik
                                                         <br/>
                                                         Seri Tutorial Bootstrap 4 lengkap dari dasar sampai mahir.
                                                     </div>

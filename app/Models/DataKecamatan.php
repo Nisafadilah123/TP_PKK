@@ -21,4 +21,8 @@ class DataKecamatan extends Model
     public function user(){
         return $this->hasMany(User::class);
     }
+    public function warga(){
+        return $this->hasMany(DataWarga::class);
+    }
+
 }

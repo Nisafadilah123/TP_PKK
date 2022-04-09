@@ -1,8 +1,8 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Pendidikan dan Keterampilan POKJA II | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Data Warga TP PKK | Admin Desa PKK Kab. Indramayu')
 
-@section('bread', 'Pendidikan dan Keterampilan POKJA II')
+@section('bread', 'Data Warga TP PKK')
 @section('container')
 
     <!-- Main content -->
@@ -20,7 +20,7 @@
                                 <table class="table table-striped table-bordered data" id="add-row">
                                     <div class="row">
                                         <div class="col-md-1">
-                                            <a href="{{ url('pendidikan/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
+                                            <a href="{{ url('data_warga/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
                                         </div>
                                         <div class="col-md-1">
                                             <!-- Tombol yang memicu modal -->
@@ -61,29 +61,27 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Desa</th>
-                                            <th>Jml. Warga Yang Masih 3 Buta</th>
-                                            <th>Jml. Paket A Kelompok Belajar</th>
-                                            <th>Jml. Paket A Warga Belajar</th>
-                                            <th>Jml. Paket B Kelompok Belajar</th>
-                                            <th>Jml. Paket B Warga Belajar</th>
-                                            <th>Jml. Paket C Kelompok Belajar</th>
-                                            <th>Jml. Paket C Warga Belajar</th>
-                                            <th>Jml. Paket KF Kelompok Belajar</th>
-                                            <th>Jml. Paket KF Warga Belajar</th>
-                                            <th>Jml. Paud</th>
-                                            <th>Jml. Taman Bacaan/Perpustakaan</th>
-                                            <th>Jml. BKB Kelompok Belajar</th>
-                                            <th>Jml. BKB Ibu Peserta</th>
-                                            <th>Jml. BKB APE (SET)</th>
-                                            <th>Jml. BKB Kel. Simulasi</th>
-                                            <th>Jml. Kader Khusus KF</th>
-                                            <th>Jml. Kader Khusus Paud Sejenis</th>
-                                            <th>Jml. Kader Khusus BKB</th>
-                                            <th>Jml. Kader Khusus Koperasi</th>
-                                            <th>Jml. Kader Khusus Keterampilan</th>
-                                            <th>Jml. Kader Umum LP3 PKK</th>
-                                            <th>Jml. Kader Umum TPK 3 PKK</th>
-                                            <th>Jml. Kader Umum Damas PKK</th>
+                                            <th>Dasa Wisma</th>
+                                            <th>Nama Kepala Rumah Tangga</th>
+                                            <th>No. Registrasi</th>
+                                            <th>No. KTP/NIK</th>
+                                            <th>Nama</th>
+                                            <th>Jabatan</th>
+                                            <th>Jenis Kelamin</th>
+                                            <th>Tempat Lahir</th>
+                                            <th>Tempat Tanggal Lahir</th>
+                                            <th>Umur</th>
+                                            <th>Status Perkawinan</th>
+                                            <th>Agama</th>
+                                            <th>Alamat</th>
+                                            <th>Pendidikan</th>
+                                            <th>Pekerjaan</th>
+                                            <th>Akseptor KB</th>
+                                            <th>Aktif dalam Kegiatan Posyandu</th>
+                                            <th>Mengikuti Program Bina Keluarga Balita</th>
+                                            <th>Memiliki Tabungan</th>
+                                            <th>Mengikuti PAUD/Sejenis</th>
+                                            <th>Ikut dalam Kegiatan Koperasi</th>
                                             <th>Periode</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -92,42 +90,42 @@
                                     <tbody>
                                         <?php $no=1;?>
 
-                                        @foreach ($pend as $c)
+                                        @foreach ($warga as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
                                         {{-- nama desa yang login --}}
                                         <td style="vertical-align: middle;">{{$c->desa->nama_desa}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_warga_buta}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_pktA_kel_belajar}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_pktA_warga_belajar}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_pktB_kel_belajar}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_pktB_warga_belajar}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_pktC_kel_belajar}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_pktC_warga_belajar}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_KF_kel_belajar}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_KF_warga_belajar}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_paud}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_taman_bacaan}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_BKB_kel_belajar}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_BKB_ibu_peserta}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_BKB_ape}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_BKB_kel_simulasi}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_kader_khusus_KF}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_kader_khusus_paud_sejenis}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_kader_khusus_BKB}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_kader_khusus_koperasi}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_kader_khusus_keterampilan}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_kader_umum_LP3}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_kader_umum_TPK}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jml_kader_umum_damas}}</td>
+                                        <td style="vertical-align: middle;">{{$c->dasa_wisma}}</td>
+                                        <td style="vertical-align: middle;">{{$c->nama_kepala_rumah_tangga}}</td>
+                                        <td style="vertical-align: middle;">{{$c->no_registrasi}}</td>
+                                        <td style="vertical-align: middle;">{{$c->no_ktp}}</td>
+                                        <td style="vertical-align: middle;">{{$c->nama}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jabatan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jenis_kelamin}}</td>
+                                        <td style="vertical-align: middle;">{{$c->tempat_lahir}}</td>
+                                        <td style="vertical-align: middle;">{{$c->tgl_lahir}}</td>
+                                        <td style="vertical-align: middle;">{{$c->umur}}</td>
+                                        <td style="vertical-align: middle;">{{$c->status_perkawinan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->status_keluarga}}</td>
+                                        <td style="vertical-align: middle;">{{$c->agama}}</td>
+                                        <td style="vertical-align: middle;">{{$c->alamat}}</td>
+                                        <td style="vertical-align: middle;">{{$c->pendidikan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->pekerjaan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->akseptor_kb}}</td>
+                                        <td style="vertical-align: middle;">{{$c->aktif_posyandu}}</td>
+                                        <td style="vertical-align: middle;">{{$c->ikut_bkb}}</td>
+                                        <td style="vertical-align: middle;">{{$c->memiliki_tabungan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->ikut_kelompok_belajar}}</td>
+                                        <td style="vertical-align: middle;">{{$c->ikut_paud_sejenis}}</td>
+                                        <td style="vertical-align: middle;">{{$c->ikut_koperasi}}</td>
                                         <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
-                                            <form action="{{ route('pendidikan.destroy',$c->id) }}" method="POST">
+                                            <form action="{{ route('data_warga.destroy',$c->id) }}" method="POST">
 
                                             {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
 
-                                                <a class="btn btn-primary btn-sm" href="{{ url('pendidikan/'.$c->id.'/edit') }}">Edit</a>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('data_warga/'.$c->id.'/edit') }}">Edit</a>
 
                                                 @csrf
                                                 @method('DELETE')
@@ -142,20 +140,6 @@
                                     @endforeach
 
                                     </tbody>
-                                        {{-- <td>
-                                            <a href="/kelompok_belajar" type="button" class="btn btn-primary">Detail</a>
-                                        </td>
-                                        <td>3</td>
-                                        <td>
-                                            <a href="/bkb" type="button" class="btn btn-primary">Detail</a>
-                                        </td>
-                                        <td>
-                                            <a href="/kader_khusus" type="button" class="btn btn-primary">Detail</a>
-                                        </td>
-                                        <td>
-                                            <a href="/kader_umum" type="button" class="btn btn-primary">Detail</a>
-                                        </td> --}}
-
                                 </table>
 
                             </div>

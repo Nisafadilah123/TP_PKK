@@ -124,7 +124,7 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
-                    Data Master
+                    Data Kegiatan POKJA
                     <i class="fas fa-angle-left right"></i>
                     {{-- <span class="badge badge-info right">6</span> --}}
                   </p>

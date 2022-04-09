@@ -89,13 +89,6 @@
         <div class="sidebar">
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            {{-- <div class="image">
-              <img
-                src="{{ url ('image/remove.png') }}"
-                class="img-circle elevation-2"
-                alt="User Image"
-              />
-            </div> --}}
             <div class="info">
               <a href="#" class="d-block">{{ (Auth::user()->name) }}</a>
             </div>
@@ -109,36 +102,66 @@
               role="menu"
               data-accordion="false"
             >
-              <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
                <li class="nav-item has-treeview">
                 <a href="/dashboard" class="nav-link {{ Request::is('dashboard') ? 'active':'' }}">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>
                     Dashboard
-                    <!-- <i class="right fas fa-angle-left"></i> -->
                   </p>
                 </a>
-
               </li>
 
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-copy"></i>
+                    <i class="nav-icon fas fa-edit"></i>
                   <p>
-                    Data Master
+                    Data Kegiatan TP PKK
                     <i class="fas fa-angle-left right"></i>
-                    {{-- <span class="badge badge-info right">6</span> --}}
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                    {{-- <li class="nav-item">
-                    <a href="/data_desa" class="nav-link {{ Request::is('data_desa') ? 'active':'' }}" >
+                  <li class="nav-item">
+                    <a href="/data_warga" class="nav-link {{ Request::is('data_warga') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data wilayah Kelurahan</p>
+                      <p>Data Warga</p>
                     </a>
-                  </li> --}}
-                  {{-- </li> --}}
+                  </li>
+                  <li class="nav-item">
+                    <a href="/data_pokja2" class="nav-link {{ Request::is('data_pokja2') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Data POKJA II</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/data_pokja3" class="nav-link {{ Request::is('data_pokja3') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Data POKJA III</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/data_pokja4" class="nav-link {{ Request::is('data_pokja4') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Data POKJA IV</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Data Sekretariat/Data Umum</p>
+                    </a>
+                  </li>
+
+                </ul>
+              </li>
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Data Kegiatan POKJA
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="/data_pokja1" class="nav-link {{ Request::is('data_pokja1') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>

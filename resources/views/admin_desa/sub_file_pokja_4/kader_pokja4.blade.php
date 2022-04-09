@@ -25,7 +25,7 @@
                                             <!-- Tombol yang memicu modal -->
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSaya">
                                                 Klik Info
-                                            </button>
+                                            </button><br><br>
                                         </div>
                                     </div>
 
@@ -40,12 +40,13 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <h6 style="font-colour:red">* Kader PKBN (Pembinaan Kesadaran Bela Negara)</h6>
-                                                    <h6 style="font-colour:red">* Kader PKDRT (Pencegahan Kekerasan Dalam Rumah Tangga)</h6>
+                                                    <h6 style="font-colour:red">* Kesling KBN (Puskesmas Keliling)</h6>
+                                                    <h6 style="font-colour:red">* KB (Keluarga Berencana)</h6>
+                                                    <h6 style="font-colour:red">* PHBS (Keluarga Berencana)</h6>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                                    <button type="button" class="btn btn-primary">Oke</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Oke</button>
+                                                    {{-- <button type="button" class="btn btn-primary"></button> --}}
                                                 </div>
                                             </div>
                                             </div>

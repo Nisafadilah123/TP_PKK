@@ -13,17 +13,17 @@
     >
       <div class="row justify-content-center">
         <div class="col-xl-7 col-lg-9 text-center">
-          {{-- <h4>
+          <h4>
             TENTANG PEMBERDAYAAN & KESEJAHTERAAN KELUARGA (PKK) KAB. INDRAMAYU
-          </h4> --}}
+          </h4>
           <!-- <h2>We are team of talented designers</h2> -->
         </div>
       </div>
-      {{-- <div class="text-center">
-        <a href="#about" class="btn-get-started scrollto"
+      <div class="text-center">
+        <a href="/about" class="btn-get-started scrollto"
           >Baca Selengkapnya</a
         >
-      </div> --}}
+      </div>
 
       <div class="row icon-boxes">
         <!-- <div

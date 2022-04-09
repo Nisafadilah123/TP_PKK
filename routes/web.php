@@ -21,6 +21,7 @@ use App\Http\Controllers\AdminDesa\DataUmum\JumlahDataUmumController;
 use App\Http\Controllers\AdminDesa\DataUmum\JumlahJiwaDataUmumController;
 use App\Http\Controllers\AdminDesa\DataUmum\JumlahKaderDataUmumController;
 use App\Http\Controllers\AdminDesa\DataUmum\JumlahTenagaSekretariatDataUmumController;
+use App\Http\Controllers\AdminDesa\form_data\DataWargaController;
 use App\Http\Controllers\AdminKab\BeritaController;
 use App\Http\Controllers\AdminKabController;
 use App\Http\Controllers\AdminKecController;
@@ -84,7 +85,7 @@ Route::get('/baganmekpkk', [MainController::class, 'bagan_mekanis_pkk']);
 Route::get('/berita', [MainController::class, 'berita']);
 Route::get('/agenda', [MainController::class, 'agenda']);
 Route::get('/galeri', [MainController::class, 'galeri']);
-Route::get('/kontak', [MainController::class, 'kontak']);
+Route::get('/about', [MainController::class, 'about']);
 
 // halaman pokja
 Route::get('/pokja1', [PokjaController::class, 'pokja1']);
@@ -143,6 +144,13 @@ Route::middleware(['auth', 'user_type:admin_desa'])->group(function () {
     Route::resource('/jml_jiwa_umum', JumlahJiwaDataUmumController::class);
     Route::resource('/jml_tenaga_umum', JumlahTenagaSekretariatDataUmumController::class);
     Route::resource('/jml_kader_umum', JumlahKaderDataUmumController::class);
+
+    // form data warga
+    Route::resource('/data_warga', DataWargaController::class);
+    // Route::resource('/jml_data_umum', JumlahDataUmumController::class);
+    // Route::resource('/jml_jiwa_umum', JumlahJiwaDataUmumController::class);
+    // Route::resource('/jml_tenaga_umum', JumlahTenagaSekretariatDataUmumController::class);
+    // Route::resource('/jml_kader_umum', JumlahKaderDataUmumController::class);
 });
 
 // halaman admin kec

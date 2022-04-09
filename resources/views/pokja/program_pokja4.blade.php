@@ -13,19 +13,33 @@
             <li><a href="/">Home</a></li>
             <li>Program POKJA IV</li>
           </ol>
-        </div>
+        </div><br><br>
+
+        <div class="content">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-body">
+                <h2>Pokja IV sebagai pengelola program:</h2>
+                <p style="font-family: 'Times New Roman', Times, serif">a) Kesehatan.</p>
+                <p style="font-family: 'Times New Roman', Times, serif">b) Kelestarian Lingkungan Hidup.</p>
+                <p style="font-family: 'Times New Roman', Times, serif">c) Perencanaan Sehat.</p>
+
+                    </div>
+                  </div>
+                </div>
+                <!-- /.col-md-6 -->
+              </div>
+              <!-- /.row -->
+            </div><!-- /.container-fluid -->
+          </div>
+
       </div>
     </section>
     <!-- End Breadcrumbs -->
 
-    <!-- ======= Portfolio Details Section ======= -->
-    <section id="portfolio-details" class="portfolio-details">
-      <div class="container">
-        {{-- <h1>Profil Pembina</h1> --}}
 
-      </div>
-    </section>
-    <!-- End Portfolio Details Section -->
   </main>
 
 
