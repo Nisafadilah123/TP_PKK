@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AdminDesa\form_data;
+namespace App\Http\Controllers\AdminDesa\DataKegiatan;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
 use App\Models\DataWarga;
@@ -19,7 +19,7 @@ class DataWargaController extends Controller
     {
         //halaman form data warga
         $warga=DataWarga::all();
-        return view('admin_desa.form_data.data_warga', compact('warga'));
+        return view('admin_desa.data_kegiatan.data_warga', compact('warga'));
     }
 
     /**
@@ -38,7 +38,7 @@ class DataWargaController extends Controller
      ->where('id', auth()->user()->id_kecamatan)
      ->get();
 
-     return view('admin_desa.form_data.form.create_data_warga', compact('desas', 'kec'));
+     return view('admin_desa.data_kegiatan.form.create_data_warga', compact('desas', 'kec'));
 
  }
 
@@ -51,6 +51,8 @@ class DataWargaController extends Controller
     public function store(Request $request)
     {
         // proses penyimpanan untuk tambah data jml kader
+        // dd($request->all());
+
         $request->validate([
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
@@ -90,25 +92,25 @@ class DataWargaController extends Controller
             'no_ktp.required' => 'Lengkapi No. KTP/NIK',
             'nama.required' => 'Lengkapi Nama',
             'jabatan.required' => 'Lengkapi Jabatan dalam Struktur TP PKK',
-            // 'jenis_kelamin.required' => 'Lengkapi Jenis Kelamin',
+            'jenis_kelamin.required' => 'Lengkapi Jenis Kelamin',
             'tempat_lahir.required' => 'Lengkapi Jumlah Tempat Lahir',
             'tgl_lahir.required' => 'Lengkapi Tanggal Lahir',
             'umur.required' => 'Lengkapi Umur',
-            // 'status_perkawinan.required' => 'Lengkapi Jumlah Taman Bacaan/Perpustakaan',
-            // 'status_keluarga.required' => 'Lengkapi Jumlah BKB Kelompok Belajar',
-            // 'agama.required' => 'Lengkapi Jumlah BKB Ibu Peserta',
+            'status_perkawinan.required' => 'Lengkapi Jumlah Taman Bacaan/Perpustakaan',
+            'status_keluarga.required' => 'Lengkapi Jumlah BKB Kelompok Belajar',
+            'agama.required' => 'Lengkapi Jumlah BKB Ibu Peserta',
             'alamat.required' => 'Lengkapi Alamat',
             'kota.required' => 'Lengkapi Kota',
             'provinsi.required' => 'Lengkapi Provinsi',
-            // 'pendidikan.required' => 'Lengkapi Jumlah BKB Kelompok Simulasi',
-            // 'pekerjaan.required' => 'Lengkapi Jumlah Kader Khusus KF',
-            // 'akseptor_kb.required' => 'Lengkapi Jumlah Kader Khusus Paud Sejenis',
-            // 'aktif_posyandu.required' => 'Lengkapi Jumlah Kader Khusus BKB',
-            // 'ikut_bkb.required' => 'Lengkapi Jumlah Kader Khusus Koperasi',
-            // 'memiliki_tabungan.required' => 'Lengkapi Jumlah Kader Khusus Keterampilan',
-            // 'ikut_kelompok_belajar.required' => 'Lengkapi Jumlah Kader Umum LP3',
-            // 'ikut_paud_sejenis.required' => 'Lengkapi Jumlah Kader Umum TPK',
-            // 'ikut_koperasi.required' => 'Lengkapi Jumlah Kader Khusus Damas',
+            'pendidikan.required' => 'Lengkapi Jumlah BKB Kelompok Simulasi',
+            'pekerjaan.required' => 'Lengkapi Jumlah Kader Khusus KF',
+            'akseptor_kb.required' => 'Lengkapi Jumlah Kader Khusus Paud Sejenis',
+            'aktif_posyandu.required' => 'Lengkapi Jumlah Kader Khusus BKB',
+            'ikut_bkb.required' => 'Lengkapi Jumlah Kader Khusus Koperasi',
+            'memiliki_tabungan.required' => 'Lengkapi Jumlah Kader Khusus Keterampilan',
+            'ikut_kelompok_belajar.required' => 'Lengkapi Jumlah Kader Umum LP3',
+            'ikut_paud_sejenis.required' => 'Lengkapi Jumlah Kader Umum TPK',
+            'ikut_koperasi.required' => 'Lengkapi Jumlah Kader Khusus Damas',
             'periode.required' => 'Lengkapi Periode',
 
         ]);
@@ -119,9 +121,9 @@ class DataWargaController extends Controller
             return redirect('/data_warga');
         }
         else {
-        // cara 1
+        //cara 1
 
-            $wargas = new DataWarga();
+            $wargas = new DataWarga;
             $wargas->id_desa = $request->id_desa;
             $wargas->id_kecamatan = $request->id_kecamatan;
             $wargas->dasa_wisma = $request->dasa_wisma;
@@ -150,13 +152,13 @@ class DataWargaController extends Controller
             $wargas->ikut_paud_sejenis = $request->ikut_paud_sejenis;
             $wargas->ikut_koperasi = $request->ikut_koperasi;
             $wargas->periode = $request->periode;
-
             $wargas->save();
+            // $input = $request->all();
 
+            // $post = DataWarga::create($input);
             Alert::success('Berhasil', 'Data berhasil di tambahkan');
-            dd($wargas);
 
-            // return redirect('/data_warga');
+            return redirect('/data_warga');
             }
     }
 
@@ -184,7 +186,10 @@ class DataWargaController extends Controller
         $desas = Data_Desa::where('id', auth()->user()->id_desa)
         ->get();
 
-        return view('admin_desa.form_data.form.edit_pendidikan', compact('data_warga','desa','desas'));
+        $kec = DB::table('data_kecamatan')
+        ->where('id', auth()->user()->id_kecamatan)
+        ->get();
+        return view('admin_desa.data_kegiatan.form.edit_data_warga', compact('data_warga','desa','desas','kec'));
 
     }
 
@@ -198,8 +203,11 @@ class DataWargaController extends Controller
     public function update(Request $request, DataWarga $data_warga)
     {
         // proses mengubah untuk tambah data pendidikan
+        // dd($request->all());
+
         $request->validate([
             'id_desa' => 'required',
+            'id_kecamatan' => 'required',
             'dasa_wisma' => 'required',
             'nama_kepala_rumah_tangga' => 'required',
             'no_registrasi' => 'required',
@@ -214,6 +222,8 @@ class DataWargaController extends Controller
             'status_keluarga' => 'required',
             'agama' => 'required',
             'alamat' => 'required',
+            'kota' => 'required',
+            'provinsi' => 'required',
             'pendidikan' => 'required',
             'pekerjaan' => 'required',
             'akseptor_kb' => 'required',
@@ -226,16 +236,16 @@ class DataWargaController extends Controller
             'periode' => 'required',
 
         ]);
-        $update=DB::table('data_warga')->where('no_ktp', $request->no_ktp)->first();
+        $update=DB::table('data_warga')->where('periode', $request->periode)->first();
         if ($update != null) {
-            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah. No.KTP Sudah Ada ');
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah. Periode Sudah Ada ');
             return redirect('/data_warga');
         }
         else {
             $data_warga->update($request->all());
             Alert::success('Berhasil', 'Data berhasil di ubah');
             // dd($jml_kader);
-            return redirect('/data$data_warga');
+            return redirect('/data_warga');
         }
     }
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PokjaController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminDesa\DataKegiatan\DataKegiatanWargaController;
 use App\Http\Controllers\AdminDesa\DataPokja1\GotongRoyongController;
 use App\Http\Controllers\AdminDesa\DataPokja1\JumlahKaderPokja1Controller;
 use App\Http\Controllers\AdminDesa\DataPokja1\PenghayatanDanPengamalanController;
@@ -21,7 +22,7 @@ use App\Http\Controllers\AdminDesa\DataUmum\JumlahDataUmumController;
 use App\Http\Controllers\AdminDesa\DataUmum\JumlahJiwaDataUmumController;
 use App\Http\Controllers\AdminDesa\DataUmum\JumlahKaderDataUmumController;
 use App\Http\Controllers\AdminDesa\DataUmum\JumlahTenagaSekretariatDataUmumController;
-use App\Http\Controllers\AdminDesa\form_data\DataWargaController;
+use App\Http\Controllers\AdminDesa\DataKegiatan\DataWargaController;
 use App\Http\Controllers\AdminKab\BeritaController;
 use App\Http\Controllers\AdminKabController;
 use App\Http\Controllers\AdminKecController;
@@ -52,6 +53,7 @@ use App\Http\Controllers\SuperAdmin\UserController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Middleware\Authenticate;
 use App\Models\BeritaKab;
+use App\Models\DataKegiatanWarga;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -147,7 +149,7 @@ Route::middleware(['auth', 'user_type:admin_desa'])->group(function () {
 
     // form data warga
     Route::resource('/data_warga', DataWargaController::class);
-    // Route::resource('/jml_data_umum', JumlahDataUmumController::class);
+    Route::resource('/data_kegiatan', DataKegiatanWargaController::class);
     // Route::resource('/jml_jiwa_umum', JumlahJiwaDataUmumController::class);
     // Route::resource('/jml_tenaga_umum', JumlahTenagaSekretariatDataUmumController::class);
     // Route::resource('/jml_kader_umum', JumlahKaderDataUmumController::class);

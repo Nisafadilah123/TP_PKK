@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class DataWarga extends Model
 {
     use HasFactory;
-    protected $table = "pendidikan";
+    protected $table = "data_warga";
     protected $primaryKey = 'id';
 
     protected $fillable = [
@@ -24,4 +24,8 @@ class DataWarga extends Model
         return $this->belongsTo(DataKecamatan::class, 'id_kecamatan');
     }
 
+    // data_kegiatan_warga
+    public function kegiatan(){
+        return $this->hasMany(DataKegiatanWarga::class);
+    }
 }

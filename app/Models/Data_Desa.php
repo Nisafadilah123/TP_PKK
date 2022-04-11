@@ -91,6 +91,7 @@ class Data_Desa extends Model
         return $this->hasMany(JumlahTenagaSekretariatDataUmum::class);
     }
 
+    // data_warga
     public function warga(){
         return $this->hasMany(DataWarga::class);
     }

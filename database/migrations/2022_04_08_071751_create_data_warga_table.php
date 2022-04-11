@@ -44,7 +44,7 @@ return new class extends Migration
             $table->string('ikut_kelompok_belajar');
             $table->string('ikut_paud_sejenis');
             $table->string('ikut_koperasi');
-            $table->string('periode');
+            $table->integer('periode');
             $table->timestamps();
         });
     }
