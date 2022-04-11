@@ -19,18 +19,22 @@
         <div class="card-body">
             <div class="form-group">
               <label for="exampleFormControlSelect1">Nama Warga</label>
-              <select class="form-control" id="id_desa" name="id_desa">
+              <select class="form-control" id="id_warga" name="id_warga">
                 {{-- nama warga --}}
                 @foreach ($keg as $c)
                     <option value="{{$c->id_warga }}">  {{$c->id }}-{{ $c->nama }}</option>
                 @endforeach
-            </select>
-              </div>
-        </div>
-        <div class="card-body">
+                </select>
+            </div>
+
           <div class="form-group">
             <label>Nama Kegiatan</label>
-            <input type="text" class="form-control" name="jml_kader_PKBN" id="jml_kader_PKBN" placeholder="Masukkan Nama Kegiatan" required>
+            <select class="form-control" id="id_kegiatan" name="id_kegiatan">
+                {{-- nama warga --}}
+                @foreach ($kat as $c)
+                    <option value="{{$c->id_kegiatan }}">  {{$c->id }}-{{ $c->nama_kegiatan }}</option>
+                @endforeach
+            </select>
           </div>
           <div class="form-group">
             <label>Aktivitas</label><br>

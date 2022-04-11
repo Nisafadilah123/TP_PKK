@@ -30,8 +30,7 @@
                  @endforeach
                 {{-- </select> --}}
               </div>
-        </div>
-        <div class="card-body">
+
           <div class="form-group">
             <label>Jumlah Industri Sandang</label>
             <input min="0" type="number" class="form-control" name="jml_industri_sandang" id="jml_industri_sandang" placeholder="Masukkan Jumlah Industri Sandang" required value="{{ucfirst(old('jml_industri_sandang', $industri->jml_industri_sandang))}}">

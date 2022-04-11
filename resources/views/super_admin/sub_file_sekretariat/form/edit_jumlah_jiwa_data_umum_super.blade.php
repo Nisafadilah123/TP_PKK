@@ -25,12 +25,11 @@
                       @foreach ($desas as $c)
                       <option value="{{ $c->id }}" {{ $c->id === $jml_jiwa_umum_super->id_desa ? 'selected' : '' }}>
                         {{ $c->kode_desa }}-{{ $c->nama_desa }}
-                    </option>
+                        </option>
                       @endforeach
                   </select>
               </div>
-        </div>
-        <div class="card-body">
+
           <div class="form-group">
             <label>Jumlah Jiwa Data Umum Laki-laki</label>
             <input min="0" type="number" class="form-control" name="jml_jiwa_data_umum_laki" id="jml_jiwa_data_umum_laki" placeholder="Masukkan Jumlah Jiwa Data Umum Laki-laki" required value="{{ucfirst(old('jml_jiwa_data_umum_laki', $jml_jiwa_umum_super->jml_jiwa_data_umum_laki))}}">

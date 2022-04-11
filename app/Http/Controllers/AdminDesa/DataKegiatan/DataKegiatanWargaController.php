@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
 use App\Models\DataKegiatanWarga;
 use App\Models\DataWarga;
+use App\Models\Kegiatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -36,8 +37,10 @@ class DataKegiatanWargaController extends Controller
      ->get();
 
      $keg = DataWarga::all();
+     $kat = Kegiatan::all();
+
     //  dd($keg);
-     return view('admin_desa.data_kegiatan.form.create_data_kegiatan', compact('desas', 'keg'));
+     return view('admin_desa.data_kegiatan.form.create_data_kegiatan', compact('desas', 'keg', 'kat'));
 
  }
 
@@ -50,18 +53,18 @@ class DataKegiatanWargaController extends Controller
     public function store(Request $request)
     {
         // proses penyimpanan untuk tambah data jml kader
-        // dd($request->all());
+        dd($request->all());
 
         $request->validate([
             'id_warga' => 'required',
-            'nama_kegiatan' => 'required',
+            'id_kegiatan' => 'required',
             'aktivitas' => 'required',
             'keterangan' => 'required',
             'periode' => 'required',
 
         ], [
             'id_warga.required' => 'Lengkapi Id Desa',
-            'nama_kegiatan' => 'Lengkapi Id Desa',
+            'id_kegiatan.required' => 'Lengkapi Id Desa',
             'aktivitas.required' => 'Lengkapi Nama Kepala Rumah Tangga',
             'keterangan.required' => 'Lengkapi No. KTP/NIK',
             'periode.required' => 'Lengkapi Periode',
@@ -78,7 +81,7 @@ class DataKegiatanWargaController extends Controller
 
             $kegiatans = new DataKegiatanWarga;
             $kegiatans->id_warga = $request->id_warga;
-            $kegiatans->nama_kegiatan = $request->nama_kegiatan;
+            $kegiatans->id_kegiatan = $request->id_kegiatan;
             $kegiatans->aktivitas = $request->aktivitas;
             $kegiatans->keterangan = $request->keterangan;
             $kegiatans->periode = $request->periode;
@@ -117,7 +120,7 @@ class DataKegiatanWargaController extends Controller
         ->get();
 
         $kec = DB::table('data_kecamatan')
-        ->where('id', auth()->user()->nama_kegiatan)
+        ->where('id', auth()->user()->id_kegiatan)
         ->get();
         return view('admin_desa.data_kegiatan.form.edit_data_kegiatan', compact('data_kegiatan','desa','desas','kec'));
 
@@ -137,13 +140,13 @@ class DataKegiatanWargaController extends Controller
 
         $request->validate([
             'id_warga' => 'required',
-            'nama_kegiatan' => 'required',
+            'id_kegiatan' => 'required',
             'aktivitas' => 'required',
             'keterangan' => 'required',
             'periode' => 'required',
 
         ]);
-        $update=DB::table('data_kegiatan')->where('periode', $request->periode)->first();
+        $update=DB::table('data_kegiatan_warga')->where('periode', $request->periode)->first();
         if ($update != null) {
             Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah. Periode Sudah Ada ');
             return redirect('/data_kegiatan');

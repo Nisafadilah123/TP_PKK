@@ -26,8 +26,7 @@
                       @endforeach
                   </select>
               </div>
-        </div>
-        <div class="card-body">
+
           <div class="form-group">
             <label>Jumlah Jiwa Data Umum Laki-laki</label>
             <input min="0" type="number" class="form-control" name="jml_jiwa_data_umum_laki" id="jml_jiwa_data_umum_laki" placeholder="Masukkan Jumlah Jiwa Data Umum Laki-laki" required>

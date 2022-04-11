@@ -26,8 +26,7 @@
                       @endforeach
                   </select>
               </div>
-        </div>
-        <div class="card-body">
+
           <div class="form-group">
             <label>Jumlah kader Pangan</label>
             <input min="0" type="number" class="form-control" name="jml_kader_pangan" id="jml_kader_pangan" placeholder="Masukkan Jumlah kader Pangan" required>

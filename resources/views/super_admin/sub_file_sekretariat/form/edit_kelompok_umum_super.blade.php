@@ -29,8 +29,7 @@
                       @endforeach
                   </select>
               </div>
-        </div>
-        <div class="card-body">
+
           <div class="form-group">
             <label>Jumlah Kelompok PKK Dusun</label>
             <input min="0" type="number" class="form-control" name="jml_pkk_dusun" id="jml_pkk_dusun" placeholder="Masukkan Jumlah Kelompok PKK Dusun" required value="{{ucfirst(old('jml_pkk_dusun', $kelompok_super->jml_pkk_dusun))}}">

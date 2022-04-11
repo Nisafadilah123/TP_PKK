@@ -28,8 +28,7 @@
                      @endforeach
                     {{-- </select> --}}
               </div>
-        </div>
-        <div class="card-body">
+
           <div class="form-group">
             <label>Jumlah Rumah Sehat</label>
             <input min="0" type="number" class="form-control" name="jml_rumah_sehat" id="jml_rumah_sehat" placeholder="Masukkan Jumlah Rumah Sehat" required>

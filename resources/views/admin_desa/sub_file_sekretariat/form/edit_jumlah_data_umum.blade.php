@@ -29,8 +29,7 @@
                         @endforeach
                         {{-- </select> --}}
               </div>
-        </div>
-        <div class="card-body">
+
           <div class="form-group">
             <label>Jumlah KRT Data Umum</label>
             <input min="0" type="number" class="form-control" name="jml_krt_data_umum" id="jml_krt_data_umum" placeholder="Masukkan Jumlah KRT Data Umum" required value="{{ucfirst(old('jml_krt_data_umum', $jml_data_umum->jml_krt_data_umum))}}">

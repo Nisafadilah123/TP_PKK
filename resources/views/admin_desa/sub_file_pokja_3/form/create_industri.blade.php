@@ -28,8 +28,7 @@
                 @endforeach
              {{-- </select> --}}
               </div>
-        </div>
-        <div class="card-body">
+
           <div class="form-group">
             <label>Jumlah Industri Pangan</label>
             <input min="0" type="number" class="form-control" name="jml_industri_pangan" id="jml_industri_pangan" placeholder="Masukkan Jumlah industri Pangan" required>
