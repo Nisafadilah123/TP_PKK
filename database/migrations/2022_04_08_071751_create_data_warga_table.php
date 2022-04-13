@@ -31,6 +31,7 @@ return new class extends Migration
             $table->integer('umur');
             $table->string('status_perkawinan');
             $table->string('status_keluarga');
+            $table->string('status')->nullable();
             $table->string('agama');
             $table->string('alamat');
             $table->string('kota');

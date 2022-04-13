@@ -15,9 +15,7 @@ class Kegiatan extends Model
        'nama_kegiatan'
     ];
 
-    public function warga(){
-        return $this->belongsTo(DataWarga::class, 'id_warga');
-    }
+
 
     public function kegiatan(){
         return $this->hasMany(DataKegiatanWarga::class);

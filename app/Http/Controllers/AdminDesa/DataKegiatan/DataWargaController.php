@@ -138,6 +138,7 @@ class DataWargaController extends Controller
             $wargas->umur = $request->umur;
             $wargas->status_perkawinan = $request->status_perkawinan;
             $wargas->status_keluarga = $request->status_keluarga;
+            $wargas->status = $request->status;
             $wargas->agama = $request->agama;
             $wargas->alamat = $request->alamat;
             $wargas->kota = $request->kota;
@@ -236,17 +237,12 @@ class DataWargaController extends Controller
             'periode' => 'required',
 
         ]);
-        $update=DB::table('data_warga')->where('periode', $request->periode)->first();
-        if ($update != null) {
-            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah. Periode Sudah Ada ');
-            return redirect('/data_warga');
-        }
-        else {
+
             $data_warga->update($request->all());
             Alert::success('Berhasil', 'Data berhasil di ubah');
             // dd($jml_kader);
             return redirect('/data_warga');
-        }
+
     }
 
     /**

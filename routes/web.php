@@ -23,6 +23,7 @@ use App\Http\Controllers\AdminDesa\DataUmum\JumlahJiwaDataUmumController;
 use App\Http\Controllers\AdminDesa\DataUmum\JumlahKaderDataUmumController;
 use App\Http\Controllers\AdminDesa\DataUmum\JumlahTenagaSekretariatDataUmumController;
 use App\Http\Controllers\AdminDesa\DataKegiatan\DataWargaController;
+use App\Http\Controllers\AdminDesa\KaderController;
 use App\Http\Controllers\AdminKab\BeritaController;
 use App\Http\Controllers\AdminKabController;
 use App\Http\Controllers\AdminKecController;
@@ -150,7 +151,7 @@ Route::middleware(['auth', 'user_type:admin_desa'])->group(function () {
     // form data warga
     Route::resource('/data_warga', DataWargaController::class);
     Route::resource('/data_kegiatan', DataKegiatanWargaController::class);
-    // Route::resource('/jml_jiwa_umum', JumlahJiwaDataUmumController::class);
+    Route::resource('/data_kader', KaderController::class);
     // Route::resource('/jml_tenaga_umum', JumlahTenagaSekretariatDataUmumController::class);
     // Route::resource('/jml_kader_umum', JumlahKaderDataUmumController::class);
 });

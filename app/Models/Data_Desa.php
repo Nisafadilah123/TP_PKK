@@ -96,4 +96,9 @@ class Data_Desa extends Model
         return $this->hasMany(DataWarga::class);
     }
 
+    // data_warga
+    public function keluarga(){
+        return $this->hasMany(DataKeluarga::class);
+    }
+
 }

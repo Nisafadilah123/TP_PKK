@@ -52,7 +52,7 @@
           <div class="form-group">
             <label>Periode</label>
                 <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
-                    <option value="0" {{ $jml_kader->periode ? 'selected' : '' }}>{{ $jml_kader->periode }}</option>
+                    <option value="" {{ $jml_kader->periode ? 'selected' : '' }}>{{ $jml_kader->periode }}</option>
                         <?php
                         $year = date('Y');
                         $min = $year ;

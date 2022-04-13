@@ -38,6 +38,7 @@ class DataKegiatanWargaController extends Controller
 
      $keg = DataWarga::all();
      $kat = Kegiatan::all();
+    //  $keg = DataWarga::with('kegiatan')->get();
 
     //  dd($keg);
      return view('admin_desa.data_kegiatan.form.create_data_kegiatan', compact('desas', 'keg', 'kat'));
@@ -53,7 +54,7 @@ class DataKegiatanWargaController extends Controller
     public function store(Request $request)
     {
         // proses penyimpanan untuk tambah data jml kader
-        dd($request->all());
+        // dd($request->all());
 
         $request->validate([
             'id_warga' => 'required',
@@ -115,14 +116,12 @@ class DataKegiatanWargaController extends Controller
     public function edit(DataKegiatanWarga $data_kegiatan)
     {
         //halaman edit data pendidikan
-        $desa = DataKegiatanWarga::with('desa')->first();
-        $desas = Data_Desa::where('id', auth()->user()->id_warga)
-        ->get();
+        $keg = DataWarga::all();
+        $kat = Kegiatan::all();
 
-        $kec = DB::table('data_kecamatan')
-        ->where('id', auth()->user()->id_kegiatan)
-        ->get();
-        return view('admin_desa.data_kegiatan.form.edit_data_kegiatan', compact('data_kegiatan','desa','desas','kec'));
+        // dd($keg);
+
+        return view('admin_desa.data_kegiatan.form.edit_data_kegiatan', compact('data_kegiatan','keg', 'kat'));
 
     }
 
@@ -146,17 +145,12 @@ class DataKegiatanWargaController extends Controller
             'periode' => 'required',
 
         ]);
-        $update=DB::table('data_kegiatan_warga')->where('periode', $request->periode)->first();
-        if ($update != null) {
-            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah. Periode Sudah Ada ');
-            return redirect('/data_kegiatan');
-        }
-        else {
+
             $data_kegiatan->update($request->all());
             Alert::success('Berhasil', 'Data berhasil di ubah');
             // dd($jml_kader);
             return redirect('/data_kegiatan');
-        }
+
     }
 
     /**
@@ -171,6 +165,8 @@ class DataKegiatanWargaController extends Controller
         $warg::find($data_kegiatan)->delete();
 
         return redirect('/data_kegiatan')->with('status', 'sukses');
+
+
 
     }
 }

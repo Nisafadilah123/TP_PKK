@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('data_desa', function (Blueprint $table) {
+        Schema::create('data_kader', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_kecamatan')->unsigned();
-            $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan');
-
-            $table->string('kode_desa');
-            $table->string('nama_desa');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('user_type')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_desa');
+        Schema::dropIfExists('data_kader');
     }
 };
