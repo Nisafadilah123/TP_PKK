@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataWarga;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -10,8 +11,6 @@ class AdminController extends Controller
         public function dashboard(){
             return view('admin_desa.dashboard');
         }
-
-
 
         // halaman data pokja1
         public function data_pokja1(){
@@ -49,9 +48,10 @@ class AdminController extends Controller
         }
 
 
-        // halaman data makanan pokok
-        public function makanan(){
-            return view('admin_desa.sub_file_pokja_3.makanan');
+        // halaman data rekap data warga pkk
+        public function rekap_data_warga(){
+            $warga = DataWarga::all();
+            return view('admin_desa.data_rekap.rekap_data_warga', compact('warga'));
         }
 
 

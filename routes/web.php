@@ -109,10 +109,9 @@ Route::middleware(['auth', 'user_type:admin_desa'])->group(function () {
     Route::get('/data_pokja2', [AdminController::class, 'data_pokja2']);
     Route::get('/data_pokja3', [AdminController::class, 'data_pokja3']);
     Route::get('/data_pokja4', [AdminController::class, 'data_pokja4']);
-    Route::get('/pengguna', [AdminController::class, 'data_pengguna']);
     Route::get('/laporan', [AdminController::class, 'data_laporan']);
     Route::get('/data_sekretariat', [AdminController::class, 'data_sekretariat']);
-    // Route::get('/makanan', [AdminController::class, 'makanan']);
+    Route::get('/rekap_data_warga', [AdminController::class, 'rekap_data_warga']);
 
     // form data_pokja1
     Route::resource('/jml_kader', JumlahKaderPokja1Controller::class);
@@ -121,16 +120,10 @@ Route::middleware(['auth', 'user_type:admin_desa'])->group(function () {
 
     // form data_pokja2
     Route::resource('/pendidikan', PendidikanController::class);
-    // Route::resource('/bkb', bkb_pokja2Controller::class);
-    // Route::resource('/kader_khusus', kader_khusus_pokja2Controller::class);
-    // Route::resource('/kader_umum', kader_umum_pokja2Controller::class);
     Route::resource('/koperasi', KehidupanBerkoperasiController::class);
-    // Route::resource('/kelompok_belajar', kelompok_belajarController::class);
 
     // form data_pokja3
     Route::resource('/kader', JumlahKaderPokja3Controller::class);
-    // Route::resource('/makanan', makanan_pokja3Controller::class);
-    // Route::resource('/pemanfaatan', pemanfaatan_pokja3Controller::class);
     Route::resource('/industri', JumlahIndustriRumahTanggaController::class);
     Route::resource('/rumah', JumlahRumahController::class);
     Route::resource('/pangan', PanganController::class);
@@ -152,9 +145,10 @@ Route::middleware(['auth', 'user_type:admin_desa'])->group(function () {
     Route::resource('/data_warga', DataWargaController::class);
     Route::resource('/data_kegiatan', DataKegiatanWargaController::class);
     Route::resource('/data_kader', KaderController::class);
-    // Route::resource('/jml_tenaga_umum', JumlahTenagaSekretariatDataUmumController::class);
-    // Route::resource('/jml_kader_umum', JumlahKaderDataUmumController::class);
 });
+
+// halaman kader desa
+
 
 // halaman admin kec
 Route::get('/dashboard_kec', [AdminKecController::class, 'dashboard_kec']);
@@ -199,16 +193,10 @@ Route::middleware(['auth', 'user_type:superadmin'])->group(function(){
 
     // form data_pokja2
     Route::resource('/pendidikan_super', PendidikanSuperController::class);
-    // Route::resource('/bkb', bkb_pokja2Controller::class);
-    // Route::resource('/kader_khusus', kader_khusus_pokja2Controller::class);
-    // Route::resource('/kader_umum', kader_umum_pokja2Controller::class);
     Route::resource('/koperasi_super', KehidupanBerkoperasiSuperController::class);
-    // Route::resource('/kelompok_belajar', kelompok_belajarController::class);
 
     // form data_pokja3
     Route::resource('/kader_super', JumlahKaderPokja3SuperController::class);
-    // Route::resource('/makanan', makanan_pokja3Controller::class);
-    // Route::resource('/pemanfaatan', pemanfaatan_pokja3Controller::class);
     Route::resource('/industri_super', JumlahIndustriRumahTanggaSuperController::class);
     Route::resource('/rumah_super', JumlahRumahSuperController::class);
     Route::resource('/pangan_super', PanganSuperController::class);

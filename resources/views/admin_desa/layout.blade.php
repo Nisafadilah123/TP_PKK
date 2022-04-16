@@ -127,7 +127,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/data_kegiatan" class="nav-link {{ Request::is('data_kegiatan') ? 'active':'' }}">
+                    <a href="/data_kegiatan" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data Kegiatan Warga</p>
                     </a>
@@ -192,9 +192,58 @@
                       <p>Data Sekretariat/Data Umum</p>
                     </a>
                   </li>
-
                 </ul>
               </li>
+
+              <li class="nav-item">
+                <a href="/data_kader" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Data Kader TP PKK</p>
+                </a>
+              </li>
+
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-archive"></i>
+                  <p>
+                        Data Rekapitulasi
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="/rekap_data_warga" class="nav-link {{ Request::is('rekap_data_warga') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Rekap Data Warga</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/data_pokja2" class="nav-link {{ Request::is('data_pokja2') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Data POKJA II</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/data_pokja3" class="nav-link {{ Request::is('data_pokja3') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Data POKJA III</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/data_pokja4" class="nav-link {{ Request::is('data_pokja4') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Data POKJA IV</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Data Sekretariat/Data Umum</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
               <li class="nav-item">
                 <a href="/laporan" class="nav-link">
                     <i class="nav-icon fas fa-folder-open"></i>
@@ -202,12 +251,7 @@
                 </a>
               </li>
 
-              <li class="nav-item">
-                <a href="/pengguna" class="nav-link">
-                <i class="nav-icon fas fa-user"></i>
-                  <p>Data Kader TP PKK</p>
-                </a>
-              </li>
+
 
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}"

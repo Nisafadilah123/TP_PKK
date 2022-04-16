@@ -68,6 +68,7 @@ class DataWargaController extends Controller
             'umur' => 'required',
             'status_perkawinan' => 'required',
             'status_keluarga' => 'required',
+            // 'status' => 'required',
             'agama' => 'required',
             'alamat' => 'required',
             'kota' => 'required',
@@ -98,6 +99,7 @@ class DataWargaController extends Controller
             'umur.required' => 'Lengkapi Umur',
             'status_perkawinan.required' => 'Lengkapi Jumlah Taman Bacaan/Perpustakaan',
             'status_keluarga.required' => 'Lengkapi Jumlah BKB Kelompok Belajar',
+            // 'status.required' => 'Lengkapi Jumlah BKB Kelompok Belajar',
             'agama.required' => 'Lengkapi Jumlah BKB Ibu Peserta',
             'alamat.required' => 'Lengkapi Alamat',
             'kota.required' => 'Lengkapi Kota',
@@ -138,7 +140,8 @@ class DataWargaController extends Controller
             $wargas->umur = $request->umur;
             $wargas->status_perkawinan = $request->status_perkawinan;
             $wargas->status_keluarga = $request->status_keluarga;
-            $wargas->status = $request->status;
+            $wargas->status = $request->status_keluarga == 'kepala keluarga' ? 'kepala keluarga' : $request->status;
+
             $wargas->agama = $request->agama;
             $wargas->alamat = $request->alamat;
             $wargas->kota = $request->kota;

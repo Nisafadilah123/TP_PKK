@@ -16,7 +16,7 @@ class KegiatanSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('kegiatan')->insert([
+        DB::table('kategori_kegiatan')->insert([
 
         [
             'nama_kegiatan'=>'Penghayatan dan Pengamalan Pancasila',

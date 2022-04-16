@@ -257,7 +257,7 @@
                               <input type="radio" aria-label="Radio button for following text input" name="status_keluarga" value="anggota keluarga">Anggota Keluarga
                               </div>
                             </div>
-                            <input type="text" class="form-control" aria-label="Text input with radio button" name="status_keluarga" placeholder="Status">
+                            <input type="text" class="form-control" aria-label="Text input with radio button" name="status" placeholder="Status">
                         </div>
                         @else
                         <div class="form-check form-check-inline">
@@ -265,18 +265,18 @@
                                 <input type="radio" name="status_keluarga" value="Kepala Rumah Tangga" class="form-check-input" {{$data_warga->status_keluarga == 'Kepala Rumah Tangga'? 'checked' : ''}}>Kepala Rumah Tangga
                             </label>
                         </div>
-                        
+
                         <div class="input-group">
                             <div class="input-group-prepend">
                               <div class="input-group-text">
                               <input type="radio" aria-label="Radio button for following text input" name="status_keluarga" value="anggota keluarga" {{$data_warga->status_keluarga == 'anggota keluarga'? 'checked' : ''}}>Anggota Keluarga
                               </div>
                             </div>
-                            <input type="text" class="form-control" aria-label="Text input with radio button" name="status_keluarga" required value="{{ucfirst(old('status_keluarga', $data_warga->status))}}">
+                            <input type="text" class="form-control" aria-label="Text input with radio button" name="status" required value="{{ucfirst(old('status_keluarga', $data_warga->status))}}">
                         </div>
                         @endif
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -515,7 +515,7 @@
                      </div>
                 </div>
             </div>
-            
+
 
         </div>
 

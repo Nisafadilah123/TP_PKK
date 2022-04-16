@@ -30,8 +30,8 @@ return new class extends Migration
             $table->integer('perempuan');
             $table->integer('jumlah_KK');
             $table->string('kategori_anggota');
-            $table->string('jumlah_kategori_anggota');
-            $table->date('makanan_pokok');
+            $table->integer('jumlah_kategori_anggota');
+            $table->string('makanan_pokok');
             $table->string('punya_jamban');
             $table->integer('jumlah_jamban');
             $table->string('sumber_air');

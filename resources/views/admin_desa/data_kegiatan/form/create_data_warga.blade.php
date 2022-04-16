@@ -170,7 +170,7 @@
                         <label>Periode</label>
                         {{-- <input type="text" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
                         <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
-                            <option value="0" selected> Pilih Tahun</option>
+                            <option> Pilih Tahun</option>
                                 <?php
                                 $year = date('Y');
                                 $min = $year ;
@@ -237,11 +237,18 @@
                         <label>Status Dalam Keluarga</label><br>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input type="radio" name="status_keluarga" value="Kepala Rumah Tangga" class="form-check-input">Kepala Rumah Tangga
-                                <input type="hidden" name="status" value="Kepala Rumah Tangga" class="form-check-input">Kepala Rumah Tangga
-
+                                <input type="radio" name="status_keluarga" value="kepala keluarga" class="form-check-input">Kepala Keluarga
+                                {{-- <input type="text" name="status" value="kepala keluarga" class="form-check-input" readonly > --}}
                             </label>
                         </div>
+                        {{-- <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">
+                              <input type="radio" aria-label="Radio button for following text input" name="status_keluarga" value="kepala keluarga">Kepala Keluarga
+                              </div>
+                            </div>
+                            <input type="text" readonly class="form-control" aria-label="Text input with radio button" name="status" placeholder="Status" value="kepala keluarga" required>
+                          </div> --}}
                     </div>
 
                         <div class="input-group">

@@ -31,7 +31,7 @@
             <label>Nama Kegiatan</label>
             <select class="form-control" id="id_kegiatan" name="id_kegiatan">
                 {{-- nama warga --}}
-                <option value="0" selected> Pilih Kegiatan</option>
+                <option> Pilih Kegiatan</option>
                 @foreach ($kat as $c)
                     <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama_kegiatan }}</option>
                 @endforeach
@@ -48,16 +48,16 @@
                 <label class="form-check-label">
                     <input type="radio" name="aktivitas" value="Tidak" class="form-check-input">Tidak
                 </label>
-            </div>          </div>
+            </div>
+        </div>
           <div class="form-group">
             <label>Keterangan (Jenis Kegiatan Yang Diikuti)</label>
             <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Masukkan Keterangan" required>
           </div>
           <div class="form-group">
             <label>Periode</label>
-            {{-- <input min="0" type="number" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
             <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
-              <option value="0" selected> Pilih Tahun</option>
+              <option> Pilih Tahun</option>
                 <?php
                   $year = date('Y');
                   $min = $year ;

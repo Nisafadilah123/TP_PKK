@@ -70,6 +70,7 @@
                                             <th>Tanggal Lahir</th>
                                             <th>Umur</th>
                                             <th>Status Keluarga</th>
+                                            <th>Status</th>
                                             <th>Status Perkawinan</th>
                                             <th>Agama</th>
                                             <th>Alamat</th>
@@ -106,9 +107,9 @@
                                         <td style="vertical-align: middle;">{{ucfirst($c->umur)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->status_perkawinan)}}</td>
                                         <td style="vertical-align: middle;">
-                                            {{ucfirst($c->status_keluarga)}}<br>
-                                            <strong>{{ucfirst($c->status)}}</strong>
+                                            {{ucfirst($c->status_keluarga)}}
                                         </td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->status)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->agama)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->alamat)}},Desa {{ucfirst($c->desa->nama_desa)}}, Kecamatan {{ucfirst($c->kecamatan->nama_kecamatan)}}, Provinsi {{ucfirst($c->provinsi)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->pendidikan)}}</td>
