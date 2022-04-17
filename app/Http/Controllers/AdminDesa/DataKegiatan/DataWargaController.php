@@ -68,9 +68,10 @@ class DataWargaController extends Controller
             'umur' => 'required',
             'status_perkawinan' => 'required',
             'status_keluarga' => 'required',
-            // 'status' => 'required',
             'agama' => 'required',
             'alamat' => 'required',
+            'rt' => 'required',
+            'rw' => 'required',
             'kota' => 'required',
             'provinsi' => 'required',
             'pendidikan' => 'required',
@@ -99,9 +100,10 @@ class DataWargaController extends Controller
             'umur.required' => 'Lengkapi Umur',
             'status_perkawinan.required' => 'Lengkapi Jumlah Taman Bacaan/Perpustakaan',
             'status_keluarga.required' => 'Lengkapi Jumlah BKB Kelompok Belajar',
-            // 'status.required' => 'Lengkapi Jumlah BKB Kelompok Belajar',
             'agama.required' => 'Lengkapi Jumlah BKB Ibu Peserta',
             'alamat.required' => 'Lengkapi Alamat',
+            'rt.required' => 'Lengkapi Jumlah BKB Kelompok Belajar',
+            'rw.required' => 'Lengkapi Jumlah BKB Kelompok Belajar',
             'kota.required' => 'Lengkapi Kota',
             'provinsi.required' => 'Lengkapi Provinsi',
             'pendidikan.required' => 'Lengkapi Jumlah BKB Kelompok Simulasi',
@@ -141,9 +143,10 @@ class DataWargaController extends Controller
             $wargas->status_perkawinan = $request->status_perkawinan;
             $wargas->status_keluarga = $request->status_keluarga;
             $wargas->status = $request->status_keluarga == 'kepala keluarga' ? 'kepala keluarga' : $request->status;
-
             $wargas->agama = $request->agama;
             $wargas->alamat = $request->alamat;
+            $wargas->rt = $request->rt;
+            $wargas->rw = $request->rw;
             $wargas->kota = $request->kota;
             $wargas->provinsi = $request->provinsi;
             $wargas->pendidikan = $request->pendidikan;
@@ -238,7 +241,6 @@ class DataWargaController extends Controller
             'ikut_paud_sejenis' => 'required',
             'ikut_koperasi' => 'required',
             'periode' => 'required',
-
         ]);
 
             $data_warga->update($request->all());

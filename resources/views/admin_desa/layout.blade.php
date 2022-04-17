@@ -133,7 +133,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/data_pokja3" class="nav-link {{ Request::is('data_pokja3') ? 'active':'' }}">
+                    <a href="/keluarga" class="nav-link {{ Request::is('keluarga') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data Keluarga</p>
                     </a>

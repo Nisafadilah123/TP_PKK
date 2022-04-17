@@ -13,7 +13,7 @@ class DataWarga extends Model
 
     protected $fillable = [
        'id_desa','id_kecamatan', 'dasa_wisma', 'nama_kepala_rumah_tangga',	'no_registrasi', 'no_ktp', 'nama', 'jabatan', 'jenis_kelamin', 'tempat_lahir',	'tgl_lahir',
-       'umur','status_perkawinan', 'status_keluarga', 'agama', 'alamat','kota', 'provinsi', 'pendidikan', 'pekerjaan',
+       'umur','status_perkawinan', 'status_keluarga', 'agama', 'alamat','rt','rw', 'kota', 'provinsi', 'pendidikan', 'pekerjaan',
            'akseptor_kb', 'aktif_posyandu', 'ikut_bkb',	'memiliki_tabungan', 'ikut_kelompok_belajar','ikut_paud_sejenis', 'ikut_koperasi', 'periode'
     ];
 

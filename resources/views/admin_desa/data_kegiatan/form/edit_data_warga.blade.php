@@ -116,6 +116,24 @@
             <div class="col-md-3">
                 <div class="card-body">
                     <div class="form-group">
+                        <label>RT</label>
+                        <input type="number" class="form-control" name="rt" id="rt" placeholder="Di isi RT" required value="{{ucfirst(old('rt', $data_warga->rt))}}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>RW</label>
+                        <input type="number" class="form-control" name="rw" id="rw" placeholder="Di isi RW" required value="{{ucfirst(old('rw', $data_warga->rw))}}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card-body">
+                    <div class="form-group">
                         <label for="exampleFormControlSelect1">Desa</label>
                                 {{-- <select class="form-control" id="id_desa" name="id_desa"> --}}
                                 {{-- nama desa yang login --}}
@@ -238,11 +256,11 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Status Dalam Keluarga</label><br>
-                        @if ($data_warga->status_keluarga == 'Kepala Rumah Tangga')
+                        @if ($data_warga->status_keluarga == 'kepala keluarga')
 
                         <div class="form-check form-check-inline">
                                 <label class="form-check-label">
-                                <input type="radio" name="status_keluarga" value="Kepala Rumah Tangga" class="form-check-input" {{$data_warga->status_keluarga == 'Kepala Rumah Tangga'? 'checked' : ''}}>Kepala Rumah Tangga
+                                <input type="radio" name="status_keluarga" value="kepala keluarga" class="form-check-input" {{$data_warga->status_keluarga == 'kepala keluarga'? 'checked' : ''}}>Kepala Keluarga
                             </label>
 
                         </div>
@@ -254,7 +272,7 @@
                         <div class="input-group">
                             <div class="input-group-prepend">
                               <div class="input-group-text">
-                              <input type="radio" aria-label="Radio button for following text input" name="status_keluarga" value="anggota keluarga">Anggota Keluarga
+                              <input type="radio" aria-label="Radio button for following text input" name="status_keluarga" value="anggota keluarga" {{$data_warga->status_keluarga == 'anggota keluarga'? 'checked' : ''}}>Anggota Keluarga
                               </div>
                             </div>
                             <input type="text" class="form-control" aria-label="Text input with radio button" name="status" placeholder="Status">

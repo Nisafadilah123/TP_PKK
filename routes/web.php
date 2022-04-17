@@ -4,6 +4,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\PokjaController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminDesa\DataKegiatan\DataKegiatanWargaController;
+use App\Http\Controllers\AdminDesa\DataKegiatan\DataKeluargaController;
 use App\Http\Controllers\AdminDesa\DataPokja1\GotongRoyongController;
 use App\Http\Controllers\AdminDesa\DataPokja1\JumlahKaderPokja1Controller;
 use App\Http\Controllers\AdminDesa\DataPokja1\PenghayatanDanPengamalanController;
@@ -54,7 +55,6 @@ use App\Http\Controllers\SuperAdmin\UserController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Middleware\Authenticate;
 use App\Models\BeritaKab;
-use App\Models\DataKegiatanWarga;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -145,6 +145,8 @@ Route::middleware(['auth', 'user_type:admin_desa'])->group(function () {
     Route::resource('/data_warga', DataWargaController::class);
     Route::resource('/data_kegiatan', DataKegiatanWargaController::class);
     Route::resource('/data_kader', KaderController::class);
+    Route::resource('/keluarga', DataKeluargaController::class);
+
 });
 
 // halaman kader desa

@@ -34,6 +34,8 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->string('agama');
             $table->string('alamat');
+            $table->integer('rt');
+            $table->integer('rw');
             $table->string('kota');
             $table->string('provinsi');
             $table->string('pendidikan');

@@ -92,7 +92,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+
+            <div class="col-md-2">
                 <div class="card-body">
                     <div class="form-group">
                         <label>Umur</label>
@@ -110,6 +111,28 @@
                 </div>
             </div>
 
+            <div class="col-md-2">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">RT</label>
+                        <input type="number" class="form-control" name="rt" id="rt" placeholder="RT" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">RW</label>
+                            <input type="number" class="form-control" name="rw" id="rw" placeholder="RW" required>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+
             <div class="col-md-3">
                 <div class="card-body">
                     <div class="form-group">
@@ -120,17 +143,15 @@
                                     {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
                                     <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
 
-                                    <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
+                                    <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_desa }}">
 
                                 @endforeach
                             {{-- </select> --}}
                         </div>
                     </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Kecamatan</label>
@@ -140,7 +161,7 @@
                                     {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
                                     <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
 
-                                    <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->kode_kecamatan }}-{{ $c->nama_kecamatan }}">
+                                    <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_kecamatan }}">
 
                                 @endforeach
                             {{-- </select> --}}
@@ -148,7 +169,7 @@
                 </div>
             </div>
 
-          <div class="col-md-3">
+          <div class="col-md-2">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Kabupaten</label>
@@ -156,7 +177,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Provinsi</label>
@@ -164,27 +185,30 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card-body">
-                    <div class="form-group">
-                        <label>Periode</label>
-                        {{-- <input type="text" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
-                        <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
-                            <option> Pilih Tahun</option>
-                                <?php
-                                $year = date('Y');
-                                $min = $year ;
-                                    $max = $year + 20;
-                                for( $i=$min; $i<=$max; $i++ ) {
-                                echo '<option value='.$i.'>'.$i.'</option>';
-                            }?>
-                        </select>
-                    </div>
+
+        <div class="col-md-3">
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Periode</label>
+                    {{-- <input type="text" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
+                    <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                        <option> Pilih Tahun</option>
+                            <?php
+                            $year = date('Y');
+                            $min = $year ;
+                                $max = $year + 20;
+                            for( $i=$min; $i<=$max; $i++ ) {
+                            echo '<option value='.$i.'>'.$i.'</option>';
+                        }?>
+                    </select>
                 </div>
             </div>
         </div>
 
+        </div>
+
         <div class="row">
+
             <div class="col-md-3">
                 <div class="card-body">
                     <div class="form-group">

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\AdminDesa\DataKegiatan;
 use App\Http\Controllers\Controller;
-
+use App\Models\DataKeluarga;
+use App\Models\DataWarga;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DataKeluargaController extends Controller
 {
@@ -15,8 +18,8 @@ class DataKeluargaController extends Controller
     public function index()
     {
         //halaman form data kegiatan
-        $kegiatan=DataKegiatanWarga::all();
-        return view('admin_desa.data_kegiatan.data_kegiatan', compact('kegiatan'));
+        $keluarga = DataKeluarga::all();
+        return view('admin_desa.data_kegiatan.data_keluarga', compact('keluarga'));
     }
 
     /**
@@ -31,12 +34,15 @@ class DataKeluargaController extends Controller
      ->where('id', auth()->user()->id_desa)
      ->get();
 
-     $keg = DataWarga::all();
-     $kat = Kegiatan::all();
-    //  $keg = DataWarga::with('kegiatan')->get();
+     $kec = DB::table('data_kecamatan')
+     ->where('id', auth()->user()->id_kecamatan)
+     ->get();
+
+     $keg = DataKeluarga::all();
+     $warga = DataWarga::all();
 
     //  dd($keg);
-     return view('admin_desa.data_kegiatan.form.create_data_kegiatan', compact('desas', 'keg', 'kat'));
+     return view('admin_desa.data_kegiatan.form.create_data_keluarga', compact('desas', 'warga', 'kec'));
 
  }
 

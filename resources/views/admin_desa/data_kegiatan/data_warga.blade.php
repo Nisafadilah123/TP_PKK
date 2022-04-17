@@ -105,13 +105,11 @@
                                         <td style="vertical-align: middle;">{{ucfirst($c->tempat_lahir)}}</td>
                                         <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($c->tgl_lahir)->isoFormat('D MMMM Y') }}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->umur)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->status_perkawinan)}}</td>
-                                        <td style="vertical-align: middle;">
-                                            {{ucfirst($c->status_keluarga)}}
-                                        </td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->status_keluarga)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->status)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->status_perkawinan)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->agama)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->alamat)}},Desa {{ucfirst($c->desa->nama_desa)}}, Kecamatan {{ucfirst($c->kecamatan->nama_kecamatan)}}, Provinsi {{ucfirst($c->provinsi)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->alamat)}},RT {{ucfirst($c->rt)}}, RW {{ucfirst($c->rw)}}, Desa {{ucfirst($c->desa->nama_desa)}}, Kecamatan {{ucfirst($c->kecamatan->nama_kecamatan)}}, Provinsi {{ucfirst($c->provinsi)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->pendidikan)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->pekerjaan)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->akseptor_kb)}}</td>
