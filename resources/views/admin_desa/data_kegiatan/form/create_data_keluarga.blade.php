@@ -23,10 +23,11 @@
                     <label>Dasa Wisma</label>
                     <select class="form-control" id="dasa_wisma" name="dasa_wisma">
                         {{-- nama warga --}}
+                        <option> Pilih Dasa Wisma</option>
                         @foreach ($warga as $c)
                             <option value="{{$c->id}}">{{ $c->dasa_wisma }}</option>
                         @endforeach
-                        </select>
+                    </select>
                     </div>
                 </div>
             </div>
@@ -35,7 +36,13 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">RT</label>
-                        <input type="number" class="form-control" name="rt" id="rt" placeholder="RT" required>
+                        <select class="form-control" id="rt" name="rt">
+                            {{-- nama warga --}}
+                            <option> Pilih RT</option>
+                            @foreach ($warga as $c)
+                                <option value="{{$c->id}}">{{ $c->rt }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>
@@ -44,7 +51,13 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">RW</label>
-                            <input type="number" class="form-control" name="rw" id="rw" placeholder="RW" required>
+                        <select class="form-control" id="rw" name="rw">
+                            {{-- nama warga --}}
+                            <option> Pilih RW</option>
+                            @foreach ($warga as $c)
+                                <option value="{{$c->id}}">{{ $c->rw }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>
@@ -112,6 +125,7 @@
                         <label>Nama Kepala Rumah Tangga</label>
                         <select class="form-control" id="nama_kepala_rumah_tangga" name="nama_kepala_rumah_tangga">
                             {{-- nama warga --}}
+                            <option> Pilih Nama Kepala Rumah Tangga</option>
                             @foreach ($warga as $c)
                                 <option value="{{$c->id}}">{{ $c->nama_kepala_rumah_tangga }}</option>
                             @endforeach
@@ -180,10 +194,10 @@
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <input type="checkbox" aria-label="Checkbox for following text input" name="kategori_anggota">Balita
+                                            <input type="checkbox" aria-label="Checkbox for following text input" name="kategori_anggota[]" value="Balita">Balita
                                         </div>
                                     </div>
-                                    <input type="number" class="form-control" aria-label="Text input with checkbox" name="jumlah_kategori_anggota">
+                                    <input type="number" class="form-control" aria-label="Text input with checkbox" name="jumlah_kategori_anggota[]">
                                 </div>
                             </div>
 
@@ -191,10 +205,10 @@
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <input type="checkbox" aria-label="Checkbox for following text input" name="kategori_anggota">PUS (Pasangan Usia Subur)
+                                            <input type="checkbox" aria-label="Checkbox for following text input" name="kategori_anggota[]" value="PUS (Pasangan Usia Subur)">PUS (Pasangan Usia Subur)
                                         </div>
                                     </div>
-                                    <input type="number" class="form-control" aria-label="Text input with checkbox" name="jumlah_kategori_anggota">
+                                    <input type="number" class="form-control" aria-label="Text input with checkbox" name="jumlah_kategori_anggota[]">
                                 </div>
                             </div>
 
@@ -202,10 +216,10 @@
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <input type="checkbox" aria-label="Checkbox for following text input" name="kategori_anggota">WUS (Wanita Usia Subur)
+                                            <input type="checkbox" aria-label="Checkbox for following text input" name="kategori_anggota[]" value="WUS (Wanita Usia Subur)">WUS (Wanita Usia Subur)
                                         </div>
                                     </div>
-                                    <input type="number" class="form-control" aria-label="Text input with checkbox" name="jumlah_kategori_anggota">
+                                    <input type="number" class="form-control" aria-label="Text input with checkbox" name="jumlah_kategori_anggota[]">
                                 </div>
                             </div>
 
@@ -216,10 +230,10 @@
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <input type="checkbox" aria-label="Checkbox for following text input" name="kategori_anggota">3 Buta (Buta Tulis, Buta Baca, Buta Hitung)
+                                            <input type="checkbox" aria-label="Checkbox for following text input" name="kategori_anggota[]" value="3 Buta (Buta Tulis, Buta Baca, Buta Hitung)">3 Buta (Buta Tulis, Buta Baca, Buta Hitung)
                                         </div>
                                     </div>
-                                    <input type="number" class="form-control" aria-label="Text input with checkbox" name="jumlah_kategori_anggota">
+                                    <input type="number" class="form-control" aria-label="Text input with checkbox" name="jumlah_kategori_anggota[]">
                                 </div>
                             </div>
 
@@ -227,10 +241,10 @@
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <input type="checkbox" aria-label="Checkbox for following text input" name="kategori_anggota">Ibu Hamil
+                                            <input type="checkbox" aria-label="Checkbox for following text input" name="kategori_anggota[]" value="Ibu Hamil">Ibu Hamil
                                         </div>
                                     </div>
-                                    <input type="number" class="form-control" aria-label="Text input with checkbox" name="jumlah_kategori_anggota">
+                                    <input type="number" class="form-control" aria-label="Text input with checkbox" name="jumlah_kategori_anggota[]">
                                 </div>
                             </div>
 
@@ -238,10 +252,10 @@
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <input type="checkbox" aria-label="Checkbox for following text input" name="kategori_anggota">Ibu Menyusui
+                                            <input type="checkbox" aria-label="Checkbox for following text input" name="kategori_anggota[]" value="Ibu Menyusui">Ibu Menyusui
                                         </div>
                                     </div>
-                                    <input type="number" class="form-control" aria-label="Text input with checkbox" name="jumlah_kategori_anggota">
+                                    <input type="number" class="form-control" aria-label="Text input with checkbox" name="jumlah_kategori_anggota[]">
                                 </div>
                             </div>
 
@@ -249,10 +263,10 @@
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
-                                            <input type="checkbox" aria-label="Checkbox for following text input" name="kategori_anggota">Lansia
+                                            <input type="checkbox" aria-label="Checkbox for following text input" name="kategori_anggota[]" value="Lansia">Lansia
                                         </div>
                                     </div>
-                                    <input type="number" class="form-control" aria-label="Text input with checkbox" name="jumlah_kategori_anggota">
+                                    <input type="number" class="form-control" aria-label="Text input with checkbox" name="jumlah_kategori_anggota[]">
                                 </div>
                             </div>
 
@@ -268,7 +282,6 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Periode</label>
-                        {{-- <input type="text" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
                         <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
                             <option> Pilih Tahun</option>
                                 <?php
@@ -313,7 +326,7 @@
                                       <input type="radio" aria-label="Radio button for following text input" name="punya_jamban" value="Ya">Ya
                                       </div>
                                     </div>
-                                    <input type="text" class="form-control" aria-label="Text input with radio button" name="jumlah_jamban" placeholder="Jumlah Jamban">
+                                    <input type="number" class="form-control" aria-label="Text input with radio button" name="jumlah_jamban" placeholder="Jumlah Jamban">
                                 </div>
                             </div>
 
@@ -477,7 +490,7 @@
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/data_warga" class="btn btn-outline-primary">
+          <a href="/keluarga" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

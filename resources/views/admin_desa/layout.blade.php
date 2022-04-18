@@ -139,9 +139,9 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/data_pokja4" class="nav-link {{ Request::is('data_pokja4') ? 'active':'' }}">
+                    <a href="/pemanfaatan" class="nav-link {{ Request::is('pemanfaatan') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data POKJA IV</p>
+                      <p>Data Pemanfaatan Tanah <br> Pekarangan PKK</p>
                     </a>
                   </li>
                   <li class="nav-item">

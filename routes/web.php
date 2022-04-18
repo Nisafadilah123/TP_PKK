@@ -5,6 +5,7 @@ use App\Http\Controllers\PokjaController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminDesa\DataKegiatan\DataKegiatanWargaController;
 use App\Http\Controllers\AdminDesa\DataKegiatan\DataKeluargaController;
+use App\Http\Controllers\AdminDesa\DataKegiatan\DataPemanfaatanPekaranganController;
 use App\Http\Controllers\AdminDesa\DataPokja1\GotongRoyongController;
 use App\Http\Controllers\AdminDesa\DataPokja1\JumlahKaderPokja1Controller;
 use App\Http\Controllers\AdminDesa\DataPokja1\PenghayatanDanPengamalanController;
@@ -146,6 +147,7 @@ Route::middleware(['auth', 'user_type:admin_desa'])->group(function () {
     Route::resource('/data_kegiatan', DataKegiatanWargaController::class);
     Route::resource('/data_kader', KaderController::class);
     Route::resource('/keluarga', DataKeluargaController::class);
+    Route::resource('/pemanfaatan', DataPemanfaatanPekaranganController::class);
 
 });
 

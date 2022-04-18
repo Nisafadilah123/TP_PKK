@@ -58,45 +58,104 @@ class DataKeluargaController extends Controller
         // dd($request->all());
 
         $request->validate([
-            'id_warga' => 'required',
-            'id_kegiatan' => 'required',
-            'aktivitas' => 'required',
-            'keterangan' => 'required',
+            'id_desa' => 'required',
+            'id_kecamatan' => 'required',
+            'id_data_warga' => 'required',
+            'dasa_wisma' => 'required',
+            'nama_kepala_rumah_tangga' => 'required',
+            'rt' => 'required',
+            'rw' => 'required',
+            'kota' => 'required',
+            'provinsi' => 'required',
+            'laki_laki' => 'required',
+            'perempuan' => 'required',
+            'jumla_KK' => 'required',
+            'kategori_anggota' => 'required',
+            'tgl_lahir' => 'required',
+            'jumlah_kategori_anggota' => 'required',
+            'makanan_pokok' => 'required',
+            'punya_jamban' => 'required',
+            'jumlah_jamban' => 'required',
+            'sumber_air' => 'required',
+            'punya_tempat_sampah' => 'required',
+            'punya_saluran_air' => 'required',
+            'tempel_stiker' => 'required',
+            'kriteria_rumah' => 'required',
+            'aktivitas_UP2K' => 'required',
+            'aktivitas_kegiatan_usaha' => 'required',
             'periode' => 'required',
 
         ], [
-            'id_warga.required' => 'Lengkapi Id Desa',
-            'id_kegiatan.required' => 'Lengkapi Id Desa',
-            'aktivitas.required' => 'Lengkapi Nama Kepala Rumah Tangga',
-            'keterangan.required' => 'Lengkapi No. KTP/NIK',
+            'id_desa.required' => 'Lengkapi Id Desa',
+            'id_kecamatan' => 'Lengkapi Id Desa',
+            'id_data_warga.required' => 'Lengkapi Nama Warga',
+            'dasa_wisma.required' => 'Pilih Nama Dasawisma',
+            'nama_kepala_rumah_tangga.required' => 'Pilih Nama Kepala Rumah Tangga',
+            'jumlah_anggota_keluarga.required' => 'Lengkapi Jumlah Anggota Keluarga',
+            'rt.required' => 'Pilih RT',
+            'rw.required' => 'Pilih RW',
+            'laki_laki.required' => 'Lengkapi Jumlah Laki-laki',
+            'perempuan.required' => 'Lengkapi Jumlah Perempuan',
+            'jumlah_KK.required' => 'Lengkapi Jumlah KK',
+            'kategori_anggota.required' => 'Lengkapi Kategori Keluarga',
+            'makanan_pokok.required' => 'Lengkapi Makanan Pokok',
+            'jumlah_kategori_anggota.required' => 'Lengkapi Jumlah Kategori Anggota',
+            'tg_lahir.required' => 'Lengkapi Tanggal Lahir',
+            'punya_jamban.required' => 'Lengkapi Jumlah Yang Mempunyai Jamban',
+            'jumlah_jamban.required' => 'Lengkapi Jumlah Jamban',
+            'sumber_air.required' => 'Pilih Sumber Air Kader Khusus KF',
+            'punya_tempat_sampah.required' => 'Pilih Yang Mempunyai Tempat Sampah',
+            'punya_saluran_air.required' => 'Pilih Yang Mempunyai Saluran Air',
+            'tempel_stiker.required' => 'Pilih Rumah Yang Mempunyai Stiker P4K',
+            'kriteria_rumah.required' => 'Pilih Kriteria Rumah',
+            'aktivitas_UP2K.required' => 'Pilih Aktivitas UP2K',
+            'aktivitas_kegiatan_usaha.required' => 'Pilih Aktivitas Kegiatan Usaha',
             'periode.required' => 'Lengkapi Periode',
 
         ]);
-        $insert=DB::table('data_kegiatan_warga')->where('id_warga', $request->id_warga)->first();
+        $insert=DB::table('data_keluarga')->where('id_warga', $request->id_warga)->first();
         if ($insert != null) {
-            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambah. Warga TP PKK Sudah Ada ');
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambah. No.KTP Sudah Ada ');
 
-            return redirect('/data_kegiatan');
+            return redirect('/data_keluarga');
         }
         else {
         //cara 1
 
-            $kegiatans = new DataKegiatanWarga;
-            $kegiatans->id_warga = $request->id_warga;
-            $kegiatans->id_kegiatan = $request->id_kegiatan;
-            $kegiatans->aktivitas = $request->aktivitas;
-            $kegiatans->keterangan = $request->keterangan;
-            $kegiatans->periode = $request->periode;
-            $kegiatans->save();
+            $wargas = new DataKeluarga;
+            $wargas->id_desa = $request->id_desa;
+            $wargas->id_kecamatan = $request->id_kecamatan;
+            $wargas->id_data_warga = $request->id_data_warga;
+            $wargas->dasa_wisma = $request->dasa_wisma;
+            $wargas->nama_kepala_rumah_tangga = $request->nama_kepala_rumah_tangga;
+            $wargas->jumlah_anggota_keluarga = $request->jumlah_anggota_keluarga;
+            $wargas->rt = $request->rt;
+            $wargas->rw = $request->rw;
+            $wargas->laki_laki = $request->laki_laki;
+            $wargas->perempuan = $request->perempuan;
+            $wargas->jumlah_KK = $request->jumlah_KK;
+            $wargas->kategori_anggota = $request->kategori_anggota;
+            $wargas->jumlah_kategori_anggota = $request->jumlah_kategori_anggota;
+            $wargas->makanan_pokok = $request->makanan_pokok;
+            $wargas->punya_jamban = $request->punya_jamban;
+            $wargas->jumlah_jamban = $request->jumlah_jamban;
+            $wargas->sumber_air = $request->sumber_air;
+            $wargas->punya_tempat_sampah = $request->punya_tempat_sampah;
+            $wargas->punya_saluran_air = $request->punya_saluran_air;
+            $wargas->tempel_stiker = $request->tempel_stiker;
+            $wargas->kriteria_rumah = $request->kriteria_rumah;
+            $wargas->aktivitas_UP2K = $request->aktivitas_UP2K;
+            $wargas->aktivitas_kegiatan_usaha = $request->aktivitas_kegiatan_usaha;
+            $wargas->periode = $request->periode;
+            $wargas->save();
             // $input = $request->all();
 
-            // $post = Datakegiatan::create($input);
+            // $post = DataWarga::create($input);
             Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-            return redirect('/data_kegiatan');
-            }
+            return redirect('/data_keluarga');
+        }
     }
-
     /**
      * Display the specified resource.
     *
@@ -114,15 +173,15 @@ class DataKeluargaController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function edit(DataKegiatanWarga $data_kegiatan)
+    public function edit(DataKeluarga $keluarga)
     {
         //halaman edit data pendidikan
         $keg = DataWarga::all();
-        $kat = Kegiatan::all();
+        $kel = DataKeluarga::all();
 
         // dd($keg);
 
-        return view('admin_desa.data_kegiatan.form.edit_data_kegiatan', compact('data_kegiatan','keg', 'kat'));
+        return view('admin_desa.data_kegiatan.form.edit_data_keluarga', compact('keluarga','keg', 'kel'));
 
     }
 
@@ -133,24 +192,43 @@ class DataKeluargaController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, DataKegiatanWarga $data_kegiatan)
+    public function update(Request $request, DataKeluarga $keluarga)
     {
         // proses mengubah untuk tambah data pendidikan
         // dd($request->all());
 
         $request->validate([
-            'id_warga' => 'required',
-            'id_kegiatan' => 'required',
-            'aktivitas' => 'required',
-            'keterangan' => 'required',
+            'id_desa' => 'required',
+            'id_kecamatan' => 'required',
+            'id_data_warga' => 'required',
+            'dasa_wisma' => 'required',
+            'nama_kepala_rumah_tangga' => 'required',
+            'rt' => 'required',
+            'rw' => 'required',
+            'laki_laki' => 'required',
+            'perempuan' => 'required',
+            'jumla_KK' => 'required',
+            'kategori_anggota' => 'required',
+            'tgl_lahir' => 'required',
+            'jumlah_kategori_anggota' => 'required',
+            'makanan_pokok' => 'required',
+            'punya_jamban' => 'required',
+            'jumlah_jamban' => 'required',
+            'sumber_air' => 'required',
+            'punya_tempat_sampah' => 'required',
+            'punya_saluran_air' => 'required',
+            'tempel_stiker' => 'required',
+            'kriteria_rumah' => 'required',
+            'aktivitas_UP2K' => 'required',
+            'aktivitas_kegiatan_usaha' => 'required',
             'periode' => 'required',
 
         ]);
 
-            $data_kegiatan->update($request->all());
+            $keluarga->update($request->all());
             Alert::success('Berhasil', 'Data berhasil di ubah');
             // dd($jml_kader);
-            return redirect('/data_kegiatan');
+            return redirect('/data_keluarga');
 
     }
 
@@ -160,12 +238,12 @@ class DataKeluargaController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function destroy($data_kegiatan, DataKegiatanWarga $warg)
+    public function destroy($keluarga, DataKeluarga $kel)
     {
         //temukan id gotong_royong
-        $warg::find($data_kegiatan)->delete();
+        $kel::find($keluarga)->delete();
 
-        return redirect('/data_kegiatan')->with('status', 'sukses');
+        return redirect('/data_keluarga')->with('status', 'sukses');
 
 
 

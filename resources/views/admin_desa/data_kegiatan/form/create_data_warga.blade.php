@@ -115,7 +115,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">RT</label>
-                        <input type="number" class="form-control" name="rt" id="rt" placeholder="RT" required>
+                        <input type="number" min="0" class="form-control" name="rt" id="rt" placeholder="RT" required>
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">RW</label>
-                            <input type="number" class="form-control" name="rw" id="rw" placeholder="RW" required>
+                            <input type="number" min="0" class="form-control" name="rw" id="rw" placeholder="RW" required>
                     </div>
                 </div>
             </div>

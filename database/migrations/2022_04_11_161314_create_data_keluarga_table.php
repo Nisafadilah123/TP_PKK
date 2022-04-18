@@ -22,15 +22,18 @@ return new class extends Migration
             $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan');
             $table->bigInteger('id_data_warga')->unsigned();
             $table->foreign('id_data_warga')->references('id')->on('data_warga');
-
-            // $table->foreignIdFor(DataWarga::class)->constrained();
+            $table->string('dasa_wisma');
             $table->string('nama_kepala_rumah_tangga');
             $table->integer('jumlah_anggota_keluarga');
+            $table->integer('rt');
+            $table->integer('rw');
+            $table->string('kota');
+            $table->integer('provinsi');
             $table->integer('laki_laki');
             $table->integer('perempuan');
             $table->integer('jumlah_KK');
             $table->string('kategori_anggota');
-            $table->integer('jumlah_kategori_anggota');
+            $table->integer('jumlah_kategori_anggota')->nullable();
             $table->string('makanan_pokok');
             $table->string('punya_jamban');
             $table->integer('jumlah_jamban');

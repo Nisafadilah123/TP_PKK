@@ -20,6 +20,6 @@ class DataKegiatanWarga extends Model
     }
 
     public function kategori_kegiatan(){
-        return $this->belongsTo(Kegiatan::class, 'id_kegiatan');
+        return $this->belongsTo(KategoriKegiatan::class, 'id_kegiatan');
     }
 }

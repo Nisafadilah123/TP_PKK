@@ -95,7 +95,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card-body">
                     <div class="form-group">
                         <label>Umur</label>
@@ -113,24 +113,28 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card-body">
                     <div class="form-group">
                         <label>RT</label>
-                        <input type="number" class="form-control" name="rt" id="rt" placeholder="Di isi RT" required value="{{ucfirst(old('rt', $data_warga->rt))}}">
+                        <input type="number" min="0" class="form-control" name="rt" id="rt" placeholder="Di isi RT" required value="{{ucfirst(old('rt', $data_warga->rt))}}">
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card-body">
                     <div class="form-group">
                         <label>RW</label>
-                        <input type="number" class="form-control" name="rw" id="rw" placeholder="Di isi RW" required value="{{ucfirst(old('rw', $data_warga->rw))}}">
+                        <input type="number" min="0" class="form-control" name="rw" id="rw" placeholder="Di isi RW" required value="{{ucfirst(old('rw', $data_warga->rw))}}">
                     </div>
                 </div>
             </div>
 
+
+        </div>
+
+        <div class="row">
             <div class="col-md-3">
                 <div class="card-body">
                     <div class="form-group">
@@ -148,10 +152,8 @@
                         </div>
                     </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Kecamatan</label>
@@ -169,7 +171,7 @@
                 </div>
             </div>
 
-          <div class="col-md-3">
+          <div class="col-md-2">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Kabupaten</label>
@@ -177,7 +179,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Provinsi</label>

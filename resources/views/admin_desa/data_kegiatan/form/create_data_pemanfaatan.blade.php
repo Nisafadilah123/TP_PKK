@@ -1,20 +1,20 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Tambah Data Kegiatan Warga TP PKK | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Tambah Data Pemanfaatan Tanah Pekaranangan TP PKK | Admin Desa PKK Kab. Indramayu')
 
-@section('bread', 'Tambah Data Kegiatan Warga TP PKK')
+@section('bread', 'Tambah Data Pemanfaatan Tanah Pekaranangan TP PKK')
 @section('container')
 
 <div class="col-md-6">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Tambah Data Kegiatan Warga TP PKK</h3>
+        <h3 class="card-title">Tambah Data Pemanfaatan Tanah Pekaranangan TP PKK</h3>
       </div>
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ route('data_kegiatan.store') }}" method="POST">
+      <form action="{{ route('pemanfaatan.store') }}" method="POST">
         @csrf
         <div class="card-body">
             <div class="form-group">
@@ -28,31 +28,22 @@
             </div>
 
           <div class="form-group">
-            <label>Nama Kegiatan</label>
-            <select class="form-control" id="id_kegiatan" name="id_kegiatan">
+            <label>Kategori</label>
+            <select class="form-control" id="id_kategori" name="id_kategori">
                 {{-- nama warga --}}
-                <option> Pilih Kegiatan</option>
-                @foreach ($keg as $c)
-                    <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama_kegiatan }}</option>
+                <option> Pilih Kategori</option>
+                @foreach ($kat as $c)
+                    <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama_kategori }}</option>
                 @endforeach
             </select>
           </div>
           <div class="form-group">
-            <label>Aktivitas</label><br>
-            <div class="form-check form-check-inline">
-                <label class="form-check-label">
-                    <input type="radio" name="aktivitas" value="Ya" class="form-check-input">Ya
-                </label>
-            </div>
-            <div class="form-check form-check-inline">
-                <label class="form-check-label">
-                    <input type="radio" name="aktivitas" value="Tidak" class="form-check-input">Tidak
-                </label>
-            </div>
-        </div>
+            <label>Komoditi</label>
+            <input type="text" class="form-control" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi" required>
+          </div>
           <div class="form-group">
-            <label>Keterangan (Jenis Kegiatan Yang Diikuti)</label>
-            <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Masukkan Keterangan" required>
+            <label>Jumlah</label>
+            <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah" required>
           </div>
           <div class="form-group">
             <label>Periode</label>
@@ -72,7 +63,7 @@
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/data_kegiatan" class="btn btn-outline-primary">
+          <a href="/pemanfaatan" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>
