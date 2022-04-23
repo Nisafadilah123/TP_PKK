@@ -15,7 +15,7 @@ class KegiatanSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // create tabel kategori_kegiatan
         DB::table('kategori_kegiatan')->insert([
 
         [

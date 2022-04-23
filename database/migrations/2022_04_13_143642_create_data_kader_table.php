@@ -20,6 +20,11 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('user_type')->nullable();
+            $table->bigInteger('id_desa')->unsigned();
+            $table->foreign('id_desa')->references('id')->on('data_desa')->unsigned()->nullable();
+            $table->bigInteger('id_kecamatan')->unsigned();
+            $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan')->unsigned()->nullable();
+
             $table->timestamps();
         });
     }

@@ -34,7 +34,7 @@
                         <label for="exampleFormControlSelect1">Nama Desa</label>
                             <select class="form-control" id="id_desa" name="id_desa">
                                 {{-- nama desa yang login --}}
-                                <option value="0" selected> Pilih Desa</option>
+                                <option> Pilih Desa</option>
                                 @foreach ($desas as $c)
                                     <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option>
                                 @endforeach

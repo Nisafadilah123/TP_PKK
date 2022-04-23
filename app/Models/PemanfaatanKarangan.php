@@ -12,7 +12,7 @@ class PemanfaatanKarangan extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'id_warga','id_kategori', 'komoditi', 'jumlah', 'periode'
+        'id_desa','id_kecamatan','id_warga','id_kategori', 'komoditi', 'jumlah', 'periode'
     ];
 
     public function kecamatan(){

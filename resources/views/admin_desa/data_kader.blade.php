@@ -29,6 +29,8 @@
                                         <th>Email</th>
                                         <th>Password</th>
                                         <th>User Type</th>
+                                        <th>Id Desa</th>
+                                        <th>id kecamatan</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -43,6 +45,8 @@
                                         <td style="vertical-align: middle;">{{$c->email}}</td>
                                         <td style="vertical-align: middle;">{{$c->password}}</td>
                                         <td style="vertical-align: middle;">{{$c->user_type}}</td>
+                                        <td style="vertical-align: middle;">{{$c->desa->nama_desa}}</td>
+                                        <td style="vertical-align: middle;">{{$c->kecamatan->nama_kecamatan}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('data_kader.destroy',$c->id) }}" method="POST">

@@ -22,8 +22,8 @@ class UserSeeder extends Seeder
             'email' => 'superadmin@gmail.com',
             'password' => Hash::make('superadmin'),
             'user_type' => 'superadmin',
-            'id_kecamatan' => 2,
-            'id_desa' => 2,
+            'id_kecamatan' => null,
+            'id_desa' => null,
         ]);
         $super_admin->assignRole(Role::ROLE_ADMIN);
 
@@ -32,8 +32,8 @@ class UserSeeder extends Seeder
             'email' => 'adminkabupaten@gmail.com',
             'password' => Hash::make('adminkabupaten'),
             'user_type' => 'admin_kabupaten',
-            'id_kecamatan' => 2,
-            'id_desa' => 2,
+            'id_kecamatan' => null,
+            'id_desa' => null,
         ]);
         $admin_kabupaten->assignRole(Role::ROLE_ADMIN);
 

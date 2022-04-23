@@ -15,7 +15,7 @@ class KategoriPemanfaatanLahanSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // create tabel kategori_pemanfaatan_lahan
         DB::table('kategori_pemanfaatan_lahan')->insert([
 
             [
@@ -36,6 +36,6 @@ class KategoriPemanfaatanLahanSeeder extends Seeder
             [
                 'nama_kategori'=>'Lainnya',
             ]
-         ]);
+        ]);
     }
 }

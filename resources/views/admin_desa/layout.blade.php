@@ -119,17 +119,27 @@
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
+
+              </li>
+
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon far fa-folder"></i>
+                  <p>Data Kategori
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="/data_warga" class="nav-link {{ Request::is('data_warga') ? 'active':'' }}">
+                    <a href="/kategori_industri" class="nav-link {{ Request::is('kategori_industri') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data Warga</p>
+                      <p>Kategori Industri Rumah</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/data_kegiatan" class="nav-link">
+                    <a href="/kategori_pemanfaatan" class="nav-link {{ Request::is('kategori_pemanfaatan') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data Kegiatan Warga</p>
+                      <p>Kategori Pemanfaatan <br>Tanah Pekarangan</p>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -147,12 +157,13 @@
                   <li class="nav-item">
                     <a href="/data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data Sekretariat/Data Umum</p>
+                      <p>Data Sekretariat/<br>Data Umum</p>
                     </a>
                   </li>
 
                 </ul>
               </li>
+
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
@@ -189,7 +200,7 @@
                   <li class="nav-item">
                     <a href="/data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data Sekretariat/Data Umum</p>
+                      <p>Data Sekretariat/<br>Data Umum</p>
                     </a>
                   </li>
                 </ul>
@@ -285,7 +296,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
               <li class="breadcrumb-item active">@yield('bread')</li>
             </ol>
           </div>

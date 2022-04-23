@@ -12,9 +12,8 @@ class DataKeluarga extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_desa','id_kecamatan', 'data_warga_id', 'nama_kepala_rumah_tangga', 'jumlah_anggota_keluarga', 'laki_laki', 'perempuan', 'jumlah_KK', 'kategori_anggota',
-       'jumlah_kategori_anggota', 'makanan_pokok', 'punya_jamban', 'jumlah_jamban', 'sumber_air', 'punya_tempat_sampah', 'punya_saluran_air', 'tempel_stiker',
-       'kriteria_rumah', 'aktivitas_UP2K', 'aktivitas_kegiatan_usaha', 'periode'
+       'id_desa','id_kecamatan', 'id_data_warga', 'dasa_wisma', 'nama_kepala_rumah_tangga', 'jumlah_anggota_keluarga', 'laki_laki', 'perempuan', 'jumlah_KK', 'jumlah_balita', 'jumlah_PUS', 'jumlah_WUS', 'jumlah_3_buta', 'jumlah_ibu_hamil', 'jumlah_ibu_menyusui',
+       	'jumlah_lansia', 'jumlah_kebutuhan', 'makanan_pokok', 'punya_jamban', 'jumlah_jamban', 'sumber_air', 'punya_tempat_sampah', 'punya_saluran_air', 'tempel_stiker', 'kriteria_rumah', 'aktivitas_UP2K', 'aktivitas_kegiatan_usaha', 'periode'
     ];
 
     public function kecamatan(){
@@ -25,7 +24,7 @@ class DataKeluarga extends Model
     }
 
     public function warga(){
-        return $this->belongsTo(DataWarga::class, 'data_warga_id');
+        return $this->belongsTo(DataWarga::class, 'id_data_warga');
     }
 
 }

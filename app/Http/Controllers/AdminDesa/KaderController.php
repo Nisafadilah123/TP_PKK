@@ -31,7 +31,7 @@ class KaderController extends Controller
     public function create(Request $request)
     {
         // halaman create kader
-        $data['user_type'] = ['kader_desa' => 'Kader Desa', 'kader_keluruhan' => 'Kader Kelurahan', 'kader_kecamatan' => 'Kader Kecamatan'];
+        $data['user_type'] = ['kader_desa' => 'Kader Desa', 'kader_keluruhan' => 'Kader Kelurahan'];
         return view('admin_desa.form_kader.create_kader', $data);
     }
 
@@ -50,6 +50,9 @@ class KaderController extends Controller
             'email' => 'required|unique:data_kader',
             'password' => 'required',
             'user_type' => 'required',
+            'id_desa' => 'required',
+            'id_kecamatan' => 'required',
+
         ]);
 
         $kader = new Kader();
@@ -57,6 +60,8 @@ class KaderController extends Controller
         $kader->email = $request->email;
         $kader->password = Hash::make($request->password);
         $kader->user_type = $request->user_type;
+        $kader->id_desa = $request->id_desa;
+        $kader->id_kecamatan = $request->id_kecamatan;
 
         $kader->save();
         Auth::guard('kader')->login($kader);
@@ -105,6 +110,8 @@ class KaderController extends Controller
             'email' => 'required',
             'password' => 'required',
             'user_type' => 'required',
+            'id_desa' => 'required',
+            'id_kecamatan' => 'required',
 
         ]);
 
@@ -113,6 +120,9 @@ class KaderController extends Controller
         if ($request->password)
             $data_kader->password = Hash::make($request->password);
         $data_kader->user_type = $request->user_type;
+        $data_kader->id_desa = $request->id_desa;
+        $data_kader->id_kecamatan = $request->id_kecamatan;
+
         $data_kader->save();
         Alert::success('Berhasil', 'Data berhasil di Ubah');
 

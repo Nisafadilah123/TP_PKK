@@ -15,6 +15,14 @@ class Kader extends Model implements AuthenticatableContract
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'name', 'email', 'password', 'user_type'
+       'name', 'email', 'password', 'user_type', 'id_desa', 'id_kecamatan'
     ];
+
+    public function desa(){
+        return $this->belongsTo(Data_Desa::class, 'id_desa');
+    }
+    public function kecamatan(){
+        return $this->belongsTo(DataKecamatan::class, 'id_kecamatan');
+    }
+
 }

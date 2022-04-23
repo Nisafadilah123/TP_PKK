@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('data_kegiatan_warga', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_desa')->unsigned();
+            $table->foreign('id_desa')->references('id')->on('data_desa')->onUpdate('cascade');
+            $table->bigInteger('id_kecamatan')->unsigned();
+            $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan')->onUpdate('cascade');
             $table->bigInteger('id_warga')->unsigned();
             $table->foreign('id_warga')->references('id')->on('data_warga')->onUpdate('cascade');
             $table->bigInteger('id_kegiatan')->unsigned();

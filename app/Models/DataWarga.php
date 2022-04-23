@@ -29,13 +29,18 @@ class DataWarga extends Model
         return $this->hasMany(DataKegiatanWarga::class);
     }
 
-     // data_kegiatan_warga
+     // data_keluarga
      public function keluarga(){
         return $this->hasMany(DataKeluarga::class);
     }
 
-    // data_kegiatan_warga
+    // data_pemanfaatan
     public function pemanfaatan(){
         return $this->hasMany(PemanfaatanKarangan::class);
+    }
+
+     // data_pemanfaatan
+     public function industri(){
+        return $this->hasMany(DataIndustriRumah::class);
     }
 }
