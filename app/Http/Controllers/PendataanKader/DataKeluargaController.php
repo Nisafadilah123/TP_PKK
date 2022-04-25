@@ -56,7 +56,7 @@ class DataKeluargaController extends Controller
     public function store(Request $request)
     {
         // proses penyimpanan untuk tambah data jml kader
-        dd($request->all());
+        // dd($request->all());
 
         $request->validate([
             'id_desa' => 'required',
@@ -71,17 +71,17 @@ class DataKeluargaController extends Controller
             'laki_laki' => 'required',
             'perempuan' => 'required',
             'jumla_KK' => 'required',
-            // 'jumlah_balita' => 'required',
-            // 'jumlah_PUS' => 'required',
-            // 'jumlah_WUS' => 'required',
-            // 'jumlah_3_buta' => 'required',
-            // 'jumlah_ibu_hamil' => 'required',
-            // 'jumlah_ibu_menyusui' => 'required',
-            // 'jumlah_lansia' => 'required',
-            // 'jumlah_kebutuhan' => 'required',
+            'jumlah_balita' => 'required',
+            'jumlah_anggota_keluarga' => 'required',
+            'jumlah_WUS' => 'required',
+            'jumlah_3_buta' => 'required',
+            'jumlah_ibu_hamil' => 'required',
+            'jumlah_ibu_menyusui' => 'required',
+            'jumlah_lansia' => 'required',
+            'jumlah_kebutuhan' => 'required',
             'makanan_pokok' => 'required',
             'punya_jamban' => 'required',
-            // 'jumlah_jamban' => 'required',
+            'jumlah_PUS' => 'required',
             'sumber_air' => 'required',
             'punya_tempat_sampah' => 'required',
             'punya_saluran_air' => 'required',
@@ -92,10 +92,10 @@ class DataKeluargaController extends Controller
             'periode' => 'required',
 
         ], [
-            'id_desa.required' => 'Lengkapi Id Desa',
-            'id_kecamatan' => 'Lengkapi Id Desa',
-            'id_data_warga.required' => 'Lengkapi Nama Warga',
-            'dasa_wisma.required' => 'Pilih Nama Dasawisma',
+            'id_desa.required' => 'Pilih Alamat Desa Kegiatan Warga',
+            'id_kecamatan' => 'Pilih Alamat Kecamatan Kegiatan Warga',
+            'id_data_warga.required' => 'Pilih Nama Warga',
+            'dasa_wisma.required' => 'Pilih Nama Dasawisma Yang Diikuti',
             'nama_kepala_rumah_tangga.required' => 'Pilih Nama Kepala Rumah Tangga',
             'jumlah_anggota_keluarga.required' => 'Lengkapi Jumlah Anggota Keluarga',
             'rt.required' => 'Pilih RT',
@@ -103,19 +103,24 @@ class DataKeluargaController extends Controller
             'laki_laki.required' => 'Lengkapi Jumlah Laki-laki',
             'perempuan.required' => 'Lengkapi Jumlah Perempuan',
             'jumlah_KK.required' => 'Lengkapi Jumlah KK',
-            // 'kategori_anggota.required' => 'Lengkapi Kategori Keluarga',
+            'jumlah_PUS.required' => 'Lengkapi Jumlah PUS (Pasangan Usia Subur) dalam Keluarga',
+            'jumlah_WUS.required' => 'Lengkapi Jumlah WUS (Wanita Usia Subur) dalam Keluarga',
+            'jumlah_3_buta.required' => 'Lengkapi Jumlah 3 Buta (Buta Tulis, Buta Baca, Buta Hitung) dalam Keluarga',
+            'jumlah_ibu_hamil.required' => 'Lengkapi Jumlah Ibu Hamil dalam Keluarga',
+            'jumlah_ibu_menyusui.required' => 'Lengkapi Jumlah Ibu Menyusui dalam Keluarga',
+            'jumlah_lansia.required' => 'Lengkapi Jumlah Lansia dalam Keluarga',
+            'jumlah_kebutuhan.required' => 'Lengkapi Jumlah Berkebutuhan Khusus dalam Keluarga',
             'makanan_pokok.required' => 'Lengkapi Makanan Pokok',
-            // 'jumlah_kategori_anggota.required' => 'Lengkapi Jumlah Kategori Anggota',
-            'punya_jamban.required' => 'Lengkapi Jumlah Yang Mempunyai Jamban',
-            // 'jumlah_jamban.required' => 'Lengkapi Jumlah Jamban',
-            'sumber_air.required' => 'Pilih Sumber Air Kader Khusus KF',
+            'jumlah_balita.required' => 'Lengkapi Jumlah Balita dalam Keluarga',
+            'punya_jamban.required' => 'Pilih Mempunyai Jamban dan Jumlah Yang Mempunyai Jamban',
+            'sumber_air.required' => 'Pilih Sumber Air dalam Keluarga',
             'punya_tempat_sampah.required' => 'Pilih Yang Mempunyai Tempat Sampah',
             'punya_saluran_air.required' => 'Pilih Yang Mempunyai Saluran Air',
             'tempel_stiker.required' => 'Pilih Rumah Yang Mempunyai Stiker P4K',
             'kriteria_rumah.required' => 'Pilih Kriteria Rumah',
             'aktivitas_UP2K.required' => 'Pilih Aktivitas UP2K',
             'aktivitas_kegiatan_usaha.required' => 'Pilih Aktivitas Kegiatan Usaha',
-            'periode.required' => 'Lengkapi Periode',
+            'periode.required' => 'Pilih Periode',
 
         ]);
         $insert=DB::table('data_keluarga')->where('id_warga', $request->id_warga)->first();

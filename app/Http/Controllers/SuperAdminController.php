@@ -6,6 +6,7 @@ use App\Models\Data_Desa;
 use App\Models\DataKecamatan;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SuperAdminController extends Controller
 {
@@ -57,6 +58,40 @@ class SuperAdminController extends Controller
             // halaman data koperasi
             public function koperasi_super(){
                 return view('super_admin.sub_file_pokja_2.koperasi_super');
+            }
+
+            public function login()
+            {
+                return view('super_admin.login');
+            }
+
+            public function loginPost(Request $request)
+            {
+                $request->validate([
+                    'email' => ['required', 'email'],
+                    'password' => ['required'],
+                ]);
+
+                $credentials['email'] = $request->get('email');
+                $credentials['password'] = $request->get('password');
+                $credentials['user_type'] = 'superadmin';
+
+                $remember = $request->get('remember');
+
+                $attempt = Auth::attempt($credentials, $remember);
+
+                if ($attempt) {
+                    return redirect('/dashboard_super');
+                } else {
+                    return back()->withErrors(['email' => ['Incorrect email / password.']]);
+                }
+            }
+
+            public function logoutPost()
+            {
+                Auth::logout();
+
+                return redirect()->route('super_admin.login');
             }
 
             // halaman data makanan pokok

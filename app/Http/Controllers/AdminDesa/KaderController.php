@@ -19,7 +19,10 @@ class KaderController extends Controller
     public function index()
     {
         //halaman form data akun kader
-        $akun=Kader::all();
+        $akun = Kader::where('user_type', 'kader_desa')
+            ->where('id_desa', auth()->user()->id_desa)
+            ->get();
+
         return view('admin_desa.data_kader', compact('akun'));
     }
 
@@ -50,9 +53,6 @@ class KaderController extends Controller
             'email' => 'required|unique:data_kader',
             'password' => 'required',
             'user_type' => 'required',
-            'id_desa' => 'required',
-            'id_kecamatan' => 'required',
-
         ]);
 
         $kader = new Kader();
@@ -60,8 +60,8 @@ class KaderController extends Controller
         $kader->email = $request->email;
         $kader->password = Hash::make($request->password);
         $kader->user_type = $request->user_type;
-        $kader->id_desa = $request->id_desa;
-        $kader->id_kecamatan = $request->id_kecamatan;
+        $kader->id_desa = auth()->user()->id_desa;
+        $kader->id_kecamatan = auth()->user()->id_kecamatan;
 
         $kader->save();
         Auth::guard('kader')->login($kader);

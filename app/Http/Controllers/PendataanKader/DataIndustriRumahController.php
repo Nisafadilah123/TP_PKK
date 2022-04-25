@@ -65,13 +65,13 @@ class DataIndustriRumahController extends Controller
            'periode' => 'required',
 
        ], [
-        'id_desa.required' => 'Lengkapi Id Desa',
-        'id_kecamatan.required' => 'Lengkapi Id Desa',
-           'id_warga.required' => 'Lengkapi Id Desa',
-           'id_kategori.required' => 'Lengkapi Id Desa',
-           'komoditi.required' => 'Lengkapi Nama Kepala Rumah Tangga',
-           'volume.required' => 'Lengkapi No. KTP/NIK',
-           'periode.required' => 'Lengkapi Periode',
+            'id_desa.required' => 'Lengkapi Alamat Desa Industri Rumah Tangga Warga Yang Didata',
+            'id_kecamatan.required' => 'Lengkapi Alamat Kecamatan Kegiatan Warga Yang Didata',
+            'id_warga.required' => 'Lengkapi Nama Warga Yang Didata',
+            'id_kategori.required' => 'Pilih Kategori Industri Rumah Tangga Warga',
+           'komoditi.required' => 'Lengkapi Komoditi Industri Rumah Tangga Warga',
+           'volume.required' => 'Lengkapi Volume Industri Rumah Tangga Warga',
+           'periode.required' => 'Pilih Periode',
 
        ]);
 
@@ -86,7 +86,6 @@ class DataIndustriRumahController extends Controller
            $industris = new DataIndustriRumah();
            $industris->id_desa = $request->id_desa;
            $industris->id_kecamatan = $request->id_kecamatan;
-
            $industris->id_warga = $request->id_warga;
            $industris->id_kategori = $request->id_kategori;
            $industris->komoditi = $request->komoditi;
@@ -121,13 +120,15 @@ class DataIndustriRumahController extends Controller
    */
    public function edit(DataIndustriRumah $data_industri)
    {
+        $kec = DB::table('data_kecamatan')->get();
+
        //halaman form edit data kegiatan
        $warga = DataWarga::all();
        $katins = KategoriIndustriRumah::all();
 
        // dd($warga);
 
-       return view('kader.data_kegiatan.form.edit_data_industri', compact('data_industri','warga', 'katins'));
+       return view('kader.data_kegiatan.form.edit_data_industri', compact('data_industri','warga', 'katins', 'kec'));
 
    }
 

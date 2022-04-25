@@ -169,6 +169,14 @@ Route::middleware(['auth', 'user_type:admin_desa'])->group(function () {
 
     // form data pendataan kader
     Route::resource('/data_warga', DataWargaController::class);
+
+    // Route::get('/data_warga', [DataWargaController::class, 'index'])->name('data_warga.index');
+    // Route::get('/data_warga/create', [DataWargaController::class, 'create'])->name('data_warga.create');
+    // Route::post('/data_warga/create', [DataWargaController::class, 'store'])->name('data_warga.store');
+    // Route::get('/data_warga/{id}', [DataWargaController::class, 'show'])->name('data_warga.show');
+    // Route::put('/data_warga/{id}', [DataWargaController::class, 'update'])->name('data_warga.update');
+    // Route::delete('/data_warga/{id}', [DataWargaController::class, 'destroy'])->name('data_warga.destroy');
+
     Route::resource('/data_kegiatan', DataKegiatanWargaController::class);
     Route::resource('/data_keluarga', DataKeluargaController::class);
     Route::resource('/data_pemanfaatan', DataPemanfaatanPekaranganController::class);
@@ -205,7 +213,10 @@ Route::middleware(['auth', 'user_type:admin_kecamatan'])->group(function () {
 });
 
 // halaman super admin
-Route::middleware(['auth', 'user_type:superadmin'])->group(function(){
+Route::get('/super_admin/login', [SuperAdminController::class, 'login'])->name('super_admin.login');
+Route::post('/super_admin/login', [SuperAdminController::class, 'loginPost']);
+Route::post('/super_admin/logout', [SuperAdminController::class, 'logoutPost'])->name('super_admin.logout');
+Route::middleware(['user_type:superadmin'])->group(function(){
     Route::get('/dashboard_super', [SuperAdminController::class, 'dashboard_super']);
     Route::get('/data_pokja1_super', [SuperAdminController::class, 'data_pokja1_super']);
     Route::get('/data_pokja2_super', [SuperAdminController::class, 'data_pokja2_super']);

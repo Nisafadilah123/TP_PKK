@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('industri_rumah', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_desa')->unsigned();
-            $table->foreign('id_desa')->references('id')->on('data_desa')->onUpdate('cascade');
+            $table->foreign('id_desa')->references('id')->on('data_desa');
             $table->bigInteger('id_kecamatan')->unsigned();
-            $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan')->onUpdate('cascade');
+            $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan');
             $table->bigInteger('id_warga')->unsigned();
             $table->foreign('id_warga')->references('id')->on('data_warga');
             $table->bigInteger('id_kategori')->unsigned();

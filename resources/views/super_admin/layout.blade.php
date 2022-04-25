@@ -229,14 +229,14 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('logout') }}"
+                <a class="nav-link" href="{{ route('super_admin.logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                     <i class="nav-icon fas fa-sign-out-alt"></i>
                     Keluar
                 </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                <form id="logout-form" action="{{ route('super_admin.logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
               </li>

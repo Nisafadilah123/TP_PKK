@@ -17,7 +17,7 @@
       <form action="{{ route('data_pemanfaatan.store') }}" method="POST">
         @csrf
         <div class="card-body">
-            <div class="form-group">
+            <div class="form-group @error('id_kecamatan') is-invalid @enderror">
                 <label for="exampleFormControlSelect1">Kecamatan</label>
                 <select class="form-control" id="id_kecamatan" name="id_kecamatan">
                  {{-- nama desa yang login --}}
@@ -27,8 +27,13 @@
                     @endforeach
                 </select>
             </div>
+            @error('id_kecamatan')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
 
-            <div class="form-group">
+            <div class="form-group @error('id_desa') is-invalid @enderror">
                 <label for="exampleFormControlSelect1">Desa</label>
                 <select class="form-control" id="id_desa" name="id_desa">
                 {{-- nama desa yang login --}}
@@ -38,8 +43,13 @@
                 @endforeach --}}
                 </select>
             </div>
+            @error('id_desa')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
 
-            <div class="form-group">
+            <div class="form-group @error('id_warga') is-invalid @enderror">
               <label for="exampleFormControlSelect1">Nama Warga</label>
               <select class="form-control" id="id_warga" name="id_warga">
                 {{-- nama warga --}}
@@ -48,8 +58,13 @@
                 @endforeach
                 </select>
             </div>
+            @error('id_warga')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
 
-          <div class="form-group">
+          <div class="form-group @error('id_kategori') is-invalid @enderror">
             <label>Kategori</label>
             <select class="form-control" id="id_kategori" name="id_kategori">
                 {{-- nama warga --}}
@@ -59,15 +74,33 @@
                 @endforeach
             </select>
           </div>
+            @error('id_kategori')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
           <div class="form-group">
             <label>Komoditi</label>
-            <input type="text" class="form-control" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi" required>
-          </div>
+            <input type="text" class="form-control @error('komoditi') is-invalid @enderror" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi">
+            @error('komoditi')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+           </div>
+
           <div class="form-group">
             <label>Jumlah</label>
-            <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah" required>
-          </div>
-          <div class="form-group">
+            <input type="number" class="form-control @error('jumlah') is-invalid @enderror" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah">
+            @error('jumlah')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+           </div>
+
+          <div class="form-group @error('periode') is-invalid @enderror">
             <label>Periode</label>
             <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
               <option hidden> Pilih Tahun</option>
@@ -80,6 +113,11 @@
                   }?>
             </select>
           </div>
+          @error('periode')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+          @enderror
         </div>
         <!-- /.card-body -->
 
@@ -116,7 +154,7 @@
 
                  if(data){
                     $('#id_desa').empty();
-                    $('#id_desa').append('<option hidden>Pilih Desa</option>'); 
+                    $('#id_desa').append('<option hidden>Pilih Desa</option>');
                     $.each(data, function(key, desas){
                         $('select[name="id_desa"]').append('<option value="'+ key +'">' + desas.nama_desa+ '</option>');
                     });

@@ -105,15 +105,16 @@
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
 
                                         <td class="text-center">
-                                            <form action="{{ url('data_warga.destroy',$c->id) }}" method="POST">
 
-                                            <a class="btn btn-info btn-sm" href="{{ url('data_warga.show',$c->id) }}">Show</a>
+                                            {{-- <a class="btn btn-info btn-sm" href="{{ url('data_warga/'.$c->id) }}">Show</a> --}}
 
-                                                <a class="btn btn-primary btn-sm" href="{{ url('data_warga/'.$c->id.'/edit') }}">Edit</a>
+                                            <a class="btn btn-info btn-sm" href="{{ route('data_warga.show',$c->id) }}">Show</a>
 
+                                            <a class="btn btn-primary btn-sm" href="{{ url('data_warga/'.$c->id.'/edit') }}">Edit</a>
+
+                                            <form action="{{ route('data_warga.destroy',$c->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-
                                                 <button type="submit" class="btn btn-danger btn-sm delete">Delete</button>
                                             </form>
                                         </td>

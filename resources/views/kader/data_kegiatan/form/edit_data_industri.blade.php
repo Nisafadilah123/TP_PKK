@@ -19,6 +19,50 @@
 
         @csrf
         <div class="card-body">
+            {{-- <div class="form-group">
+                <label for="exampleFormControlSelect1">Kecamatan</label>
+                <select class="form-control" id="id_kecamatan" name="id_kecamatan"> --}}
+                 {{-- nama desa yang login --}}
+                {{-- <option hidden> Pilih Kecamatan</option>
+                    @foreach ($kec as $c)
+                        <option value="{{$c->id }}">  {{$c->kode_kecamatan }}-{{ $c->nama_kecamatan }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Desa</label>
+                <select class="form-control" id="id_desa" name="id_desa"> --}}
+                {{-- nama desa yang login --}}
+                {{-- <option hidden> Pilih Desa</option>
+                @foreach ($desas as $c)
+                    <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option>
+                @endforeach --}}
+                {{-- </select>
+            </div> --}}
+
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Kecamatan</label>
+                <select class="form-control" id="id_kecamatan" name="id_kecamatan">
+                 {{-- nama desa yang login --}}
+                <option hidden> Pilih Kecamatan</option>
+                    @foreach ($kec as $c)
+                        <option value="{{$c->id }}">  {{$c->kode_kecamatan }}-{{ $c->nama_kecamatan }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Desa</label>
+                <select class="form-control" id="id_desa" name="id_desa">
+                {{-- nama desa yang login --}}
+                {{-- <option hidden> Pilih Desa</option>
+                @foreach ($desas as $c)
+                    <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option>
+                @endforeach --}}
+                </select>
+            </div>
+
             <div class="form-group">
               <label for="exampleFormControlSelect1">Nama Warga</label>
               <select class="form-control" id="id_warga" name="id_warga">
@@ -80,3 +124,40 @@
   </div>
 @endsection
 
+
+@push('script-addon')
+<script>
+    $(document).ready(function() {
+    $('#id_kecamatan').on('change', function() {
+       var categoryID = $(this).val();
+       console.log('cek data kecamatan');
+       if(categoryID) {
+        console.log('cek get data desa');
+
+           $.ajax({
+               url: '/getDesa/'+categoryID,
+               type: "GET",
+               data : {"_token":"{{ csrf_token() }}"},
+               dataType: "json",
+               success:function(data)
+               {
+                console.log('sukses cek data desa');
+
+                 if(data){
+                    $('#id_desa').empty();
+                    $('#id_desa').append('<option hidden>Pilih Desa</option>');
+                    $.each(data, function(key, desas){
+                        $('select[name="id_desa"]').append('<option value="'+ key +'">' + desas.nama_desa+ '</option>');
+                    });
+                }else{
+                    $('#id_desa').empty();
+                }
+             }
+           });
+       }else{
+         $('#id_desa').empty();
+       }
+    });
+    });
+</script>
+@endpush

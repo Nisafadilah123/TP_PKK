@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
+use App\Models\DataKecamatan;
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -21,12 +22,13 @@ class UserController extends Controller
         //halaman tampil data tabel user
         $users = User::all();
         $desa = Data_Desa::all();
+        $kec = DataKecamatan::all();
 
         // $users = User::with('desa','kecamatan')->get();
         // $desa = Data_Desa::with('kecamatan')->get();
 // dd($desa);
 
-        return view('super_admin.data_pengguna_super', compact('users', 'desa'));
+        return view('super_admin.data_pengguna_super', compact('users', 'desa', 'kec'));
     }
 
     /**

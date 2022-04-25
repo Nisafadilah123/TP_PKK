@@ -45,10 +45,20 @@
                                         <td style="vertical-align: middle;">{{$c->email}}</td>
                                         <td style="vertical-align: middle;">{{$c->password}}</td>
                                         <td style="vertical-align: middle;">{{$c->user_type}}</td>
-                                        <td style="vertical-align: middle;">{{$c->desa->nama_desa}}</td>
-                                        <td style="vertical-align: middle;">Desa</td>
+                                        <td style="vertical-align: middle;">
+                                            @if ($desa = $c->desa)
+                                                {{ $desa->nama_desa }}
+                                            @else
+                                                -
+                                            @endif
+                                        </td>
 
-                                        <td style="vertical-align: middle;">Kecamatan</td>
+                                        <td style="vertical-align: middle;">                                            @if ($desa = $c->desa)
+                                            {{ $kecamatan->nama_kecamatan }}
+                                        @else
+                                            -
+                                        @endif
+                                        </td>
 
                                         <td class="text-center">
                                             <form action="{{ route('data_pengguna_super.destroy',$c->id) }}" method="POST">

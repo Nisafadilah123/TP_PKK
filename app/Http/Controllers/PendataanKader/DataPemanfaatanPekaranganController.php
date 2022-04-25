@@ -63,11 +63,14 @@ class DataPemanfaatanPekaranganController extends Controller
             'periode' => 'required',
 
         ], [
-            'id_warga.required' => 'Lengkapi Id Desa',
-            'id_kategori.required' => 'Lengkapi Id Desa',
-            'komoditi.required' => 'Lengkapi Nama Kepala Rumah Tangga',
-            'jumlah.required' => 'Lengkapi No. KTP/NIK',
-            'periode.required' => 'Lengkapi Periode',
+            'id_desa.required' => 'Pilih Alamat Desa Pemanfaatan Tanah Pekarangan Warga',
+            'id_kecamatan' => 'Pilih Alamat Kecamatan Pemanfaatan Tanah Pekarangan Warga',
+
+            'id_warga.required' => 'Pilih Nama Warga',
+            'id_kategori.required' => 'Pilih Alamat Kategori Pemanfaatan Tanah Pekarangan',
+            'komoditi.required' => 'Lengkapi Komoditi Pemanfaatan Tanah Pekarangan',
+            'jumlah.required' => 'Lengkapi Jumlah Komoditi Tanah Pekarangan',
+            'periode.required' => 'Pilih Periode',
 
         ]);
 

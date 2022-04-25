@@ -65,13 +65,13 @@ class DataKegiatanWargaController extends Controller
             'periode' => 'required',
 
         ], [
-            'id_desa.required' => 'Lengkapi Id Desa',
-            'id_kecamatan.required' => 'Lengkapi Id Desa',
-            'id_warga.required' => 'Lengkapi Id Desa',
-            'id_kegiatan.required' => 'Lengkapi Id Desa',
-            'aktivitas.required' => 'Lengkapi Nama Kepala Rumah Tangga',
-            'keterangan.required' => 'Lengkapi No. KTP/NIK',
-            'periode.required' => 'Lengkapi Periode',
+            'id_desa.required' => 'Lengkapi Alamat Desa Kegiatan Warga Yang Didata',
+            'id_kecamatan.required' => 'Lengkapi Alamat Kecamatan Kegiatan Warga Yang Didata',
+            'id_warga.required' => 'Lengkapi Nama Warga Yang Didata',
+            'id_kegiatan.required' => 'Lengkapi Kegiatan Yang Diikuti Warga',
+            'aktivitas.required' => 'Pilih Aktivitas Kegiatan Yang Diikuti Warga',
+            'keterangan.required' => 'Lengkapi Keterangan Kegiatan Yang Diikuti Warga',
+            'periode.required' => 'Pilih Periode',
 
         ]);
 
@@ -121,13 +121,15 @@ class DataKegiatanWargaController extends Controller
     */
     public function edit(DataKegiatanWarga $data_kegiatan)
     {
+        $kec = DB::table('data_kecamatan')->get();
+
         //halaman form edit data kegiatan
         $keg = DataWarga::all();
         $kat = KategoriKegiatan::all();
 
         // dd($keg);
 
-        return view('kader.data_kegiatan.form.edit_data_kegiatan', compact('data_kegiatan','keg', 'kat'));
+        return view('kader.data_kegiatan.form.edit_data_kegiatan', compact('data_kegiatan','keg', 'kat', 'kec'));
 
     }
 

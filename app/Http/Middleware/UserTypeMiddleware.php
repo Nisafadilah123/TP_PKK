@@ -18,13 +18,23 @@ class UserTypeMiddleware
      */
     public function handle(Request $request, Closure $next, $userType)
     {
-        if ($user = auth()->user()) {
-            if ($user->user_type !== $userType) {
-                // return abort(403);
-                Alert::error('Gagal', 'Anda Harus login terlebih dahu');
+        $check = false;
 
-                return redirect('login');
+        if ($user = auth()->user()) {
+            if ($user->user_type === $userType) {
+
+                $check = true;
+
             }
+        }
+
+        if ($check === false) {
+            if ($userType === 'superadmin') {
+                return redirect()->route('super_admin.login')->withErrors(['email' => ['Anda harus login sebagai admin terlebih dahulu.']]);
+            }
+            // } elseif ($userType === '') {
+            //     # code...
+            // }
         }
 
         return $next($request);
