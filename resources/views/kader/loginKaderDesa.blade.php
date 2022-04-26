@@ -1,4 +1,4 @@
-{{-- bikin login super admin sendiri --}}
+{{-- bikin login sendiri --}}
 
 @extends('layouts.app')
 
@@ -7,10 +7,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Silahkan Login Super Admin PKK') }}</div>
+                <div class="card-header">{{ __('Silahkan Login Kader Desa TP PKK') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('super_admin.login') }}">
+                    <form method="POST" action="{{ route('kader_desa.login') }}">
                         @csrf
 
                         <div class="row mb-3">

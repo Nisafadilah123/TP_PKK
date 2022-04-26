@@ -53,7 +53,8 @@
                                             @endif
                                         </td>
 
-                                        <td style="vertical-align: middle;">                                            @if ($desa = $c->desa)
+                                        <td style="vertical-align: middle;">
+                                            @if ($kecamatan = $c->kecamatan)
                                             {{ $kecamatan->nama_kecamatan }}
                                         @else
                                             -

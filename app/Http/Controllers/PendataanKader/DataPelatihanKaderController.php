@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers\PendataanKader;
 use App\Http\Controllers\Controller;
-use App\Models\DataWarga;
-use App\Models\PemanfaatanKarangan;
-use RealRashid\SweetAlert\Facades\Alert;
-use App\Models\KategoriPemanfaatanLahan;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class DataPemanfaatanPekaranganController extends Controller
+class DataPelatihanKaderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,18 +28,12 @@ class DataPemanfaatanPekaranganController extends Controller
     {
         // halaman form tambah data pemanfaatan tanah
      // nama desa yang login
-     $desas = DB::table('data_desa')
-     ->where('id', auth()->user()->id_desa)
-     ->get();
-     // $kec = DB::table('data_kecamatan')->get();
-     $kec = DB::table('data_kecamatan')
-     ->where('id', auth()->user()->id_desa)
-     ->get();
+     $kec = DB::table('data_kecamatan')->get();
 
      $warga = DataWarga::all(); // pemanggilan tabel data warga pekarangan
      $kat = KategoriPemanfaatanLahan::all(); // pemanggilan tabel kategori pemanfaatan tanah
     //  dd($keg);
-     return view('kader.data_kegiatan.form.create_data_pemanfaatan', compact('kec', 'warga', 'kat', 'desas'));
+     return view('kader.data_kegiatan.form.create_data_pemanfaatan', compact('kec', 'warga', 'kat'));
 
  }
 
@@ -130,15 +119,7 @@ class DataPemanfaatanPekaranganController extends Controller
         $warga = DataWarga::all();
         $kat = KategoriPemanfaatanLahan::all();
 
-        $desas = DB::table('data_desa')
-       ->where('id', auth()->user()->id_desa)
-       ->get();
-       // $kec = DB::table('data_kecamatan')->get();
-       $kec = DB::table('data_kecamatan')
-       ->where('id', auth()->user()->id_desa)
-       ->get();
-
-        return view('kader.data_kegiatan.form.edit_data_pemanfaatan', compact('data_pemanfaatan','warga', 'kat', 'desas', 'kec'));
+        return view('kader.data_kegiatan.form.edit_data_pemanfaatan', compact('data_pemanfaatan','warga', 'kat'));
 
     }
 
@@ -167,7 +148,7 @@ class DataPemanfaatanPekaranganController extends Controller
         // update data
             $data_pemanfaatan->update($request->all());
             Alert::success('Berhasil', 'Data berhasil di ubah');
-            return redirect('/data_pemanfaatan');
+            return redirect('/pemanfaatan');
 
     }
 
@@ -186,5 +167,72 @@ class DataPemanfaatanPekaranganController extends Controller
 
 
 
+    }
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

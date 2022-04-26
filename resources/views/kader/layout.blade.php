@@ -67,7 +67,7 @@
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
-            <span class="brand-text font-weight-dark">Selamat Datang Kader (nama kader) TP PKK Desa</span>
+            <span class="brand-text font-weight-dark">Selamat Datang Kader {{ (Auth::user()->name) }} TP PKK Desa</span>
 
         </ul>
       </nav>
@@ -153,8 +153,14 @@
                     </li>
 
                   </ul>
-              </li>
+                </li>
 
+                <li class="nav-item">
+                    <a href="/data_kader" class="nav-link">
+                    <i class="nav-icon fas fa-user-cog"></i>
+                      <p>Data Pelatihan Kader<br> TP PKK</p>
+                    </a>
+                </li>
 
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}"

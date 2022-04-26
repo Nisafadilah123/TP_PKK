@@ -32,15 +32,18 @@ class DataIndustriRumahController extends Controller
    {
        // halaman form tambah data industri rumah tangga
     // nama desa yang login
-    // $desas = DB::table('data_desa')
-    // ->where('id', auth()->user()->id_desa)
-    // ->get();
-    $kec = DB::table('data_kecamatan')->get();
+    $desas = DB::table('data_desa')
+    ->where('id', auth()->user()->id_desa)
+    ->get();
+    // $kec = DB::table('data_kecamatan')->get();
+    $kec = DB::table('data_kecamatan')
+    ->where('id', auth()->user()->id_desa)
+    ->get();
 
     $warga = DataWarga::all(); // pemanggilan tabel data warga
     $katin = KategoriIndustriRumah::all(); // pemanggilan tabel data kategori industri rumah tangga
 
-    return view('kader.data_kegiatan.form.create_data_industri', compact('kec', 'katin', 'warga'));
+    return view('kader.data_kegiatan.form.create_data_industri', compact('kec','desas', 'katin', 'warga'));
 
 }
 
@@ -120,15 +123,21 @@ class DataIndustriRumahController extends Controller
    */
    public function edit(DataIndustriRumah $data_industri)
    {
-        $kec = DB::table('data_kecamatan')->get();
-
        //halaman form edit data kegiatan
        $warga = DataWarga::all();
        $katins = KategoriIndustriRumah::all();
 
+       $desas = DB::table('data_desa')
+       ->where('id', auth()->user()->id_desa)
+       ->get();
+       // $kec = DB::table('data_kecamatan')->get();
+       $kec = DB::table('data_kecamatan')
+       ->where('id', auth()->user()->id_desa)
+       ->get();
+
        // dd($warga);
 
-       return view('kader.data_kegiatan.form.edit_data_industri', compact('data_industri','warga', 'katins', 'kec'));
+       return view('kader.data_kegiatan.form.edit_data_industri', compact('data_industri','warga', 'katins', 'kec', 'desas'));
 
    }
 

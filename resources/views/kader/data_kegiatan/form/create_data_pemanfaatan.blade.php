@@ -17,107 +17,121 @@
       <form action="{{ route('data_pemanfaatan.store') }}" method="POST">
         @csrf
         <div class="card-body">
-            <div class="form-group @error('id_kecamatan') is-invalid @enderror">
-                <label for="exampleFormControlSelect1">Kecamatan</label>
-                <select class="form-control" id="id_kecamatan" name="id_kecamatan">
-                 {{-- nama desa yang login --}}
-                <option hidden> Pilih Kecamatan</option>
-                    @foreach ($kec as $c)
-                        <option value="{{$c->id }}">  {{$c->kode_kecamatan }}-{{ $c->nama_kecamatan }}</option>
-                    @endforeach
-                </select>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group @error('id_desa') is-invalid @enderror">
+                        <label for="exampleFormControlSelect1">Desa</label>
+                        @foreach ($desas as $c)
+                        {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
+                        <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+
+                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
+
+                        @endforeach
+                    </div>
+                    @error('id_desa')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group @error('id_kecamatan') is-invalid @enderror">
+                        <label for="exampleFormControlSelect1">Kecamatan</label>
+                        @foreach ($kec as $c)
+                        <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                        <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->kode_kecamatan }}-{{ $c->nama_kecamatan }}">
+
+                        @endforeach
+                    </div>
+                    @error('id_kecamatan')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
             </div>
-            @error('id_kecamatan')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
 
-            <div class="form-group @error('id_desa') is-invalid @enderror">
-                <label for="exampleFormControlSelect1">Desa</label>
-                <select class="form-control" id="id_desa" name="id_desa">
-                {{-- nama desa yang login --}}
-                {{-- <option hidden> Pilih Desa</option>
-                @foreach ($desas as $c)
-                    <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option>
-                @endforeach --}}
-                </select>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group @error('id_warga') is-invalid @enderror">
+                        <label for="exampleFormControlSelect1">Nama Warga</label>
+                        <select class="form-control" id="id_warga" name="id_warga">
+                          {{-- nama warga --}}
+                          @foreach ($warga as $c)
+                              <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama }}</option>
+                          @endforeach
+                          </select>
+                      </div>
+                      @error('id_warga')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group @error('id_kategori') is-invalid @enderror">
+                        <label>Kategori</label>
+                        <select class="form-control" id="id_kategori" name="id_kategori">
+                            {{-- nama warga --}}
+                            <option hidden> Pilih Kategori</option>
+                            @foreach ($kat as $c)
+                                <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama_kategori }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @error('id_kategori')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
             </div>
-            @error('id_desa')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
 
-            <div class="form-group @error('id_warga') is-invalid @enderror">
-              <label for="exampleFormControlSelect1">Nama Warga</label>
-              <select class="form-control" id="id_warga" name="id_warga">
-                {{-- nama warga --}}
-                @foreach ($warga as $c)
-                    <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama }}</option>
-                @endforeach
-                </select>
+            <div class="form-group">
+                <label>Komoditi</label>
+                <input type="text" class="form-control @error('komoditi') is-invalid @enderror" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi">
+                @error('komoditi')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
-            @error('id_warga')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
 
-          <div class="form-group @error('id_kategori') is-invalid @enderror">
-            <label>Kategori</label>
-            <select class="form-control" id="id_kategori" name="id_kategori">
-                {{-- nama warga --}}
-                <option hidden> Pilih Kategori</option>
-                @foreach ($kat as $c)
-                    <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama_kategori }}</option>
-                @endforeach
-            </select>
-          </div>
-            @error('id_kategori')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-
-          <div class="form-group">
-            <label>Komoditi</label>
-            <input type="text" class="form-control @error('komoditi') is-invalid @enderror" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi">
-            @error('komoditi')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-           </div>
-
-          <div class="form-group">
-            <label>Jumlah</label>
-            <input type="number" class="form-control @error('jumlah') is-invalid @enderror" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah">
-            @error('jumlah')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-           </div>
-
-          <div class="form-group @error('periode') is-invalid @enderror">
-            <label>Periode</label>
-            <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
-              <option hidden> Pilih Tahun</option>
-                <?php
-                  $year = date('Y');
-                  $min = $year ;
-                  $max = $year + 20;
-                  for( $i=$min; $i<=$max; $i++ ) {
-                    echo '<option value='.$i.'>'.$i.'</option>';
-                  }?>
-            </select>
-          </div>
-          @error('periode')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-          @enderror
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Jumlah</label>
+                        <input type="number" class="form-control @error('jumlah') is-invalid @enderror" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah">
+                        @error('jumlah')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group @error('periode') is-invalid @enderror">
+                        <label>Periode</label>
+                        <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                          <option hidden> Pilih Tahun</option>
+                            <?php
+                              $year = date('Y');
+                              $min = $year ;
+                              $max = $year + 20;
+                              for( $i=$min; $i<=$max; $i++ ) {
+                                echo '<option value='.$i.'>'.$i.'</option>';
+                              }?>
+                        </select>
+                      </div>
+                      @error('periode')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                      @enderror
+                </div>
+            </div>
         </div>
         <!-- /.card-body -->
 

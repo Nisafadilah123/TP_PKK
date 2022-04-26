@@ -188,10 +188,16 @@
 
 
               <li class="nav-item">
-                <a href="https://adminlte.io/docs/3.0" class="nav-link">
-                <i class="nav-icon fas fa-sign-out-alt"></i>
-                  <p>Keluar</p>
+                <a class="nav-link" href="{{ route('admin_kabupaten.logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    <i class="nav-icon fas fa-sign-out-alt"></i>
+                    Keluar
                 </a>
+
+                <form id="logout-form" action="{{ route('admin_kabupaten.logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
               </li>
 
             </ul>

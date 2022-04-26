@@ -32,17 +32,23 @@ class DataKegiatanWargaController extends Controller
     public function create()
     {
         // halaman form tambah data kegiatan
-     // nama desa yang login
-     $kec = DB::table('data_kecamatan')->get();
+        // nama desa yang login
+        $desas = DB::table('data_desa')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
+        // $kec = DB::table('data_kecamatan')->get();
+        $kec = DB::table('data_kecamatan')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
 
 
-     $warga = DataWarga::all(); // pemanggilan tabel data warga
-     $keg = KategoriKegiatan::all(); // pemanggilan tabel data kategori kegiatan
+        $warga = DataWarga::all(); // pemanggilan tabel data warga
+        $keg = KategoriKegiatan::all(); // pemanggilan tabel data kategori kegiatan
 
-    //  dd($keg);
-     return view('kader.data_kegiatan.form.create_data_kegiatan', compact('kec', 'keg', 'warga'));
+        //  dd($keg);
+        return view('kader.data_kegiatan.form.create_data_kegiatan', compact('kec', 'keg', 'warga', 'desas'));
 
- }
+    }
 
  /**
   * Store a newly created resource in storage.
@@ -121,15 +127,21 @@ class DataKegiatanWargaController extends Controller
     */
     public function edit(DataKegiatanWarga $data_kegiatan)
     {
-        $kec = DB::table('data_kecamatan')->get();
-
         //halaman form edit data kegiatan
         $keg = DataWarga::all();
         $kat = KategoriKegiatan::all();
 
+        $desas = DB::table('data_desa')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
+        // $kec = DB::table('data_kecamatan')->get();
+        $kec = DB::table('data_kecamatan')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
+
         // dd($keg);
 
-        return view('kader.data_kegiatan.form.edit_data_kegiatan', compact('data_kegiatan','keg', 'kat', 'kec'));
+        return view('kader.data_kegiatan.form.edit_data_kegiatan', compact('data_kegiatan','keg', 'kat', 'kec', 'desas'));
 
     }
 

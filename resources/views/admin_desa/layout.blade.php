@@ -113,17 +113,6 @@
 
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-edit"></i>
-                  <p>
-                    Data Kegiatan TP PKK
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
-                </a>
-
-              </li>
-
-              <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
                     <i class="nav-icon far fa-folder"></i>
                   <p>Data Kategori
                     <i class="fas fa-angle-left right"></i>
@@ -264,7 +253,7 @@
 
 
 
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
@@ -273,6 +262,18 @@
                 </a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+              </li> --}}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin_desa.logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    <i class="nav-icon fas fa-sign-out-alt"></i>
+                    Keluar
+                </a>
+
+                <form id="logout-form" action="{{ route('admin_desa.logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
               </li>

@@ -19,109 +19,102 @@
 
         <div class="card-body">
             <h6 style="color: red">* Semua elemen atribut harus diisi</h6>
+            <h6 style="color: red">* Keterangan Kegiatan Yang diikuti seperti : Keagamaan, PKBN, Pola Asuh Pencegahan KDRT, Pencegahan Traffocking, Narkoba, Pencegahan
+                Kejahatan Seksual, Kerja Bakti, Jimpitan, Arisan, Rukun Kematian, Bakti Sosial, BKB, PAUD Sejenis, Paket A, Paket B, Paket C, KF (Keaksaraan Fungsional),
+                UP2K, Koperasi</h6>
 
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Kecamatan</label>
-                <select class="form-control @error('id_kecamatan') is-invalid @enderror" id="id_kecamatan" name="id_kecamatan">
-                 {{-- nama desa yang login --}}
-                <option hidden> Pilih Kecamatan</option>
-                    @foreach ($kec as $c)
-                        <option value="{{$c->id }}">  {{$c->kode_kecamatan }}-{{ $c->nama_kecamatan }}</option>
-                    @endforeach
-                </select>
-                @error('id_kecamatan')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+            <div class="row">
+
             </div>
 
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Desa</label>
-                <select class="form-control @error('id_desa') is-invalid @enderror" id="id_desa" name="id_desa">
-                {{-- nama desa yang login --}}
-                {{-- <option hidden> Pilih Desa</option>
-                @foreach ($desas as $c)
-                    <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option>
-                @endforeach --}}
-                </select>
-                @error('id_desa')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Nama Warga</label>
+                        <select class="form-control @error('id_warga') is-invalid @enderror" id="id_warga" name="id_warga">
+                          {{-- nama warga --}}
+                          @foreach ($warga as $c)
+                              <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama }}</option>
+                          @endforeach
+                          </select>
+                          @error('id_warga')
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $message }}</strong>
+                              </span>
+                          @enderror
+                      </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Nama Kegiatan</label>
+                        <select class="form-control @error('id_kegiatan') is-invalid @enderror" id="id_kegiatan" name="id_kegiatan">
+                            {{-- nama warga --}}
+                            <option hidden> Pilih Kegiatan</option>
+                            @foreach ($keg as $c)
+                                <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama_kegiatan }}</option>
+                            @endforeach
+                        </select>
+                        @error('id_kegiatan')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                      </div>
+                </div>
             </div>
 
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">Nama Warga</label>
-              <select class="form-control @error('id_warga') is-invalid @enderror" id="id_warga" name="id_warga">
-                {{-- nama warga --}}
-                @foreach ($warga as $c)
-                    <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama }}</option>
-                @endforeach
-                </select>
-                @error('id_warga')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label>Aktivitas</label><br>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input type="radio" name="aktivitas" value="Ya" class="form-check-input">Ya
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input type="radio" name="aktivitas" value="Tidak" class="form-check-input">Tidak
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-          <div class="form-group">
-            <label>Nama Kegiatan</label>
-            <select class="form-control @error('id_kegiatan') is-invalid @enderror" id="id_kegiatan" name="id_kegiatan">
-                {{-- nama warga --}}
-                <option hidden> Pilih Kegiatan</option>
-                @foreach ($keg as $c)
-                    <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama_kegiatan }}</option>
-                @endforeach
-            </select>
-            @error('id_kegiatan')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-          </div>
-          <div class="form-group">
-            <label>Aktivitas</label><br>
-            <div class="form-check form-check-inline">
-                <label class="form-check-label">
-                    <input type="radio" name="aktivitas" value="Ya" class="form-check-input">Ya
-                </label>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Keterangan (Jenis Kegiatan Yang Diikuti)</label>
+                        <input type="text" class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" id="keterangan" placeholder="Masukkan Keterangan">
+                        @error('keterangan')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Periode</label>
+                        <select style="cursor:pointer;" class="form-control @error('periode') is-invalid @enderror" id="periode" name="periode" required>
+                          <option hidden> Pilih Tahun</option>
+                            <?php
+                              $year = date('Y');
+                              $min = $year ;
+                              $max = $year + 20;
+                              for( $i=$min; $i<=$max; $i++ ) {
+                                echo '<option value='.$i.'>'.$i.'</option>';
+                              }?>
+                        </select>
+                        @error('periode')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                      </div>
+                </div>
             </div>
-            <div class="form-check form-check-inline">
-                <label class="form-check-label">
-                    <input type="radio" name="aktivitas" value="Tidak" class="form-check-input">Tidak
-                </label>
-            </div>
-        </div>
-          <div class="form-group">
-            <label>Keterangan (Jenis Kegiatan Yang Diikuti)</label>
-            <input type="text" class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" id="keterangan" placeholder="Masukkan Keterangan">
-            @error('keterangan')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
-          <div class="form-group">
-            <label>Periode</label>
-            <select style="cursor:pointer;" class="form-control @error('periode') is-invalid @enderror" id="periode" name="periode" required>
-              <option hidden> Pilih Tahun</option>
-                <?php
-                  $year = date('Y');
-                  $min = $year ;
-                  $max = $year + 20;
-                  for( $i=$min; $i<=$max; $i++ ) {
-                    echo '<option value='.$i.'>'.$i.'</option>';
-                  }?>
-            </select>
-            @error('periode')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-          </div>
         </div>
         <!-- /.card-body -->
 

@@ -60,11 +60,13 @@ class SuperAdminController extends Controller
                 return view('super_admin.sub_file_pokja_2.koperasi_super');
             }
 
+            // halaman login super admin
             public function login()
             {
                 return view('super_admin.login');
             }
 
+            // halaman pengiriman data login super admin
             public function loginPost(Request $request)
             {
                 $request->validate([
@@ -87,6 +89,7 @@ class SuperAdminController extends Controller
                 }
             }
 
+            // pengiriman data logout super admin
             public function logoutPost()
             {
                 Auth::logout();

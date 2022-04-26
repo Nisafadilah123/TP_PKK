@@ -75,7 +75,7 @@
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="/dashboard" class="brand-link">
+        <a href="/dashboard_kec" class="brand-link">
           {{-- <img
             src="dist/img/AdminLTELogo.png"
             alt="AdminLTE Logo"
@@ -187,10 +187,16 @@
               </li>
 
               <li class="nav-item">
-                <a href="https://adminlte.io/docs/3.0" class="nav-link">
-                <i class="nav-icon fas fa-sign-out-alt"></i>
-                  <p>Keluar</p>
+                <a class="nav-link" href="{{ route('admin_kecamatan.logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    <i class="nav-icon fas fa-sign-out-alt"></i>
+                    Keluar
                 </a>
+
+                <form id="logout-form" action="{{ route('admin_kecamatan.logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
               </li>
 
             </ul>

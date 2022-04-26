@@ -30,10 +30,15 @@ class DataWargaController extends Controller
     public function create()
     {
      // nama desa yang login
-    //  $desas = DB::table('data_desa')->get();
-     $kec = DB::table('data_kecamatan')->get();
+     $desas = DB::table('data_desa')
+     ->where('id', auth()->user()->id_desa)
+     ->get();
+     // $kec = DB::table('data_kecamatan')->get();
+     $kec = DB::table('data_kecamatan')
+     ->where('id', auth()->user()->id_desa)
+     ->get();
 
-     return view('kader.data_kegiatan.form.create_data_warga', compact( 'kec'));
+     return view('kader.data_kegiatan.form.create_data_warga', compact('desas', 'kec'));
 
  }
 
@@ -188,8 +193,16 @@ class DataWargaController extends Controller
         // halaman form edit data warga
         $desa = DataWarga::with('desa')->first(); // pemanggilan tabel data warga
          // nama desa yang login
-        $desas = DB::table('data_desa')->get();
-        $kec = DB::table('data_kecamatan')->get();
+        // $desas = DB::table('data_desa')->get();
+        // $kec = DB::table('data_kecamatan')->get();
+        $desas = DB::table('data_desa')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
+        // $kec = DB::table('data_kecamatan')->get();
+        $kec = DB::table('data_kecamatan')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
+
         return view('kader.data_kegiatan.form.edit_data_warga', compact('data_warga','desa','desas','kec'));
 
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\BeritaKab;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminKabController extends Controller
 {
@@ -49,5 +50,40 @@ class AdminKabController extends Controller
         return view('admin_kab.data_sekretariat_kab');
     }
 
+    // halaman login admin kabupaten
+    public function login()
+    {
+        return view('admin_kab.login');
+    }
 
+    // // halaman pengiriman data login admin kabupaten
+    public function loginPost(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        $credentials['email'] = $request->get('email');
+        $credentials['password'] = $request->get('password');
+        $credentials['user_type'] = 'admin_kabupaten';
+        $remember = $request->get('remember');
+
+        $attempt = Auth::attempt($credentials, $remember);
+// dd($attempt);
+
+        if ($attempt) {
+            return redirect('/dashboard_kab');
+        } else {
+            return back()->withErrors(['email' => ['Incorrect email / password.']]);
+        }
+    }
+
+    // pengiriman data logout admin kabupaten
+    public function logoutPost()
+    {
+        Auth::logout();
+
+        return redirect()->route('admin_kabupaten.login');
+    }
 }

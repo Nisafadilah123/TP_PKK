@@ -109,7 +109,10 @@ Route::get('/sekretariat', [PokjaController::class, 'sekretariat']);
 Route::get('/data_umum', [PokjaController::class, 'data_umum']);
 
 // halaman admin desa
-Route::middleware(['auth', 'user_type:admin_desa'])->group(function () {
+Route::get('/admin_desa/login', [AdminController::class, 'login'])->name('admin_desa.login');
+Route::post('/admin_desa/login', [AdminController::class, 'loginPost']);
+Route::post('/admin_desa/logout', [AdminController::class, 'logoutPost'])->name('admin_desa.logout');
+Route::middleware(['user_type:admin_desa'])->group(function(){
     Route::get('/dashboard', [AdminController::class, 'dashboard']);
     Route::get('/data_pokja1', [AdminController::class, 'data_pokja1']);
     Route::get('/data_pokja2', [AdminController::class, 'data_pokja2']);
@@ -157,34 +160,11 @@ Route::middleware(['auth', 'user_type:admin_desa'])->group(function () {
 
 });
 
-    // halaman kader desa
-    Route::get('/dashboard_kader', [KaderFormController::class, 'dashboard_kader']);
-
-    // mengambil nama desa
-    Route::get('getDesa/{id}', function ($id) {
-        $desas = Data_Desa::where('id_kecamatan',$id)->get();
-        // dd($desas);
-        return response()->json($desas);
-    });
-
-    // form data pendataan kader
-    Route::resource('/data_warga', DataWargaController::class);
-
-    // Route::get('/data_warga', [DataWargaController::class, 'index'])->name('data_warga.index');
-    // Route::get('/data_warga/create', [DataWargaController::class, 'create'])->name('data_warga.create');
-    // Route::post('/data_warga/create', [DataWargaController::class, 'store'])->name('data_warga.store');
-    // Route::get('/data_warga/{id}', [DataWargaController::class, 'show'])->name('data_warga.show');
-    // Route::put('/data_warga/{id}', [DataWargaController::class, 'update'])->name('data_warga.update');
-    // Route::delete('/data_warga/{id}', [DataWargaController::class, 'destroy'])->name('data_warga.destroy');
-
-    Route::resource('/data_kegiatan', DataKegiatanWargaController::class);
-    Route::resource('/data_keluarga', DataKeluargaController::class);
-    Route::resource('/data_pemanfaatan', DataPemanfaatanPekaranganController::class);
-    Route::resource('/data_industri', DataIndustriRumahController::class);
-
-
 // halaman admin kec
-Route::middleware(['auth', 'user_type:admin_kecamatan'])->group(function () {
+Route::get('/admin_kecamatan/login', [AdminKecController::class, 'login'])->name('admin_kecamatan.login');
+Route::post('/admin_kecamatan/login', [AdminKecController::class, 'loginPost']);
+Route::post('/admin_kecamatan/logout', [AdminKecController::class, 'logoutPost'])->name('admin_kecamatan.logout');
+Route::middleware(['user_type:admin_kecamatan'])->group(function(){
     Route::get('/dashboard_kec', [AdminKecController::class, 'dashboard_kec']);
     Route::get('/data_pokja1_kec', [AdminKecController::class, 'data_pokja1_kec']);
     Route::get('/data_pokja2_kec', [AdminKecController::class, 'data_pokja2_kec']);
@@ -200,7 +180,10 @@ Route::middleware(['auth', 'user_type:admin_kecamatan'])->group(function () {
 });
 
 // halaman admin kab
-Route::middleware(['auth', 'user_type:admin_kecamatan'])->group(function () {
+Route::get('/admin_kabupaten/login', [AdminKabController::class, 'login'])->name('admin_kabupaten.login');
+Route::post('/admin_kabupaten/login', [AdminKabController::class, 'loginPost']);
+Route::post('/admin_kabupaten/logout', [AdminKabController::class, 'logoutPost'])->name('admin_kabupaten.logout');
+Route::middleware(['user_type:admin_kabupaten'])->group(function(){
     Route::get('/dashboard_kab', [AdminKabController::class, 'dashboard_kab']);
     Route::get('/data_pokja1_kab', [AdminKabController::class, 'data_pokja1_kab']);
     Route::get('/data_pokja2_kab', [AdminKabController::class, 'data_pokja2_kab']);
@@ -209,6 +192,8 @@ Route::middleware(['auth', 'user_type:admin_kecamatan'])->group(function () {
     Route::get('/pengguna_kab', [AdminKabController::class, 'data_pengguna_kab']);
     Route::get('/laporan_kab', [AdminKabController::class, 'data_laporan_kab']);
     Route::get('/data_sekretariat_kab', [AdminKabController::class, 'data_sekretariat_kab']);
+    //form berita admin kabupaten
+    Route::resource('/beritaKab', BeritaController::class);
 
 });
 
@@ -263,14 +248,32 @@ Route::middleware(['user_type:superadmin'])->group(function(){
 
 });
 
-
-
-//form berita admin kabupaten
-Route::resource('/beritaKab', BeritaController::class);
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/super_admin', [App\Http\Controllers\HomeController::class, 'super'])->name('super_admin');
 
 // Route::get('/super_admin', [DashboardSuperController::class, 'index'])->name('super_admin');
+Route::get('/kader_desa/login', [KaderFormController::class, 'login'])->name('kader_desa.login');
+Route::post('/kader_desa/login', [KaderFormController::class, 'loginPost']);
+Route::post('/kader_desa/logout', [KaderFormController::class, 'logoutPost'])->name('kader_desa.logout');
+Route::middleware(['user_type:kader_desa'])->group(function(){
+        // halaman kader desa
+        Route::get('/dashboard_kader', [KaderFormController::class, 'dashboard_kader']);
+
+        // mengambil nama desa
+        Route::get('getDesa/{id}', function ($id) {
+            $desas = Data_Desa::where('id_kecamatan',$id)->get();
+            // dd($desas);
+            return response()->json($desas);
+        });
+
+    // form data pendataan kader
+    Route::resource('/data_warga', DataWargaController::class);
+    Route::resource('/data_kegiatan', DataKegiatanWargaController::class);
+    Route::resource('/data_keluarga', DataKeluargaController::class);
+    Route::resource('/data_pemanfaatan', DataPemanfaatanPekaranganController::class);
+    Route::resource('/data_industri', DataIndustriRumahController::class);
+    Route::resource('/data_pelatihan_kader', DataPelatihanKaderController::class);
+
+});

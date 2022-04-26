@@ -115,56 +115,38 @@
             </div>
 
             <div class="row">
-                <div class="col-md-3">
-                        {{-- <div class="form-group">
-                            <label for="exampleFormControlSelect1">Desa</label> --}}
-                                    {{-- <select class="form-control" id="id_desa" name="id_desa"> --}}
-                                    {{-- nama desa yang login --}}
-                                    {{-- @foreach ($desas as $c) --}}
-                                        {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
-                                        {{-- <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                <div class="col-md-2">
+                    <div class="form-group @error('id_desa') is-invalid @enderror">
+                        <label for="exampleFormControlSelect1">Desa</label>
+                        @foreach ($desas as $c)
+                        {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
+                        <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
 
-                                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
+                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
 
-                                    @endforeach --}}
-                                {{-- </select> --}}
-                            {{-- </div> --}}
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Kecamatan</label>
-                                <select class="form-control" id="id_kecamatan" name="id_kecamatan">
-                                 {{-- nama desa yang login --}}
-                                <option hidden> Pilih Kecamatan</option>
-                                    @foreach ($kec as $c)
-                                        <option value="{{$c->id }}">  {{$c->kode_kecamatan }}-{{ $c->nama_kecamatan }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                        @endforeach
+                    </div>
+                    @error('id_desa')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
                 <div class="col-md-2">
-                        {{-- <div class="form-group">
-                            <label for="exampleFormControlSelect1">Kecamatan</label> --}}
-                                    {{-- <select class="form-control" id="id_desa" name="id_desa"> --}}
-                                    {{-- nama desa yang login --}}
-                                    {{-- @foreach ($kec as $c) --}}
-                                        {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
-                                        {{-- <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                    <div class="form-group @error('id_kecamatan') is-invalid @enderror">
+                        <label for="exampleFormControlSelect1">Kecamatan</label>
+                        @foreach ($kec as $c)
+                        <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                        <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->kode_kecamatan }}-{{ $c->nama_kecamatan }}">
 
-                                        <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->kode_kecamatan }}-{{ $c->nama_kecamatan }}">
-
-                                    @endforeach --}}
-                                {{-- </select> --}}
-                        {{-- </div> --}}
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Desa</label>
-                            <select class="form-control" id="id_desa" name="id_desa">
-                            {{-- nama desa yang login --}}
-                            {{-- <option hidden> Pilih Desa</option>
-                            @foreach ($desas as $c)
-                                <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option>
-                            @endforeach --}}
-                            </select>
-                        </div>
+                        @endforeach
+                    </div>
+                    @error('id_kecamatan')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
                 <div class="col-md-2">

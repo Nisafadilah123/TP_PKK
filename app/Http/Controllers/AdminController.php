@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DataWarga;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -47,7 +48,42 @@ class AdminController extends Controller
             return view('admin_desa.data_sekretariat');
         }
 
+        // halaman login admin desa
+        public function login()
+        {
+            return view('admin_desa.login');
+        }
 
+        // halaman pengiriman data login admin desa
+        public function loginPost(Request $request)
+        {
+            $request->validate([
+                'email' => ['required', 'email'],
+                'password' => ['required'],
+            ]);
+
+            $credentials['email'] = $request->get('email');
+            $credentials['password'] = $request->get('password');
+            $credentials['user_type'] = 'admin_desa';
+            $remember = $request->get('remember');
+
+            $attempt = Auth::attempt($credentials, $remember);
+// dd($attempt);
+
+            if ($attempt) {
+                return redirect('/dashboard');
+            } else {
+                return back()->withErrors(['email' => ['Incorrect email / password.']]);
+            }
+        }
+
+        // pengiriman data logout admin desa
+        public function logoutPost()
+        {
+            Auth::logout();
+
+            return redirect()->route('admin_desa.login');
+        }
         // halaman data rekap data warga pkk
         public function rekap_data_warga(){
             $warga = DataWarga::all();

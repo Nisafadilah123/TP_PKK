@@ -20,7 +20,8 @@ class UserController extends Controller
     public function index()
     {
         //halaman tampil data tabel user
-        $users = User::all();
+        $users = User::whereIn('user_type', ['superadmin', 'admin_desa', 'admin_kelurahan', 'admin_kecamatan', 'admin_kabupaten'])
+        ->get();
         $desa = Data_Desa::all();
         $kec = DataKecamatan::all();
 
