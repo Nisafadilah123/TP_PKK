@@ -1,6 +1,6 @@
 @extends('kader.layout')
 
-@section('title', 'Data Warga TP PKK | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Data Warga TP PKK | Kader Desa PKK Kab. Indramayu')
 
 @section('bread', 'Data Warga TP PKK')
 @section('container')
@@ -21,40 +21,8 @@
                                         <div class="col-md-1">
                                             <a href="{{ url('data_warga/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
                                         </div>
-                                        {{-- <div class="col-md-1">
-                                            <!-- Tombol yang memicu modal -->
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSaya">
-                                                Klik Info
-                                            </button><br><br>
-                                        </div> --}}
+
                                     </div>
-
-                                        <!-- Contoh Modal -->
-                                        <div class="modal fade" id="modalSaya" tabindex="-1" role="dialog" aria-labelledby="modalSayaLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="modalSayaLabel">Info Kategori Kegiatan POKJA II</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <h6 style="font-colour:red">* KF (KF Bela)</h6>
-                                                        <h6 style="font-colour:red">* BKB (BKB ekerasan Dalam)</h6>
-                                                        <h6 style="font-colour:red">* APE (SET) (BKB ekerasan Dalam)</h6>
-                                                        <h6 style="font-colour:red">* LP3PKK (LP3PKK kerasan Dalam)</h6>
-                                                        <h6 style="font-colour:red">* TP3PKK (TP3PKK ekerasan Dalam)</h6>
-                                                        <h6 style="font-colour:red">* Damas PKK (PKK ekerasan Dalam)</h6>
-
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Oke</button>
-                                                        {{-- <button type="button" class="btn btn-primary">Oke</button> --}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
                                     <thead>
                                         <tr>
@@ -85,30 +53,16 @@
                                         <td style="vertical-align: middle;">{{ucfirst($c->nama)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jabatan)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin)}}</td>
-                                        {{-- <td style="vertical-align: middle;">{{ucfirst($c->tempat_lahir)}}</td>
-                                        <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($c->tgl_lahir)->isoFormat('D MMMM Y') }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->umur)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->status_keluarga)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->status)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->status_perkawinan)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->agama)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->alamat)}},RT {{ucfirst($c->rt)}}, RW {{ucfirst($c->rw)}}, Desa {{ucfirst($c->desa->nama_desa)}}, Kecamatan {{ucfirst($c->kecamatan->nama_kecamatan)}}, Provinsi {{ucfirst($c->provinsi)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->pendidikan)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->pekerjaan)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->akseptor_kb)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->aktif_posyandu)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->ikut_bkb)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->memiliki_tabungan)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->ikut_kelompok_belajar)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->ikut_paud_sejenis)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->ikut_koperasi)}}</td> --}}
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
 
                                         <td class="text-center">
 
                                             {{-- <a class="btn btn-info btn-sm" href="{{ url('data_warga/'.$c->id) }}">Show</a> --}}
 
-                                            <a class="btn btn-info btn-sm" href="{{ route('data_warga.show',$c->id) }}">Show</a>
+                                            {{-- <a class="btn btn-info btn-sm" href="{{ route('data_warga.show',$c->id) }}">Show</a> --}}
+                                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#details-modal-{{ $c->id }}">
+                                                Detail
+                                              </button>
 
                                             <a class="btn btn-primary btn-sm" href="{{ url('data_warga/'.$c->id.'/edit') }}">Edit</a>
 
@@ -126,6 +80,54 @@
 
                                     </tbody>
                                 </table>
+
+                                @foreach ($warga as $c)
+                                    <div id="details-modal-{{ $c->id }}" class="modal fade" tabindex="1" role="dialog" aria-labelledby="details-modal-{{ $c->id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-xl">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Details</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                </div>
+                                                        <div class="modal-body">
+                                                        <h5>
+                                                                Dasa Wisma : <strong> {{ucfirst($c->dasa_wisma) }} </strong><br>
+                                                            Nama Kepala Rumah Tangga : <strong>{{ucfirst($c->nama_kepala_rumah_tangga) }}</strong><br>
+                                                            No. Registrasi : <strong> {{ucfirst($c->no_registrasi) }} </strong><br>
+                                                            No. KTP/NIK : <strong>{{ucfirst($c->no_ktp) }}</strong><br>
+                                                            Nama : <strong> {{ucfirst($c->nama) }} </strong><br>
+                                                            Jabatan : <strong>{{ucfirst($c->jabatan) }}</strong><br>
+                                                            Jenis Kelamin : <strong> {{ucfirst($c->jenis_kelamin) }} </strong><br>
+                                                            Tempat Lahir : <strong> {{ucfirst($c->tempat_lahir) }} </strong><br>
+                                                            Tanggal Lahir : <strong>{{ \Carbon\Carbon::parse($c->tgl_lahir)->isoFormat('D MMMM Y') }}/{{ucfirst($c->umur) }} Tahun</strong><br>
+                                                            Status Perkawinan : <strong> {{ucfirst($c->status_perkawinan) }}</strong><br>
+                                                            Status dalam Keluarga : <strong> {{ucfirst($c->status_keluarga) }} ({{ ucfirst($c->status) }})</strong><br>
+                                                            Agama : <strong> {{ucfirst($c->agama) }} </strong><br>
+                                                            Alamat : <strong> {{ucfirst($c->alamat) }},RT {{ ($c->rt) }}, RW {{ ($c->rt) }},Desa {{ucfirst($c->desa->nama_desa)}}, Kec. {{ucfirst($c->kecamatan->nama_kecamatan)}}
+                                                                Kabupaten {{ucfirst($c->kota) }}, Provinsi {{ucfirst($c->provinsi) }}
+                                                            </strong><br>
+                                                              Pendidikan : <strong> {{ucfirst($c->pendidikan) }} </strong><br>
+                                                              Pekerjaan : <strong> {{ucfirst($c->pekerjaan) }} </strong><br>
+                                                              Akseptor KB : <strong> {{ucfirst($c->akseptor_kb) }} </strong><br>
+                                                              Aktif dalam Kegiatan Posyandu : <strong> {{ucfirst($c->aktif_posyandu) }} </strong><br>
+                                                              Mengikuti Program Bina Keluarga Balita : <strong> {{ucfirst($c->ikut_bkb) }} </strong><br>
+                                                              Memiliki Tabungan : <strong> {{ucfirst($c->memiliki_tabungan) }} </strong><br>
+                                                              Mengikuti Kelompok Belajar Jenis : <strong> {{ucfirst($c->ikut_kelompok_belajar) }} </strong><br>
+                                                              Mengikuti PAUD/Sejenis : <strong> {{ucfirst($c->ikut_paud_sejenis) }} </strong><br>
+                                                              Ikut dalam Kegiatan Koperasi : <strong> {{ucfirst($c->ikut_koperasi) }} </strong><br>
+                                                            </h5>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Oke</button>
+                                                            {{-- <button type="button" class="btn btn-primary">Oke</button> --}}
+                                                        </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
 
                             </div>
                         </div>

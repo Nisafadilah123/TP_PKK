@@ -55,7 +55,7 @@ class DataIndustriRumahController extends Controller
  */
    public function store(Request $request)
    {
-       // proses penyimpanan untuk tambah data data kegiatan warga
+       // proses penyimpanan untuk tambah data data industri rumah tangga
        // dd($request->all());
        // validasi data
        $request->validate([
@@ -69,7 +69,7 @@ class DataIndustriRumahController extends Controller
 
        ], [
             'id_desa.required' => 'Lengkapi Alamat Desa Industri Rumah Tangga Warga Yang Didata',
-            'id_kecamatan.required' => 'Lengkapi Alamat Kecamatan Kegiatan Warga Yang Didata',
+            'id_kecamatan.required' => 'Lengkapi Alamat Kecamatan Industri Rumah Tangga Warga Yang Didata',
             'id_warga.required' => 'Lengkapi Nama Warga Yang Didata',
             'id_kategori.required' => 'Pilih Kategori Industri Rumah Tangga Warga',
            'komoditi.required' => 'Lengkapi Komoditi Industri Rumah Tangga Warga',
@@ -123,7 +123,7 @@ class DataIndustriRumahController extends Controller
    */
    public function edit(DataIndustriRumah $data_industri)
    {
-       //halaman form edit data kegiatan
+       //halaman form edit data industri rumah tangga
        $warga = DataWarga::all();
        $katins = KategoriIndustriRumah::all();
 
@@ -150,7 +150,7 @@ class DataIndustriRumahController extends Controller
    */
    public function update(Request $request, DataIndustriRumah $data_industri)
    {
-       // proses mengubah untuk tambah data pendidikan
+       // proses mengubah untuk data industri rumah tangga
        // dd($request->all());
        // validasi data
        $request->validate([
@@ -178,10 +178,11 @@ class DataIndustriRumahController extends Controller
    */
    public function destroy($data_industri, DataIndustriRumah $inds)
    {
-       //temukan id data kegiatan warga
+       //temukan id data industri rumah tangga warga
        $inds::find($data_industri)->delete();
+       Alert::success('Berhasil', 'Data berhasil di Hapus');
 
-       return redirect('/data_industri')->with('status', 'sukses');
+       return redirect('/data_industri');
 
 
 

@@ -17,15 +17,23 @@
       <form action="{{ route('data_industri.store') }}" method="POST">
         @csrf
         <div class="card-body">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        {{-- {{  dump($errors)  }} --}}
+                    </ul>
+                </div>
+            @endif
+
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group @error('id_desa') is-invalid @enderror">
+                        {{-- nama desa --}}
                         <label for="exampleFormControlSelect1">Desa</label>
                         @foreach ($desas as $c)
-                        {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
                         <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
 
-                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
+                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_desa }}">
 
                         @endforeach
                     </div>
@@ -37,10 +45,11 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group @error('id_kecamatan') is-invalid @enderror">
+                        {{-- nama kecamatan --}}
                         <label for="exampleFormControlSelect1">Kecamatan</label>
                         @foreach ($kec as $c)
                         <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
-                        <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->kode_kecamatan }}-{{ $c->nama_kecamatan }}">
+                        <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_kecamatan }}">
 
                         @endforeach
                     </div>
@@ -74,7 +83,7 @@
                     <div class="form-group @error('id_kategori') is-invalid @enderror">
                         <label>Kategori</label>
                         <select class="form-control" id="id_kategori" name="id_kategori">
-                            {{-- nama warga --}}
+                            {{-- pilih kategori --}}
                             <option hidden> Pilih Kategori</option>
                             @foreach ($katin as $c)
                                 <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama_kategori }}</option>
@@ -90,6 +99,7 @@
             </div>
 
           <div class="form-group">
+              {{-- nama komoditi --}}
             <label>Komoditi</label>
             <input type="text" class="form-control @error('komoditi') is-invalid @enderror" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi">
             @error('komoditi')
@@ -102,6 +112,7 @@
           <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
+                    {{-- jumlah volume --}}
                     <label>Volume</label>
                     <input type="number" class="form-control @error('volume') is-invalid @enderror" name="volume" id="volume" placeholder="Masukkan Volume">
                     @error('volume')
@@ -113,6 +124,7 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group @error('periode') is-invalid @enderror">
+                    {{-- periode --}}
                     <label>Periode</label>
                     <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
                       <option hidden> Pilih Tahun</option>

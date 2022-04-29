@@ -151,7 +151,7 @@ class DataPemanfaatanPekaranganController extends Controller
     */
     public function update(Request $request, PemanfaatanKarangan $data_pemanfaatan)
     {
-        // proses mengubah untuk tambah data pemanfaatan tanaha pekarangan
+        // proses mengubah untuk tambah data pemanfaatan tanah pekarangan
         // dd($request->all());
         // validasi data
         $request->validate([
@@ -181,8 +181,9 @@ class DataPemanfaatanPekaranganController extends Controller
     {
         //temukan id pemanfaatan tanah pekarangan
         $warg::find($data_pemanfaatan)->delete();
+        Alert::success('Berhasil', 'Data berhasil di Hapus');
 
-        return redirect('/data_pemanfaatan')->with('status', 'sukses');
+        return redirect('/data_pemanfaatan');
 
 
 

@@ -67,6 +67,6 @@ class KaderFormController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('kader.loginKaderDesa');
+        return redirect()->route('kader_desa.login');
     }
 }

@@ -18,10 +18,18 @@
             @method('PUT')
             @csrf
             <h6 style="color: red">* Semua elemen atribut harus diisi</h6>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        {{-- {{  dump($errors)  }} --}}
+                    </ul>
+                </div>
+            @endif
 
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
+                        {{-- nama dasa wisma --}}
                         <label>Dasa Wisma</label>
                         <input type="text" class="form-control @error('dasa_wisma') is-invalid @enderror" name="dasa_wisma" id="dasa_wisma" placeholder="Di isi sesuai dengan nama dasawisma yang diikuti warga yang bersangkutan" required value="{{ucfirst(old('dasa_wisma', $data_warga->dasa_wisma))}}">
                         @error('dasa_wisma')
@@ -35,14 +43,16 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
+                        {{-- Nama Kepala Rumah Tangga --}}
                         <label>Nama Kepala Rumah Tangga</label>
                             <input type="text" class="form-control" name="nama_kepala_rumah_tangga" id="nama_kepala_rumah_tangga" placeholder="Di isi dengan nama Kepala Rumah Tangga pada rumah yang didata" required value="{{ucfirst(old('nama_kepala_rumah_tangga', $data_warga->nama_kepala_rumah_tangga))}}">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
+                        {{-- no.registrasi --}}
                         <label>No. Registrasi</label>
-                        <input type="text" class="form-control" name="no_registrasi" id="no_registrasi" placeholder="Nomor Registrasi diisi dengan nomor urutan sesuai wilayah" required value="{{ucfirst(old('no_registrasi', $data_warga->no_registrasi))}}">
+                            <input type="text" class="form-control" name="no_registrasi" id="no_registrasi" placeholder="Nomor Registrasi diisi dengan nomor urutan sesuai wilayah" required value="{{ucfirst(old('no_registrasi', $data_warga->no_registrasi))}}">
                     </div>
                 </div>
             </div>
@@ -50,6 +60,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
+                        {{-- no.KTP --}}
                         <label>No. KTP</label>
                             <input type="text" class="form-control" name="no_ktp" id="no_ktp" placeholder="Di isi dengan sudah atau belum atas kepemilikan KTP dan atau Kartu Keluarga (KK)" required value="{{ucfirst(old('no_ktp', $data_warga->no_ktp))}}">
                     </div>
@@ -58,20 +69,23 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Nama</label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Di isi dengan nama" required value="{{ucfirst(old('nama', $data_warga->nama))}}">
+                        {{-- nama warga --}}
+                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Di isi dengan nama" required value="{{ucfirst(old('nama', $data_warga->nama))}}">
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Jabatan</label>
-                        <input type="text" class="form-control" name="jabatan" id="jabatan" placeholder="Di isi jabatan yang bersangkutan pada di struktural TP PKK" required value="{{ucfirst(old('jabatan', $data_warga->jabatan))}}">
+                        {{-- jabatan --}}
+                            <input type="text" class="form-control" name="jabatan" id="jabatan" placeholder="Di isi jabatan yang bersangkutan pada di struktural TP PKK" required value="{{ucfirst(old('jabatan', $data_warga->jabatan))}}">
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Tempat lahir</label>
+                        {{-- tempat lahir --}}
                         <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" placeholder="Di isi Kota/Kabupaten tempat lahir yang bersangkutan" required value="{{ucfirst(old('tempat_lahir', $data_warga->tempat_lahir))}}">
                     </div>
                 </div>
@@ -81,6 +95,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Tanggal lahir</label>
+                        {{-- Tanggal lahir --}}
                             <input type="date" class="form-control" name="tgl_lahir" id="tgl_lahir" placeholder="Di isi tanggal lahir" required value="{{ucfirst(old('tgl_lahir', $data_warga->tgl_lahir))}}" data-date-format="mm/dd/yyyy">
                     </div>
                 </div>
@@ -88,12 +103,14 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Umur</label>
+                        {{-- umur --}}
                             <input type="number" class="form-control" name="umur" id="umur" placeholder="Di isi Umur" required value="{{ucfirst(old('umur', $data_warga->umur))}}">
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
+                        {{-- alamat --}}
                         <label>Alamat</label>
                             <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Di isi Alamat" required value="{{ucfirst(old('alamat', $data_warga->alamat))}}">
                     </div>
@@ -101,6 +118,7 @@
 
                 <div class="col-md-2">
                     <div class="form-group">
+                        {{-- rt --}}
                         <label>RT</label>
                             <input type="number" min="1" class="form-control" name="rt" id="rt" placeholder="Di isi RT" required value="{{ucfirst(old('rt', $data_warga->rt))}}">
                     </div>
@@ -108,6 +126,7 @@
 
                 <div class="col-md-2">
                     <div class="form-group">
+                        {{-- rw --}}
                         <label>RW</label>
                             <input type="number" min="1" class="form-control" name="rw" id="rw" placeholder="Di isi RW" required value="{{ucfirst(old('rw', $data_warga->rw))}}">
                     </div>
@@ -118,12 +137,10 @@
                 <div class="col-md-2">
                     <div class="form-group @error('id_desa') is-invalid @enderror">
                         <label for="exampleFormControlSelect1">Desa</label>
+                        {{-- pilih nama desa --}}
                         @foreach ($desas as $c)
-                        {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
-                        <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
-
-                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
-
+                            <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                            <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_desa }}">
                         @endforeach
                     </div>
                     @error('id_desa')
@@ -136,10 +153,10 @@
                 <div class="col-md-2">
                     <div class="form-group @error('id_kecamatan') is-invalid @enderror">
                         <label for="exampleFormControlSelect1">Kecamatan</label>
+                        {{-- pilih Kecamatan --}}
                         @foreach ($kec as $c)
-                        <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
-                        <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->kode_kecamatan }}-{{ $c->nama_kecamatan }}">
-
+                            <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                            <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_kecamatan }}">
                         @endforeach
                     </div>
                     @error('id_kecamatan')
@@ -152,6 +169,7 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Kabupaten</label>
+                        {{-- pilih Kabupaten --}}
                             <input type="text" readonly class="form-control" name="kota" id="kota" placeholder="Masukkan Kota" required value="Indramayu">
                     </div>
                 </div>
@@ -159,14 +177,15 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Provinsi</label>
+                        {{-- nama provinsi --}}
                             <input type="text" readonly class="form-control" name="provinsi" id="provinsi" placeholder="Masukkan Provisni" required value="Jawa Barat">
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
                         <label>Periode</label>
-                            {{-- <input type="text" class="form-control" name="periode" id="periode" placeholder="Masukkan Periode" required> --}}
+                            {{-- pilih periode --}}
                             <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
                                 <option value="{{ $data_warga->periode }}" {{ $data_warga->periode ? 'selected' : '' }}>{{ $data_warga->periode }}</option>
                                     <?php
@@ -179,12 +198,10 @@
                             </select>
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
                         <label class="form-label">Jenis Kelamin </label><br>
+                            {{-- pilih Jenis Kelamin --}}
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label">
                                     <input type="radio" name="jenis_kelamin" value="laki-laki" class="form-check-input" {{$data_warga->jenis_kelamin == 'laki-laki'? 'checked' : ''}}>Laki-laki
@@ -198,9 +215,10 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label>Status Perkawinan</label><br>
+                            {{-- pilih status Perkawinan --}}
                             <div class="form-check form-check-inline">
                                 <label label class="form-check-label">
                                     <input type="radio" name="status_perkawinan" value="menikah" class="form-check-input" {{$data_warga->status_perkawinan == 'menikah'? 'checked' : ''}}>Menikah
@@ -224,8 +242,9 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
+                        {{-- pilih status Dalam Keluarga --}}
                         <label>Status Dalam Keluarga</label><br>
                             @if ($data_warga->status_keluarga == 'kepala keluarga')
 
@@ -266,11 +285,9 @@
                             @endif
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
+                        {{-- pilih agama --}}
                         <label>Agama</label><br>
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label">
@@ -312,6 +329,7 @@
 
                 <div class="col-md-3">
                     <div class="form-group">
+                        {{-- pilih Pendidikan --}}
                         <label>Pendidikan</label><br>
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label">
@@ -348,6 +366,7 @@
 
                 <div class="col-md-3">
                     <div class="form-group">
+                        {{-- pilih Pekerjaan --}}
                         <label>Pekerjaan</label><br>
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label">
@@ -387,8 +406,9 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
+                        {{-- pilih akseptor KB --}}
                         <label>Akseptor KB</label><br>
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label">
@@ -402,12 +422,10 @@
                             </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
-                        <label>Aktif dalam kegiatan Posyandu</label><br>
+                        {{-- pilih aktif dalam Kegiatan Posyandu --}}
+                        <label>Aktif dalam Kegiatan Posyandu</label><br>
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label">
                                     <input type="radio" name="aktif_posyandu" value="ya" class="form-check-input" {{$data_warga->aktif_posyandu == 'ya'? 'checked' : ''}}>Ya
@@ -423,6 +441,7 @@
 
                 <div class="col-md-3">
                     <div class="form-group">
+                        {{-- pilih mengikuti Program Bina Keluarga Balita --}}
                         <label>Mengikuti Program Bina Keluarga Balita</label><br>
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label">
@@ -437,8 +456,9 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
+                        {{-- pilih memiliki tabungan --}}
                         <label>Memiliki Tabungan</label><br>
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label">
@@ -455,6 +475,7 @@
 
                 <div class="col-md-3">
                     <div class="form-group">
+                        {{-- pilih mengikuti Kelompok Belajar Jenis --}}
                         <label>Mengikuti Kelompok Belajar Jenis</label><br>
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label">
@@ -488,11 +509,9 @@
                             </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
+                        {{-- pilih Mengikuti PAUD/Sejenis--}}
                         <label>Mengikuti PAUD/Sejenis</label><br>
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label">
@@ -509,6 +528,7 @@
 
                 <div class="col-md-3">
                     <div class="form-group">
+                        {{-- pilih Mengikuti dalam Kegiatan Koperasi --}}
                         <label>Ikut dalam Kegiatan Koperasi</label><br>
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label">

@@ -1,15 +1,15 @@
 @extends('kader.layout')
 
-@section('title', 'Tambah Data Pemanfaatan Tanah Pekaranangan TP PKK | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Tambah Data Pemanfaatan Tanah Pekarangan TP PKK | Kader Desa PKK Kab. Indramayu')
 
-@section('bread', 'Tambah Data Pemanfaatan Tanah Pekaranangan TP PKK')
+@section('bread', 'Tambah Data Pemanfaatan Tanah Pekarangan TP PKK')
 @section('container')
 
 <div class="col-md-6">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Tambah Data Pemanfaatan Tanah Pekaranangan TP PKK</h3>
+        <h3 class="card-title">Tambah Data Pemanfaatan Tanah Pekarangan TP PKK</h3>
       </div>
       <!-- /.card-header -->
       <!-- form start -->
@@ -17,15 +17,23 @@
       <form action="{{ route('data_pemanfaatan.store') }}" method="POST">
         @csrf
         <div class="card-body">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        {{-- {{  dump($errors)  }} --}}
+                    </ul>
+                </div>
+            @endif
+
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group @error('id_desa') is-invalid @enderror">
                         <label for="exampleFormControlSelect1">Desa</label>
+                        {{-- nama desa --}}
                         @foreach ($desas as $c)
-                        {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
                         <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
 
-                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
+                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_desa }}">
 
                         @endforeach
                     </div>
@@ -39,9 +47,10 @@
                 <div class="col-md-6">
                     <div class="form-group @error('id_kecamatan') is-invalid @enderror">
                         <label for="exampleFormControlSelect1">Kecamatan</label>
+                        {{-- nama kecamatan --}}
                         @foreach ($kec as $c)
                         <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
-                        <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->kode_kecamatan }}-{{ $c->nama_kecamatan }}">
+                        <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_kecamatan }}">
 
                         @endforeach
                     </div>
@@ -58,7 +67,7 @@
                     <div class="form-group @error('id_warga') is-invalid @enderror">
                         <label for="exampleFormControlSelect1">Nama Warga</label>
                         <select class="form-control" id="id_warga" name="id_warga">
-                          {{-- nama warga --}}
+                          {{-- pilih nama warga --}}
                           @foreach ($warga as $c)
                               <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama }}</option>
                           @endforeach
@@ -74,7 +83,7 @@
                     <div class="form-group @error('id_kategori') is-invalid @enderror">
                         <label>Kategori</label>
                         <select class="form-control" id="id_kategori" name="id_kategori">
-                            {{-- nama warga --}}
+                            {{-- Pilih Kategori --}}
                             <option hidden> Pilih Kategori</option>
                             @foreach ($kat as $c)
                                 <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama_kategori }}</option>
@@ -91,6 +100,7 @@
 
             <div class="form-group">
                 <label>Komoditi</label>
+                {{-- nama Komoditi --}}
                 <input type="text" class="form-control @error('komoditi') is-invalid @enderror" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi">
                 @error('komoditi')
                     <span class="invalid-feedback" role="alert">
@@ -103,6 +113,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Jumlah</label>
+                        {{-- Jumlah Komoditi--}}
                         <input type="number" class="form-control @error('jumlah') is-invalid @enderror" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah">
                         @error('jumlah')
                             <span class="invalid-feedback" role="alert">
@@ -114,6 +125,7 @@
                 <div class="col-md-6">
                     <div class="form-group @error('periode') is-invalid @enderror">
                         <label>Periode</label>
+                        {{-- Pilih periode --}}
                         <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
                           <option hidden> Pilih Tahun</option>
                             <?php

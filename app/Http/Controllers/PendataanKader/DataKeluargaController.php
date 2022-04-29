@@ -17,7 +17,7 @@ class DataKeluargaController extends Controller
      */
     public function index()
     {
-        //halaman form data kegiatan
+        //halaman form data keluarga
         $keluarga = DataKeluarga::all();
         return view('kader.data_kegiatan.data_keluarga', compact('keluarga'));
     }
@@ -37,13 +37,20 @@ class DataKeluargaController extends Controller
     //  $kec = DB::table('data_kecamatan')
     //  ->where('id', auth()->user()->id_kecamatan)
     //  ->get();
-    $kec = DB::table('data_kecamatan')->get();
+    // nama desa yang login
+    $desas = DB::table('data_desa')
+    ->where('id', auth()->user()->id_desa)
+    ->get();
+    // $kec = DB::table('data_kecamatan')->get();
+    $kec = DB::table('data_kecamatan')
+    ->where('id', auth()->user()->id_desa)
+    ->get();
 
      $keg = DataKeluarga::all();
      $warga = DataWarga::all();
 
     //  dd($keg);
-     return view('kader.data_kegiatan.form.create_data_keluarga', compact( 'warga', 'kec'));
+     return view('kader.data_kegiatan.form.create_data_keluarga', compact( 'warga', 'kec', 'desas'));
 
  }
 
@@ -55,30 +62,30 @@ class DataKeluargaController extends Controller
   */
     public function store(Request $request)
     {
-        // proses penyimpanan untuk tambah data jml kader
+        // proses penyimpanan untuk tambah data keluarga
         // dd($request->all());
 
         $request->validate([
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
-            'id_data_warga' => 'required',
+            'id_warga' => 'required',
             'dasa_wisma' => 'required',
-            'nama_kepala_rumah_tangga' => 'required',
+            // 'nama_kepala_rumah_tangga' => 'required',
             'rt' => 'required',
             'rw' => 'required',
             'kota' => 'required',
             'provinsi' => 'required',
             'laki_laki' => 'required',
             'perempuan' => 'required',
-            'jumla_KK' => 'required',
-            'jumlah_balita' => 'required',
+            'jumlah_KK' => 'required',
+            // 'jumlah_balita' => 'required',
             'jumlah_anggota_keluarga' => 'required',
-            'jumlah_WUS' => 'required',
-            'jumlah_3_buta' => 'required',
-            'jumlah_ibu_hamil' => 'required',
-            'jumlah_ibu_menyusui' => 'required',
-            'jumlah_lansia' => 'required',
-            'jumlah_kebutuhan' => 'required',
+            // 'jumlah_WUS' => 'required',
+            // 'jumlah_3_buta' => 'required',
+            // 'jumlah_ibu_hamil' => 'required',
+            // 'jumlah_ibu_menyusui' => 'required',
+            // 'jumlah_lansia' => 'required',
+            // 'jumlah_kebutuhan' => 'required',
             'makanan_pokok' => 'required',
             'punya_jamban' => 'required',
             'jumlah_PUS' => 'required',
@@ -94,24 +101,24 @@ class DataKeluargaController extends Controller
         ], [
             'id_desa.required' => 'Pilih Alamat Desa Kegiatan Warga',
             'id_kecamatan' => 'Pilih Alamat Kecamatan Kegiatan Warga',
-            'id_data_warga.required' => 'Pilih Nama Warga',
+            'id_warga.required' => 'Pilih Nama Warga',
             'dasa_wisma.required' => 'Pilih Nama Dasawisma Yang Diikuti',
-            'nama_kepala_rumah_tangga.required' => 'Pilih Nama Kepala Rumah Tangga',
+            // 'nama_kepala_rumah_tangga.required' => 'Pilih Nama Kepala Rumah Tangga',
             'jumlah_anggota_keluarga.required' => 'Lengkapi Jumlah Anggota Keluarga',
             'rt.required' => 'Pilih RT',
             'rw.required' => 'Pilih RW',
             'laki_laki.required' => 'Lengkapi Jumlah Laki-laki',
             'perempuan.required' => 'Lengkapi Jumlah Perempuan',
             'jumlah_KK.required' => 'Lengkapi Jumlah KK',
-            'jumlah_PUS.required' => 'Lengkapi Jumlah PUS (Pasangan Usia Subur) dalam Keluarga',
-            'jumlah_WUS.required' => 'Lengkapi Jumlah WUS (Wanita Usia Subur) dalam Keluarga',
-            'jumlah_3_buta.required' => 'Lengkapi Jumlah 3 Buta (Buta Tulis, Buta Baca, Buta Hitung) dalam Keluarga',
-            'jumlah_ibu_hamil.required' => 'Lengkapi Jumlah Ibu Hamil dalam Keluarga',
-            'jumlah_ibu_menyusui.required' => 'Lengkapi Jumlah Ibu Menyusui dalam Keluarga',
-            'jumlah_lansia.required' => 'Lengkapi Jumlah Lansia dalam Keluarga',
-            'jumlah_kebutuhan.required' => 'Lengkapi Jumlah Berkebutuhan Khusus dalam Keluarga',
+            // 'jumlah_PUS.required' => 'Lengkapi Jumlah PUS (Pasangan Usia Subur) dalam Keluarga',
+            // 'jumlah_WUS.required' => 'Lengkapi Jumlah WUS (Wanita Usia Subur) dalam Keluarga',
+            // 'jumlah_3_buta.required' => 'Lengkapi Jumlah 3 Buta (Buta Tulis, Buta Baca, Buta Hitung) dalam Keluarga',
+            // 'jumlah_ibu_hamil.required' => 'Lengkapi Jumlah Ibu Hamil dalam Keluarga',
+            // 'jumlah_ibu_menyusui.required' => 'Lengkapi Jumlah Ibu Menyusui dalam Keluarga',
+            // 'jumlah_lansia.required' => 'Lengkapi Jumlah Lansia dalam Keluarga',
+            // 'jumlah_kebutuhan.required' => 'Lengkapi Jumlah Berkebutuhan Khusus dalam Keluarga',
             'makanan_pokok.required' => 'Lengkapi Makanan Pokok',
-            'jumlah_balita.required' => 'Lengkapi Jumlah Balita dalam Keluarga',
+            // 'jumlah_balita.required' => 'Lengkapi Jumlah Balita dalam Keluarga',
             'punya_jamban.required' => 'Pilih Mempunyai Jamban dan Jumlah Yang Mempunyai Jamban',
             'sumber_air.required' => 'Pilih Sumber Air dalam Keluarga',
             'punya_tempat_sampah.required' => 'Pilih Yang Mempunyai Tempat Sampah',
@@ -135,9 +142,12 @@ class DataKeluargaController extends Controller
             $wargas = new DataKeluarga;
             $wargas->id_desa = $request->id_desa;
             $wargas->id_kecamatan = $request->id_kecamatan;
-            $wargas->id_data_warga = $request->id_data_warga;
+            $wargas->id_warga = $request->id_warga;
             $wargas->dasa_wisma = $request->dasa_wisma;
-            $wargas->nama_kepala_rumah_tangga = $request->nama_kepala_rumah_tangga;
+            // $wargas->nama_kepala_rumah_tangga = $request->nama_kepala_rumah_tangga;
+            $wargas->kota = $request->kota;
+            $wargas->provinsi = $request->provinsi;
+
             $wargas->jumlah_anggota_keluarga = $request->jumlah_anggota_keluarga;
             $wargas->rt = $request->rt;
             $wargas->rw = $request->rw;
@@ -164,9 +174,6 @@ class DataKeluargaController extends Controller
             $wargas->aktivitas_kegiatan_usaha = $request->aktivitas_kegiatan_usaha;
             $wargas->periode = $request->periode;
             $wargas->save();
-            // $input = $request->all();
-
-            // $post = DataWarga::create($input);
             Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
             return redirect('/data_keluarga');
@@ -191,13 +198,22 @@ class DataKeluargaController extends Controller
     */
     public function edit(DataKeluarga $data_keluarga)
     {
-        //halaman edit data pendidikan
-        $keg = DataWarga::all();
+        // nama desa yang login
+        $desas = DB::table('data_desa')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
+        // $kec = DB::table('data_kecamatan')->get();
+        $kec = DB::table('data_kecamatan')
+        ->where('id', auth()->user()->id_desa)
+        ->get();
+
+        //halaman edit data keluarga
+        $warga = DataWarga::all();
         $kel = DataKeluarga::all();
 
         // dd($keg);
 
-        return view('kader.data_kegiatan.form.edit_data_keluarga', compact('data_keluarga','keg', 'kel'));
+        return view('kader.data_kegiatan.form.edit_data_keluarga', compact('data_keluarga','warga', 'kel', 'desas', 'kec'));
 
     }
 
@@ -210,30 +226,30 @@ class DataKeluargaController extends Controller
     */
     public function update(Request $request, DataKeluarga $data_keluarga)
     {
-        // proses mengubah untuk tambah data pendidikan
+        // proses mengubah untuk data keluarga
         // dd($request->all());
 
         $request->validate([
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
-            'id_data_warga' => 'required',
+            'id_warga' => 'required',
             'dasa_wisma' => 'required',
-            'nama_kepala_rumah_tangga' => 'required',
+            // 'nama_kepala_rumah_tangga' => 'required',
             'rt' => 'required',
             'rw' => 'required',
             'kota' => 'required',
             'provinsi' => 'required',
             'laki_laki' => 'required',
             'perempuan' => 'required',
-            'jumla_KK' => 'required',
-            'jumlah_balita' => 'required',
-            'jumlah_PUS' => 'required',
-            'jumlah_WUS' => 'required',
-            'jumlah_3_buta' => 'required',
-            'jumlah_ibu_hamil' => 'required',
-            'jumlah_ibu_menyusui' => 'required',
-            'jumlah_lansia' => 'required',
-            'jumlah_kebutuhan' => 'required',
+            'jumlah_KK' => 'required',
+            // 'jumlah_balita' => 'required',
+            // 'jumlah_PUS' => 'required',
+            // 'jumlah_WUS' => 'required',
+            // 'jumlah_3_buta' => 'required',
+            // 'jumlah_ibu_hamil' => 'required',
+            // 'jumlah_ibu_menyusui' => 'required',
+            // 'jumlah_lansia' => 'required',
+            // 'jumlah_kebutuhan' => 'required',
             'makanan_pokok' => 'required',
             'punya_jamban' => 'required',
             'jumlah_jamban' => 'required',
@@ -263,10 +279,11 @@ class DataKeluargaController extends Controller
     */
     public function destroy($data_keluarga, DataKeluarga $kel)
     {
-        //temukan id gotong_royong
+        //temukan id data keluarga
         $kel::find($data_keluarga)->delete();
+        Alert::success('Berhasil', 'Data berhasil di Hapus');
 
-        return redirect('/data_keluarga')->with('status', 'sukses');
+        return redirect('/data_keluarga');
 
 
 

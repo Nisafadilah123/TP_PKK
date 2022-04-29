@@ -19,16 +19,24 @@
 
         @csrf
         <div class="card-body">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        {{-- {{  dump($errors)  }} --}}
+                    </ul>
+                </div>
+            @endif
+
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group @error('id_desa') is-invalid @enderror">
                         <label for="exampleFormControlSelect1">Desa</label>
+                        {{-- nama desa --}}
                         @foreach ($desas as $c)
-                        {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
                         <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
-        
-                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
-        
+
+                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_desa }}">
+
                         @endforeach
                     </div>
                     @error('id_desa')
@@ -40,10 +48,11 @@
                 <div class="col-md-6">
                     <div class="form-group @error('id_kecamatan') is-invalid @enderror">
                         <label for="exampleFormControlSelect1">Kecamatan</label>
+                        {{-- nama Kecamatan --}}
                         @foreach ($kec as $c)
                         <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
-                        <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->kode_kecamatan }}-{{ $c->nama_kecamatan }}">
-    
+                        <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_kecamatan }}">
+
                         @endforeach
                     </div>
                     @error('id_kecamatan')
@@ -59,11 +68,9 @@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Nama Warga</label>
                         <select class="form-control" id="id_warga" name="id_warga">
-                            {{-- nama warga --}}
+                            {{-- pilih nama warga --}}
                             @foreach ($warga as $c)
-                            <option value="{{ $c->id }}" {{ $c->id === $data_industri->id_warga ? 'selected' : '' }}>{{ $c->nama }}</option>
-
-                                {{-- <option value="{{$c->id }}">  {{$c->id }}-{{ $c->nama }}</option> --}}
+                                <option value="{{ $c->id }}" {{ $c->id === $data_industri->id_warga ? 'selected' : '' }}>{{ $c->nama }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -72,10 +79,9 @@
                     <div class="form-group">
                         <label>Kategori</label>
                         <select class="form-control" id="id_kategori" name="id_kategori">
-                            {{-- nama warga --}}
+                            {{-- pilih nama Kategori --}}
                             @foreach ($katins as $c)
-                            <option value="{{ $c->id }}" {{ $c->id === $data_industri->id_kategori ? 'selected' : '' }}>{{ $c->nama_kategori }}</option>
-
+                                <option value="{{ $c->id }}" {{ $c->id === $data_industri->id_kategori ? 'selected' : '' }}>{{ $c->nama_kategori }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -83,19 +89,22 @@
             </div>
             <div class="form-group">
                 <label>Komoditi</label>
-                <input type="text" class="form-control" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi" required value="{{$data_industri->komoditi}}">
+                {{-- nama Komoditi --}}
+                <input type="text" class="form-control" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi" required value="{{ucfirst(old('komoditi', $data_industri->komoditi)) }}">
             </div>
-            
+
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Volume</label>
-                        <input type="number" class="form-control" name="volume" id="volume" placeholder="Masukkan Volume" required value="{{$data_industri->volume}}">
+                        {{-- volume Komoditi --}}
+                        <input type="number" class="form-control" name="volume" id="volume" placeholder="Masukkan Volume" required value="{{ucfirst(old('volume', $data_industri->volume))}}">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Periode</label>
+                        {{-- pilih periode --}}
                         <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
                             <option value="{{ $data_industri->periode }}" {{ $data_industri->periode ? 'selected' : '' }}>{{ $data_industri->periode }}</option>
                                 <?php

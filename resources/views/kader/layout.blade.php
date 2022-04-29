@@ -51,6 +51,8 @@
       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
       rel="stylesheet"
     />
+    {{-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> --}}
+
   </head>
   <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -155,25 +157,44 @@
                   </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a href="/data_kader" class="nav-link">
-                    <i class="nav-icon fas fa-user-cog"></i>
-                      <p>Data Pelatihan Kader<br> TP PKK</p>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user-cog"></i>
+                        <p>
+                            <p>Data Pelatihan Kader<br> TP PKK</p>
+                            <i class="fas fa-angle-left right"></i>
+                      </p>
                     </a>
-                </li>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/data_gabung" class="nav-link {{ Request::is('data_gabung') ? 'active':'' }}">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Data Gabung Kader <br>Pelatihan</p>
+                            </a>
+                          </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-                    <i class="nav-icon fas fa-sign-out-alt"></i>
-                    Keluar
-                </a>
+                        <li class="nav-item">
+                            <a href="/data_pelatihan" class="nav-link {{ Request::is('data_pelatihan') ? 'active':'' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Data Pelatihan Kader</p>
+                            </a>
+                        </li>
+                      </ul>
+                    </li>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-              </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('kader_desa.logout') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            <i class="nav-icon fas fa-sign-out-alt"></i>
+                            Keluar
+                        </a>
+
+                        <form id="logout-form" action="{{ route('kader_desa.logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                      </li>
+
 
             </ul>
           </nav>

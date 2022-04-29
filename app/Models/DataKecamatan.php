@@ -25,4 +25,8 @@ class DataKecamatan extends Model
         return $this->hasMany(DataWarga::class);
     }
 
+    public function pelatihan(){
+        return $this->hasMany(DataPelatihanKader::class);
+    }
+
 }

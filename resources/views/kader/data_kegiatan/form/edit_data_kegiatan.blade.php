@@ -1,6 +1,6 @@
 @extends('kader.layout')
 
-@section('title', 'Edit Data Kegiatan Warga TP PKK | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Edit Data Kegiatan Warga TP PKK | Kader Desa PKK Kab. Indramayu')
 
 @section('bread', 'Edit Data Kegiatan Warga TP PKK')
 @section('container')
@@ -23,16 +23,24 @@
             <h6 style="color: red">* Keterangan Kegiatan Yang diikuti seperti : Keagamaan, PKBN, Pola Asuh Pencegahan KDRT, Pencegahan Traffocking, Narkoba, Pencegahan
                 Kejahatan Seksual, Kerja Bakti, Jimpitan, Arisan, Rukun Kematian, Bakti Sosial, BKB, PAUD Sejenis, Paket A, Paket B, Paket C, KF (Keaksaraan Fungsional),
                 UP2K, Koperasi</h6>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        {{-- {{  dump($errors)  }} --}}
+                    </ul>
+                </div>
+            @endif
+
 
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group @error('id_desa') is-invalid @enderror">
                         <label for="exampleFormControlSelect1">Desa</label>
+                        {{-- nama desa --}}
                         @foreach ($desas as $c)
-                        {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
                         <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
 
-                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
+                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_desa }}">
 
                         @endforeach
                     </div>
@@ -46,9 +54,10 @@
                 <div class="col-md-6">
                     <div class="form-group @error('id_kecamatan') is-invalid @enderror">
                         <label for="exampleFormControlSelect1">Kecamatan</label>
+                        {{-- nama Kecamatan --}}
                         @foreach ($kec as $c)
                         <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
-                        <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->kode_kecamatan }}-{{ $c->nama_kecamatan }}">
+                        <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_kecamatan }}">
 
                         @endforeach
                     </div>
@@ -65,11 +74,9 @@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Nama Warga</label>
                         <select class="form-control" id="id_warga" name="id_warga">
-                          {{-- nama warga --}}
+                          {{-- pilih nama warga --}}
                           @foreach ($keg as $c)
-                          <option value="{{ $c->id }}" {{ $c->id === $data_kegiatan->id_warga ? 'selected' : '' }}>{{ $c->nama }}</option>
-
-                              {{-- <option value="{{$c->id }}">  {{$c->id }}-{{ $c->nama }}</option> --}}
+                            <option value="{{ $c->id }}" {{ $c->id === $data_kegiatan->id_warga ? 'selected' : '' }}>{{ $c->nama }}</option>
                           @endforeach
                           </select>
                       </div>
@@ -78,11 +85,10 @@
                     <div class="form-group">
                         <label>Nama Kegiatan</label>
                         <select class="form-control" id="id_kegiatan" name="id_kegiatan">
-                            {{-- nama warga --}}
+                            {{-- pilih nama Kegiatan --}}
                             @foreach ($kat as $c)
-                            <option value="{{ $c->id }}" {{ $c->id === $data_kegiatan->id_kegiatan ? 'selected' : '' }}>{{ $c->nama_kegiatan }}</option>
+                                <option value="{{ $c->id }}" {{ $c->id === $data_kegiatan->id_kegiatan ? 'selected' : '' }}>{{ $c->nama_kegiatan }}</option>
 
-                                {{-- <option value="{{$c->id_kegiatan }}">  {{$c->id }}-{{ $c->nama_kegiatan }}</option> --}}
                             @endforeach
                         </select>
                       </div>
@@ -91,6 +97,7 @@
 
           <div class="form-group">
             <label>Aktivitas</label><br>
+            {{-- pilih Aktivitas --}}
             <div class="form-check form-check-inline">
                 <label class="form-check-label">
                     <input type="radio" name="aktivitas" value="Ya" class="form-check-input" {{$data_kegiatan->aktivitas == 'Ya'? 'checked' : ''}}>Ya
@@ -107,12 +114,14 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Keterangan (Jenis Kegiatan Yang Diikuti)</label>
-                    <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Masukkan Keterangan" required value="{{$data_kegiatan->keterangan}}">
+                    {{-- beri keterangan --}}
+                    <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Masukkan Keterangan" required value="{{ucfirst(old('keterangan', $data_kegiatan->keterangan)) }}">
                   </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Periode</label>
+                    {{-- pilih periode --}}
                     <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
                         <option value="{{ $data_kegiatan->periode }}" {{ $data_kegiatan->periode ? 'selected' : '' }}>{{ $data_kegiatan->periode }}</option>
                             <?php

@@ -1,172 +1,65 @@
 @extends('kader.layout')
 
-@section('title', 'Data Warga TP PKK | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Detail Data Warga TP PKK | Admin Desa PKK Kab. Indramayu')
 
-@section('bread', 'Data Warga TP PKK')
+@section('bread', 'Detail Data Warga TP PKK')
 @section('container')
 
-    <!-- Main content -->
-<div class="main-content">
-    <section class="section">
+<section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <!-- Main content -->
+          <div class="invoice p-3 mb-3">
+            {{-- @foreach ($data_warga as $c) --}}
+              <!-- title row -->
+              <div class="row">
+                <div class="col-6">
+                  Dasa Wisma : <strong> {{ucfirst($data_warga->dasa_wisma) }} </strong><br>
+                  Nama Kepala Rumah Tangga : <strong>{{ucfirst($data_warga->nama_kepala_rumah_tangga) }}</strong><br>
+                  No. Registrasi : <strong> {{ucfirst($data_warga->no_registrasi) }} </strong><br>
+                  No. KTP/NIK : <strong>{{ucfirst($data_warga->no_ktp) }}</strong><br>
+                  Nama : <strong> {{ucfirst($data_warga->nama) }} </strong><br>
+                  Jabatan : <strong>{{ucfirst($data_warga->jabatan) }}</strong><br>
+                  Jenis Kelamin : <strong> {{ucfirst($data_warga->jenis_kelamin) }} </strong><br>
+                  Tempat Lahir : <strong> {{ucfirst($data_warga->tempat_lahir) }} </strong><br>
+                  Tanggal Lahir : <strong>{{ \Carbon\Carbon::parse($data_warga->tgl_lahir)->isoFormat('D MMMM Y') }}/{{ucfirst($data_warga->umur) }} Tahun</strong><br>
+                  Status Perkawinan : <strong> {{ucfirst($data_warga->status_perkawinan) }}</strong><br>
+                  Status dalam Keluarga : <strong> {{ucfirst($data_warga->status_keluarga) }} ({{ ucfirst($data_warga->status) }})</strong><br>
+                  Agama : <strong> {{ucfirst($data_warga->agama) }} </strong><br>
+                  Alamat : <strong> {{ucfirst($data_warga->alamat) }},RT {{ ($data_warga->rt) }}, RW {{ ($data_warga->rt) }},Desa {{ucfirst($data_warga->desa->nama_desa)}}, Kec. {{ucfirst($data_warga->kecamatan->nama_kecamatan)}}
+                    Kabupaten {{ucfirst($data_warga->kota) }}, Provinsi {{ucfirst($data_warga->provinsi) }}
+                </strong><br>
+                  Pendidikan : <strong> {{ucfirst($data_warga->pendidikan) }} </strong><br>
+                  Pekerjaan : <strong> {{ucfirst($data_warga->pekerjaan) }} </strong><br>
+                  Akseptor KB : <strong> {{ucfirst($data_warga->akseptor_kb) }} </strong><br>
+                  Aktif dalam Kegiatan Posyandu : <strong> {{ucfirst($data_warga->aktif_posyandu) }} </strong><br>
+                  Mengikuti Program Bina Keluarga Balita : <strong> {{ucfirst($data_warga->ikut_bkb) }} </strong><br>
+                  Memiliki Tabungan : <strong> {{ucfirst($data_warga->memiliki_tabungan) }} </strong><br>
+                  Mengikuti Kelompok Belajar Jenis : <strong> {{ucfirst($data_warga->ikut_kelompok_belajar) }} </strong><br>
+                  Mengikuti PAUD/Sejenis : <strong> {{ucfirst($data_warga->ikut_paud_sejenis) }} </strong><br>
+                  Ikut dalam Kegiatan Koperasi : <strong> {{ucfirst($data_warga->ikut_koperasi) }} </strong><br>
 
-        <div class="section-body">
-            <div class="row">
-                <div class="col-12 col-md-6 col-lg-12">
-                    <div class="card">
-
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered data" id="add-row">
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                            <a href="{{ url('data_warga/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
-                                        </div>
-                                        {{-- <div class="col-md-1">
-                                            <!-- Tombol yang memicu modal -->
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSaya">
-                                                Klik Info
-                                            </button><br><br>
-                                        </div> --}}
-                                    </div>
-
-                                        <!-- Contoh Modal -->
-                                        <div class="modal fade" id="modalSaya" tabindex="-1" role="dialog" aria-labelledby="modalSayaLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="modalSayaLabel">Info Kategori Kegiatan POKJA II</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <h6 style="font-colour:red">* KF (KF Bela)</h6>
-                                                        <h6 style="font-colour:red">* BKB (BKB ekerasan Dalam)</h6>
-                                                        <h6 style="font-colour:red">* APE (SET) (BKB ekerasan Dalam)</h6>
-                                                        <h6 style="font-colour:red">* LP3PKK (LP3PKK kerasan Dalam)</h6>
-                                                        <h6 style="font-colour:red">* TP3PKK (TP3PKK ekerasan Dalam)</h6>
-                                                        <h6 style="font-colour:red">* Damas PKK (PKK ekerasan Dalam)</h6>
-
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Oke</button>
-                                                        {{-- <button type="button" class="btn btn-primary">Oke</button> --}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Dasa Wisma</th>
-                                            <th>Nama Kepala Rumah Tangga</th>
-                                            <th>No. Registrasi</th>
-                                            <th>No. KTP/NIK</th>
-                                            <th>Nama</th>
-                                            <th>Jabatan</th>
-                                            <th>Jenis Kelamin</th>
-                                            <th>Periode</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <?php $no=1;?>
-
-                                        @foreach ($warga as $c)
-                                    <tr>
-                                        <td style="vertical-align: middle;">{{ $no }}</td>
-                                        {{-- nama desa yang login --}}
-                                        <td style="vertical-align: middle;">{{ucfirst($c->dasa_wisma) }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->nama_kepala_rumah_tangga)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->no_registrasi)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->no_ktp)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->nama)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->jabatan)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->tempat_lahir)}}</td>
-                                        <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($c->tgl_lahir)->isoFormat('D MMMM Y') }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->umur)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->status_keluarga)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->status)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->status_perkawinan)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->agama)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->alamat)}},RT {{ucfirst($c->rt)}}, RW {{ucfirst($c->rw)}}, Desa {{ucfirst($c->desa->nama_desa)}}, Kecamatan {{ucfirst($c->kecamatan->nama_kecamatan)}}, Provinsi {{ucfirst($c->provinsi)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->pendidikan)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->pekerjaan)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->akseptor_kb)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->aktif_posyandu)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->ikut_bkb)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->memiliki_tabungan)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->ikut_kelompok_belajar)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->ikut_paud_sejenis)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->ikut_koperasi)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
-
-                                        <td class="text-center">
-                                            <form action="{{ url('data_warga.destroy',$c->id) }}" method="POST">
-
-                                            <a class="btn btn-info btn-sm" href="{{ url('data_warga.show',$c->id) }}">Show</a>
-
-                                                <a class="btn btn-primary btn-sm" href="{{ url('data_warga/'.$c->id.'/edit') }}">Edit</a>
-
-                                                @csrf
-                                                @method('DELETE')
-
-                                                <button type="submit" class="btn btn-danger btn-sm delete">Delete</button>
-                                            </form>
-                                        </td>
-
-                                    </tr>
-
-                                    <?php $no++ ;?>
-                                    @endforeach
-
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
-            </div>
-        </div>
 
-    </section>
-</div>
-    <!-- /.content -->
+                <!-- /.col -->
+              </div>
 
+              <!-- this row will not appear when printing -->
+              <div class="row no-print">
+                <div class="col-12">
+                  <a href="/data_warga" class="btn btn-primary float-right" style="margin-right: 5px;">
+                    <i class="fas fa-angle-left"></i> Kembali
+                  </a>
+                </div>
+              </div>
+            {{-- @endforeach --}}
+          </div>
+          <!-- /.invoice -->
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
 
-<!-- page script -->
-  @endsection
-
-  @push('script-addon')
-
-<script>
-$(document).ready( function () {
-    $('.data').DataTable();
-} );
-</script>
-<script>
-    $('.delete').click(function(event) {
-          var form =  $(this).closest("form");
-          var name = $(this).data("name");
-          event.preventDefault();
-          swal({
-            title: `Apakah anda yakin ingin menghapus data ini ?`,
-              text: "Jika anda menghapusnya maka datanya akan di hapus secara permanen",
-              icon: "warning",
-              buttons: true,
-              dangerMode: true,
-          })
-          .then((willDelete) => {
-            if (willDelete) {
-              form.submit();
-            }
-          });
-      });
-</script>
-
-@endpush
+@endsection

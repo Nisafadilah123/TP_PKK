@@ -50,7 +50,7 @@ class DataWargaController extends Controller
   */
     public function store(Request $request)
     {
-        // proses penyimpanan untuk tambah data jml kader
+        // proses penyimpanan untuk tambah data warga
         // dd($request->all());
         // validasi data
         $request->validate([
@@ -98,7 +98,7 @@ class DataWargaController extends Controller
             'tempat_lahir.required' => 'Lengkapi Jumlah Tempat Lahir',
             'tgl_lahir.required' => 'Lengkapi Tanggal Lahir',
             'umur.required' => 'Lengkapi Umur',
-            'status_perkawinan.required' => 'Pilih Status Perpustakaan',
+            'status_perkawinan.required' => 'Pilih Status Perkawinan',
             'status_keluarga.required' => 'Pilih Status Keluarga',
             'agama.required' => 'Pilih Agama',
             'alamat.required' => 'Lengkapi Alamat',
@@ -178,6 +178,8 @@ class DataWargaController extends Controller
     public function show(DataWarga $data_warga)
     {
         // menampilkan data warga
+        // $warga=DataWarga::all();
+
         return view('kader.data_kegiatan.show.data_warga_show',compact('data_warga'));
 
     }
@@ -300,8 +302,9 @@ class DataWargaController extends Controller
     {
         //temukan id data warga
         $warg::find($data_warga)->delete();
+        Alert::success('Berhasil', 'Data berhasil di Hapus');
 
-        return redirect('/data_warga')->with('status', 'sukses');
+        return redirect('/data_warga');
 
     }
 }

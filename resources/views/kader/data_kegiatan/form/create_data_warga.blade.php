@@ -17,11 +17,92 @@
         <div class="card-body">
             <form action="{{ route('data_warga.store') }}" method="POST">
                 @csrf
-                <h6 style="color: red">* Semua elemen atribut harus diisi</h6>
+                <div class="row">
+                    <div class="col-md-10">
+                        <h6 style="color: red">* Semua elemen atribut harus diisi</h6>
+                    </div>
+                    <div class="col-md-2">
+                    <!-- Tombol yang memicu modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSaya">
+                        Klik Info
+                    </button>
+
+                    </div>
+                </div>
+                <!-- Contoh Modal -->
+                <div class="modal fade" id="modalSaya" tabindex="-1" role="dialog" aria-labelledby="modalSayaLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalSayaLabel">Info Keterangan Atribut </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <table>
+                                    <tr>
+                                        <th colspan="1">Point/Isian</th>
+                                        <th>Penjelasan</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Dasa Wisma</td>
+                                        <td>Di isi sesuai dengan nama dasawisma yang diikuti warga yang bersangkutan</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Nama Kepala Keluarga</td>
+                                        <td>Di isi dengan nama Kepala Rumah Tangga pada rumah yang didata.
+                                            Kepala Rumah Tangga adalah yang bertanggung jawab atas segala sesuatu yang terkait dengan kegiatan di dalam rumah yang sedang didata.</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>No. Registrasi</td>
+                                        <td>Nomor Registrasi diisi dengan nomor urutan sesuai wilayah, misalnya:020103042009001,dengan rincian: 02:prov; 01:kab/kota; 03:kec; 04:desa/kelurahan; 2009:th masuk; 001 : nomor pendataan</td>
+                                    </tr>
+                                    <tr>
+                                        <td>No. KTP/NIK</td>
+                                        <td>Di isi dengan sudah atau belum atas kepemilikan KTP dan atau Kartu Keluarga (KK)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jabatan</td>
+                                        <td>Jabatan yang bersangkutan pada di struktural TP PKK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Status Dalam Keluarga</td>
+                                        <td>Diisi sesuai status yang bersangkutan didalam rumah yang sedang di data.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Akseptor KB</td>
+                                        <td>Diisi dengan apakah yang bersangkutan mengikuti program KB dan jenis akseptor KB yang dipilih</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Memiliki Tabungan</td>
+                                        <td>Tabungan tidak hanya berupa uang di bank, tetapi bisa juga berupa ternak, tanaman keras, tanah dll
+                                            sesuai dengan situasi kondisi masing-masing daerah</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Oke</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            {{-- {{  dump($errors)  }} --}}
+                        </ul>
+                    </div>
+                @endif
+
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Dasa Wisma</label>
+                            {{-- nama dasa wisma --}}
                             <input type="text" class="form-control @error('dasa_wisma') is-invalid @enderror" name="dasa_wisma" id="dasa_wisma" placeholder="Di isi sesuai dengan nama dasawisma yang diikuti warga yang bersangkutan" >
                             @error('dasa_wisma')
                                 <span class="invalid-feedback" role="alert">
@@ -34,6 +115,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Nama Kepala Rumah Tangga</label>
+                            {{-- Nama Kepala Rumah Tangga --}}
                             <input type="text" class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" name="nama_kepala_rumah_tangga" id="nama_kepala_rumah_tangga" placeholder="Di isi dengan nama Kepala Rumah Tangga pada rumah yang didata">
                             @error('nama_kepala_rumah_tangga')
                                 <span class="invalid-feedback" role="alert">
@@ -46,6 +128,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>No. Registrasi</label>
+                            {{-- no.registrasi --}}
                             <input type="text" class="form-control @error('no_registrasi') is-invalid @enderror" name="no_registrasi" id="no_registrasi" placeholder="Nomor Registrasi diisi dengan nomor urutan sesuai wilayah">
                             @error('no_registrasi')
                                 <span class="invalid-feedback" role="alert">
@@ -60,6 +143,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>No. KTP</label>
+                            {{-- No. KTP --}}
                             <input type="text" class="form-control @error('no_ktp') is-invalid @enderror" name="no_ktp" id="no_ktp" placeholder="Di isi dengan sudah atau belum atas kepemilikan KTP dan atau Kartu Keluarga (KK)">
                             @error('no_ktp')
                                 <span class="invalid-feedback" role="alert">
@@ -72,6 +156,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Nama</label>
+                            {{-- nama warga --}}
                             <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" placeholder="Di isi dengan nama">
                             @error('nama')
                                 <span class="invalid-feedback" role="alert">
@@ -84,6 +169,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Jabatan</label>
+                            {{-- jabatan --}}
                             <input type="text" class="form-control @error('jabatan') is-invalid @enderror" name="jabatan" id="jabatan" placeholder="Di isi jabatan yang bersangkutan pada di struktural TP PKK">
                             @error('jabatan')
                                 <span class="invalid-feedback" role="alert">
@@ -96,6 +182,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Tempat lahir</label>
+                            {{-- Tempat lahir --}}
                             <input type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" name="tempat_lahir" id="tempat_lahir" placeholder="Di isi Kota/Kabupaten tempat lahir yang bersangkutan">
                             @error('tempat_lahir')
                                 <span class="invalid-feedback" role="alert">
@@ -110,6 +197,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Tanggal lahir</label>
+                            {{-- Tanggal lahir --}}
                             <input type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" name="tgl_lahir" id="tgl_lahir" placeholder="Di isi tanggal lahir" data-date-format="mm/dd/yyyy">
                             @error('tgl_lahir')
                                 <span class="invalid-feedback" role="alert">
@@ -122,6 +210,7 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             <label>Umur</label>
+                            {{-- umur --}}
                             <input type="number" class="form-control @error('umur') is-invalid @enderror" name="umur" id="umur" placeholder="Di isi Umur">
                             @error('umur')
                                 <span class="invalid-feedback" role="alert">
@@ -134,6 +223,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Alamat</label>
+                            {{-- Alamat--}}
                             <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" id="alamat" placeholder="Di isi Alamat">
                             @error('alamat')
                                 <span class="invalid-feedback" role="alert">
@@ -146,6 +236,7 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">RT</label>
+                            {{-- rt --}}
                             <input type="number" min="1" class="form-control @error('rt') is-invalid @enderror" name="rt" id="rt" placeholder="RT">
                             @error('rt')
                                 <span class="invalid-feedback" role="alert">
@@ -158,6 +249,7 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">RW</label>
+                            {{-- rw --}}
                             <input type="number" min="1" class="form-control @error('rw') is-invalid @enderror" name="rw" id="rw" placeholder="RW">
                             @error('rw')
                                 <span class="invalid-feedback" role="alert">
@@ -172,11 +264,11 @@
                     <div class="col-md-2">
                         <div class="form-group @error('id_desa') is-invalid @enderror">
                             <label for="exampleFormControlSelect1">Desa</label>
+                            {{-- nama desa --}}
                             @foreach ($desas as $c)
-                            {{-- <option value="{{$c->id }}">  {{$c->kode_desa }}-{{ $c->nama_desa }}</option> --}}
                             <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
 
-                            <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->kode_desa }}-{{ $c->nama_desa }}">
+                            <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_desa }}">
 
                             @endforeach
                         </div>
@@ -188,12 +280,13 @@
 
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group @error('id_kecamatan') is-invalid @enderror">
                             <label for="exampleFormControlSelect1">Kecamatan</label>
+                            {{-- nama kecamatan --}}
                             @foreach ($kec as $c)
                             <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
-                            <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->kode_kecamatan }}-{{ $c->nama_kecamatan }}">
+                            <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_kecamatan }}">
 
                             @endforeach
                         </div>
@@ -207,6 +300,7 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Kabupaten</label>
+                            {{-- nama kabupaten --}}
                                 <input type="text" readonly class="form-control @error('kota') is-invalid @enderror" name="kota" id="kota" placeholder="Masukkan Kota" value="Indramayu">
                                 @error('kota')
                                     <span class="invalid-feedback" role="alert">
@@ -219,6 +313,7 @@
                     <div class="col-md-2">
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Provinsi</label>
+                                {{-- nama provinsi --}}
                                     <input type="text" readonly class="form-control @error('provinsi') is-invalid @enderror" name="provinsi" id="provinsi" placeholder="Masukkan Provisni" value="Jawa Barat">
                                     @error('provinsi')
                                         <span class="invalid-feedback" role="alert">
@@ -228,10 +323,10 @@
                             </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group @error('periode') is-invalid @enderror">
                             <label>Periode</label>
-                            {{-- <input type="text" class="form-control @error('id_desa') is-invalid @enderror" name="periode" id="periode" placeholder="Masukkan Periode"> --}}
+                            {{-- pilih periode --}}
                             <select style="cursor:pointer;" class="form-control " id="periode" name="periode">
                                 <option hidden> Pilih Tahun</option>
                                     <?php
@@ -249,12 +344,10 @@
                             </span>
                         @enderror
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group @error('jenis_kelamin') is-invalid @enderror">
                             <label class="form-label">Jenis Kelamin </label><br>
+                            {{-- pilih jenis kelamin --}}
                             <div class="form-check form-check-inline">
                                 <label class="form-check-label">
                                     <input type="radio" name="jenis_kelamin" value="laki-laki" class="form-check-input">Laki-laki
@@ -277,6 +370,7 @@
                     <div class="col-md-3">
                         <div class="form-group @error('status_perkawinan') is-invalid @enderror">
                             <label>Status Perkawinan</label><br>
+                            {{-- pilih status perkawinan --}}
                                 <div class="form-check form-check-inline">
                                     <label label class="form-check-label">
                                         <input type="radio" name="status_perkawinan" value="menikah" class="form-check-input">Menikah
@@ -308,20 +402,12 @@
                     <div class="col-md-3">
                         <div class="form-group @error('status_keluarga') is-invalid @enderror">
                             <label>Status Dalam Keluarga</label><br>
+                            {{-- pilih status dalam keluarga --}}
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
                                         <input type="radio" name="status_keluarga" value="kepala keluarga" class="form-check-input">Kepala Keluarga
-                                        {{-- <input type="text" name="status" value="kepala keluarga" class="form-check-input" readonly > --}}
                                     </label>
                                 </div>
-                                {{-- <div class="input-group">
-                                    <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                    <input type="radio" aria-label="Radio button for following text input" name="status_keluarga" value="kepala keluarga">Kepala Keluarga
-                                    </div>
-                                    </div>
-                                    <input type="text" readonly class="form-control @error('id_desa') is-invalid @enderror" aria-label="Text input with radio button" name="status" placeholder="Status" value="kepala keluarga">
-                                </div> --}}
                         </div>
 
                                 <div class="input-group">
@@ -332,22 +418,17 @@
                                     </div>
                                         <input type="text" class="form-control" aria-label="Text input with radio button" name="status" placeholder="Status">
                                 </div>
-                                {{-- <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="radio" name="status_keluarga" value="anggota keluarga" class="form-check-input">Anggota Keluarga
-                                    </label>
-                                </div> --}}
                             @error('status_keluarga')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group @error('agama') is-invalid @enderror">
                             <label>Agama</label><br>
+                            {{-- pilih agama --}}
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
                                         <input type="radio" name="agama" value="islam" class="form-check-input">Islam
@@ -395,6 +476,7 @@
                     <div class="col-md-3">
                         <div class="form-group @error('pendidikan') is-invalid @enderror">
                             <label>Pendidikan</label><br>
+                            {{-- Pilih Pendidikan --}}
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
                                         <input type="radio" name="pendidikan" value="Tidak Tamat SD" class="form-check-input">Tidak Tamat SD
@@ -437,6 +519,7 @@
                     <div class="col-md-3">
                         <div class="form-group @error('pekerjaan') is-invalid @enderror">
                             <label>Pekerjaan</label><br>
+                                {{-- Pilih Pekejaan --}}
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
                                         <input type="radio" name="pekerjaan" value="petani" class="form-check-input">Petani
@@ -480,9 +563,10 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group @error('akseptor_kb') is-invalid @enderror">
                             <label>Akseptor KB</label><br>
+                                {{-- Pilih Akseptor --}}
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
                                         <input type="radio" name="akseptor_kb" value="ya" class="form-check-input">Ya
@@ -501,9 +585,10 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group @error('aktif_posyandu') is-invalid @enderror">
                             <label>Aktif dalam kegiatan Posyandu</label><br>
+                                {{-- Pilih aktif dalam kegiatan Posyandu --}}
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
                                         <input type="radio" name="aktif_posyandu" value="ya" class="form-check-input">Ya
@@ -521,12 +606,10 @@
                             </span>
                         @enderror
                     </div>
-                </div>
-
-                <div class="row">
                     <div class="col-md-3">
                         <div class="form-group @error('ikut_bkb') is-invalid @enderror">
                             <label>Mengikuti Program Bina Keluarga Balita</label><br>
+                                {{-- Pilih mengikuti program bkb --}}
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
                                         <input type="radio" name="ikut_bkb" value="ya" class="form-check-input">Ya
@@ -545,9 +628,10 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group @error('memiliki_tabungan') is-invalid @enderror">
                             <label>Memiliki Tabungan</label><br>
+                                {{-- Pilih memiliki tabungan --}}
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
                                         <input type="radio" name="memiliki_tabungan" value="ya" class="form-check-input">Ya
@@ -569,6 +653,7 @@
                     <div class="col-md-3">
                         <div class="form-group @error('ikut_kelompok_belajar') is-invalid @enderror">
                             <label>Mengikuti Kelompok Belajar Jenis</label><br>
+                                {{-- Pilih mengikuti kelompok Belajar Jenis --}}
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
                                         <input type="radio" name="ikut_kelompok_belajar" value="ya" class="form-check-input">Ya
@@ -607,9 +692,10 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group @error('ikut_paud_sejenis') is-invalid @enderror">
                                 <label>Mengikuti PAUD/Sejenis</label><br>
+                                    {{-- Pilih PAUD/Sejenis --}}
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
                                         <input type="radio" name="ikut_paud_sejenis" value="ya" class="form-check-input">Ya
@@ -627,12 +713,10 @@
                             </span>
                         @enderror
                     </div>
-                </div>
-
-                <div class="row">
                     <div class="col-md-3">
                         <div class="form-group @error('ikut_koperasi') is-invalid @enderror">
                             <label>Ikut dalam Kegiatan Koperasi</label><br>
+                                {{-- Pilih mengikuti kegiatan koperasi --}}
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
                                         <input type="radio" name="ikut_koperasi" value="ya" class="form-check-input">Ya

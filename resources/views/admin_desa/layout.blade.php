@@ -132,9 +132,9 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/keluarga" class="nav-link {{ Request::is('keluarga') ? 'active':'' }}">
+                    <a href="/keluarga" class="nav-link {{ Request::is('eluarga') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data Keluarga</p>
+                      <p>Data e</p>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -147,6 +147,72 @@
                     <a href="/data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data Sekretariat/<br>Data Umum</p>
+                    </a>
+                  </li>
+
+                </ul>
+              </li>
+
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-landmark"></i>
+                  <p>Data Aset Desa/ <br>Kelurahan
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="/kategori_industri" class="nav-link {{ Request::is('kategori_industri') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Warung PKK</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/kategori_pemanfaatan" class="nav-link {{ Request::is('kategori_pemanfaatan') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Data Warung PKK</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/keluarga" class="nav-link {{ Request::is('keluarga') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Taman Bacaan</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/pemanfaatan" class="nav-link {{ Request::is('pemanfaatan') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Data Taman Bacaan</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Koperasi</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Kejar Paket</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Posyandu</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Data Posyandu</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Kelompok Simulasi dan <br> Penyuluhan</p>
                     </a>
                   </li>
 

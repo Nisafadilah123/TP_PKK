@@ -185,8 +185,9 @@ class DataKegiatanWargaController extends Controller
     {
         //temukan id data kegiatan warga
         $warg::find($data_kegiatan)->delete();
+        Alert::success('Berhasil', 'Data berhasil di Hapus');
 
-        return redirect('/data_kegiatan')->with('status', 'sukses');
+        return redirect('/data_kegiatan');
 
 
 

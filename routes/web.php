@@ -31,8 +31,10 @@ use App\Http\Controllers\DashboardSuperController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KaderFormController;
 use App\Http\Controllers\PendataanKader\DataIndustriRumahController;
+use App\Http\Controllers\PendataanKader\DataKaderGabungController;
 use App\Http\Controllers\PendataanKader\DataKegiatanWargaController;
 use App\Http\Controllers\PendataanKader\DataKeluargaController;
+use App\Http\Controllers\PendataanKader\DataPelatihanKaderController;
 use App\Http\Controllers\PendataanKader\DataPemanfaatanPekaranganController;
 use App\Http\Controllers\PendataanKader\DataWargaController;
 use App\Http\Controllers\super_admin\dataKecamtanController;
@@ -274,6 +276,7 @@ Route::middleware(['user_type:kader_desa'])->group(function(){
     Route::resource('/data_keluarga', DataKeluargaController::class);
     Route::resource('/data_pemanfaatan', DataPemanfaatanPekaranganController::class);
     Route::resource('/data_industri', DataIndustriRumahController::class);
-    Route::resource('/data_pelatihan_kader', DataPelatihanKaderController::class);
+    Route::resource('/data_pelatihan', DataPelatihanKaderController::class);
+    Route::resource('/data_gabung', DataKaderGabungController::class);
 
 });

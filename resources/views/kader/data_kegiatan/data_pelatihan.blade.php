@@ -1,8 +1,8 @@
 @extends('kader.layout')
 
-@section('title', 'Data Pemanfaatan Tanah Pekarangan PKK | Kader Desa PKK Kab. Indramayu')
+@section('title', 'Data Pelatihan Kader PKK | Kader Desa PKK Kab. Indramayu')
 
-@section('bread', 'Data Pemanfaatan Tanah Pekarangan PKK')
+@section('bread', 'Data Pelatihan Kader PKK')
 @section('container')
 
     <!-- Main content -->
@@ -19,7 +19,7 @@
                                 <table class="table table-striped table-bordered data" id="add-row">
                                     <div class="row">
                                         <div class="col-md-1">
-                                            <a href="{{ url('data_pemanfaatan/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
+                                            <a href="{{ url('data_pelatihan/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
                                         </div>
 
                                     </div>
@@ -27,11 +27,11 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Warga</th>
-                                            <th>Kategori</th>
-                                            <th>Komoditi</th>
-                                            <th>Jumlah</th>
-                                            <th>Periode</th>
+                                            <th>Nama Pelatihan</th>
+                                            <th>Kriteria Kader</th>
+                                            <th>Tahun</th>
+                                            <th>Penyelenggara</th>
+                                            <th>Keterangan</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -39,27 +39,27 @@
                                     <tbody>
                                         <?php $no=1;?>
 
-                                        @foreach ($pemanfaatan as $c)
+                                        @foreach ($pelatihan as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
                                         {{-- nama desa yang login --}}
-                                        <td style="vertical-align: middle;">{{ucfirst($c->warga->nama) }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->kategori_lahan->nama_kategori)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->komoditi)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->jumlah)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
+                                        {{-- <td style="vertical-align: middle;">{{ucfirst($c->user->name) }}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->desa->nama_desa)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->kecamatan->nama_kecamatan)}}</td>
+                                        <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($c->tgl_masuk)->isoFormat('D MMMM Y')}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->kedudukan)}}</td>
                                         <td class="text-center">
-                                            <form action="{{ route('data_pemanfaatan.destroy',$c->id) }}" method="POST">
+                                            <form action="{{ route('data_pelatihan.destroy',$c->id) }}" method="POST"> --}}
 
                                             {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
 
-                                                <a class="btn btn-primary btn-sm" href="{{ url('data_pemanfaatan/'.$c->id.'/edit') }}">Edit</a>
+                                                {{-- <a class="btn btn-primary btn-sm" href="{{ url('data_pelatihan/'.$c->id.'/edit') }}">Edit</a>
 
                                                 @csrf
                                                 @method('DELETE')
 
                                                 <button type="submit" class="btn btn-danger btn-sm delete">Delete</button>
-                                            </form>
+                                            </form> --}}
                                         </td>
 
                                     </tr>

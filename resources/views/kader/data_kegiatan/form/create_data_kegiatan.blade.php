@@ -1,6 +1,6 @@
 @extends('kader.layout')
 
-@section('title', 'Tambah Data Kegiatan Warga TP PKK | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Tambah Data Kegiatan Warga TP PKK | Kader Desa PKK Kab. Indramayu')
 
 @section('bread', 'Tambah Data Kegiatan Warga TP PKK')
 @section('container')
@@ -22,9 +22,48 @@
             <h6 style="color: red">* Keterangan Kegiatan Yang diikuti seperti : Keagamaan, PKBN, Pola Asuh Pencegahan KDRT, Pencegahan Traffocking, Narkoba, Pencegahan
                 Kejahatan Seksual, Kerja Bakti, Jimpitan, Arisan, Rukun Kematian, Bakti Sosial, BKB, PAUD Sejenis, Paket A, Paket B, Paket C, KF (Keaksaraan Fungsional),
                 UP2K, Koperasi</h6>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            {{-- {{  dump($errors)  }} --}}
+                        </ul>
+                    </div>
+                @endif
 
             <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group @error('id_desa') is-invalid @enderror">
+                        {{-- nama desa --}}
+                        <label for="exampleFormControlSelect1">Desa</label>
+                        @foreach ($desas as $c)
+                        <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
 
+                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_desa }}">
+
+                        @endforeach
+                    </div>
+                    @error('id_desa')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group @error('id_kecamatan') is-invalid @enderror">
+                        {{-- nama kecamatan --}}
+                        <label for="exampleFormControlSelect1">Kecamatan</label>
+                        @foreach ($kec as $c)
+                        <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                        <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_kecamatan }}">
+
+                        @endforeach
+                    </div>
+                    @error('id_kecamatan')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
             </div>
 
             <div class="row">
@@ -49,7 +88,7 @@
                     <div class="form-group">
                         <label>Nama Kegiatan</label>
                         <select class="form-control @error('id_kegiatan') is-invalid @enderror" id="id_kegiatan" name="id_kegiatan">
-                            {{-- nama warga --}}
+                            {{-- Pilih Kegiatan --}}
                             <option hidden> Pilih Kegiatan</option>
                             @foreach ($keg as $c)
                                 <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama_kegiatan }}</option>
@@ -68,6 +107,7 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Aktivitas</label><br>
+                        {{-- Pilih aktivitas --}}
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
                                 <input type="radio" name="aktivitas" value="Ya" class="form-check-input">Ya
@@ -85,6 +125,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
+                        {{-- nama keterangan --}}
                         <label>Keterangan (Jenis Kegiatan Yang Diikuti)</label>
                         <input type="text" class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" id="keterangan" placeholder="Masukkan Keterangan">
                         @error('keterangan')
@@ -97,6 +138,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Periode</label>
+                        {{-- Pilih periode --}}
                         <select style="cursor:pointer;" class="form-control @error('periode') is-invalid @enderror" id="periode" name="periode" required>
                           <option hidden> Pilih Tahun</option>
                             <?php

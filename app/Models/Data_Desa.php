@@ -22,6 +22,9 @@ class Data_Desa extends Model
     public function user(){
         return $this->hasMany(User::class);
     }
+    public function pelatihan(){
+        return $this->hasMany(DataPelatihanKader::class);
+    }
     public function penghayatan(){
         return $this->hasMany(Penghayatan::class);
     }

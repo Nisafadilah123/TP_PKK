@@ -13,24 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('data_pelatihan_kader', function (Blueprint $table) {
+        Schema::create('data_kader_gabung_pelatihan', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_desa')->unsigned();
-            $table->foreign('id_desa')->references('id')->on('data_desa')->onUpdate('cascade');
+            $table->foreign('id_desa')->references('id')->on('data_desa');
             $table->bigInteger('id_kecamatan')->unsigned();
-            $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan')->onUpdate('cascade');
+            $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan');
             $table->string('kota');
             $table->string('provinsi');
             $table->string('no_registrasi');
-            $table->string('nama');
+            $table->bigInteger('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('users');
             $table->date('tgl_masuk');
             $table->string('kedudukan');
-            $table->string('pelatihan_yang_diikuti');
-            $table->string('nama_pelatihan');
-            $table->string('kriteria_kader');
-            $table->string('tahun');
-            $table->string('penyelenggara');
-            $table->string('keterangan');
 
             $table->timestamps();
         });
@@ -43,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_pelatihan_kader');
+        Schema::dropIfExists('data_kader_gabung_pelatihan');
     }
 };

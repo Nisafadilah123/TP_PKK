@@ -53,4 +53,13 @@ class User extends Authenticatable
     public function desa(){
         return $this->belongsTo(Data_Desa::class, 'id_desa', 'id');
     }
+
+    // public function pelatihan(){
+    //     return $this->belongsTo(DataPelatihanKader::class, 'id_user', 'id');
+    // }
+
+    public function kader_gabung(){
+        return $this->hasMany(DataKaderGabung::class);
+    }
+
 }
