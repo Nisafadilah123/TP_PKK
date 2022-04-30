@@ -162,13 +162,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="/kategori_industri" class="nav-link {{ Request::is('kategori_industri') ? 'active':'' }}">
+                    <a href="/warung" class="nav-link {{ Request::is('warung') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Warung PKK</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/kategori_pemanfaatan" class="nav-link {{ Request::is('kategori_pemanfaatan') ? 'active':'' }}">
+                    <a href="/data_warung" class="nav-link {{ Request::is('data_warung') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data Warung PKK</p>
                     </a>

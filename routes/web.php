@@ -3,6 +3,8 @@
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PokjaController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminDesa\DataAset\DataWarungController;
+use App\Http\Controllers\AdminDesa\DataAset\WarungController;
 use App\Http\Controllers\AdminDesa\DataPokja1\GotongRoyongController;
 use App\Http\Controllers\AdminDesa\DataPokja1\JumlahKaderPokja1Controller;
 use App\Http\Controllers\AdminDesa\DataPokja1\PenghayatanDanPengamalanController;
@@ -152,13 +154,16 @@ Route::middleware(['user_type:admin_desa'])->group(function(){
     Route::resource('/jml_tenaga_umum', JumlahTenagaSekretariatDataUmumController::class);
     Route::resource('/jml_kader_umum', JumlahKaderDataUmumController::class);
 
+    // akun
     Route::resource('/data_kader', KaderController::class);
-
 
     // form data kategori pendataan kader
     Route::resource('/kategori_industri', KategoriIndustriRumahController::class);
     Route::resource('/kategori_pemanfaatan', KategoriPemanfaatanLahanController::class);
-    // Route::resource('/pemanfaatan', DataPemanfaatanPekaranganController::class);
+
+    // data aset desa
+    Route::resource('/warung', WarungController::class);
+    Route::resource('/data_warung', DataWarungController::class);
 
 });
 

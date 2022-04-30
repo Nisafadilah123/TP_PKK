@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\PendataanKader;
 use App\Http\Controllers\Controller;
+use App\Models\DataKaderGabung;
 use App\Models\DataPelatihanKader;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -39,8 +40,10 @@ class DataPelatihanKaderController extends Controller
         ->get();
 
         $pelatihan = DataPelatihanKader::all(); // pemanggilan tabel data pelatihan kader
+        $gabung_pelatihan = DataKaderGabung::all(); // pemanggilan tabel data pelatihan kader
+
         //  dd($gabung);
-        return view('kader.data_kegiatan.form.create_data_pelatihan', compact('pelatihan', 'gabung', 'kader'));
+        return view('kader.data_kegiatan.form.create_data_pelatihan', compact('gabung_pelatihan', 'gabung', 'kader', 'pelatihan'));
 
     }
 
