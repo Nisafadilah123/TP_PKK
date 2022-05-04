@@ -210,7 +210,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
+                    <a href="/kelompok_simulasi" class="nav-link {{ Request::is('kelompok_simulasi') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Kelompok Simulasi dan <br> Penyuluhan</p>
                     </a>

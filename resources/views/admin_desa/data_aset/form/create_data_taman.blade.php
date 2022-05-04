@@ -92,7 +92,7 @@
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/warung" class="btn btn-outline-primary">
+          <a href="/data_taman_bacaan" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

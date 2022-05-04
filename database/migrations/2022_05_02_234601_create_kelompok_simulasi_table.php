@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('provinsi');
             $table->string('nama_kegiatan');
             $table->string('jenis_simulasi');
-            $table->string('jumlah_kelompok_laki');
-            $table->string('jumlah_kelompok_perempuan');
+            $table->string('jumlah_kelompok');
+            $table->string('jumlah_sosialisasi');
             $table->string('jumlah_kader_laki');
             $table->string('jumlah_kader_perempuan');
             $table->integer('periode');
