@@ -1,24 +1,24 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Tambah Nama Pengelola Warung Data Aset | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Tambah Nama Pengelola Taman Bacaan/Perpustakaan Data Aset | Admin Desa PKK Kab. Indramayu')
 
-@section('bread', 'Tambah Nama Pengelola Warung Data Aset')
+@section('bread', 'Tambah Nama Pengelola Taman Bacaan/Perpustakaan Data Aset')
 @section('container')
 
 <div class="col-md-6">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Tambah Nama Pengelola Warung Data Aset</h3>
+        <h3 class="card-title">Tambah Nama Pengelola Taman Bacaan/Perpustakaan Data Aset</h3>
       </div>
       <!-- /.card-header -->
       <!-- form start -->
 
-      <form action="{{ route('warung.store') }}" method="POST">
+      <form action="{{ route('taman_bacaan.store') }}" method="POST">
         @csrf
             <div class="card-body">
-                <h6 style="color:red">* Nama Warung Diisi bilamana warung tersebut memiliki nama atau diisi sesuai dengan lokasi warung PKK
-                    (misalnya: warung PKK RW 01, Warung PKK RT 04 RW 01, dll)</h6>
+                <h6 style="color:red">* Nama Taman Bacaan/Perpustakaan Diisi bilamana taman bacaan/perpustakaan tersebut memiliki nama.
+                    (misalnya: Taman Bacaan PKK RW 01, Taman Bacaan PKK RT 04 RW 01, dll)</h6>
                     <div class="form-group @error('id_desa') is-invalid @enderror">
                     {{-- nama desa --}}
                         <label for="exampleFormControlSelect1">Desa</label>
@@ -34,7 +34,7 @@
                             @enderror
 
                     <div class="form-group @error('id_kecamatan') is-invalid @enderror">
-                    {{-- nama kecamatan --}}
+                        {{-- nama kecamatan --}}
                         <label for="exampleFormControlSelect1">Kecamatan</label>
                             @foreach ($kec as $c)
                                 <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
@@ -49,7 +49,7 @@
 
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Kabupaten</label>
-                            {{-- nama kabupaten --}}
+                        {{-- nama kabupaten --}}
                             <input type="text" readonly class="form-control @error('kota') is-invalid @enderror" name="kota" id="kota" placeholder="Masukkan Kota" value="Indramayu">
                                 @error('kota')
                                     <span class="invalid-feedback" role="alert">
@@ -70,10 +70,10 @@
                     </div>
 
                     <div class="form-group">
-                            {{-- nama Nama Warung --}}
-                        <label>Nama Warung</label>
-                            <input type="text" class="form-control @error('nama_warung') is-invalid @enderror" name="nama_warung" id="nama_warung" placeholder="Masukkan Nama Warung">
-                                @error('nama_warung')
+                    {{-- nama Nama Taman Bacaan --}}
+                        <label>Nama Taman Bacaan Perpustakaan</label>
+                            <input type="text" class="form-control @error('nama_taman_bacaan') is-invalid @enderror" name="nama_taman_bacaan" id="nama_taman_bacaan" placeholder="Masukkan Nama Taman Bacaan">
+                                @error('nama_taman_bacaan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -83,8 +83,19 @@
                     <div class="form-group">
                         {{-- nama Nama Pengelola --}}
                         <label>Nama Pengelola</label>
-                            <input type="text" class="form-control @error('nama_pengelola') is-invalid @enderror" name="nama_pengelola" id="nama_pengelola" placeholder="Masukkan Nama Pengelola">
+                            <input type="text" class="form-control @error('nama_pengelola') is-invalid @enderror" name="nama_pengelola" id="nama_pengelola" placeholder="Masukkan Nama Pengelola dengan nama warga yang diberi kepercayaan mengelola Taman Bacaan tersebut">
                                 @error('nama_pengelola')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                    </div>
+
+                    <div class="form-group">
+                    {{-- Jumlah Buku --}}
+                        <label>Jumlah Buku</label>
+                            <input type="number" min="0" class="form-control @error('jumlah_buku') is-invalid @enderror" name="jumlah_buku" id="jumlah_buku" placeholder="Masukkan Jumlah Buku dengan Jumlah seluruh buku yang ada pada taman bacaan tersebut">
+                                @error('jumlah_buku')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

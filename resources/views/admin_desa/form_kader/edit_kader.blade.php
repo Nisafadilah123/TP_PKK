@@ -35,11 +35,11 @@
               <label>User Type</label>
               <select class="form-control" name="user_type">
                 @foreach($user_type as $key => $val)
-                @if($key==old('user_type', $data_kader->user_type))
-                <option value="{{ $key }}" selected>{{ $val }}</option>
-                @else
-                <option value="{{ $key }}">{{ $val }}</option>
-                @endif
+                    @if($key==old('user_type', $data_kader->user_type))
+                    <option value="{{ $key }}" selected>{{ $val }}</option>
+                    @else
+                    <option value="{{ $key }}">{{ $val }}</option>
+                    @endif
                 @endforeach
               </select>
 

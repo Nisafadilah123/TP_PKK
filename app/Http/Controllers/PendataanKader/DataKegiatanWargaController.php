@@ -43,10 +43,42 @@ class DataKegiatanWargaController extends Controller
 
 
         $warga = DataWarga::all(); // pemanggilan tabel data warga
-        $keg = KategoriKegiatan::all(); // pemanggilan tabel data kategori kegiatan
+        // $keg = KategoriKegiatan::all(); // pemanggilan tabel data kategori kegiatan
+        $data['kategori'] = [
+            'Penghayatan dan Pengamalan Pancasila' => 'Penghayatan dan Pengamalan Pancasila',
+            'Kerja Bakti' => 'Kerja Bakti',
+            'Rukun Kematian' => 'Rukun Kematian',
+            'Kegiatan Keagamaan' => 'Kegiatan Keagamaan',
+            'Jimpitan' => 'Jimpitan',
+            'Arisan' => 'Arisan',
+            'Lain-lain' => 'Lain-lain',
+        ];
 
+        $data['keterangan'] = [
+            'Keagamaan' => 'Keagamaan',
+            'Pola Asuh' => 'Pola Asuh',
+            'PKBN' => ' PKBN',
+            'Pencegahan KDRT' => 'Pencegahan KDRT',
+            'Pencegahan Traffocking' => 'Pencegahan Traffocking',
+            'Narkoba' => 'Narkoba',
+            'Pencegahan Kejahatan Seksual' => 'Pencegahan Kejahatan Seksual',
+            'Kerja Bakti' => 'Kerja Bakti',
+            'Jimpitan' => 'Jimpitan',
+            'Arisan' => 'Arisan',
+            'Rukun Kematian' => 'Rukun Kematian',
+            'Bakti Sosial ' => 'Bakti Sosial',
+            'BKB (Bina Keluarga Balita)' => 'BKB (Bina Keluarga Balita)',
+            'PAUD Sejenis' => 'PAUD Sejenis',
+            'Paket A' => 'Paket A',
+            'Paket B' => 'Paket B',
+            'Paket C' => 'Paket C',
+            'KF (Keaksaraan Fungsinal) ' => 'KF (Keaksaraan Fungsional) ',
+            'UP2K (Usaha Peningkatan Pendapatan Keluarga)' => 'UP2K (Usaha Peningkatan Pendapatan Keluarga)',
+            'Koperasi' => 'Koperasi',
+
+        ];
         //  dd($keg);
-        return view('kader.data_kegiatan.form.create_data_kegiatan', compact('kec', 'keg', 'warga', 'desas'));
+        return view('kader.data_kegiatan.form.create_data_kegiatan', $data, compact('kec', 'warga', 'desas'));
 
     }
 
@@ -65,7 +97,7 @@ class DataKegiatanWargaController extends Controller
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
             'id_warga' => 'required',
-            'id_kegiatan' => 'required',
+            'nama_kegiatan' => 'required',
             'aktivitas' => 'required',
             'keterangan' => 'required',
             'periode' => 'required',
@@ -74,7 +106,7 @@ class DataKegiatanWargaController extends Controller
             'id_desa.required' => 'Lengkapi Alamat Desa Kegiatan Warga Yang Didata',
             'id_kecamatan.required' => 'Lengkapi Alamat Kecamatan Kegiatan Warga Yang Didata',
             'id_warga.required' => 'Lengkapi Nama Warga Yang Didata',
-            'id_kegiatan.required' => 'Lengkapi Kegiatan Yang Diikuti Warga',
+            'nama_kegiatan.required' => 'Lengkapi Kegiatan Yang Diikuti Warga',
             'aktivitas.required' => 'Pilih Aktivitas Kegiatan Yang Diikuti Warga',
             'keterangan.required' => 'Lengkapi Keterangan Kegiatan Yang Diikuti Warga',
             'periode.required' => 'Pilih Periode',
@@ -92,9 +124,8 @@ class DataKegiatanWargaController extends Controller
             $kegiatans = new DataKegiatanWarga;
             $kegiatans->id_desa = $request->id_desa;
             $kegiatans->id_kecamatan = $request->id_kecamatan;
-
             $kegiatans->id_warga = $request->id_warga;
-            $kegiatans->id_kegiatan = $request->id_kegiatan;
+            $kegiatans->nama_kegiatan = $request->nama_kegiatan;
             $kegiatans->aktivitas = $request->aktivitas;
             $kegiatans->keterangan = $request->keterangan;
             $kegiatans->periode = $request->periode;
@@ -129,7 +160,7 @@ class DataKegiatanWargaController extends Controller
     {
         //halaman form edit data kegiatan
         $keg = DataWarga::all();
-        $kat = KategoriKegiatan::all();
+        // $kat = KategoriKegiatan::all();
 
         $desas = DB::table('data_desa')
         ->where('id', auth()->user()->id_desa)
@@ -139,9 +170,43 @@ class DataKegiatanWargaController extends Controller
         ->where('id', auth()->user()->id_desa)
         ->get();
 
+        $data['kategori'] = [
+            'Penghayatan dan Pengamalan Pancasila' => 'Penghayatan dan Pengamalan Pancasila',
+            'Kerja Bakti' => 'Kerja Bakti',
+            'Rukun Kematian' => 'Rukun Kematian',
+            'Kegiatan Keagamaan' => 'Kegiatan Keagamaan',
+            'Jimpitan' => 'Jimpitan',
+            'Arisan' => 'Arisan',
+            'Lain-lain' => 'Lain-lain',
+        ];
+
+        $data['keterangan'] = [
+            'Keagamaan' => 'Keagamaan',
+            'Pola Asuh' => 'Pola Asuh',
+            'PKBN' => ' PKBN',
+            'Pencegahan KDRT' => 'Pencegahan KDRT',
+            'Pencegahan Traffocking' => 'Pencegahan Traffocking',
+            'Narkoba' => 'Narkoba',
+            'Pencegahan Kejahatan Seksual' => 'Pencegahan Kejahatan Seksual',
+            'Kerja Bakti' => 'Kerja Bakti',
+            'Jimpitan' => 'Jimpitan',
+            'Arisan' => 'Arisan',
+            'Rukun Kematian' => 'Rukun Kematian',
+            'Bakti Sosial ' => 'Bakti Sosial',
+            'BKB (Bina Keluarga Balita)' => 'BKB (Bina Keluarga Balita)',
+            'PAUD Sejenis' => 'PAUD Sejenis',
+            'Paket A' => 'Paket A',
+            'Paket B' => 'Paket B',
+            'Paket C' => 'Paket C',
+            'KF (Keaksaraan Fungsinal) ' => 'KF (Keaksaraan Fungsional) ',
+            'UP2K (Usaha Peningkatan Pendapatan Keluarga)' => 'UP2K (Usaha Peningkatan Pendapatan Keluarga)',
+            'Koperasi' => 'Koperasi',
+
+        ];
+
         // dd($keg);
 
-        return view('kader.data_kegiatan.form.edit_data_kegiatan', compact('data_kegiatan','keg', 'kat', 'kec', 'desas'));
+        return view('kader.data_kegiatan.form.edit_data_kegiatan',$data, compact('data_kegiatan','keg', 'kec', 'desas'));
 
     }
 
@@ -160,9 +225,8 @@ class DataKegiatanWargaController extends Controller
         $request->validate([
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
-
             'id_warga' => 'required',
-            'id_kegiatan' => 'required',
+            'nama_kegiatan' => 'required',
             'aktivitas' => 'required',
             'keterangan' => 'required',
             'periode' => 'required',

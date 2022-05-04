@@ -21,8 +21,7 @@ return new class extends Migration
             $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan')->onUpdate('cascade');
             $table->bigInteger('id_warga')->unsigned();
             $table->foreign('id_warga')->references('id')->on('data_warga');
-            $table->bigInteger('id_kategori')->unsigned();
-            $table->foreign('id_kategori')->references('id')->on('kategori_pemanfaatan_lahan');
+            $table->string('nama_kategori');
             $table->string('komoditi');
             $table->integer('jumlah');
             $table->integer('periode');

@@ -238,6 +238,8 @@ class DataWargaController extends Controller
             'status_keluarga' => 'required',
             'agama' => 'required',
             'alamat' => 'required',
+            'rt' => 'required',
+            'rw' => 'required',
             'kota' => 'required',
             'provinsi' => 'required',
             'pendidikan' => 'required',
@@ -250,6 +252,7 @@ class DataWargaController extends Controller
             'ikut_paud_sejenis' => 'required',
             'ikut_koperasi' => 'required',
             'periode' => 'required',
+
         ], [
             'id_desa.required' => 'Lengkapi Alamat Desa Warga',
             'id_kecamatan' => 'Lengkapi Alamat Kecamatan Warga',
@@ -265,7 +268,7 @@ class DataWargaController extends Controller
             'umur.required' => 'Lengkapi Umur',
             'status_perkawinan.required' => 'Pilih Status Perkawinan',
             'status_keluarga.required' => 'Pilih Status Keluarga',
-            'agama.required' => 'Lengkapi Agama',
+            'agama.required' => 'Pilih Agama',
             'alamat.required' => 'Lengkapi Alamat',
             'rt.required' => 'Lengkapi RT',
             'rw.required' => 'Lengkapi RW',
@@ -280,7 +283,7 @@ class DataWargaController extends Controller
             'ikut_kelompok_belajar.required' => 'Pilih Kegiatan Kelompok Belajar Yang Diikuti',
             'ikut_paud_sejenis.required' => 'Pilih Kegiatan PAUD/Sejenis Yang Diikuti',
             'ikut_koperasi.required' => 'Pilih Kegiatan Koperasi Yang Diikuti',
-            'periode.required' => 'Lengkapi Periode',
+            'periode.required' => 'Pilih Periode',
 
         ]);
 

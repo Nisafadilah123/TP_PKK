@@ -93,7 +93,7 @@
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
-                            {{-- {{  dump($errors)  }} --}}
+                            {{  ($errors)  }}
                         </ul>
                     </div>
                 @endif

@@ -12,7 +12,7 @@ class DataWarung extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_warung', 'komoditi', 'kategori', 'volume'
+       'id_warung', 'komoditi', 'kategori', 'volume', 'periode'
     ];
 
     public function warung(){

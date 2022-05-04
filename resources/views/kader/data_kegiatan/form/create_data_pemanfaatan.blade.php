@@ -17,10 +17,12 @@
       <form action="{{ route('data_pemanfaatan.store') }}" method="POST">
         @csrf
         <div class="card-body">
+            <h6 style="color: red">* Semua elemen atribut harus diisi</h6>
+
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
-                        {{-- {{  dump($errors)  }} --}}
+                        {{  ($errors)  }}
                     </ul>
                 </div>
             @endif
@@ -68,6 +70,7 @@
                         <label for="exampleFormControlSelect1">Nama Warga</label>
                         <select class="form-control" id="id_warga" name="id_warga">
                           {{-- pilih nama warga --}}
+                          <option> Pilih Nama Warga</option>
                           @foreach ($warga as $c)
                               <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama }}</option>
                           @endforeach
@@ -80,17 +83,21 @@
                       @enderror
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group @error('id_kategori') is-invalid @enderror">
+                    <div class="form-group @error('nama_kategori') is-invalid @enderror">
                         <label>Kategori</label>
-                        <select class="form-control" id="id_kategori" name="id_kategori">
+                        <select class="form-control" id="nama_kategori" name="nama_kategori">
                             {{-- Pilih Kategori --}}
-                            <option hidden> Pilih Kategori</option>
-                            @foreach ($kat as $c)
-                                <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama_kategori }}</option>
-                            @endforeach
+                            <option> Pilih Kategori</option>
+                                @foreach($kategori as $key => $val)
+                                    @if($key==old('nama_kategori'))
+                                        <option value="{{ $key }}" selected>{{ $val }}</option>
+                                    @else
+                                        <option value="{{ $key }}">{{ $val }}</option>
+                                    @endif
+                                @endforeach
                         </select>
                     </div>
-                    @error('id_kategori')
+                    @error('nama_kategori')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -136,7 +143,7 @@
                                 echo '<option value='.$i.'>'.$i.'</option>';
                               }?>
                         </select>
-                      </div>
+                    </div>
                       @error('periode')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

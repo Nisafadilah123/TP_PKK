@@ -41,9 +41,16 @@ class DataIndustriRumahController extends Controller
     ->get();
 
     $warga = DataWarga::all(); // pemanggilan tabel data warga
-    $katin = KategoriIndustriRumah::all(); // pemanggilan tabel data kategori industri rumah tangga
+    // $katin = KategoriIndustriRumah::all(); // pemanggilan tabel data kategori industri rumah tangga
+    $data['kategori'] = [
+        'Pangan' => 'Pangan',
+        'Konveksi' => 'Konveksi',
+        'Sandang' => 'Sandang',
+        'Jasa' => 'Jasa',
+        'Lain-lain' => 'Lain-lain',
+    ];
 
-    return view('kader.data_kegiatan.form.create_data_industri', compact('kec','desas', 'katin', 'warga'));
+    return view('kader.data_kegiatan.form.create_data_industri',$data, compact('kec','desas', 'warga'));
 
 }
 
@@ -62,7 +69,7 @@ class DataIndustriRumahController extends Controller
            'id_warga' => 'required',
            'id_desa' => 'required',
            'id_kecamatan' => 'required',
-           'id_kategori' => 'required',
+           'nama_kategori' => 'required',
            'komoditi' => 'required',
            'volume' => 'required',
            'periode' => 'required',
@@ -71,7 +78,7 @@ class DataIndustriRumahController extends Controller
             'id_desa.required' => 'Lengkapi Alamat Desa Industri Rumah Tangga Warga Yang Didata',
             'id_kecamatan.required' => 'Lengkapi Alamat Kecamatan Industri Rumah Tangga Warga Yang Didata',
             'id_warga.required' => 'Lengkapi Nama Warga Yang Didata',
-            'id_kategori.required' => 'Pilih Kategori Industri Rumah Tangga Warga',
+            'nama_kategori.required' => 'Pilih Kategori Industri Rumah Tangga Warga',
            'komoditi.required' => 'Lengkapi Komoditi Industri Rumah Tangga Warga',
            'volume.required' => 'Lengkapi Volume Industri Rumah Tangga Warga',
            'periode.required' => 'Pilih Periode',
@@ -90,7 +97,7 @@ class DataIndustriRumahController extends Controller
            $industris->id_desa = $request->id_desa;
            $industris->id_kecamatan = $request->id_kecamatan;
            $industris->id_warga = $request->id_warga;
-           $industris->id_kategori = $request->id_kategori;
+           $industris->nama_kategori = $request->nama_kategori;
            $industris->komoditi = $request->komoditi;
            $industris->volume = $request->volume;
            $industris->periode = $request->periode;
@@ -125,7 +132,14 @@ class DataIndustriRumahController extends Controller
    {
        //halaman form edit data industri rumah tangga
        $warga = DataWarga::all();
-       $katins = KategoriIndustriRumah::all();
+    //    $katins = KategoriIndustriRumah::all();
+    $data['kategori'] = [
+        'Pangan' => 'Pangan',
+        'Konveksi' => 'Konveksi',
+        'Sandang' => 'Sandang',
+        'Jasa' => 'Jasa',
+        'Lain-lain' => 'Lain-lain',
+    ];
 
        $desas = DB::table('data_desa')
        ->where('id', auth()->user()->id_desa)
@@ -137,7 +151,7 @@ class DataIndustriRumahController extends Controller
 
        // dd($warga);
 
-       return view('kader.data_kegiatan.form.edit_data_industri', compact('data_industri','warga', 'katins', 'kec', 'desas'));
+       return view('kader.data_kegiatan.form.edit_data_industri', $data, compact('data_industri','warga', 'kec', 'desas'));
 
    }
 
@@ -154,16 +168,25 @@ class DataIndustriRumahController extends Controller
        // dd($request->all());
        // validasi data
        $request->validate([
+        'id_warga' => 'required',
         'id_desa' => 'required',
         'id_kecamatan' => 'required',
-           'id_warga' => 'required',
-           'id_kategori' => 'required',
-           'komoditi' => 'required',
-           'volume' => 'required',
-           'periode' => 'required',
+        'nama_kategori' => 'required',
+        'komoditi' => 'required',
+        'volume' => 'required',
+        'periode' => 'required',
 
-       ]);
-       // update data
+    ], [
+         'id_desa.required' => 'Lengkapi Alamat Desa Industri Rumah Tangga Warga Yang Didata',
+         'id_kecamatan.required' => 'Lengkapi Alamat Kecamatan Industri Rumah Tangga Warga Yang Didata',
+         'id_warga.required' => 'Lengkapi Nama Warga Yang Didata',
+         'nama_kategori.required' => 'Pilih Kategori Industri Rumah Tangga Warga',
+        'komoditi.required' => 'Lengkapi Komoditi Industri Rumah Tangga Warga',
+        'volume.required' => 'Lengkapi Volume Industri Rumah Tangga Warga',
+        'periode.required' => 'Pilih Periode',
+
+    ]);
+    // update data
            $data_industri->update($request->all());
            Alert::success('Berhasil', 'Data berhasil di ubah');
            return redirect('/data_industri');

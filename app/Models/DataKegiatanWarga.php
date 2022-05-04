@@ -12,7 +12,7 @@ class DataKegiatanWarga extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'id_desa','id_kecamatan','id_warga','id_kegiatan', 'aktivitas', 'keterangan', 'periode'
+        'id_desa','id_kecamatan','id_warga','nama_kegiatan', 'aktivitas', 'keterangan', 'periode'
     ];
 
     public function kecamatan(){

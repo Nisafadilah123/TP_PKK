@@ -44,7 +44,7 @@
                                         <td style="vertical-align: middle;">{{ $no }}</td>
                                         {{-- nama desa yang login --}}
                                         <td style="vertical-align: middle;">{{ucfirst($c->warga->nama) }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->kategori_kegiatan->nama_kegiatan)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->nama_kegiatan)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->aktivitas)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->keterangan)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>

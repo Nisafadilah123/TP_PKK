@@ -1,13 +1,16 @@
-@extends('kader.layout')
+@extends('admin_desa.layout')
 
-@section('title', 'Data Pemanfaatan Tanah Pekarangan PKK | Kader Desa PKK Kab. Indramayu')
+@section('title', 'Data Taman Bacaan/Perpustakaan PKK Data Aset | Admin Desa PKK Kab. Indramayu')
 
-@section('bread', 'Data Pemanfaatan Tanah Pekarangan PKK')
+@section('bread', 'Data Taman Bacaan/Perpustakaan PKK Data Aset')
 @section('container')
 
     <!-- Main content -->
 <div class="main-content">
     <section class="section">
+        {{-- <h1 class="section-header">
+            <div>Kandidat</div>
+        </h1> --}}
 
         <div class="section-body">
             <div class="row">
@@ -19,41 +22,38 @@
                                 <table class="table table-striped table-bordered data" id="add-row">
                                     <div class="row">
                                         <div class="col-md-1">
-                                            <a href="{{ url('data_pemanfaatan/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
+                                            <a href="{{ url('data_taman_bacaan/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
                                         </div>
-
                                     </div>
-
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Nama Warga</th>
-                                            <th>Kategori</th>
-                                            <th>Komoditi</th>
-                                            <th>Jumlah</th>
-                                            <th>Periode</th>
-                                            <th>Aksi</th>
-                                        </tr>
+                                        <th>No</th>
+                                        <th>Nama Pengelola</th>
+                                        <th>Jenis Buku</th>
+                                        <th>Kategori</th>
+                                        <th>Jumlah</th>
+                                        <th>Aksi</th>
+                                    </tr>
                                     </thead>
 
                                     <tbody>
                                         <?php $no=1;?>
 
-                                        @foreach ($pemanfaatan as $c)
+                                        @foreach ($data_taman_bacaan as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
                                         {{-- nama desa yang login --}}
-                                        <td style="vertical-align: middle;">{{ucfirst($c->warga->nama) }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->nama_kategori)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->komoditi)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->jumlah)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
+                                        <td style="vertical-align: middle;">{{$c->taman_bacaan->nama_pengelola}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jenis_buku}}</td>
+                                        <td style="vertical-align: middle;">{{$c->kategori}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jumlah}} Buah</td>
+
                                         <td class="text-center">
-                                            <form action="{{ route('data_pemanfaatan.destroy',$c->id) }}" method="POST">
+                                            <form action="{{ route('data_taman_bacaan.destroy',$c->id) }}" method="POST">
 
                                             {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
 
-                                                <a class="btn btn-primary btn-sm" href="{{ url('data_pemanfaatan/'.$c->id.'/edit') }}">Edit</a>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('data_taman_bacaan/'.$c->id.'/edit') }}">Edit</a>
 
                                                 @csrf
                                                 @method('DELETE')
@@ -68,6 +68,7 @@
                                     @endforeach
 
                                     </tbody>
+
                                 </table>
 
                             </div>

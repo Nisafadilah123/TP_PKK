@@ -19,6 +19,8 @@
 
         @csrf
         <div class="card-body">
+            <h6 style="color: red">* Semua elemen atribut harus diisi</h6>
+
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>

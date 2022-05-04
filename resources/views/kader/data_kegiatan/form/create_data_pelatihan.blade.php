@@ -16,6 +16,11 @@
 
       <form action="{{ route('data_pelatihan.store') }}" method="POST">
         @csrf
+        <h6 style="color: red">* Semua elemen atribut harus diisi</h6>
+
+        <h6 style="color: red">Kriteria Kader diisi jenis kriteria sesuai dengan ketentuan yang ada pada TP PKK <br>
+        (Misalnya : PAUD, BKB, KESLING, DLL)
+        </h6>
         <div class="card-body">
             @if ($errors->any())
                 <div class="alert alert-danger">

@@ -5,7 +5,7 @@
 @section('bread', 'Edit Data Kegiatan Warga TP PKK')
 @section('container')
 
-<div class="col-md-6">
+<div class="col-md-10">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
@@ -20,13 +20,13 @@
         @csrf
         <div class="card-body">
             <h6 style="color: red">* Semua elemen atribut harus diisi</h6>
-            <h6 style="color: red">* Keterangan Kegiatan Yang diikuti seperti : Keagamaan, PKBN, Pola Asuh Pencegahan KDRT, Pencegahan Traffocking, Narkoba, Pencegahan
+            {{-- <h6 style="color: red">* Keterangan Kegiatan Yang diikuti seperti : Keagamaan, PKBN, Pola Asuh Pencegahan KDRT, Pencegahan Traffocking, Narkoba, Pencegahan
                 Kejahatan Seksual, Kerja Bakti, Jimpitan, Arisan, Rukun Kematian, Bakti Sosial, BKB, PAUD Sejenis, Paket A, Paket B, Paket C, KF (Keaksaraan Fungsional),
-                UP2K, Koperasi</h6>
+                UP2K, Koperasi</h6> --}}
                 @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
-                        {{-- {{  dump($errors)  }} --}}
+                        {{  ($errors)  }}
                     </ul>
                 </div>
             @endif
@@ -84,11 +84,14 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Nama Kegiatan</label>
-                        <select class="form-control" id="id_kegiatan" name="id_kegiatan">
+                        <select class="form-control" id="nama_kegiatan" name="nama_kegiatan">
                             {{-- pilih nama Kegiatan --}}
-                            @foreach ($kat as $c)
-                                <option value="{{ $c->id }}" {{ $c->id === $data_kegiatan->id_kegiatan ? 'selected' : '' }}>{{ $c->nama_kegiatan }}</option>
-
+                            @foreach($kategori as $key => $val)
+                                @if($key==old('nama_kegiatan', $data_kegiatan->nama_kegiatan))
+                                <option value="{{ $key }}" selected>{{ $val }}</option>
+                                @else
+                                <option value="{{ $key }}">{{ $val }}</option>
+                                @endif
                             @endforeach
                         </select>
                       </div>
@@ -115,8 +118,19 @@
                 <div class="form-group">
                     <label>Keterangan (Jenis Kegiatan Yang Diikuti)</label>
                     {{-- beri keterangan --}}
-                    <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Masukkan Keterangan" required value="{{ucfirst(old('keterangan', $data_kegiatan->keterangan)) }}">
-                  </div>
+                    {{-- <input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Masukkan Keterangan" required value="{{ucfirst(old('keterangan', $data_kegiatan->keterangan)) }}"> --}}
+                    <select class="form-control" id="keterangan" name="keterangan">
+                        {{-- pilih nama Kegiatan --}}
+                        @foreach($keterangan as $key => $val)
+                            @if($key==old('keterangan', $data_kegiatan->keterangan))
+                                <option value="{{ $key }}" selected>{{ $val }}</option>
+                            @else
+                            <option value="{{ $key }}">{{ $val }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+
+                </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">

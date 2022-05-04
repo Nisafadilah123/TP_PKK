@@ -19,10 +19,12 @@
 
         @csrf
         <div class="card-body">
+            <h6 style="color: red">* Semua elemen atribut harus diisi</h6>
+
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
-                        {{-- {{  dump($errors)  }} --}}
+                        {{  ($errors)  }}
                     </ul>
                 </div>
             @endif
@@ -33,9 +35,9 @@
                         <label for="exampleFormControlSelect1">Desa</label>
                         {{-- nama desa --}}
                         @foreach ($desas as $c)
-                        <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                        <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
 
-                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_desa }}">
+                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" value="{{ $c->nama_desa }}">
 
                         @endforeach
                     </div>
@@ -50,8 +52,8 @@
                         <label for="exampleFormControlSelect1">Kecamatan</label>
                         {{-- nama Kecamatan --}}
                         @foreach ($kec as $c)
-                        <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
-                        <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_kecamatan }}">
+                        <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
+                        <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" value="{{ $c->nama_kecamatan }}">
 
                         @endforeach
                     </div>
@@ -78,11 +80,15 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Kategori</label>
-                        <select class="form-control" id="id_kategori" name="id_kategori">
+                        <select class="form-control" id="nama_kategori" name="nama_kategori">
                             {{-- pilih nama Kategori --}}
-                            @foreach ($katins as $c)
-                                <option value="{{ $c->id }}" {{ $c->id === $data_industri->id_kategori ? 'selected' : '' }}>{{ $c->nama_kategori }}</option>
-                            @endforeach
+                            @foreach($kategori as $key => $val)
+                                @if($key==old('nama_kategori', $data_industri->nama_kategori))
+                                <option value="{{ $key }}" selected>{{ $val }}</option>
+                                @else
+                                <option value="{{ $key }}">{{ $val }}</option>
+                                @endif
+                        @endforeach
                         </select>
                     </div>
                 </div>
@@ -90,7 +96,12 @@
             <div class="form-group">
                 <label>Komoditi</label>
                 {{-- nama Komoditi --}}
-                <input type="text" class="form-control" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi" required value="{{ucfirst(old('komoditi', $data_industri->komoditi)) }}">
+                <input type="text" class="form-control @error('komoditi') is-invalid @enderror" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi" value="{{ucfirst(old('komoditi', $data_industri->komoditi)) }}">
+                @error('komoditi')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
 
             <div class="row">
@@ -98,7 +109,13 @@
                     <div class="form-group">
                         <label>Volume</label>
                         {{-- volume Komoditi --}}
-                        <input type="number" class="form-control" name="volume" id="volume" placeholder="Masukkan Volume" required value="{{ucfirst(old('volume', $data_industri->volume))}}">
+                        <input type="number" min="0" class="form-control @error('volume') is-invalid @enderror" name="volume" id="volume" placeholder="Masukkan Volume" value="{{ucfirst(old('volume', $data_industri->volume))}}">
+                        @error('volume')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
                     </div>
                 </div>
                 <div class="col-md-6">

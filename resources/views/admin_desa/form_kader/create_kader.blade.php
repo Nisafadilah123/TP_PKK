@@ -32,14 +32,14 @@
           <div class="form-group">
             <label>User Type</label>
             <select class="form-control" name="user_type">
-                <option value="" selected>Pilih User Type</option>
+                <option>Pilih User Type</option>
 
                 @foreach($user_type as $key => $val)
-                @if($key==old('user_type'))
-                <option value="{{ $key }}" selected>{{ $val }}</option>
-                @else
-                <option value="{{ $key }}">{{ $val }}</option>
-                @endif
+                    @if($key==old('user_type'))
+                    <option value="{{ $key }}" selected>{{ $val }}</option>
+                    @else
+                    <option value="{{ $key }}">{{ $val }}</option>
+                    @endif
                 @endforeach
             </select>
             {{-- <select class="form-control" id="user_type" name="user_type">

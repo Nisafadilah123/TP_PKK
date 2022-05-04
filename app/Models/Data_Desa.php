@@ -22,6 +22,11 @@ class Data_Desa extends Model
     public function user(){
         return $this->hasMany(User::class);
     }
+
+    //data aset
+
+
+    // admin desa
     public function pelatihan(){
         return $this->hasMany(DataPelatihanKader::class);
     }
@@ -94,6 +99,7 @@ class Data_Desa extends Model
         return $this->hasMany(JumlahTenagaSekretariatDataUmum::class);
     }
 
+    // bagian kader
     // data_warga
     public function warga(){
         return $this->hasMany(DataWarga::class);
@@ -103,5 +109,6 @@ class Data_Desa extends Model
     public function keluarga(){
         return $this->hasMany(DataKeluarga::class);
     }
+
 
 }

@@ -16,6 +16,8 @@
         <div class="card-body">
             <form action="{{ route('data_keluarga.store') }}" method="POST">
                 @csrf
+                <h6 style="color: red">* Semua elemen atribut harus diisi</h6>
+
                 <div class="col-md-2">
                     <!-- Tombol yang memicu modal -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSaya">
@@ -169,9 +171,9 @@
                         <div class="form-group @error('id_desa') is-invalid @enderror">
                             <label for="exampleFormControlSelect1">Desa</label>
                             @foreach ($desas as $c)
-                            <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                            <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
 
-                            <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_desa }}">
+                            <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" value="{{ $c->nama_desa }}">
 
                             @endforeach
                         </div>
@@ -188,8 +190,8 @@
                             <label for="exampleFormControlSelect1">Kecamatan</label>
                             {{-- nama kecamatan --}}
                             @foreach ($kec as $c)
-                            <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
-                            <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_kecamatan }}">
+                            <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
+                            <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" value="{{ $c->nama_kecamatan }}">
 
                             @endforeach
                         </div>
@@ -306,7 +308,11 @@
                                         </div>
                                 </div>
                         </div>
-
+                        @error('jumlah_KK')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
 
@@ -316,18 +322,18 @@
                             <label>Jumlah</label>
                                 <div class="row">
                                     <div class="col-md-3 ">
-                                        <div class="input-group mb-3 @error('jumlah_balita') is-invalid @enderror">
+                                        <div class="input-group mb-3">
                                             {{-- Jumlah Balita--}}
-                                            <input type="number" class="form-control " placeholder="Balita" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_balita">
-                                                <div class="input-group-append">
+                                            <input type="number" class="form-control @error('jumlah_balita') is-invalid @enderror" placeholder="Balita" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_balita">
+                                                @error('jumlah_balita')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            <div class="input-group-append">
                                                     <span class="input-group-text" id="basic-addon2">Anak</span>
-                                                </div>
+                                            </div>
                                         </div>
-                                        @error('jumlah_balita')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
                                     </div>
 
                                     <div class="col-md-3">

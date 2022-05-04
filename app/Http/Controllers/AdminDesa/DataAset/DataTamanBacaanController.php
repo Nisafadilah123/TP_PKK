@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\AdminDesa\DataAset;
 use App\Http\Controllers\Controller;
-use App\Models\DataWarung;
-use App\Models\WarungPKK;
+use App\Models\DataTamanBacaan;
+use App\Models\TamanBacaan;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class DataWarungController extends Controller
+class DataTamanBacaanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,9 +27,9 @@ class DataWarungController extends Controller
         $kec = DB::table('data_kecamatan')
             ->where('id', auth()->user()->id_desa)
             ->get();
-        $data_warung = DataWarung::all();
+        $data_taman_bacaan = DataTamanBacaan::all();
 
-        return view('admin_desa.data_aset.data_warung', compact('data_warung', 'desas', 'kec'));
+        return view('admin_desa.data_aset.data_taman', compact('data_taman_bacaan', 'desas', 'kec'));
     }
 
     /**
@@ -46,10 +46,10 @@ class DataWarungController extends Controller
         $kec = DB::table('data_kecamatan')
         ->where('id', auth()->user()->id_desa)
         ->get();
-        $data_warung = DataWarung::all();
-        $warung = WarungPKK::all();
-        // dd($desas);
-        return view('admin_desa.data_aset.form.create_data_warung', compact('desas', 'kec', 'data_warung', 'warung'));
+        $data_taman_bacaan = DataTamanBacaan::all();
+        $taman_bacaan = TamanBacaan::all();
+        // dd($taman_bacaan);
+        return view('admin_desa.data_aset.form.create_data_taman', compact('desas', 'kec', 'data_taman_bacaan', 'taman_bacaan'));
 
     }
 
@@ -63,18 +63,18 @@ class DataWarungController extends Controller
     {
         // proses penyimpanan untuk tambah data warung
         $request->validate([
-            'id_warung' => 'required',
-            'komoditi' => 'required',
+            'id_taman_bacaan' => 'required',
+            'jenis_buku' => 'required',
             'kategori' => 'required',
-            'volume' => 'required',
+            'jumlah' => 'required',
             'periode' => 'required',
 
         ], [
-            'id_warung.required' => 'Lengkapi Nama Pengelola Data Warung PKK Desa/Kelurahan',
-            'komoditi.required' => 'Lengkapi Komoditi Warung PKK Desa/Kelurahan',
-            'kategori.required' => 'Lengkapi Kategori Warung PKK Desa/Kelurahan',
-            'volume.required' => 'Lengkapi Volume Warung PKK Desa/Kelurahan',
-            'periode.required' => 'Pilih Periode Warung PKK Desa/Kelurahan',
+            'id_taman_bacaan.required' => 'Lengkapi Nama Pengelola Data Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
+            'jenis_buku.required' => 'Lengkapi Jenis Buku Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
+            'kategori.required' => 'Lengkapi Kategori Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
+            'jumlah.required' => 'Lengkapi Jumlah Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
+            'periode.required' => 'Pilih Periode Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
 
         ]);
 
@@ -86,18 +86,18 @@ class DataWarungController extends Controller
         //     return redirect('/war$warung');
         // }
         // else {
-            $warungs = new DataWarung;
-            $warungs->id_warung = $request->id_warung;
-            $warungs->komoditi = $request->komoditi;
-            $warungs->kategori = $request->kategori;
-            $warungs->volume = $request->volume;
-            $warungs->periode = $request->periode;
+            $tamans = new DataTamanBacaan;
+            $tamans->id_taman_bacaan = $request->id_taman_bacaan;
+            $tamans->jenis_buku = $request->jenis_buku;
+            $tamans->kategori = $request->kategori;
+            $tamans->jumlah = $request->jumlah;
+            $tamans->periode = $request->periode;
 
-            $warungs->save();
+            $tamans->save();
 
             Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-            return redirect('/data_warung');
+            return redirect('/data_taman_bacaan');
         // }
     }
 
@@ -118,21 +118,20 @@ class DataWarungController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(DataWarung $data_warung)
+    public function edit(DataTamanBacaan $data_taman_bacaan)
     {
         // halaman edit data warung
         // nama desa yang login
-        // dd($data_warung);
+        // dd($data_taman_bacaan);
         $desas = DB::table('data_desa')
         ->where('id', auth()->user()->id_desa)
         ->first();
         $kec = DB::table('data_kecamatan')
         ->where('id', auth()->user()->id_desa)
         ->first();
-        // $data_warung = DataWarung::all();
-        $warung = WarungPKK::all();
+        $taman = TamanBacaan::all();
 
-        return view('admin_desa.data_aset.form.edit_data_warung', compact('data_warung','kec','desas', 'warung'));
+        return view('admin_desa.data_aset.form.edit_data_taman', compact('data_taman_bacaan','kec','desas', 'taman'));
     }
 
     /**
@@ -142,22 +141,22 @@ class DataWarungController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DataWarung $data_warung)
+    public function update(Request $request, DataTamanBacaan $data_taman_bacaan)
     {
         // proses mengubah untuk tambah data jml kader
         $request->validate([
-            'id_warung' => 'required',
-            'komoditi' => 'required',
+            'id_taman_bacaan' => 'required',
+            'jenis_buku' => 'required',
             'kategori' => 'required',
-            'volume' => 'required',
+            'jumlah' => 'required',
             'periode' => 'required',
 
         ], [
-            'id_warung.required' => 'Lengkapi Nama Pengelola Data Warung PKK Desa/Kelurahan',
-            'komoditi.required' => 'Lengkapi Komoditi Warung PKK Desa/Kelurahan',
-            'kategori.required' => 'Lengkapi Kategori Warung PKK Desa/Kelurahan',
-            'volume.required' => 'Lengkapi Volume Warung PKK Desa/Kelurahan',
-            'periode.required' => 'Pilih Periode Warung PKK Desa/Kelurahan',
+            'id_taman_bacaan.required' => 'Lengkapi Nama Pengelola Data Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
+            'jenis_buku.required' => 'Lengkapi Jenis Buku Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
+            'kategori.required' => 'Lengkapi Kategori Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
+            'jumlah.required' => 'Lengkapi Jumlah Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
+            'periode.required' => 'Pilih Periode Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
 
         ]);
         // $update=DB::table('warung_pkk')->where('periode', $request->periode)->first();
@@ -167,12 +166,12 @@ class DataWarungController extends Controller
         //     return redirect('/war$warung');
         // }
         // else {
-            $data_warung->update($request->all());
+            $data_taman_bacaan->update($request->all());
 
             Alert::success('Berhasil', 'Data berhasil di ubah');
             // dd($jml_kader);
 
-            return redirect('/data_warung');
+            return redirect('/data_taman_bacaan');
         // }
     }
 
@@ -182,13 +181,13 @@ class DataWarungController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($data_warung, DataWarung $warung)
+    public function destroy($data_taman_bacaan, DataTamanBacaan $taman)
     {
-        //temukan id war$warung
-        $warung::find($data_warung)->delete();
+        //temukan id taman
+        $taman::find($data_taman_bacaan)->delete();
         Alert::success('Berhasil', 'Data berhasil di hapus');
 
-        return redirect('/data_warung');
+        return redirect('/data_taman_bacaan');
 
     }
 }

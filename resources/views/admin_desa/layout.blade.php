@@ -170,23 +170,23 @@
                   <li class="nav-item">
                     <a href="/data_warung" class="nav-link {{ Request::is('data_warung') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data Warung PKK</p>
+                      <p>Data Komoditi/<br> Usaha Warung PKK</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/keluarga" class="nav-link {{ Request::is('keluarga') ? 'active':'' }}">
+                    <a href="/taman_bacaan" class="nav-link {{ Request::is('taman_bacaan') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Taman Bacaan</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/pemanfaatan" class="nav-link {{ Request::is('pemanfaatan') ? 'active':'' }}">
+                    <a href="/data_taman_bacaan" class="nav-link {{ Request::is('data_taman_bacaan') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data Taman Bacaan</p>
+                      <p>Data Jenis Buku <br>Taman Bacaan</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
+                    <a href="/data_aset_koperasi" class="nav-link {{ Request::is('data_aset_koperasi') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Koperasi</p>
                     </a>

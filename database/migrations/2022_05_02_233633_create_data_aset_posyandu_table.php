@@ -13,18 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('industri_rumah', function (Blueprint $table) {
+        Schema::create('data_aset_posyandu', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_desa')->unsigned();
             $table->foreign('id_desa')->references('id')->on('data_desa');
             $table->bigInteger('id_kecamatan')->unsigned();
             $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan');
-            $table->bigInteger('id_warga')->unsigned();
-            $table->foreign('id_warga')->references('id')->on('data_warga');
-            $table->string('nama_kategori');
-            $table->string('komoditi');
-            $table->integer('volume');
-            $table->integer('periode');
+            $table->string('kota');
+            $table->string('provinsi');
+            $table->string('nama_posyandu');
+            $table->string('pengelola');
+            $table->string('sekretaris');
+            $table->string('jumlah_kader');
+            $table->string('jenis_posyandu');
+
             $table->timestamps();
         });
     }
@@ -36,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('industri_rumah');
+        Schema::dropIfExists('data_aset_posyandu');
     }
 };

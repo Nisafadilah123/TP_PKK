@@ -20,7 +20,6 @@ class WarungController extends Controller
     {
         //halaman pengelola warung
         // nama desa yang login
-        $warung = WarungPKK::all();
         $desas = DB::table('data_desa')
         ->where('id', auth()->user()->id_desa)
         ->get();
@@ -28,6 +27,8 @@ class WarungController extends Controller
         $kec = DB::table('data_kecamatan')
             ->where('id', auth()->user()->id_desa)
             ->get();
+
+        $warung = WarungPKK::all();
 
         return view('admin_desa.data_aset.warung', compact('warung', 'desas', 'kec'));
     }
@@ -80,13 +81,13 @@ class WarungController extends Controller
         ]);
 
         // cara 1
-        // $insert=DB::table('war$warung')->where('periode', $request->periode)->first();
-        // if ($insert != null) {
-        //     Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Periode. Periode Sudah Ada ');
+        $insert=DB::table('warung_pkk')->where('nama_warung', $request->nama_warung)->first();
+        if ($insert != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Nama Warung Sudah Ada ');
 
-        //     return redirect('/war$warung');
-        // }
-        // else {
+            return redirect('/warung');
+        }
+        else {
             $warungs = new WarungPKK;
             $warungs->id_desa = $request->id_desa;
             $warungs->id_kecamatan = $request->id_kecamatan;
@@ -100,7 +101,7 @@ class WarungController extends Controller
             Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
             return redirect('/warung');
-        // }
+        }
     }
 
     /**
@@ -131,7 +132,6 @@ class WarungController extends Controller
             ->where('id', auth()->user()->id_desa)
             ->get();
 
-        $warung = WarungPKK::with('desa')->first();
 
         return view('admin_desa.data_aset.form.edit_warung', compact('warung','kec','desas'));
     }
@@ -153,6 +153,15 @@ class WarungController extends Controller
             'provinsi' => 'required',
             'nama_warung' => 'required',
             'nama_pengelola' => 'required',
+
+        ], [
+            'id_desa.required' => 'Lengkapi Alamat Desa Warung PKK Desa/Kelurahan',
+            'id_kecamatan' => 'Lengkapi Alamat Kecamatan Warung PKK Desa/Kelurahan',
+            'kota.required' => 'Lengkapi Kota Warung PKK Desa/Kelurahan',
+            'provinsi.required' => 'Lengkapi Provinsi Warung PKK Desa/Kelurahan',
+            'nama_warung.required' => 'Lengkapi Nama Warung PKK Desa/Kelurahan',
+            'nama_pengelola.required' => 'Lengkapi Nama Pengelola Warung PKK Desa/Kelurahan',
+
         ]);
         // $update=DB::table('warung_pkk')->where('periode', $request->periode)->first();
         // if ($update != null) {

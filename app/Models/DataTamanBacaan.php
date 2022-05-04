@@ -12,7 +12,7 @@ class DataTamanBacaan extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_taman_bacaan', 'jenis_buku', 'kategori', 'jumlah'
+       'id_taman_bacaan', 'jenis_buku', 'kategori', 'jumlah', 'periode'
     ];
 
     public function taman_bacaan(){

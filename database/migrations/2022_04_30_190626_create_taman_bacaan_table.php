@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan');
             $table->string('kota');
             $table->string('provinsi');
-            $table->string('taman_bacaan');
+            $table->string('nama_taman_bacaan');
             $table->string('nama_pengelola');
             $table->integer('jumlah_buku');
 

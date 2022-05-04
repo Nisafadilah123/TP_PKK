@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('komoditi');
             $table->string('kategori');
             $table->integer('volume');
+            $table->integer('periode');
 
             $table->timestamps();
         });

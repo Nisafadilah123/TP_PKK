@@ -5,7 +5,7 @@
 @section('bread', 'Tambah Data Kegiatan Warga TP PKK')
 @section('container')
 
-<div class="col-md-6">
+<div class="col-md-10">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
@@ -19,13 +19,13 @@
 
         <div class="card-body">
             <h6 style="color: red">* Semua elemen atribut harus diisi</h6>
-            <h6 style="color: red">* Keterangan Kegiatan Yang diikuti seperti : Keagamaan, PKBN, Pola Asuh Pencegahan KDRT, Pencegahan Traffocking, Narkoba, Pencegahan
+            {{-- <h6 style="color: red">* Keterangan Kegiatan Yang diikuti seperti : Keagamaan, PKBN, Pola Asuh Pencegahan KDRT, Pencegahan Traffocking, Narkoba, Pencegahan
                 Kejahatan Seksual, Kerja Bakti, Jimpitan, Arisan, Rukun Kematian, Bakti Sosial, BKB, PAUD Sejenis, Paket A, Paket B, Paket C, KF (Keaksaraan Fungsional),
-                UP2K, Koperasi</h6>
+                UP2K, Koperasi</h6> --}}
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
-                            {{-- {{  dump($errors)  }} --}}
+                            {{  ($errors)  }}
                         </ul>
                     </div>
                 @endif
@@ -72,6 +72,8 @@
                         <label for="exampleFormControlSelect1">Nama Warga</label>
                         <select class="form-control @error('id_warga') is-invalid @enderror" id="id_warga" name="id_warga">
                           {{-- nama warga --}}
+                          <option hidden> Pilih Nama Warga</option>
+
                           @foreach ($warga as $c)
                               <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama }}</option>
                           @endforeach
@@ -87,14 +89,18 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Nama Kegiatan</label>
-                        <select class="form-control @error('id_kegiatan') is-invalid @enderror" id="id_kegiatan" name="id_kegiatan">
+                        <select class="form-control @error('nama_kegiatan') is-invalid @enderror" id="nama_kegiatan" name="nama_kegiatan">
                             {{-- Pilih Kegiatan --}}
                             <option hidden> Pilih Kegiatan</option>
-                            @foreach ($keg as $c)
-                                <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama_kegiatan }}</option>
+                            @foreach($kategori as $key => $val)
+                                @if($key==old('nama_kategori'))
+                                <option value="{{ $key }}" selected>{{ $val }}</option>
+                                @else
+                                <option value="{{ $key }}">{{ $val }}</option>
+                                @endif
                             @endforeach
                         </select>
-                        @error('id_kegiatan')
+                        @error('nama_kegiatan')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -104,8 +110,8 @@
             </div>
 
             <div class="row">
-                <div class="col-md-2">
-                    <div class="form-group">
+                <div class="col-md-6">
+                    <div class="form-group @error('aktivitas') is-invalid @enderror">
                         <label>Aktivitas</label><br>
                         {{-- Pilih aktivitas --}}
                         <div class="form-check form-check-inline">
@@ -119,6 +125,12 @@
                             </label>
                         </div>
                     </div>
+                    @error('aktivitas')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+
                 </div>
             </div>
 
@@ -127,7 +139,19 @@
                     <div class="form-group">
                         {{-- nama keterangan --}}
                         <label>Keterangan (Jenis Kegiatan Yang Diikuti)</label>
-                        <input type="text" class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" id="keterangan" placeholder="Masukkan Keterangan">
+                        {{-- <input type="text" class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" id="keterangan" placeholder="Masukkan Keterangan"> --}}
+                        <select class="form-control @error('keterangan') is-invalid @enderror" id="keterangan" name="keterangan">
+                            {{-- Pilih Kegiatan --}}
+                            <option hidden> Pilih Keterangan Kegiatan</option>
+                                @foreach($keterangan as $key => $val)
+                                    @if($key==old('keterangan'))
+                                        <option value="{{ $key }}" selected>{{ $val }}</option>
+                                    @else
+                                        <option value="{{ $key }}">{{ $val }}</option>
+                                    @endif
+                                @endforeach
+                        </select>
+
                         @error('keterangan')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -140,7 +164,7 @@
                         <label>Periode</label>
                         {{-- Pilih periode --}}
                         <select style="cursor:pointer;" class="form-control @error('periode') is-invalid @enderror" id="periode" name="periode" required>
-                          <option hidden> Pilih Tahun</option>
+                          <option> Pilih Tahun</option>
                             <?php
                               $year = date('Y');
                               $min = $year ;

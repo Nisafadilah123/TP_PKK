@@ -17,6 +17,8 @@
       <form action="{{ route('data_industri.store') }}" method="POST">
         @csrf
         <div class="card-body">
+            <h6 style="color: red">* Semua elemen atribut harus diisi</h6>
+
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -80,17 +82,21 @@
                       @enderror
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group @error('id_kategori') is-invalid @enderror">
+                    <div class="form-group @error('nama_kategori') is-invalid @enderror">
                         <label>Kategori</label>
-                        <select class="form-control" id="id_kategori" name="id_kategori">
+                        <select class="form-control" id="nama_kategori" name="nama_kategori">
                             {{-- pilih kategori --}}
                             <option hidden> Pilih Kategori</option>
-                            @foreach ($katin as $c)
-                                <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama_kategori }}</option>
+                            @foreach($kategori as $key => $val)
+                                @if($key==old('nama_kategori'))
+                                <option value="{{ $key }}" selected>{{ $val }}</option>
+                                @else
+                                <option value="{{ $key }}">{{ $val }}</option>
+                                @endif
                             @endforeach
                         </select>
                       </div>
-                      @error('id_kategori')
+                      @error('nama_kategori')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -107,22 +113,22 @@
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
-          </div>
+        </div>
 
-          <div class="row">
-              <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6">
                 <div class="form-group">
                     {{-- jumlah volume --}}
                     <label>Volume</label>
-                    <input type="number" class="form-control @error('volume') is-invalid @enderror" name="volume" id="volume" placeholder="Masukkan Volume">
+                    <input type="number" min="0" class="form-control @error('volume') is-invalid @enderror" name="volume" id="volume" placeholder="Masukkan Volume">
                     @error('volume')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                  </div>
-              </div>
-              <div class="col-md-6">
+                </div>
+            </div>
+            <div class="col-md-6">
                 <div class="form-group @error('periode') is-invalid @enderror">
                     {{-- periode --}}
                     <label>Periode</label>

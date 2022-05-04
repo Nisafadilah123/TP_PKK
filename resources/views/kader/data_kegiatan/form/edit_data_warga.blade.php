@@ -21,7 +21,7 @@
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
-                        {{-- {{  dump($errors)  }} --}}
+                        {{  ($errors)  }}
                     </ul>
                 </div>
             @endif
@@ -31,13 +31,12 @@
                     <div class="form-group">
                         {{-- nama dasa wisma --}}
                         <label>Dasa Wisma</label>
-                        <input type="text" class="form-control @error('dasa_wisma') is-invalid @enderror" name="dasa_wisma" id="dasa_wisma" placeholder="Di isi sesuai dengan nama dasawisma yang diikuti warga yang bersangkutan" required value="{{ucfirst(old('dasa_wisma', $data_warga->dasa_wisma))}}">
-                        @error('dasa_wisma')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-
+                            <input type="text" class="form-control @error('dasa_wisma') is-invalid @enderror" name="dasa_wisma" id="dasa_wisma" placeholder="Di isi sesuai dengan nama dasawisma yang diikuti warga yang bersangkutan" value="{{ucfirst(old('dasa_wisma', $data_warga->dasa_wisma))}}">
+                            @error('dasa_wisma')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                     </div>
                 </div>
 
@@ -45,15 +44,26 @@
                     <div class="form-group">
                         {{-- Nama Kepala Rumah Tangga --}}
                         <label>Nama Kepala Rumah Tangga</label>
-                            <input type="text" class="form-control" name="nama_kepala_rumah_tangga" id="nama_kepala_rumah_tangga" placeholder="Di isi dengan nama Kepala Rumah Tangga pada rumah yang didata" required value="{{ucfirst(old('nama_kepala_rumah_tangga', $data_warga->nama_kepala_rumah_tangga))}}">
+                            <input type="text" class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" name="nama_kepala_rumah_tangga" id="nama_kepala_rumah_tangga" placeholder="Di isi dengan nama Kepala Rumah Tangga pada rumah yang didata" value="{{ucfirst(old('nama_kepala_rumah_tangga', $data_warga->nama_kepala_rumah_tangga))}}">
+                                @error('nama_kepala_rumah_tangga')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="form-group">
                         {{-- no.registrasi --}}
                         <label>No. Registrasi</label>
-                            <input type="text" class="form-control" name="no_registrasi" id="no_registrasi" placeholder="Nomor Registrasi diisi dengan nomor urutan sesuai wilayah" required value="{{ucfirst(old('no_registrasi', $data_warga->no_registrasi))}}">
-                    </div>
+                            <input type="text" class="form-control @error('no_registrasi') is-invalid @enderror" name="no_registrasi" id="no_registrasi" placeholder="Nomor Registrasi diisi dengan nomor urutan sesuai wilayah" value="{{ucfirst(old('no_registrasi', $data_warga->no_registrasi))}}">
+                                @error('no_registrasi')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
                 </div>
             </div>
 
@@ -62,31 +72,54 @@
                     <div class="form-group">
                         {{-- no.KTP --}}
                         <label>No. KTP</label>
-                            <input type="text" class="form-control" name="no_ktp" id="no_ktp" placeholder="Di isi dengan sudah atau belum atas kepemilikan KTP dan atau Kartu Keluarga (KK)" required value="{{ucfirst(old('no_ktp', $data_warga->no_ktp))}}">
-                    </div>
+                            <input type="text" class="form-control @error('no_ktp') is-invalid @enderror" name="no_ktp" id="no_ktp" placeholder="Di isi dengan sudah atau belum atas kepemilikan KTP dan atau Kartu Keluarga (KK)" value="{{ucfirst(old('no_ktp', $data_warga->no_ktp))}}">
+                                @error('no_ktp')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                        </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Nama</label>
                         {{-- nama warga --}}
-                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Di isi dengan nama" required value="{{ucfirst(old('nama', $data_warga->nama))}}">
-                    </div>
+                            <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" placeholder="Di isi dengan nama" value="{{ucfirst(old('nama', $data_warga->nama))}}">
+                                @error('nama')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                        </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Jabatan</label>
                         {{-- jabatan --}}
-                            <input type="text" class="form-control" name="jabatan" id="jabatan" placeholder="Di isi jabatan yang bersangkutan pada di struktural TP PKK" required value="{{ucfirst(old('jabatan', $data_warga->jabatan))}}">
-                    </div>
+                            <input type="text" class="form-control @error('jabatan') is-invalid @enderror" name="jabatan" id="jabatan" placeholder="Di isi jabatan yang bersangkutan pada di struktural TP PKK" value="{{ucfirst(old('jabatan', $data_warga->jabatan))}}">
+                                @error('jabatan')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                        </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Tempat lahir</label>
                         {{-- tempat lahir --}}
-                        <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" placeholder="Di isi Kota/Kabupaten tempat lahir yang bersangkutan" required value="{{ucfirst(old('tempat_lahir', $data_warga->tempat_lahir))}}">
+                        <input type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" name="tempat_lahir" id="tempat_lahir" placeholder="Di isi Kota/Kabupaten tempat lahir yang bersangkutan" value="{{ucfirst(old('tempat_lahir', $data_warga->tempat_lahir))}}">
+                            @error('tempat_lahir')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                     </div>
                 </div>
             </div>
@@ -96,7 +129,13 @@
                     <div class="form-group">
                         <label>Tanggal lahir</label>
                         {{-- Tanggal lahir --}}
-                            <input type="date" class="form-control" name="tgl_lahir" id="tgl_lahir" placeholder="Di isi tanggal lahir" required value="{{ucfirst(old('tgl_lahir', $data_warga->tgl_lahir))}}" data-date-format="mm/dd/yyyy">
+                            <input type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" name="tgl_lahir" id="tgl_lahir" placeholder="Di isi tanggal lahir" value="{{ucfirst(old('tgl_lahir', $data_warga->tgl_lahir))}}" data-date-format="mm/dd/yyyy">
+                                @error('tgl_lahir')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
                     </div>
                 </div>
 
@@ -104,7 +143,13 @@
                     <div class="form-group">
                         <label>Umur</label>
                         {{-- umur --}}
-                            <input type="number" class="form-control" name="umur" id="umur" placeholder="Di isi Umur" required value="{{ucfirst(old('umur', $data_warga->umur))}}">
+                            <input type="number" class="form-control @error('umur') is-invalid @enderror" name="umur" id="umur" placeholder="Di isi Umur" value="{{ucfirst(old('umur', $data_warga->umur))}}">
+                                @error('umur')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
                     </div>
                 </div>
 
@@ -112,7 +157,12 @@
                     <div class="form-group">
                         {{-- alamat --}}
                         <label>Alamat</label>
-                            <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Di isi Alamat" required value="{{ucfirst(old('alamat', $data_warga->alamat))}}">
+                            <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" id="alamat" placeholder="Di isi Alamat" value="{{ucfirst(old('alamat', $data_warga->alamat))}}">
+                                @error('alamat')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                     </div>
                 </div>
 
@@ -120,7 +170,12 @@
                     <div class="form-group">
                         {{-- rt --}}
                         <label>RT</label>
-                            <input type="number" min="1" class="form-control" name="rt" id="rt" placeholder="Di isi RT" required value="{{ucfirst(old('rt', $data_warga->rt))}}">
+                            <input type="number" min="1" class="form-control @error('rt') is-invalid @enderror" name="rt" id="rt" placeholder="Di isi RT" value="{{ucfirst(old('rt', $data_warga->rt))}}">
+                                @error('rt')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                     </div>
                 </div>
 
@@ -128,7 +183,13 @@
                     <div class="form-group">
                         {{-- rw --}}
                         <label>RW</label>
-                            <input type="number" min="1" class="form-control" name="rw" id="rw" placeholder="Di isi RW" required value="{{ucfirst(old('rw', $data_warga->rw))}}">
+                            <input type="number" min="1" class="form-control @error('rw') is-invalid @enderror" name="rw" id="rw" placeholder="Di isi RW" value="{{ucfirst(old('rw', $data_warga->rw))}}">
+                                @error('rw')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
                     </div>
                 </div>
             </div>
@@ -139,8 +200,8 @@
                         <label for="exampleFormControlSelect1">Desa</label>
                         {{-- pilih nama desa --}}
                         @foreach ($desas as $c)
-                            <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
-                            <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_desa }}">
+                            <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
+                            <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" value="{{ $c->nama_desa }}">
                         @endforeach
                     </div>
                     @error('id_desa')
@@ -155,8 +216,8 @@
                         <label for="exampleFormControlSelect1">Kecamatan</label>
                         {{-- pilih Kecamatan --}}
                         @foreach ($kec as $c)
-                            <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
-                            <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_kecamatan }}">
+                            <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
+                            <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" value="{{ $c->nama_kecamatan }}">
                         @endforeach
                     </div>
                     @error('id_kecamatan')
@@ -170,7 +231,13 @@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Kabupaten</label>
                         {{-- pilih Kabupaten --}}
-                            <input type="text" readonly class="form-control" name="kota" id="kota" placeholder="Masukkan Kota" required value="Indramayu">
+                            <input type="text" readonly class="form-control @error('kota') is-invalid @enderror" name="kota" id="kota" placeholder="Masukkan Kota" value="Indramayu">
+                                @error('kota')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
                     </div>
                 </div>
 
@@ -178,12 +245,18 @@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Provinsi</label>
                         {{-- nama provinsi --}}
-                            <input type="text" readonly class="form-control" name="provinsi" id="provinsi" placeholder="Masukkan Provisni" required value="Jawa Barat">
+                            <input type="text" readonly class="form-control @error('provinsi') is-invalid @enderror" name="provinsi" id="provinsi" placeholder="Masukkan Provisni" value="Jawa Barat">
+                                @error('provinsi')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
                     </div>
                 </div>
 
                 <div class="col-md-2">
-                    <div class="form-group">
+                    <div class="form-group @error('periode') is-invalid @enderror">
                         <label>Periode</label>
                             {{-- pilih periode --}}
                             <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
@@ -197,9 +270,15 @@
                                     }?>
                             </select>
                     </div>
+                        @error('periode')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                 </div>
+
                 <div class="col-md-2">
-                    <div class="form-group">
+                    <div class="form-group @error('jenis_kelamin') is-invalid @enderror">
                         <label class="form-label">Jenis Kelamin </label><br>
                             {{-- pilih Jenis Kelamin --}}
                             <div class="form-check form-check-inline">
@@ -213,10 +292,16 @@
                                 </label>
                             </div>
                     </div>
+                        @error('jenis_kelamin')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
                 </div>
 
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group @error('status_perkawinan') is-invalid @enderror">
                         <label>Status Perkawinan</label><br>
                             {{-- pilih status Perkawinan --}}
                             <div class="form-check form-check-inline">
@@ -240,10 +325,16 @@
                                 </label>
                             </div>
                     </div>
+                        @error('status_perkawinan')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
                 </div>
 
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group @error('status_keluarga') is-invalid @enderror">
                         {{-- pilih status Dalam Keluarga --}}
                         <label>Status Dalam Keluarga</label><br>
                             @if ($data_warga->status_keluarga == 'kepala keluarga')
@@ -280,13 +371,19 @@
                                         <input type="radio" aria-label="Radio button for following text input" name="status_keluarga" value="anggota keluarga" {{$data_warga->status_keluarga == 'anggota keluarga'? 'checked' : ''}}>Anggota Keluarga
                                     </div>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Text input with radio button" name="status" required value="{{ucfirst(old('status_keluarga', $data_warga->status))}}">
+                                <input type="text" class="form-control" aria-label="Text input with radio button" name="status" value="{{ucfirst(old('status_keluarga', $data_warga->status))}}">
                             </div>
                             @endif
                     </div>
+                        @error('status_keluarga')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                 </div>
+
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group @error('agama') is-invalid @enderror">
                         {{-- pilih agama --}}
                         <label>Agama</label><br>
                             <div class="form-check form-check-inline">
@@ -325,10 +422,15 @@
                                 </label>
                             </div>
                     </div>
+                        @error('agama')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                 </div>
 
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group @error('pendidikan') is-invalid @enderror">
                         {{-- pilih Pendidikan --}}
                         <label>Pendidikan</label><br>
                             <div class="form-check form-check-inline">
@@ -362,10 +464,15 @@
                                 </label>
                             </div>
                     </div>
+                        @error('pendidikan')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                 </div>
 
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group @error('pekerjaan') is-invalid @enderror">
                         {{-- pilih Pekerjaan --}}
                         <label>Pekerjaan</label><br>
                             <div class="form-check form-check-inline">
@@ -404,10 +511,16 @@
                                 </label>
                             </div>
                     </div>
+                        @error('pekerjaan')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
                 </div>
 
                 <div class="col-md-2">
-                    <div class="form-group">
+                    <div class="form-group @error('akseptor_KB') is-invalid @enderror">
                         {{-- pilih akseptor KB --}}
                         <label>Akseptor KB</label><br>
                             <div class="form-check form-check-inline">
@@ -421,9 +534,15 @@
                                 </label>
                             </div>
                     </div>
+                        @error('akseptor_KB')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                 </div>
+
                 <div class="col-md-2">
-                    <div class="form-group">
+                    <div class="form-group @error('aktif_posyandu') is-invalid @enderror">
                         {{-- pilih aktif dalam Kegiatan Posyandu --}}
                         <label>Aktif dalam Kegiatan Posyandu</label><br>
                             <div class="form-check form-check-inline">
@@ -437,10 +556,15 @@
                                 </label>
                             </div>
                     </div>
+                        @error('aktif_posyandu')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                 </div>
 
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group @error('ikut_bkb') is-invalid @enderror">
                         {{-- pilih mengikuti Program Bina Keluarga Balita --}}
                         <label>Mengikuti Program Bina Keluarga Balita</label><br>
                             <div class="form-check form-check-inline">
@@ -454,10 +578,15 @@
                                 </label>
                             </div>
                     </div>
+                        @error('ikut_bkb')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                 </div>
 
                 <div class="col-md-2">
-                    <div class="form-group">
+                    <div class="form-group @error('memiliki_tabungan') is-invalid @enderror">
                         {{-- pilih memiliki tabungan --}}
                         <label>Memiliki Tabungan</label><br>
                             <div class="form-check form-check-inline">
@@ -471,10 +600,15 @@
                                 </label>
                             </div>
                     </div>
+                        @error('memiliki_tabungan')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                 </div>
 
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group @error('ikut_kelompok_belajar') is-invalid @enderror">
                         {{-- pilih mengikuti Kelompok Belajar Jenis --}}
                         <label>Mengikuti Kelompok Belajar Jenis</label><br>
                             <div class="form-check form-check-inline">
@@ -508,9 +642,15 @@
                                 </label>
                             </div>
                     </div>
+                        @error('ikut_kelompok_belajar')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                 </div>
+
                 <div class="col-md-2">
-                    <div class="form-group">
+                    <div class="form-group @error('ikut_paud_sejenis') is-invalid @enderror">
                         {{-- pilih Mengikuti PAUD/Sejenis--}}
                         <label>Mengikuti PAUD/Sejenis</label><br>
                             <div class="form-check form-check-inline">
@@ -524,10 +664,15 @@
                                 </label>
                             </div>
                     </div>
+                        @error('ikut_paud_sejenis')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                 </div>
 
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group @error('ikut_koperasi') is-invalid @enderror">
                         {{-- pilih Mengikuti dalam Kegiatan Koperasi --}}
                         <label>Ikut dalam Kegiatan Koperasi</label><br>
                             <div class="form-check form-check-inline">
@@ -541,6 +686,12 @@
                                 </label>
                             </div>
                     </div>
+                        @error('ikut_koperasi')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+
                 </div>
             </div>
 

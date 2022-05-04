@@ -12,7 +12,7 @@ class DataIndustriRumah extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'id_desa','id_kecamatan', 'id_warga', 'id_kategori', 'komoditi', 'volume', 'periode'
+        'id_desa','id_kecamatan', 'id_warga', 'nama_kategori', 'komoditi', 'volume', 'periode'
     ];
 
     public function kecamatan(){

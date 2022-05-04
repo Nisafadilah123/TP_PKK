@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PemanfaatanKarangan extends Model
+class DataAsetKoperasi extends Model
 {
     use HasFactory;
-    protected $table = "pemanfaatan_pekarangan";
+    protected $table = "data_aset_koperasi";
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'id_desa','id_kecamatan','id_warga','nama_kategori', 'komoditi', 'jumlah', 'periode'
+       'id_desa', 'id_kecamatan', 'nama_koperasi', 'jenis_koperasi','status_hukum', 'jumlah_anggota_laki', 'jumlah_anggota_perempuan','kota','provinsi', 'periode'
     ];
 
     public function kecamatan(){
@@ -20,13 +20,5 @@ class PemanfaatanKarangan extends Model
     }
     public function desa(){
         return $this->belongsTo(Data_Desa::class, 'id_desa');
-    }
-
-    public function warga(){
-        return $this->belongsTo(DataWarga::class, 'id_warga');
-    }
-
-    public function kategori_lahan(){
-        return $this->belongsTo(KategoriPemanfaatanLahan::class, 'id_kategori');
     }
 }

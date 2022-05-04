@@ -13,15 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('data_taman_bacaan', function (Blueprint $table) {
+        Schema::create('kelompok_simulasi', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_taman_bacaan')->unsigned();
-            $table->foreign('id_taman_bacaan')->references('id')->on('taman_bacaan');
-            $table->string('jenis_buku');
-            $table->string('kategori');
-            $table->integer('jumlah');
-            $table->integer('periode');
-
             $table->timestamps();
         });
     }
@@ -33,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_taman_bacaan');
+        Schema::dropIfExists('kelompok_simulasi');
     }
 };

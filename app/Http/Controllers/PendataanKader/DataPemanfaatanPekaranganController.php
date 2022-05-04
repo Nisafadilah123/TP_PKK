@@ -42,9 +42,16 @@ class DataPemanfaatanPekaranganController extends Controller
      ->get();
 
      $warga = DataWarga::all(); // pemanggilan tabel data warga pekarangan
-     $kat = KategoriPemanfaatanLahan::all(); // pemanggilan tabel kategori pemanfaatan tanah
-    //  dd($keg);
-     return view('kader.data_kegiatan.form.create_data_pemanfaatan', compact('kec', 'warga', 'kat', 'desas'));
+    //  $kat = KategoriPemanfaatanLahan::all(); // pemanggilan tabel kategori pemanfaatan tanah
+    $data['kategori'] = [
+        'Peternakan' => 'Peternakan',
+        'Perikanan' => 'Perikanan',
+        'Warung Hidup' => 'Warung Hidup',
+        'TOGA (Tanaman Obat Keluarga)' => 'TOGA (Tanaman Obat Keluarga)',
+        'Tanaman Keras' => 'Tanaman Keras',
+        'Lainnya' => 'Lainnya',
+    ];
+    return view('kader.data_kegiatan.form.create_data_pemanfaatan', $data, compact('kec', 'warga', 'desas'));
 
  }
 
@@ -63,7 +70,7 @@ class DataPemanfaatanPekaranganController extends Controller
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
             'id_warga' => 'required',
-            'id_kategori' => 'required',
+            'nama_kategori' => 'required',
             'komoditi' => 'required',
             'jumlah' => 'required',
             'periode' => 'required',
@@ -73,7 +80,7 @@ class DataPemanfaatanPekaranganController extends Controller
             'id_kecamatan' => 'Pilih Alamat Kecamatan Pemanfaatan Tanah Pekarangan Warga',
 
             'id_warga.required' => 'Pilih Nama Warga',
-            'id_kategori.required' => 'Pilih Alamat Kategori Pemanfaatan Tanah Pekarangan',
+            'nama_kategori.required' => 'Pilih Alamat Kategori Pemanfaatan Tanah Pekarangan',
             'komoditi.required' => 'Lengkapi Komoditi Pemanfaatan Tanah Pekarangan',
             'jumlah.required' => 'Lengkapi Jumlah Komoditi Tanah Pekarangan',
             'periode.required' => 'Pilih Periode',
@@ -93,7 +100,7 @@ class DataPemanfaatanPekaranganController extends Controller
             $kegiatans->id_desa = $request->id_desa;
             $kegiatans->id_kecamatan = $request->id_kecamatan;
             $kegiatans->id_warga = $request->id_warga;
-            $kegiatans->id_kategori = $request->id_kategori;
+            $kegiatans->nama_kategori = $request->nama_kategori;
             $kegiatans->komoditi = $request->komoditi;
             $kegiatans->jumlah = $request->jumlah;
             $kegiatans->periode = $request->periode;
@@ -128,7 +135,7 @@ class DataPemanfaatanPekaranganController extends Controller
     {
         //halaman form edit data pemanfaatan tanah pekarangan
         $warga = DataWarga::all();
-        $kat = KategoriPemanfaatanLahan::all();
+        // $kat = KategoriPemanfaatanLahan::all();
 
         $desas = DB::table('data_desa')
        ->where('id', auth()->user()->id_desa)
@@ -138,7 +145,16 @@ class DataPemanfaatanPekaranganController extends Controller
        ->where('id', auth()->user()->id_desa)
        ->get();
 
-        return view('kader.data_kegiatan.form.edit_data_pemanfaatan', compact('data_pemanfaatan','warga', 'kat', 'desas', 'kec'));
+       $data['kategori'] = [
+        'Peternakan' => 'Peternakan',
+        'Perikanan' => 'Perikanan',
+        'Warung Hidup' => 'Warung Hidup',
+        'TOGA (Tanaman Obat Keluarga)' => 'TOGA (Tanaman Obat Keluarga)',
+        'Tanaman Keras' => 'Tanaman Keras',
+        'Lainnya' => 'Lainnya',
+    ];
+
+        return view('kader.data_kegiatan.form.edit_data_pemanfaatan',$data, compact('data_pemanfaatan','warga', 'desas', 'kec'));
 
     }
 
@@ -158,10 +174,20 @@ class DataPemanfaatanPekaranganController extends Controller
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
             'id_warga' => 'required',
-            'id_kategori' => 'required',
+            'nama_kategori' => 'required',
             'komoditi' => 'required',
             'jumlah' => 'required',
             'periode' => 'required',
+
+        ], [
+            'id_desa.required' => 'Pilih Alamat Desa Pemanfaatan Tanah Pekarangan Warga',
+            'id_kecamatan' => 'Pilih Alamat Kecamatan Pemanfaatan Tanah Pekarangan Warga',
+
+            'id_warga.required' => 'Pilih Nama Warga',
+            'nama_kategori.required' => 'Pilih Alamat Kategori Pemanfaatan Tanah Pekarangan',
+            'komoditi.required' => 'Lengkapi Komoditi Pemanfaatan Tanah Pekarangan',
+            'jumlah.required' => 'Lengkapi Jumlah Komoditi Tanah Pekarangan',
+            'periode.required' => 'Pilih Periode',
 
         ]);
         // update data
