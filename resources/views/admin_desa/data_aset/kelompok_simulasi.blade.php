@@ -58,12 +58,12 @@
                                         <td style="vertical-align: middle;">{{$c->kecamatan->nama_kecamatan}}</td>
                                         <td style="vertical-align: middle;">{{$c->kota}}</td>
                                         <td style="vertical-align: middle;">{{$c->provinsi}}</td>
-                                        {{-- <td style="vertical-align: middle;">{{$c->nama_koperasi}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jenis_koperasi}}</td>
-                                        <td style="vertical-align: middle;">{{$c->status_hukum == 'Berbadan Hukum' ? 'Berbadan Hukum' :''}}</td>
-                                        <td style="vertical-align: middle;">{{$c->status_hukum == 'Belum Berbadan Hukum' ? 'Belum Berbadan Hukum' :''}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jumlah_anggota_laki}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jumlah_anggota_perempuan}}</td> --}}
+                                        <td style="vertical-align: middle;">{{$c->nama_kegiatan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jenis_simulasi}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jumlah_kelompok}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jumlah_sosialisasi}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jumlah_kader_laki}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jumlah_kader_perempuan}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('kelompok_simulasi.destroy',$c->id) }}" method="POST">

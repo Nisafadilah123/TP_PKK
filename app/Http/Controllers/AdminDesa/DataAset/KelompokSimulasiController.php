@@ -60,18 +60,30 @@ class KelompokSimulasiController extends Controller
     {
         // proses penyimpanan untuk tambah data warung
         $request->validate([
-            'id_warung' => 'required',
-            'komoditi' => 'required',
-            'kategori' => 'required',
-            'volume' => 'required',
+            'id_desa' => 'required',
+            'id_kecamatan' => 'required',
+            'kota' => 'required',
+            'provinsi' => 'required',
+            'nama_kegiatan' => 'required',
+            'jenis_simulasi' => 'required',
+            'jumlah_kelompok' => 'required',
+            'jumlah_sosialisasi' => 'required',
+            'jumlah_kader_laki' => 'required',
+            'jumlah_kader_perempuan' => 'required',
             'periode' => 'required',
 
         ], [
-            'id_warung.required' => 'Lengkapi Nama Pengelola Data Warung PKK Desa/Kelurahan',
-            'komoditi.required' => 'Lengkapi Komoditi Warung PKK Desa/Kelurahan',
-            'kategori.required' => 'Lengkapi Kategori Warung PKK Desa/Kelurahan',
-            'volume.required' => 'Lengkapi Volume Warung PKK Desa/Kelurahan',
-            'periode.required' => 'Pilih Periode Warung PKK Desa/Kelurahan',
+            'id_desa.required' => 'Lengkapi Alamat Desa Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan',
+            'id_kecamatan' => 'Lengkapi Alamat Kecamatan Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan',
+            'kota.required' => 'Lengkapi Kota Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan',
+            'provinsi.required' => 'Lengkapi Provinsi Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan',
+            'nama_kegiatan.required' => 'Lengkapi Nama Kegiatan PKK Desa/Kelurahan',
+            'jenis_simulasi.required' => 'Lengkapi Jenis Simulasi/Penyuluhan Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan',
+            'jumlah_kelompok.required' => 'Lengkapi Jumlah Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan yang mengikuti simulasi/penyuluhan',
+            'jumlah_sosialisasi.required' => 'Lengkapi Jumlah Sosialisasi Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan yang dilaksanakan',
+            'jumlah_kader_laki.required' => 'Lengkapi Jumlah Kader Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan Laki',
+            'jumlah_kader_perempuan.required' => 'Lengkapi Jumlah Kader Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan Perempuan',
+            'periode.required' => 'Pilih Periode Kelompok Simulasi/Penyuluhan  Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan',
 
         ]);
 
@@ -84,10 +96,16 @@ class KelompokSimulasiController extends Controller
         // }
         // else {
             $kelompoks = new KelompokSimulasi;
-            $kelompoks->id_warung = $request->id_warung;
-            $kelompoks->komoditi = $request->komoditi;
-            $kelompoks->kategori = $request->kategori;
-            $kelompoks->volume = $request->volume;
+            $kelompoks->id_desa = $request->id_desa;
+            $kelompoks->id_kecamatan = $request->id_kecamatan;
+            $kelompoks->kota = $request->kota;
+            $kelompoks->provinsi = $request->provinsi;
+            $kelompoks->nama_kegiatan = $request->nama_kegiatan;
+            $kelompoks->jenis_simulasi = $request->jenis_simulasi;
+            $kelompoks->jumlah_kelompok = $request->jumlah_kelompok;
+            $kelompoks->jumlah_sosialisasi = $request->jumlah_sosialisasi;
+            $kelompoks->jumlah_kader_laki = $request->jumlah_kader_laki;
+            $kelompoks->jumlah_kader_perempuan = $request->jumlah_kader_perempuan;
             $kelompoks->periode = $request->periode;
 
             $kelompoks->save();
@@ -115,21 +133,21 @@ class KelompokSimulasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(DataWarung $data_warung)
+    public function edit(KelompokSimulasi $kelompok_simulasi)
     {
         // halaman edit data warung
         // nama desa yang login
         // dd($data_warung);
         $desas = DB::table('data_desa')
         ->where('id', auth()->user()->id_desa)
-        ->first();
+        ->get();
         $kec = DB::table('data_kecamatan')
         ->where('id', auth()->user()->id_desa)
-        ->first();
+        ->get();
         // $data_warung = DataWarung::all();
-        $warung = WarungPKK::all();
+        $kelompoks = KelompokSimulasi::all();
 
-        return view('admin_desa.data_aset.form.edit_data_warung', compact('data_warung','kec','desas', 'warung'));
+        return view('admin_desa.data_aset.form.edit_kelompok_simulasi', compact('kelompok_simulasi','kec','desas', 'kelompoks'));
     }
 
     /**
@@ -139,22 +157,34 @@ class KelompokSimulasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DataWarung $data_warung)
+    public function update(Request $request, KelompokSimulasi $kelompok_simulasi)
     {
         // proses mengubah untuk tambah data jml kader
         $request->validate([
-            'id_warung' => 'required',
-            'komoditi' => 'required',
-            'kategori' => 'required',
-            'volume' => 'required',
+            'id_desa' => 'required',
+            'id_kecamatan' => 'required',
+            'kota' => 'required',
+            'provinsi' => 'required',
+            'nama_kegiatan' => 'required',
+            'jenis_simulasi' => 'required',
+            'jumlah_kelompok' => 'required',
+            'jumlah_sosialisasi' => 'required',
+            'jumlah_kader_laki' => 'required',
+            'jumlah_kader_perempuan' => 'required',
             'periode' => 'required',
 
         ], [
-            'id_warung.required' => 'Lengkapi Nama Pengelola Data Warung PKK Desa/Kelurahan',
-            'komoditi.required' => 'Lengkapi Komoditi Warung PKK Desa/Kelurahan',
-            'kategori.required' => 'Lengkapi Kategori Warung PKK Desa/Kelurahan',
-            'volume.required' => 'Lengkapi Volume Warung PKK Desa/Kelurahan',
-            'periode.required' => 'Pilih Periode Warung PKK Desa/Kelurahan',
+            'id_desa.required' => 'Lengkapi Alamat Desa Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan',
+            'id_kecamatan' => 'Lengkapi Alamat Kecamatan Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan',
+            'kota.required' => 'Lengkapi Kota Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan',
+            'provinsi.required' => 'Lengkapi Provinsi Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan',
+            'nama_kegiatan.required' => 'Lengkapi Nama Kegiatan PKK Desa/Kelurahan',
+            'jenis_simulasi.required' => 'Lengkapi Jenis Simulasi/Penyuluhan Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan',
+            'jumlah_kelompok.required' => 'Lengkapi Jumlah Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan yang mengikuti simulasi/penyuluhan',
+            'jumlah_sosialisasi.required' => 'Lengkapi Jumlah Sosialisasi Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan yang dilaksanakan',
+            'jumlah_kader_laki.required' => 'Lengkapi Jumlah Kader Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan Laki',
+            'jumlah_kader_perempuan.required' => 'Lengkapi Jumlah Kader Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan Perempuan',
+            'periode.required' => 'Pilih Periode Kelompok Simulasi/Penyuluhan  Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan',
 
         ]);
         // $update=DB::table('warung_pkk')->where('periode', $request->periode)->first();
@@ -164,12 +194,12 @@ class KelompokSimulasiController extends Controller
         //     return redirect('/war$warung');
         // }
         // else {
-            $data_warung->update($request->all());
+            $kelompok_simulasi->update($request->all());
 
             Alert::success('Berhasil', 'Data berhasil di ubah');
             // dd($jml_kader);
 
-            return redirect('/data_warung');
+            return redirect('/kelompok_simulasi');
         // }
     }
 
@@ -179,13 +209,13 @@ class KelompokSimulasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($data_warung, DataWarung $warung)
+    public function destroy($kelompok_simulasi, KelompokSimulasi $kelompok)
     {
-        //temukan id war$warung
-        $warung::find($data_warung)->delete();
+        //temukan id kelompok
+        $kelompok::find($kelompok_simulasi)->delete();
         Alert::success('Berhasil', 'Data berhasil di hapus');
 
-        return redirect('/data_warung');
+        return redirect('/kelompok_simulasi');
 
     }
 

@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class KelompokSimulasi extends Model
+class KejarPaket extends Model
 {
     use HasFactory;
-    protected $table = "kelompok_simulasi";
+    protected $table = "data_aset_kejar_paket";
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_desa', 'id_kecamatan', 'nama_kegiatan', 'jenis_simulasi', 'jumlah_kelompok', 'jumlah_sosialisasi', 'jumlah_kader_laki', 'jumlah_kader_perempuan', 'kota', 'provinsi', 'periode'
+       'id_desa', 'id_kecamatan', 'nama_kejar_paket', ',jenis_paket', 'jumlah_warga_laki', 'jumlah_warga_perempuan', 'jumlah_pengajar_laki', 'jumlah_pengajar_perempuan',  'kota', 'provinsi'
     ];
 
     public function desa(){
