@@ -32,6 +32,7 @@
                                         <th>Jenis Buku</th>
                                         <th>Kategori</th>
                                         <th>Jumlah</th>
+                                        <th>Periode</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -47,6 +48,7 @@
                                         <td style="vertical-align: middle;">{{$c->jenis_buku}}</td>
                                         <td style="vertical-align: middle;">{{$c->kategori}}</td>
                                         <td style="vertical-align: middle;">{{$c->jumlah}} Buah</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('data_taman_bacaan.destroy',$c->id) }}" method="POST">

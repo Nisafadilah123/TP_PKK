@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreign('id_desa')->references('id')->on('data_desa');
             $table->bigInteger('id_kecamatan')->unsigned();
             $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan');
+            $table->string('kota');
+            $table->string('provinsi');
             $table->string('nama_kejar_paket');
             $table->string('jenis_paket');
             $table->string('jumlah_warga_laki');

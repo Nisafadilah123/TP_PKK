@@ -192,7 +192,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
+                    <a href="/kejar_paket" class="nav-link {{ Request::is('kejar_paket') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Kejar Paket</p>
                     </a>

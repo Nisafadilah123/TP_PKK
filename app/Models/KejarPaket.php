@@ -12,7 +12,7 @@ class KejarPaket extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_desa', 'id_kecamatan', 'nama_kejar_paket', ',jenis_paket', 'jumlah_warga_laki', 'jumlah_warga_perempuan', 'jumlah_pengajar_laki', 'jumlah_pengajar_perempuan',  'kota', 'provinsi'
+       'id_desa', 'id_kecamatan', 'nama_kejar_paket', 'jenis_paket', 'jumlah_warga_laki', 'jumlah_warga_perempuan', 'jumlah_pengajar_laki', 'jumlah_pengajar_perempuan',  'kota', 'provinsi','periode'
     ];
 
     public function desa(){

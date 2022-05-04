@@ -37,6 +37,7 @@
                                         <th colspan="2">Status Hukum</th>
                                         <th rowspan="2">Jumlah Anggota Laki</th>
                                         <th rowspan="2">Jumlah Anggota Perempuan</th>
+                                        <th rowspan="2">Periode</th>
                                         <th rowspan="2">Aksi</th>
                                     </tr>
                                     <tr>
@@ -63,6 +64,7 @@
                                         <td style="vertical-align: middle;">{{$c->status_hukum == 'Belum Berbadan Hukum' ? 'Belum Berbadan Hukum' :''}}</td>
                                         <td style="vertical-align: middle;">{{$c->jumlah_anggota_laki}}</td>
                                         <td style="vertical-align: middle;">{{$c->jumlah_anggota_perempuan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('data_aset_koperasi.destroy',$c->id) }}" method="POST">

@@ -1,8 +1,8 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Kelompok Simulasi dan Penyuluhan Data Aset | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Kejar Paket Data Aset | Admin Desa PKK Kab. Indramayu')
 
-@section('bread', 'Kelompok Simulasi dan Penyuluhan Data Aset')
+@section('bread', 'Kejar Paket Data Aset')
 @section('container')
 
     <!-- Main content -->
@@ -22,7 +22,7 @@
                                 <table class="table table-striped table-bordered data" id="add-row">
                                     <div class="row">
                                         <div class="col-md-1">
-                                            <a href="{{ url('kelompok_simulasi/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
+                                            <a href="{{ url('kejar_paket/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
                                         </div>
                                     </div>
                                     <thead>
@@ -32,18 +32,18 @@
                                         <th rowspan="2">Nama Kecamatan</th>
                                         <th rowspan="2">Kota</th>
                                         <th rowspan="2">Provinsi</th>
-                                        <th rowspan="2">Nama Kegiatan</th>
-                                        <th rowspan="2">Jenis Simulasi/Penyuluhan</th>
-                                        <th colspan="2">Jumlah</th>
-                                        <th colspan="2">Jumlah Kader</th>
-                                        <th colspan="2">Periode</th>
+                                        <th rowspan="2">Nama Kejar Paket/KF/PAUD</th>
+                                        <th rowspan="2">Jenis Kejar Paket/KF/PAUD</th>
+                                        <th colspan="2">Jumlah Warga Belajar/Siswa</th>
+                                        <th colspan="2">Jumlah Pengajar</th>
+                                        <th rowspan="2">Periode</th>
                                         <th rowspan="2">Aksi</th>
                                     </tr>
                                     <tr>
-                                        <th>Kelompok</th>
-                                        <th>Sosialisasi</th>
-                                        <th>Laki-laki</th>
-                                        <th>Perempuan</th>
+                                        <th>L</th>
+                                        <th>P</th>
+                                        <th>L</th>
+                                        <th>P</th>
 
                                     </tr>
                                     </thead>
@@ -51,7 +51,7 @@
                                     <tbody>
                                         <?php $no=1;?>
 
-                                        @foreach ($kelompok as $c)
+                                        @foreach ($kejar_paket as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
                                         {{-- nama desa yang login --}}
@@ -59,20 +59,20 @@
                                         <td style="vertical-align: middle;">{{$c->kecamatan->nama_kecamatan}}</td>
                                         <td style="vertical-align: middle;">{{$c->kota}}</td>
                                         <td style="vertical-align: middle;">{{$c->provinsi}}</td>
-                                        <td style="vertical-align: middle;">{{$c->nama_kegiatan}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jenis_simulasi}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jumlah_kelompok}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jumlah_sosialisasi}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jumlah_kader_laki}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jumlah_kader_perempuan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->nama_kejar_paket}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jenis_paket}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jumlah_warga_laki}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jumlah_warga_perempuan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jumlah_pengajar_laki}}</td>
+                                        <td style="vertical-align: middle;">{{$c->jumlah_pengajar_perempuan}}</td>
                                         <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
-                                            <form action="{{ route('kelompok_simulasi.destroy',$c->id) }}" method="POST">
+                                            <form action="{{ route('kejar_paket.destroy',$c->id) }}" method="POST">
 
                                             {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
 
-                                                <a class="btn btn-primary btn-sm" href="{{ url('kelompok_simulasi/'.$c->id.'/edit') }}">Edit</a>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('kejar_paket/'.$c->id.'/edit') }}">Edit</a>
 
                                                 @csrf
                                                 @method('DELETE')

@@ -32,6 +32,7 @@
                                         <th>Komoditi</th>
                                         <th>Kategori</th>
                                         <th>Volume</th>
+                                        <th>Periode</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -47,6 +48,7 @@
                                         <td style="vertical-align: middle;">{{$c->komoditi}}</td>
                                         <td style="vertical-align: middle;">{{$c->kategori}}</td>
                                         <td style="vertical-align: middle;">{{$c->volume}} Buah</td>
+                                        <td style="vertical-align: middle;">{{$c->periode}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('data_warung.destroy',$c->id) }}" method="POST">

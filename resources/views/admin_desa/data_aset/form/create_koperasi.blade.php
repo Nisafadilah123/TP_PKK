@@ -92,7 +92,7 @@
                             {{-- <input type="text" class="form-control @error('jenis_koperasi') is-invalid @enderror" name="jenis_koperasi" id="jenis_koperasi" placeholder="Masukkan jenis koperasi dengan Jenis usaha yang dijalankan koperasi"> --}}
                             <select class="form-control" id="jenis_koperasi" name="jenis_koperasi">
                                 {{-- Pilih Kategori --}}
-                                <option> Pilih Kategori</option>
+                                <option> Pilih Jenis</option>
                                     @foreach($jenis_koperasi as $key => $val)
                                         @if($key==old('jenis_koperasi'))
                                             <option value="{{ $key }}" selected>{{ $val }}</option>
