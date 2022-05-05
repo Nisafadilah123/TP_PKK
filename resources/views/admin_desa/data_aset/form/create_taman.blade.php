@@ -16,6 +16,14 @@
 
       <form action="{{ route('taman_bacaan.store') }}" method="POST">
         @csrf
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    {{  ($errors)  }}
+                </ul>
+            </div>
+        @endif
+
             <div class="card-body">
                 <h6 style="color:red">* Nama Taman Bacaan/Perpustakaan Diisi bilamana taman bacaan/perpustakaan tersebut memiliki nama.
                     (misalnya: Taman Bacaan PKK RW 01, Taman Bacaan PKK RT 04 RW 01, dll)</h6>

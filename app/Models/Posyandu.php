@@ -23,8 +23,8 @@ class Posyandu extends Model
         return $this->belongsTo(DataKecamatan::class, 'id_kecamatan');
     }
 
-    public function data_taman_bacaan(){
-        return $this->hasMany(DataTamanBacaan::class);
+    public function jenis_kegiatan_posyandu(){
+        return $this->hasMany(JenisKegiatanPosyandu::class);
     }
 
 }

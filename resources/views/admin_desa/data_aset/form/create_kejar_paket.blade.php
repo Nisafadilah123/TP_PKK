@@ -104,7 +104,7 @@
                             {{-- nama Nama Pengelola --}}
                             <label>Jenis Koperasi</label>
                                 <select class="form-control" id="jenis_paket" name="jenis_paket">
-                                    {{-- Pilih Kategori --}}
+                                    {{-- Pilih Kejar --}}
                                     <option> Pilih Jenis</option>
                                         @foreach($jenis_paket as $key => $val)
                                             @if($key==old('jenis_paket'))

@@ -18,7 +18,7 @@ class KoperasiController extends Controller
      */
     public function index()
     {
-        //halaman data warung
+        //halaman data koperasi
         // nama desa yang login
         $desas = DB::table('data_desa')
         ->where('id', auth()->user()->id_desa)
@@ -46,6 +46,7 @@ class KoperasiController extends Controller
         $kec = DB::table('data_kecamatan')
         ->where('id', auth()->user()->id_desa)
         ->get();
+        // jenis koperasi
         $data['jenis_koperasi'] = [
             'Produksi' => 'Produksi',
             'Serba Usaha' => 'Serba Usaha',
@@ -53,10 +54,10 @@ class KoperasiController extends Controller
             'Konsumsi' => 'Konsumsi',
             'Lainnya' => 'Lainnya',
         ];
+        // status hukum
         $data['status_hukum'] = [
             'Berbadan Hukum' => 'Berbadan Hukum',
             'Belum Berbadan Hukum' => 'Belum Berbadan Hukum',
-
         ];
 
         return view('admin_desa.data_aset.form.create_koperasi',$data, compact('desas', 'kec'));
@@ -71,7 +72,7 @@ class KoperasiController extends Controller
      */
     public function store(Request $request)
     {
-        // proses penyimpanan untuk tambah data warung
+        // proses penyimpanan untuk tambah data koperasi
         $request->validate([
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
@@ -99,13 +100,13 @@ class KoperasiController extends Controller
         ]);
 
         // cara 1
-        // $insert=DB::table('war$warung')->where('periode', $request->periode)->first();
-        // if ($insert != null) {
-        //     Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Periode. Periode Sudah Ada ');
+        $insert=DB::table('data_aset_koperasi')->where('nama_koperasi', $request->nama_koperasi)->first();
+        if ($insert != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Periode. Periode Sudah Ada ');
 
-        //     return redirect('/war$warung');
-        // }
-        // else {
+            return redirect('/war$warung');
+        }
+        else {
             $koperasis = new DataAsetKoperasi;
             $koperasis->id_desa = $request->id_desa;
             $koperasis->id_kecamatan = $request->id_kecamatan;
@@ -123,7 +124,7 @@ class KoperasiController extends Controller
             Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
             return redirect('/data_aset_koperasi');
-        // }
+        }
     }
 
     /**
@@ -145,7 +146,7 @@ class KoperasiController extends Controller
      */
     public function edit(DataAsetKoperasi $data_aset_koperasi)
     {
-        // halaman edit data warung
+        // halaman edit data koperasi
         // nama desa yang login
         // dd($data_warung);
         $desas = DB::table('data_desa')
@@ -154,6 +155,7 @@ class KoperasiController extends Controller
         $kec = DB::table('data_kecamatan')
         ->where('id', auth()->user()->id_desa)
         ->get();
+        // jenis koperasi
         $data['jenis_koperasi'] = [
             'Produksi' => 'Produksi',
             'Serba Usaha' => 'Serba Usaha',
@@ -161,6 +163,7 @@ class KoperasiController extends Controller
             'Konsumsi' => 'Konsumsi',
             'Lainnya' => 'Lainnya',
         ];
+        // status hukum
         $data['status_hukum'] = [
             'Berbadan Hukum' => 'Berbadan Hukum',
             'Belum Berbadan Hukum' => 'Belum Berbadan Hukum',
@@ -206,20 +209,20 @@ class KoperasiController extends Controller
 
         ]);
 
-        // $update=DB::table('warung_pkk')->where('periode', $request->periode)->first();
-        // if ($update != null) {
-        //     Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
+        $update=DB::table('data_aset_koperasi')->where('nama_koperasi', $request->nama_koperasi)->first();
+        if ($update != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        //     return redirect('/war$warung');
-        // }
-        // else {
+            return redirect('/data_aset_koperasi');
+        }
+        else {
             $data_aset_koperasi->update($request->all());
 
             Alert::success('Berhasil', 'Data berhasil di ubah');
             // dd($jml_kader);
 
             return redirect('/data_aset_koperasi');
-        // }
+        }
     }
 
     /**

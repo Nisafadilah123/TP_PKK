@@ -198,13 +198,13 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
+                    <a href="/posyandu" class="nav-link {{ Request::is('posyandu') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Posyandu</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
+                    <a href="/data_kegiatan_posyandu" class="nav-link {{ Request::is('data_kegiatan_posyandu') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data Posyandu</p>
                     </a>

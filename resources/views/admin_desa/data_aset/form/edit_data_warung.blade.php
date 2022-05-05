@@ -16,8 +16,15 @@
 
       <form action="{{ url ('/data_warung', $data_warung->id) }}" method="POST">
       @method('PUT')
-
         @csrf
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    {{  ($errors)  }}
+                </ul>
+            </div>
+        @endif
+
         <div class="card-body">
             <h6 style="color:red">* Nama Warung Diisi bilamana warung tersebut memiliki nama atau diisi sesuai dengan lokasi warung PKK
                 (misalnya: warung PKK RW 01, Warung PKK RT 04 RW 01, dll)</h6>

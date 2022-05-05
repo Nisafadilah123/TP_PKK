@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\AdminDesa\DataAset;
 use App\Http\Controllers\Controller;
-use App\Models\TamanBacaan;
+use App\Models\Posyandu;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class TamanBacaanController extends Controller
+class PosyanduController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class TamanBacaanController extends Controller
      */
     public function index()
     {
-        //halaman pengelola taman bacaan
+        //halaman pengelola posyandu
         // nama desa yang login
         $desas = DB::table('data_desa')
         ->where('id', auth()->user()->id_desa)
@@ -27,9 +27,9 @@ class TamanBacaanController extends Controller
             ->where('id', auth()->user()->id_desa)
             ->get();
 
-        $taman = TamanBacaan::all();
+        $posyandu = Posyandu::all();
 
-        return view('admin_desa.data_aset.taman_bacaan', compact('taman', 'desas', 'kec'));
+        return view('admin_desa.data_aset.posyandu', compact('posyandu', 'desas', 'kec'));
     }
 
     /**
@@ -48,7 +48,7 @@ class TamanBacaanController extends Controller
         ->get();
 
         // dd($desas);
-        return view('admin_desa.data_aset.form.create_taman', compact('desas', 'kec'));
+        return view('admin_desa.data_aset.form.create_posyandu', compact('desas', 'kec'));
 
     }
 
@@ -67,43 +67,49 @@ class TamanBacaanController extends Controller
             'id_kecamatan' => 'required',
             'kota' => 'required',
             'provinsi' => 'required',
-            'nama_taman_bacaan' => 'required',
-            'nama_pengelola' => 'required',
-            'jumlah_buku' => 'required',
+            'nama_posyandu' => 'required',
+            'pengelola' => 'required',
+            'sekretaris' => 'required',
+            'jenis_posyandu' => 'required',
+            'jumlah_kader' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Alamat Desa Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
             'id_kecamatan' => 'Lengkapi Alamat Kecamatan Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
             'kota.required' => 'Lengkapi Kota Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
             'provinsi.required' => 'Lengkapi Provinsi Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
-            'nama_taman_bacaan.required' => 'Lengkapi Nama Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
-            'nama_pengelola.required' => 'Lengkapi Nama Warga Yang Diberi Kepercayaan Mengelola Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
-            'jumlah_buku.required' => 'Lengkapi Jumlah Buku Yang Ada Pada Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
+            'nama_posyandu.required' => 'Lengkapi Nama Posyandu PKK Desa/Kelurahan',
+            'pengelola.required' => 'Lengkapi Nama Penanggung Jawab Pelaksanaan Posyandu PKK Desa/Kelurahan',
+            'sekretaris.required' => 'Lengkapi Sekretaris Penanggung Jawab Pelaksanaan Posyandu PKK Desa/Kelurahan',
+            'jenis_posyandu.required' => 'Pilih Jenis Posyandu PKK Desa/Kelurahan',
+            'jumlah_kader.required' => 'Lengkapi Jumlah Kader yang aktif dalam pelaksanaan Posyandu PKK Desa/Kelurahan',
 
         ]);
 
         // cara 1
-        $insert=DB::table('taman_bacaan')->where('nama_taman_bacaan', $request->nama_taman_bacaan)->first();
+        $insert=DB::table('data_aset_posyandu')->where('nama_posyandu', $request->nama_posyandu)->first();
         if ($insert != null) {
             Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Nama Taman Bacaan Sudah Ada ');
 
-            return redirect('/taman_bacaan');
+            return redirect('/posyandu');
         }
         else {
-            $tamans = new TamanBacaan;
-            $tamans->id_desa = $request->id_desa;
-            $tamans->id_kecamatan = $request->id_kecamatan;
-            $tamans->kota = $request->kota;
-            $tamans->provinsi = $request->provinsi;
-            $tamans->nama_taman_bacaan = $request->nama_taman_bacaan;
-            $tamans->nama_pengelola = $request->nama_pengelola;
-            $tamans->jumlah_buku = $request->jumlah_buku;
+            $posyandu = new Posyandu;
+            $posyandu->id_desa = $request->id_desa;
+            $posyandu->id_kecamatan = $request->id_kecamatan;
+            $posyandu->kota = $request->kota;
+            $posyandu->provinsi = $request->provinsi;
+            $posyandu->nama_posyandu = $request->nama_posyandu;
+            $posyandu->pengelola = $request->pengelola;
+            $posyandu->sekretaris = $request->sekretaris;
+            $posyandu->jenis_posyandu = $request->jenis_posyandu;
+            $posyandu->jumlah_kader = $request->jumlah_kader;
 
-            $tamans->save();
+            $posyandu->save();
 
             Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
-            return redirect('/taman_bacaan');
+            return redirect('/posyandu');
         }
     }
 
@@ -124,9 +130,9 @@ class TamanBacaanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(TamanBacaan $taman_bacaan)
+    public function edit(Posyandu $posyandu)
     {
-        //halaman edit data taman_bacaan
+        //halaman edit data posyandu
         // nama desa yang login
         $desas = DB::table('data_desa')
             ->where('id', auth()->user()->id_desa)
@@ -136,7 +142,7 @@ class TamanBacaanController extends Controller
             ->get();
 
 
-        return view('admin_desa.data_aset.form.edit_taman', compact('kec','desas', 'taman_bacaan'));
+        return view('admin_desa.data_aset.form.edit_posyandu', compact('kec','desas', 'posyandu'));
     }
 
     /**
@@ -146,41 +152,45 @@ class TamanBacaanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TamanBacaan $taman_bacaan)
+    public function update(Request $request, Posyandu $posyandu)
     {
-        // proses mengubah data pengelola taman bacaan
+        // proses mengubah data pengelola posyandu
         $request->validate([
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
             'kota' => 'required',
             'provinsi' => 'required',
-            'nama_taman_bacaan' => 'required',
-            'nama_pengelola' => 'required',
-            'jumlah_buku' => 'required',
+            'nama_posyandu' => 'required',
+            'pengelola' => 'required',
+            'sekretaris' => 'required',
+            'jenis_posyandu' => 'required',
+            'jumlah_kader' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Alamat Desa Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
             'id_kecamatan' => 'Lengkapi Alamat Kecamatan Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
             'kota.required' => 'Lengkapi Kota Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
             'provinsi.required' => 'Lengkapi Provinsi Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
-            'nama_taman_bacaan.required' => 'Lengkapi Nama Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
-            'nama_pengelola.required' => 'Lengkapi Nama Warga Yang Diberi Kepercayaan Mengelola Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
-            'jumlah_buku.required' => 'Lengkapi Jumlah Buku Yang Ada Pada Taman Bacaan/Perpustakaan PKK Desa/Kelurahan',
+            'nama_posyandu.required' => 'Lengkapi Nama Posyandu PKK Desa/Kelurahan',
+            'pengelola.required' => 'Lengkapi Nama Penanggung Jawab Pelaksanaan Posyandu PKK Desa/Kelurahan',
+            'sekretaris.required' => 'Lengkapi Sekretaris Penanggung Jawab Pelaksanaan Posyandu PKK Desa/Kelurahan',
+            'jenis_posyandu.required' => 'Pilih Jenis Posyandu PKK Desa/Kelurahan',
+            'jumlah_kader.required' => 'Lengkapi Jumlah Kader yang aktif dalam pelaksanaan Posyandu PKK Desa/Kelurahan',
 
         ]);
-        $update=DB::table('taman_bacaan')->where('nama_taman_bacaan', $request->nama_taman_bacaan)->first();
-        if ($update != null) {
-            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
+        // $update=DB::table('data_aset_posyandu')->where('nama_posyandu', $request->nama_posyandu)->first();
+        // if ($update != null) {
+        //     Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Nama Posyandu Sudah Ada ');
 
-            return redirect('/taman_bacaan');
-        }
-        else {
-            $taman_bacaan->update($request->all());
+        //     return redirect('/posyandu');
+        // }
+        // else {
+            $posyandu->update($request->all());
 
             Alert::success('Berhasil', 'Data berhasil di ubah');
             // dd($jml_kader);
-            return redirect('/taman_bacaan');
-        }
+            return redirect('/posyandu');
+            // }
     }
 
     /**
@@ -189,14 +199,15 @@ class TamanBacaanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($taman_bacaan, TamanBacaan $taman)
+    public function destroy($posyandu, Posyandu $taman)
     {
-        //temukan id pengelola taman_bacaan
-        $taman::find($taman_bacaan)->delete();
+        //temukan id war$posyandu
+        $taman::find($posyandu)->delete();
         Alert::success('Berhasil', 'Data berhasil di hapus');
 
-        return redirect('/taman_bacaan');
+        return redirect('/posyandu');
 
 
-}
+    }
+
 }

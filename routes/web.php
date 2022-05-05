@@ -3,11 +3,13 @@
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PokjaController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminDesa\DataAset\DataPosyanduController;
 use App\Http\Controllers\AdminDesa\DataAset\DataTamanBacaanController;
 use App\Http\Controllers\AdminDesa\DataAset\DataWarungController;
 use App\Http\Controllers\AdminDesa\DataAset\KejarPaketController;
 use App\Http\Controllers\AdminDesa\DataAset\KelompokSimulasiController;
 use App\Http\Controllers\AdminDesa\DataAset\KoperasiController;
+use App\Http\Controllers\AdminDesa\DataAset\PosyanduController;
 use App\Http\Controllers\AdminDesa\DataAset\TamanBacaanController;
 use App\Http\Controllers\AdminDesa\DataAset\WarungController;
 use App\Http\Controllers\AdminDesa\DataPokja1\GotongRoyongController;
@@ -174,6 +176,8 @@ Route::middleware(['user_type:admin_desa'])->group(function(){
     Route::resource('/data_aset_koperasi', KoperasiController::class);
     Route::resource('/kelompok_simulasi', KelompokSimulasiController::class);
     Route::resource('/kejar_paket', KejarPaketController::class);
+    Route::resource('/posyandu', PosyanduController::class);
+    Route::resource('/data_kegiatan_posyandu', DataPosyanduController::class);
 
 });
 

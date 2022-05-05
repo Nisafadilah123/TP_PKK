@@ -18,7 +18,7 @@ class DataTamanBacaanController extends Controller
      */
     public function index()
     {
-        //halaman data warung
+        //halaman data jenis buku taman bacaan
         // nama desa yang login
         $desas = DB::table('data_desa')
         ->where('id', auth()->user()->id_desa)
@@ -61,7 +61,7 @@ class DataTamanBacaanController extends Controller
      */
     public function store(Request $request)
     {
-        // proses penyimpanan untuk tambah data warung
+        // proses penyimpanan untuk tambah data jenis buku taman bacaan
         $request->validate([
             'id_taman_bacaan' => 'required',
             'jenis_buku' => 'required',
@@ -120,7 +120,7 @@ class DataTamanBacaanController extends Controller
      */
     public function edit(DataTamanBacaan $data_taman_bacaan)
     {
-        // halaman edit data warung
+        // halaman edit data jenis buku taman bacaan
         // nama desa yang login
         // dd($data_taman_bacaan);
         $desas = DB::table('data_desa')
@@ -143,7 +143,7 @@ class DataTamanBacaanController extends Controller
      */
     public function update(Request $request, DataTamanBacaan $data_taman_bacaan)
     {
-        // proses mengubah untuk tambah data jml kader
+        // proses mengubah data jenis buku tanaman bacaan
         $request->validate([
             'id_taman_bacaan' => 'required',
             'jenis_buku' => 'required',
@@ -183,7 +183,7 @@ class DataTamanBacaanController extends Controller
      */
     public function destroy($data_taman_bacaan, DataTamanBacaan $taman)
     {
-        //temukan id taman
+        //temukan id jenis buku taman bacaan
         $taman::find($data_taman_bacaan)->delete();
         Alert::success('Berhasil', 'Data berhasil di hapus');
 

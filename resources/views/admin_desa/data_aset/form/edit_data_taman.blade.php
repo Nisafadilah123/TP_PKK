@@ -16,14 +16,20 @@
 
     <form action="{{ url ('/data_taman_bacaan', $data_taman_bacaan->id) }}" method="POST">
         @method('PUT')
-
         @csrf
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    {{  ($errors)  }}
+                </ul>
+            </div>
+        @endif
+
             <div class="card-body">
                 <div class="form-group">
                     <label>Nama Pengelola Taman Bacaan PKK</label>
                         <select class="form-control @error('nama_pengelola') is-invalid @enderror" id="id_taman_bacaan" name="id_taman_bacaan">
                             {{-- Pilih Nama Kepala Rumah Tangga --}}
-                            <option hidden> Pilih Nama Pengelola Taman Bacaan PKK</option>
                                 @foreach ($taman as $c)
                                     <option value="{{$c->id}}" {{ $c->id === $data_taman_bacaan->id_taman_bacaan ? 'selected' : '' }}>{{ $c->nama_pengelola }}</option>
                                 @endforeach

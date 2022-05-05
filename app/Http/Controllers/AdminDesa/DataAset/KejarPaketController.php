@@ -17,7 +17,7 @@ class KejarPaketController extends Controller
      */
     public function index()
     {
-        //halaman data warung
+        //halaman data kejar paket
         // nama desa yang login
         $desas = DB::table('data_desa')
         ->where('id', auth()->user()->id_desa)
@@ -45,6 +45,7 @@ class KejarPaketController extends Controller
         $kec = DB::table('data_kecamatan')
         ->where('id', auth()->user()->id_desa)
         ->get();
+        // jenis paket
         $data['jenis_paket'] = [
             'Paket A' => 'Paket A',
             'Paket B' => 'Paket B',
@@ -64,7 +65,7 @@ class KejarPaketController extends Controller
      */
     public function store(Request $request)
     {
-        // proses penyimpanan untuk tambah data warung
+        // proses penyimpanan untuk tambah data kejar paket
         $request->validate([
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
@@ -94,13 +95,13 @@ class KejarPaketController extends Controller
         ]);
 
         // cara 1
-        // $insert=DB::table('war$warung')->where('periode', $request->periode)->first();
-        // if ($insert != null) {
-        //     Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Periode. Periode Sudah Ada ');
+        $insert=DB::table('kejar_paket')->where('nama_kejar_paket', $request->nama_kejar_paket)->first();
+        if ($insert != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Nama Kejar Paket/KF/PAUD Sudah Ada ');
 
-        //     return redirect('/war$warung');
-        // }
-        // else {
+            return redirect('/kejar_paket');
+        }
+        else {
             $paket = new KejarPaket;
             $paket->id_desa = $request->id_desa;
             $paket->id_kecamatan = $request->id_kecamatan;
@@ -119,7 +120,7 @@ class KejarPaketController extends Controller
             Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
             return redirect('/kejar_paket');
-        // }
+        }
     }
 
     /**
@@ -141,7 +142,7 @@ class KejarPaketController extends Controller
      */
     public function edit(KejarPaket $kejar_paket)
     {
-        // halaman edit data warung
+        // halaman edit data kejar paket
         // nama desa yang login
         // dd($data_warung);
         $desas = DB::table('data_desa')
@@ -152,6 +153,7 @@ class KejarPaketController extends Controller
         ->get();
         // $data_warung = DataWarung::all();
         $paket = KejarPaket::all();
+        //data jenis paket
         $data['jenis_paket'] = [
             'Paket A' => 'Paket A',
             'Paket B' => 'Paket B',
@@ -172,7 +174,7 @@ class KejarPaketController extends Controller
      */
     public function update(Request $request, KejarPaket $kejar_paket)
     {
-        // proses mengubah untuk tambah data jml kader
+        // proses mengubah data kejar paket
         $request->validate([
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
@@ -200,20 +202,20 @@ class KejarPaketController extends Controller
             'periode.required' => 'Pilih Periode Kelompok Simulasi/Penyuluhan  Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan',
 
         ]);
-        // $update=DB::table('warung_pkk')->where('periode', $request->periode)->first();
-        // if ($update != null) {
-        //     Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
+        $update=DB::table('kejar_paket')->where('nama_kejar_paket', $request->nama_kejar_paket)->first();
+        if ($update != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Nama Kejar Paket/KF/PAUD Sudah Ada ');
 
-        //     return redirect('/war$warung');
-        // }
-        // else {
+            return redirect('/kejar_paket');
+        }
+        else {
             $kejar_paket->update($request->all());
 
             Alert::success('Berhasil', 'Data berhasil di ubah');
             // dd($jml_kader);
 
             return redirect('/kejar_paket');
-        // }
+        }
     }
 
     /**
@@ -224,7 +226,7 @@ class KejarPaketController extends Controller
      */
     public function destroy($kejar_paket, KejarPaket $kejar)
     {
-        //temukan id kejar
+        //temukan id kejar paket
         $kejar::find($kejar_paket)->delete();
         Alert::success('Berhasil', 'Data berhasil di hapus');
 

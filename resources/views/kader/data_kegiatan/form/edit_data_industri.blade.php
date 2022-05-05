@@ -84,11 +84,11 @@
                             {{-- pilih nama Kategori --}}
                             @foreach($kategori as $key => $val)
                                 @if($key==old('nama_kategori', $data_industri->nama_kategori))
-                                <option value="{{ $key }}" selected>{{ $val }}</option>
+                                    <option value="{{ $key }}" selected>{{ $val }}</option>
                                 @else
-                                <option value="{{ $key }}">{{ $val }}</option>
+                                    <option value="{{ $key }}">{{ $val }}</option>
                                 @endif
-                        @endforeach
+                            @endforeach
                         </select>
                     </div>
                 </div>

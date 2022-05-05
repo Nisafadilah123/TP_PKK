@@ -123,7 +123,7 @@ class WarungController extends Controller
      */
     public function edit(WarungPKK $warung)
     {
-        //halaman edit data war$warung
+        //halaman edit data pengelola warung
         // nama desa yang login
         $desas = DB::table('data_desa')
             ->where('id', auth()->user()->id_desa)
@@ -145,7 +145,7 @@ class WarungController extends Controller
      */
     public function update(Request $request, WarungPKK $warung)
     {
-        // proses mengubah untuk tambah data jml kader
+        // proses mengubah data pengelola warung
         $request->validate([
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
@@ -163,20 +163,20 @@ class WarungController extends Controller
             'nama_pengelola.required' => 'Lengkapi Nama Pengelola Warung PKK Desa/Kelurahan',
 
         ]);
-        // $update=DB::table('warung_pkk')->where('periode', $request->periode)->first();
-        // if ($update != null) {
-        //     Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
+        $update=DB::table('warung_pkk')->where('nama_warung', $request->nama_warung)->first();
+        if ($update != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
-        //     return redirect('/war$warung');
-        // }
-        // else {
+            return redirect('/warung');
+        }
+        else {
             $warung->update($request->all());
 
             Alert::success('Berhasil', 'Data berhasil di ubah');
             // dd($jml_kader);
 
             return redirect('/warung');
-        // }
+        }
     }
 
     /**
@@ -187,7 +187,7 @@ class WarungController extends Controller
      */
     public function destroy($warung, WarungPKK $gotong)
     {
-        //temukan id war$warung
+        //temukan id pengelola warung
         $gotong::find($warung)->delete();
         Alert::success('Berhasil', 'Data berhasil di hapus');
 

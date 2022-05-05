@@ -18,7 +18,7 @@ class DataWarungController extends Controller
      */
     public function index()
     {
-        //halaman data warung
+        //halaman data komoditi warung
         // nama desa yang login
         $desas = DB::table('data_desa')
         ->where('id', auth()->user()->id_desa)
@@ -61,7 +61,7 @@ class DataWarungController extends Controller
      */
     public function store(Request $request)
     {
-        // proses penyimpanan untuk tambah data warung
+        // proses penyimpanan untuk tambah data komoditi warung
         $request->validate([
             'id_warung' => 'required',
             'komoditi' => 'required',
@@ -120,7 +120,7 @@ class DataWarungController extends Controller
      */
     public function edit(DataWarung $data_warung)
     {
-        // halaman edit data warung
+        // halaman edit data komoditi warung
         // nama desa yang login
         // dd($data_warung);
         $desas = DB::table('data_desa')
@@ -144,7 +144,7 @@ class DataWarungController extends Controller
      */
     public function update(Request $request, DataWarung $data_warung)
     {
-        // proses mengubah untuk tambah data jml kader
+        // proses mengubah data komoditi warung
         $request->validate([
             'id_warung' => 'required',
             'komoditi' => 'required',
@@ -184,7 +184,7 @@ class DataWarungController extends Controller
      */
     public function destroy($data_warung, DataWarung $warung)
     {
-        //temukan id war$warung
+        //temukan id komoditi warung
         $warung::find($data_warung)->delete();
         Alert::success('Berhasil', 'Data berhasil di hapus');
 

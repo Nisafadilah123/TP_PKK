@@ -16,6 +16,14 @@
 
       <form action="{{ route('data_taman_bacaan.store') }}" method="POST">
         @csrf
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    {{  ($errors)  }}
+                </ul>
+            </div>
+        @endif
+
             <div class="card-body">
                 <div class="form-group">
                     <label>Nama Pengelola Taman Bacaan PKK</label>

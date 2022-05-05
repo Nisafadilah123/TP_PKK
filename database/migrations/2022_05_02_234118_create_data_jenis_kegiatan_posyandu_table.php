@@ -23,7 +23,8 @@ return new class extends Migration
             $table->integer('jumlah_pengunjung_perempuan');
             $table->integer('jumlah_petugas_laki');
             $table->integer('jumlah_petugas_perempuan');
-            $table->string('keterangan_lain');
+            $table->string('keterangan_lain')->nullable();
+            $table->integer('periode');
 
             $table->timestamps();
         });

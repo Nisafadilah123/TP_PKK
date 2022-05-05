@@ -17,7 +17,7 @@ class KelompokSimulasiController extends Controller
      */
     public function index()
     {
-        //halaman data warung
+        //halaman data kelompok simulasi
         // nama desa yang login
         $desas = DB::table('data_desa')
         ->where('id', auth()->user()->id_desa)
@@ -58,7 +58,7 @@ class KelompokSimulasiController extends Controller
      */
     public function store(Request $request)
     {
-        // proses penyimpanan untuk tambah data warung
+        // proses penyimpanan tambah data kelompok simulasi
         $request->validate([
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
@@ -88,13 +88,13 @@ class KelompokSimulasiController extends Controller
         ]);
 
         // cara 1
-        // $insert=DB::table('war$warung')->where('periode', $request->periode)->first();
-        // if ($insert != null) {
-        //     Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali Periode. Periode Sudah Ada ');
+        $insert=DB::table('kelompok_simulasi')->where('nama_kegiatan', $request->nama_kegiatan)->first();
+        if ($insert != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Nama Kegiatan Sudah Ada ');
 
-        //     return redirect('/war$warung');
-        // }
-        // else {
+            return redirect('/kelompok_simulasi');
+        }
+        else {
             $kelompoks = new KelompokSimulasi;
             $kelompoks->id_desa = $request->id_desa;
             $kelompoks->id_kecamatan = $request->id_kecamatan;
@@ -113,7 +113,7 @@ class KelompokSimulasiController extends Controller
             Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
             return redirect('/kelompok_simulasi');
-        // }
+        }
     }
 
     /**
@@ -135,7 +135,7 @@ class KelompokSimulasiController extends Controller
      */
     public function edit(KelompokSimulasi $kelompok_simulasi)
     {
-        // halaman edit data warung
+        // halaman edit data kelompok simulasi
         // nama desa yang login
         // dd($data_warung);
         $desas = DB::table('data_desa')
@@ -144,7 +144,6 @@ class KelompokSimulasiController extends Controller
         $kec = DB::table('data_kecamatan')
         ->where('id', auth()->user()->id_desa)
         ->get();
-        // $data_warung = DataWarung::all();
         $kelompoks = KelompokSimulasi::all();
 
         return view('admin_desa.data_aset.form.edit_kelompok_simulasi', compact('kelompok_simulasi','kec','desas', 'kelompoks'));
@@ -159,7 +158,7 @@ class KelompokSimulasiController extends Controller
      */
     public function update(Request $request, KelompokSimulasi $kelompok_simulasi)
     {
-        // proses mengubah untuk tambah data jml kader
+        // proses mengubah data kelompok simulasi
         $request->validate([
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
@@ -187,20 +186,20 @@ class KelompokSimulasiController extends Controller
             'periode.required' => 'Pilih Periode Kelompok Simulasi/Penyuluhan  Kelompok Simulasi/Penyuluhan PKK Desa/Kelurahan',
 
         ]);
-        // $update=DB::table('warung_pkk')->where('periode', $request->periode)->first();
-        // if ($update != null) {
-        //     Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
+        $update=DB::table('kelompok_simulasi')->where('nama_kegiatan', $request->nama_kegiatan)->first();
+        if ($update != null) {
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Nama Kegiatan Sudah Ada ');
 
-        //     return redirect('/war$warung');
-        // }
-        // else {
+            return redirect('/war$warung');
+        }
+        else {
             $kelompok_simulasi->update($request->all());
 
             Alert::success('Berhasil', 'Data berhasil di ubah');
             // dd($jml_kader);
 
             return redirect('/kelompok_simulasi');
-        // }
+        }
     }
 
     /**
@@ -211,7 +210,7 @@ class KelompokSimulasiController extends Controller
      */
     public function destroy($kelompok_simulasi, KelompokSimulasi $kelompok)
     {
-        //temukan id kelompok
+        //temukan id kelompok simulasi
         $kelompok::find($kelompok_simulasi)->delete();
         Alert::success('Berhasil', 'Data berhasil di hapus');
 
