@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataWarga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -69,4 +70,16 @@ class KaderFormController extends Controller
 
         return redirect()->route('kader_desa.login');
     }
+
+     // halaman data rekap data warga pkk
+     public function rekap_data_warga($id){
+        $warga = DataWarga::all();
+        return view('kader.data_rekap', compact('warga'));
+    }
+
+    public function rekap(){
+        $warga = DataWarga::all();
+        return view('kader.rekap', compact('warga'));
+    }
+
 }

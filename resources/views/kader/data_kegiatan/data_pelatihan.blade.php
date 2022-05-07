@@ -39,27 +39,30 @@
                                     <tbody>
                                         <?php $no=1;?>
 
-                                        @foreach ($pelatihan as $c)
+                                        @foreach ($pelatihan as $key => $row)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
                                         {{-- nama desa yang login --}}
-                                        {{-- <td style="vertical-align: middle;">{{ucfirst($c->user->name) }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->desa->nama_desa)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->kecamatan->nama_kecamatan)}}</td>
-                                        <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($c->tgl_masuk)->isoFormat('D MMMM Y')}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->kedudukan)}}</td>
+                                        {{-- <td style="vertical-align: middle;">{{ucfirst($row->users->id_kader) }}</td> --}}
+                                        <td style="vertical-align: middle;">{{ucfirst($row->nama_pelatihan) }}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($row->kriteria_kader) }}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($row->tahun) }}</td>
+
+                                        <td style="vertical-align: middle;">{{ucfirst($row->penyelenggara) }}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($row->keterangan) }}</td>
+
                                         <td class="text-center">
-                                            <form action="{{ route('data_pelatihan.destroy',$c->id) }}" method="POST"> --}}
+                                            <form action="{{ route('data_pelatihan.destroy',$row->id) }}" method="POST">
 
                                             {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
 
-                                                {{-- <a class="btn btn-primary btn-sm" href="{{ url('data_pelatihan/'.$c->id.'/edit') }}">Edit</a>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('data_pelatihan/'.$row->id.'/edit') }}">Edit</a>
 
                                                 @csrf
                                                 @method('DELETE')
 
                                                 <button type="submit" class="btn btn-danger btn-sm delete">Delete</button>
-                                            </form> --}}
+                                            </form>
                                         </td>
 
                                     </tr>

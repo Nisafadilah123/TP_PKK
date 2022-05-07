@@ -145,19 +145,19 @@
                   <li class="nav-item">
                     <a href="/data_pokja1_super" class="nav-link {{ Request::is('data_pokja1_super') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data POKJA I</p>
+                      <p>Catatan Data dan Data <br> Kegiatan Warga PKK Desa/ <br> Kelurahan</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="/data_pokja2_super" class="nav-link {{ Request::is('data_pokja2_super') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data POKJA II</p>
+                      <p>Catatan Data dan Data <br> Kegiatan Warga PKK <br> Kecamatan</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="/data_pokja3_super" class="nav-link {{ Request::is('data_pokja3_super') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data POKJA III</p>
+                      <p>Catatan Data dan Data <br> Kegiatan Warga PKK <br> Kabupaten</p>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -169,7 +169,7 @@
                   <li class="nav-item">
                     <a href="/data_sekretariat_super" class="nav-link {{ Request::is('data_sekretariat_super') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data Sekretariat/Data Umum</p>
+                      <p>Data Sekretariat/ <br> Data Umum</p>
                     </a>
                   </li>
 
@@ -187,27 +187,16 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="/data_pokja1_super" class="nav-link {{ Request::is('data_pokja1_super') ? 'active':'' }}">
+                    <a href="/data_pokja_desa" class="nav-link {{ Request::is('data_pokja_desa') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Laporan POKJA Desa </p>
+                      <p>Laporan Data Umum <br> POKJA Desa </p>
                     </a>
                   </li>
+
                   <li class="nav-item">
-                    <a href="/data_pokja2_super" class="nav-link {{ Request::is('data_pokja2_super') ? 'active':'' }}">
+                    <a href="/data_pokja_kecamatan" class="nav-link {{ Request::is('data_pokja_kecamatan') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Laporan Data Umum Desa</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/data_pokja3_super" class="nav-link {{ Request::is('data_pokja3_super') ? 'active':'' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Laporan POKJA Kecamatan</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/data_pokja4_super" class="nav-link {{ Request::is('data_pokja4_super') ? 'active':'' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Laporan Data Umum Kecamatan</p>
+                      <p>Laporan Data Umum <br> POKJA Kecamatan </p>
                     </a>
                   </li>
 

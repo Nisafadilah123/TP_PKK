@@ -97,9 +97,14 @@ class SuperAdminController extends Controller
                 return redirect()->route('super_admin.login');
             }
 
-            // halaman data makanan pokok
-            public function makanan_super(){
-                return view('super_admin.sub_file_pokja_3.makanan_super');
+            // halaman data laporan pokja dan data umum desa
+            public function data_pokja_desa(){
+                return view('super_admin.data_pokja_desa');
+            }
+
+            // halaman data laporan pokja dan data umum kecamatan
+            public function data_pokja_kecamatan(){
+                return view('super_admin.data_pokja_kecamatan');
             }
 
             // halaman data pangan

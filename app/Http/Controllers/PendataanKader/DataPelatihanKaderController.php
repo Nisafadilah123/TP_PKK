@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\PendataanKader;
+
 use App\Http\Controllers\Controller;
 use App\Models\DataKaderGabung;
 use App\Models\DataPelatihanKader;
@@ -18,7 +19,15 @@ class DataPelatihanKaderController extends Controller
     public function index()
     {
         //halaman form data pelatihan kaderrangan
-        $pelatihan = DataPelatihanKader::all();
+        //$pelatihan = DataPelatihanKader::all();
+        $pelatihan = DB::table('data_pelatihan_kader as a')
+                                ->join('users as b', 'b.id', '=', 'a.id_kader')
+                                ->select([
+                                    'b.name as nama_kader',
+                                    'a.*'
+                                ])
+                                ->get();
+
         return view('kader.data_kegiatan.data_pelatihan', compact('pelatihan'));
     }
 
@@ -128,14 +137,21 @@ class DataPelatihanKaderController extends Controller
         ->where('id', auth()->user()->id)
         ->get();
 
-        $kader = DB::table('users')
-        ->where('id', auth()->user()->id)
+        // $kader = DB::table('users')
+        // ->where('id', auth()->user()->id)
+        // ->get();
+        $kader = DB::table('data_pelatihan_kader as a')
+        ->join('users as b', 'b.id', '=', 'a.id_kader')
+        ->select([
+            'b.name as nama_kader',
+            'a.*'
+        ])
         ->get();
 
         //halaman form edit data pemanfaatan tanah pekarangan
         $pelatihan = DataPelatihanKader::all();
 
-        return view('kader.data_kegiatan.form.edit_data_pelatihan', compact('data_pelatihan','pelatihan', 'gabung', 'kec', 'kader'));
+        return view('kader.data_kegiatan.form.edit_data_pelatihan', compact('data_pelatihan','pelatihan', 'gabung', 'kader'));
 
     }
 

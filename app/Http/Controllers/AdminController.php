@@ -84,11 +84,6 @@ class AdminController extends Controller
 
             return redirect()->route('admin_desa.login');
         }
-        // halaman data rekap data warga pkk
-        public function rekap_data_warga(){
-            $warga = DataWarga::all();
-            return view('admin_desa.data_rekap.rekap_data_warga', compact('warga'));
-        }
 
 
 }

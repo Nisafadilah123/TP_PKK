@@ -26,7 +26,6 @@
                                         <tr>
                                         <th>No</th>
                                         <th>Nama Desa</th>
-                                        {{-- <th>Kode Kelurahan</th> --}}
                                         <th>Data POKJA I</th>
                                         <th>Data POKJA II</th>
                                         <th>Data POKJA III</th>

@@ -183,6 +183,14 @@
                     </li>
 
                     <li class="nav-item">
+                        <a href="/rekap" class="nav-link {{ Request::is('rekap') ? 'active':'' }}">
+                            <i class="nav-icon fas fa-archive"></i>
+                            <p>Data Rekapitulasi</p>
+                        </a>
+                      </li>
+
+
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('kader_desa.logout') }}"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">

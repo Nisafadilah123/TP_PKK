@@ -82,7 +82,7 @@
             class="brand-image img-circle elevation-3"
             style="opacity: 0.8"
           /> --}}
-          <span class="brand-text font-weight-light">PKK Kecamatan</span>
+          <span class="brand-text font-weight-light">TP PKK Kecamatan</span>
         </a>
 
         <!-- Sidebar -->
@@ -119,7 +119,6 @@
                     <!-- <i class="right fas fa-angle-left"></i> -->
                   </p>
                 </a>
-
               </li>
 
               <li class="nav-item has-treeview">
@@ -166,12 +165,20 @@
                   <li class="nav-item">
                     <a href="data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data Sekretariat/Data Umum</p>
+                      <p>Data Sekretariat/<br> Data Umum</p>
                     </a>
                   </li>
 
                 </ul>
               </li>
+
+              <li class="nav-item">
+                <a href="/laporan" class="nav-link">
+                    <i class="nav-icon fas fa-folder-open"></i>
+                  <p>Data Catatan Data dan Data <br> Kegiatan Warga TP PKK <br> Kecamatan</p>
+                </a>
+              </li>
+
               <li class="nav-item">
                 <a href="/laporan" class="nav-link">
                     <i class="nav-icon fas fa-folder-open"></i>

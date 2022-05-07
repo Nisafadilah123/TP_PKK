@@ -131,7 +131,6 @@ Route::middleware(['user_type:admin_desa'])->group(function(){
     Route::get('/data_pokja4', [AdminController::class, 'data_pokja4']);
     Route::get('/laporan', [AdminController::class, 'data_laporan']);
     Route::get('/data_sekretariat', [AdminController::class, 'data_sekretariat']);
-    Route::get('/rekap_data_warga', [AdminController::class, 'rekap_data_warga']);
 
     // form data_pokja1
     Route::resource('/jml_kader', JumlahKaderPokja1Controller::class);
@@ -231,8 +230,8 @@ Route::middleware(['user_type:superadmin'])->group(function(){
     Route::get('/laporan_super', [SuperAdminController::class, 'data_laporan_super']);
     Route::get('/data_sekretariat_super', [SuperAdminController::class, 'data_sekretariat_super']);
     Route::get('/koperasi_super', [SuperAdminController::class, 'koperasi_super']);
-    Route::get('/makanan_super', [SuperAdminController::class, 'makanan_super']);
-    Route::get('/pangan_super', [SuperAdminController::class, 'pangan_super']);
+    Route::get('/data_pokja_desa', [SuperAdminController::class, 'data_pokja_desa']);
+    Route::get('/data_pokja_kecamatan', [SuperAdminController::class, 'data_pokja_kecamatan']);
 
     // form data_pokja1
     Route::resource('/jml_kader_super', JumlahKaderPokja1SuperController::class);
@@ -297,5 +296,7 @@ Route::middleware(['user_type:kader_desa'])->group(function(){
     Route::resource('/data_industri', DataIndustriRumahController::class);
     Route::resource('/data_pelatihan', DataPelatihanKaderController::class);
     Route::resource('/data_gabung', DataKaderGabungController::class);
+    Route::get('/rekap_data_warga/rekap_data_warga/{id}', [KaderFormController::class, 'rekap_data_warga']);
+    Route::get('/rekap', [KaderFormController::class, 'rekap']);
 
 });

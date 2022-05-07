@@ -159,12 +159,20 @@
                   <li class="nav-item">
                     <a href="/data_sekretariat_kab" class="nav-link {{ Request::is('data_sekretariat_kab') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data Sekretariat/Data Umum</p>
+                      <p>Data Sekretariat/ <br> Data Umum</p>
                     </a>
                   </li>
 
                 </ul>
               </li>
+
+              <li class="nav-item">
+                <a href="/laporan" class="nav-link">
+                    <i class="nav-icon fas fa-folder-open"></i>
+                  <p>Data Catatan Data dan Data <br> Kegiatan Warga TP PKK <br> Kabupaten</p>
+                </a>
+              </li>
+
               <li class="nav-item">
                 <a href="/laporan_kab" class="nav-link">
                     <i class="nav-icon fas fa-folder-open"></i>
