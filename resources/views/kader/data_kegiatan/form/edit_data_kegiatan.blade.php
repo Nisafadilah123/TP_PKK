@@ -1,6 +1,6 @@
 @extends('kader.layout')
 
-@section('title', 'Edit Data Kegiatan Warga TP PKK | Kader Desa PKK Kab. Indramayu')
+@section('title', 'Edit Data Kegiatan Warga TP PKK | Kader Desa/Kelurahan PKK Kab. Indramayu')
 
 @section('bread', 'Edit Data Kegiatan Warga TP PKK')
 @section('container')
