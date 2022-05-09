@@ -85,5 +85,34 @@ class AdminController extends Controller
             return redirect()->route('admin_desa.login');
         }
 
+        // rekap catatan data dan kegiatan warga kelompok dasa wisma admin desa
+        public function rekap_kelompok_dasa_wisma()
+        {
+            return view('');
+        }
+
+         // rekap catatan data dan kegiatan warga kelompok rt admin desa
+        public function rekap_kelompok_pkk_rt()
+        {
+            return view('');
+        }
+
+        // rekap catatan data dan kegiatan warga kelompok rw admin desa
+        public function rekap_kelompok_pkk_rw()
+        {
+            return view('');
+        }
+
+        // rekap catatan data dan kegiatan warga kelompok dusun admin desa
+        public function rekap_kelompok_pkk_dusun()
+        {
+            return view('');
+        }
+
+        // rekap catatan data dan kegiatan warga kelompok dusun admin desa
+        public function rekap_kelompok_pkk_desa()
+        {
+            return view('');
+        }
 
 }

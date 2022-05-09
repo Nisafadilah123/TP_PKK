@@ -24,6 +24,7 @@
                                     <thead>
                                         <tr>
                                         <th rowspan="2">No</th>
+                                        <th rowspan="2">No.Registrasi</th>
                                         <th rowspan="2">Nama Anggota Keluarga</th>
                                         <th rowspan="2">Status Dalam Keluarga</th>
                                         <th rowspan="2">Status Dalam Perkawinan</th>
@@ -44,14 +45,15 @@
                                         @foreach ($warga as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
-                                        <td style="vertical-align: middle;">{{$c->nama}}</td>
-                                        <td style="vertical-align: middle;">{{$c->status}}</td>
-                                        <td style="vertical-align: middle;">{{$c->status_perkawinan}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jenis_kelamin == 'laki-laki' ? 'laki-laki' :''}}</td>
-                                        <td style="vertical-align: middle;">{{$c->jenis_kelamin == 'perempuan' ? 'perempuan' :''}}</td>
-                                        <td style="vertical-align: middle;">{{$c->tgl_lahir}}/{{ $c->umur }}</td>
-                                        <td style="vertical-align: middle;">{{$c->pendidikan}}</td>
-                                        <td style="vertical-align: middle;">{{$c->pekerjaan}}</td>
+                                        <td style="vertical-align: middle;">{{ $c->no_registrasi }}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->nama)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->status)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->status_perkawinan)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin == 'laki-laki' ? 'laki-laki' :'')}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin == 'perempuan' ? 'perempuan' :'')}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->tgl_lahir)}}/{{ ucfirst($c->umur) }} Tahun</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->pendidikan)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->pekerjaan)}}</td>
 
 
                                     </tr>

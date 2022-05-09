@@ -25,4 +25,9 @@ class Kader extends Model implements AuthenticatableContract
         return $this->belongsTo(DataKecamatan::class, 'id_kecamatan');
     }
 
+    public function user(){
+        return $this->hasMany(User::class);
+    }
+
+
 }

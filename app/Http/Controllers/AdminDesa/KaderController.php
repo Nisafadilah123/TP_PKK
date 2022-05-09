@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\AdminDesa;
 use App\Http\Controllers\Controller;
-use App\Models\Kader;
+use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Http\Request;
@@ -19,7 +19,7 @@ class KaderController extends Controller
     public function index()
     {
         //halaman form data akun kader
-        $akun = Kader::where('user_type', 'kader_desa')
+        $akun = User::where('user_type', 'kader_desa')
             ->where('id_desa', auth()->user()->id_desa)
             ->get();
 

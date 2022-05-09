@@ -127,6 +127,20 @@
 
                     <div class="col-md-4">
                         <div class="form-group">
+                            <label>NIK Kepala Rumah Tangga</label>
+                            {{-- no.registrasi --}}
+                            <input type="text" class="form-control @error('nik_kepala_keluarga') is-invalid @enderror" name="nik_kepala_keluarga" id="nik_kepala_keluarga" placeholder="Diisi Nomor Induk Keluarga Kepala Keluarga">
+                            @error('nik_kepala_keluarga')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
                             <label>No. Registrasi</label>
                             {{-- no.registrasi --}}
                             <input type="text" class="form-control @error('no_registrasi') is-invalid @enderror" name="no_registrasi" id="no_registrasi" placeholder="Nomor Registrasi diisi dengan nomor urutan sesuai wilayah">

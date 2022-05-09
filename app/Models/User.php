@@ -62,4 +62,8 @@ class User extends Authenticatable
         return $this->hasMany(DataKaderGabung::class);
     }
 
+    public function kader(){
+        return $this->hasMany(Kader::class);
+    }
+
 }

@@ -237,7 +237,7 @@
                                     {{-- Pilih Nama Kepala Rumah Tangga --}}
                                     <option hidden> Pilih Nama Kepala Rumah Tangga</option>
                                     @foreach ($warga as $c)
-                                        <option value="{{$c->id}}">{{ $c->nama_kepala_rumah_tangga }}</option>
+                                        <option value="{{$c->id}}">{{ $c->nik_kepala_keluarga }} - {{ $c->nama_kepala_rumah_tangga }}</option>
                                     @endforeach
                                 </select>
                                 @error('nama_kepala_rumah_tangga')

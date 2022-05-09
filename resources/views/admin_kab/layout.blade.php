@@ -167,7 +167,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="/laporan" class="nav-link">
+                <a href="/rekap_kegiatan_kab" class="nav-link">
                     <i class="nav-icon fas fa-folder-open"></i>
                   <p>Data Catatan Data dan Data <br> Kegiatan Warga TP PKK <br> Kabupaten</p>
                 </a>

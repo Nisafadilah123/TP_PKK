@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\DataKeluarga;
 
 use App\Models\DataWarga;
 use Illuminate\Http\Request;
@@ -71,15 +72,29 @@ class KaderFormController extends Controller
         return redirect()->route('kader_desa.login');
     }
 
+    // ngambil nama kepala keluarga
+    public function rekap(){
+        $warga = DataWarga::whereNull('nik_kepala_keluarga')->get();
+        // dd($warga);
+        return view('kader.rekap', compact('warga'));
+    }
+
      // halaman data rekap data warga pkk
      public function rekap_data_warga($id){
-        $warga = DataWarga::all();
+        $kepala_keluarga = DataWarga::findOrFail($id);
+
+        $warga = DataWarga::where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+        ->get();
         return view('kader.data_rekap', compact('warga'));
     }
 
-    public function rekap(){
-        $warga = DataWarga::all();
-        return view('kader.rekap', compact('warga'));
+    // halaman data catatan keluarga pkk
+     public function catatan_keluarga($id){
+        $kepala_keluarga = DataWarga::findOrFail($id);
+
+        $catatan_keluarga = DataWarga::where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+            ->get();
+            return view('kader.catatan_keluarga', compact('catatan_keluarga'));
     }
 
 }

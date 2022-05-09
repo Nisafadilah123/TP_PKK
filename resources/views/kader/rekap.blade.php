@@ -25,6 +25,7 @@
                                         <tr>
                                         <th>No</th>
                                         <th>Nama Kepala Keluarga</th>
+                                        <th>NIK Kepala Rumah Tangga</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -35,10 +36,12 @@
                                         @foreach ($warga as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
-                                        <td style="vertical-align: middle;">{{$c->nama_kepala_rumah_tangga}}</td>
-                                        <td class="text-center">
+                                        <td style="vertical-align: middle;">{{ucfirst($c->nama_kepala_rumah_tangga)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->nik_kepala_keluarga)}}</td>
 
+                                        <td class="text-center">
                                                 <a class="btn btn-success btn-sm" href="{{ url('rekap_data_warga/'.$c->id.'/rekap_data_warga') }}">Rekap</a>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('catatan_keluarga/'.$c->id.'/catatan_keluarga') }}">Catatan Keluarga</a>
 
                                         </td>
 

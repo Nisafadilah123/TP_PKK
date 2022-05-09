@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan');
             $table->string('dasa_wisma');
             $table->string('nama_kepala_rumah_tangga');
+            $table->string('nik_kepala_keluarga')->nullable();
             $table->string('no_registrasi');
             $table->string('no_ktp');
             $table->string('nama');

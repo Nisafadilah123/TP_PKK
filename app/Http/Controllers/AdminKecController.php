@@ -84,4 +84,11 @@ class AdminKecController extends Controller
 
             return redirect()->route('admin_kecamatan.login');
         }
+
+        // rekap catatan data dan kegiatan warga admin kec
+        public function rekap_kegiatan_kec()
+        {
+            return view('');
+        }
+
 }

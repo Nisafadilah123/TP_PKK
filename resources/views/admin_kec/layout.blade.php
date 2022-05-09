@@ -163,7 +163,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
+                    <a href="rekap_kegiatan_kec" class="nav-link {{ Request::is('rekap_kegiatan_kec') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data Sekretariat/<br> Data Umum</p>
                     </a>
@@ -173,9 +173,9 @@
               </li>
 
               <li class="nav-item">
-                <a href="/laporan" class="nav-link">
+                <a href="/rekap_kegiatan_kec" class="nav-link">
                     <i class="nav-icon fas fa-folder-open"></i>
-                  <p>Data Catatan Data dan Data <br> Kegiatan Warga TP PKK <br> Kecamatan</p>
+                  <p>Data Catatan Data dan <br> Kegiatan Warga TP PKK <br> Kecamatan</p>
                 </a>
               </li>
 

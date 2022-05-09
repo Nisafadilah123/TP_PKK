@@ -86,4 +86,11 @@ class AdminKabController extends Controller
 
         return redirect()->route('admin_kabupaten.login');
     }
+
+    // rekap catatan data dan kegiatan warga admin kec
+    public function rekap_kegiatan_kab()
+    {
+        return view('');
+    }
+
 }

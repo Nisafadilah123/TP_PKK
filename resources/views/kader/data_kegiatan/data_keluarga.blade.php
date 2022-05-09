@@ -60,7 +60,6 @@
                                               </button>
 
                                                 <a class="btn btn-primary btn-sm" href="{{ url('data_keluarga/'.$c->id.'/edit') }}">Edit</a>
-                                                <a class="btn btn-success btn-sm" href="{{ url('rekap_data_warga/'.$c->id.'/rekap_data_warga') }}">Rekap</a>
 
                                                 @csrf
                                                 @method('DELETE')

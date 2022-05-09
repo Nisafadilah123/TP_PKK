@@ -133,6 +133,7 @@ class DataWargaController extends Controller
             $wargas->id_kecamatan = $request->id_kecamatan;
             $wargas->dasa_wisma = $request->dasa_wisma;
             $wargas->nama_kepala_rumah_tangga = $request->nama_kepala_rumah_tangga;
+            $wargas->nik_kepala_keluarga = $request->nik_kepala_keluarga == $request->no_ktp ? null : $request->nik_kepala_keluarga;
             $wargas->no_registrasi = $request->no_registrasi;
             $wargas->no_ktp = $request->no_ktp;
             $wargas->nama = $request->nama;
