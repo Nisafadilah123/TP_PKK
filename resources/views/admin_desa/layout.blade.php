@@ -278,7 +278,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="/rekap_kelompok_dasa_wisma" class="nav-link {{ Request::is('rekap_kelompok_dasa_wisma') ? 'active':'' }}">
+                    <a href="/data_kelompok_dasa_wisma" class="nav-link {{ Request::is('data_kelompok_dasa_wisma') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Rekapitulasi Catatan Data <br> dan Kegiatan Warga <br> Kelompok Dasa Wisma</p>
                     </a>
@@ -290,7 +290,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/rekap_kelompok_pkk_rt" class="nav-link {{ Request::is('rekap_kelompok_pkk_rt') ? 'active':'' }}">
+                    <a href="/rekap_kelompok_pkk_rw" class="nav-link {{ Request::is('rekap_kelompok_pkk_rw') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Rekapitulasi Catatan Data <br> dan Kegiatan Warga <br> Kelompok PKK RW</p>
                     </a>

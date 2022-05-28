@@ -85,34 +85,64 @@ class AdminController extends Controller
             return redirect()->route('admin_desa.login');
         }
 
+        // data catatan data dan kegiatan warga kelompok dasa wisma admin desa
+        public function data_kelompok_dasa_wisma()
+        {
+            return view('admin_desa.data_rekap.data_kelompok_dasa_wisma');
+        }
+
         // rekap catatan data dan kegiatan warga kelompok dasa wisma admin desa
         public function rekap_kelompok_dasa_wisma()
         {
-            return view('');
+            return view('admin_desa.data_rekap.data_rekap_dasa_wisma');
+        }
+
+        // data catatan data dan kegiatan warga kelompok pkk rt admin desa
+        public function data_kelompok_pkk_rt()
+        {
+            return view('admin_desa.data_rekap.data_kelompok_pkk_rt');
         }
 
          // rekap catatan data dan kegiatan warga kelompok rt admin desa
         public function rekap_kelompok_pkk_rt()
         {
-            return view('');
+            return view('admin_desa.data_rekap.data_rekap_pkk_rt');
+        }
+
+        // data catatan data dan kegiatan warga kelompok pkk rw admin desa
+        public function data_kelompok_pkk_rw()
+        {
+            return view('admin_desa.data_rekap.data_rekap_pkk_rw');
         }
 
         // rekap catatan data dan kegiatan warga kelompok rw admin desa
         public function rekap_kelompok_pkk_rw()
         {
-            return view('');
+            return view('admin_desa.data_rekap.data_rekap_pkk_rw');
+        }
+
+        // data catatan data dan kegiatan warga kelompok pkk dusun admin desa
+        public function data_kelompok_pkk_dusun()
+        {
+            return view('admin_desa.data_rekap.data_kelompok_dasa_wisma');
         }
 
         // rekap catatan data dan kegiatan warga kelompok dusun admin desa
         public function rekap_kelompok_pkk_dusun()
         {
-            return view('');
+            return view('admin_desa.data_rekap.data_rekap_pkk_dusun');
         }
 
-        // rekap catatan data dan kegiatan warga kelompok dusun admin desa
+        // data catatan data dan kegiatan warga kelompok pkk desa admin desa
+        // public function data_kelompok_pkk_desa()
+        // {
+        //     return view('admin_desa.data_rekap.data_kelompok_dasa_wisma');
+        // }
+
+        // rekap catatan data dan kegiatan warga kelompok desa admin desa
         public function rekap_kelompok_pkk_desa()
         {
-            return view('');
+            return view('admin_desa.data_rekap.data_rekap_pkk_desa');
         }
 
 }

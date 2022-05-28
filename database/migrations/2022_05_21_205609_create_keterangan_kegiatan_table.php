@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('keterangan_kegiatan', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_kegiatan')->unsigned();
+            $table->foreign('id_kegiatan')->references('id')->on('kategori_kegiatan');
+            $table->string('nama_keterangan');
             $table->timestamps();
         });
     }

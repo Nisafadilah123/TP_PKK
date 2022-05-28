@@ -128,7 +128,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>NIK Kepala Rumah Tangga</label>
-                            {{-- no.registrasi --}}
+                            {{-- NIK Kepala Rumah Tangga --}}
                             <input type="text" class="form-control @error('nik_kepala_keluarga') is-invalid @enderror" name="nik_kepala_keluarga" id="nik_kepala_keluarga" placeholder="Diisi Nomor Induk Keluarga Kepala Keluarga">
                             @error('nik_kepala_keluarga')
                                 <span class="invalid-feedback" role="alert">
@@ -139,7 +139,10 @@
                     </div>
 
 
-                    <div class="col-md-4">
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label>No. Registrasi</label>
                             {{-- no.registrasi --}}
@@ -151,9 +154,6 @@
                             @enderror
                         </div>
                     </div>
-                </div>
-
-                <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>No. KTP</label>
@@ -193,7 +193,10 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3">
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
                         <div class="form-group">
                             <label>Tempat lahir</label>
                             {{-- Tempat lahir --}}
@@ -205,9 +208,7 @@
                             @enderror
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Tanggal lahir</label>
@@ -260,6 +261,9 @@
                         </div>
                     </div>
 
+                </div>
+
+                <div class="row">
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">RW</label>
@@ -272,9 +276,6 @@
                             @enderror
                         </div>
                     </div>
-                </div>
-
-                <div class="row">
                     <div class="col-md-2">
                         <div class="form-group @error('id_desa') is-invalid @enderror">
                             <label for="exampleFormControlSelect1">Desa</label>
@@ -727,7 +728,7 @@
                             </span>
                         @enderror
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group @error('ikut_koperasi') is-invalid @enderror">
                             <label>Ikut dalam Kegiatan Koperasi</label><br>
                                 {{-- Pilih mengikuti kegiatan koperasi --}}

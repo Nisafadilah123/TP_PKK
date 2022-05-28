@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\DataKeluarga;
 
+use App\Models\DataKeluarga;
 use App\Models\DataWarga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -89,12 +89,22 @@ class KaderFormController extends Controller
     }
 
     // halaman data catatan keluarga pkk
-     public function catatan_keluarga($id){
-        $kepala_keluarga = DataWarga::findOrFail($id);
+     public function catatan_keluarga($id)
+     {
+        $kepala_keluarga = DataWarga::find($id);
 
-        $catatan_keluarga = DataWarga::where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+        $keluarga = DataKeluarga::where('id_warga', $kepala_keluarga->id)->first();
+
+        $catatan_keluarga = DataWarga::query()
+            ->with(['kegiatan', 'kepalaKeluarga'])
+            ->where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
             ->get();
-            return view('kader.catatan_keluarga', compact('catatan_keluarga'));
-    }
 
+        // $catatan_keluarga = DataWarga::->get();
+        // $catatan_keluarga = DataKeluarga::with(['warga' => function ($query) {
+        //     $query->where('nik_kepala_keluarga', $kepala_keluarga->nik_kepala_keluarga);
+        // }])->get();
+            // dd($catatan_keluarga);
+        return view('kader.catatan_keluarga', compact('catatan_keluarga', 'keluarga', 'kepala_keluarga'));
+    }
 }

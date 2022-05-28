@@ -43,42 +43,43 @@ class DataKegiatanWargaController extends Controller
 
 
         $warga = DataWarga::all(); // pemanggilan tabel data warga
-        // $keg = KategoriKegiatan::all(); // pemanggilan tabel data kategori kegiatan
-        $data['kategori'] = [
-            'Penghayatan dan Pengamalan Pancasila' => 'Penghayatan dan Pengamalan Pancasila',
-            'Kerja Bakti' => 'Kerja Bakti',
-            'Rukun Kematian' => 'Rukun Kematian',
-            'Kegiatan Keagamaan' => 'Kegiatan Keagamaan',
-            'Jimpitan' => 'Jimpitan',
-            'Arisan' => 'Arisan',
-            'Lain-lain' => 'Lain-lain',
-        ];
+        $keg = KategoriKegiatan::all(); // pemanggilan tabel data kategori kegiatan
+        // $data['kategori'] = [
+        //     'Penghayatan dan Pengamalan Pancasila' => 'Penghayatan dan Pengamalan Pancasila',
+        //     'Kerja Bakti' => 'Kerja Bakti',
+        //     'Rukun Kematian' => 'Rukun Kematian',
+        //     'Kegiatan Keagamaan' => 'Kegiatan Keagamaan',
+        //     'Jimpitan' => 'Jimpitan',
+        //     'Arisan' => 'Arisan',
+        //     'Lain-lain' => 'Lain-lain',
+        // ];
 
-        $data['keterangan'] = [
-            'Keagamaan' => 'Keagamaan',
-            'Pola Asuh' => 'Pola Asuh',
-            'PKBN' => ' PKBN',
-            'Pencegahan KDRT' => 'Pencegahan KDRT',
-            'Pencegahan Traffocking' => 'Pencegahan Traffocking',
-            'Narkoba' => 'Narkoba',
-            'Pencegahan Kejahatan Seksual' => 'Pencegahan Kejahatan Seksual',
-            'Kerja Bakti' => 'Kerja Bakti',
-            'Jimpitan' => 'Jimpitan',
-            'Arisan' => 'Arisan',
-            'Rukun Kematian' => 'Rukun Kematian',
-            'Bakti Sosial ' => 'Bakti Sosial',
-            'BKB (Bina Keluarga Balita)' => 'BKB (Bina Keluarga Balita)',
-            'PAUD Sejenis' => 'PAUD Sejenis',
-            'Paket A' => 'Paket A',
-            'Paket B' => 'Paket B',
-            'Paket C' => 'Paket C',
-            'KF (Keaksaraan Fungsinal) ' => 'KF (Keaksaraan Fungsional) ',
-            'UP2K (Usaha Peningkatan Pendapatan Keluarga)' => 'UP2K (Usaha Peningkatan Pendapatan Keluarga)',
-            'Koperasi' => 'Koperasi',
+        // $data['keterangan'] = [
+        //     'Keagamaan' => 'Keagamaan',
+        //     'Pola Asuh' => 'Pola Asuh',
+        //     'PKBN' => ' PKBN',
+        //     'Pencegahan KDRT' => 'Pencegahan KDRT',
+        //     'Pencegahan Traffocking' => 'Pencegahan Traffocking',
+        //     'Narkoba' => 'Narkoba',
+        //     'Pencegahan Kejahatan Seksual' => 'Pencegahan Kejahatan Seksual',
+        //     'Kerja Bakti' => 'Kerja Bakti',
+        //     'Jimpitan' => 'Jimpitan',
+        //     'Arisan' => 'Arisan',
+        //     'Rukun Kematian' => 'Rukun Kematian',
+        //     'Bakti Sosial ' => 'Bakti Sosial',
+        //     'BKB (Bina Keluarga Balita)' => 'BKB (Bina Keluarga Balita)',
+        //     'PAUD Sejenis' => 'PAUD Sejenis',
+        //     'Paket A' => 'Paket A',
+        //     'Paket B' => 'Paket B',
+        //     'Paket C' => 'Paket C',
+        //     'KF (Keaksaraan Fungsinal) ' => 'KF (Keaksaraan Fungsional) ',
+        //     'UP2K (Usaha Peningkatan Pendapatan Keluarga)' => 'UP2K (Usaha Peningkatan Pendapatan Keluarga)',
+        //     'Koperasi' => 'Koperasi',
 
-        ];
+        // ];
         //  dd($keg);
-        return view('kader.data_kegiatan.form.create_data_kegiatan', $data, compact('kec', 'warga', 'desas'));
+        // return view('kader.data_kegiatan.form.create_data_kegiatan', $data, compact('kec', 'warga', 'desas'));
+        return view('kader.data_kegiatan.form.create_data_kegiatan', compact('keg', 'warga', 'desas', 'kec'));
 
     }
 
@@ -97,37 +98,36 @@ class DataKegiatanWargaController extends Controller
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
             'id_warga' => 'required',
-            'nama_kegiatan' => 'required',
+            // 'nama_kegiatan' => 'required',
+            'id_kegiatan' => 'required',
             'aktivitas' => 'required',
-            'keterangan' => 'required',
+            // 'keterangan' => 'required',
+            'id_keterangan' => 'required',
             'periode' => 'required',
 
         ], [
             'id_desa.required' => 'Lengkapi Alamat Desa Kegiatan Warga Yang Didata',
             'id_kecamatan.required' => 'Lengkapi Alamat Kecamatan Kegiatan Warga Yang Didata',
             'id_warga.required' => 'Lengkapi Nama Warga Yang Didata',
-            'nama_kegiatan.required' => 'Lengkapi Kegiatan Yang Diikuti Warga',
+            // 'nama_kegiatan.required' => 'Lengkapi Kegiatan Yang Diikuti Warga',
+            'id_kegiatan.required' => 'Lengkapi Kegiatan Yang Diikuti Warga',
             'aktivitas.required' => 'Pilih Aktivitas Kegiatan Yang Diikuti Warga',
-            'keterangan.required' => 'Lengkapi Keterangan Kegiatan Yang Diikuti Warga',
+            // 'keterangan.required' => 'Lengkapi Keterangan Kegiatan Yang Diikuti Warga',
+            'id_keterangan.required' => 'Lengkapi Keterangan Kegiatan Yang Diikuti Warga',
             'periode.required' => 'Pilih Periode',
 
         ]);
 
         // pengkondisian tabel
-        $insert=DB::table('data_kegiatan_warga')->where('id_warga', $request->id_warga)->first();
-        if ($insert != null) {
-            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambah. Warga TP PKK Sudah Ada ');
-
-            return redirect('/data_kegiatan');
-        }
-        else {
             $kegiatans = new DataKegiatanWarga;
             $kegiatans->id_desa = $request->id_desa;
             $kegiatans->id_kecamatan = $request->id_kecamatan;
             $kegiatans->id_warga = $request->id_warga;
-            $kegiatans->nama_kegiatan = $request->nama_kegiatan;
+            // $kegiatans->nama_kegiatan = $request->nama_kegiatan;
+            $kegiatans->id_kegiatan = $request->id_kegiatan;
             $kegiatans->aktivitas = $request->aktivitas;
-            $kegiatans->keterangan = $request->keterangan;
+            // $kegiatans->keterangan = $request->keterangan;
+            $kegiatans->id_keterangan = $request->id_keterangan;
             $kegiatans->periode = $request->periode;
 
             // simpan data
@@ -136,7 +136,6 @@ class DataKegiatanWargaController extends Controller
             Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
             return redirect('/data_kegiatan');
-            }
     }
 
     /**

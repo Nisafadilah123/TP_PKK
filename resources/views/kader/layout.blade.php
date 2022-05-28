@@ -78,7 +78,7 @@
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="/dashboard" class="brand-link">
+        <a href="/dashboard_kader" class="brand-link">
           <img
             src="{{ url ('image/remove.png') }}"
             alt="AdminLTE Logo"
@@ -237,7 +237,7 @@
 
       <footer class="main-footer">
         <strong
-          >Copyright &copy; Admin PKK Desa.</strong
+          >Copyright &copy; Kader PKK Desa.</strong
         >
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">

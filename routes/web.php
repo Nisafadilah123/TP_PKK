@@ -72,6 +72,7 @@ use App\Http\Controllers\SuperAdminController;
 use App\Http\Middleware\Authenticate;
 use App\Models\BeritaKab;
 use App\Models\Data_Desa;
+use App\Models\KeteranganKegiatan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -132,17 +133,32 @@ Route::middleware(['user_type:admin_desa'])->group(function(){
     Route::get('/laporan', [AdminController::class, 'data_laporan']);
     Route::get('/data_sekretariat', [AdminController::class, 'data_sekretariat']);
 
+    // data kelompok dasa wisma
+    Route::get('/data_kelompok_dasa_wisma', [AdminController::class, 'data_kelompok_dasa_wisma']);
+
     // rekap kelompok dasa wisma
     Route::get('/rekap_kelompok_dasa_wisma', [AdminController::class, 'rekap_kelompok_dasa_wisma']);
+
+    // data kelompok pkk rt
+    Route::get('/data_kelompok_pkk_rt', [AdminController::class, 'data_kelompok_pkk_rt']);
 
     // rekap kelompok pkk rt
     Route::get('/rekap_kelompok_pkk_rt', [AdminController::class, 'rekap_kelompok_pkk_rt']);
 
+    // data kelompok pkk rw
+    Route::get('/data_kelompok_pkk_rw', [AdminController::class, 'data_kelompok_pkk_rw']);
+
     // rekap kelompok pkk rw
     Route::get('/rekap_kelompok_pkk_rw', [AdminController::class, 'rekap_kelompok_pkk_rw']);
 
+    // data kelompok pkk dusun
+    Route::get('/data_kelompok_pkk_dusun', [AdminController::class, 'data_kelompok_pkk_dusun']);
+
     // rekap kelompok dusun
     Route::get('/rekap_kelompok_pkk_dusun', [AdminController::class, 'rekap_kelompok_pkk_dusun']);
+
+    // data kelompok pkk desa
+    Route::get('/data_kelompok_pkk_desa', [AdminController::class, 'data_kelompok_pkk_desa']);
 
     // rekap kelompok desa
     Route::get('/rekap_kelompok_pkk_desa', [AdminController::class, 'rekap_kelompok_pkk_desa']);
@@ -192,6 +208,7 @@ Route::middleware(['user_type:admin_desa'])->group(function(){
     Route::resource('/kejar_paket', KejarPaketController::class);
     Route::resource('/posyandu', PosyanduController::class);
     Route::resource('/data_kegiatan_posyandu', DataPosyanduController::class);
+
 
 });
 
@@ -299,11 +316,18 @@ Route::middleware(['user_type:kader_desa'])->group(function(){
         Route::get('/dashboard_kader', [KaderFormController::class, 'dashboard_kader']);
 
         // mengambil nama desa
-        Route::get('getDesa/{id}', function ($id) {
-            $desas = Data_Desa::where('id_kecamatan',$id)->get();
-            // dd($desas);
-            return response()->json($desas);
+        // Route::get('getDesa/{id}', function ($id) {
+        //     $desas = Data_Desa::where('id_kecamatan',$id)->get();
+        //     // dd($desas);
+        //     return response()->json($desas);
+        // });
+
+        Route::get('getKeterangan/{id}', function ($id) {
+            $keterangan = KeteranganKegiatan::where('id_kegiatan',$id)->get();
+            // dd($keterangan);
+            return response()->json($keterangan);
         });
+
 
     // form data pendataan kader
     Route::resource('/data_warga', DataWargaController::class);

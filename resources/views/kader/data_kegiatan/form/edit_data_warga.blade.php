@@ -17,7 +17,79 @@
         <form action="{{ url('data_warga', $data_warga->id) }}" method="POST">
             @method('PUT')
             @csrf
-            <h6 style="color: red">* Semua elemen atribut harus diisi</h6>
+            <div class="row">
+                <div class="col-md-10">
+                    <h6 style="color: red">* Semua elemen atribut harus diisi</h6>
+                </div>
+                <div class="col-md-2">
+                <!-- Tombol yang memicu modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSaya">
+                    Klik Info
+                </button>
+
+                </div>
+            </div>
+            <!-- Contoh Modal -->
+            <div class="modal fade" id="modalSaya" tabindex="-1" role="dialog" aria-labelledby="modalSayaLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalSayaLabel">Info Keterangan Atribut </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <table>
+                                <tr>
+                                    <th colspan="1">Point/Isian</th>
+                                    <th>Penjelasan</th>
+                                </tr>
+                                <tr>
+                                    <td>Dasa Wisma</td>
+                                    <td>Di isi sesuai dengan nama dasawisma yang diikuti warga yang bersangkutan</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Nama Kepala Keluarga</td>
+                                    <td>Di isi dengan nama Kepala Rumah Tangga pada rumah yang didata.
+                                        Kepala Rumah Tangga adalah yang bertanggung jawab atas segala sesuatu yang terkait dengan kegiatan di dalam rumah yang sedang didata.</td>
+
+                                </tr>
+                                <tr>
+                                    <td>No. Registrasi</td>
+                                    <td>Nomor Registrasi diisi dengan nomor urutan sesuai wilayah, misalnya:020103042009001,dengan rincian: 02:prov; 01:kab/kota; 03:kec; 04:desa/kelurahan; 2009:th masuk; 001 : nomor pendataan</td>
+                                </tr>
+                                <tr>
+                                    <td>No. KTP/NIK</td>
+                                    <td>Di isi dengan sudah atau belum atas kepemilikan KTP dan atau Kartu Keluarga (KK)</td>
+                                </tr>
+                                <tr>
+                                    <td>Jabatan</td>
+                                    <td>Jabatan yang bersangkutan pada di struktural TP PKK</td>
+                                </tr>
+                                <tr>
+                                    <td>Status Dalam Keluarga</td>
+                                    <td>Diisi sesuai status yang bersangkutan didalam rumah yang sedang di data.</td>
+                                </tr>
+                                <tr>
+                                    <td>Akseptor KB</td>
+                                    <td>Diisi dengan apakah yang bersangkutan mengikuti program KB dan jenis akseptor KB yang dipilih</td>
+                                </tr>
+                                <tr>
+                                    <td>Memiliki Tabungan</td>
+                                    <td>Tabungan tidak hanya berupa uang di bank, tetapi bisa juga berupa ternak, tanaman keras, tanah dll
+                                        sesuai dengan situasi kondisi masing-masing daerah</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Oke</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -25,7 +97,6 @@
                     </ul>
                 </div>
             @endif
-
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -55,6 +126,21 @@
 
                 <div class="col-md-4">
                     <div class="form-group">
+                        <label>NIK Kepala Rumah Tangga</label>
+                        {{-- NIK Kepala Rumah Tangga --}}
+                        <input type="text" class="form-control @error('nik_kepala_keluarga') is-invalid @enderror" name="nik_kepala_keluarga" id="nik_kepala_keluarga" placeholder="Diisi Nomor Induk Keluarga Kepala Keluarga" value="{{ucfirst(old('nik_kepala_keluarga', $data_warga->nik_kepala_keluarga))}}">
+                        @error('nik_kepala_keluarga')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
                         {{-- no.registrasi --}}
                         <label>No. Registrasi</label>
                             <input type="text" class="form-control @error('no_registrasi') is-invalid @enderror" name="no_registrasi" id="no_registrasi" placeholder="Nomor Registrasi diisi dengan nomor urutan sesuai wilayah" value="{{ucfirst(old('no_registrasi', $data_warga->no_registrasi))}}">
@@ -65,9 +151,7 @@
                                 @enderror
                         </div>
                 </div>
-            </div>
 
-            <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
                         {{-- no.KTP --}}
@@ -110,7 +194,10 @@
                         </div>
                 </div>
 
-                <div class="col-md-3">
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">
                     <div class="form-group">
                         <label>Tempat lahir</label>
                         {{-- tempat lahir --}}
@@ -122,9 +209,6 @@
                             @enderror
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
                         <label>Tanggal lahir</label>
@@ -178,7 +262,9 @@
                                 @enderror
                     </div>
                 </div>
+            </div>
 
+            <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
                         {{-- rw --}}
@@ -192,9 +278,6 @@
 
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
                 <div class="col-md-2">
                     <div class="form-group @error('id_desa') is-invalid @enderror">
                         <label for="exampleFormControlSelect1">Desa</label>
@@ -671,7 +754,7 @@
                         @enderror
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group @error('ikut_koperasi') is-invalid @enderror">
                         {{-- pilih Mengikuti dalam Kegiatan Koperasi --}}
                         <label>Ikut dalam Kegiatan Koperasi</label><br>

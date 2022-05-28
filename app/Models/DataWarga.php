@@ -26,7 +26,22 @@ class DataWarga extends Model
 
     // data_kegiatan_warga
     public function kegiatan(){
-        return $this->hasMany(DataKegiatanWarga::class);
+        return $this->hasMany(DataKegiatanWarga::class, 'id_warga');
+    }
+
+    // data_kategori_kegiatan
+    // public function kategori_kegiatan(){
+    //     return $this->hasMany(KategoriKegiatan::class, 'id_kegiatan');
+    // }
+
+    // data_keterangan_kegiatan
+    public function keterangan_kegiatan(){
+        return $this->hasMany(KeteranganKegiatan::class, 'id_keterangan');
+    }
+
+    public function kepalaKeluarga()
+    {
+        return $this->belongsTo(DataWarga::class, 'nik_kepala_keluarga', 'no_ktp');
     }
 
      // data_keluarga

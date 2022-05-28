@@ -89,16 +89,20 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Nama Kegiatan</label>
-                        <select class="form-control @error('nama_kegiatan') is-invalid @enderror" id="nama_kegiatan" name="nama_kegiatan">
+                        <select class="form-control @error('id_kegiatan') is-invalid @enderror" id="id_kegiatan" name="id_kegiatan">
                             {{-- Pilih Kegiatan --}}
                             <option hidden> Pilih Kegiatan</option>
-                            @foreach($kategori as $key => $val)
+                            {{-- @foreach($kategori as $key => $val)
                                 @if($key==old('nama_kategori'))
                                 <option value="{{ $key }}" selected>{{ $val }}</option>
                                 @else
                                 <option value="{{ $key }}">{{ $val }}</option>
                                 @endif
+                            @endforeach --}}
+                            @foreach ($keg as $item)
+                                <option value="{{ $item->id }}">{{ $item->nama_kegiatan }}</option>
                             @endforeach
+
                         </select>
                         @error('nama_kegiatan')
                             <span class="invalid-feedback" role="alert">
@@ -140,19 +144,19 @@
                         {{-- nama keterangan --}}
                         <label>Keterangan (Jenis Kegiatan Yang Diikuti)</label>
                         {{-- <input type="text" class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" id="keterangan" placeholder="Masukkan Keterangan"> --}}
-                        <select class="form-control @error('keterangan') is-invalid @enderror" id="keterangan" name="keterangan">
+                        <select class="form-control @error('id_keterangan') is-invalid @enderror" id="id_keterangan" name="id_keterangan">
                             {{-- Pilih Kegiatan --}}
-                            <option hidden> Pilih Keterangan Kegiatan</option>
-                                @foreach($keterangan as $key => $val)
+                            {{-- <option hidden> Pilih Keterangan Kegiatan</option> --}}
+                                {{-- @foreach($keterangan as $key => $val)
                                     @if($key==old('keterangan'))
                                         <option value="{{ $key }}" selected>{{ $val }}</option>
                                     @else
                                         <option value="{{ $key }}">{{ $val }}</option>
                                     @endif
-                                @endforeach
+                                @endforeach --}}
                         </select>
 
-                        @error('keterangan')
+                        @error('id_keterangan')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -200,14 +204,14 @@
 
 <script>
     $(document).ready(function() {
-    $('#id_kecamatan').on('change', function() {
+    $('#id_kegiatan').on('change', function() {
        var categoryID = $(this).val();
-       console.log('cek data kecamatan');
+       console.log('cek data kegiatan');
        if(categoryID) {
-        console.log('cek get data desa');
+        console.log('cek get data keterangan kegiatan');
 
            $.ajax({
-               url: '/getDesa/'+categoryID,
+               url: '/getKeterangan/'+categoryID,
                type: "GET",
                data : {"_token":"{{ csrf_token() }}"},
                dataType: "json",
@@ -216,18 +220,18 @@
                 console.log('sukses cek data desa');
 
                  if(data){
-                    $('#id_desa').empty();
-                    $('#id_desa').append('<option hidden>Pilih Desa</option>');
-                    $.each(data, function(key, desas){
-                        $('select[name="id_desa"]').append('<option value="'+ key +'">' + desas.nama_desa+ '</option>');
+                    $('#id_keterangan').empty();
+                    $('#id_keterangan').append('<option hidden>Pilih Keterangan</option>');
+                    $.each(data, function(key, keterangan){
+                        $('select[name="id_keterangan"]').append('<option value="'+ key +'">' + keterangan.nama_keterangan+ '</option>');
                     });
                 }else{
-                    $('#id_desa').empty();
+                    $('#id_keterangan').empty();
                 }
              }
            });
        }else{
-         $('#id_desa').empty();
+         $('#id_keterangan').empty();
        }
     });
     });

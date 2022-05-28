@@ -1,7 +1,7 @@
 {{-- bikin login sendiri --}}
 
 {{-- @extends('layouts.app') --}}
-@extends('admin_kec.layout_login')
+@extends('kader.layout_login')
 @section('content')
 {{-- <div class="container">
     <div class="row justify-content-center">
