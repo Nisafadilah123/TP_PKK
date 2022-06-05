@@ -253,7 +253,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
+                    <a href="/data_umum" class="nav-link {{ Request::is('data_umum') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data Sekretariat/<br>Data Umum</p>
                     </a>

@@ -16,10 +16,12 @@
 
       <form action="{{ route('posyandu.store') }}" method="POST">
         @csrf
-        @if ($errors->any())
+        @if (count($errors)>0)
             <div class="alert alert-danger">
                 <ul>
-                    {{  ($errors)  }}
+                    @foreach ($errors->all() as $error)
+                        <li>{{  ($error)  }}</li>
+                    @endforeach
                 </ul>
             </div>
         @endif
@@ -90,7 +92,7 @@
                         <div class="form-group">
                             {{-- nama Nama posyandu --}}
                             <label>Nama posyandu</label>
-                                <input type="text" class="form-control @error('nama_posyandu') is-invalid @enderror" name="nama_posyandu" id="nama_posyandu" placeholder="Masukkan Nama posyandu">
+                                <input type="text" class="form-control @error('nama_posyandu') is-invalid @enderror" name="nama_posyandu" id="nama_posyandu" placeholder="Masukkan Nama posyandu" value="{{old('nama_posyandu')}}">
                                     @error('nama_posyandu')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -103,7 +105,7 @@
                         <div class="form-group">
                             {{-- nama Nama Pengelola --}}
                             <label>Nama Pengelola</label>
-                                <input type="text" class="form-control @error('pengelola') is-invalid @enderror" name="pengelola" id="pengelola" placeholder="Masukkan Nama Pengelola">
+                                <input type="text" class="form-control @error('pengelola') is-invalid @enderror" name="pengelola" id="pengelola" placeholder="Masukkan Nama Pengelola" value="{{old('pengelola')}}">
                                     @error('pengelola')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -116,7 +118,7 @@
                         <div class="form-group">
                             {{-- nama Sekretaris  --}}
                             <label>Sekretaris </label>
-                                <input type="text" class="form-control @error('sekretaris') is-invalid @enderror" name="sekretaris" id="sekretaris" placeholder="Masukkan Sekretaris yang bertanggung jawab pada posyandu yang bersangkutan">
+                                <input type="text" class="form-control @error('sekretaris') is-invalid @enderror" name="sekretaris" id="sekretaris" placeholder="Masukkan Sekretaris yang bertanggung jawab pada posyandu yang bersangkutan" value="{{old('seketaris')}}">
                                     @error('sekretaris')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -169,7 +171,7 @@
                         <div class="form-group">
                             {{-- nama Sekretaris  --}}
                             <label>Jumlah Kader </label>
-                                <input type="number" min="0" class="form-control @error('jumlah_kader') is-invalid @enderror" name="jumlah_kader" id="jumlah_kader" placeholder="Masukkan Jumlah Kader pada posyandu yang bersangkutan">
+                                <input type="number" min="0" class="form-control @error('jumlah_kader') is-invalid @enderror" name="jumlah_kader" id="jumlah_kader" placeholder="Masukkan Jumlah Kader pada posyandu yang bersangkutan" value="{{old('jumlah_kader')}}">
                                     @error('jumlah_kader')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

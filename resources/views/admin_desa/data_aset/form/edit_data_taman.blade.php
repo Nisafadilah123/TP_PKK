@@ -17,10 +17,12 @@
     <form action="{{ url ('/data_taman_bacaan', $data_taman_bacaan->id) }}" method="POST">
         @method('PUT')
         @csrf
-        @if ($errors->any())
+        @if (count($errors)>0)
             <div class="alert alert-danger">
                 <ul>
-                    {{  ($errors)  }}
+                    @foreach ($errors->all() as $error)
+                        <li>{{  ($error)  }}</li>
+                    @endforeach
                 </ul>
             </div>
         @endif

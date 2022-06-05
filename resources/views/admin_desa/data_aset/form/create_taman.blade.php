@@ -16,10 +16,12 @@
 
       <form action="{{ route('taman_bacaan.store') }}" method="POST">
         @csrf
-        @if ($errors->any())
+        @if (count($errors)>0)
             <div class="alert alert-danger">
                 <ul>
-                    {{  ($errors)  }}
+                    @foreach ($errors->all() as $error)
+                        <li>{{  ($error)  }}</li>
+                    @endforeach
                 </ul>
             </div>
         @endif
@@ -80,7 +82,7 @@
                     <div class="form-group">
                     {{-- nama Nama Taman Bacaan --}}
                         <label>Nama Taman Bacaan Perpustakaan</label>
-                            <input type="text" class="form-control @error('nama_taman_bacaan') is-invalid @enderror" name="nama_taman_bacaan" id="nama_taman_bacaan" placeholder="Masukkan Nama Taman Bacaan">
+                            <input type="text" class="form-control @error('nama_taman_bacaan') is-invalid @enderror" name="nama_taman_bacaan" id="nama_taman_bacaan" placeholder="Masukkan Nama Taman Bacaan" value="{{old('nama_taman_bacaan')}}">
                                 @error('nama_taman_bacaan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -91,7 +93,7 @@
                     <div class="form-group">
                         {{-- nama Nama Pengelola --}}
                         <label>Nama Pengelola</label>
-                            <input type="text" class="form-control @error('nama_pengelola') is-invalid @enderror" name="nama_pengelola" id="nama_pengelola" placeholder="Masukkan Nama Pengelola dengan nama warga yang diberi kepercayaan mengelola Taman Bacaan tersebut">
+                            <input type="text" class="form-control @error('nama_pengelola') is-invalid @enderror" name="nama_pengelola" id="nama_pengelola" placeholder="Masukkan Nama Pengelola dengan nama warga yang diberi kepercayaan mengelola Taman Bacaan tersebut" value="{{old('nama_pengelola')}}">
                                 @error('nama_pengelola')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -102,7 +104,7 @@
                     <div class="form-group">
                     {{-- Jumlah Buku --}}
                         <label>Jumlah Buku</label>
-                            <input type="number" min="0" class="form-control @error('jumlah_buku') is-invalid @enderror" name="jumlah_buku" id="jumlah_buku" placeholder="Masukkan Jumlah Buku dengan Jumlah seluruh buku yang ada pada taman bacaan tersebut">
+                            <input type="number" min="0" class="form-control @error('jumlah_buku') is-invalid @enderror" name="jumlah_buku" id="jumlah_buku" placeholder="Masukkan Jumlah Buku dengan Jumlah seluruh buku yang ada pada taman bacaan tersebut" value="{{old('jumlah_buku')}}">
                                 @error('jumlah_buku')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

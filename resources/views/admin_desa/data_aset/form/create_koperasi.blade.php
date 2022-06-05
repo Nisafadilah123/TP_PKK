@@ -16,10 +16,12 @@
 
       <form action="{{ route('data_aset_koperasi.store') }}" method="POST">
         @csrf
-        @if ($errors->any())
+        @if (count($errors)>0)
             <div class="alert alert-danger">
                 <ul>
-                    {{  ($errors)  }}
+                    @foreach ($errors->all() as $error)
+                        <li>{{  ($error)  }}</li>
+                    @endforeach
                 </ul>
             </div>
         @endif
@@ -133,7 +135,7 @@
                     <div class="form-group">
                     {{-- Jumlah anggota --}}
                         <label>Jumlah Anggota Laki-laki</label>
-                            <input type="number" min="0" class="form-control @error('jumlah_anggota_laki') is-invalid @enderror" name="jumlah_anggota_laki" id="jumlah_anggota_laki" placeholder="Masukkan Jumlah Anggota Koperasi Laki-laki">
+                            <input type="number" min="0" class="form-control @error('jumlah_anggota_laki') is-invalid @enderror" name="jumlah_anggota_laki" id="jumlah_anggota_laki" placeholder="Masukkan Jumlah Anggota Koperasi Laki-laki" value="{{old('jumlah_anggota_laki')}}">
                                 @error('jumlah_anggota_laki')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -144,7 +146,7 @@
                     <div class="form-group">
                         {{-- Jumlah anggota --}}
                         <label>Jumlah Anggota Perempuan</label>
-                            <input type="number" min="0" class="form-control @error('jumlah_anggota_perempuan') is-invalid @enderror" name="jumlah_anggota_perempuan" id="jumlah_anggota_perempuan" placeholder="Masukkan Jumlah Anggota Koperasi Perempuan">
+                            <input type="number" min="0" class="form-control @error('jumlah_anggota_perempuan') is-invalid @enderror" name="jumlah_anggota_perempuan" id="jumlah_anggota_perempuan" placeholder="Masukkan Jumlah Anggota Koperasi Perempuan" value="{{old('jumlah_anggota_perempuan')}}">
                                 @error('jumlah_anggota_perempuan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

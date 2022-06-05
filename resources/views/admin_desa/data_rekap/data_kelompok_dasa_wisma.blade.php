@@ -6,7 +6,7 @@
 @section('container')
 
     <!-- Main content -->
-    <div class="main-content">
+<div class="main-content">
     <section class="section">
 
         <div class="section-body">
@@ -18,31 +18,35 @@
                                 <table class="table table-striped table-bordered data" id="add-row">
                                     <thead>
                                         <tr>
-                                        <th>No</th>
-                                        <th>Nama Dasa Wisma</th>
-                                        <th>Periode</th>
-                                        <th>Aksi</th>
-                                    </tr>
+                                            <th>No</th>
+                                            <th>Nama Dasa Wisma</th>
+                                            <th>RT</th>
+                                            <th>RW</th>
+                                            <th>Periode</th>
+                                            <th>Aksi</th>
+                                        </tr>
                                     </thead>
 
-                                    {{-- <tbody>
+                                    <tbody>
                                         <?php $no=1;?>
 
-                                        @foreach ($warga as $c)
+                                        @foreach ($dasa_wisma as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->nama_kepala_rumah_tangga)}}</td>
-                                        <td class="text-center">
-                                                <a class="btn btn-success btn-sm" href="{{ url('rekap_data_warga/'.$c->id.'/rekap_data_warga') }}">Rekap</a>
-                                                <a class="btn btn-primary btn-sm" href="{{ url('catatan_keluarga/'.$c->id.'/catatan_keluarga') }}">Catatan Keluarga</a>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->dasa_wisma)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->rt)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->rw)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
 
+                                        <td class="text-center">
+                                            <a class="btn btn-success btn-sm" href="{{ url('rekap_kelompok_dasa_wisma').'?'.http_build_query(['dasa_wisma' => $c->dasa_wisma]) }}">Rekap</a>
                                         </td>
 
                                     </tr>
                                     <?php $no++ ;?>
 
                                     @endforeach
-                                    </tbody> --}}
+                                    </tbody>
 
                                 </table>
 

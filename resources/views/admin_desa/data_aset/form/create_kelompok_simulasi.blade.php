@@ -16,10 +16,13 @@
 
       <form action="{{ route('kelompok_simulasi.store') }}" method="POST">
         @csrf
-        @if ($errors->any())
+        @if (count($errors)>0)
             <div class="alert alert-danger">
                 <ul>
-                    {{  ($errors)  }}
+                    @foreach ($errors->all() as $error)
+                    <li>{{  ($error)  }}</li>
+
+                    @endforeach
                 </ul>
             </div>
         @endif
@@ -90,7 +93,7 @@
                         <div class="form-group">
                         {{-- nama Nama Taman Bacaan --}}
                             <label>Nama Kegiatan</label>
-                                <input type="text" class="form-control @error('nama_kegiatan') is-invalid @enderror" name="nama_kegiatan" id="nama_kegiatan" placeholder="Masukkan Nama Kegiatan">
+                                <input type="text" class="form-control @error('nama_kegiatan') is-invalid @enderror" name="nama_kegiatan" id="nama_kegiatan" placeholder="Masukkan Nama Kegiatan" value="{{old('nama_kegiatan')}}">
                                     @error('nama_kegiatan')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -103,7 +106,7 @@
                         <div class="form-group">
                         {{-- Jumlah anggota --}}
                             <label>Jenis Simulasi/Penyuluhan</label>
-                                <input type="text" class="form-control @error('jenis_simulasi') is-invalid @enderror" name="jenis_simulasi" id="jenis_simulasi" placeholder="Masukkan Jenis Simulasi/Penyuluhan Kelompok">
+                                <input type="text" class="form-control @error('jenis_simulasi') is-invalid @enderror" name="jenis_simulasi" id="jenis_simulasi" placeholder="Masukkan Jenis Simulasi/Penyuluhan Kelompok" vaue="{{old('jenis_simulasi')}}">
                                     @error('jenis_simulasi')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -118,7 +121,7 @@
                         <div class="form-group">
                         {{-- Jumlah kelompok --}}
                             <label>Jumlah Kelompok</label>
-                                <input type="number" min="0" class="form-control @error('jumlah_kelompok') is-invalid @enderror" name="jumlah_kelompok" id="jumlah_kelompok" placeholder="Masukkan Jumlah Kelompok yang Mengikuti Simulasi/penyuluhan">
+                                <input type="number" min="0" class="form-control @error('jumlah_kelompok') is-invalid @enderror" name="jumlah_kelompok" id="jumlah_kelompok" placeholder="Masukkan Jumlah Kelompok yang Mengikuti Simulasi/penyuluhan" value="{{old('jumlah_kelompok')}}">
                                     @error('jumlah_kelompok')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -131,7 +134,7 @@
                         <div class="form-group">
                             {{-- Jumlah Sosialisasi --}}
                             <label>Jumlah Sosialisasi</label>
-                                <input type="number" min="0" class="form-control @error('jumlah_sosialisasi') is-invalid @enderror" name="jumlah_sosialisasi" id="jumlah_sosialisasi" placeholder="Masukkan Jumlah Sosialisasi yang Telah dilaksanakan">
+                                <input type="number" min="0" class="form-control @error('jumlah_sosialisasi') is-invalid @enderror" name="jumlah_sosialisasi" id="jumlah_sosialisasi" placeholder="Masukkan Jumlah Sosialisasi yang Telah dilaksanakan" value="{{old('jumlah_sosialisasi')}}">
                                     @error('jumlah_sosialisasi')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -146,7 +149,7 @@
                         <div class="form-group">
                             {{-- Jumlah kader laki --}}
                                 <label>Jumlah Kader Laki-laki</label>
-                                    <input type="number" min="0" class="form-control @error('jumlah_kader_laki') is-invalid @enderror" name="jumlah_kader_laki" id="jumlah_kader_laki" placeholder="Masukkan Jumlah Kader Laki-laki">
+                                    <input type="number" min="0" class="form-control @error('jumlah_kader_laki') is-invalid @enderror" name="jumlah_kader_laki" id="jumlah_kader_laki" placeholder="Masukkan Jumlah Kader Laki-laki" value="{{old('jumlah_kader_laki')}}">
                                         @error('jumlah_kader_laki')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -159,7 +162,7 @@
                         <div class="form-group">
                             {{-- Jumlah kader perempuan --}}
                                 <label>Jumlah Kader Perempuan</label>
-                                    <input type="number" min="0" class="form-control @error('jumlah_kader_perempuan') is-invalid @enderror" name="jumlah_kader_perempuan" id="jumlah_kader_perempuan" placeholder="Masukkan Jumlah Kader Perempuan">
+                                    <input type="number" min="0" class="form-control @error('jumlah_kader_perempuan') is-invalid @enderror" name="jumlah_kader_perempuan" id="jumlah_kader_perempuan" placeholder="Masukkan Jumlah Kader Perempuan" value="{{old('jumlah_kader_perempuan')}}">
                                         @error('jumlah_kader_perempuan')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

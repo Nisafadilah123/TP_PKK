@@ -23,13 +23,16 @@
             {{-- <h6 style="color: red">* Keterangan Kegiatan Yang diikuti seperti : Keagamaan, PKBN, Pola Asuh Pencegahan KDRT, Pencegahan Traffocking, Narkoba, Pencegahan
                 Kejahatan Seksual, Kerja Bakti, Jimpitan, Arisan, Rukun Kematian, Bakti Sosial, BKB, PAUD Sejenis, Paket A, Paket B, Paket C, KF (Keaksaraan Fungsional),
                 UP2K, Koperasi</h6> --}}
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        {{  ($errors)  }}
-                    </ul>
-                </div>
-            @endif
+                @if (count($errors)>0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{  ($error)  }}</li>
+
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
 
             <div class="row">

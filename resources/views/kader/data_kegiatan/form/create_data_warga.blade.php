@@ -90,10 +90,13 @@
                     </div>
                 </div>
 
-                @if ($errors->any())
+                @if (count($errors)>0)
                     <div class="alert alert-danger">
                         <ul>
-                            {{  ($errors)  }}
+                            @foreach ($errors->all() as $error)
+                            <li>{{  ($error)  }}</li>
+
+                            @endforeach
                         </ul>
                     </div>
                 @endif
@@ -103,7 +106,7 @@
                         <div class="form-group">
                             <label>Dasa Wisma</label>
                             {{-- nama dasa wisma --}}
-                            <input type="text" class="form-control @error('dasa_wisma') is-invalid @enderror" name="dasa_wisma" id="dasa_wisma" placeholder="Di isi sesuai dengan nama dasawisma yang diikuti warga yang bersangkutan" >
+                            <input type="text" class="form-control @error('dasa_wisma') is-invalid @enderror" name="dasa_wisma" id="dasa_wisma" placeholder="Di isi sesuai dengan nama dasawisma yang diikuti warga yang bersangkutan" value="{{ old('dasa_wisma') }}">
                             @error('dasa_wisma')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -116,7 +119,7 @@
                         <div class="form-group">
                             <label>Nama Kepala Rumah Tangga</label>
                             {{-- Nama Kepala Rumah Tangga --}}
-                            <input type="text" class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" name="nama_kepala_rumah_tangga" id="nama_kepala_rumah_tangga" placeholder="Di isi dengan nama Kepala Rumah Tangga pada rumah yang didata">
+                            <input type="text" class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" name="nama_kepala_rumah_tangga" id="nama_kepala_rumah_tangga" placeholder="Di isi dengan nama Kepala Rumah Tangga pada rumah yang didata" value="{{ old('nama_kepala_rumah_tangga') }}">
                             @error('nama_kepala_rumah_tangga')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -129,7 +132,7 @@
                         <div class="form-group">
                             <label>NIK Kepala Rumah Tangga</label>
                             {{-- NIK Kepala Rumah Tangga --}}
-                            <input type="text" class="form-control @error('nik_kepala_keluarga') is-invalid @enderror" name="nik_kepala_keluarga" id="nik_kepala_keluarga" placeholder="Diisi Nomor Induk Keluarga Kepala Keluarga">
+                            <input type="text" class="form-control @error('nik_kepala_keluarga') is-invalid @enderror" name="nik_kepala_keluarga" id="nik_kepala_keluarga" placeholder="Diisi Nomor Induk Keluarga Kepala Keluarga" value="{{ old('nik_kepala_keluarga') }}">
                             @error('nik_kepala_keluarga')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -146,7 +149,7 @@
                         <div class="form-group">
                             <label>No. Registrasi</label>
                             {{-- no.registrasi --}}
-                            <input type="text" class="form-control @error('no_registrasi') is-invalid @enderror" name="no_registrasi" id="no_registrasi" placeholder="Nomor Registrasi diisi dengan nomor urutan sesuai wilayah">
+                            <input type="text" class="form-control @error('no_registrasi') is-invalid @enderror" name="no_registrasi" id="no_registrasi" placeholder="Nomor Registrasi diisi dengan nomor urutan sesuai wilayah" value="{{ old('no_registrasi') }}">
                             @error('no_registrasi')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -158,7 +161,7 @@
                         <div class="form-group">
                             <label>No. KTP</label>
                             {{-- No. KTP --}}
-                            <input type="text" class="form-control @error('no_ktp') is-invalid @enderror" name="no_ktp" id="no_ktp" placeholder="Di isi dengan sudah atau belum atas kepemilikan KTP dan atau Kartu Keluarga (KK)">
+                            <input type="text" class="form-control @error('no_ktp') is-invalid @enderror" name="no_ktp" id="no_ktp" placeholder="Di isi dengan sudah atau belum atas kepemilikan KTP dan atau Kartu Keluarga (KK)" value="{{ old('no_ktp') }}">
                             @error('no_ktp')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -171,7 +174,7 @@
                         <div class="form-group">
                             <label>Nama</label>
                             {{-- nama warga --}}
-                            <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" placeholder="Di isi dengan nama">
+                            <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" placeholder="Di isi dengan nama" value="{{ old('nama') }}">
                             @error('nama')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -184,7 +187,7 @@
                         <div class="form-group">
                             <label>Jabatan</label>
                             {{-- jabatan --}}
-                            <input type="text" class="form-control @error('jabatan') is-invalid @enderror" name="jabatan" id="jabatan" placeholder="Di isi jabatan yang bersangkutan pada di struktural TP PKK">
+                            <input type="text" class="form-control @error('jabatan') is-invalid @enderror" name="jabatan" id="jabatan" placeholder="Di isi jabatan yang bersangkutan pada di struktural TP PKK" value="{{ old('jabatan') }}">
                             @error('jabatan')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -200,7 +203,7 @@
                         <div class="form-group">
                             <label>Tempat lahir</label>
                             {{-- Tempat lahir --}}
-                            <input type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" name="tempat_lahir" id="tempat_lahir" placeholder="Di isi Kota/Kabupaten tempat lahir yang bersangkutan">
+                            <input type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" name="tempat_lahir" id="tempat_lahir" placeholder="Di isi Kota/Kabupaten tempat lahir yang bersangkutan" value="{{ old('tempat_lahir') }}">
                             @error('tempat_lahir')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -213,7 +216,7 @@
                         <div class="form-group">
                             <label>Tanggal lahir</label>
                             {{-- Tanggal lahir --}}
-                            <input type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" name="tgl_lahir" id="tgl_lahir" placeholder="Di isi tanggal lahir" data-date-format="mm/dd/yyyy">
+                            <input type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" name="tgl_lahir" id="tgl_lahir" placeholder="Di isi tanggal lahir" data-date-format="mm/dd/yyyy" value="{{ old('tgl_lahir') }}">
                             @error('tgl_lahir')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -226,7 +229,7 @@
                         <div class="form-group">
                             <label>Umur</label>
                             {{-- umur --}}
-                            <input type="number" class="form-control @error('umur') is-invalid @enderror" name="umur" id="umur" placeholder="Di isi Umur">
+                            <input type="number" class="form-control @error('umur') is-invalid @enderror" name="umur" id="umur" placeholder="Di isi Umur" value="{{ old('umur') }}">
                             @error('umur')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -239,7 +242,7 @@
                         <div class="form-group">
                             <label>Alamat</label>
                             {{-- Alamat--}}
-                            <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" id="alamat" placeholder="Di isi Alamat">
+                            <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" id="alamat" placeholder="Di isi Alamat" value="{{ old('alamat') }}">
                             @error('alamat')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -252,7 +255,7 @@
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">RT</label>
                             {{-- rt --}}
-                            <input type="number" min="1" class="form-control @error('rt') is-invalid @enderror" name="rt" id="rt" placeholder="RT">
+                            <input type="number" min="1" class="form-control @error('rt') is-invalid @enderror" name="rt" id="rt" placeholder="RT" value="{{ old('rt') }}">
                             @error('rt')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -268,7 +271,7 @@
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">RW</label>
                             {{-- rw --}}
-                            <input type="number" min="1" class="form-control @error('rw') is-invalid @enderror" name="rw" id="rw" placeholder="RW">
+                            <input type="number" min="1" class="form-control @error('rw') is-invalid @enderror" name="rw" id="rw" placeholder="RW" value="{{ old('rw') }}">
                             @error('rw')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -342,7 +345,7 @@
                         <div class="form-group @error('periode') is-invalid @enderror">
                             <label>Periode</label>
                             {{-- pilih periode --}}
-                            <select style="cursor:pointer;" class="form-control " id="periode" name="periode">
+                            <select style="cursor:pointer;" class="form-control " id="periode" name="periode" value="{{ old('periode') }}">
                                 <option hidden> Pilih Tahun</option>
                                     <?php
                                     $year = date('Y');

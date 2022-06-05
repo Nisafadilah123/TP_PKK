@@ -19,10 +19,13 @@
         <div class="card-body">
             <h6 style="color: red">* Semua elemen atribut harus diisi</h6>
 
-            @if ($errors->any())
+            @if (count($errors)>0)
                 <div class="alert alert-danger">
                     <ul>
-                        {{  ($errors)  }}
+                        @foreach ($errors->all() as $error)
+                            <li>{{  ($error)  }}</li>
+
+                        @endforeach
                     </ul>
                 </div>
             @endif
@@ -108,7 +111,7 @@
             <div class="form-group">
                 <label>Komoditi</label>
                 {{-- nama Komoditi --}}
-                <input type="text" class="form-control @error('komoditi') is-invalid @enderror" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi">
+                <input type="text" class="form-control @error('komoditi') is-invalid @enderror" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi" value="{{ old('komoditi') }}">
                 @error('komoditi')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -121,7 +124,7 @@
                     <div class="form-group">
                         <label>Jumlah</label>
                         {{-- Jumlah Komoditi--}}
-                        <input type="number" class="form-control @error('jumlah') is-invalid @enderror" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah">
+                        <input type="number" class="form-control @error('jumlah') is-invalid @enderror" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah" value="{{ old('jumlah') }}">
                         @error('jumlah')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

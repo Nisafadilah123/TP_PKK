@@ -88,12 +88,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 // halaman main
+// Route::get('/', [MainController::class, 'home']);
 Route::get('/', function () {
     $berita = BeritaKab::all();
     // dd($berita);
 
     return view('main.home', ['berita'=>$berita]);
 });
+
 Route::get('/sejarah', [MainController::class, 'sejarah']);
 Route::get('/program', [MainController::class, 'program_pkk']);
 Route::get('/visi', [MainController::class, 'visi']);
@@ -130,6 +132,8 @@ Route::middleware(['user_type:admin_desa'])->group(function(){
     Route::get('/data_pokja2', [AdminController::class, 'data_pokja2']);
     Route::get('/data_pokja3', [AdminController::class, 'data_pokja3']);
     Route::get('/data_pokja4', [AdminController::class, 'data_pokja4']);
+    Route::get('/data_umum', [AdminController::class, 'data_umum']);
+
     Route::get('/laporan', [AdminController::class, 'data_laporan']);
     Route::get('/data_sekretariat', [AdminController::class, 'data_sekretariat']);
 
@@ -162,6 +166,22 @@ Route::middleware(['user_type:admin_desa'])->group(function(){
 
     // rekap kelompok desa
     Route::get('/rekap_kelompok_pkk_desa', [AdminController::class, 'rekap_kelompok_pkk_desa']);
+
+    // rekap laporan pokja 1
+    Route::get('/laporan_pokja_1', [AdminController::class, 'laporan_pokja_1']);
+
+    // rekap laporan pokja 2
+    Route::get('/laporan_pokja_2', [AdminController::class, 'laporan_pokja_2']);
+
+    // rekap laporan pokja 3
+    Route::get('/laporan_pokja_3', [AdminController::class, 'laporan_pokja_3']);
+
+    // rekap laporan pokja 4
+    Route::get('/laporan_pokja_4', [AdminController::class, 'laporan_pokja_4']);
+
+    // rekap laporan data umum
+    Route::get('/laporan_umum', [AdminController::class, 'laporan_umum']);
+
 
     // form data_pokja1
     Route::resource('/jml_kader', JumlahKaderPokja1Controller::class);
@@ -222,9 +242,10 @@ Route::middleware(['user_type:admin_kecamatan'])->group(function(){
     Route::get('/data_pokja2_kec', [AdminKecController::class, 'data_pokja2_kec']);
     Route::get('/data_pokja3_kec', [AdminKecController::class, 'data_pokja3_kec']);
     Route::get('/data_pokja4_kec', [AdminKecController::class, 'data_pokja4_kec']);
+    Route::get('/data_umum_kec', [AdminKecController::class, 'data_umum_kec']);
+
     Route::get('/pengguna_kec', [AdminKecController::class, 'data_pengguna_kec']);
     Route::get('/laporan_kec', [AdminKecController::class, 'data_laporan_kec']);
-    Route::get('/data_sekretariat_kec', [AdminKecController::class, 'data_sekretariat_kec']);
     Route::get('/koperasi_kec', [AdminKecController::class, 'koperasi_kec']);
     Route::get('/rekap_kegiatan_kec', [AdminKecController::class, 'rekap_kegiatan_kec']);
     Route::get('/pangan_kec', [AdminKecController::class, 'pangan_kec']);
@@ -243,7 +264,7 @@ Route::middleware(['user_type:admin_kabupaten'])->group(function(){
     Route::get('/data_pokja4_kab', [AdminKabController::class, 'data_pokja4_kab']);
     Route::get('/pengguna_kab', [AdminKabController::class, 'data_pengguna_kab']);
     Route::get('/laporan_kab', [AdminKabController::class, 'data_laporan_kab']);
-    Route::get('/data_sekretariat_kab', [AdminKabController::class, 'data_sekretariat_kab']);
+    Route::get('/data_umum_kab', [AdminKabController::class, 'data_umum_kab']);
     Route::get('/rekap_kegiatan_kab', [AdminKabController::class, 'rekap_kegiatan_kab']);
 
     //form berita admin kabupaten
@@ -341,6 +362,15 @@ Route::middleware(['user_type:kader_desa'])->group(function(){
 
     // rekap anggota keluarga
     Route::get('/rekap_data_warga/{id}/rekap_data_warga', [KaderFormController::class, 'rekap_data_warga']);
+
+    //print rekap anggota keluarga
+    Route::get('/print/{id}', [KaderFormController::class, 'print']);
+    Route::get('/print_pdf/{id}', [KaderFormController::class, 'print_pdf']);
+
+    //print rekap anggota keluarga
+    Route::get('/print_cakel/{id}', [KaderFormController::class, 'print_cakel']);
+    Route::get('/print_pdf_cakel/{id}', [KaderFormController::class, 'print_pdf_cakel']);
+
     // rekap catatan keluarga
     Route::get('/catatan_keluarga/{id}/catatan_keluarga', [KaderFormController::class, 'catatan_keluarga']);
 

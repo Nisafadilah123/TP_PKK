@@ -24,13 +24,17 @@
         <h6 style="color: red">Kriteria Kader diisi jenis kriteria sesuai dengan ketentuan yang ada pada TP PKK <br>
         (Misalnya : PAUD, BKB, KESLING, DLL)
         </h6>
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        {{  ($errors)  }}
-                    </ul>
-                </div>
-            @endif
+        @if (count($errors)>0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{  ($error)  }}</li>
+
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
             <div class="form-group">
                 <label>Nama Kader Pelatihan</label>
                     <select class="form-control @error('nama_kader_pelatihan') is-invalid @enderror" id="id_kader" name="id_kader">

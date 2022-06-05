@@ -76,28 +76,21 @@
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="/dashboard_kec" class="brand-link">
-          {{-- <img
-            src="dist/img/AdminLTELogo.png"
+          <img
+            src="{{ url ('image/remove.png') }}"
             alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3"
             style="opacity: 0.8"
-          /> --}}
-          <span class="brand-text font-weight-light">TP PKK Kecamatan</span>
+          />
+          <span class="brand-text font-weight-light">TP PKK Kecamtan</span>
         </a>
 
         <!-- Sidebar -->
         <div class="sidebar">
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-              <img
-                src="{{ url ('image/remove.png') }}"
-                class="img-circle elevation-2"
-                alt="User Image"
-              />
-            </div>
             <div class="info">
-              <a href="#" class="d-block">Admin PKK Kecamatan</a>
+              <a href="#" class="d-block">{{ (Auth::user()->name) }}</a>
             </div>
           </div>
 
@@ -109,14 +102,11 @@
               role="menu"
               data-accordion="false"
             >
-              <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
                <li class="nav-item has-treeview">
-                <a href="/dashboard" class="nav-link {{ Request::is('dashboard') ? 'active':'' }}">
+                <a href="/dashboard_kec" class="nav-link {{ Request::is('dashboard_kec') ? 'active':'' }}">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>
                     Dashboard
-                    <!-- <i class="right fas fa-angle-left"></i> -->
                   </p>
                 </a>
               </li>
@@ -127,49 +117,47 @@
                   <p>
                     Data Kegiatan POKJA
                     <i class="fas fa-angle-left right"></i>
-                    {{-- <span class="badge badge-info right">6</span> --}}
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                    {{-- <li class="nav-item">
-                    <a href="/data_desa" class="nav-link {{ Request::is('data_desa') ? 'active':'' }}" >
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Data wilayah Kelurahan</p>
-                    </a>
-                  </li> --}}
-                  {{-- </li> --}}
                   <li class="nav-item">
-                    <a href="/data_pokja1" class="nav-link {{ Request::is('data_pokja1') ? 'active':'' }}">
+                    <a href="/data_pokja1_kec" class="nav-link {{ Request::is('data_pokja1_kec') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA I</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/data_pokja2" class="nav-link {{ Request::is('data_pokja2') ? 'active':'' }}">
+                    <a href="/data_pokja2_kec" class="nav-link {{ Request::is('data_pokja2_kec') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA II</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="data_pokja3" class="nav-link {{ Request::is('data_pokja3') ? 'active':'' }}">
+                    <a href="/data_pokja3_kec" class="nav-link {{ Request::is('data_pokja3_kec') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA III</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="data_pokja4" class="nav-link {{ Request::is('data_pokja4') ? 'active':'' }}">
+                    <a href="/data_pokja4_kec" class="nav-link {{ Request::is('data_pokja4_kec') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Data POKJA IV</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="rekap_kegiatan_kec" class="nav-link {{ Request::is('rekap_kegiatan_kec') ? 'active':'' }}">
+                    <a href="/data_umum_kec" class="nav-link {{ Request::is('data_umum_kec') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data Sekretariat/<br> Data Umum</p>
+                      <p>Data Sekretariat/<br>Data Umum</p>
                     </a>
                   </li>
-
                 </ul>
+              </li>
+
+              <li class="nav-item">
+                <a href="/data_kader" class="nav-link">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Data Kader TP PKK</p>
+                </a>
               </li>
 
               <li class="nav-item">
@@ -186,22 +174,29 @@
                 </a>
               </li>
 
-              <li class="nav-item">
-                <a href="/pengguna" class="nav-link">
-                <i class="nav-icon fas fa-user"></i>
-                  <p>Data Anggota</p>
-                </a>
-              </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin_kecamatan.logout') }}"
+
+              {{-- <li class="nav-item">
+                <a class="nav-link" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                     <i class="nav-icon fas fa-sign-out-alt"></i>
                     Keluar
                 </a>
 
-                <form id="logout-form" action="{{ route('admin_kecamatan.logout') }}" method="POST" class="d-none">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+              </li> --}}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin_kec.logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    <i class="nav-icon fas fa-sign-out-alt"></i>
+                    Keluar
+                </a>
+
+                <form id="logout-form" action="{{ route('admin_desa.logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
               </li>
@@ -225,7 +220,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
               <li class="breadcrumb-item active">@yield('bread')</li>
             </ol>
           </div>
@@ -239,7 +234,7 @@
 
       <footer class="main-footer">
         <strong
-          >Copyright &copy; Admin PKK Kecamatan.</strong
+          >Copyright &copy; Admin PKK Desa.</strong
         >
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">

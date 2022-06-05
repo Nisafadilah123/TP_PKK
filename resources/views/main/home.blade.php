@@ -40,7 +40,6 @@
             </p>
           </div>
         </div>
-
         <div
           class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
           data-aos="zoom-in"
@@ -55,7 +54,6 @@
             </p>
           </div>
         </div>
-
         <div
           class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
           data-aos="zoom-in"
@@ -70,7 +68,6 @@
             </p>
           </div>
         </div>
-
         <div
           class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
           data-aos="zoom-in"
@@ -224,7 +221,6 @@
               </div>
             </div>
           </div>
-
           <div
             class="col-lg-3 col-md-6 d-flex align-items-stretch"
             data-aos="fade-up"
@@ -250,7 +246,6 @@
               </div>
             </div>
           </div>
-
           <div
             class="col-lg-3 col-md-6 d-flex align-items-stretch"
             data-aos="fade-up"

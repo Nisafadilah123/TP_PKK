@@ -16,10 +16,12 @@
 
       <form action="{{ route('data_warung.store') }}" method="POST">
         @csrf
-        @if ($errors->any())
+        @if (count($errors)>0)
             <div class="alert alert-danger">
                 <ul>
-                    {{  ($errors)  }}
+                    @foreach ($errors->all() as $error)
+                        <li>{{  ($error)  }}</li>
+                    @endforeach
                 </ul>
             </div>
         @endif
@@ -29,10 +31,10 @@
                     <label>Nama Pengelola Warung PKK</label>
                         <select class="form-control @error('nama_pengelola') is-invalid @enderror" id="id_warung" name="id_warung">
                             {{-- Pilih Nama Kepala Rumah Tangga --}}
-                                <option hidden> Pilih Nama Pengelola Warung PKK</option>
-                                    @foreach ($warung as $c)
-                                        <option value="{{$c->id}}">{{ $c->nama_pengelola }}</option>
-                                    @endforeach
+                            <option hidden> Pilih Nama Pengelola Warung PKK</option>
+                                @foreach ($warung as $c)
+                                    <option value="{{$c->id}}">{{ $c->nama_pengelola }}</option>
+                                @endforeach
                         </select>
                             @error('nama_pengelola')
                                 <span class="invalid-feedback" role="alert">
@@ -44,7 +46,7 @@
                 <div class="form-group">
                     {{-- nama Komoditi --}}
                     <label>Komoditi</label>
-                        <input type="text" class="form-control @error('komoditi') is-invalid @enderror" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi">
+                        <input type="text" class="form-control @error('komoditi') is-invalid @enderror" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi" value="{{old('komooditi')}}">
                             @error('komoditi')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -55,7 +57,7 @@
                 <div class="form-group">
                     {{-- nama kategori --}}
                     <label>Kategori</label>
-                        <input type="text" class="form-control @error('kategori') is-invalid @enderror" name="kategori" id="kategori" placeholder="Masukkan Kategori dari komoditi/usaha yang dijalankan">
+                        <input type="text" class="form-control @error('kategori') is-invalid @enderror" name="kategori" id="kategori" placeholder="Masukkan Kategori dari komoditi/usaha yang dijalankan" value="{{old('kategori')}}">
                             @error('kategori')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -66,7 +68,7 @@
                 <div class="form-group">
                     {{-- nama volume --}}
                     <label>Volume</label>
-                        <input type="number" min="0" class="form-control @error('volume') is-invalid @enderror" name="volume" id="volume" placeholder="Diisi dengan volume/jumlah dengan satuan yang Sesuai">
+                        <input type="number" min="0" class="form-control @error('volume') is-invalid @enderror" name="volume" id="volume" placeholder="Diisi dengan volume/jumlah dengan satuan yang Sesuai" value="{{old('volume')}}">
                             @error('volume')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

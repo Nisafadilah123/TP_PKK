@@ -16,10 +16,12 @@
 
       <form action="{{ route('data_taman_bacaan.store') }}" method="POST">
         @csrf
-        @if ($errors->any())
+        @if (count($errors)>0)
             <div class="alert alert-danger">
                 <ul>
-                    {{  ($errors)  }}
+                    @foreach ($errors->all() as $error)
+                        <li>{{  ($error)  }}</li>
+                    @endforeach
                 </ul>
             </div>
         @endif
@@ -44,7 +46,7 @@
                 <div class="form-group">
                     {{-- nama jenis_buku --}}
                     <label>Jenis Buku</label>
-                        <input type="text" class="form-control @error('jenis_buku') is-invalid @enderror" name="jenis_buku" id="jenis_buku" placeholder="Masukkan Jenis Buku">
+                        <input type="text" class="form-control @error('jenis_buku') is-invalid @enderror" name="jenis_buku" id="jenis_buku" placeholder="Masukkan Jenis Buku" value="{{ old('jenis_buku') }}">
                             @error('jenis_buku')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -54,24 +56,24 @@
 
                 <div class="form-group">
                     {{-- nama kategori --}}
-                          <label>Kategori</label>
-                            <input type="text" class="form-control @error('kategori') is-invalid @enderror" name="kategori" id="kategori" placeholder="Masukkan Kategori dari komoditi/usaha yang dijalankan">
-                                @error('kategori')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                    <label>Kategori</label>
+                        <input type="text" class="form-control @error('kategori') is-invalid @enderror" name="kategori" id="kategori" placeholder="Masukkan Kategori dari komoditi/usaha yang dijalankan" value="{{ old('kategori') }}">
+                            @error('kategori')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                 </div>
 
                 <div class="form-group">
-                            {{-- nama jumlah --}}
-                          <label>Jumlah</label>
-                            <input type="number" min="0" class="form-control @error('jumlah') is-invalid @enderror" name="jumlah" id="jumlah" placeholder="Diisi dengan jumlah buku sesuai dengan jenis dan kategori buku bacaan yang ada">
-                                @error('jumlah')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                    {{-- nama jumlah --}}
+                    <label>Jumlah</label>
+                        <input type="number" min="0" class="form-control @error('jumlah') is-invalid @enderror" name="jumlah" id="jumlah" placeholder="Diisi dengan jumlah buku sesuai dengan jenis dan kategori buku bacaan yang ada" value="{{ old('jumlah') }}">
+                            @error('jumlah')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                 </div>
 
                 <div class="form-group @error('periode') is-invalid @enderror">

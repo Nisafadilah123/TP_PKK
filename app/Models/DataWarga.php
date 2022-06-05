@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property-read Collection<DataKegiatanWarga> $kegiatan
+ */
 class DataWarga extends Model
 {
     use HasFactory;
@@ -46,7 +50,7 @@ class DataWarga extends Model
 
      // data_keluarga
      public function keluarga(){
-        return $this->hasMany(DataKeluarga::class);
+        return $this->hasMany(DataKeluarga::class, 'id_warga');
     }
 
     // data_pemanfaatan

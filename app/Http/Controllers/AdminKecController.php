@@ -14,23 +14,63 @@ class AdminKecController extends Controller
         }
 
         // halaman data pokja1
+        public function kelompok_data_pokja1_kec(){
+
+            return view('admin_kec.data_pokja.data_kelompok_data_pokja_1');
+        }
+        // halaman data pokja1
         public function data_pokja1_kec(){
-            return view('admin_kec.data_pokja1_kec');
+
+            // FAIL
+            // return view('admin_kec.data_pokja1');
+            return view('admin_kec.data_pokja.data_pokja_1');
+        }
+
+        // halaman data pokja1
+        public function kelompok_data_pokja2_kec(){
+
+            return view('admin_kec.data_pokja.data_kelompok_data_pokja_2');
         }
 
         // halaman data pokja2
         public function data_pokja2_kec(){
-            return view('admin_kec.data_pokja2_kec');
+            // return view('admin_kec.data_pokja2');
+            return view('admin_kec.data_pokja.data_pokja_2');
+
+        }
+
+        // halaman data pokja1
+        public function kelompok_data_pokja3_kec(){
+
+            return view('admin_kec.data_pokja.data_kelompok_data_pokja_3');
         }
 
         // halaman data pokja3
         public function data_pokja3_kec(){
-            return view('admin_kec.data_pokja3_kec');
+            // return view('admin_kec.data_pokja3');
+            return view('admin_kec.data_pokja.data_pokja_3');
+        }
+
+        // halaman data pokja1
+        public function kelompok_data_pokja4_kec(){
+            return view('admin_kec.data_pokja.data_kelompok_data_pokja_4');
         }
 
         // halaman data pokja4
         public function data_pokja4_kec(){
-            return view('admin_kec.data_pokja4_kec');
+            // return view('admin_kec.data_pokja4');
+            return view('admin_kec.data_pokja.data_pokja_4');
+        }
+
+        // halaman data pokja1
+        public function kelompok_data_umum_kec(){
+            return view('admin_kec.data_pokja.data_kelompok_data_umum');
+        }
+
+        // halaman data pokja4
+        public function data_umum_kec(){
+        // return view('admin_kec.data_pokja4');
+            return view('admin_kec.data_pokja.data_umum');
         }
 
         // halaman data pokja4
@@ -41,11 +81,6 @@ class AdminKecController extends Controller
         // halaman data pokja4
         public function data_pengguna_kec(){
             return view('admin_kec.data_pengguna_kec');
-        }
-
-        // halaman data sekretariat
-        public function data_sekretariat_kec(){
-            return view('admin_kec.data_sekretariat_kec');
         }
 
         // halaman login admin kecamatan
@@ -88,7 +123,7 @@ class AdminKecController extends Controller
         // rekap catatan data dan kegiatan warga admin kec
         public function rekap_kegiatan_kec()
         {
-            return view('');
+            return view('admin_kec.rekap_kegiatan_kec');
         }
 
 }

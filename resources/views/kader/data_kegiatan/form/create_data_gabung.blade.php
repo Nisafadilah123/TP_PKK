@@ -68,7 +68,7 @@
             <div class="form-group">
                 <label>No. Registrasi</label>
                 {{-- no.registrasi --}}
-                    <input type="text" class="form-control @error('no_registrasi') is-invalid @enderror" name="no_registrasi" id="no_registrasi" placeholder="Masukkan No. Registrasi">
+                    <input type="text" class="form-control @error('no_registrasi') is-invalid @enderror" name="no_registrasi" id="no_registrasi" placeholder="Masukkan No. Registrasi" value="{{ old('no_registrasi') }}">
                         @error('no_registrasi')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -93,7 +93,7 @@
             <div class="form-group">
                 <label>Tanggal Masuk</label>
                     {{-- tgl masuk --}}
-                    <input type="date" class="form-control @error('tgl_masuk') is-invalid @enderror" name="tgl_masuk" id="tgl_masuk" placeholder="Di isi tanggal lahir" data-date-format="mm/dd/yyyy">
+                    <input type="date" class="form-control @error('tgl_masuk') is-invalid @enderror" name="tgl_masuk" id="tgl_masuk" placeholder="Di isi tanggal lahir" data-date-format="mm/dd/yyyy" value="{{ old('tgl_masuk') }}">
                         @error('tgl_masuk')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -104,7 +104,7 @@
             <div class="form-group">
                 <label>Kedudukan</label>
                     {{-- nama kedudukan --}}
-                    <input type="text" class="form-control @error('kedudukan') is-invalid @enderror" name="kedudukan" id="kedudukan" placeholder="Masukkan Kedudukan">
+                    <input type="text" class="form-control @error('kedudukan') is-invalid @enderror" name="kedudukan" id="kedudukan" placeholder="Masukkan Kedudukan" value="{{ old('kedudukan') }}">
                         @error('kedudukan')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

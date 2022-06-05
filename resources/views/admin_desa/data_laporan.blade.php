@@ -25,7 +25,7 @@
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                        <th>Nama Desa</th>
+                                        <th>Nama Dusun/</th>
                                         {{-- <th>Kode Kelurahan</th> --}}
                                         <th>Data POKJA I</th>
                                         <th>Data POKJA II</th>
@@ -43,22 +43,22 @@
                                         <td>2</td>
                                         {{-- <td>3</td> --}}
                                         <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="/laporan_pokja_1" type="button" class="btn btn-primary">Detail</a>
 
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="/laporan_pokja_2" type="button" class="btn btn-primary">Detail</a>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="/laporan_pokja_3" type="button" class="btn btn-primary">Detail</a>
 
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="/laporan_pokja_4" type="button" class="btn btn-primary">Detail</a>
 
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="/laporan_umum" type="button" class="btn btn-primary">Detail</a>
 
                                         </td>
                                         <td>

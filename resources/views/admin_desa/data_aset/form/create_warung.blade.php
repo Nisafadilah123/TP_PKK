@@ -16,10 +16,13 @@
 
       <form action="{{ route('warung.store') }}" method="POST">
         @csrf
-        @if ($errors->any())
+        @if (count($errors)>0)
             <div class="alert alert-danger">
                 <ul>
-                    {{  ($errors)  }}
+                    @foreach ($errors->all() as $error)
+                    <li>{{  ($error)  }}</li>
+
+                    @endforeach
                 </ul>
             </div>
         @endif
@@ -80,7 +83,7 @@
                     <div class="form-group">
                             {{-- nama Nama Warung --}}
                         <label>Nama Warung</label>
-                            <input type="text" class="form-control @error('nama_warung') is-invalid @enderror" name="nama_warung" id="nama_warung" placeholder="Masukkan Nama Warung">
+                            <input type="text" class="form-control @error('nama_warung') is-invalid @enderror" name="nama_warung" id="nama_warung" placeholder="Masukkan Nama Warung" value="{{old('nama_warung')}}">
                                 @error('nama_warung')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -91,7 +94,7 @@
                     <div class="form-group">
                         {{-- nama Nama Pengelola --}}
                         <label>Nama Pengelola</label>
-                            <input type="text" class="form-control @error('nama_pengelola') is-invalid @enderror" name="nama_pengelola" id="nama_pengelola" placeholder="Masukkan Nama Pengelola">
+                            <input type="text" class="form-control @error('nama_pengelola') is-invalid @enderror" name="nama_pengelola" id="nama_pengelola" placeholder="Masukkan Nama Pengelola" value="{{old('nama_pengelola')}}">
                                 @error('nama_pengelola')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

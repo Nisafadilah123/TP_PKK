@@ -16,10 +16,12 @@
 
       <form action="{{ route('kejar_paket.store') }}" method="POST">
         @csrf
-        @if ($errors->any())
+        @if (count($errors)>0)
             <div class="alert alert-danger">
                 <ul>
-                    {{  ($errors)  }}
+                    @foreach ($errors->all() as $error)
+                        <li>{{  ($error)  }}</li>
+                    @endforeach
                 </ul>
             </div>
         @endif
@@ -90,7 +92,7 @@
                         <div class="form-group">
                         {{-- nama Nama Paket/KF/PAUD --}}
                             <label>Nama Kejar Paket/KF/PAUD</label>
-                                <input type="text" class="form-control @error('nama_kejar_paket') is-invalid @enderror" name="nama_kejar_paket" id="nama_kejar_paket" placeholder="Masukkan Nama Kejar Paket/KF/PAUD">
+                                <input type="text" class="form-control @error('nama_kejar_paket') is-invalid @enderror" name="nama_kejar_paket" id="nama_kejar_paket" placeholder="Masukkan Nama Kejar Paket/KF/PAUD" value="{{old('nama_kejar_paket')}}">
                                     @error('nama_kejar_paket')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -151,7 +153,7 @@
                         <div class="form-group">
                             {{-- Jumlah kader laki --}}
                                 <label>Jumlah Warga Belajar/Siswa Laki-laki</label>
-                                    <input type="number" min="0" class="form-control @error('jumlah_warga_laki') is-invalid @enderror" name="jumlah_warga_laki" id="jumlah_warga_laki" placeholder="Masukkan Jumlah Warga/Siswa yang Belajar pada Kejar Paket KF/PAUD Laki-laki">
+                                    <input type="number" min="0" class="form-control @error('jumlah_warga_laki') is-invalid @enderror" name="jumlah_warga_laki" id="jumlah_warga_laki" placeholder="Masukkan Jumlah Warga/Siswa yang Belajar pada Kejar Paket KF/PAUD Laki-laki" value="{{old('jumlah_warga_laki')}}">
                                         @error('jumlah_warga_laki')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -164,7 +166,7 @@
                         <div class="form-group">
                             {{-- Jumlah warga perempuan --}}
                                 <label>Jumlah Warga Perempuan</label>
-                                    <input type="number" min="0" class="form-control @error('jumlah_warga_perempuan') is-invalid @enderror" name="jumlah_warga_perempuan" id="jumlah_warga_perempuan" placeholder="Masukkan Jumlah Warga/Siswa yang Belajar pada Kejar Paket KF/PAUD Perempuan">
+                                    <input type="number" min="0" class="form-control @error('jumlah_warga_perempuan') is-invalid @enderror" name="jumlah_warga_perempuan" id="jumlah_warga_perempuan" placeholder="Masukkan Jumlah Warga/Siswa yang Belajar pada Kejar Paket KF/PAUD Perempuan" value="{{old('jumlah_warga_perempuan')}}">
                                         @error('jumlah_warga_perempuan')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -180,7 +182,7 @@
                         <div class="form-group">
                             {{-- Jumlah Pengajar laki --}}
                                 <label>Jumlah Pengajar Laki-laki</label>
-                                    <input type="number" min="0" class="form-control @error('jumlah_pengajar_laki') is-invalid @enderror" name="jumlah_pengajar_laki" id="jumlah_pengajar_laki" placeholder="Masukkan Jumlah Pengajar Laki-laki">
+                                    <input type="number" min="0" class="form-control @error('jumlah_pengajar_laki') is-invalid @enderror" name="jumlah_pengajar_laki" id="jumlah_pengajar_laki" placeholder="Masukkan Jumlah Pengajar Laki-laki" value="{{old('jumlah_pengajar_laki')}}">
                                         @error('jumlah_pengajar_laki')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -193,7 +195,7 @@
                         <div class="form-group">
                             {{-- Jumlah Pengajar perempuan --}}
                                 <label>Jumlah Pengajar Perempuan</label>
-                                    <input type="number" min="0" class="form-control @error('jumlah_pengajar_perempuan') is-invalid @enderror" name="jumlah_pengajar_perempuan" id="jumlah_pengajar_perempuan" placeholder="Masukkan Jumlah Pengajar Perempuan">
+                                    <input type="number" min="0" class="form-control @error('jumlah_pengajar_perempuan') is-invalid @enderror" name="jumlah_pengajar_perempuan" id="jumlah_pengajar_perempuan" placeholder="Masukkan Jumlah Pengajar Perempuan" value="{{old('jumlah_pengajar_perempuan')}}">
                                         @error('jumlah_pengajar_perempuan')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

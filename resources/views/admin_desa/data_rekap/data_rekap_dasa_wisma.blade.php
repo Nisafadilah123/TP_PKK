@@ -15,11 +15,14 @@
                     <div class="card">
                         <div class="card-body">
                             <center>
-                                <h6>Dasa Wisma : </h6>
-                                <h6>RT : </h6>
-                                <h6>RW : </h6>
-                                <h6>Desa/Kel : </h6>
-                                <h6>Tahun : </h6>
+                                @foreach ($rekap as $item)
+                                    <h6>Dasa Wisma : {{ucfirst ($item->dasa_wisma) }}</h6>
+                                    <h6>RT : {{ucfirst ($item->rt) }}</h6>
+                                    <h6>RW : {{ucfirst ($item->rw) }}</h6>
+                                    {{-- <h6>Desa/Kel : {{ucfirst ($item->desa->nama_desa) }}</h6> --}}
+                                    <h6>Tahun : {{ucfirst ($item->periode) }}</h6>
+                                @endforeach
+
                             </center>
 
                             <div class="table-responsive">
@@ -76,25 +79,25 @@
                                     <tbody>
                                         <?php $no=1;?>
 
-                                        {{-- @foreach ($warga as $c)
+                                        @foreach ($catatan_keluarga as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
-                                        <td style="vertical-align: middle;">{{ $c->no_registrasi }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->nama)}}</td>
+                                        <td style="vertical-align: middle;">{{ $c->nama_kepala_rumah_tangga }}</td>
+                                        {{-- <td style="vertical-align: middle;">{{ucfirst($c->keluarga->jumlah_KK)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->status)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->status_perkawinan)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin == 'laki-laki' ? 'laki-laki' :'')}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin == 'perempuan' ? 'perempuan' :'')}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->tgl_lahir)}}/{{ ucfirst($c->umur) }} Tahun</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->pendidikan)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->pekerjaan)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->pekerjaan)}}</td> --}}
 
 
                                     </tr>
                                     <?php $no++ ;?>
 
                                     @endforeach
-                                    </tbody> --}}
+                                    </tbody>
 
                                 </table>
 

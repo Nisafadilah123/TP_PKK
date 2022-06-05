@@ -19,13 +19,17 @@
         <div class="card-body">
             <h6 style="color: red">* Semua elemen atribut harus diisi</h6>
 
-            @if ($errors->any())
+            @if (count($errors)>0)
                 <div class="alert alert-danger">
                     <ul>
-                        {{-- {{  dump($errors)  }} --}}
+                        @foreach ($errors->all() as $error)
+                        <li>{{  ($error)  }}</li>
+
+                        @endforeach
                     </ul>
                 </div>
             @endif
+
 
             <div class="row">
                 <div class="col-md-6">
@@ -107,7 +111,7 @@
           <div class="form-group">
               {{-- nama komoditi --}}
             <label>Komoditi</label>
-            <input type="text" class="form-control @error('komoditi') is-invalid @enderror" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi">
+            <input type="text" class="form-control @error('komoditi') is-invalid @enderror" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi" value="{{ old('komoditi') }}">
             @error('komoditi')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -120,7 +124,7 @@
                 <div class="form-group">
                     {{-- jumlah volume --}}
                     <label>Volume</label>
-                    <input type="number" min="0" class="form-control @error('volume') is-invalid @enderror" name="volume" id="volume" placeholder="Masukkan Volume">
+                    <input type="number" min="0" class="form-control @error('volume') is-invalid @enderror" name="volume" id="volume" placeholder="Masukkan Volume" value="{{ old('volume') }}">
                     @error('volume')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

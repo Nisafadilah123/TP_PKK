@@ -1,8 +1,8 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Catatan Data Dan Kegiatan Warga Kelompok PKK Dusun| Admin Desa/Kelurahan PKK Kab. Indramayu')
+@section('title', 'Catatan Data Dan Kegiatan Warga Kelompok PKK Desa/Kelurahan| Admin Desa/Kelurahan PKK Kab. Indramayu')
 
-@section('bread', 'Catatan Data Dan Kegiatan Warga Kelompok PKK Dusun')
+@section('bread', 'Catatan Data Dan Kegiatan Warga Kelompok PKK Desa/Kelurahan')
 @section('container')
 
     <!-- Main content -->
@@ -25,7 +25,7 @@
                                         <tr>
                                         <th rowspan="3" style="text-align: center;">No</th>
                                         <th rowspan="3" style="text-align: center;">Nama Dusun/Ling</th>
-                                        <th rowspan="3" style="text-align: center;">Jml.RW</th>
+                                        <th rowspan="3" style="text-align: center;">Jml. RW</th>
                                         <th rowspan="3" style="text-align: center;">Jml. RT</th>
                                         <th rowspan="3" style="text-align: center;">Jml. Dasa Wisma</th>
                                         <th rowspan="3" style="text-align: center;">Jml. KRT</th>

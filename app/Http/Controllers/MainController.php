@@ -12,6 +12,21 @@ class MainController extends Controller
     public function home(){
         $berita = BeritaKab::all();
         // dd($berita);
+
+        // /** @var DataWarga */
+        // $warga = DataWarga::query()
+        //     ->with([
+        //         'kegiatan',
+        //         'kegiatan.kategori_kegiatan',
+        //         'kegiatan.keterangan_kegiatan',
+        //     ])
+        //     ->find(1);
+
+        // $data = [];
+        // $data['warga'] = $warga;
+
+        // dd($data);
+
         return view('main.home', ['berita'=>$berita]);
     }
 

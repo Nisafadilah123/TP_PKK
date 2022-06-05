@@ -23,13 +23,16 @@
         <h6 style="color: red">Kriteria Kader diisi jenis kriteria sesuai dengan ketentuan yang ada pada TP PKK <br>
         (Misalnya : PAUD, BKB, KESLING, DLL)
         </h6>
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        {{  ($errors)  }}
-                    </ul>
-                </div>
-            @endif
+        @if (count($errors)>0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{  ($error)  }}</li>
+
+                    @endforeach
+                </ul>
+            </div>
+        @endif
             <div class="form-group">
                 <label>Nama Kader Pelatihan</label>
                     <select class="form-control @error('nama_kader_pelatihan') is-invalid @enderror" id="id_kader" name="id_kader">
@@ -49,7 +52,7 @@
             <div class="form-group">
                 <label>Nama Pelatihan</label>
                     {{--Nama Pelatihan--}}
-                    <input type="text" class="form-control @error('nama_pelatihan') is-invalid @enderror" name="nama_pelatihan" id="nama_pelatihan" placeholder="Masukkan Nama Pelatihan">
+                    <input type="text" class="form-control @error('nama_pelatihan') is-invalid @enderror" name="nama_pelatihan" id="nama_pelatihan" placeholder="Masukkan Nama Pelatihan" value="{{ old('nama_pelatihan') }}">
                         @error('nama_pelatihan')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -60,7 +63,7 @@
                 <label>Kriteria Kader</label>
                         {{-- Kriteria Kader --}}
                     <div class="form-group @error('kriteria_kader') is-invalid @enderror">
-                            <textarea class="form-control" name="kriteria_kader" id="kriteria_kader" placeholder="Masukkan Kriteria Kader" rows="3" cols="70"></textarea>
+                            <textarea class="form-control" name="kriteria_kader" id="kriteria_kader" placeholder="Masukkan Kriteria Kader" rows="3" cols="70">{{ old('kriteria_kader') }}</textarea>
                     </div>
 
                         @error('kriteria_kader')
@@ -91,7 +94,7 @@
             <div class="form-group">
                 <label>Penyelenggara</label>
                 {{-- nama Penyelenggara --}}
-                    <input type="text" class="form-control @error('penyelenggara') is-invalid @enderror" name="penyelenggara" id="penyelenggara" placeholder="Masukkan Nama Penyelenggara">
+                    <input type="text" class="form-control @error('penyelenggara') is-invalid @enderror" name="penyelenggara" id="penyelenggara" placeholder="Masukkan Nama Penyelenggara" value="{{ old('penyelenggara') }}">
                         @error('penyelenggara')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
