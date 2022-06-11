@@ -248,7 +248,7 @@ Route::middleware(['user_type:admin_kecamatan'])->group(function(){
     Route::get('/laporan_kec', [AdminKecController::class, 'data_laporan_kec']);
     Route::get('/koperasi_kec', [AdminKecController::class, 'koperasi_kec']);
     Route::get('/rekap_kegiatan_kec', [AdminKecController::class, 'rekap_kegiatan_kec']);
-    Route::get('/pangan_kec', [AdminKecController::class, 'pangan_kec']);
+    Route::get('/data_kelompok_kec', [AdminKecController::class, 'data_kelompok_kec']);
 
 });
 

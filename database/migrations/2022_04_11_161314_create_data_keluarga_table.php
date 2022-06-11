@@ -20,10 +20,14 @@ return new class extends Migration
             $table->foreign('id_desa')->references('id')->on('data_desa');
             $table->bigInteger('id_kecamatan')->unsigned();
             $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan');
-            $table->bigInteger('id_warga')->unsigned();
-            $table->foreign('id_warga')->references('id')->on('data_warga');
+            // $table->bigInteger('id_warga')->unsigned();
+            // $table->foreign('id_warga')->references('id')->on('data_warga');
             $table->string('dasa_wisma');
-            // $table->string('nama_kepala_rumah_tangga');
+            $table->string('nama_kepala_rumah_tangga');
+            $table->string('nik_kepala_keluarga');
+            $table->bigInteger('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('users');
+
             $table->integer('jumlah_anggota_keluarga');
             $table->integer('rt');
             $table->integer('rw');
@@ -33,9 +37,13 @@ return new class extends Migration
             $table->integer('perempuan')->nullable();
             $table->integer('jumlah_KK');
             $table->integer('jumlah_balita')->nullable();
+            $table->integer('jumlah_balita_laki')->nullable();
+            $table->integer('jumlah_balita_perempuan')->nullable();
             $table->integer('jumlah_PUS')->nullable();
             $table->integer('jumlah_WUS')->nullable();
             $table->integer('jumlah_3_buta')->nullable();
+            $table->integer('jumlah_3_buta_laki')->nullable();
+            $table->integer('jumlah_3_buta_perempuan')->nullable();
             $table->integer('jumlah_ibu_hamil')->nullable();
             $table->integer('jumlah_ibu_menyusui')->nullable();
             $table->integer('jumlah_lansia')->nullable();

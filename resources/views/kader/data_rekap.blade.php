@@ -58,14 +58,15 @@
                                         <td style="vertical-align: middle;">{{ucfirst($c->pendidikan)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->pekerjaan)}}</td>
                                     </tr>
-                                    @endforeach
                                     <?php $no++ ;?>
+                                    @endforeach
+
                                     </tbody>
                                 </table>
-                                <a href="{{ url('print', $print->id) }}" target="_blank" class="btn btn-primary" type="button" role="button">
+                                <a href="{{ url('print', $print->id_keluarga) }}" target="_blank" class="btn btn-primary" type="button" role="button">
                                     <i class="fas fa-print"></i> Cetak ke Printer </a>
 
-                                <a href="{{ url('print_pdf', $print_pdf->id) }}" target="_blank" class="btn btn-success" type="button" role="button">
+                                <a href="{{ url('print_pdf', $print_pdf->id_keluarga) }}" target="_blank" class="btn btn-success" type="button" role="button">
                                     <i class="fas fa-print"></i> Cetak ke PDF </a><br>
                             </div>
 

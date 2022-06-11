@@ -124,33 +124,33 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="/data_warga" class="nav-link {{ Request::is('data_warga') ? 'active':'' }}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Data Warga</p>
-                      </a>
-                    </li>
+                        <a href="/data_keluarga" class="nav-link {{ Request::is('data_keluarga') ? 'active':'' }}">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Data Keluarga</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="/data_warga" class="nav-link {{ Request::is('data_warga') ? 'active':'' }}">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Data Warga</p>
+                        </a>
+                      </li>
                     <li class="nav-item">
-                      <a href="/data_kegiatan" class="nav-link {{ Request::is('data_kegiatan') ? 'active':'' }}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Data Kegiatan Warga</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="/data_keluarga" class="nav-link {{ Request::is('data_keluarga') ? 'active':'' }}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Data Keluarga</p>
-                      </a>
+                        <a href="/data_kegiatan" class="nav-link {{ Request::is('data_kegiatan') ? 'active':'' }}">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Data Kegiatan Keluarga</p>
+                        </a>
                     </li>
                     <li class="nav-item">
                       <a href="/data_pemanfaatan" class="nav-link {{ Request::is('data_pemanfaatan') ? 'active':'' }}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Data Pemanfaatan Tanah <br> Pekarangan PKK</p>
+                        <p>Data Pemanfaatan Tanah <br> Pekarangan Keluarga</p>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a href="/data_industri" class="nav-link {{ Request::is('data_industri') ? 'active':'' }}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Data Industri Rumah <br>Tangga</p>
+                        <p>Data Industri Rumah <br>Tangga Keluarga</p>
                       </a>
                     </li>
 

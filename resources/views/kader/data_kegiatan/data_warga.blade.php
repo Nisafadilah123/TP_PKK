@@ -29,7 +29,6 @@
                                             <th>No</th>
                                             <th>Dasa Wisma</th>
                                             <th>Nama Kepala Rumah Tangga</th>
-                                            <th>NIK Kepala Rumah Tangga</th>
                                             <th>No. Registrasi</th>
                                             <th>No. KTP/NIK</th>
                                             <th>Nama</th>
@@ -47,9 +46,8 @@
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
                                         {{-- nama desa yang login --}}
-                                        <td style="vertical-align: middle;">{{ucfirst($c->dasa_wisma) }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->nama_kepala_rumah_tangga)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->nik_kepala_keluarga)}}
+                                        <td style="vertical-align: middle;">{{ucfirst($c->keluarga->dasa_wisma) }}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->keluarga->nama_kepala_rumah_tangga)}}</td>
                                             {{-- @if ($warga = $c->nik_kepala_keluarga)
                                                 {{ $warga }}
                                             @else
@@ -100,8 +98,8 @@
                                                 </div>
                                                         <div class="modal-body">
                                                         <h5>
-                                                            Dasa Wisma : <strong> {{ucfirst($c->dasa_wisma) }} </strong><br>
-                                                            Nama Kepala Rumah Tangga : <strong>{{ucfirst($c->nama_kepala_rumah_tangga) }}</strong><br>
+                                                            Dasa Wisma : <strong> {{ucfirst($c->keluarga->dasa_wisma) }} </strong><br>
+                                                            Nama Kepala Rumah Tangga : <strong>{{ucfirst($c->keluarga->nama_kepala_rumah_tangga) }}</strong><br>
                                                             No. Registrasi : <strong> {{ucfirst($c->no_registrasi) }} </strong><br>
                                                             No. KTP/NIK : <strong>{{ucfirst($c->no_ktp) }}</strong><br>
                                                             Nama : <strong> {{ucfirst($c->nama) }} </strong><br>

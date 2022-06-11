@@ -12,7 +12,7 @@ class DataKegiatanWarga extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'id_desa','id_kecamatan','id_warga','id_kegiatan', 'aktivitas', 'id_keterangan', 'periode'
+        'id_desa','id_kecamatan','id_user','id_warga','id_kategori', 'aktivitas', 'id_keterangan', 'periode'
     ];
 
     public function kecamatan(){
@@ -26,11 +26,14 @@ class DataKegiatanWarga extends Model
     }
 
     public function kategori_kegiatan(){
-        return $this->belongsTo(KategoriKegiatan::class, 'id_kegiatan');
+        return $this->belongsTo(KategoriKegiatan::class, 'id_kategori');
     }
 
     public function keterangan_kegiatan(){
         return $this->belongsTo(KeteranganKegiatan::class, 'id_keterangan');
     }
 
+    public function user(){
+        return $this->belongsTo(User::class, 'id_user');
+    }
 }

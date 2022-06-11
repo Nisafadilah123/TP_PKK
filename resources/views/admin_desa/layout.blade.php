@@ -280,31 +280,31 @@
                   <li class="nav-item">
                     <a href="/data_kelompok_dasa_wisma" class="nav-link {{ Request::is('data_kelompok_dasa_wisma') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Rekapitulasi Catatan Data <br> dan Kegiatan Warga <br> Kelompok Dasa Wisma</p>
+                      <p>Data Kelompok Dasa <br> Wisma TP PKK</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/rekap_kelompok_pkk_rt" class="nav-link {{ Request::is('rekap_kelompok_pkk_rt') ? 'active':'' }}">
+                    <a href="/data_kelompok_pkk_rt" class="nav-link {{ Request::is('data_kelompok_pkk_rt') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Rekapitulasi Catatan Data <br> dan Kegiatan Warga <br> Kelompok PKK RT</p>
+                      <p>Data Kelompok PKK RT</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/rekap_kelompok_pkk_rw" class="nav-link {{ Request::is('rekap_kelompok_pkk_rw') ? 'active':'' }}">
+                    <a href="/data_kelompok_pkk_rw" class="nav-link {{ Request::is('data_kelompok_pkk_rw') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Rekapitulasi Catatan Data <br> dan Kegiatan Warga <br> Kelompok PKK RW</p>
+                      <p>Data Kelompok PKK RW</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/rekap_kelompok_pkk_dusun" class="nav-link {{ Request::is('rekap_kelompok_pkk_dusun') ? 'active':'' }}">
+                    <a href="/data_kelompok_pkk_dusun" class="nav-link {{ Request::is('data_kelompok_pkk_dusun') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Rekapitulasi Catatan Data <br> dan Kegiatan Warga <br> Kelompok PKK Dusun/Ling</p>
+                      <p>Data Kelompok PKK Dusun/ <br> Lingkungan</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/rekap_kelompok_pkk_desa" class="nav-link {{ Request::is('rekap_kelompok_pkk_desa') ? 'active':'' }}">
+                    <a href="/data_kelompok_pkk_desa" class="nav-link {{ Request::is('data_kelompok_pkk_desa') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Rekapitulasi Catatan Data <br> dan Kegiatan Warga <br> Kelompok PKK Desa</p>
+                      <p>Data Kelompok PKK Desa</p>
                     </a>
                   </li>
                 </ul>

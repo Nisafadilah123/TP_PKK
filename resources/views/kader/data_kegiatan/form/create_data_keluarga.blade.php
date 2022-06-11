@@ -117,15 +117,10 @@
 
                 <div class="row">
                     <div class="col-md-2">
-                        <div class="form-group @error('dasa_wisma') is-invalid @enderror">
+                        <div class="form-group ">
                             <label>Dasa Wisma</label>
-                            <select class="form-control" id="dasa_wisma" name="dasa_wisma">
-                                {{-- nama dasa wisma --}}
-                                <option hidden> Pilih Dasa Wisma</option>
-                                @foreach ($warga as $c)
-                                    <option value="{{$c->id}}">{{ $c->dasa_wisma }}</option>
-                                @endforeach
-                            </select>
+                            <input type="text" class="form-control @error('dasa_wisma') is-invalid @enderror" name="dasa_wisma" id="dasa_wisma" placeholder="Masukkan Nama Dasa Wisma" value="{{ old('dasa_wisma') }}">
+
                         </div>
                         @error('dasa_wisma')
                             <span class="invalid-feedback" role="alert">
@@ -135,15 +130,17 @@
                     </div>
 
                     <div class="col-md-2">
-                        <div class="form-group @error('rt') is-invalid @enderror">
+                        <div class="form-group">
                             <label for="exampleFormControlSelect1">RT</label>
-                                <select class="form-control" id="rt" name="rt">
+                            <input type="number" min="1" class="form-control @error('rt') is-invalid @enderror" name="rt" id="rt" placeholder="Masukkan No. RT" value="{{ old('rt') }}">
+
+                                {{-- <select class="form-control" id="rt" name="rt"> --}}
                                     {{-- nomor rt --}}
-                                    <option hidden> Pilih RT</option>
+                                    {{-- <option hidden> Pilih RT</option>
                                     @foreach ($warga as $c)
                                         <option value="{{$c->id}}">{{ $c->rt }}</option>
                                     @endforeach
-                                </select>
+                                </select> --}}
                         </div>
                         @error('rt')
                             <span class="invalid-feedback" role="alert">
@@ -155,13 +152,15 @@
                     <div class="col-md-2">
                         <div class="form-group @error('rw') is-invalid @enderror">
                             <label for="exampleFormControlSelect1">RW</label>
-                                <select class="form-control " id="rw" name="rw">
+                            <input type="number" min="1" class="form-control @error('rw') is-invalid @enderror" name="rw" id="rw" placeholder="Masukkan No. RW" value="{{ old('rw') }}">
+
+                                {{-- <select class="form-control " id="rw" name="rw"> --}}
                                     {{-- nama rw --}}
-                                    <option hidden> Pilih RW</option>
+                                    {{-- <option hidden> Pilih RW</option>
                                     @foreach ($warga as $c)
                                         <option value="{{$c->id}}">{{ $c->rw }}</option>
                                     @endforeach
-                                </select>
+                                </select> --}}
                         </div>
                         @error('rw')
                             <span class="invalid-feedback" role="alert">
@@ -174,9 +173,8 @@
                         <div class="form-group @error('id_desa') is-invalid @enderror">
                             <label for="exampleFormControlSelect1">Desa</label>
                             @foreach ($desas as $c)
-                            <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
-
-                            <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" value="{{ $c->nama_desa }}">
+                                <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
+                                <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" value="{{ $c->nama_desa }}">
 
                             @endforeach
                         </div>
@@ -236,14 +234,35 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             <label>Nama Kepala Rumah Tangga</label>
-                                <select class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" id="id_warga" name="id_warga">
+                            <input type="text" class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" name="nama_kepala_rumah_tangga" id="nama_kepala_rumah_tangga" placeholder="Masukkan Nama Kepala Rumah Tangga" value="{{ old('nama_kepala_rumah_tangga') }}">
+
+                                {{-- <select class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" id="id_warga" name="id_warga"> --}}
                                     {{-- Pilih Nama Kepala Rumah Tangga --}}
-                                    <option hidden> Pilih Nama Kepala Rumah Tangga</option>
+                                    {{-- <option hidden> Pilih Nama Kepala Rumah Tangga</option>
                                     @foreach ($warga as $c)
                                         <option value="{{$c->id}}">{{ $c->nik_kepala_keluarga }} - {{ $c->nama_kepala_rumah_tangga }}</option>
                                     @endforeach
-                                </select>
+                                </select> --}}
                                 @error('nama_kepala_rumah_tangga')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>NIK Kepala Rumah Tangga</label>
+                            <input type="text" class="form-control @error('nik_kepala_keluarga') is-invalid @enderror" name="nik_kepala_keluarga" id="nik_kepala_keluarga" placeholder="Masukkan NIK Kepala Rumah Tangga" value="{{ old('nik_kepala_keluarga') }}">
+
+                                {{-- <select class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" id="id_warga" name="id_warga"> --}}
+                                    {{-- Pilih Nama Kepala Rumah Tangga --}}
+                                    {{-- <option hidden> Pilih Nama Kepala Rumah Tangga</option>
+                                    @foreach ($warga as $c)
+                                        <option value="{{$c->id}}">{{ $c->nik_kepala_keluarga }} - {{ $c->nama_kepala_rumah_tangga }}</option>
+                                    @endforeach
+                                </select> --}}
+                                @error('nik_kepala_keluarga')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -255,7 +274,7 @@
                             <div class="form-group">
                                 <label>Jumlah Anggota Keluarga</label>
                                 {{-- Jumlah Anggota Keluarga --}}
-                                <input type="number" class="form-control @error('jumlah_anggota_keluarga') is-invalid @enderror" name="jumlah_anggota_keluarga" id="jumlah_anggota_keluarga" placeholder="Diisi Jumlah Anggota Keluarga" value="{{ old('jumlah_anggota_keluarga') }}">
+                                <input type="number" min="0" class="form-control @error('jumlah_anggota_keluarga') is-invalid @enderror" name="jumlah_anggota_keluarga" id="jumlah_anggota_keluarga" placeholder="Diisi Jumlah Anggota Keluarga" value="{{ old('jumlah_anggota_keluarga') }}">
                                 @error('jumlah_anggota_keluarga')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -269,7 +288,7 @@
                             <label>Laki-laki</label>
                             {{-- Jumlah Anggota Keluarga Laki-laki--}}
                                 <div class="input-group mb-3">
-                                    <input type="number" class="form-control" name="laki_laki" id="laki_laki" placeholder="Diisi Jumlah Anggota Keluarga Laki-laki" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ old('laki_laki') }}">
+                                    <input type="number" min="0" class="form-control" name="laki_laki" id="laki_laki" placeholder="Diisi Jumlah Anggota Keluarga Laki-laki" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ old('laki_laki') }}">
                                         <div class="input-group-append">
                                             <span class="input-group-text" id="basic-addon2">Orang</span>
                                         </div>
@@ -287,7 +306,7 @@
                             <label>Perempuan</label>
                             {{-- Jumlah Anggota Keluarga perempuan--}}
                                 <div class="input-group mb-3">
-                                    <input type="number" name="perempuan" class="form-control" placeholder="Diisi Jumlah Anggota Keluarga Perempuan" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ old('perempuan') }}">
+                                    <input type="number" min="0" name="perempuan" class="form-control" placeholder="Diisi Jumlah Anggota Keluarga Perempuan" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ old('perempuan') }}">
                                         <div class="input-group-append">
                                             <span class="input-group-text" id="basic-addon2">Orang</span>
                                         </div>
@@ -305,13 +324,47 @@
                             <label>Jumlah KK</label>
                             {{-- Jumlah KK--}}
                                 <div class="input-group mb-3">
-                                    <input type="number" class="form-control" name="jumlah_KK" placeholder="Diisi Jumlah Kepala Keluarga" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ old('jumlah_KK') }}">
+                                    <input type="number" min="1" class="form-control" name="jumlah_KK" placeholder="Diisi Jumlah Kepala Keluarga" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ old('jumlah_KK') }}">
                                         <div class="input-group-append">
                                             <span class="input-group-text" id="basic-addon2">KK</span>
                                         </div>
                                 </div>
                         </div>
                         @error('jumlah_KK')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group @error('periode') is-invalid @enderror">
+                            {{-- pilih periode --}}
+                            <label>Periode</label>
+                            <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                                <option hidden> Pilih Tahun</option>
+                                    <?php
+                                    $year = date('Y');
+                                    $min = $year ;
+                                        $max = $year + 20;
+                                    for( $i=$min; $i<=$max; $i++ ) {
+                                    echo '<option value='.$i.'>'.$i.'</option>';
+                                }?>
+                            </select>
+                        </div>
+                        @error('periode')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group @error('id_user') is-invalid @enderror">
+                            {{-- nama kader --}}
+                            @foreach ($kad as $c)
+                                <input type="hidden" class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
+                            @endforeach
+                        </div>
+                        @error('id_user')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -324,11 +377,41 @@
                         <div class="form-group">
                             <label>Jumlah</label>
                                 <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="input-group mb-3 @error('jumlah_balita') is-invalid @enderror">
+                                            {{-- jumlah 3 buta --}}
+                                            <input type="number" min="0" class="form-control" placeholder="Balita" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_balita" value="{{ old('jumlah_balita') }}">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2">Orang</span>
+                                                </div>
+                                        </div>
+                                        @error('jumlah_balita')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+
+                                    </div>
                                     <div class="col-md-3 ">
                                         <div class="input-group mb-3">
-                                            {{-- Jumlah Balita--}}
-                                            <input type="number" class="form-control @error('jumlah_balita') is-invalid @enderror" placeholder="Balita" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_balita" value="{{ old('jumlah_balita') }}">
-                                                @error('jumlah_balita')
+                                            {{-- Jumlah Balita laki--}}
+                                            <input type="number" min="0" class="form-control @error('jumlah_balita_laki') is-invalid @enderror" placeholder="Balita Laki-laki" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_balita_laki" value="{{ old('jumlah_balita_laki') }}">
+                                                @error('jumlah_balita_laki')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2">Anak</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3 ">
+                                        <div class="input-group mb-3">
+                                            {{-- Jumlah Balita laki--}}
+                                            <input type="number" min="0" class="form-control @error('jumlah_balita_perempuan') is-invalid @enderror" placeholder="Balita Perempuan" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_balita_perempuan" value="{{ old('jumlah_balita_perempuan') }}">
+                                                @error('jumlah_balita_perempuan')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -342,7 +425,7 @@
                                     <div class="col-md-3">
                                         <div class="input-group mb-3 @error('jumlah_PUS') is-invalid @enderror">
                                             {{-- Jumlah PUS--}}
-                                            <input type="number" class="form-control" placeholder="PUS (Pasangan Usia Subur)" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_PUS" value="{{ old('jumlah_PUS') }}">
+                                            <input type="number" min="0" class="form-control" placeholder="PUS (Pasangan Usia Subur)" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_PUS" value="{{ old('jumlah_PUS') }}">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text" id="basic-addon2">Orang</span>
                                                 </div>
@@ -357,7 +440,7 @@
                                     <div class="col-md-3">
                                         <div class="input-group mb-3 @error('jumlah_WUS') is-invalid @enderror">
                                             {{-- Jumlah WUS--}}
-                                            <input type="number" class="form-control" placeholder="WUS (Pasangan Usia Subur)" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_WUS" value="{{ old('jumlah_WUS') }}">
+                                            <input type="number" min="0" class="form-control" placeholder="WUS (Pasangan Usia Subur)" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_WUS" value="{{ old('jumlah_WUS') }}">
                                             <div class="input-group-append">
                                                 <span class="input-group-text" id="basic-addon2">Orang</span>
                                             </div>
@@ -372,7 +455,7 @@
                                     <div class="col-md-3">
                                         <div class="input-group mb-3 @error('jumlah_3_buta') is-invalid @enderror">
                                             {{-- jumlah 3 buta --}}
-                                            <input type="number" class="form-control" placeholder="3 Buta (Buta Tulis, Buta Baca, Buta Hitung)" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_3_buta" value="{{ old('jumlah_3_buta') }}">
+                                            <input type="number" min="0" class="form-control" placeholder="3 Buta (Buta Tulis, Buta Baca, Buta Hitung)" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_3_buta" value="{{ old('jumlah_3_buta') }}">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text" id="basic-addon2">Orang</span>
                                                 </div>
@@ -384,11 +467,42 @@
                                         @enderror
 
                                     </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group mb-3 @error('jumlah_3_buta_laki') is-invalid @enderror">
+                                            {{-- jumlah 3 buta --}}
+                                            <input type="number" min="0" class="form-control" placeholder="3 Buta (Buta Tulis, Buta Baca, Buta Hitung) Laki-laki" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_3_buta_laki" value="{{ old('jumlah_3_buta_laki') }}">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2">Orang</span>
+                                                </div>
+                                        </div>
+                                        @error('jumlah_3_buta_laki')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="input-group mb-3 @error('jumlah_3_buta_perempuan') is-invalid @enderror">
+                                            {{-- jumlah 3 buta --}}
+                                            <input type="number" min="0" class="form-control" placeholder="3 Buta (Buta Tulis, Buta Baca, Buta Hitung) Perempuan" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_3_buta_perempuan" value="{{ old('jumlah_3_buta_perempuan') }}">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2">Orang</span>
+                                                </div>
+                                        </div>
+                                        @error('jumlah_3_buta_perempuan')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+
+                                    </div>
 
                                     <div class="col-md-3">
                                         <div class="input-group mb-3 @error('jumlah_ibu_hamil') is-invalid @enderror">
                                             {{-- jumlah ibu hamil --}}
-                                            <input type="number" class="form-control" placeholder="Ibu Hamil" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_ibu_hamil" value="{{ old('jumlah_ibu_hamil') }}">
+                                            <input type="number" min="0" class="form-control" placeholder="Ibu Hamil" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_ibu_hamil" value="{{ old('jumlah_ibu_hamil') }}">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text" id="basic-addon2">Orang</span>
                                                 </div>
@@ -404,7 +518,7 @@
                                     <div class="col-md-3">
                                         <div class="input-group mb-3 @error('jumlah_ibu_menyusui') is-invalid @enderror">
                                             {{-- jumlah ibu menyusui --}}
-                                            <input type="number" class="form-control" placeholder="Ibu Menyusui" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_ibu_menyusui" value="{{ old('jumlah_ibu_menyusui') }}">
+                                            <input type="number" min="0" class="form-control" placeholder="Ibu Menyusui" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_ibu_menyusui" value="{{ old('jumlah_ibu_menyusui') }}">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text" id="basic-addon2">Orang</span>
                                                 </div>
@@ -420,7 +534,7 @@
                                     <div class="col-md-3">
                                         <div class="input-group mb-3 @error('jumlah_lansia') is-invalid @enderror">
                                             {{-- jumlah lansia --}}
-                                            <input type="number" class="form-control" placeholder="Lansia" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_lansia" value="{{ old('jumlah_lansia') }}">
+                                            <input type="number" min="0" class="form-control" placeholder="Lansia" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_lansia" value="{{ old('jumlah_lansia') }}">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text" id="basic-addon2">Orang</span>
                                                 </div>
@@ -436,7 +550,7 @@
                                     <div class="col-md-3">
                                         <div class="input-group mb-3 @error('jumlah_kebutuhan') is-invalid @enderror">
                                             {{-- jumlah kebutuhan --}}
-                                            <input type="number" class="form-control" placeholder="Kebutuhan Khusus" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_kebutuhan" value="{{ old('jumlah_kebutuhan') }}">
+                                            <input type="number" min="0" class="form-control" placeholder="Kebutuhan Khusus" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_kebutuhan" value="{{ old('jumlah_kebutuhan') }}">
                                             <div class="input-group-append">
                                                 <span class="input-group-text" id="basic-addon2">Orang</span>
                                             </div>
@@ -456,39 +570,17 @@
 
                 <div class="row">
                     <div class="col-md-2">
-                            <div class="form-group @error('periode') is-invalid @enderror">
-                                {{-- pilih periode --}}
-                                <label>Periode</label>
-                                <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
-                                    <option hidden> Pilih Tahun</option>
-                                        <?php
-                                        $year = date('Y');
-                                        $min = $year ;
-                                            $max = $year + 20;
-                                        for( $i=$min; $i<=$max; $i++ ) {
-                                        echo '<option value='.$i.'>'.$i.'</option>';
-                                    }?>
-                                </select>
-                            </div>
-                            @error('jumlah_kebutuhan')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                    </div>
-
-                    <div class="col-md-3">
                         <div class="form-group @error('makanan_pokok') is-invalid @enderror">
                             {{-- pilih Makanan Pokok Sehari-hari--}}
                             <label class="form-label">Makanan Pokok Sehari-hari </label><br>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="makanan_pokok" value="Beras" class="form-check-input">Beras
+                                        <input type="radio" name="makanan_pokok" value="1" class="form-check-input">Beras
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="makanan_pokok" value="Non Beras" class="form-check-input">Non Beras
+                                        <input type="radio" name="makanan_pokok" value="0" class="form-check-input">Non Beras
                                     </label>
                                 </div>
                         </div>
@@ -509,17 +601,17 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <input type="radio" aria-label="Radio button for following text input" name="punya_jamban" value="Ya">Ya
+                                                    <input type="radio" aria-label="Radio button for following text input" name="punya_jamban" value="1">Ya
                                                 </div>
                                             </div>
-                                            <input type="number" class="form-control" aria-label="Text input with radio button" name="jumlah_jamban" placeholder="Jumlah Jamban">
+                                            <input type="number" min="0" class="form-control" aria-label="Text input with radio button" name="jumlah_jamban" placeholder="Jumlah Jamban">
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="form-check form-check-inline">
                                             <label class="form-check-label">
-                                                <input type="radio" name="punya_jamban" value="Tidak" class="form-check-input">Tidak
+                                                <input type="radio" name="punya_jamban" value="0" class="form-check-input">Tidak
                                             </label>
                                         </div>
                                     </div>
@@ -533,28 +625,28 @@
 
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <div class="form-group @error('sumber_air') is-invalid @enderror">
                             {{-- pilih sumber air --}}
                             <label>Sumber Air Keluarga</label><br>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="sumber_air" value="PDAM" class="form-check-input">PDAM
+                                        <input type="radio" name="sumber_air" value="1" class="form-check-input">PDAM
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="sumber_air" value="Sumur" class="form-check-input">Sumur
+                                        <input type="radio" name="sumber_air" value="2" class="form-check-input">Sumur
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="sumber_air" value="Sungai" class="form-check-input">Sungai
+                                        <input type="radio" name="sumber_air" value="3" class="form-check-input">Sungai
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="sumber_air" value="Lainnya" class="form-check-input">Lainnya
+                                        <input type="radio" name="sumber_air" value="4" class="form-check-input">Lainnya
                                     </label>
                                 </div>
                         </div>
@@ -564,21 +656,18 @@
                             </span>
                         @enderror
                     </div>
-                </div>
-
-                <div class="row">
                     <div class="col-md-3">
                         <div class="form-group @error('punya_tempat_sampah') is-invalid @enderror">
                             {{-- pilih punya tempat pembuangan sampah --}}
                             <label>Memiliki Tempat Pembuangan Sampah</label><br>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="punya_tempat_sampah" value="Ya" class="form-check-input">Ya
+                                        <input type="radio" name="punya_tempat_sampah" value="1" class="form-check-input">Ya
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="punya_tempat_sampah" value="Tidak" class="form-check-input">Tidak
+                                        <input type="radio" name="punya_tempat_sampah" value="0" class="form-check-input">Tidak
                                     </label>
                                 </div>
                         </div>
@@ -588,19 +677,21 @@
                             </span>
                         @enderror
                     </div>
+                </div>
 
+                <div class="row">
                     <div class="col-md-3">
                         <div class="form-group @error('punya_saluran_air') is-invalid @enderror">
                             {{-- pilih punya saluran pembuangan air limbah --}}
                             <label>Mempunyai Saluran Pembuangan Air Limbah</label><br>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="punya_saluran_air" value="Ya" class="form-check-input">Ya
+                                        <input type="radio" name="punya_saluran_air" value="1" class="form-check-input">Ya
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="punya_saluran_air" value="Tidak" class="form-check-input">Tidak
+                                        <input type="radio" name="punya_saluran_air" value="0" class="form-check-input">Tidak
                                     </label>
                                 </div>
                         </div>
@@ -617,12 +708,12 @@
                             <label>Menempel Stiker P4K</label><br>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="tempel_stiker" value="Ya" class="form-check-input">Ya
+                                        <input type="radio" name="tempel_stiker" value="1" class="form-check-input">Ya
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="tempel_stiker" value="Tidak" class="form-check-input">Tidak
+                                        <input type="radio" name="tempel_stiker" value="0" class="form-check-input">Tidak
                                     </label>
                                 </div>
                         </div>
@@ -639,12 +730,12 @@
                             <label>Kriteria Rumah</label><br>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="kriteria_rumah" value="Sehat" class="form-check-input">Sehat
+                                        <input type="radio" name="kriteria_rumah" value="1" class="form-check-input">Sehat
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="kriteria_rumah" value="Kurang Sehat" class="form-check-input">Kurang Sehat
+                                        <input type="radio" name="kriteria_rumah" value="0" class="form-check-input">Kurang Sehat
                                     </label>
                                 </div>
                         </div>
@@ -654,21 +745,18 @@
                             </span>
                         @enderror
                     </div>
-                </div>
-
-                <div class="row">
                     <div class="col-md-2">
                         <div class="form-group @error('aktivitas_UP2K') is-invalid @enderror">
                             {{-- pilih aktivitas UP2K--}}
                             <label>Aktivitas UP2K</label><br>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="aktivitas_UP2K" value="Ya" class="form-check-input">Ya
+                                        <input type="radio" name="aktivitas_UP2K" value="1" class="form-check-input">Ya
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="aktivitas_UP2K" value="Tidak" class="form-check-input">Tidak
+                                        <input type="radio" name="aktivitas_UP2K" value="0" class="form-check-input">Tidak
                                     </label>
                                 </div>
                         </div>
@@ -685,12 +773,12 @@
                             <label>Aktivitas Kegiatan Usaha Kesehatan Lingkungan</label><br>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="aktivitas_kegiatan_usaha" value="Ya" class="form-check-input">Ya
+                                        <input type="radio" name="aktivitas_kegiatan_usaha" value="1" class="form-check-input">Ya
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="aktivitas_kegiatan_usaha" value="Tidak" class="form-check-input">Tidak
+                                        <input type="radio" name="aktivitas_kegiatan_usaha" value="0" class="form-check-input">Tidak
                                     </label>
                                 </div>
                         </div>

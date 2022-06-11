@@ -66,16 +66,31 @@
                         </span>
                     @enderror
                 </div>
+
+                <div class="col-md-2">
+                    <div class="form-group @error('id_user') is-invalid @enderror">
+                        {{-- nama kader --}}
+                        @foreach ($kad as $c)
+                            <input type="hidden" class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
+                            <input type="text" disabled class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{ $c->name }}">
+                        @endforeach
+                    </div>
+                    @error('id_user')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
             </div>
 
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Nama Warga</label>
-                        <select class="form-control" id="id_warga" name="id_warga">
+                        <select class="form-control" id="id_keluarga" name="id_keluarga">
                             {{-- pilih nama warga --}}
-                            @foreach ($warga as $c)
-                                <option value="{{ $c->id }}" {{ $c->id === $data_industri->id_warga ? 'selected' : '' }}>{{ $c->nama }}</option>
+                            @foreach ($kel as $c)
+                                <option value="{{ $c->id }}" {{ $c->id === $data_industri->id_keluarga ? 'selected' : '' }}>{{ $c->nama_kepala_rumah_tangga }}</option>
                             @endforeach
                         </select>
                     </div>

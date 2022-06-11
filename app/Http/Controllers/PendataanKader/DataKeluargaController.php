@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DataKeluarga;
 use App\Models\DataWarga;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -46,11 +47,17 @@ class DataKeluargaController extends Controller
     ->where('id', auth()->user()->id_desa)
     ->get();
 
+    $kad = DB::table('users')
+    ->where('id', auth()->user()->id)
+    ->get();
+
+    // $kad = Auth::user();
+
      $keg = DataKeluarga::all();
      $warga = DataWarga::all();
 
-    //  dd($keg);
-     return view('kader.data_kegiatan.form.create_data_keluarga', compact( 'warga', 'kec', 'desas'));
+    //  dd($kad);
+     return view('kader.data_kegiatan.form.create_data_keluarga', compact( 'warga', 'kec', 'desas', 'kad'));
 
  }
 
@@ -68,9 +75,9 @@ class DataKeluargaController extends Controller
         $request->validate([
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
-            'id_warga' => 'required',
+            'nama_kepala_rumah_tangga' => 'required',
             'dasa_wisma' => 'required',
-            // 'nama_kepala_rumah_tangga' => 'required',
+            'nik_kepala_keluarga' => 'required',
             'rt' => 'required',
             'rw' => 'required',
             'kota' => 'required',
@@ -99,14 +106,14 @@ class DataKeluargaController extends Controller
             'periode' => 'required',
 
         ], [
-            'id_desa.required' => 'Pilih Alamat Desa Kegiatan Warga',
-            'id_kecamatan' => 'Pilih Alamat Kecamatan Kegiatan Warga',
-            'id_warga.required' => 'Pilih Nama Warga',
-            'dasa_wisma.required' => 'Pilih Nama Dasawisma Yang Diikuti',
-            // 'nama_kepala_rumah_tangga.required' => 'Pilih Nama Kepala Rumah Tangga',
+            'id_desa.required' => 'Lengkapi Alamat Desa Kegiatan Warga',
+            'id_kecamatan' => 'Lengkapi Alamat Kecamatan Kegiatan Warga',
+            'nama_kepala_rumah_tangga.required' => 'Lengkapi Nama Warga Kepala Rumah Tangga',
+            'dasa_wisma.required' => 'Lengkapi Nama Dasawisma Yang Diikuti',
+            'nik_kepala_keluarga.required' => 'Lengkapi NIK Kepala Rumah Tangga',
             'jumlah_anggota_keluarga.required' => 'Lengkapi Jumlah Anggota Keluarga',
-            'rt.required' => 'Pilih RT',
-            'rw.required' => 'Pilih RW',
+            'rt.required' => 'Lengkapi RT',
+            'rw.required' => 'Lengkapi RW',
             // 'laki_laki.required' => 'Lengkapi Jumlah Laki-laki',
             // 'perempuan.required' => 'Lengkapi Jumlah Perempuan',
             'jumlah_KK.required' => 'Lengkapi Jumlah KK',
@@ -130,7 +137,7 @@ class DataKeluargaController extends Controller
             'periode.required' => 'Pilih Periode',
 
         ]);
-        $insert=DB::table('data_keluarga')->where('id_warga', $request->id_warga)->first();
+        $insert=DB::table('data_keluarga')->where('nik_kepala_keluarga', $request->nik_kepala_keluarga)->first();
         if ($insert != null) {
             Alert::error('Gagal', 'Data Tidak Berhasil Di Tambah. No.KTP Sudah Ada ');
 
@@ -142,11 +149,12 @@ class DataKeluargaController extends Controller
             $wargas = new DataKeluarga;
             $wargas->id_desa = $request->id_desa;
             $wargas->id_kecamatan = $request->id_kecamatan;
-            $wargas->id_warga = $request->id_warga;
+            $wargas->nama_kepala_rumah_tangga = $request->nama_kepala_rumah_tangga;
             $wargas->dasa_wisma = $request->dasa_wisma;
-            // $wargas->nama_kepala_rumah_tangga = $request->nama_kepala_rumah_tangga;
+            $wargas->nik_kepala_keluarga = $request->nik_kepala_keluarga;
             $wargas->kota = $request->kota;
             $wargas->provinsi = $request->provinsi;
+            $wargas->id_user = $request->id_user;
 
             $wargas->jumlah_anggota_keluarga = $request->jumlah_anggota_keluarga;
             $wargas->rt = $request->rt;
@@ -155,9 +163,13 @@ class DataKeluargaController extends Controller
             $wargas->perempuan = $request->perempuan;
             $wargas->jumlah_KK = $request->jumlah_KK;
             $wargas->jumlah_balita = $request->jumlah_balita;
+            $wargas->jumlah_balita_laki = $request->jumlah_balita_laki;
+            $wargas->jumlah_balita_perempuan = $request->jumlah_balita_perempuan;
             $wargas->jumlah_PUS = $request->jumlah_PUS;
             $wargas->jumlah_WUS = $request->jumlah_WUS;
             $wargas->jumlah_3_buta = $request->jumlah_3_buta;
+            $wargas->jumlah_3_buta_laki = $request->jumlah_3_buta_laki;
+            $wargas->jumlah_3_buta_perempuan = $request->jumlah_3_buta_perempuan;
             $wargas->jumlah_ibu_hamil = $request->jumlah_ibu_hamil;
             $wargas->jumlah_ibu_menyusui = $request->jumlah_ibu_menyusui;
             $wargas->jumlah_lansia = $request->jumlah_lansia;
@@ -207,13 +219,16 @@ class DataKeluargaController extends Controller
         ->where('id', auth()->user()->id_desa)
         ->get();
 
+        $kad = DB::table('users')
+        ->where('id', auth()->user()->id)
+        ->get();
         //halaman edit data keluarga
         $warga = DataWarga::all();
         $kel = DataKeluarga::all();
 
         // dd($keg);
 
-        return view('kader.data_kegiatan.form.edit_data_keluarga', compact('data_keluarga','warga', 'kel', 'desas', 'kec'));
+        return view('kader.data_kegiatan.form.edit_data_keluarga', compact('data_keluarga','warga', 'kel', 'desas', 'kec', 'kad'));
 
     }
 
@@ -232,9 +247,9 @@ class DataKeluargaController extends Controller
         $request->validate([
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
-            'id_warga' => 'required',
+            // 'id_warga' => 'required',
             'dasa_wisma' => 'required',
-            // 'nama_kepala_rumah_tangga' => 'required',
+            'nik_kepala_keluarga' => 'required',
             'rt' => 'required',
             'rw' => 'required',
             'kota' => 'required',
@@ -265,12 +280,11 @@ class DataKeluargaController extends Controller
         ], [
             'id_desa.required' => 'Pilih Alamat Desa Kegiatan Warga',
             'id_kecamatan' => 'Pilih Alamat Kecamatan Kegiatan Warga',
-            'id_warga.required' => 'Pilih Nama Warga',
-            'dasa_wisma.required' => 'Pilih Nama Dasawisma Yang Diikuti',
-            // 'nama_kepala_rumah_tangga.required' => 'Pilih Nama Kepala Rumah Tangga',
+            'dasa_wisma.required' => 'Lengkapi Nama Dasawisma Yang Diikuti',
+            'nik_kepala_keluarga.required' => 'Lengkapi NIK Kepala Rumah Tangga',
             'jumlah_anggota_keluarga.required' => 'Lengkapi Jumlah Anggota Keluarga',
-            'rt.required' => 'Pilih RT',
-            'rw.required' => 'Pilih RW',
+            'rt.required' => 'Lengkapi RT',
+            'rw.required' => 'Lengkapi RW',
             // 'laki_laki.required' => 'Lengkapi Jumlah Laki-laki',
             // 'perempuan.required' => 'Lengkapi Jumlah Perempuan',
             'jumlah_KK.required' => 'Lengkapi Jumlah KK',
@@ -294,11 +308,19 @@ class DataKeluargaController extends Controller
             'periode.required' => 'Pilih Periode',
 
         ]);
+        // $update=DB::table('data_keluarga')->where('nik_kepala_keluarga', $request->nik_kepala_keluarga);
+        // if ($update != null) {
+        //     Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali Periode. Periode Sudah Ada ');
 
+        //     return redirect('/data_keluarga');
+        // }
+        // else{
             $data_keluarga->update($request->all());
             Alert::success('Berhasil', 'Data berhasil di ubah');
             // dd($jml_kader);
             return redirect('/data_keluarga');
+        // }
+
 
     }
 

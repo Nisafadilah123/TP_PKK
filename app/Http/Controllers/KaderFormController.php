@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\DataKeluarga;
 use App\Models\DataWarga;
 use App\Models\KategoriKegiatan;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-// use PDF;
 use Dompdf\Dompdf;
+use Illuminate\Support\Facades\DB;
+
 class KaderFormController extends Controller
 {
     //
@@ -76,7 +78,7 @@ class KaderFormController extends Controller
 
     // ngambil nama kepala keluarga
     public function rekap(){
-        $warga = DataWarga::whereNull('nik_kepala_keluarga')->get();
+        $warga = DataKeluarga::all();
         // dd($warga);
         return view('kader.rekap', compact('warga'));
     }
@@ -85,24 +87,38 @@ class KaderFormController extends Controller
     public function rekap_data_warga($id){
         $kepala_keluarga = DataWarga::findOrFail($id);
 
-        $warga = DataWarga::where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
-        ->get();
-        $print = DataWarga::where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+        // $warga = DataWarga::where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+        // ->get();
+        // $warga = DB::table('data_warga')
+        // ->join('data_keluarga', 'data_keluarga.id', '=', 'data_warga.id_keluarga' )
+        // // ->where('nama_kepala_keluarga', $id)
+        // ->get();
+
+        $warga =  DataWarga::where('id_keluarga', $id)->get();
+        // $print = DataWarga::where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+        // ->first();
+
+        // $print_pdf = DataWarga::where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+        // ->first();
+        $print = DataWarga::where('id_keluarga', $id)
         ->first();
 
-        $print_pdf = DataWarga::where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+        $print_pdf = DataWarga::where('id_keluarga', $id)
         ->first();
 
         // dd($warga);
-        return view('kader.data_rekap', compact('warga', 'print', 'print_pdf'));
+        return view('kader.data_rekap', compact('warga', 'print','print_pdf'));
     }
 
      // print halaman data rekap data warga pkk
      public function print($id){
         $kepala_keluarga = DataWarga::findOrFail($id)->first();
 
-        $warga = DataWarga::where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+        // $warga = DataWarga::where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+        // ->get();
+        $warga = DataWarga::where('id_keluarga', $id)
         ->get();
+
         return view('kader.print_rekap', compact('warga'));
     }
 
@@ -110,8 +126,11 @@ class KaderFormController extends Controller
      public function print_pdf($id){
         $kepala_keluarga = DataWarga::findOrFail($id)->first();
 
-        $warga = DataWarga::where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+        // $warga = DataWarga::where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+        // ->get();
+        $warga = DataWarga::where('id_keluarga', $id)
         ->get();
+
         $html= view('kader.print_rekap_pdf', compact('warga'));
         // instantiate and use the dompdf class
         $dompdf = new Dompdf();
@@ -132,21 +151,32 @@ class KaderFormController extends Controller
      {
         $kepala_keluarga = DataWarga::find($id);
 
-        $keluarga = DataKeluarga::where('id_warga', $kepala_keluarga->id)->first();
+        // $keluarga = DataKeluarga::where('id_warga', $kepala_keluarga->id)->first();
+        $keluarga = DataKeluarga::first();
 
+        // $catatan_keluarga = DataWarga::query()
+        //     ->with(['kegiatan', 'kegiatan.kategori_kegiatan',
+        //         'kegiatan.keterangan_kegiatan','kepalaKeluarga', 'keluarga'])
+        //     ->where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+        //     ->get();
         $catatan_keluarga = DataWarga::query()
             ->with(['kegiatan', 'kegiatan.kategori_kegiatan',
-                'kegiatan.keterangan_kegiatan','kepalaKeluarga', 'keluarga'])
-            ->where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+                'kegiatan.keterangan_kegiatan', 'keluarga'])
+            ->where('id_keluarga', $id)
             ->get();
         // dump($catatan_keluarga);
 
         $kategori_kegiatans = KategoriKegiatan::query()->where('id', '<=', 8)->get();
 
-        $print_cakel = DataWarga::where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+        // $print_cakel = DataWarga::where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+        // ->first();
+        $print_cakel = DataWarga::where('id_keluarga', $id)
         ->first();
 
-        $print_pdf_cakel = DataWarga::where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+        // $print_pdf_cakel = DataWarga::where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+        // ->first();
+
+        $print_pdf_cakel = DataWarga::where('id_keluarga', $id)
         ->first();
 
         return view('kader.catatan_keluarga', compact('catatan_keluarga', 'keluarga', 'kepala_keluarga', 'kategori_kegiatans', 'print_cakel', 'print_pdf_cakel'));
@@ -156,16 +186,22 @@ class KaderFormController extends Controller
     public function print_cakel($id){
         $kepala_keluarga = DataWarga::find($id)->first();
 
-        $keluarga = DataKeluarga::where('id_warga', $kepala_keluarga->id)->first();
+       // $keluarga = DataKeluarga::where('id_warga', $kepala_keluarga->id)->first();
+       $keluarga = DataKeluarga::first();
 
-        $catatan_keluarga = DataWarga::query()
-            ->with(['kegiatan', 'kegiatan.kategori_kegiatan',
-                'kegiatan.keterangan_kegiatan','kepalaKeluarga', 'keluarga'])
-            ->where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
-            ->get();
-        dump($catatan_keluarga);
+       // $catatan_keluarga = DataWarga::query()
+       //     ->with(['kegiatan', 'kegiatan.kategori_kegiatan',
+       //         'kegiatan.keterangan_kegiatan','kepalaKeluarga', 'keluarga'])
+       //     ->where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+       //     ->get();
+       $catatan_keluarga = DataWarga::query()
+           ->with(['kegiatan', 'kegiatan.kategori_kegiatan',
+               'kegiatan.keterangan_kegiatan', 'keluarga'])
+           ->where('id_keluarga', $id)
+           ->get();
+       // dump($catatan_keluarga);
 
-        $kategori_kegiatans = KategoriKegiatan::query()->where('id', '<=', 8)->get();
+       $kategori_kegiatans = KategoriKegiatan::query()->where('id', '<=', 8)->get();
 
         return view('kader.print_rekap_cakel', compact('catatan_keluarga', 'keluarga', 'kepala_keluarga', 'kategori_kegiatans'));
     }
@@ -174,28 +210,39 @@ class KaderFormController extends Controller
      public function print_pdf_cakel($id){
         $kepala_keluarga = DataWarga::find($id)->first();
 
-        $keluarga = DataKeluarga::where('id_warga', $kepala_keluarga->id)->first();
+        // $keluarga = DataKeluarga::where('id_warga', $kepala_keluarga->id)->first();
+        $keluarga = DataKeluarga::first();
 
+        // $catatan_keluarga = DataWarga::query()
+        //     ->with(['kegiatan', 'kegiatan.kategori_kegiatan',
+        //         'kegiatan.keterangan_kegiatan','kepalaKeluarga', 'keluarga'])
+        //     ->where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+        //     ->get();
         $catatan_keluarga = DataWarga::query()
             ->with(['kegiatan', 'kegiatan.kategori_kegiatan',
-                'kegiatan.keterangan_kegiatan','kepalaKeluarga', 'keluarga'])
-            ->where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
+                'kegiatan.keterangan_kegiatan', 'keluarga'])
+            ->where('id_keluarga', $id)
             ->get();
+        // dump($catatan_keluarga);
 
         $kategori_kegiatans = KategoriKegiatan::query()->where('id', '<=', 8)->get();
 
-        $html = view('kader.print_pdf_cakel', compact('catatan_keluarga', 'keluarga', 'kepala_keluarga', 'kategori_kegiatans'));
-        // instantiate and use the dompdf class
-        $dompdf = new Dompdf();
-        $dompdf->loadHtml($html);
+        return view('kader.print_pdf_cakel', compact('catatan_keluarga', 'keluarga', 'kepala_keluarga', 'kategori_kegiatans'));
+        // // instantiate and use the dompdf class
+        // $dompdf = new Dompdf();
+        // $dompdf->loadHtml($html);
 
-        // (Optional) Setup the paper size and orientation
-        $dompdf->setPaper('a3', 'landscape');
+        // // (Optional) Setup the paper size and orientation
+        // $dompdf->setPaper('a3', 'landscape');
 
-        // Render the HTML as PDF
-        $dompdf->render();
+        // // Render the HTML as PDF
+        // $dompdf->render();
 
-        // Output the generated PDF to Browser
-        $dompdf->stream();
+        // // Output the generated PDF to Browser
+        // $dompdf->stream();
+        $pdf = PDF::loadview('kader.catatan_keluarga');
+    	// return $pdf->download('laporan-pegawai-pdf');
+        return $pdf->stream();
+
     }
 }

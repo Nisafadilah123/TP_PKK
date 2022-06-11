@@ -13,17 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('industri_rumah', function (Blueprint $table) {
+        Schema::create('data_pemanfaatan_pekarangan', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_desa')->unsigned();
-            $table->foreign('id_desa')->references('id')->on('data_desa');
+            $table->foreign('id_desa')->references('id')->on('data_desa')->onUpdate('cascade');
             $table->bigInteger('id_kecamatan')->unsigned();
-            $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan');
-            $table->bigInteger('id_warga')->unsigned();
-            $table->foreign('id_warga')->references('id')->on('data_warga');
+            $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan')->onUpdate('cascade');
+            $table->bigInteger('id_keluarga')->unsigned();
+            $table->foreign('id_keluarga')->references('id')->on('data_keluarga');
+            $table->bigInteger('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('users');
+
             $table->string('nama_kategori');
             $table->string('komoditi');
-            $table->integer('volume');
+            $table->integer('jumlah');
             $table->integer('periode');
             $table->timestamps();
         });
@@ -36,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('industri_rumah');
+        Schema::dropIfExists('data_pemanfaatan_pekarangan');
     }
 };

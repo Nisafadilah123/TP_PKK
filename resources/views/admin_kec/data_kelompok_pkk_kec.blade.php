@@ -1,8 +1,8 @@
-@extends('admin_desa.layout')
+@extends('admin_kec.layout')
 
-@section('title', 'Data Kelompok PKK RW TP PKK | Admin Desa/Kelurahan PKK Kab. Indramayu')
+@section('title', 'Data Kelompok PKK Kecamatan | Admin Kecamatan PKK Kab. Indramayu')
 
-@section('bread', 'Data Kelompok PKK RW TP PKK')
+@section('bread', 'Data Kelompok PKK Kecamatan')
 @section('container')
 
     <!-- Main content -->
@@ -19,7 +19,7 @@
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                        <th>RW</th>
+                                        <th>Desa/Kelurahan</th>
                                         <th>Periode</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -31,7 +31,7 @@
                                         @foreach ($rw as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->rw)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->desa)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
 
                                         <td class="text-center">

@@ -189,14 +189,14 @@
                 </form>
               </li> --}}
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin_kec.logout') }}"
+                <a class="nav-link" href="{{ route('admin_kecamatan.logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                     <i class="nav-icon fas fa-sign-out-alt"></i>
                     Keluar
                 </a>
 
-                <form id="logout-form" action="{{ route('admin_desa.logout') }}" method="POST" class="d-none">
+                <form id="logout-form" action="{{ route('admin_kecamatan.logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
               </li>

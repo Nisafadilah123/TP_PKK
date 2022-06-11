@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataWarga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminKecController extends Controller
 {
@@ -120,10 +122,28 @@ class AdminKecController extends Controller
             return redirect()->route('admin_kecamatan.login');
         }
 
+        public function data_kelompok_kec()
+        {
+            $kec = DB::table('data_warga')->select('alamat', 'periode')->distinct()->get();
+            return view('admin_kec.data_kelompok_pkk_kec', compact('kec'));
+        }
+
         // rekap catatan data dan kegiatan warga admin kec
         public function rekap_kegiatan_kec()
         {
-            return view('admin_kec.rekap_kegiatan_kec');
+            $rekap = DB::table('data_warga')
+                    ->join('data_kecamatan', 'data_kecamatan.id', '=', 'data_warga.id_kecamatan')
+                    ->select('alamat', 'periode', 'nama_kecamatan', 'kota','provinsi')->distinct()
+                    ->get();
+            $catatan_keluarga = DataWarga::query()
+                    ->with([
+                        'kegiatan',
+                        'kegiatan.kategori_kegiatan',
+                        'kegiatan.keterangan_kegiatan',
+                        'keluarga', 'desa'
+                    ])->get();
+                    // dd($catatan_keluarga);
+            return view('admin_kec.rekap_kegiatan_kec', compact('rekap', 'catatan_keluarga'));
         }
 
 }

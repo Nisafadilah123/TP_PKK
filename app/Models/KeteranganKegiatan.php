@@ -19,8 +19,10 @@ class KeteranganKegiatan extends Model
         return $this->belongsTo(KategoriKegiatan::class, 'id_kegiatan');
     }
 
-    public function kegiatan_warga(){
+    public function kegiatan(){
         return $this->hasMany(DataKegiatanWarga::class);
     }
+
+
 
 }

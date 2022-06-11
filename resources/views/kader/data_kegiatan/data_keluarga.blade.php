@@ -44,7 +44,7 @@
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
                                         {{-- nama desa yang login --}}
-                                        <td style="vertical-align: middle;">{{ucfirst($c->warga->nama_kepala_rumah_tangga) }}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->nama_kepala_rumah_tangga) }}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jumlah_anggota_keluarga)}} Orang</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->laki_laki)}} Orang</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->perempuan)}} Orang</td>
@@ -88,13 +88,13 @@
                                             </div>
                                                     <div class="modal-body">
                                                     <h5>
-                                                        Dasa Wisma : <strong> {{ucfirst($c->warga->dasa_wisma) }} </strong><br>
-                                                        RT <strong>{{ ($c->warga->rt) }}</strong>, RW <strong>{{ ($c->warga->rt) }}</strong> <br>
+                                                        Dasa Wisma : <strong> {{ucfirst($c->dasa_wisma) }} </strong><br>
+                                                        RT <strong>{{ ($c->rt) }}</strong>, RW <strong>{{ ($c->rt) }}</strong> <br>
                                                         Dusun/Lingkungan : <br>
                                                         Desa/Kel : <strong>{{ucfirst($c->desa->nama_desa)}}</strong><br>
                                                         Kec. <strong>{{ucfirst($c->kecamatan->nama_kecamatan)}}</strong>,
                                                             Kabupaten <strong>{{ucfirst($c->kota) }}</strong>, Provinsi <strong>{{ucfirst($c->provinsi) }}</strong><br>
-                                                        Nama Kepala Rumah Tangga : <strong>{{ucfirst($c->warga->nama_kepala_rumah_tangga) }}</strong><br>
+                                                        Nama Kepala Rumah Tangga : <strong>{{ucfirst($c->nama_kepala_rumah_tangga) }}</strong><br>
                                                         Jumlah Anggota Keluarga : <strong> {{ucfirst($c->jumlah_anggota_keluarga) }} </strong>Orang<br>
                                                         Jumlah Anggota Keluarga Laki-laki : <strong> {{ucfirst($c->laki_laki) }} </strong>Orang<br>
                                                         Jumlah Anggota Keluarga Perempuan: <strong> {{ucfirst($c->perempuan) }} </strong>Orang<br>

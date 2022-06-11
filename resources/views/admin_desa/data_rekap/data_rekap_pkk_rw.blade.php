@@ -15,10 +15,15 @@
                     <div class="card">
                         <div class="card-body">
                             <center>
-                                <h6>RW : </h6>
-                                <h6>Dusun/ling : </h6>
-                                <h6>Desa/Kel : </h6>
-                                <h6>Tahun : </h6>
+                                <h6><strong>REKAPITULASI</strong></h6>
+                                <h6><strong>CATATAN DATA DAN KEGIATAN WARGA</strong> </h6>
+                                <h6><strong>KELOMPOK PKK RW</strong> </h6>
+
+                            @foreach ($rekap as $item)
+                                <h6>RW : {{ucfirst ($item->rw) }}</h6>
+                                <h6>Desa/Kel : {{ucfirst ($item->nama_desa) }}</h6>
+                                <h6>Tahun : {{ucfirst ($item->periode) }}</h6>
+                            @endforeach
                             </center>
 
                             <div class="table-responsive">
@@ -30,8 +35,8 @@
                                         <th rowspan="3" style="text-align: center;">Jml. Dasa Wisma</th>
                                         <th rowspan="3" style="text-align: center;">Jml. KRT</th>
                                         <th rowspan="3" style="text-align: center;">Jml. KK</th>
-                                        <th colspan="11" style="text-align:center;">Jumlah Anggota Keluarga</th>
-                                        <th colspan="5" style="text-align:center;">Kriteria Rumah</th>
+                                        <th colspan="12" style="text-align:center;">Jumlah Anggota Keluarga</th>
+                                        <th colspan="5" style="text-align:center;">Jumlah Rumah</th>
                                         <th colspan="4" style="text-align:center;">Sumber Air Keluarga</th>
                                         <th rowspan="3" style="text-align:center;">Jumlah Jamban Keluarga</th>
                                         <th colspan="2" style="text-align:center;">Makanan Pokok</th>
@@ -79,26 +84,158 @@
                                     <tbody>
                                         <?php $no=1;?>
 
-                                        {{-- @foreach ($warga as $c)
-                                    <tr>
-                                        <td style="vertical-align: middle;">{{ $no }}</td>
-                                        <td style="vertical-align: middle;">{{ $c->no_registrasi }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->nama)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->status)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->status_perkawinan)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin == 'laki-laki' ? 'laki-laki' :'')}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin == 'perempuan' ? 'perempuan' :'')}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->tgl_lahir)}}/{{ ucfirst($c->umur) }} Tahun</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->pendidikan)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->pekerjaan)}}</td>
+                                        @foreach ($catatan_keluarga as $data_warga)
+                                        <tr>
+                                            <td style="vertical-align: middle;">{{ $no }}</td>
+                                            <td style="vertical-align: middle;">{{ $data_warga->rt }}</td>
+                                            @if ($data_keluarga_wargas = $data_warga->keluarga)
+                                                @foreach ($data_keluarga_wargas as $data_keluarga_warga)
+                                                    <td>{{ $data_keluarga_warga->sum('dasa_wisma') }}</td>
+                                                    <td>{{ $data_keluarga_warga->count('id') }}</td>
+                                                    <td>{{ $data_keluarga_warga->sum('jumlah_KK') }}</td>
+                                                    <td>{{ $data_keluarga_warga->sum('laki_laki') }}</td>
+                                                    <td>{{ $data_keluarga_warga->sum('perempuan') }}</td>
+                                                    <td>{{ $data_keluarga_warga->sum('jumlah_balita_laki') }}</td>
+                                                    <td>{{ $data_keluarga_warga->sum('jumlah_balita_perempuan') }}</td>
+                                                    <td>{{ $data_keluarga_warga->sum('jumlah_3_buta') }}</td>
+                                                    <td>{{ $data_keluarga_warga->sum('jumlah_PUS') }}</td>
+                                                    <td>{{ $data_keluarga_warga->sum('jumlah_WUS') }}</td>
+                                                    <td>{{ $data_keluarga_warga->sum('jumlah_ibu_hamil') }}</td>
+                                                    <td>{{ $data_keluarga_warga->sum('jumlah_ibu_menyusui') }}</td>
+                                                    <td>{{ $data_keluarga_warga->sum('jumlah_lansia') }}</td>
+                                                    <td>{{ $data_keluarga_warga->sum('jumlah_kebutuhan') }}</td>
+                                                    <td>
+                                                        @if ($data_keluarga_warga->kriteria_rumah == 'Sehat')
+                                                            <i class="fas fa-check"></i>
+                                                        @else
+                                                                0
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($data_keluarga_warga->kriteria_rumah == 'Kurang Sehat')
+                                                            <i class="fas fa-check"></i>
+                                                        @else
+                                                                0
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($data_keluarga_warga->punya_tempat_sampah == 'Ya')
+                                                            <i class="fas fa-check"></i>
+                                                        @else
+                                                            0
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($data_keluarga_warga->punya_saluran_air == 'Ya')
+                                                            <i class="fas fa-check"></i>
+                                                        @else
+                                                            0
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($data_keluarga_warga->punya_jamban == 'Ya')
+                                                            <i class="fas fa-check"></i>
+                                                        @else
+                                                            0
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($data_keluarga_warga->tempel_stiker == 'Ya')
+                                                            <i class="fas fa-check"></i>
+                                                        @else
+                                                            0
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($data_keluarga_warga->sumber_air == 'PDAM')
+                                                            <i class="fas fa-check"></i>
+                                                        @else
+                                                        0
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($data_keluarga_warga->sumber_air == 'Sumur')
+                                                            <i class="fas fa-check"></i>
+                                                        @else
+                                                            0
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($data_keluarga_warga->sumber_air == 'Sungai')
+                                                            <i class="fas fa-check"></i>
+                                                        @else
+                                                            0
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($data_keluarga_warga->sumber_air == 'Lainnya')
+                                                            <i class="fas fa-check"></i>
+                                                        @else
+                                                            0
+                                                        @endif
+                                                    </td>
+                                                    <td>{{ $data_keluarga_warga->sum('jumlah_jamban') }}</td>
+
+                                                    <td>
+                                                        @if ($data_keluarga_warga->makanan_pokok == 'Beras')
+                                                            <i class="fas fa-check"></i>
+                                                        @else
+                                                            0
+                                                        @endif
+                                                    </td>
+
+                                                    <td>
+                                                        @if ($data_keluarga_warga->makanan_pokok == 'Non Beras')
+                                                            <i class="fas fa-check"></i>
+                                                        @else
+                                                            0
+                                                        @endif
+                                                    </td>
+
+                                                    <td>
+                                                        @if ($data_keluarga_warga->aktivitas_UP2K == 'Ya')
+                                                            <i class="fas fa-check"></i>
+                                                        @else
+                                                            0
+                                                        @endif
+                                                    </td>
+                                                @endforeach
+
+                                                @if ($data_kegiatan_wargas = $data_warga->kegiatan)
+                                                    @foreach ($data_kegiatan_wargas as $data_kegiatan_warga)
+                                                        @if ($data_kegiatan = $data_kegiatan_warga->keterangan_kegiatan->nama_keterangan)
+                                                            <td>
+                                                                @if ($data_kegiatan == 'Pemanfaatan dan Pekarangan')
+                                                                    <i class="fas fa-check"></i>
+                                                                @else
+                                                                    0
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                @if ($data_kegiatan == 'Industri Rumah Tangga')
+                                                                    <i class="fas fa-check"></i>
+                                                                @else
+                                                                    0
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                @if ($data_kegiatan == 'Kerja Bakti')
+                                                                    <i class="fas fa-check"></i>
+                                                                @else
+                                                                    0h
+                                                                @endif
+                                                            </td>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            @endif
 
 
-                                    </tr>
-                                    <?php $no++ ;?>
+                                        </tr>
+                                        <?php $no++ ;?>
 
-                                    @endforeach
-                                    </tbody> --}}
-
+                                        @endforeach
+                                    </tbody>
                                 </table>
 
                             </div>

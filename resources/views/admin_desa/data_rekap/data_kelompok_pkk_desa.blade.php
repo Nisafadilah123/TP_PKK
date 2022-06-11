@@ -27,20 +27,16 @@
                                     <tbody>
                                         <?php $no=1;?>
 
-                                        {{-- @foreach ($rt as $c)
+                                        @foreach ($desa as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->rt)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->rw)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
 
                                         <td class="text-center">
-                                                <a class="btn btn-success btn-sm" href="{{ url('rekap_kelompok_dasa_wisma') }}">Rekap</a> --}}
-                                                {{-- <a class="btn btn-primary btn-sm" href="{{ url('catatan_keluarga/'.$c->id.'/catatan_keluarga') }}">Catatan Keluarga</a> --}}
+                                            <a class="btn btn-success btn-sm" href="{{ url('rekap_kelompok_pkk_desa').'?'.http_build_query(['desa' => $c->id]) }}">Rekap</a>
+                                        </td>
 
-                                        {{-- </td>
-
-                                    </tr> --}}
+                                    </tr>
                                     <?php $no++ ;?>
 
                                     @endforeach

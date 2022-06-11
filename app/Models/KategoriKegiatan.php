@@ -19,7 +19,7 @@ class KategoriKegiatan extends Model
         return $this->hasMany(DataKegiatanWarga::class);
     }
 
-    public function keterangan(){
+    public function keterangan_kegiatan(){
         return $this->hasMany(KeteranganKegiatan::class);
     }
 

@@ -18,7 +18,7 @@ class DataPelatihanKaderController extends Controller
      */
     public function index()
     {
-        //halaman form data pelatihan kaderrangan
+        //halaman form data pelatihan kader
         //$pelatihan = DataPelatihanKader::all();
         $pelatihan = DB::table('data_pelatihan_kader as a')
                                 ->join('users as b', 'b.id', '=', 'a.id_kader')

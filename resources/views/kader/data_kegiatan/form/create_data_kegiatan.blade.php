@@ -5,7 +5,7 @@
 @section('bread', 'Tambah Data Kegiatan Warga TP PKK')
 @section('container')
 
-<div class="col-md-10">
+<div class="col-md-6">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
@@ -52,14 +52,14 @@
                         </span>
                     @enderror
                 </div>
+
                 <div class="col-md-6">
                     <div class="form-group @error('id_kecamatan') is-invalid @enderror">
                         {{-- nama kecamatan --}}
                         <label for="exampleFormControlSelect1">Kecamatan</label>
                         @foreach ($kec as $c)
-                        <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
-                        <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_kecamatan }}">
-
+                            <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                            <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_kecamatan }}">
                         @endforeach
                     </div>
                     @error('id_kecamatan')
@@ -77,10 +77,9 @@
                         <select class="form-control @error('id_warga') is-invalid @enderror" id="id_warga" name="id_warga">
                           {{-- nama warga --}}
                           <option hidden> Pilih Nama Warga</option>
-
-                          @foreach ($warga as $c)
-                              <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama }}</option>
-                          @endforeach
+                            @foreach ($warga as $c)
+                                <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama }}</option>
+                            @endforeach
                           </select>
                           @error('id_warga')
                               <span class="invalid-feedback" role="alert">
@@ -93,7 +92,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Nama Kegiatan</label>
-                        <select class="form-control @error('id_kegiatan') is-invalid @enderror" id="id_kegiatan" name="id_kegiatan">
+                        <select class="form-control @error('id_kategori') is-invalid @enderror" id="id_kategori" name="id_kategori">
                             {{-- Pilih Kegiatan --}}
                             <option hidden> Pilih Kegiatan</option>
                             {{-- @foreach($kategori as $key => $val)
@@ -138,7 +137,20 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group @error('id_user') is-invalid @enderror">
+                        {{-- nama kader --}}
+                        @foreach ($kad as $c)
+                            <input type="hidden" class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
+                            <input type="text" disabled class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{ $c->name }}">
+                        @endforeach
+                    </div>
+                    @error('id_user')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
 
@@ -168,20 +180,21 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group @error('periode') is-invalid @enderror">
                         <label>Periode</label>
-                        {{-- Pilih periode --}}
-                        <select style="cursor:pointer;" class="form-control @error('periode') is-invalid @enderror" id="periode" name="periode" required>
-                          <option> Pilih Tahun</option>
-                            <?php
-                              $year = date('Y');
-                              $min = $year ;
-                              $max = $year + 20;
-                              for( $i=$min; $i<=$max; $i++ ) {
+                        {{-- pilih periode --}}
+                        <select style="cursor:pointer;" class="form-control " id="periode" name="periode" value="{{ old('periode') }}">
+                            <option hidden> Pilih Tahun</option>
+                                <?php
+                                $year = date('Y');
+                                $min = $year ;
+                                    $max = $year + 20;
+                                for( $i=$min; $i<=$max; $i++ ) {
                                 echo '<option value='.$i.'>'.$i.'</option>';
-                              }?>
+                            }?>
                         </select>
-                        @error('periode')
+                    </div>
+                    @error('periode')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -208,7 +221,7 @@
 
 <script>
     $(document).ready(function() {
-    $('#id_kegiatan').on('change', function() {
+    $('#id_kategori').on('change', function() {
        var categoryID = $(this).val();
        console.log('cek data kegiatan');
        if(categoryID) {
@@ -227,7 +240,7 @@
                     $('#id_keterangan').empty();
                     $('#id_keterangan').append('<option hidden>Pilih Keterangan</option>');
                     $.each(data, function(key, keterangan){
-                        $('select[name="id_keterangan"]').append('<option value="'+ key +'">' + keterangan.nama_keterangan+ '</option>');
+                        $('select[name="id_keterangan"]').append('<option value="'+ key +'">' + keterangan.nama_keterangan + '</option>');
                     });
                 }else{
                     $('#id_keterangan').empty();

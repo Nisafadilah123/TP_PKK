@@ -66,4 +66,22 @@ class User extends Authenticatable
         return $this->hasMany(Kader::class);
     }
 
+    public function warga(){
+        return $this->hasMany(DataWarga::class);
+    }
+
+    public function keluarga(){
+        return $this->hasMany(DataKeluarga::class);
+    }
+
+    public function industri(){
+        return $this->hasMany(DataIndustriRumah::class);
+    }
+
+    public function pemanfaatan(){
+        return $this->hasMany(DataPemanfaatanPekarangan::class);
+    }
+
+
+
 }

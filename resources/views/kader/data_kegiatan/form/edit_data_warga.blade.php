@@ -102,47 +102,54 @@
             @endif
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="form-group">
                         {{-- nama dasa wisma --}}
                         <label>Dasa Wisma</label>
-                            <input type="text" class="form-control @error('dasa_wisma') is-invalid @enderror" name="dasa_wisma" id="dasa_wisma" placeholder="Di isi sesuai dengan nama dasawisma yang diikuti warga yang bersangkutan" value="{{ucfirst(old('dasa_wisma', $data_warga->dasa_wisma))}}">
-                            @error('dasa_wisma')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        {{-- Nama Kepala Rumah Tangga --}}
-                        <label>Nama Kepala Rumah Tangga</label>
-                            <input type="text" class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" name="nama_kepala_rumah_tangga" id="nama_kepala_rumah_tangga" placeholder="Di isi dengan nama Kepala Rumah Tangga pada rumah yang didata" value="{{ucfirst(old('nama_kepala_rumah_tangga', $data_warga->nama_kepala_rumah_tangga))}}">
-                                @error('nama_kepala_rumah_tangga')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>NIK Kepala Rumah Tangga</label>
-                        {{-- NIK Kepala Rumah Tangga --}}
-                        <input type="text" class="form-control @error('nik_kepala_keluarga') is-invalid @enderror" name="nik_kepala_keluarga" id="nik_kepala_keluarga" placeholder="Diisi Nomor Induk Keluarga Kepala Keluarga" value="{{ucfirst(old('nik_kepala_keluarga', $data_warga->nik_kepala_keluarga))}}">
-                        @error('nik_kepala_keluarga')
+                        <select class="form-control" id="dasa_wisma" name="dasa_wisma">
+                            {{-- nama dasa wisma --}}
+                            @foreach ($kel as $c)
+                                <option value="{{$c->id}}"{{ $c->id === $c->dasa_wisma ? 'selected' : '' }}>{{ $c->dasa_wisma }}</option>
+                            @endforeach
+                        </select>
+                        @error('id_keluarga')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        {{-- Nama Kepala Rumah Tangga --}}
+                        <label>Nama Kepala Rumah Tangga</label>
+                        <select class="form-control" id="nama_kepala_rumah_tangga" name="id_keluarga">
+                            {{-- nama dasa wisma --}}
+                            @foreach ($kel as $c)
+                                <option value="{{$c->id}}"{{ $c->id === $c->nama_kepala_rumah_tangga ? 'selected' : '' }}>{{ $c->nama_kepala_rumah_tangga }}</option>
+                            @endforeach
+                        </select>
+                        @error('id_keluarga')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                {{-- <div class="col-md-4">
+                    <div class="form-group">
+                        <label>NIK Kepala Rumah Tangga</label> --}}
+                        {{-- NIK Kepala Rumah Tangga --}}
+                        {{-- <input type="text" class="form-control @error('nik_kepala_keluarga') is-invalid @enderror" name="nik_kepala_keluarga" id="nik_kepala_keluarga" placeholder="Diisi Nomor Induk Keluarga Kepala Keluarga" value="{{ucfirst(old('nik_kepala_keluarga', $data_warga->nik_kepala_keluarga))}}">
+                        @error('nik_kepala_keluarga')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div> --}}
                 <div class="col-md-3">
                     <div class="form-group">
                         {{-- no.registrasi --}}
@@ -198,9 +205,6 @@
                         </div>
                 </div>
 
-            </div>
-
-            <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
                         <label>Tempat lahir</label>
@@ -244,8 +248,8 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         {{-- alamat --}}
-                        <label>Alamat</label>
-                            <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" id="alamat" placeholder="Di isi Alamat" value="{{ucfirst(old('alamat', $data_warga->alamat))}}">
+                        <label>Dusun/Lingkungan</label>
+                        <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" id="alamat" placeholder="Di isi Alamat" value="{{ucfirst(old('alamat', $data_warga->alamat))}}">
                                 @error('alamat')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -258,27 +262,34 @@
                     <div class="form-group">
                         {{-- rt --}}
                         <label>RT</label>
-                            <input type="number" min="1" class="form-control @error('rt') is-invalid @enderror" name="rt" id="rt" placeholder="Di isi RT" value="{{ucfirst(old('rt', $data_warga->rt))}}">
-                                @error('rt')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <select class="form-control" id="id_keluarga" name="rt">
+                            {{-- nama RT --}}
+                            @foreach ($kel as $c)
+                                <option value="{{$c->id}}" {{ $c->id === $c->rt ? 'selected' : '' }}>{{ $c->rt }}</option>
+                            @endforeach
+                        </select>
+                        @error('rt')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
                 <div class="col-md-2">
                     <div class="form-group">
                         {{-- rw --}}
                         <label>RW</label>
-                            <input type="number" min="1" class="form-control @error('rw') is-invalid @enderror" name="rw" id="rw" placeholder="Di isi RW" value="{{ucfirst(old('rw', $data_warga->rw))}}">
-                                @error('rw')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <select class="form-control" id="id_keluarga" name="rw">
+                            {{-- nama Rw --}}
+                            @foreach ($kel as $c)
+                                <option value="{{$c->id}}" {{ $c->id === $c->rw ? 'selected' : '' }}>{{ $c->rw }}</option>
+                            @endforeach
+                        </select>
+                        @error('rw')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
 
                     </div>
                 </div>
@@ -364,6 +375,22 @@
                         @enderror
                 </div>
 
+                <div class="col-md-2">
+                    <div class="form-group @error('id_user') is-invalid @enderror">
+                        {{-- nama kader --}}
+                        @foreach ($kad as $c)
+                            <input type="hidden" class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
+                        @endforeach
+                    </div>
+                    @error('id_user')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="row">
                 <div class="col-md-2">
                     <div class="form-group @error('jenis_kelamin') is-invalid @enderror">
                         <label class="form-label">Jenis Kelamin </label><br>

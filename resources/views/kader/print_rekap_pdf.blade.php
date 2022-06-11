@@ -67,8 +67,9 @@
                         <td style="vertical-align: middle;">{{ucfirst($c->pendidikan)}}</td>
                         <td style="vertical-align: middle;">{{ucfirst($c->pekerjaan)}}</td>
                     </tr>
-                    @endforeach
                     <?php $no++ ;?>
+                    @endforeach
+
                     </tbody>
                   </table>
                 </div>

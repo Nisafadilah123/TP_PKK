@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\PendataanKader;
 use App\Http\Controllers\Controller;
+use App\Models\DataKeluarga;
+use App\Models\DataPemanfaatanPekarangan;
 use App\Models\DataWarga;
-use App\Models\PemanfaatanKarangan;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\KategoriPemanfaatanLahan;
 
@@ -20,7 +21,7 @@ class DataPemanfaatanPekaranganController extends Controller
     public function index()
     {
         //halaman form data pemanfaatan tanah pekarangan
-        $pemanfaatan = PemanfaatanKarangan::all();
+        $pemanfaatan = DataPemanfaatanPekarangan::all();
         return view('kader.data_kegiatan.data_pemanfaatan', compact('pemanfaatan'));
     }
 
@@ -41,7 +42,11 @@ class DataPemanfaatanPekaranganController extends Controller
      ->where('id', auth()->user()->id_desa)
      ->get();
 
-     $warga = DataWarga::all(); // pemanggilan tabel data warga pekarangan
+     $kad = DB::table('users')
+    ->where('id', auth()->user()->id)
+    ->get();
+
+     $kel = DataKeluarga::all(); // pemanggilan tabel data warga pekarangan
     //  $kat = KategoriPemanfaatanLahan::all(); // pemanggilan tabel kategori pemanfaatan tanah
     $data['kategori'] = [
         'Peternakan' => 'Peternakan',
@@ -51,7 +56,7 @@ class DataPemanfaatanPekaranganController extends Controller
         'Tanaman Keras' => 'Tanaman Keras',
         'Lainnya' => 'Lainnya',
     ];
-    return view('kader.data_kegiatan.form.create_data_pemanfaatan', $data, compact('kec', 'warga', 'desas'));
+    return view('kader.data_kegiatan.form.create_data_pemanfaatan', $data, compact('kec', 'kel', 'desas', 'kad'));
 
  }
 
@@ -69,7 +74,7 @@ class DataPemanfaatanPekaranganController extends Controller
         $request->validate([
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
-            'id_warga' => 'required',
+            'id_keluarga' => 'required',
             'nama_kategori' => 'required',
             'komoditi' => 'required',
             'jumlah' => 'required',
@@ -79,7 +84,7 @@ class DataPemanfaatanPekaranganController extends Controller
             'id_desa.required' => 'Pilih Alamat Desa Pemanfaatan Tanah Pekarangan Warga',
             'id_kecamatan' => 'Pilih Alamat Kecamatan Pemanfaatan Tanah Pekarangan Warga',
 
-            'id_warga.required' => 'Pilih Nama Warga',
+            'id_keluarga.required' => 'Pilih Nama Warga',
             'nama_kategori.required' => 'Pilih Alamat Kategori Pemanfaatan Tanah Pekarangan',
             'komoditi.required' => 'Lengkapi Komoditi Pemanfaatan Tanah Pekarangan',
             'jumlah.required' => 'Lengkapi Jumlah Komoditi Tanah Pekarangan',
@@ -88,7 +93,7 @@ class DataPemanfaatanPekaranganController extends Controller
         ]);
 
         // pengkondisian tabel
-        $insert=DB::table('pemanfaatan_pekarangan')->where('id_warga', $request->id_warga)->first();
+        $insert=DB::table('data_pemanfaatan_pekarangan')->where('id_keluarga', $request->id_keluarga)->first();
         if ($insert != null) {
             Alert::error('Gagal', 'Data Tidak Berhasil Di Tambah. Warga TP PKK Sudah Ada ');
 
@@ -96,10 +101,11 @@ class DataPemanfaatanPekaranganController extends Controller
         }
         else {
 
-            $kegiatans = new PemanfaatanKarangan;
+            $kegiatans = new DataPemanfaatanPekarangan;
             $kegiatans->id_desa = $request->id_desa;
             $kegiatans->id_kecamatan = $request->id_kecamatan;
-            $kegiatans->id_warga = $request->id_warga;
+            $kegiatans->id_keluarga = $request->id_keluarga;
+            $kegiatans->id_user = $request->id_user;
             $kegiatans->nama_kategori = $request->nama_kategori;
             $kegiatans->komoditi = $request->komoditi;
             $kegiatans->jumlah = $request->jumlah;
@@ -131,10 +137,10 @@ class DataPemanfaatanPekaranganController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function edit(PemanfaatanKarangan $data_pemanfaatan)
+    public function edit(DataPemanfaatanPekarangan $data_pemanfaatan)
     {
         //halaman form edit data pemanfaatan tanah pekarangan
-        $warga = DataWarga::all();
+        $kel = DataKeluarga::all();
         // $kat = KategoriPemanfaatanLahan::all();
 
         $desas = DB::table('data_desa')
@@ -145,6 +151,9 @@ class DataPemanfaatanPekaranganController extends Controller
        ->where('id', auth()->user()->id_desa)
        ->get();
 
+        $kad = DB::table('users')
+            ->where('id', auth()->user()->id)
+            ->get();
        $data['kategori'] = [
         'Peternakan' => 'Peternakan',
         'Perikanan' => 'Perikanan',
@@ -154,7 +163,7 @@ class DataPemanfaatanPekaranganController extends Controller
         'Lainnya' => 'Lainnya',
     ];
 
-        return view('kader.data_kegiatan.form.edit_data_pemanfaatan',$data, compact('data_pemanfaatan','warga', 'desas', 'kec'));
+        return view('kader.data_kegiatan.form.edit_data_pemanfaatan',$data, compact('data_pemanfaatan','kel', 'desas', 'kec', 'kad'));
 
     }
 
@@ -165,7 +174,7 @@ class DataPemanfaatanPekaranganController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, PemanfaatanKarangan $data_pemanfaatan)
+    public function update(Request $request, DataPemanfaatanPekarangan $data_pemanfaatan)
     {
         // proses mengubah untuk tambah data pemanfaatan tanah pekarangan
         // dd($request->all());
@@ -173,7 +182,7 @@ class DataPemanfaatanPekaranganController extends Controller
         $request->validate([
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
-            'id_warga' => 'required',
+            'id_keluarga' => 'required',
             'nama_kategori' => 'required',
             'komoditi' => 'required',
             'jumlah' => 'required',
@@ -183,7 +192,7 @@ class DataPemanfaatanPekaranganController extends Controller
             'id_desa.required' => 'Pilih Alamat Desa Pemanfaatan Tanah Pekarangan Warga',
             'id_kecamatan' => 'Pilih Alamat Kecamatan Pemanfaatan Tanah Pekarangan Warga',
 
-            'id_warga.required' => 'Pilih Nama Warga',
+            'id_keluarga.required' => 'Pilih Nama Warga',
             'nama_kategori.required' => 'Pilih Alamat Kategori Pemanfaatan Tanah Pekarangan',
             'komoditi.required' => 'Lengkapi Komoditi Pemanfaatan Tanah Pekarangan',
             'jumlah.required' => 'Lengkapi Jumlah Komoditi Tanah Pekarangan',
@@ -203,7 +212,7 @@ class DataPemanfaatanPekaranganController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function destroy($data_pemanfaatan, PemanfaatanKarangan $warg)
+    public function destroy($data_pemanfaatan, DataPemanfaatanPekarangan $warg)
     {
         //temukan id pemanfaatan tanah pekarangan
         $warg::find($data_pemanfaatan)->delete();

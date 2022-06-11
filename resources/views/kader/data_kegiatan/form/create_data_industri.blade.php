@@ -5,7 +5,7 @@
 @section('bread', 'Tambah Data Industri Rumah Tangga TP PKK')
 @section('container')
 
-<div class="col-md-6">
+<div class="col-md-8">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
@@ -32,7 +32,7 @@
 
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group @error('id_desa') is-invalid @enderror">
                         {{-- nama desa --}}
                         <label for="exampleFormControlSelect1">Desa</label>
@@ -49,17 +49,32 @@
                         </span>
                     @enderror
                 </div>
-                <div class="col-md-6">
+
+                <div class="col-md-4">
                     <div class="form-group @error('id_kecamatan') is-invalid @enderror">
                         {{-- nama kecamatan --}}
                         <label for="exampleFormControlSelect1">Kecamatan</label>
                         @foreach ($kec as $c)
-                        <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
-                        <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_kecamatan }}">
-
+                            <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                            <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_kecamatan }}">
                         @endforeach
                     </div>
                     @error('id_kecamatan')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group @error('id_user') is-invalid @enderror">
+                        {{-- nama kader --}}
+                        @foreach ($kad as $c)
+                            <input type="hidden" class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
+
+                        @endforeach
+                    </div>
+                    @error('id_user')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -69,17 +84,17 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <div class="form-group @error('id_warga') is-invalid @enderror">
+                    <div class="form-group @error('id_keluarga') is-invalid @enderror">
                         <label for="exampleFormControlSelect1">Nama Warga</label>
-                        <select class="form-control" id="id_warga" name="id_warga">
+                        <select class="form-control" id="id_keluarga" name="id_keluarga">
                           {{-- nama warga --}}
                           <option hidden> Pilih Warga</option>
-                          @foreach ($warga as $c)
-                              <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama }}</option>
+                          @foreach ($kel as $c)
+                              <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama_kepala_rumah_tangga }}</option>
                           @endforeach
                           </select>
                       </div>
-                      @error('id_warga')
+                      @error('id_keluarga')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
                           </span>

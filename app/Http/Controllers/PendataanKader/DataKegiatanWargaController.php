@@ -41,6 +41,9 @@ class DataKegiatanWargaController extends Controller
         ->where('id', auth()->user()->id_desa)
         ->get();
 
+        $kad = DB::table('users')
+        ->where('id', auth()->user()->id)
+        ->get();
 
         $warga = DataWarga::all(); // pemanggilan tabel data warga
         $keg = KategoriKegiatan::all(); // pemanggilan tabel data kategori kegiatan
@@ -79,7 +82,7 @@ class DataKegiatanWargaController extends Controller
         // ];
         //  dd($keg);
         // return view('kader.data_kegiatan.form.create_data_kegiatan', $data, compact('kec', 'warga', 'desas'));
-        return view('kader.data_kegiatan.form.create_data_kegiatan', compact('keg', 'warga', 'desas', 'kec'));
+        return view('kader.data_kegiatan.form.create_data_kegiatan', compact('keg', 'warga', 'desas', 'kec', 'kad'));
 
     }
 
@@ -99,7 +102,7 @@ class DataKegiatanWargaController extends Controller
             'id_kecamatan' => 'required',
             'id_warga' => 'required',
             // 'nama_kegiatan' => 'required',
-            'id_kegiatan' => 'required',
+            'id_kategori' => 'required',
             'aktivitas' => 'required',
             // 'keterangan' => 'required',
             'id_keterangan' => 'required',
@@ -110,7 +113,7 @@ class DataKegiatanWargaController extends Controller
             'id_kecamatan.required' => 'Lengkapi Alamat Kecamatan Kegiatan Warga Yang Didata',
             'id_warga.required' => 'Lengkapi Nama Warga Yang Didata',
             // 'nama_kegiatan.required' => 'Lengkapi Kegiatan Yang Diikuti Warga',
-            'id_kegiatan.required' => 'Lengkapi Kegiatan Yang Diikuti Warga',
+            'id_kategori.required' => 'Lengkapi Kegiatan Yang Diikuti Warga',
             'aktivitas.required' => 'Pilih Aktivitas Kegiatan Yang Diikuti Warga',
             // 'keterangan.required' => 'Lengkapi Keterangan Kegiatan Yang Diikuti Warga',
             'id_keterangan.required' => 'Lengkapi Keterangan Kegiatan Yang Diikuti Warga',
@@ -124,7 +127,9 @@ class DataKegiatanWargaController extends Controller
             $kegiatans->id_kecamatan = $request->id_kecamatan;
             $kegiatans->id_warga = $request->id_warga;
             // $kegiatans->nama_kegiatan = $request->nama_kegiatan;
-            $kegiatans->id_kegiatan = $request->id_kegiatan;
+            $kegiatans->id_kategori = $request->id_kategori;
+            $kegiatans->id_user = $request->id_user;
+
             $kegiatans->aktivitas = $request->aktivitas;
             // $kegiatans->keterangan = $request->keterangan;
             $kegiatans->id_keterangan = $request->id_keterangan;
@@ -169,6 +174,10 @@ class DataKegiatanWargaController extends Controller
         ->where('id', auth()->user()->id_desa)
         ->get();
 
+        $kad = DB::table('users')
+        ->where('id', auth()->user()->id)
+        ->get();
+
         $data['kategori'] = [
             'Penghayatan dan Pengamalan Pancasila' => 'Penghayatan dan Pengamalan Pancasila',
             'Kerja Bakti' => 'Kerja Bakti',
@@ -205,7 +214,7 @@ class DataKegiatanWargaController extends Controller
 
         // dd($keg);
 
-        return view('kader.data_kegiatan.form.edit_data_kegiatan',$data, compact('data_kegiatan','keg', 'kec', 'desas'));
+        return view('kader.data_kegiatan.form.edit_data_kegiatan',$data, compact('data_kegiatan','keg', 'kec', 'desas','kad'));
 
     }
 

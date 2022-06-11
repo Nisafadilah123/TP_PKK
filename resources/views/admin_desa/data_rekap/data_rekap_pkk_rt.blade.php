@@ -15,10 +15,15 @@
                     <div class="card">
                         <div class="card-body">
                             <center>
-                                <h6>RT : </h6>
-                                <h6>RW : </h6>
-                                <h6>Desa/Kel : </h6>
-                                <h6>Tahun : </h6>
+                                <h6><strong>REKAPITULASI</strong></h6>
+                                <h6><strong>CATATAN DATA DAN KEGIATAN WARGA</strong> </h6>
+                                <h6><strong>KELOMPOK PKK RT</strong> </h6>
+                                @foreach ($rekap as $item)
+                                    <h6>RT : {{ucfirst ($item->rt) }}</h6>
+                                    <h6>RW : {{ucfirst ($item->rw) }}</h6>
+                                    <h6>Desa/Kel : {{ucfirst ($item->nama_desa) }}</h6>
+                                    <h6>Tahun : {{ucfirst ($item->periode) }}</h6>
+                                @endforeach
                             </center>
 
                             <div class="table-responsive">
@@ -30,7 +35,7 @@
                                         <th rowspan="3" style="text-align: center;">Jml. KRT</th>
                                         <th rowspan="3" style="text-align: center;">Jml. KK</th>
                                         <th colspan="11" style="text-align:center;">Jumlah Anggota Keluarga</th>
-                                        <th colspan="6" style="text-align:center;">Kriteria Rumah</th>
+                                        <th colspan="6" style="text-align:center;">Jumlah Rumah</th>
                                         <th colspan="3" style="text-align:center;">Sumber Air Keluarga</th>
                                         <th colspan="2" style="text-align:center;">Makanan Pokok</th>
                                         <th colspan="6" style="text-align:center;">Warga Mengikuti Kegiatan</th>
@@ -76,25 +81,29 @@
                                     <tbody>
                                         <?php $no=1;?>
 
-                                        {{-- @foreach ($warga as $c)
-                                    <tr>
-                                        <td style="vertical-align: middle;">{{ $no }}</td>
-                                        <td style="vertical-align: middle;">{{ $c->no_registrasi }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->nama)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->status)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->status_perkawinan)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin == 'laki-laki' ? 'laki-laki' :'')}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin == 'perempuan' ? 'perempuan' :'')}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->tgl_lahir)}}/{{ ucfirst($c->umur) }} Tahun</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->pendidikan)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->pekerjaan)}}</td>
+                                        @foreach ($catatan_keluarga as $data_warga)
+                                        <tr>
+                                            <td style="vertical-align: middle;">{{ $no }}</td>
+                                            <td style="vertical-align: middle;">{{ $data_warga->warga_dasa_wisma }}</td>
+                                            <td>{{ $data_warga->id }}</td>
+                                            <td>{{ $data_warga->jumlah_KK }}</td>
+                                            <td>{{ $data_warga->laki_laki}}</td>
+                                            <td>{{ $data_warga->perempuan}}</td>
+                                            <td>{{ $data_warga->jumlah_balita_laki}}</td>
+                                            <td>{{ $data_warga->jumlah_balita_perempuan}}</td>
+                                            <td>{{ $data_warga->jumlah_3_buta }}</td>
+                                            <td>{{ $data_warga->jumlah_PUS}}</td>
+                                            <td>{{ $data_warga->jumlah_WUS }}</td>
+                                            <td>{{ $data_warga->jumlah_ibu_hamil }}</td>
+                                            <td>{{ $data_warga->jumlah_ibu_menyusui }}</td>
+                                            <td>{{ $data_warga->jumlah_lansia }}</td>
+                                            <td>{{ $data_warga->jumlah_kebutuhan }}</td>
 
+                                        </tr>
+                                        <?php $no++ ;?>
 
-                                    </tr>
-                                    <?php $no++ ;?>
-
-                                    @endforeach
-                                    </tbody> --}}
+                                        @endforeach
+                                    </tbody>
 
                                 </table>
 

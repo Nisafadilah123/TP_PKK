@@ -16,7 +16,7 @@ class DataWarga extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-       'id_desa','id_kecamatan', 'dasa_wisma', 'nama_kepala_rumah_tangga',	'no_registrasi', 'no_ktp', 'nama', 'jabatan', 'jenis_kelamin', 'tempat_lahir',	'tgl_lahir',
+       'id_desa','id_kecamatan','id_user', 'id_keluarga','dasa_wisma', 'no_registrasi', 'no_ktp', 'nama', 'jabatan', 'jenis_kelamin', 'tempat_lahir',	'tgl_lahir',
        'umur','status_perkawinan', 'status_keluarga','status', 'agama', 'alamat','rt','rw', 'kota', 'provinsi', 'pendidikan', 'pekerjaan',
            'akseptor_kb', 'aktif_posyandu', 'ikut_bkb',	'memiliki_tabungan', 'ikut_kelompok_belajar','ikut_paud_sejenis', 'ikut_koperasi', 'periode'
     ];
@@ -43,23 +43,17 @@ class DataWarga extends Model
         return $this->hasMany(KeteranganKegiatan::class, 'id_keterangan');
     }
 
-    public function kepalaKeluarga()
-    {
-        return $this->belongsTo(DataWarga::class, 'nik_kepala_keluarga', 'no_ktp');
-    }
+    // public function kepalaKeluarga()
+    // {
+    //     return $this->belongsTo(DataWarga::class, 'nik_kepala_keluarga', 'no_ktp');
+    // }
 
-     // data_keluarga
+    // data_keluarga
      public function keluarga(){
-        return $this->hasMany(DataKeluarga::class, 'id_warga');
+        return $this->belongsTo(DataKeluarga::class, 'id_keluarga');
     }
 
-    // data_pemanfaatan
-    public function pemanfaatan(){
-        return $this->hasMany(PemanfaatanKarangan::class);
-    }
-
-     // data_pemanfaatan
-     public function industri(){
-        return $this->hasMany(DataIndustriRumah::class);
+    public function user(){
+        return $this->belongsTo(User::class, 'id_user');
     }
 }

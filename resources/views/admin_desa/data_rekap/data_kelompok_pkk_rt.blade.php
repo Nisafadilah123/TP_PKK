@@ -29,7 +29,7 @@
                                     <tbody>
                                         <?php $no=1;?>
 
-                                        {{-- @foreach ($rt as $c)
+                                        @foreach ($rt as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->rt)}}</td>
@@ -37,12 +37,8 @@
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
 
                                         <td class="text-center">
-                                                <a class="btn btn-success btn-sm" href="{{ url('rekap_kelompok_dasa_wisma') }}">Rekap</a> --}}
-                                                {{-- <a class="btn btn-primary btn-sm" href="{{ url('catatan_keluarga/'.$c->id.'/catatan_keluarga') }}">Catatan Keluarga</a> --}}
-
-                                        {{-- </td>
-
-                                    </tr> --}}
+                                            <a class="btn btn-success btn-sm" href="{{ url('rekap_kelompok_pkk_rt').'?'.http_build_query(['pkk_rt' => $c->rt]) }}">Rekap</a>
+                                        </td>
                                     <?php $no++ ;?>
 
                                     @endforeach
