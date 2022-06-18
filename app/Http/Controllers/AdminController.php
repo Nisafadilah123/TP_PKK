@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Data_Desa;
 use App\Models\DataKeluarga;
 use App\Models\DataWarga;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -12,6 +14,9 @@ class AdminController extends Controller
 {
         // halaman dashboard
         public function dashboard(){
+
+            // $Variabel = $request->id_kategori+$request->id_room;
+
             return view('admin_desa.dashboard');
         }
 
@@ -131,54 +136,81 @@ class AdminController extends Controller
         // data catatan data dan kegiatan warga kelompok dasa wisma admin desa
         public function data_kelompok_dasa_wisma()
         {
-            $dasa_wisma = DB::table('data_keluarga')->select('dasa_wisma',  'rt','rw', 'periode')->distinct()->get();
-            // dd($dasa_wisma);
+            /** @var User */
+            $user = Auth::user();
+
+            $dasa_wisma = DB::table('data_keluarga')
+                ->select('id_desa', 'dasa_wisma',  'rt','rw', 'periode')
+                ->where('id_desa', $user->id_desa)
+                ->distinct()
+                ->get();
+
             return view('admin_desa.data_rekap.data_kelompok_dasa_wisma', compact('dasa_wisma'));
         }
 
         // rekap catatan data dan kegiatan warga kelompok dasa wisma admin desa
         public function rekap_kelompok_dasa_wisma(Request $request)
         {
-            $rekap = DB::table('data_warga')
-            ->join('data_desa', 'data_desa.id', '=', 'data_warga.id_desa')
-            ->select('dasa_wisma',  'rt','rw', 'periode', 'nama_desa')->distinct()->where('dasa_wisma', $request->query('dasa_wisma'))
-            ->get();
-            // $warga = DB::table('data_warga')->select('nama_kepala_rumah_tangga', 'status_keluarga')->distinct()->get();
-            // $kegiatan = DataWarga::query()
-            //     ->with([
-            //         'kegiatan',
-            //         'kegiatan.kategori_kegiatan',
-            //         'kegiatan.keterangan_kegiatan',
-            //         'pemanfaatan',
-            //         'industri'
-            //     ])
-            //     ->get();
-            $kegiatan = DataWarga::
-                leftjoin('data_kegiatan_warga', 'data_warga.id', '=', 'data_kegiatan_warga.id_warga')
-                ->leftjoin('kategori_kegiatan', 'data_kegiatan_warga.id_kategori', '=', 'kategori_kegiatan.id')
-                ->select('data_warga.*', 'data_kegiatan_warga.*', 'kategori_kegiatan.*')
-                ->where('nama_kegiatan')->get();;
+            /** @var User */
+            $user = Auth::user();
 
-            $catatan_keluarga = DataKeluarga::
-                leftjoin('data_pemanfaatan_pekarangan', 'data_pemanfaatan_pekarangan.id_keluarga', '=', 'data_keluarga.id')
-                ->leftjoin('data_industri_rumah', 'data_industri_rumah.id_keluarga', '=', 'data_keluarga.id')
-                ->select('data_keluarga.*', 'data_industri_rumah.*', 'data_pemanfaatan_pekarangan.*', 'data_industri_rumah.nama_kategori as kategori_industri')
-                ->get();
-            // $catatan_keluarga = DataKeluarga::all();
-            // $catatan_keluarga = DataKeluarga::query()
-            //     ->with([
-            //         'pemanfaatan',
-            //         'industri',
-            //     ])
+            $dasa_wisma = $request->query('dasa_wisma');
+            $rt = $request->query('rt');
+            $rw = $request->query('rw');
+            $periode = $request->query('periode');
+
+            // $rekap = DB::table('data_keluarga')
+            //     ->join('data_desa', 'data_desa.id', '=', 'data_keluarga.id_desa')
+            //     ->select('dasa_wisma',  'rt','rw', 'periode', 'nama_desa')->distinct()->where('dasa_wisma', $request->query('dasa_wisma'))
             //     ->get();
-            dd($kegiatan);
-            return view('admin_desa.data_rekap.data_rekap_dasa_wisma', compact('rekap', 'catatan_keluarga', 'kegiatan'));
+
+            // $catatan_keluarga = DataKeluarga::
+            //     leftjoin('data_pemanfaatan_pekarangan', 'data_pemanfaatan_pekarangan.id_keluarga', '=', 'data_keluarga.id')
+            //     ->leftjoin('data_industri_rumah', 'data_industri_rumah.id_keluarga', '=', 'data_keluarga.id')
+            //     ->leftjoin('data_kegiatan_warga', 'data_keluarga.id', '=', 'data_kegiatan_warga.id_keluarga')
+            //     ->leftjoin('kategori_kegiatan', 'data_kegiatan_warga.id_kategori', '=', 'kategori_kegiatan.id')
+
+            //     ->select(
+            //         'data_keluarga.*', 'data_pemanfaatan_pekarangan.*','data_pemanfaatan_pekarangan.id_keluarga as kategori_pemanfaatan',
+            //         'data_industri_rumah.*', 'data_kegiatan_warga.*', 'kategori_kegiatan.*'
+            //         )
+            //     ->get();
+
+            // $rekap
+
+            $catatan_keluarga = DataKeluarga::query()
+                ->with(['industri', 'pemanfaatan',
+                    ])
+                // ->where('id_keluarga', $id)
+                ->where('id_desa', $user->id_desa)
+                ->where('dasa_wisma', $dasa_wisma)
+                ->where('rt', $rt)
+                ->where('rw', $rw)
+                ->where('periode', $periode)
+                ->get();
+
+            $desa = $user->desa;
+
+            return view('admin_desa.data_rekap.data_rekap_dasa_wisma', compact(
+                'dasa_wisma',
+                'rt',
+                'rw',
+                'periode',
+                'catatan_keluarga',
+                'desa',
+            ));
         }
 
         // data catatan data dan kegiatan warga kelompok pkk rt admin desa
         public function data_kelompok_pkk_rt()
         {
-            $rt = DB::table('data_warga')->select('rt','rw', 'periode')->distinct()->get();
+            $user = Auth::user();
+
+            $rt = DB::table('data_keluarga')
+                ->select('id_desa', 'rt', 'rw', 'periode')
+                ->where('id_desa', $user->id_desa)
+                ->distinct()
+                ->get();
 
             return view('admin_desa.data_rekap.data_kelompok_pkk_rt', compact('rt'));
         }
@@ -186,78 +218,144 @@ class AdminController extends Controller
          // rekap catatan data dan kegiatan warga kelompok rt admin desa
         public function rekap_kelompok_pkk_rt(Request $request)
         {
-            $rekap = DB::table('data_warga')
-            ->join('data_desa', 'data_desa.id', '=', 'data_warga.id_desa')
-            ->select('rt','rw', 'periode', 'nama_desa')->distinct()
-            ->get();
-            $catatan_keluarga = DataWarga::
-                leftjoin('data_kegiatan_warga', 'data_warga.id', '=', 'data_kegiatan_warga.id_warga')
-                ->leftjoin('kategori_kegiatan', 'data_kegiatan_warga.id_kegiatan', '=', 'kategori_kegiatan.id')
-                ->leftjoin('keterangan_kegiatan', 'data_kegiatan_warga.id_keterangan', '=', 'keterangan_kegiatan.id')
-                ->leftjoin('data_keluarga', 'data_warga.id', '=', 'data_keluarga.id_warga')
-                ->select('data_warga.*', 'data_warga.dasa_wisma as warga_dasa_wisma', 'data_keluarga.*', 'data_kegiatan_warga.*', 'kategori_kegiatan.*')
-                ->get();
-            $hitung_sehat = DataKeluarga::where('kriteria_rumah', '1')->get()->sum('kriteria_rumah');
-            // dd($hitung_sehat);
+            $user = Auth::user();
 
-            return view('admin_desa.data_rekap.data_rekap_pkk_rt', compact('rekap', 'catatan_keluarga', 'hitung_sehat'));
+            $dasa_wisma = $request->query('dasa_wisma');
+            $rt = $request->query('rt');
+            $rw = $request->query('rw');
+            $periode = $request->query('periode');
+            // $dasa_wismas = DB::table('data_keluarga')->select('dasa_wisma')->distinct();
+
+            $catatan_keluarga = DataKeluarga::query()
+                ->with(['industri', 'pemanfaatan'])
+                // ->where('id_keluarga', $id)
+                // ->where('id_desa', $user->id_desa)
+                // ->where('dasa_wisma', $user->id_desa)
+
+                // ->where('dasa_wisma', $dasa_wismas)
+
+                ->where([
+                    // ['dasa_wisma', $dasa_wisma],
+                    ['rt', $rt],
+                    ['rw', $rw],
+                    ['periode', $periode],
+                ])
+                ->get()
+                ->groupBy('dasa_wisma');
+
+            // $hitung = $request->$catatan_keluarga->where(['dasa_wisma', $dasa_wisma], ['rt', $rt]);
+
+            $desa = $user->desa;
+            // $dasa_wismas = $catatan_keluarga->$requestdistinct();
+
+            dd($catatan_keluarga);
+            return view('admin_desa.data_rekap.data_rekap_pkk_rt', compact(
+                'dasa_wisma',
+                'rt',
+                'rw',
+                'periode',
+                'catatan_keluarga',
+                'desa',
+            ));
         }
 
         // data catatan data dan kegiatan warga kelompok pkk rw admin desa
         public function data_kelompok_pkk_rw()
         {
-            $rw = DB::table('data_warga')->select('rw', 'periode')->distinct()->get();
+            $user = Auth::user();
+
+            $rw = DB::table('data_keluarga')
+                ->select('id_desa', 'rw', 'periode')
+                ->where('id_desa', $user->id_desa)
+                ->distinct()
+                ->get();
 
             return view('admin_desa.data_rekap.data_kelompok_pkk_rw', compact('rw'));
         }
 
         // rekap catatan data dan kegiatan warga kelompok rw admin desa
-        public function rekap_kelompok_pkk_rw()
+        public function rekap_kelompok_pkk_rw(Request $request)
         {
-            $rekap = DB::table('data_warga')
-            ->join('data_desa', 'data_desa.id', '=', 'data_warga.id_desa')
-            ->select('rt','rw', 'periode', 'nama_desa')->distinct()
-            ->get();
-            $catatan_keluarga = DataWarga::query()
-                ->with([
-                    'kegiatan',
-                    'kegiatan.kategori_kegiatan',
-                    'kegiatan.keterangan_kegiatan',
-                    'keluarga'
+            $user = Auth::user();
+
+            $dasa_wisma = $request->query('dasa_wisma');
+            $rt = $request->query('rt');
+            $rw = $request->query('rw');
+            $periode = $request->query('periode');
+            // $dasa_wismas = DB::table('data_keluarga')->select('dasa_wisma')->distinct();
+
+            $catatan_keluarga = DataKeluarga::query()
+                ->with(['industri', 'pemanfaatan'])
+                // ->where('id_keluarga', $id)
+                // ->where('id_desa', $user->id_desa)
+                // ->where('dasa_wisma', $user->id_desa)
+
+                // ->where('dasa_wisma', $dasa_wismas)
+
+                ->where([
+                    // ['dasa_wisma', $dasa_wisma],
+                    // ['rt', $rt],
+                    ['rw', $rw],
+                    ['periode', $periode],
                 ])
-                // ->select('nama_kepala_rumah_tangga')->distinct()
-                // ->where('dasa_wisma', $request->query('dasa_wisma'))
                 ->get();
+
+            // $hitung = $request->$catatan_keluarga->where(['dasa_wisma', $dasa_wisma], ['rt', $rt]);
+
+            $desa = $user->desa;
+            // $dasa_wismas = $catatan_keluarga->$requestdistinct();
             // dd($catatan_keluarga);
 
-            return view('admin_desa.data_rekap.data_rekap_pkk_rw', compact('rekap', 'catatan_keluarga'));
+            return view('admin_desa.data_rekap.data_rekap_pkk_rw', compact(
+                'dasa_wisma',
+                'rt',
+                'rw',
+                'periode',
+                'catatan_keluarga',
+                'desa',
+            ));
         }
 
         // data catatan data dan kegiatan warga kelompok pkk dusun admin desa
         public function data_kelompok_pkk_dusun()
         {
-            $dusun = DB::table('data_warga')->select('alamat', 'periode')->distinct()->get();
+            $dusun = DB::table('data_keluarga')->select('dusun', 'periode')->distinct()->get();
             return view('admin_desa.data_rekap.data_kelompok_pkk_dusun', compact('dusun'));
         }
 
         // rekap catatan data dan kegiatan warga kelompok dusun admin desa
-        public function rekap_kelompok_pkk_dusun()
+        public function rekap_kelompok_pkk_dusun(Request $request)
         {
-            $rekap = DB::table('data_warga')
-            ->join('data_desa', 'data_desa.id', '=', 'data_warga.id_desa')
-            ->select('alamat', 'periode', 'nama_desa')->distinct()
-            ->get();
-            $catatan_keluarga = DataWarga::query()
-            ->with([
-                'kegiatan',
-                'kegiatan.kategori_kegiatan',
-                'kegiatan.keterangan_kegiatan',
-                'keluarga'
-            ])
-            // ->select('nama_kepala_rumah_tangga')->distinct()
-            // ->where('dasa_wisma', $request->query('dasa_wisma'))
-            ->get();
-            return view('admin_desa.data_rekap.data_rekap_pkk_dusun', compact('rekap', 'catatan_keluarga'));
+            $user = Auth::user();
+
+            $dasa_wisma = $request->query('dasa_wisma');
+            $rt = $request->query('rt');
+            $rw = $request->query('rw');
+            $periode = $request->query('periode');
+            $dusun = $request->query('dusun');
+
+            $catatan_keluarga = DataKeluarga::query()
+                ->with(['industri', 'pemanfaatan'])
+                ->where([
+                    ['dusun', $dusun],
+                    ['periode', $periode],
+                ])
+                ->get();
+
+            // $dusun = DB::table('data_warga')->select('alamat')->get();
+
+            $desa = $user->desa;
+            // $dasa_wismas = $catatan_keluarga->$requestdistinct();
+            dd($dusun);
+
+            return view('admin_desa.data_rekap.data_rekap_pkk_dusun', compact(
+                'dusun',
+                'rt',
+                'rw',
+                'periode',
+                'catatan_keluarga',
+                'desa',
+            ));
         }
 
         // data catatan data dan kegiatan warga kelompok pkk desa admin desa

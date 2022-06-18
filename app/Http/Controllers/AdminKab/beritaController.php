@@ -131,8 +131,6 @@ class BeritaController extends Controller
                 'penulis.required' => 'Lengkapi Deskripsi Berita yang ingin di publish',
 
         ]);
-// dd($berita);
-        // $input = $request->all();
             $beritaKab->nama_berita = $request->nama_berita;
             $beritaKab->desk = $request->desk;
             $beritaKab->tgl_publish =$request->tgl_publish;
@@ -166,6 +164,7 @@ class BeritaController extends Controller
     {
         //halaman hapus
         $beritaKab->delete();
+        Alert::success('Berhasil', 'Data berhasil di Hapus');
 
         return redirect('/beritaKab')->with('status', 'sukses');
 

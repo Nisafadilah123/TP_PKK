@@ -9,6 +9,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\KategoriPemanfaatanLahan;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class DataPemanfaatanPekaranganController extends Controller
@@ -20,8 +21,9 @@ class DataPemanfaatanPekaranganController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         //halaman form data pemanfaatan tanah pekarangan
-        $pemanfaatan = DataPemanfaatanPekarangan::all();
+        $pemanfaatan = DataPemanfaatanPekarangan::all()->where('id_desa', $user->id_desa);
         return view('kader.data_kegiatan.data_pemanfaatan', compact('pemanfaatan'));
     }
 

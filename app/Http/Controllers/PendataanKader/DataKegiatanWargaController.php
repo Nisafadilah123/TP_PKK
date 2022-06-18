@@ -4,9 +4,12 @@ namespace App\Http\Controllers\PendataanKader;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
 use App\Models\DataKegiatanWarga;
+use App\Models\DataKeluarga;
 use App\Models\DataWarga;
 use App\Models\KategoriKegiatan;
+use App\Models\KeteranganKegiatan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -19,8 +22,10 @@ class DataKegiatanWargaController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+
         // halaman data kegiatan
-        $kegiatan=DataKegiatanWarga::all();
+        $kegiatan=DataKegiatanWarga::all()->where('id_desa', $user->id_desa);
         return view('kader.data_kegiatan.data_kegiatan', compact('kegiatan'));
     }
 
@@ -45,6 +50,7 @@ class DataKegiatanWargaController extends Controller
         ->where('id', auth()->user()->id)
         ->get();
 
+        $kel = DataKeluarga::all();
         $warga = DataWarga::all(); // pemanggilan tabel data warga
         $keg = KategoriKegiatan::all(); // pemanggilan tabel data kategori kegiatan
         // $data['kategori'] = [
@@ -82,7 +88,7 @@ class DataKegiatanWargaController extends Controller
         // ];
         //  dd($keg);
         // return view('kader.data_kegiatan.form.create_data_kegiatan', $data, compact('kec', 'warga', 'desas'));
-        return view('kader.data_kegiatan.form.create_data_kegiatan', compact('keg', 'warga', 'desas', 'kec', 'kad'));
+        return view('kader.data_kegiatan.form.create_data_kegiatan', compact('keg', 'warga', 'desas', 'kec', 'kad', 'kel'));
 
     }
 
@@ -100,7 +106,9 @@ class DataKegiatanWargaController extends Controller
         $request->validate([
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
+            // 'id_keluarga' => 'required',
             'id_warga' => 'required',
+
             // 'nama_kegiatan' => 'required',
             'id_kategori' => 'required',
             'aktivitas' => 'required',
@@ -178,43 +186,48 @@ class DataKegiatanWargaController extends Controller
         ->where('id', auth()->user()->id)
         ->get();
 
-        $data['kategori'] = [
-            'Penghayatan dan Pengamalan Pancasila' => 'Penghayatan dan Pengamalan Pancasila',
-            'Kerja Bakti' => 'Kerja Bakti',
-            'Rukun Kematian' => 'Rukun Kematian',
-            'Kegiatan Keagamaan' => 'Kegiatan Keagamaan',
-            'Jimpitan' => 'Jimpitan',
-            'Arisan' => 'Arisan',
-            'Lain-lain' => 'Lain-lain',
-        ];
+        $kel = DataKeluarga::all();
+        $warga = DataWarga::all(); // pemanggilan tabel data warga
+        $keg = KategoriKegiatan::all(); // pemanggilan tabel data kategori kegiatan
+        $ket = KeteranganKegiatan::all(); // pemanggilan tabel data kategori kegiatan
 
-        $data['keterangan'] = [
-            'Keagamaan' => 'Keagamaan',
-            'Pola Asuh' => 'Pola Asuh',
-            'PKBN' => ' PKBN',
-            'Pencegahan KDRT' => 'Pencegahan KDRT',
-            'Pencegahan Traffocking' => 'Pencegahan Traffocking',
-            'Narkoba' => 'Narkoba',
-            'Pencegahan Kejahatan Seksual' => 'Pencegahan Kejahatan Seksual',
-            'Kerja Bakti' => 'Kerja Bakti',
-            'Jimpitan' => 'Jimpitan',
-            'Arisan' => 'Arisan',
-            'Rukun Kematian' => 'Rukun Kematian',
-            'Bakti Sosial ' => 'Bakti Sosial',
-            'BKB (Bina Keluarga Balita)' => 'BKB (Bina Keluarga Balita)',
-            'PAUD Sejenis' => 'PAUD Sejenis',
-            'Paket A' => 'Paket A',
-            'Paket B' => 'Paket B',
-            'Paket C' => 'Paket C',
-            'KF (Keaksaraan Fungsinal) ' => 'KF (Keaksaraan Fungsional) ',
-            'UP2K (Usaha Peningkatan Pendapatan Keluarga)' => 'UP2K (Usaha Peningkatan Pendapatan Keluarga)',
-            'Koperasi' => 'Koperasi',
+        // $data['kategori'] = [
+        //     'Penghayatan dan Pengamalan Pancasila' => 'Penghayatan dan Pengamalan Pancasila',
+        //     'Kerja Bakti' => 'Kerja Bakti',
+        //     'Rukun Kematian' => 'Rukun Kematian',
+        //     'Kegiatan Keagamaan' => 'Kegiatan Keagamaan',
+        //     'Jimpitan' => 'Jimpitan',
+        //     'Arisan' => 'Arisan',
+        //     'Lain-lain' => 'Lain-lain',
+        // ];
 
-        ];
+        // $data['keterangan'] = [
+        //     'Keagamaan' => 'Keagamaan',
+        //     'Pola Asuh' => 'Pola Asuh',
+        //     'PKBN' => ' PKBN',
+        //     'Pencegahan KDRT' => 'Pencegahan KDRT',
+        //     'Pencegahan Traffocking' => 'Pencegahan Traffocking',
+        //     'Narkoba' => 'Narkoba',
+        //     'Pencegahan Kejahatan Seksual' => 'Pencegahan Kejahatan Seksual',
+        //     'Kerja Bakti' => 'Kerja Bakti',
+        //     'Jimpitan' => 'Jimpitan',
+        //     'Arisan' => 'Arisan',
+        //     'Rukun Kematian' => 'Rukun Kematian',
+        //     'Bakti Sosial ' => 'Bakti Sosial',
+        //     'BKB (Bina Keluarga Balita)' => 'BKB (Bina Keluarga Balita)',
+        //     'PAUD Sejenis' => 'PAUD Sejenis',
+        //     'Paket A' => 'Paket A',
+        //     'Paket B' => 'Paket B',
+        //     'Paket C' => 'Paket C',
+        //     'KF (Keaksaraan Fungsinal) ' => 'KF (Keaksaraan Fungsional) ',
+        //     'UP2K (Usaha Peningkatan Pendapatan Keluarga)' => 'UP2K (Usaha Peningkatan Pendapatan Keluarga)',
+        //     'Koperasi' => 'Koperasi',
+
+        // ];
 
         // dd($keg);
 
-        return view('kader.data_kegiatan.form.edit_data_kegiatan',$data, compact('data_kegiatan','keg', 'kec', 'desas','kad'));
+        return view('kader.data_kegiatan.form.edit_data_kegiatan', compact('data_kegiatan','keg', 'kec', 'desas','kad','kel', 'ket', 'warga'));
 
     }
 
@@ -234,9 +247,9 @@ class DataKegiatanWargaController extends Controller
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
             'id_warga' => 'required',
-            'nama_kegiatan' => 'required',
+            'id_kategori' => 'required',
             'aktivitas' => 'required',
-            'keterangan' => 'required',
+            'id_keterangan' => 'required',
             'periode' => 'required',
 
         ]);

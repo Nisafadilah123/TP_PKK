@@ -91,6 +91,19 @@
             </div>
 
             <div class="col-md-2">
+                <div class="form-group @error('dusun') is-invalid @enderror">
+                    <label for="exampleFormControlSelect1">Dusun</label>
+                    <input type="text" class="form-control @error('dusun') is-invalid @enderror" name="dusun" id="dusun" placeholder="Masukkan Nama Dusun" value="{{ ucfirst(old('rw', $data_keluarga->dusun )) }}">
+
+                </div>
+                @error('dusun')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+
+            <div class="col-md-2">
                 <div class="form-group @error('id_desa') is-invalid @enderror">
                     <label for="exampleFormControlSelect1">Desa</label>
                     @foreach ($desas as $c)
@@ -133,9 +146,6 @@
                         @enderror
                 </div>
             </div>
-        </div>
-
-        <div class="row">
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Provinsi</label>

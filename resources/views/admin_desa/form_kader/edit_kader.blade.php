@@ -42,8 +42,16 @@
                     @endif
                 @endforeach
               </select>
-
             </div>
+            <div class="form-group">
+                <label>Id Desa</label>
+                <input type="text" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Kader" required value="{{ Auth::user()->desa->nama_desa }}">
+            </div>
+            <div class="form-group">
+                <label>Id Desa</label>
+                <input type="text" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Kader" required value="{{ Auth::user()->kecamatan->nama_kecamatan }}">
+            </div>
+
           </div>
         <!-- /.card-body -->
 

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('data_pelatihan_kader', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_kader')->unsigned();
-            $table->foreign('id_kader')->references('id')->on('data_kader_gabung_pelatihan');
+            $table->bigInteger('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('data_kader_gabung_pelatihan');
             $table->string('nama_pelatihan');
             $table->string('kriteria_kader');
             $table->integer('tahun');

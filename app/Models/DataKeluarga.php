@@ -2,12 +2,22 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property-read int $haveKegiatan
+ * @property-read int $haveIndustri
+ * @property-read int $havePemanfaatan
+ * @property-read Collection<DataIndustriRumah> $industri
+ * @property-read null|DataWarga $kepalaKeluarga
+ * @property-read Collection<DataPemanfaatanPekarangan> $pemanfaatan
+ */
 class DataKeluarga extends Model
 {
     use HasFactory;
+
     protected $table = "data_keluarga";
     protected $primaryKey = 'id';
 
@@ -18,9 +28,62 @@ class DataKeluarga extends Model
        'tempel_stiker', 'kriteria_rumah', 'aktivitas_UP2K', 'aktivitas_kegiatan_usaha', 'periode'
     ];
 
+    public function getHaveKegiatanAttribute()
+    {
+        $have = 0;
+
+        if ($kepalaKeluarga = $this->kepalaKeluarga) {
+            if ($kepalaKeluarga->kegiatan->count() > 0) {
+                $have = 1;
+            }
+        }
+
+        return $have;
+    }
+
+    public function getHaveIndustriAttribute()
+    {
+        $have = 0;
+
+        if ($this->industri->count() > 0) {
+            $have = 1;
+        }
+
+        return $have;
+    }
+
+    public function getHavePemanfaatanAtribute()
+    {
+        $have = 0;
+
+        if ($this->industri->count() > 0) {
+            $have = 1;
+        }
+
+        return $have;
+    }
+
+    public function getKepalaKeluargaKegiatans()
+    {
+        /** @var Collection<DataKegiatanWarga> */
+        $kegiatans = new Collection();
+
+        if ($kepalaKeluarga = $this->kepalaKeluarga) {
+            $kegiatans = $kepalaKeluarga->kegiatan;
+        }
+
+        return $kegiatans;
+    }
+
     public function kecamatan(){
         return $this->belongsTo(DataKecamatan::class, 'id_kecamatan');
     }
+
+    public function kepalaKeluarga()
+    {
+        return $this->belongsTo(DataWarga::class, 'nik_kepala_keluarga', 'no_ktp');
+    }
+
     public function desa(){
         return $this->belongsTo(Data_Desa::class, 'id_desa');
     }
@@ -30,17 +93,17 @@ class DataKeluarga extends Model
     // }
 
     public function warga(){
-        return $this->hasMany(DataWarga::class);
+        return $this->hasMany(DataWarga::class, 'id_keluarga');
     }
 
     // data_pemanfaatan
     public function pemanfaatan(){
-        return $this->hasMany(DataPemanfaatanPekarangan::class);
+        return $this->hasMany(DataPemanfaatanPekarangan::class, 'id_keluarga');
     }
 
      // data_pemanfaatan
      public function industri(){
-        return $this->hasMany(DataIndustriRumah::class);
+        return $this->hasMany(DataIndustriRumah::class, 'id_keluarga');
     }
 
     public function user(){

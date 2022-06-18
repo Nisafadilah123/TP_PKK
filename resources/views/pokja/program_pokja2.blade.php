@@ -21,9 +21,9 @@
                 <div class="col-lg-12">
                   <div class="card">
                     <div class="card-body">
-                <h2>Pokja II sebagai pengelola program:</h2>
-                <p style="font-family: 'Times New Roman', Times, serif">a) Pendidikan dan Keterampilan.</p>
-                <p style="font-family: 'Times New Roman', Times, serif">b) Pengembangan Kehidupan Berkoperasi.</p>
+                <h1 style="font-family: 'Times New Roman', Times, serif;">Pokja II sebagai pengelola program:</h1>
+                <p style="font-family: 'Times New Roman', Times, serif; font-size: 28px">a) Pendidikan dan Keterampilan.</p>
+                <p style="font-family: 'Times New Roman', Times, serif; font-size: 28px">b) Pengembangan Kehidupan Berkoperasi.</p>
 
                     </div>
                   </div>

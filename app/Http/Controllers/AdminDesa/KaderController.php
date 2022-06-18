@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\AdminDesa;
 use App\Http\Controllers\Controller;
+use App\Models\Kader;
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -53,9 +54,12 @@ class KaderController extends Controller
             'email' => 'required|unique:data_kader',
             'password' => 'required',
             'user_type' => 'required',
+            'id_desa' => 'required',
+            'id_kecamatan' => 'required',
+
         ]);
 
-        $kader = new Kader();
+        $kader = new User;
         $kader->name = $request->name;
         $kader->email = $request->email;
         $kader->password = Hash::make($request->password);
@@ -64,6 +68,7 @@ class KaderController extends Controller
         $kader->id_kecamatan = auth()->user()->id_kecamatan;
 
         $kader->save();
+        // dd($kader);
         Auth::guard('kader')->login($kader);
         Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
@@ -87,10 +92,10 @@ class KaderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kader $data_kader)
+    public function edit(User $data_kader)
     {
         //
-        $data['user_type'] = ['kader_desa' => 'Kader Desa', 'kader_keluruhan' => 'Kader Kelurahan', 'kader_kecamatan' => 'Kader Kecamatan'];
+        $data['user_type'] = ['kader_desa' => 'Kader Desa', 'kader_kelurahan' => 'Kader Kelurahan', 'kader_kecamatan' => 'Kader Kecamatan'];
         return view('admin_desa.form_kader.edit_kader', $data, compact('data_kader'));
 
     }
@@ -102,7 +107,7 @@ class KaderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kader $data_kader)
+    public function update(Request $request, User $data_kader)
     {
         // dd($request->all());
         $request->validate([
@@ -120,8 +125,8 @@ class KaderController extends Controller
         if ($request->password)
             $data_kader->password = Hash::make($request->password);
         $data_kader->user_type = $request->user_type;
-        $data_kader->id_desa = $request->id_desa;
-        $data_kader->id_kecamatan = $request->id_kecamatan;
+        $data_kader->id_desa = auth()->user()->id_desa;
+        $data_kader->id_kecamatan = auth()->user()->id_kecamatan;
 
         $data_kader->save();
         Alert::success('Berhasil', 'Data berhasil di Ubah');
@@ -135,10 +140,11 @@ class KaderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($data_kader, Kader $kader)
+    public function destroy($data_kader, User $kader)
     {
         //temukan id gotong_royong
         $kader::find($data_kader)->delete();
+        Alert::success('Berhasil', 'Data berhasil di Hapus');
 
         return redirect('/data_kader')->with('status', 'sukses');
     }

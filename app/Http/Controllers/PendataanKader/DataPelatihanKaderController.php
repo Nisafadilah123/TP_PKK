@@ -21,7 +21,7 @@ class DataPelatihanKaderController extends Controller
         //halaman form data pelatihan kader
         //$pelatihan = DataPelatihanKader::all();
         $pelatihan = DB::table('data_pelatihan_kader as a')
-                                ->join('users as b', 'b.id', '=', 'a.id_kader')
+                                ->join('users as b', 'b.id', '=', 'a.id_user')
                                 ->select([
                                     'b.name as nama_kader',
                                     'a.*'
@@ -68,7 +68,7 @@ class DataPelatihanKaderController extends Controller
         // dd($request->all());
         // validasi data
         $request->validate([
-            'id_kader' => 'required',
+            'id_user' => 'required',
             'nama_pelatihan' => 'required',
             'kriteria_kader' => 'required',
             'tahun' => 'required',
@@ -76,7 +76,7 @@ class DataPelatihanKaderController extends Controller
             'keterangan' => 'required',
 
         ], [
-            'id_kader' => 'Lengkapi Alamat Kecamatan Kader Yang Aktif Kegiatan PKK',
+            'id_user' => 'Lengkapi Alamat Kecamatan Kader Yang Aktif Kegiatan PKK',
             'kriteria_kader.required' => 'Lengkapi Kriteria Kader Yang Aktif Kegiatan PKK',
             'nama_pelatihan.required' => 'Lengkapi Nama Pelatihan Yang Diikuti Kader Yang Aktif Kegiatan PKK',
             'tahun.required' => 'Pilih tahun',
@@ -97,7 +97,7 @@ class DataPelatihanKaderController extends Controller
         else {
             //dd($request->validated());
             $pelatihans = new DataPelatihanKader;
-            $pelatihans->id_kader = $request->id_kader;
+            $pelatihans->id_user = $request->id_user;
             $pelatihans->nama_pelatihan = $request->nama_pelatihan;
             $pelatihans->kriteria_kader = $request->kriteria_kader;
             $pelatihans->tahun = $request->tahun;

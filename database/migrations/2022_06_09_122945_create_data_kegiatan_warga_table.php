@@ -22,9 +22,9 @@ return new class extends Migration
             // $table->foreignID('id_kecamatan');
             $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan');
 
-            $table->bigInteger('id_keluarga')->unsigned();
-            // $table->foreignID('id_keluarga');
-            $table->foreign('id_keluarga')->references('id')->on('data_keluarga');
+            $table->bigInteger('id_warga')->unsigned();
+            // $table->foreignID('id_warga');
+            $table->foreign('id_warga')->references('id')->on('data_warga');
 
             $table->bigInteger('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users');

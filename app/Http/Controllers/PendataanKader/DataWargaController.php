@@ -6,6 +6,7 @@ use App\Models\Data_Desa;
 use App\Models\DataKeluarga;
 use App\Models\DataWarga;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -18,8 +19,10 @@ class DataWargaController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+
         //halaman data warga
-        $warga=DataWarga::all();
+        $warga=DataWarga::all()->where('id_desa', $user->id_desa);
         return view('kader.data_kegiatan.data_warga', compact('warga'));
     }
 

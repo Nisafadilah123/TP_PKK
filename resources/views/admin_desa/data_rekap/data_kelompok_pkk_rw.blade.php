@@ -35,7 +35,10 @@
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
 
                                         <td class="text-center">
-                                            <a class="btn btn-success btn-sm" href="{{ url('rekap_kelompok_pkk_rw').'?'.http_build_query(['pkk_rw' => $c->rw]) }}">Rekap</a>
+                                            <a class="btn btn-success btn-sm" href="{{ url('rekap_kelompok_pkk_rw').'?'.http_build_query([
+                                                'rw' => $c->rw,
+                                                'periode' => $c->periode,
+                                            ])}}">Rekap</a>
                                         </td>
                                     <?php $no++ ;?>
 

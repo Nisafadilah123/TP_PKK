@@ -194,6 +194,12 @@
                 </a>
               </li>
 
+              <li class="nav-item">
+                <a href="/galeriKeg" class="nav-link">
+                    <i class="nav-icon fas fa-image"></i>
+                    <p>Data Galeri Kegiatan</p>
+                </a>
+              </li>
 
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin_kabupaten.logout') }}"

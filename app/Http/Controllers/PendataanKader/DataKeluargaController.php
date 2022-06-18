@@ -18,8 +18,10 @@ class DataKeluargaController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+
         //halaman form data keluarga
-        $keluarga = DataKeluarga::all();
+        $keluarga = DataKeluarga::all()->where('id_desa', $user->id_desa);
         return view('kader.data_kegiatan.data_keluarga', compact('keluarga'));
     }
 
@@ -82,7 +84,7 @@ class DataKeluargaController extends Controller
             'rw' => 'required',
             'kota' => 'required',
             'provinsi' => 'required',
-            // 'laki_laki' => 'required',
+            'dusun' => 'required',
             // 'perempuan' => 'required',
             'jumlah_KK' => 'required',
             // 'jumlah_balita' => 'required',
@@ -114,7 +116,7 @@ class DataKeluargaController extends Controller
             'jumlah_anggota_keluarga.required' => 'Lengkapi Jumlah Anggota Keluarga',
             'rt.required' => 'Lengkapi RT',
             'rw.required' => 'Lengkapi RW',
-            // 'laki_laki.required' => 'Lengkapi Jumlah Laki-laki',
+            'dusun.required' => 'Lengkapi Nama Dusun',
             // 'perempuan.required' => 'Lengkapi Jumlah Perempuan',
             'jumlah_KK.required' => 'Lengkapi Jumlah KK',
             // 'jumlah_PUS.required' => 'Lengkapi Jumlah PUS (Pasangan Usia Subur) dalam Keluarga',
@@ -155,6 +157,7 @@ class DataKeluargaController extends Controller
             $wargas->kota = $request->kota;
             $wargas->provinsi = $request->provinsi;
             $wargas->id_user = $request->id_user;
+            $wargas->dusun = $request->dusun;
 
             $wargas->jumlah_anggota_keluarga = $request->jumlah_anggota_keluarga;
             $wargas->rt = $request->rt;
@@ -254,7 +257,7 @@ class DataKeluargaController extends Controller
             'rw' => 'required',
             'kota' => 'required',
             'provinsi' => 'required',
-            // 'laki_laki' => 'required',
+            'dusun' => 'required',
             // 'perempuan' => 'required',
             'jumlah_KK' => 'required',
             // 'jumlah_balita' => 'required',
@@ -285,7 +288,7 @@ class DataKeluargaController extends Controller
             'jumlah_anggota_keluarga.required' => 'Lengkapi Jumlah Anggota Keluarga',
             'rt.required' => 'Lengkapi RT',
             'rw.required' => 'Lengkapi RW',
-            // 'laki_laki.required' => 'Lengkapi Jumlah Laki-laki',
+            'dusun.required' => 'Lengkapi Nama Dusun',
             // 'perempuan.required' => 'Lengkapi Jumlah Perempuan',
             'jumlah_KK.required' => 'Lengkapi Jumlah KK',
             // 'jumlah_PUS.required' => 'Lengkapi Jumlah PUS (Pasangan Usia Subur) dalam Keluarga',

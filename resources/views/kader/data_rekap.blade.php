@@ -50,7 +50,7 @@
                                         <td style="vertical-align: middle;">{{ $no }}</td>
                                         <td style="vertical-align: middle;">{{ $c->no_registrasi }}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->nama)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->status)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->status_keluarga)}} {{ucfirst($c->status)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->status_perkawinan)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin == 'laki-laki' ? 'laki-laki' :'')}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin == 'perempuan' ? 'perempuan' :'')}}</td>

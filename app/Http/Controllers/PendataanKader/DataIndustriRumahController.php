@@ -7,6 +7,7 @@ use App\Models\DataKeluarga;
 use App\Models\DataWarga;
 use App\Models\KategoriIndustriRumah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -20,7 +21,9 @@ class DataIndustriRumahController extends Controller
     public function index()
     {
        // halaman data industri rumah tangga
-        $industri = DataIndustriRumah::all();
+       $user = Auth::user();
+
+        $industri = DataIndustriRumah::all()->where('id_desa', $user->id_desa);
        return view('kader.data_kegiatan.data_industri_rumah', compact('industri'));
    }
 

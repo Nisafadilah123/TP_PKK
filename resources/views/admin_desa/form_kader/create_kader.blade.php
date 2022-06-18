@@ -16,7 +16,19 @@
 
       <form action="{{ route('data_kader.store') }}" method="POST">
         @csrf
+        @if (count($errors)>0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{  ($error)  }}</li>
+
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
         <div class="card-body">
+
           <div class="form-group">
             <label>Nama</label>
             <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan Nama Kader" required>
@@ -49,6 +61,15 @@
                 @endforeach
             </select> --}}
           </div>
+            <div class="form-group">
+                <label>Id Desa</label>
+                <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Kader" required value="{{ Auth::user()->desa->nama_desa }}">
+            </div>
+            <div class="form-group">
+                <label>Id Desa</label>
+                <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Kader" required value="{{ Auth::user()->kecamatan->nama_kecamatan }}">
+            </div>
+
         </div>
         <!-- /.card-body -->
 

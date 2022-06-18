@@ -21,11 +21,10 @@
                 <div class="col-lg-12">
                   <div class="card">
                     <div class="card-body">
-                <h2>Pokja IV sebagai pengelola program:</h2>
-                <p style="font-family: 'Times New Roman', Times, serif">a) Kesehatan.</p>
-                <p style="font-family: 'Times New Roman', Times, serif">b) Kelestarian Lingkungan Hidup.</p>
-                <p style="font-family: 'Times New Roman', Times, serif">c) Perencanaan Sehat.</p>
-
+                        <h1 style="font-family: 'Times New Roman', Times, serif">Pokja IV sebagai pengelola program:</h1>
+                        <p style="font-family: 'Times New Roman', Times, serif; font-size: 28px">a) Kesehatan.</p>
+                        <p style="font-family: 'Times New Roman', Times, serif; font-size: 28px">b) Kelestarian Lingkungan Hidup.</p>
+                        <p style="font-family: 'Times New Roman', Times, serif; font-size: 28px">c) Perencanaan Sehat.</p>
                     </div>
                   </div>
                 </div>

@@ -76,11 +76,18 @@ class MainController extends Controller
     }
 
     // halaman berita
-    public function berita(){
+    public function berita($id){
+        $berita = BeritaKab::where('id', $id)->get();
+        // dd($beritas);
+
+        return view('main.berita', compact('berita'));
+    }
+
+    public function allberita(){
         $beritas = BeritaKab::all();
         // dd($beritas);
 
-        return view('main.berita', compact('beritas'));
+        return view('main.berita_all', compact('beritas'));
     }
 
     // halaman agenda

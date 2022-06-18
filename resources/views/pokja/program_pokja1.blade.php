@@ -21,10 +21,9 @@
                 <div class="col-lg-12">
                   <div class="card">
                     <div class="card-body">
-                <h2>Pokja I sebagai pengelola program:</h2>
-                <p style="font-family: 'Times New Roman', Times, serif">a) Penghayatan dan Pengamalan Pancasila.</p>
-                <p style="font-family: 'Times New Roman', Times, serif">b) Gotong Royong.</p>
-
+                      <h1 style="font-family: 'Times New Roman', Times, serif;">Pokja I sebagai pengelola program:</h1>
+                      <p style="font-family: 'Times New Roman', Times, serif; font-size: 28px" >a) Penghayatan dan Pengamalan Pancasila.</p>
+                      <p style="font-family: 'Times New Roman', Times, serif; font-size: 28px">b) Gotong Royong.</p>
                     </div>
                   </div>
                 </div>

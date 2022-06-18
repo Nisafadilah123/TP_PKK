@@ -243,7 +243,7 @@
 
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label>Dusun/Lingkungan</label>
+                            <label>Alamat</label>
                             {{-- Alamat--}}
                             <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" id="alamat" placeholder="Di isi Alamat" value="{{ old('alamat') }}">
                             @error('alamat')

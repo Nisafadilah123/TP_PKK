@@ -34,6 +34,7 @@ use App\Http\Controllers\AdminDesa\DataKegiatan\Kategori\KategoriIndustriRumahCo
 use App\Http\Controllers\AdminDesa\DataKegiatan\Kategori\KategoriPemanfaatanLahanController;
 use App\Http\Controllers\AdminDesa\KaderController;
 use App\Http\Controllers\AdminKab\BeritaController;
+use App\Http\Controllers\AdminKab\DataGaleriController;
 use App\Http\Controllers\AdminKabController;
 use App\Http\Controllers\AdminKecController;
 use App\Http\Controllers\DashboardSuperController;
@@ -105,8 +106,8 @@ Route::get('/struktur', [MainController::class, 'bagan_struktur_kel']);
 Route::get('/pkk', [MainController::class, 'bagan_struktur_pkk']);
 Route::get('/baganmekel', [MainController::class, 'bagan_mekanis_kel']);
 Route::get('/baganmekpkk', [MainController::class, 'bagan_mekanis_pkk']);
-Route::get('/berita', [MainController::class, 'berita']);
-Route::get('/agenda', [MainController::class, 'agenda']);
+Route::get('/berita/{id}', [MainController::class, 'berita']);
+Route::get('/allberita', [MainController::class, 'allberita']);
 Route::get('/galeri', [MainController::class, 'galeri']);
 Route::get('/about', [MainController::class, 'about']);
 
@@ -269,6 +270,8 @@ Route::middleware(['user_type:admin_kabupaten'])->group(function(){
 
     //form berita admin kabupaten
     Route::resource('/beritaKab', BeritaController::class);
+    Route::resource('/galeriKeg', DataGaleriController::class);
+
 
 });
 

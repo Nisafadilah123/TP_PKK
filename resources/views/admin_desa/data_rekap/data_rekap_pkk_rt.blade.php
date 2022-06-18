@@ -18,12 +18,10 @@
                                 <h6><strong>REKAPITULASI</strong></h6>
                                 <h6><strong>CATATAN DATA DAN KEGIATAN WARGA</strong> </h6>
                                 <h6><strong>KELOMPOK PKK RT</strong> </h6>
-                                @foreach ($rekap as $item)
-                                    <h6>RT : {{ucfirst ($item->rt) }}</h6>
-                                    <h6>RW : {{ucfirst ($item->rw) }}</h6>
-                                    <h6>Desa/Kel : {{ucfirst ($item->nama_desa) }}</h6>
-                                    <h6>Tahun : {{ucfirst ($item->periode) }}</h6>
-                                @endforeach
+                                <h6>RT : {{ $rt }}</h6>
+                                <h6>RW : {{ $rw }}</h6>
+                                <h6>Desa/Kel : {{ ucfirst($desa->nama_desa) }}</h6>
+                                <h6>Tahun : {{ $periode }}</h6>
                             </center>
 
                             <div class="table-responsive">
@@ -39,7 +37,7 @@
                                         <th colspan="3" style="text-align:center;">Sumber Air Keluarga</th>
                                         <th colspan="2" style="text-align:center;">Makanan Pokok</th>
                                         <th colspan="6" style="text-align:center;">Warga Mengikuti Kegiatan</th>
-                                        <th rowspan="3" style="text-align: center;">Ket</th>
+                                        {{-- <th rowspan="3" style="text-align: center;">Ket</th> --}}
                                     </tr>
                                     <tr>
                                         <th>Total L</th>
@@ -80,29 +78,45 @@
 
                                     <tbody>
                                         <?php $no=1;?>
-
-                                        @foreach ($catatan_keluarga as $data_warga)
+                                            @foreach ( $catatan_keluarga->unique('dasa_wisma') as $data_warga)
                                         <tr>
                                             <td style="vertical-align: middle;">{{ $no }}</td>
-                                            <td style="vertical-align: middle;">{{ $data_warga->warga_dasa_wisma }}</td>
-                                            <td>{{ $data_warga->id }}</td>
-                                            <td>{{ $data_warga->jumlah_KK }}</td>
-                                            <td>{{ $data_warga->laki_laki}}</td>
-                                            <td>{{ $data_warga->perempuan}}</td>
-                                            <td>{{ $data_warga->jumlah_balita_laki}}</td>
-                                            <td>{{ $data_warga->jumlah_balita_perempuan}}</td>
-                                            <td>{{ $data_warga->jumlah_3_buta }}</td>
-                                            <td>{{ $data_warga->jumlah_PUS}}</td>
-                                            <td>{{ $data_warga->jumlah_WUS }}</td>
-                                            <td>{{ $data_warga->jumlah_ibu_hamil }}</td>
-                                            <td>{{ $data_warga->jumlah_ibu_menyusui }}</td>
-                                            <td>{{ $data_warga->jumlah_lansia }}</td>
-                                            <td>{{ $data_warga->jumlah_kebutuhan }}</td>
+                                            {{-- <td style="vertical-align: middle;">{{ $dasa_wismas }}</td> --}}
+                                            <td style="vertical-align: middle;">{{ $data_warga->dasa_wisma }}</td>
+
+                                            <td style="vertical-align: middle;">{{ $catatan_keluarga->count('id') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('jumlah_KK') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('laki_laki') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('perempuan') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('jumlah_balita_laki') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('jumlah_balita_perempuan') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('jumlah_3_buta') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('jumlah_PUS') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('jumlah_WUS') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('jumlah_ibu_hamil') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('jumlah_ibu_menyusui') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('jumlah_lansia') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('jumlah_kebutuhan') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('kriteria_rumah') }}</td>
+                                            <td>{{ $catatan_keluarga->count() - $catatan_keluarga->sum('kriteria_rumah') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('punya_tempat_sampah') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('punya_saluran_air') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('punya_jamban') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('tempel_stiker') }}</td>
+                                            <td>{{ $catatan_keluarga->where('sumber_air', 1)->count() }}</td>
+                                            <td>{{ $catatan_keluarga->where('sumber_air', 2)->count() }}</td>
+                                            <td>{{ $catatan_keluarga->where('sumber_air', 4)->count() }}</td>
+                                            <td>{{ $catatan_keluarga->where('makanan_pokok', 1)->count() }}</td>
+                                            <td>{{ $catatan_keluarga->where('makanan_pokok', 0)->count() }}</td>
+                                            <td>{{ $catatan_keluarga->sum('aktivitas_UP2K') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('have_pemanfaatan') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('have_industri') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('have_kegiatan') }}</td>
 
                                         </tr>
-                                        <?php $no++ ;?>
-
+                                        <?php $no++;?>
                                         @endforeach
+
                                     </tbody>
 
                                 </table>

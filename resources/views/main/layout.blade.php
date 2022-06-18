@@ -167,7 +167,7 @@
                 ><span>Informasi</span> <i class="bi bi-chevron-down"></i
               ></a>
               <ul>
-                <li><a href="/berita">Berita PKK</a></li>
+                <li><a href="/allberita">Berita PKK</a></li>
                 <li><a href="/agenda">Agenda Kegiatan</a></li>
                 <li><a href="/galeri">Galeri Kegiatan</a></li>
                 {{-- <li><a href="/kontak">Kontak Kami</a></li> --}}

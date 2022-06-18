@@ -95,7 +95,7 @@
                                                 <tr>
                                                     <td style="vertical-align: middle;">{{ $no }}</td>
                                                     <td style="vertical-align: middle;">{{ucfirst($data_warga->nama)}}</td>
-                                                    <td style="vertical-align: middle;">{{ucfirst($data_warga->status)}}</td>
+                                                    <td style="vertical-align: middle;">{{ucfirst($data_warga->status_keluarga)}} {{ucfirst($data_warga->status)}}</td>
                                                     <td style="vertical-align: middle;">{{ucfirst($data_warga->status_perkawinan)}}</td>
                                                     <td style="vertical-align: middle;">{{ucfirst($data_warga->jenis_kelamin)}}</td>
                                                     <td style="vertical-align: middle;">{{ucfirst($data_warga->tgl_lahir)}}/{{ ucfirst($data_warga->umur) }} Tahun</td>

@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('nik_kepala_keluarga');
             $table->bigInteger('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users');
+            $table->string('dusun');
 
             $table->integer('jumlah_anggota_keluarga');
             $table->integer('rt');

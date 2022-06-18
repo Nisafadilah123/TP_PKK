@@ -139,15 +139,64 @@
                                                                                     @else
                                                                                     - Orang
                                                                                     @endif <br>
-                                                        Makanan Pokok Sehari-hari: <strong> {{ucfirst($c->makanan_pokok) }} </strong><br>
-                                                        Mempunyai Jamban Keluarga  : <strong>{{ ucfirst($c->punya_jamban) }}/ {{ $c->jumlah_jamban }}</strong> Buah<br>
-                                                        Sumber Air Keluarga : <strong> {{ucfirst($c->sumber_air) }}</strong><br>
-                                                        Memiliki Tempat Pembuangan Sampah : <strong> {{ucfirst($c->punya_tempat_sampah) }}</strong><br>
-                                                        Mempunyai Saluran Pembuangan Air Limbah : <strong> {{ucfirst($c->punya_saluran_air) }} </strong><br>
-                                                        Menempel Stiker P4K : <strong> {{ucfirst($c->tempel_stiker) }} </strong><br>
-                                                        Kriteria Rumah : <strong> {{ucfirst($c->kriteria_rumah) }} </strong><br>
-                                                        Aktivitas UP2K : <strong> {{ucfirst($c->aktivitas_UP2K) }} </strong><br>
-                                                        Aktivitas Kegiatan Usaha Kesehatan Lingkungan  : <strong> {{ucfirst($c->aktivitas_kegiatan_usaha) }} </strong><br>
+
+                                                        @if ($c->makanan_pokok == 1)
+                                                            Makanan Pokok Sehari-hari: <strong> Beras </strong><br>
+                                                        @else
+                                                            Makanan Pokok Sehari-hari: <strong> Non Beras </strong><br>
+                                                        @endif
+
+                                                        @if ($c->punya_jamban == 1)
+                                                            Mempunyai Jamban Keluarga: <strong> Ya/ {{ $c->jumlah_jamban }} Buah</strong><br>
+                                                        @else
+                                                            Mempunyai Jamban Keluarga: <strong> Tidak/ {{ $c->jumlah_jamban }} Buah</strong><br>
+                                                        @endif
+
+                                                        @if ($c->sumber_air == 1)
+                                                            Sumber Air Keluarga: <strong> PDAM</strong><br>
+                                                        @elseif ($c->sumber_air == 2)
+                                                            Sumber Air Keluarga: <strong> Sumur</strong><br>
+                                                        @elseif($c->sumber_air == 3)
+                                                            Sumber Air Keluarga: <strong> Sungai</strong><br>
+                                                        @elseif($c->sumber_air == 4)
+                                                            Sumber Air Keluarga: <strong> Lainnya</strong><br>
+                                                        @endif
+
+                                                        @if ($c->punya_tempat_sampah == 1)
+                                                            Memiliki Tempat Pembuangan Sampah: <strong> Ya</strong><br>
+                                                        @else
+                                                            Memiliki Tempat Pembuangan Sampah: <strong> Tidak</strong><br>
+                                                        @endif
+
+                                                        @if ($c->punya_saluran_air == 1)
+                                                            Mempunyai Saluran Pembuangan Air Limbah: <strong> Ya</strong><br>
+                                                        @else
+                                                            Mempunyai Saluran Pembuangan Air Limbah: <strong> Tidak</strong><br>
+                                                        @endif
+
+                                                        @if ($c->tempel_stiker == 1)
+                                                            Menempel Stiker P4K: <strong> Ya</strong><br>
+                                                        @else
+                                                            Menempel Stiker P4K: <strong> Tidak</strong><br>
+                                                        @endif
+
+                                                        @if ($c->kriteria_rumah == 1)
+                                                            Kriteria Rumah : <strong>Sehat</strong><br>
+                                                        @else
+                                                            Kriteria Rumah : <strong>Kurang Sehat</strong><br>
+                                                        @endif 
+
+                                                        @if ($c->aktivitas_UP2K == 1)
+                                                            Aktivitaser UP2K: <strong> Ya</strong><br>
+                                                        @else
+                                                            Aktivitaser UP2K: <strong> Tidak</strong><br>
+                                                        @endif
+
+                                                        @if ($c->aktivitas_kegiatan_usaha == 1)
+                                                            Aktivitas Kegiatan Usaha Kesehatan Lingkungan: <strong> Ya</strong><br>
+                                                        @else
+                                                            Aktivitas Kegiatan Usaha Kesehatan Lingkungan: <strong> Tidak</strong><br>
+                                                        @endif
                                                         </h5>
                                                     </div>
                                                     <div class="modal-footer">

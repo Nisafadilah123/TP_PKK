@@ -19,11 +19,9 @@
                                 <h6><strong>CATATAN DATA DAN KEGIATAN WARGA</strong> </h6>
                                 <h6><strong>KELOMPOK PKK DUSUN/LINGKUNGAN</strong> </h6>
 
-                                @foreach ($rekap as $item)
-                                    <h6>Dusun/Lingkungan : {{ucfirst ($item->alamat) }}</h6>
-                                    <h6>Desa/Kel : {{ucfirst ($item->nama_desa) }}</h6>
-                                    <h6>Tahun : {{ucfirst ($item->periode) }}</h6>
-                                @endforeach
+                                <h6>Dusun/Lingkungan : {{ucfirst ($dusun) }}</h6>
+                                <h6>Desa/Kel : {{ ucfirst($desa->nama_desa) }}</h6>
+                                <h6>Tahun : {{$periode}}</h6>
                             </center>
 
                             <div class="table-responsive">

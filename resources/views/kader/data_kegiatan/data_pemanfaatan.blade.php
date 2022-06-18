@@ -44,7 +44,20 @@
                                         <td style="vertical-align: middle;">{{ $no }}</td>
                                         {{-- nama desa yang login --}}
                                         <td style="vertical-align: middle;">{{ucfirst($c->keluarga->nama_kepala_rumah_tangga) }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->nama_kategori)}}</td>
+                                        @if ($c->nama_kategori == 1)
+                                            <td style="vertical-align: middle;">Peternakan</td>
+                                        @elseif($c->nama_kategori == 2)
+                                            <td style="vertical-align: middle;">Perikanan</td>
+                                        @elseif($c->nama_kategori == 3)
+                                            <td style="vertical-align: middle;">Warung Hidup</td>
+                                        @elseif($c->nama_kategori == 4)
+                                            <td style="vertical-align: middle;">TOGA (Tanaman Obat Keluarga)</td>
+                                        @elseif($c->nama_kategori == 5)
+                                            <td style="vertical-align: middle;">Tanaman Keras</td>
+                                        @elseif($c->nama_kategori == 6)
+                                            <td style="vertical-align: middle;">Lainnya</td>
+                                    
+                                        @endif
                                         <td style="vertical-align: middle;">{{ucfirst($c->komoditi)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jumlah)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>

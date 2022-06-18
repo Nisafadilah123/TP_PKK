@@ -17,18 +17,33 @@
         @csrf
 
         <div class="card-body">
+            @if (count($errors)>0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{  ($error)  }}</li>
+
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
           <div class="form-group">
             <label>Nama Berita</label>
             <input type="text" class="form-control" name="nama_berita" id="nama_berita" placeholder="Masukkan Nama Berita" required>
+            @error('nama_berita')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
           </div>
-          
+
           <div class="form-group">
             <label>Tanggal Publsih Berita</label>
-            <input type="date" class="form-control" name="tgl_publish" id="tgl_publish" placeholder="Masukkan Deskripsi Berita" required>
+            <input type="date" class="form-control" name="tgl_publish" id="tgl_publish" placeholder="Masukkan Tanggal Berita" required>
           </div>
           <div class="form-group">
             <label>Penulis Berita</label>
-            <input type="text" class="form-control" name="penulis" id="penulis" placeholder="Masukkan Deskripsi Berita" required>
+            <input type="text" class="form-control" name="penulis" id="penulis" placeholder="Masukkan Penulis Berita" required>
           </div>
           <div class="form-group">
             <label>Gambar Berita</label>
@@ -46,7 +61,7 @@
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/data_desa" class="btn btn-outline-primary">
+          <a href="/beritaKab" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

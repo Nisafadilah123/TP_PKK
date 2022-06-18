@@ -21,27 +21,23 @@
 
             <div class="col-sm-4 mb-3">
                 <div class="card-deck">
-                    @foreach($beritas as $l)
+                    @foreach($berita as $l)
 
-              <div class="card" style="margin: 15px">
+                        <div class="card" style="margin: 15px; width: 1200px">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <img src="/gambar/{{$l->gambar}}" width="1200px" class="img-fluid">
+                                </h5>
+                                {{-- mengarah ke halaman berita sesuai id --}}
+                                <h4 style="font-family: 'Times New Roman', Times, serif">{{$l->nama_berita}}</a></h1>
+                                <h4 style="font-family: 'Times New Roman', Times, serif">Oleh: {{$l->penulis}} - {{ \Carbon\Carbon::parse($l->tgl_publish)->isoFormat('D MMMM Y') }}</h4>
 
-                <div class="card-body">
-                  <h5 class="card-title">
-                      <img src="/gambar/{{$l->gambar}}" width="300px" class="img-fluid">
-                  </h5>
-                {{-- mengarah ke halaman berita sesuai id --}}
-                  <h1><a href="/berita">{{$l->nama_berita}}</a></h1>
-                  <h4>{{$l->penulis}} - {{ \Carbon\Carbon::parse($l->tgl_publish)->isoFormat('D MMMM Y') }}</h4>
-
-                  <p class="card-text">
-                    {{$l->desk}}
-                  </p>
-
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
-                </div>
-              </div>
-                            @endforeach
+                                <p class="card-text" style="font-family: 'Times New Roman', Times, serif">
+                                    {{$l->desk}}
+                                </p>
+                            </div>
+                        </div>
+                    @endforeach
 
               </div>
 

@@ -105,13 +105,21 @@
                         <select class="form-control" id="nama_kategori" name="nama_kategori">
                             {{-- pilih kategori --}}
                             <option hidden> Pilih Kategori</option>
-                            @foreach($kategori as $key => $val)
+                            {{-- @foreach($kategori as $key => $val)
                                 @if($key==old('nama_kategori'))
                                 <option value="{{ $key }}" selected>{{ $val }}</option>
                                 @else
                                 <option value="{{ $key }}">{{ $val }}</option>
                                 @endif
-                            @endforeach
+                            @endforeach --}}
+                            <option value="1">Peternakan</option>
+                            <option value="2">Perikanan</option>
+                            <option value="3">Warung Hidup</option>
+                            <option value="4">TOGA (Tanaman Obat Keluarga)</option>
+                            <option value="5">Tanaman Keras</option>
+                            <option value="6">Lainnya</option>
+
+
                         </select>
                       </div>
                       @error('nama_kategori')
