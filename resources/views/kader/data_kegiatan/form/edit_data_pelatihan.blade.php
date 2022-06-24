@@ -37,12 +37,11 @@
 
             <div class="form-group">
                 <label>Nama Kader Pelatihan</label>
-                    <select class="form-control @error('nama_kader_pelatihan') is-invalid @enderror" id="id_kader" name="id_kader">
-                        {{-- Pilih Nama Kepala Rumah Tangga --}}
-                        @foreach ($kader as $c)
-                            <option value="{{ $c->id }}" {{ $c->id === $data_pelatihan->id_kader ? 'selected' : '' }}>{{ $c->nama_kader }}</option>
-                        @endforeach
-                    </select>
+                @foreach ($kader as $c)
+                    <input type="hidden" class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
+                    <input type="text" disabled class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{ $c->name }}">
+
+                @endforeach
                     @error('nama_kader_pelatihan')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

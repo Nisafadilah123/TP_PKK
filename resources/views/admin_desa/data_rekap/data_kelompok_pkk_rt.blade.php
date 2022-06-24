@@ -41,6 +41,7 @@
                                                 'rt' => $c->rt,
                                                 'rw' => $c->rw,
                                                 'periode' => $c->periode,
+                                                'id_desa' =>$c->id_desa
                                                 ]) }}">Rekap</a>
                                         </td>
                                     <?php $no++ ;?>

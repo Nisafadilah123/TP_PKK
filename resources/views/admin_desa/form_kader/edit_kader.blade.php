@@ -21,19 +21,37 @@
           <div class="card-body">
             <div class="form-group">
               <label>Nama</label>
-              <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan Nama Kader" value="{{ old('name', $data_kader->name) }}" >
+              <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Masukkan Nama Kader" value="{{ old('name', $data_kader->name) }}" >
+              @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
             </div>
             <div class="form-group">
               <label>Email</label>
-              <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan Email" value="{{ old('email', $data_kader->email) }}">
+              <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Masukkan Email" value="{{ old('email', $data_kader->email) }}">
+              @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
             </div>
             <div class="form-group">
               <label>Password</label>
-              <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Password" value="{{ old('password', $data_kader->password) }}">
+              <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Masukkan Password" value="{{ old('password', $data_kader->password) }}">
+              @error('password')
+              <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
             </div>
             <div class="form-group">
               <label>User Type</label>
-              <select class="form-control" name="user_type">
+              <select class="form-control @error('user_type') is-invalid @enderror" name="user_type">
                 @foreach($user_type as $key => $val)
                     @if($key==old('user_type', $data_kader->user_type))
                     <option value="{{ $key }}" selected>{{ $val }}</option>
@@ -42,6 +60,12 @@
                     @endif
                 @endforeach
               </select>
+              @error('user_type')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
             </div>
             <div class="form-group">
                 <label>Id Desa</label>

@@ -29,4 +29,13 @@ class DataKecamatan extends Model
         return $this->hasMany(DataPelatihanKader::class);
     }
 
+    // bagian admin desa
+    public function anggota_tp(){
+        return $this->hasMany(DataAnggotaTP::class);
+    }
+
+    // bagian admin desa
+    public function anggota_kader(){
+        return $this->hasMany(DataAnggotaKader::class);
+    }
 }

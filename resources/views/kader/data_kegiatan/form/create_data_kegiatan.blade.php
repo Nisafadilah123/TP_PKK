@@ -194,12 +194,12 @@
                             }?>
                         </select>
                     </div>
-                    @error('periode')
+                        @error('periode')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                      </div>
+                        </div>
                 </div>
             </div>
         </div>

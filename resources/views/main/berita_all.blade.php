@@ -19,7 +19,7 @@
         <div class="container">
           <div class="row">
 
-            <div class="col-sm-12 mb-3">
+            <div class="col-sm-12">
                 <div class="swiper-wrapper">
                     @foreach($beritas as $l)
 
@@ -32,19 +32,6 @@
                             <a href="{{ url('berita/'.$l->id) }}" class="card-link">Baca Selengkapnya</a>
                         </div>
                       </div>
-                  {{-- <div class="swiper-slide">
-
-                    <div class="testimonial-item">
-
-                      <img src="/gambar/{{$l->gambar}}" width="300px" class="img-fluid">
-                      <h1><a href="/berita">{{$l->nama_berita}}</a></h1>
-                      <h4>{{$l->penulis}} - {{ \Carbon\Carbon::parse($l->tgl_publish)->isoFormat('D MMMM Y') }}</h4>
-                    </div>
-
-                  </div> --}}
-                  <!-- End testimonial item -->
-
-
 
                   @endforeach
 

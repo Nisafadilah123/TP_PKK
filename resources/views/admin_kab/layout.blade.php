@@ -195,6 +195,13 @@
               </li>
 
               <li class="nav-item">
+                <a href="/agendaKeg" class="nav-link">
+                <i class="nav-icon fas fa-newspaper"></i>
+                  <p>Data Agenda Kegiatan</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
                 <a href="/galeriKeg" class="nav-link">
                     <i class="nav-icon fas fa-image"></i>
                     <p>Data Galeri Kegiatan</p>

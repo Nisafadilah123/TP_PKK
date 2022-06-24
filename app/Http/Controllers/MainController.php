@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\BeritaKab;
 use App\Http\Requests;
+use App\Models\DataAgenda;
+use App\Models\DataGaleri;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -92,12 +94,16 @@ class MainController extends Controller
 
     // halaman agenda
     public function agenda(){
-        return view('main.agenda');
+        $agenda = DataAgenda::all();
+        // dd($agenda);
+        return view('main.agenda', compact('agenda'));
     }
 
     // halaman galeri
     public function galeri(){
-        return view('main.galeri');
+        $galeri = DataGaleri::all();
+
+        return view('main.galeri', compact('galeri'));
     }
 
     // halaman galeri

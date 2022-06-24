@@ -85,7 +85,7 @@
                                             <td style="vertical-align: middle;">{{ $data_warga->dasa_wisma }}</td>
 
                                             <td style="vertical-align: middle;">{{ $catatan_keluarga->count('id') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('jumlah_KK') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('jumlah_KK')}}</td>
                                             <td>{{ $catatan_keluarga->sum('laki_laki') }}</td>
                                             <td>{{ $catatan_keluarga->sum('perempuan') }}</td>
                                             <td>{{ $catatan_keluarga->sum('jumlah_balita_laki') }}</td>
@@ -112,8 +112,24 @@
                                             <td>{{ $catatan_keluarga->sum('have_pemanfaatan') }}</td>
                                             <td>{{ $catatan_keluarga->sum('have_industri') }}</td>
                                             <td>{{ $catatan_keluarga->sum('have_kegiatan') }}</td>
-
                                         </tr>
+                                        <?php
+                                        $totalkategorikeluarga = 0;
+                                        $totalkategorikeluarga += $catatan_keluarga->sum('jumlah_KK');
+                                        $totalkategorikeluarga += $catatan_keluarga->sum('laki_laki');
+                                        $totalkategorikeluarga += $catatan_keluarga->sum('perempuan');
+                                        $totalkategorikeluarga += $catatan_keluarga->sum('jumlah_balita_laki');
+                                        $totalkategorikeluarga += $catatan_keluarga->sum('jumlah_balita_perempuan');
+                                        $totalkategorikeluarga += $catatan_keluarga->sum('jumlah_3_buta');
+                                        $totalkategorikeluarga += $catatan_keluarga->sum('jumlah_PUS');
+                                        $totalkategorikeluarga += $catatan_keluarga->sum('jumlah_WUS');
+                                        $totalkategorikeluarga += $catatan_keluarga->sum('jumlah_ibu_hamil');
+                                        $totalkategorikeluarga += $catatan_keluarga->sum('jumlah_ibu_menyusui');
+                                        $totalkategorikeluarga += $catatan_keluarga->sum('jumlah_lansia');
+                                        $totalkategorikeluarga += $catatan_keluarga->sum('jumlah_kebutuhan');
+
+                                        // begini seterusnya untuk yang jumlah total dari subtotal nya 🙂
+                                        ?>
                                         <?php $no++;?>
                                         @endforeach
 

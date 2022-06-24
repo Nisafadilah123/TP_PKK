@@ -208,7 +208,7 @@ class AdminController extends Controller
 
             $rt = DB::table('data_keluarga')
                 ->select('id_desa', 'rt', 'rw', 'periode')
-                ->where('id_desa', $user->id_desa)
+                // ->where('id_desa', $user->id_desa)
                 ->distinct()
                 ->get();
 
@@ -224,32 +224,44 @@ class AdminController extends Controller
             $rt = $request->query('rt');
             $rw = $request->query('rw');
             $periode = $request->query('periode');
-            // $dasa_wismas = DB::table('data_keluarga')->select('dasa_wisma')->distinct();
+            $desa = $request->query('id_desa');
+            $id = $request->query('id');
+
 
             $catatan_keluarga = DataKeluarga::query()
                 ->with(['industri', 'pemanfaatan'])
-                // ->where('id_keluarga', $id)
-                // ->where('id_desa', $user->id_desa)
-                // ->where('dasa_wisma', $user->id_desa)
-
-                // ->where('dasa_wisma', $dasa_wismas)
-
                 ->where([
-                    // ['dasa_wisma', $dasa_wisma],
                     ['rt', $rt],
                     ['rw', $rw],
-                    ['periode', $periode],
-                ])
-                ->get()
-                ->groupBy('dasa_wisma');
+                    // ['dasa_wisma', $dasa_wisma],
+               ])
+            //    ->groupBy('dasa_wisma')
+                ->get();
+            //     $catatan_keluarga = DataKeluarga::query()
+            //     ->with(['industri', 'pemanfaatan'])
+            //     ->select('dasa_wisma',
+            //     DB::raw('SUM("jumlah_KK") AS total_keluarga',
+            //     DB::raw('SUM("laki_laki") AS total_laki',
+            //     DB::raw('SUM("perempuan") AS total_perempuan',
+            //     DB::raw('SUM("jumlah_balita_laki") AS total_balita_laki',
+            //     DB::raw('SUM("jumlah_balita_perempuan") AS total_balita_perempuan',
+            //     DB::raw('SUM("jumlah_3_buta") AS total_3 buta',
+            //     DB::raw('SUM("jumlah_PUS") AS total_PUS',
+            //     DB::raw('SUM("jumlah_WUS") AS total_WUS',
+            //     DB::raw('SUM("jumlah_ibu_hamil") AS total_ibu_hamil',
+            //     DB::raw('SUM("jumlah_ibu_menyusui") AS total_ibu_menyusui',
+            //     DB::raw('SUM("jumlah_lansia") AS total_lansia',
+            //     DB::raw('SUM("jumlah_kebutuhan") AS total_kebutuhan',
+            //     DB::raw('SUM("kriteria_rumah") AS total_kriteria',
 
-            // $hitung = $request->$catatan_keluarga->where(['dasa_wisma', $dasa_wisma], ['rt', $rt]);
+            // ))))))))))))))
+            // ->groupBy('data_keluarga.dasa_wisma')->get();
 
             $desa = $user->desa;
-            // $dasa_wismas = $catatan_keluarga->$requestdistinct();
 
-            dd($catatan_keluarga);
+            // dd($catatan_keluarga);
             return view('admin_desa.data_rekap.data_rekap_pkk_rt', compact(
+                'desa',
                 'dasa_wisma',
                 'rt',
                 'rw',

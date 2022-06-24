@@ -169,7 +169,7 @@
               <ul>
                 <li><a href="/allberita">Berita PKK</a></li>
                 <li><a href="/agenda">Agenda Kegiatan</a></li>
-                <li><a href="/galeri">Galeri Kegiatan</a></li>
+                <li><a href="/allgaleri">Galeri Kegiatan</a></li>
                 {{-- <li><a href="/kontak">Kontak Kami</a></li> --}}
               </ul>
             </li>
@@ -285,5 +285,10 @@
 
   <!-- Template Main JS File -->
   <script src="{{ url ('assets/js/main.js') }}"></script>
+
+  @stack('script-addon')
+  @include('sweetalert::alert')
+
+  @yield('script')
 </body>
 </html>

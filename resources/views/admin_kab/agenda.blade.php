@@ -1,8 +1,8 @@
 @extends('admin_kab.layout')
 
-@section('title', 'Data Berita PKK | Admin Desa PKK Kab. Indramayu')
+@section('title', 'Data Agenda Kegiatan | Admin Desa PKK Kab. Indramayu')
 
-@section('bread', 'Data Berita PKK')
+@section('bread', 'Data Agenda Kegiatan')
 @section('container')
 
     <!-- Main content -->
@@ -24,16 +24,16 @@
                                 <table id="example1" class="table table-bordered table-striped">
 
                                 {{-- <table class="table table-striped table-bordered data" id="add-row"> --}}
-                                    <a href="{{ url('beritaKab/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
+                                    <a href="{{ url('agendaKeg/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
 
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                        <th>Nama Berita</th>
-                                        <th>Deskripsi Berita</th>
-                                        <th>Gambar Berita</th>
-                                        <th>Tanggal Publsih Berita</th>
-                                        <th>Penulis Berita PKK</th>
+                                        <th>Judul Agenda</th>
+                                        <th>Tema Agenda</th>
+                                        <th>Tempat</th>
+                                        <th>Tanggal Publsih Agenda</th>
+                                        <th>Pukul</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -41,20 +41,22 @@
                                     <tbody>
                                         <?php $no=1;?>
 
-                                        @foreach ($beritaKab as $c)
+                                        @foreach ($agenda as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
-                                        <td style="vertical-align: middle;">{{$c->nama_berita}}</td>
-                                        <td style="vertical-align: middle;">{{$c->desk}}</td>
-                                        <td style="vertical-align: middle;"><img src="/gambar/{{$c->gambar}}" width="100px"></td>
+                                        <td style="vertical-align: middle;">{{$c->judul_agenda}}</td>
+                                        <td style="vertical-align: middle;">{{$c->tema}}</td>
+                                        <td style="vertical-align: middle;">{{$c->tempat}}</td>
                                         <td style="vertical-align: middle;">{{\Carbon\Carbon::parse($c->tgl_publish)->isoFormat('D MMMM Y')}}</td>
-                                        <td style="vertical-align: middle;">{{$c->penulis}}</td>
+                                        <td style="vertical-align: middle;">{{$c->pukul}}</td>
+
+
                                         <td class="text-center">
-                                            <form action="{{ route('beritaKab.destroy',$c->id) }}" method="POST">
+                                            <form action="{{ route('agendaKeg.destroy',$c->id) }}" method="POST">
 
                                             {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
 
-                                                <a class="btn btn-primary btn-sm" href="{{ url('beritaKab/'.$c->id.'/edit') }}">Edit</a>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('agendaKeg/'.$c->id.'/edit') }}">Edit</a>
 
                                                 @csrf
                                                 @method('DELETE')

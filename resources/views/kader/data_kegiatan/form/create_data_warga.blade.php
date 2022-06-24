@@ -543,12 +543,21 @@
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
-                                        <input type="radio" name="pendidikan" value="D3" class="form-check-input">D3
+                                        <input type="radio" name="pendidikan" value="D3" class="form-check-input">Diploma
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label">
                                         <input type="radio" name="pendidikan" value="D4/S1" class="form-check-input">D4/S1
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" name="pendidikan" value="S2" class="form-check-input">S2
+                                    </label>
+                                </div><div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" name="pendidikan" value="S3" class="form-check-input">S3
                                     </label>
                                 </div>
                         </div>

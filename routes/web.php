@@ -12,6 +12,8 @@ use App\Http\Controllers\AdminDesa\DataAset\KoperasiController;
 use App\Http\Controllers\AdminDesa\DataAset\PosyanduController;
 use App\Http\Controllers\AdminDesa\DataAset\TamanBacaanController;
 use App\Http\Controllers\AdminDesa\DataAset\WarungController;
+use App\Http\Controllers\AdminDesa\DataDaftarAnggotaKaderController;
+use App\Http\Controllers\AdminDesa\DataDaftarAnggotaTPController;
 use App\Http\Controllers\AdminDesa\DataPokja1\GotongRoyongController;
 use App\Http\Controllers\AdminDesa\DataPokja1\JumlahKaderPokja1Controller;
 use App\Http\Controllers\AdminDesa\DataPokja1\PenghayatanDanPengamalanController;
@@ -34,6 +36,7 @@ use App\Http\Controllers\AdminDesa\DataKegiatan\Kategori\KategoriIndustriRumahCo
 use App\Http\Controllers\AdminDesa\DataKegiatan\Kategori\KategoriPemanfaatanLahanController;
 use App\Http\Controllers\AdminDesa\KaderController;
 use App\Http\Controllers\AdminKab\BeritaController;
+use App\Http\Controllers\AdminKab\DataAgendaKegiatanController;
 use App\Http\Controllers\AdminKab\DataGaleriController;
 use App\Http\Controllers\AdminKabController;
 use App\Http\Controllers\AdminKecController;
@@ -108,8 +111,9 @@ Route::get('/baganmekel', [MainController::class, 'bagan_mekanis_kel']);
 Route::get('/baganmekpkk', [MainController::class, 'bagan_mekanis_pkk']);
 Route::get('/berita/{id}', [MainController::class, 'berita']);
 Route::get('/allberita', [MainController::class, 'allberita']);
-Route::get('/galeri', [MainController::class, 'galeri']);
+Route::get('/allgaleri', [MainController::class, 'galeri']);
 Route::get('/about', [MainController::class, 'about']);
+Route::get('/agenda', [MainController::class, 'agenda']);
 
 // halaman pokja
 Route::get('/pokja1', [PokjaController::class, 'pokja1']);
@@ -229,6 +233,8 @@ Route::middleware(['user_type:admin_desa'])->group(function(){
     Route::resource('/kejar_paket', KejarPaketController::class);
     Route::resource('/posyandu', PosyanduController::class);
     Route::resource('/data_kegiatan_posyandu', DataPosyanduController::class);
+    Route::resource('/data_anggota_tp', DataDaftarAnggotaTPController::class);
+    Route::resource('/data_anggota_kader', DataDaftarAnggotaKaderController::class);
 
 
 });
@@ -271,6 +277,7 @@ Route::middleware(['user_type:admin_kabupaten'])->group(function(){
     //form berita admin kabupaten
     Route::resource('/beritaKab', BeritaController::class);
     Route::resource('/galeriKeg', DataGaleriController::class);
+    Route::resource('/agendaKeg', DataAgendaKegiatanController::class);
 
 
 });

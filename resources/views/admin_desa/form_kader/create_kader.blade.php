@@ -31,19 +31,37 @@
 
           <div class="form-group">
             <label>Nama</label>
-            <input type="text" class="form-control" name="name" id="name" placeholder="Masukkan Nama Kader" required>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="Masukkan Nama Kader" required value="{{ old('name') }}">
+            @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan Email" required>
+            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Masukkan Email" required value="{{ old('emaiil') }}">
+            @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
           </div>
           <div class="form-group">
             <label>Password</label>
-            <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Password" required>
+            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Masukkan Password" required value="{{ old('password') }}">
+            @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
           </div>
           <div class="form-group">
             <label>User Type</label>
-            <select class="form-control" name="user_type">
+            <select class="form-control @error('user_type') is-invalid @enderror" name="user_type">
                 <option>Pilih User Type</option>
 
                 @foreach($user_type as $key => $val)
@@ -54,6 +72,12 @@
                     @endif
                 @endforeach
             </select>
+            @error('user_type')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+
             {{-- <select class="form-control" id="user_type" name="user_type">
                 <option value="0" selected> Pilih User Type</option>
                 @foreach ($user_type as $c)

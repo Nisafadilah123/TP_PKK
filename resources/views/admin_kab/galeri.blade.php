@@ -25,7 +25,6 @@
 
                                 {{-- <table class="table table-striped table-bordered data" id="add-row"> --}}
                                     <a href="{{ url('galeriKeg/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
-
                                     <thead>
                                         <tr>
                                         <th>No</th>
@@ -47,7 +46,7 @@
                                         <td style="vertical-align: middle;">{{$c->nama_gambar}}</td>
                                         <td style="vertical-align: middle;">{{$c->nama_kegiatan}}</td>
                                         <td style="vertical-align: middle;"><img src="/galeri/{{$c->gambar}}" width="100px"></td>
-                                        <td style="vertical-align: middle;">{{$c->tgl_publish}}</td>
+                                        <td style="vertical-align: middle;">{{\Carbon\Carbon::parse($c->tgl_publish)->isoFormat('D MMMM Y')}}</td>
                                         <td style="vertical-align: middle;">{{$c->pengirim}}</td>
 
 

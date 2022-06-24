@@ -29,7 +29,7 @@
             @endif
           <div class="form-group">
             <label>Nama Berita</label>
-            <input type="text" class="form-control" name="nama_berita" id="nama_berita" placeholder="Masukkan Nama Berita" required>
+            <input type="text" class="form-control" name="nama_berita" id="nama_berita" placeholder="Masukkan Nama Berita" required value="{{old('nama_berita')}}">
             @error('nama_berita')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -39,21 +39,21 @@
 
           <div class="form-group">
             <label>Tanggal Publsih Berita</label>
-            <input type="date" class="form-control" name="tgl_publish" id="tgl_publish" placeholder="Masukkan Tanggal Berita" required>
+            <input type="date" class="form-control" name="tgl_publish" id="tgl_publish" placeholder="Masukkan Tanggal Berita" required value="{{old('date')}}">
           </div>
           <div class="form-group">
             <label>Penulis Berita</label>
-            <input type="text" class="form-control" name="penulis" id="penulis" placeholder="Masukkan Penulis Berita" required>
+            <input type="text" class="form-control" name="penulis" id="penulis" placeholder="Masukkan Penulis Berita" required value="{{old('penulis')}}">
           </div>
           <div class="form-group">
             <label>Gambar Berita</label>
-            <input name="gambar" type="file" class="form-control-file" id="gambar" accept=".img, .jpg, .jpeg, .png">
+            <input name="gambar" type="file" class="form-control-file" id="gambar" accept=".img, .jpg, .jpeg, .png" value="{{old('gambar')}}">
             {{-- <img src="{{asset('gambar/'. $c->logo)}}" class="img-thumbnail" width="100px"> --}}
             {{-- <input name="logo" type="hidden" name="hidden_image" value="{{asset('gambar/'. $c->logo)}}" class="form-control-file" id="hidden_image"> --}}
           </div>
           <div class="form-group">
             <label>Deskripsi Berita</label>
-            <textarea type="text" class="form-control" name="desk" id="desk" rows="5" placeholder="Masukkan Deskripsi Berita" required></textarea>
+            <textarea type="text" class="form-control" name="desk" id="desk" rows="5" placeholder="Masukkan Deskripsi Berita" required value="{{old('desk')}}"></textarea>
           </div>
 
         </div>

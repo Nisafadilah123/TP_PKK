@@ -32,19 +32,11 @@ class DataKeluargaController extends Controller
      */
     public function create()
     {
-     // nama desa yang login
-    //  $desas = DB::table('data_desa')
-    //  ->where('id', auth()->user()->id_desa)
-    //  ->get();
-
-    //  $kec = DB::table('data_kecamatan')
-    //  ->where('id', auth()->user()->id_kecamatan)
-    //  ->get();
     // nama desa yang login
     $desas = DB::table('data_desa')
     ->where('id', auth()->user()->id_desa)
     ->get();
-    // $kec = DB::table('data_kecamatan')->get();
+
     $kec = DB::table('data_kecamatan')
     ->where('id', auth()->user()->id_desa)
     ->get();
@@ -53,15 +45,13 @@ class DataKeluargaController extends Controller
     ->where('id', auth()->user()->id)
     ->get();
 
-    // $kad = Auth::user();
-
      $keg = DataKeluarga::all();
      $warga = DataWarga::all();
 
     //  dd($kad);
      return view('kader.data_kegiatan.form.create_data_keluarga', compact( 'warga', 'kec', 'desas', 'kad'));
 
- }
+    }
 
  /**
   * Store a newly created resource in storage.

@@ -14,14 +14,14 @@
       href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
     />
 
- <!-- DataTables -->
- {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css"/> --}}
-  <link rel="stylesheet" href="{{url('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-  <link rel="stylesheet" href="{{url('admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+    <!-- DataTables -->
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css"/> --}}
+    <link rel="stylesheet" href="{{url('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{url('admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
 
-<!-- Favicons -->
-<link href="{{ url ('image/remove.png') }}" rel="icon" />
-<link href="{{ url ('image/remove.png') }}" rel="apple-touch-icon" />
+    <!-- Favicons -->
+    <link href="{{ url ('image/remove.png') }}" rel="icon" />
+    <link href="{{ url ('image/remove.png') }}" rel="apple-touch-icon" />
 
     <!-- Tempusdominus Bbootstrap 4 -->
     <link
@@ -119,37 +119,18 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="/kategori_industri" class="nav-link {{ Request::is('kategori_industri') ? 'active':'' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Kategori Industri Rumah</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/kategori_pemanfaatan" class="nav-link {{ Request::is('kategori_pemanfaatan') ? 'active':'' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Kategori Pemanfaatan <br>Tanah Pekarangan</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/keluarga" class="nav-link {{ Request::is('eluarga') ? 'active':'' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Data e</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/pemanfaatan" class="nav-link {{ Request::is('pemanfaatan') ? 'active':'' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Data Pemanfaatan Tanah <br> Pekarangan PKK</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/data_sekretariat" class="nav-link {{ Request::is('data_sekretariat') ? 'active':'' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Data Sekretariat/<br>Data Umum</p>
-                    </a>
-                  </li>
-
+                    <li class="nav-item">
+                        <a href="/kategori_industri" class="nav-link {{ Request::is('kategori_industri') ? 'active':'' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Kategori Industri Rumah</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/kategori_pemanfaatan" class="nav-link {{ Request::is('kategori_pemanfaatan') ? 'active':'' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Kategori Pemanfaatan <br>Tanah Pekarangan</p>
+                        </a>
+                    </li>
                 </ul>
               </li>
 
@@ -268,6 +249,29 @@
                 </a>
               </li>
 
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-address-book"></i>
+                      <p>Data Daftar Anggota
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="/data_anggota_tp" class="nav-link {{ Request::is('data_anggota_tp') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Data Daftar Anggota TP PKK</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/data_anggota_kader" class="nav-link {{ Request::is('data_anggota_kader') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Data Daftar Anggota TP PKK <br>
+                        dan Kader</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-archive"></i>

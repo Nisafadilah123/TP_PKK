@@ -110,5 +110,13 @@ class Data_Desa extends Model
         return $this->hasMany(DataKeluarga::class);
     }
 
+    // bagian admin desa
+    public function anggota_tp(){
+        return $this->hasMany(DataAnggotaTP::class);
+    }
 
+    // bagian admin desa
+    public function anggota_kader(){
+        return $this->hasMany(DataAnggotaKader::class);
+    }
 }

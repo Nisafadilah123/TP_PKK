@@ -12,7 +12,7 @@ class DataPelatihanKader extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'id_kader', 'nama_pelatihan', 'kriteria_kader', 'tahun', 'penyelenggara', 'keterangan'
+        'id_user', 'nama_pelatihan', 'kriteria_kader', 'tahun', 'penyelenggara', 'keterangan'
     ];
 
     // public function kecamatan(){

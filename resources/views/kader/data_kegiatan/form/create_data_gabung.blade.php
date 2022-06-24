@@ -117,7 +117,7 @@
 
         <div class="card-footer">
           <button type="submit" class="btn btn-primary">Submit</button>
-          <a href="/data_pelatihan" class="btn btn-outline-primary">
+          <a href="/data_gabung" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
         </div>

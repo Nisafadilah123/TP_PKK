@@ -30,7 +30,7 @@
         <div class="card-body">
             <div class="form-group">
                 <label>Nama Berita</label>
-                <input type="text" class="form-control" name="nama_berita" id="nama_berita" placeholder="Masukkan Nama Berita" required value="{{ucfirst(old('nama_berita', $beritaKab->nama_berita))}}" >
+                <input type="text" class="form-control" name="nama_berita" id="nama_berita" placeholder="Masukkan Nama Berita" required value="{{ucfirst(old('nama_berita', $beritaKab->nama_berita))}}">
             </div>
             <div class="form-group">
                 <label>Deskripsi Berita</label>

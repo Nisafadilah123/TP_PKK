@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DataKaderGabung;
 use App\Models\DataPelatihanKader;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -19,14 +20,14 @@ class DataPelatihanKaderController extends Controller
     public function index()
     {
         //halaman form data pelatihan kader
-        //$pelatihan = DataPelatihanKader::all();
+        $user = Auth::user();
         $pelatihan = DB::table('data_pelatihan_kader as a')
                                 ->join('users as b', 'b.id', '=', 'a.id_user')
                                 ->select([
                                     'b.name as nama_kader',
                                     'a.*'
                                 ])
-                                ->get();
+                                ->get()->where('id_desa', $user->id_desa);
 
         return view('kader.data_kegiatan.data_pelatihan', compact('pelatihan'));
     }
@@ -137,17 +138,17 @@ class DataPelatihanKaderController extends Controller
         ->where('id', auth()->user()->id)
         ->get();
 
-        // $kader = DB::table('users')
-        // ->where('id', auth()->user()->id)
+        // $kader = DB::table('data_pelatihan_kader as a')
+        // ->join('users as b', 'b.id', '=', 'a.id_kader')
+        // ->select([
+        //     'b.name as nama_kader',
+        //     'a.*'
+        // ])
         // ->get();
-        $kader = DB::table('data_pelatihan_kader as a')
-        ->join('users as b', 'b.id', '=', 'a.id_kader')
-        ->select([
-            'b.name as nama_kader',
-            'a.*'
-        ])
-        ->get();
 
+        $kader = DB::table('users')
+        ->where('id', auth()->user()->id)
+        ->get();
         //halaman form edit data pemanfaatan tanah pekarangan
         $pelatihan = DataPelatihanKader::all();
 
@@ -168,7 +169,7 @@ class DataPelatihanKaderController extends Controller
         // dd($request->all());
         // validasi data
         $request->validate([
-            'id_kader' => 'required',
+            'id_user' => 'required',
             'nama_pelatihan' => 'required',
             'kriteria_kader' => 'required',
             'tahun' => 'required',
