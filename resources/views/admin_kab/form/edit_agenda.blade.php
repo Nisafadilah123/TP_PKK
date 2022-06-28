@@ -73,7 +73,17 @@
 
             <div class="form-group">
                 <label>Tanggal Publsih Berita</label>
-                <input type="date" class="form-control" name="tgl_publish" id="tgl_publish" placeholder="Masukkan Tanggal Berita" required value="{{ucfirst(old('tgl_publish', $agendaKeg->tgl_publish))}}">
+                <input type="date" class="form-control" name="tgl_pelaksana" id="tgl_pelaksana" placeholder="Masukkan Tanggal Berita" required value="{{ucfirst(old('tgl_pelaksana', $agendaKeg->tgl_pelaksana))}}">
+            </div>
+
+            <div class="form-group">
+                <label>Status</label><br>
+                <select class="form-control @error('status') is-invalid @enderror" name="status">
+                    <option hidden>Pilih Status</option>
+                    <option value="1" {{ $agendaKeg->status == '1' ? 'selected':'' }}>Belum Terlaksana</option>
+                    <option value="2" {{ $agendaKeg->status == '2' ? 'selected':'' }}>Sedang Terlaksana</option>
+                    <option value="3" {{ $agendaKeg->status == '3' ? 'selected':'' }}>Sudah Terlaksana</option>
+                </select>
             </div>
         </div>
         <!-- /.card-body -->

@@ -177,7 +177,7 @@
                   <li class="nav-item">
                     <a href="/data_kelompok_pkk_desa" class="nav-link {{ Request::is('data_kelompok_pkk_desa') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data Kelompok PKK Desa</p>
+                      <p>Data Kelompok TP PKK Desa</p>
                     </a>
                   </li>
                 </ul>

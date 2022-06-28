@@ -72,7 +72,7 @@
                         {{-- nama kader --}}
                         @foreach ($kad as $c)
                             <input type="hidden" class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
-                            <input type="text" disabled class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{ $c->name }}">
+                            <input type="hidden" disabled class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{ $c->name }}">
                         @endforeach
                     </div>
                     @error('id_user')

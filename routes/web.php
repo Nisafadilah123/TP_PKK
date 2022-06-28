@@ -37,7 +37,10 @@ use App\Http\Controllers\AdminDesa\DataKegiatan\Kategori\KategoriPemanfaatanLaha
 use App\Http\Controllers\AdminDesa\KaderController;
 use App\Http\Controllers\AdminKab\BeritaController;
 use App\Http\Controllers\AdminKab\DataAgendaKegiatanController;
+use App\Http\Controllers\AdminKab\DataDesaController;
 use App\Http\Controllers\AdminKab\DataGaleriController;
+use App\Http\Controllers\AdminKab\DataKecamatanController;
+use App\Http\Controllers\AdminKab\UserController;
 use App\Http\Controllers\AdminKabController;
 use App\Http\Controllers\AdminKecController;
 use App\Http\Controllers\DashboardSuperController;
@@ -50,9 +53,6 @@ use App\Http\Controllers\PendataanKader\DataKeluargaController;
 use App\Http\Controllers\PendataanKader\DataPelatihanKaderController;
 use App\Http\Controllers\PendataanKader\DataPemanfaatanPekaranganController;
 use App\Http\Controllers\PendataanKader\DataWargaController;
-use App\Http\Controllers\super_admin\dataKecamtanController;
-use App\Http\Controllers\SuperAdmin\DataDesaController;
-use App\Http\Controllers\SuperAdmin\DataKecamatanController;
 use App\Http\Controllers\SuperAdmin\DataPokja1\GotongRoyongSuperController;
 use App\Http\Controllers\SuperAdmin\DataPokja1\JumlahKaderPokja1SuperController;
 use App\Http\Controllers\SuperAdmin\DataPokja1\PenghayatanDanPengamalanSuperController;
@@ -71,7 +71,6 @@ use App\Http\Controllers\SuperAdmin\DataUmum\JumlahJiwaDataUmumSuperController;
 use App\Http\Controllers\SuperAdmin\DataUmum\JumlahKaderDataUmumSuperController;
 use App\Http\Controllers\SuperAdmin\DataUmum\JumlahKelompokUmumSuperController;
 use App\Http\Controllers\SuperAdmin\DataUmum\JumlahTenagaSekretariatDataUmumSuperController;
-use App\Http\Controllers\SuperAdmin\UserController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Middleware\Authenticate;
 use App\Models\BeritaKab;
@@ -173,25 +172,6 @@ Route::middleware(['user_type:admin_desa'])->group(function(){
 
 });
 
-// halaman admin kec
-Route::get('/admin_kecamatan/login', [AdminKecController::class, 'login'])->name('admin_kecamatan.login');
-Route::post('/admin_kecamatan/login', [AdminKecController::class, 'loginPost']);
-Route::post('/admin_kecamatan/logout', [AdminKecController::class, 'logoutPost'])->name('admin_kecamatan.logout');
-Route::middleware(['user_type:admin_kecamatan'])->group(function(){
-    Route::get('/dashboard_kec', [AdminKecController::class, 'dashboard_kec']);
-    Route::get('/data_pokja1_kec', [AdminKecController::class, 'data_pokja1_kec']);
-    Route::get('/data_pokja2_kec', [AdminKecController::class, 'data_pokja2_kec']);
-    Route::get('/data_pokja3_kec', [AdminKecController::class, 'data_pokja3_kec']);
-    Route::get('/data_pokja4_kec', [AdminKecController::class, 'data_pokja4_kec']);
-    Route::get('/data_umum_kec', [AdminKecController::class, 'data_umum_kec']);
-
-    Route::get('/pengguna_kec', [AdminKecController::class, 'data_pengguna_kec']);
-    Route::get('/laporan_kec', [AdminKecController::class, 'data_laporan_kec']);
-    Route::get('/koperasi_kec', [AdminKecController::class, 'koperasi_kec']);
-    Route::get('/rekap_kegiatan_kec', [AdminKecController::class, 'rekap_kegiatan_kec']);
-    Route::get('/data_kelompok_kec', [AdminKecController::class, 'data_kelompok_kec']);
-
-});
 
 // halaman admin kab
 Route::get('/admin_kabupaten/login', [AdminKabController::class, 'login'])->name('admin_kabupaten.login');
@@ -212,55 +192,6 @@ Route::middleware(['user_type:admin_kabupaten'])->group(function(){
     Route::resource('/beritaKab', BeritaController::class);
     Route::resource('/galeriKeg', DataGaleriController::class);
     Route::resource('/agendaKeg', DataAgendaKegiatanController::class);
-
-
-});
-
-// halaman super admin
-Route::get('/super_admin/login', [SuperAdminController::class, 'login'])->name('super_admin.login');
-Route::post('/super_admin/login', [SuperAdminController::class, 'loginPost']);
-Route::post('/super_admin/logout', [SuperAdminController::class, 'logoutPost'])->name('super_admin.logout');
-Route::middleware(['user_type:superadmin'])->group(function(){
-    Route::get('/dashboard_super', [SuperAdminController::class, 'dashboard_super']);
-    Route::get('/data_pokja1_super', [SuperAdminController::class, 'data_pokja1_super']);
-    Route::get('/data_pokja2_super', [SuperAdminController::class, 'data_pokja2_super']);
-    Route::get('/data_pokja3_super', [SuperAdminController::class, 'data_pokja3_super']);
-    Route::get('/data_pokja4_super', [SuperAdminController::class, 'data_pokja4_super']);
-    Route::get('/laporan_super', [SuperAdminController::class, 'data_laporan_super']);
-    Route::get('/data_sekretariat_super', [SuperAdminController::class, 'data_sekretariat_super']);
-    Route::get('/koperasi_super', [SuperAdminController::class, 'koperasi_super']);
-    Route::get('/data_pokja_desa', [SuperAdminController::class, 'data_pokja_desa']);
-    Route::get('/data_pokja_kecamatan', [SuperAdminController::class, 'data_pokja_kecamatan']);
-
-    // form data_pokja1
-    Route::resource('/jml_kader_super', JumlahKaderPokja1SuperController::class);
-    Route::resource('/penghayatan_super', PenghayatanDanPengamalanSuperController::class);
-    Route::resource('/gotong_royong_super', GotongRoyongSuperController::class);
-
-    // form data_pokja2
-    Route::resource('/pendidikan_super', PendidikanSuperController::class);
-    Route::resource('/koperasi_super', KehidupanBerkoperasiSuperController::class);
-
-    // form data_pokja3
-    Route::resource('/kader_super', JumlahKaderPokja3SuperController::class);
-    Route::resource('/industri_super', JumlahIndustriRumahTanggaSuperController::class);
-    Route::resource('/rumah_super', JumlahRumahSuperController::class);
-    Route::resource('/pangan_super', PanganSuperController::class);
-
-    // form data_pokja4
-    Route::resource('/kader_pokja4_super', JumlahKaderPokja4SuperController::class);
-    Route::resource('/kelestarian_super', KelestarianLingkunganHidupSuperController::class);
-    Route::resource('/kesehatan_super', KesehatanPosyanduSuperController::class);
-    Route::resource('/perencanaan_super', PerencanaanSehatSuperController::class);
-
-    // form data umum
-    Route::resource('/kelompok_super', JumlahKelompokUmumSuperController::class);
-    Route::resource('/jml_data_umum_super', JumlahDataUmumSuperController::class);
-    Route::resource('/jml_jiwa_umum_super', JumlahJiwaDataUmumSuperController::class);
-    Route::resource('/jml_tenaga_umum_super', JumlahTenagaSekretariatDataUmumSuperController::class);
-    Route::resource('/jml_kader_umum_super', JumlahKaderDataUmumSuperController::class);
-
-    // form desa super admin
     Route::resource('/data_desa', DataDesaController::class);
     Route::resource('/data_kecamatan', DataKecamatanController::class);
     Route::resource('/data_pengguna_super', UserController::class);

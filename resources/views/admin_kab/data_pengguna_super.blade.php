@@ -1,8 +1,8 @@
 @extends('admin_kab.layout')
 
-@section('title', 'Data Wilayah Desa | Super Admin PKK Kab. Indramayu')
+@section('title', 'Data Pengguna Sistem Kegiatan POKJA TP PKK | Suuper Admin PKK Kab. Indramayu')
 
-@section('bread', 'Data Wilayah Desa')
+@section('bread', 'Data Pengguna Sistem Kegiatan POKJA TP PKK')
 @section('container')
 
     <!-- Main content -->
@@ -20,12 +20,15 @@
                             <div class="table-responsive">
 
                                 <table class="table table-striped table-bordered data" id="add-row">
-                                    <a href="{{ url('data_desa/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
+                                    <a href="{{ url('data_pengguna_super/create') }}" type="button" class="btn btn-success">Tambah</a><br><br>
 
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                        <th>Kode Desa</th>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>Password</th>
+                                        <th>User Type</th>
                                         <th>Nama Desa</th>
                                         <th>Nama Kecamatan</th>
                                         <th>Aksi</th>
@@ -35,19 +38,35 @@
                                     <tbody>
                                         <?php $no=1;?>
 
-                                        @foreach ($desa as $c)
+                                        @foreach ($users as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $no }}</td>
-                                        <td style="vertical-align: middle;">{{$c->kode_desa}}</td>
-                                        <td style="vertical-align: middle;">{{$c->nama_desa}}</td>
-                                        <td style="vertical-align: middle;">{{$c->kecamatan->nama_kecamatan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->name}}</td>
+                                        <td style="vertical-align: middle;">{{$c->email}}</td>
+                                        <td style="vertical-align: middle;">{{$c->password}}</td>
+                                        <td style="vertical-align: middle;">{{$c->user_type}}</td>
+                                        <td style="vertical-align: middle;">
+                                            @if ($desa = $c->desa)
+                                                {{ $desa->nama_desa }}
+                                            @else
+                                                -
+                                            @endif
+                                        </td>
+
+                                        <td style="vertical-align: middle;">
+                                            @if ($kecamatan = $c->kecamatan)
+                                            {{ $kecamatan->nama_kecamatan }}
+                                        @else
+                                            -
+                                        @endif
+                                        </td>
 
                                         <td class="text-center">
-                                            <form action="{{ route('data_desa.destroy',$c->id) }}" method="POST">
+                                            <form action="{{ route('data_pengguna_super.destroy',$c->id) }}" method="POST">
 
                                             {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
 
-                                                <a class="btn btn-primary btn-sm" href="{{ url('data_desa/'.$c->id.'/edit') }}">Edit</a>
+                                                <a class="btn btn-primary btn-sm" href="{{ url('data_pengguna_super/'.$c->id.'/edit') }}">Edit</a>
 
                                                 @csrf
                                                 @method('DELETE')

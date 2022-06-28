@@ -242,7 +242,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label>Nama Kepala Rumah Tangga</label>
                             <input type="text" class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" name="nama_kepala_rumah_tangga" id="nama_kepala_rumah_tangga" placeholder="Masukkan Nama Kepala Rumah Tangga" value="{{ old('nama_kepala_rumah_tangga') }}">
@@ -580,27 +580,61 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="form-group @error('makanan_pokok') is-invalid @enderror">
                             {{-- pilih Makanan Pokok Sehari-hari--}}
                             <label class="form-label">Makanan Pokok Sehari-hari </label><br>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="radio" name="makanan_pokok" value="1" class="form-check-input">Beras
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="radio" name="makanan_pokok" value="0" class="form-check-input">Non Beras
-                                    </label>
-                                </div>
+                            <select class="form-control @error('makanan_pokok') is-invalid @enderror" id="makanan_pokok" name="makanan_pokok">
+                                <option hidden>Pilih Makanan Pokok</option>
+                                <option value="1">Beras</option>
+                                <option value="2">Non Beras</option>
+                            </select>
                         </div>
                         @error('makanan_pokok')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
+                    </div>
 
+                    <div class="col-md-2">
+                        <div class="form-group @error('sumber_air') is-invalid @enderror">
+                            {{-- pilih sumber air --}}
+                            <label>Sumber Air Keluarga</label><br>
+                                <div class="form-check form-check-inline">
+                                    <select class="form-control @error('sumber_air') is-invalid @enderror" id="sumber_air" name="sumber_air">
+                                        <option hidden>Pilih Sumber Air Keluarga</option>
+                                        <option value="1">PDAM</option>
+                                        <option value="2">Sumur</option>
+                                        <option value="3">Sungai</option>
+                                        <option value="4">Lainnya</option>
+                                    </select>
+                                </div>
+                        </div>
+                        @error('sumber_air')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group @error('kriteria_rumah') is-invalid @enderror">
+                            {{-- pilih kriteria rumah --}}
+                            <label>Kriteria Rumah</label><br>
+                            <div class="form-check form-check-inline">
+                                <select class="form-control @error('kriteria_rumah') is-invalid @enderror" id="kriteria_rumah" name="kriteria_rumah">
+                                    <option hidden>Pilih Kriteria Rumah</option>
+                                    <option value="1">Sehat</option>
+                                    <option value="2">Kurang Sehat</option>
+                                </select>
+                            </div>
+                        </div>
+                        @error('kriteria_rumah')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="col-md-4">
@@ -608,7 +642,7 @@
                             {{-- pilih mempunyai jamban --}}
                             <label>Mempunyai Jamban Keluarga</label><br>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-8">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
@@ -636,38 +670,8 @@
 
                     </div>
 
-                    <div class="col-md-2">
-                        <div class="form-group @error('sumber_air') is-invalid @enderror">
-                            {{-- pilih sumber air --}}
-                            <label>Sumber Air Keluarga</label><br>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="radio" name="sumber_air" value="1" class="form-check-input">PDAM
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="radio" name="sumber_air" value="2" class="form-check-input">Sumur
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="radio" name="sumber_air" value="3" class="form-check-input">Sungai
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="radio" name="sumber_air" value="4" class="form-check-input">Lainnya
-                                    </label>
-                                </div>
-                        </div>
-                        @error('sumber_air')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="col-md-3">
+
+                    <div class="col-md-4">
                         <div class="form-group @error('punya_tempat_sampah') is-invalid @enderror">
                             {{-- pilih punya tempat pembuangan sampah --}}
                             <label>Memiliki Tempat Pembuangan Sampah</label><br>
@@ -688,10 +692,8 @@
                             </span>
                         @enderror
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="form-group @error('punya_saluran_air') is-invalid @enderror">
                             {{-- pilih punya saluran pembuangan air limbah --}}
                             <label>Mempunyai Saluran Pembuangan Air Limbah</label><br>
@@ -735,27 +737,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-2">
-                        <div class="form-group @error('kriteria_rumah') is-invalid @enderror">
-                            {{-- pilih kriteria rumah --}}
-                            <label>Kriteria Rumah</label><br>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="radio" name="kriteria_rumah" value="1" class="form-check-input">Sehat
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="radio" name="kriteria_rumah" value="0" class="form-check-input">Kurang Sehat
-                                    </label>
-                                </div>
-                        </div>
-                        @error('kriteria_rumah')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+
                     <div class="col-md-2">
                         <div class="form-group @error('aktivitas_UP2K') is-invalid @enderror">
                             {{-- pilih aktivitas UP2K--}}
@@ -778,7 +760,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="form-group @error('aktivitas_kegiatan_usaha') is-invalid @enderror">
                             {{-- pilih aktivitas kegiatan usaha --}}
                             <label>Aktivitas Kegiatan Usaha Kesehatan Lingkungan</label><br>

@@ -119,69 +119,61 @@
                     <!-- <i class="right fas fa-angle-left"></i> -->
                   </p>
                 </a>
+              </li>
 
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-map"></i>
+                  <p>
+                    Data Wilayah
+                    <i class="fas fa-angle-left right"></i>
+                    {{-- <span class="badge badge-info right">6</span> --}}
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="/data_desa" class="nav-link {{ Request::is('data_desa') ? 'active':'' }}" >
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Data Desa</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/data_kecamatan" class="nav-link {{ Request::is('data_kecamatan') ? 'active':'' }}" >
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Data Kecamatan</p>
+                        </a>
+                    </li>
+                </ul>
               </li>
 
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
-                    Data Kegiatan POKJA
+                    Data Rekapitulasi
                     <i class="fas fa-angle-left right"></i>
                     {{-- <span class="badge badge-info right">6</span> --}}
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="/data_pokja1_kab" class="nav-link {{ Request::is('data_pokja1_kab') ? 'active':'' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Data POKJA I</p>
+                    <a href="/data_kelompok_pkk_kecamatan" class="nav-link {{ Request::is('data_kelompok_pkk_kecamatan') ? 'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                      <p>Data Kelompok TP PKK<br>Kecamatan</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/data_pokja2_kab" class="nav-link {{ Request::is('data_pokja2_kab') ? 'active':'' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Data POKJA II</p>
+                    <a href="/data_kelompok_pkk_kabupaten" class="nav-link {{ Request::is('data_kelompok_pkk_kabupaten') ? 'active':'' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                      <p>Data Kelompok PKK<br>Kabupaten</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="/data_pokja3_kab" class="nav-link {{ Request::is('data_pokja3_kab') ? 'active':'' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Data POKJA III</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/data_pokja4_kab" class="nav-link {{ Request::is('data_pokja4_kab') ? 'active':'' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Data POKJA IV</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/data_sekretariat_kab" class="nav-link {{ Request::is('data_sekretariat_kab') ? 'active':'' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Data Sekretariat/ <br> Data Umum</p>
-                    </a>
-                  </li>
-
                 </ul>
               </li>
 
               <li class="nav-item">
-                <a href="/rekap_kegiatan_kab" class="nav-link">
-                    <i class="nav-icon fas fa-folder-open"></i>
-                  <p>Data Catatan Data dan Data <br> Kegiatan Warga TP PKK <br> Kabupaten</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a href="/laporan_kab" class="nav-link">
-                    <i class="nav-icon fas fa-folder-open"></i>
-                  <p>Data Laporan</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a href="/pengguna_kab" class="nav-link">
+                <a href="/data_pengguna_super" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                   <p>Data Pengguna</p>
                 </a>

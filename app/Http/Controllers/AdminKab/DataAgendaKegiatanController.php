@@ -45,14 +45,14 @@ class DataAgendaKegiatanController extends Controller
             'judul_agenda' => 'required',
             'tema' => 'required',
             'tempat' => 'required',
-            'tgl_publish' => 'required',
+            'tgl_pelaksana' => 'required',
             'pukul' => 'required',
 
         ], [
             'judul_agenda.required' => 'Lengkapi Judul Agenda Kegiatan',
             'tema.required' => 'Lengkapi Tema Agenda Kegiatan',
             'tempat.required' => 'Lengkapi Tempat Agenda Kegiatan',
-            'tgl_publish.required' => 'Lengkapi Tanggal Publish Agenda Kegiatan',
+            'tgl_pelaksana.required' => 'Lengkapi Tanggal Pelaksana Agenda Kegiatan',
             'pukul.required' => 'Lengkapi Waktu Agenda Kegiatan',
 
         ]);
@@ -69,8 +69,9 @@ class DataAgendaKegiatanController extends Controller
             $agendas->judul_agenda = $request->judul_agenda;
             $agendas->tema = $request->tema;
             $agendas->tempat = $request->tempat;
-            $agendas->tgl_publish = $request->tgl_publish;
+            $agendas->tgl_pelaksana = $request->tgl_pelaksana;
             $agendas->pukul = $request->pukul;
+            $agendas->status = $request->status;
 
             $agendas->save();
 
@@ -119,15 +120,15 @@ class DataAgendaKegiatanController extends Controller
             'judul_agenda' => 'required',
             'tema' => 'required',
             'tempat' => 'required',
-            'tgl_publish' => 'required',
+            'tgl_pelaksana' => 'required',
             'pukul' => 'required',
 
         ], [
-            'judul_agenda.required' => 'Lengkapi Nama Pengelola Data Warung PKK Desa/Kelurahan',
-            'tema.required' => 'Lengkapi tema Warung PKK Desa/Kelurahan',
-            'tempat.required' => 'Lengkapi tempat Warung PKK Desa/Kelurahan',
-            'tgl_publish.required' => 'Lengkapi tgl_publish Warung PKK Desa/Kelurahan',
-            'pukul.required' => 'Pilih pukul Warung PKK Desa/Kelurahan',
+            'judul_agenda.required' => 'Lengkapi Judul Agenda Kegiatan',
+            'tema.required' => 'Lengkapi Tema Agenda Kegiatan',
+            'tempat.required' => 'Lengkapi Tempat Agenda Kegiatan',
+            'tgl_pelaksana.required' => 'Lengkapi Tanggal Pelaksana Agenda Kegiatan',
+            'pukul.required' => 'Lengkapi Waktu Agenda Kegiatan',
 
         ]);
         // $update=DB::table('warung_pkk')->where('pukul', $request->pukul)->first();
@@ -162,25 +163,4 @@ class DataAgendaKegiatanController extends Controller
 
     }
 
-    public function update_status(Request $request, DataAgenda $agendaKeg)
-    {
-        // proses mengubah data tema warung
-        $request->validate([
-            'status' => 'required',
-        ]);
-        // $update=DB::table('warung_pkk')->where('pukul', $request->pukul)->first();
-        // if ($update != null) {
-        //     Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali pukul. pukul Sudah Ada ');
-
-        //     return redirect('/war$warung');
-        // }
-        // else {
-            $agendaKeg->update($request->all());
-
-            Alert::success('Berhasil', 'Data berhasil di ubah');
-            // dd($jml_kader);
-
-            return redirect('/agendaKeg');
-        // }
-    }
 }

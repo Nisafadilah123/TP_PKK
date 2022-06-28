@@ -72,7 +72,17 @@
 
                 <div class="form-group">
                     <label>Tanggal Publsih Berita</label>
-                    <input type="date" class="form-control" name="tgl_publish" id="tgl_publish" placeholder="Masukkan Tanggal Berita" required value="{{old('date')}}">
+                    <input type="date" class="form-control" name="tgl_pelaksana" id="tgl_pelaksana" placeholder="Masukkan Tanggal Berita" required value="{{old('date')}}">
+                </div>
+
+                <div class="form-group">
+                    <label>Status</label><br>
+                    <select class="form-control @error('status') is-invalid @enderror" name="status">
+                        <option hidden>Pilih Status</option>
+                        <option value="1">Belum Terlaksana</option>
+                        <option value="2">Sedang Terlaksana</option>
+                        <option value="3">Sudah Terlaksana</option>
+                    </select>
                 </div>
             </div>
         <!-- /.card-body -->

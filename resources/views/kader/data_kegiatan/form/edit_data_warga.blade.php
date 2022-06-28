@@ -120,7 +120,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="form-group">
                         {{-- Nama Kepala Rumah Tangga --}}
                         <label>Nama Kepala Rumah Tangga</label>
@@ -376,35 +376,14 @@
                 </div>
 
                 <div class="col-md-2">
-                    <div class="form-group @error('id_user') is-invalid @enderror">
-                        {{-- nama kader --}}
-                        @foreach ($kad as $c)
-                            <input type="hidden" class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
-                        @endforeach
-                    </div>
-                    @error('id_user')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-2">
                     <div class="form-group @error('jenis_kelamin') is-invalid @enderror">
                         <label class="form-label">Jenis Kelamin </label><br>
                             {{-- pilih Jenis Kelamin --}}
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="jenis_kelamin" value="laki-laki" class="form-check-input" {{$data_warga->jenis_kelamin == 'laki-laki'? 'checked' : ''}}>Laki-laki
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="jenis_kelamin" value="perempuan" class="form-check-input" {{$data_warga->jenis_kelamin == 'perempuan'? 'checked' : ''}}>Perempuan
-                                </label>
-                            </div>
+                            <select class="form-control @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin">
+                                <option hidden>Pilih Jenis Kelamin</option>
+                                <option value="laki-laki" {{ $data_warga->jenis_kelamin == 'laki-laki' ? 'selected' :'' }}>Laki-laki</option>
+                                <option value="perempuan" {{ $data_warga->jenis_kelamin == 'perempuan' ? 'selected' :'' }}>Perempuan</option>
+                            </select>
                     </div>
                         @error('jenis_kelamin')
                             <span class="invalid-feedback" role="alert">
@@ -414,37 +393,111 @@
 
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group @error('status_perkawinan') is-invalid @enderror">
                         <label>Status Perkawinan</label><br>
                             {{-- pilih status Perkawinan --}}
-                            <div class="form-check form-check-inline">
-                                <label label class="form-check-label">
-                                    <input type="radio" name="status_perkawinan" value="menikah" class="form-check-input" {{$data_warga->status_perkawinan == 'menikah'? 'checked' : ''}}>Menikah
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label label class="form-check-label">
-                                    <input type="radio" name="status_perkawinan" value="lajang" class="form-check-input" {{$data_warga->status_perkawinan == 'lajang'? 'checked' : ''}}>Lajang
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="status_perkawinan" value="janda" class="form-check-input" {{$data_warga->status_perkawinan == 'janda'? 'checked' : ''}}>Janda
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="status_perkawinan" value="duda" class="form-check-input" {{$data_warga->status_perkawinan == 'duda'? 'checked' : ''}}>Duda
-                                </label>
-                            </div>
+                            <select class="form-control @error('status_perkawinan') is-invalid @enderror" name="status_perkawinan">
+                                <option hidden>Pilih Status Perkawinan</option>
+                                <option value="menikah" {{ $data_warga->status_perkawinan == 'menikah' ? 'selected' :'' }}>Menikah</option>
+                                <option value="lajang" {{ $data_warga->status_perkawinan == 'lajang' ? 'selected' :'' }}>Lajang</option>
+                                <option value="janda" {{ $data_warga->status_perkawinan == 'janda' ? 'selected' :'' }}>Janda</option>
+                                <option value="duda" {{ $data_warga->status_perkawinan == 'duda' ? 'selected' :'' }}>Duda</option>
+                            </select>
                     </div>
                         @error('status_perkawinan')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
+                </div>
 
+                <div class="col-md-2">
+                    <div class="form-group @error('agama') is-invalid @enderror">
+                        <label>Agama</label><br>
+                        {{-- pilih agama --}}
+                        <select class="form-control @error('agama') is-invalid @enderror" name="agama">
+                            <option hidden>Pilih Agama</option>
+                            <option value="islam" {{ $data_warga->agama == 'islam' ? 'selected' :'' }}>Islam</option>
+                            <option value="kristen" {{ $data_warga->agama == 'kristen' ? 'selected' :'' }}>Kristen</option>
+                        <option value="katolik" {{ $data_warga->agama == 'katolik' ? 'selected' :'' }}>Katolik</option>
+                            <option value="hindu" {{ $data_warga->agama == 'hindu' ? 'selected' :'' }}>Hindu</option>
+                            <option value="konghucu" {{ $data_warga->agama == 'konghucu' ? 'selected' :'' }}>Konghucu</option>
+                            <option value="kepercayaan lain" {{ $data_warga->agama == 'kepercayaan lain' ? 'selected' :'' }}>Kepercayaan Lain</option>
+                        </select>
+                    </div>
+                    @error('agama')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group @error('pendidikan') is-invalid @enderror">
+                        <label>Pendidikan</label><br>
+                        {{-- Pilih Pendidikan --}}
+                        <select class="form-control @error('pendidikan') is-invalid @enderror" name="pendidikan">
+                            <option hidden>Pilih Pendidikan</option>
+                            <option value="Tidak Tamat SD" {{ $data_warga->pendidikan == 'Tidak Tamat SD' ? 'selected' :'' }}>Tidak Tamat SD</option>
+                            <option value="SD/MI" {{ $data_warga->pendidikan == 'SD/MI' ? 'selected' :'' }}>SD/MI</option>
+                            <option value="SMP/Sederajat" {{ $data_warga->pendidikan == 'SMP/Sederajat' ? 'selected' :'' }}>SMP/Sederajat</option>
+                            <option value="SMA/Sederajat" {{ $data_warga->pendidikan == 'SMA/Sederajat' ? 'selected' :'' }}>SMA/Sederajat</option>
+                            <option value="konghucu" {{ $data_warga->pendidikan == 'konghucu' ? 'selected' :'' }}>Konghucu</option>
+                            <option value="Diploma" {{ $data_warga->pendidikan == 'Diploma' ? 'selected' :'' }}>Diploma</option>
+                            <option value="D4/S1" {{ $data_warga->pendidikan == 'D4/S1' ? 'selected' :'' }}>D4/S1</option>
+                            <option value="S2" {{ $data_warga->pendidikan == 'S2' ? 'selected' :'' }}>S2</option>
+                            <option value="S3" {{ $data_warga->pendidikan == 'S3' ? 'selected' :'' }}>S3</option>
+                        </select>
+                    </div>
+                    @error('pendidikan')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group @error('pekerjaan') is-invalid @enderror">
+                        <label>Pekerjaan</label><br>
+                            {{-- Pilih Pekejaan --}}
+                            <select class="form-control @error('pekerjaan') is-invalid @enderror" name="pekerjaan">
+                                <option hidden>Pilih Pekerjaan</option>
+                                <option value="Petani" {{ $data_warga->pekerjaan == 'Petani' ? 'selected' :'' }}>Petani</option>
+                                <option value="Pedagang" {{ $data_warga->pekerjaan == 'Pedagang' ? 'selected' :'' }}>Pedagang</option>
+                                <option value="Swasta" {{ $data_warga->pekerjaan == 'Swasta' ? 'selected' :'' }}>Swasta</option>
+                                <option value="Wirausaha" {{ $data_warga->pekerjaan == 'Wirausaha' ? 'selected' :'' }}>Wirausaha</option>
+                                <option value="TNI Polri" {{ $data_warga->pekerjaan == 'TNI Polri' ? 'selected' :'' }}>TNI Polri</option>
+                                <option value="PNS" {{ $data_warga->pekerjaan == 'PNS' ? 'selected' :'' }}>PNS</option>
+                                <option value="Lainnya" {{ $data_warga->pekerjaan == 'Lainnya' ? 'selected' :'' }}>Lainnya</option>
+                            </select>
+                    </div>
+                    @error('pekerjaan')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group @error('ikut_kelompok_belajar') is-invalid @enderror">
+                        <label>Mengikuti Jenis Kelompok Belajar </label><br>
+                            {{-- Pilih Pekejaan --}}
+                            <select class="form-control @error('ikut_kelompok_belajar') is-invalid @enderror" name="ikut_kelompok_belajar">
+                                <option hidden>Pilih Jenis Kelompok Belajar</option>
+                                <option value="Ya" {{ $data_warga->ikut_kelompok_belajar == 'Ya' ? 'selected' :'' }}>Ya</option>
+                                <option value="Tidak" {{ $data_warga->ikut_kelompok_belajar == 'Tidak' ? 'selected' :'' }}>Tidak</option>
+                                <option value="Paket A" {{ $data_warga->ikut_kelompok_belajar == 'Paket A' ? 'selected' :'' }}>Paket A</option>
+                                <option value="Paket B" {{ $data_warga->ikut_kelompok_belajar == 'Paket B' ? 'selected' :'' }}>Paket B</option>
+                                <option value="Paket C" {{ $data_warga->ikut_kelompok_belajar == 'Paket C' ? 'selected' :'' }}>Paket C</option>
+                                <option value="KF (Keaksaraan Fungsional)" {{ $data_warga->ikut_kelompok_belajar == 'KF (Keaksaraan Fungsional)' ? 'selected' :'' }}>KF (Keaksaraan Fungsional)</option>
+                            </select>
+                    </div>
+                    @error('pekerjaan')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
                 <div class="col-md-3">
@@ -496,143 +549,6 @@
                         @enderror
                 </div>
 
-                <div class="col-md-3">
-                    <div class="form-group @error('agama') is-invalid @enderror">
-                        {{-- pilih agama --}}
-                        <label>Agama</label><br>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="agama" value="islam" class="form-check-input" {{$data_warga->agama == 'islam'? 'checked' : ''}}>Islam
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="agama" value="kristen" class="form-check-input" {{$data_warga->agama == 'kristen'? 'checked' : ''}}>Kristen
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="agama" value="khatolik" class="form-check-input" {{$data_warga->agama == 'khatolik'? 'checked' : ''}}>Katholik
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="agama" value="hindu" class="form-check-input" {{$data_warga->agama == 'hindu'? 'checked' : ''}}>Hindu
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="agama" value="budha" class="form-check-input" {{$data_warga->agama == 'budha'? 'checked' : ''}}>Budha
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="agama" value="khonghucu" class="form-check-input" {{$data_warga->agama == 'khonghucu'? 'checked' : ''}}>Khonghucu
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="agama" value="kepercayaan lain" class="form-check-input" {{$data_warga->agama == 'kepercayaan lain'? 'checked' : ''}}>Kepercayaan Lain
-                                </label>
-                            </div>
-                    </div>
-                        @error('agama')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group @error('pendidikan') is-invalid @enderror">
-                        {{-- pilih Pendidikan --}}
-                        <label>Pendidikan</label><br>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="pendidikan" value="Tidak Tamat SD" class="form-check-input" {{$data_warga->pendidikan == ' Tidak Tamat SD'? 'checked' : ''}}>Tidak Tamat SD
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="pendidikan" value="SD/MI" class="form-check-input" {{$data_warga->pendidikan == ' SD/MI'? 'checked' : ''}}>SD/MI
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="pendidikan" value="SMP/Sederajat" class="form-check-input" {{$data_warga->pendidikan == 'SMP/Sederajat'? 'checked' : ''}}>SMP/Sederajat
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="pendidikan" value="SMA/Sederajat" class="form-check-input" {{$data_warga->pendidikan == 'SMA/Sederajat'? 'checked' : ''}}>SMA/Sederajat
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="pendidikan" value="D3" class="form-check-input" {{$data_warga->pendidikan == 'D3'? 'checked' : ''}}>D3
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="pendidikan" value="D4/S1" class="form-check-input" {{$data_warga->pendidikan == 'D4/S1'? 'checked' : ''}}>D4/S1
-                                </label>
-                            </div>
-                    </div>
-                        @error('pendidikan')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group @error('pekerjaan') is-invalid @enderror">
-                        {{-- pilih Pekerjaan --}}
-                        <label>Pekerjaan</label><br>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="pekerjaan" value="petani" class="form-check-input" {{$data_warga->pekerjaan == 'petani'? 'checked' : ''}}>Petani
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="pekerjaan" value="pedagang" class="form-check-input" {{$data_warga->pekerjaan == 'pedagang'? 'checked' : ''}}>Pedagang
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="pekerjaan" value="swasta" class="form-check-input" {{$data_warga->pekerjaan == 'swasta'? 'checked' : ''}}>Swasta
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="pekerjaan" value="wirausaha" class="form-check-input" {{$data_warga->pekerjaan == 'wirausaha'? 'checked' : ''}}>Wiruasaha
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="pekerjaan" value="PNS" class="form-check-input" {{$data_warga->pekerjaan == 'PNS'? 'checked' : ''}}>PNS
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="pekerjaan" value="TNI Polri" class="form-check-input" {{$data_warga->pekerjaan == 'TNI Polri'? 'checked' : ''}}>TNI Polri
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="pekerjaan" value="lainnya" class="form-check-input" {{$data_warga->pekerjaan == 'lainnya'? 'checked' : ''}}>Lainnya
-                                </label>
-                            </div>
-                    </div>
-                        @error('pekerjaan')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-
-                </div>
-
                 <div class="col-md-2">
                     <div class="form-group @error('akseptor_KB') is-invalid @enderror">
                         {{-- pilih akseptor KB --}}
@@ -655,7 +571,7 @@
                         @enderror
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="form-group @error('aktif_posyandu') is-invalid @enderror">
                         {{-- pilih aktif dalam Kegiatan Posyandu --}}
                         <label>Aktif dalam Kegiatan Posyandu</label><br>
@@ -677,7 +593,7 @@
                         @enderror
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="form-group @error('ikut_bkb') is-invalid @enderror">
                         {{-- pilih mengikuti Program Bina Keluarga Balita --}}
                         <label>Mengikuti Program Bina Keluarga Balita</label><br>
@@ -722,48 +638,6 @@
                 </div>
 
                 <div class="col-md-3">
-                    <div class="form-group @error('ikut_kelompok_belajar') is-invalid @enderror">
-                        {{-- pilih mengikuti Kelompok Belajar Jenis --}}
-                        <label>Mengikuti Kelompok Belajar Jenis</label><br>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="ikut_kelompok_belajar" value="ya" class="form-check-input" {{$data_warga->ikut_kelompok_belajar == 'ya'? 'checked' : ''}}>Ya
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="ikut_kelompok_belajar" value="tidak" class="form-check-input" {{$data_warga->ikut_kelompok_belajar == 'tidak'? 'checked' : ''}}>Tidak
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                 <label class="form-check-label">
-                                        <input type="radio" name="ikut_kelompok_belajar" value="Paket A" class="form-check-input" {{$data_warga->ikut_kelompok_belajar == 'Paket A'? 'checked' : ''}}>Paket A
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="ikut_kelompok_belajar" value="Paket B" class="form-check-input" {{$data_warga->ikut_kelompok_belajar == ' Paket B'? 'checked' : ''}}>Paket B
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" name="ikut_kelompok_belajar" value="Paket c" class="form-check-input" {{$data_warga->ikut_kelompok_belajar == 'Paket C'? 'checked' : ''}}>Paket C
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                 <label class="form-check-label">
-                                    <input type="radio" name="ikut_kelompok_belajar" value="KF (Keaksaraan Fungsional)" class="form-check-input" {{$data_warga->ikut_kelompok_belajar == 'KF (Keaksaraan Fungsional)'? 'checked' : ''}}>KF (Keaksaraan Fungsional)
-                                </label>
-                            </div>
-                    </div>
-                        @error('ikut_kelompok_belajar')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                </div>
-
-                <div class="col-md-2">
                     <div class="form-group @error('ikut_paud_sejenis') is-invalid @enderror">
                         {{-- pilih Mengikuti PAUD/Sejenis--}}
                         <label>Mengikuti PAUD/Sejenis</label><br>
@@ -785,7 +659,7 @@
                         @enderror
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="form-group @error('ikut_koperasi') is-invalid @enderror">
                         {{-- pilih Mengikuti dalam Kegiatan Koperasi --}}
                         <label>Ikut dalam Kegiatan Koperasi</label><br>
@@ -805,7 +679,20 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
+                </div>
 
+                <div class="col-md-2">
+                    <div class="form-group @error('id_user') is-invalid @enderror">
+                        {{-- nama kader --}}
+                        @foreach ($kad as $c)
+                            <input type="hidden" class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
+                        @endforeach
+                    </div>
+                    @error('id_user')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
 

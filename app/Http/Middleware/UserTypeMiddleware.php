@@ -34,9 +34,9 @@ class UserTypeMiddleware
                 }
                 elseif ($userType === 'admin_kabupaten') {
                     return redirect()->route('admin_kabupaten.login')->withErrors(['email' => ['Anda harus login sebagai admin kabupaten terlebih dahulu.']]);
-                }elseif ($userType === 'admin_kecamatan') {
-                    return redirect()->route('admin_kecamatan.login')->withErrors(['email' => ['Anda harus login sebagai admin kecamatan terlebih dahulu.']]);
-                }elseif ($userType === 'admin_kelurahan') {
+                // }elseif ($userType === 'admin_kecamatan') {
+                //     return redirect()->route('admin_kecamatan.login')->withErrors(['email' => ['Anda harus login sebagai admin kecamatan terlebih dahulu.']]);
+                // }elseif ($userType === 'admin_kelurahan') {
                     return redirect()->route('admin_kelurahan.login')->withErrors(['email' => ['Anda harus login sebagai admin kelurahan terlebih dahulu.']]);
                 }elseif ($userType === 'admin_desa') {
                     return redirect()->route('admin_desa.login')->withErrors(['email' => ['Anda harus login sebagai admin desa terlebih dahulu.']]);
