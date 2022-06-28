@@ -10,9 +10,7 @@ class DataAgenda extends Model
     use HasFactory;
     protected $table = "data_agenda_kegiatan";
     protected $primaryKey = 'id';
+    protected $guarded = ['id'];
 
-    protected $fillable = [
-       'judul_agenda', 'tema', 'tempat', 'tgl_publish', 'pukul'
-    ];
 
 }

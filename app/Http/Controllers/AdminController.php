@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Data_Desa;
+use App\Models\DataDasaWisma;
 use App\Models\DataKeluarga;
 use App\Models\DataWarga;
 use App\Models\User;
@@ -20,80 +21,10 @@ class AdminController extends Controller
             return view('admin_desa.dashboard');
         }
 
-        // halaman data pokja1
-        public function kelompok_data_pokja1(){
-
-            return view('admin_desa.data_pokja.data_kelompok_data_pokja_1');
-        }
-        // halaman data pokja1
-        public function data_pokja1(){
-
-            // FAIL
-            // return view('admin_desa.data_pokja1');
-            return view('admin_desa.data_pokja.data_pokja_1');
-        }
-
-        // halaman data pokja1
-        public function kelompok_data_pokja2(){
-
-            return view('admin_desa.data_pokja.data_kelompok_data_pokja_2');
-        }
-
-        // halaman data pokja2
-        public function data_pokja2(){
-            // return view('admin_desa.data_pokja2');
-            return view('admin_desa.data_pokja.data_pokja_2');
-
-        }
-
-        // halaman data pokja1
-        public function kelompok_data_pokja3(){
-
-            return view('admin_desa.data_pokja.data_kelompok_data_pokja_3');
-        }
-
-        // halaman data pokja3
-        public function data_pokja3(){
-            // return view('admin_desa.data_pokja3');
-            return view('admin_desa.data_pokja.data_pokja_3');
-        }
-
-        // halaman data pokja1
-        public function kelompok_data_pokja4(){
-            return view('admin_desa.data_pokja.data_kelompok_data_pokja_4');
-        }
-
-        // halaman data pokja4
-        public function data_pokja4(){
-            // return view('admin_desa.data_pokja4');
-            return view('admin_desa.data_pokja.data_pokja_4');
-        }
-
-        // halaman data pokja1
-        public function kelompok_data_umum(){
-            return view('admin_desa.data_pokja.data_kelompok_data_umum');
-        }
-
-        // halaman data pokja4
-        public function data_umum(){
-        // return view('admin_desa.data_pokja4');
-            return view('admin_desa.data_pokja.data_umum');
-
-        }
-
-        // halaman data pokja4
-        public function data_laporan(){
-            return view('admin_desa.data_laporan');
-        }
 
         // halaman data pokja4
         public function data_pengguna(){
             return view('admin_desa.data_pengguna');
-        }
-
-        // halaman data sekretariat
-        public function data_sekretariat(){
-            return view('admin_desa.data_sekretariat');
         }
 
         // halaman login admin desa
@@ -159,25 +90,6 @@ class AdminController extends Controller
             $rw = $request->query('rw');
             $periode = $request->query('periode');
 
-            // $rekap = DB::table('data_keluarga')
-            //     ->join('data_desa', 'data_desa.id', '=', 'data_keluarga.id_desa')
-            //     ->select('dasa_wisma',  'rt','rw', 'periode', 'nama_desa')->distinct()->where('dasa_wisma', $request->query('dasa_wisma'))
-            //     ->get();
-
-            // $catatan_keluarga = DataKeluarga::
-            //     leftjoin('data_pemanfaatan_pekarangan', 'data_pemanfaatan_pekarangan.id_keluarga', '=', 'data_keluarga.id')
-            //     ->leftjoin('data_industri_rumah', 'data_industri_rumah.id_keluarga', '=', 'data_keluarga.id')
-            //     ->leftjoin('data_kegiatan_warga', 'data_keluarga.id', '=', 'data_kegiatan_warga.id_keluarga')
-            //     ->leftjoin('kategori_kegiatan', 'data_kegiatan_warga.id_kategori', '=', 'kategori_kegiatan.id')
-
-            //     ->select(
-            //         'data_keluarga.*', 'data_pemanfaatan_pekarangan.*','data_pemanfaatan_pekarangan.id_keluarga as kategori_pemanfaatan',
-            //         'data_industri_rumah.*', 'data_kegiatan_warga.*', 'kategori_kegiatan.*'
-            //         )
-            //     ->get();
-
-            // $rekap
-
             $catatan_keluarga = DataKeluarga::query()
                 ->with(['industri', 'pemanfaatan',
                     ])
@@ -207,8 +119,8 @@ class AdminController extends Controller
             $user = Auth::user();
 
             $rt = DB::table('data_keluarga')
-                ->select('id_desa', 'rt', 'rw', 'periode')
-                // ->where('id_desa', $user->id_desa)
+                ->select('rt', 'rw', 'periode')
+                ->where('id_desa', $user->id_desa)
                 ->distinct()
                 ->get();
 
@@ -218,55 +130,23 @@ class AdminController extends Controller
          // rekap catatan data dan kegiatan warga kelompok rt admin desa
         public function rekap_kelompok_pkk_rt(Request $request)
         {
+            /** @var User */
             $user = Auth::user();
 
-            $dasa_wisma = $request->query('dasa_wisma');
             $rt = $request->query('rt');
             $rw = $request->query('rw');
             $periode = $request->query('periode');
-            $desa = $request->query('id_desa');
-            $id = $request->query('id');
-
-
-            $catatan_keluarga = DataKeluarga::query()
-                ->with(['industri', 'pemanfaatan'])
-                ->where([
-                    ['rt', $rt],
-                    ['rw', $rw],
-                    // ['dasa_wisma', $dasa_wisma],
-               ])
-            //    ->groupBy('dasa_wisma')
-                ->get();
-            //     $catatan_keluarga = DataKeluarga::query()
-            //     ->with(['industri', 'pemanfaatan'])
-            //     ->select('dasa_wisma',
-            //     DB::raw('SUM("jumlah_KK") AS total_keluarga',
-            //     DB::raw('SUM("laki_laki") AS total_laki',
-            //     DB::raw('SUM("perempuan") AS total_perempuan',
-            //     DB::raw('SUM("jumlah_balita_laki") AS total_balita_laki',
-            //     DB::raw('SUM("jumlah_balita_perempuan") AS total_balita_perempuan',
-            //     DB::raw('SUM("jumlah_3_buta") AS total_3 buta',
-            //     DB::raw('SUM("jumlah_PUS") AS total_PUS',
-            //     DB::raw('SUM("jumlah_WUS") AS total_WUS',
-            //     DB::raw('SUM("jumlah_ibu_hamil") AS total_ibu_hamil',
-            //     DB::raw('SUM("jumlah_ibu_menyusui") AS total_ibu_menyusui',
-            //     DB::raw('SUM("jumlah_lansia") AS total_lansia',
-            //     DB::raw('SUM("jumlah_kebutuhan") AS total_kebutuhan',
-            //     DB::raw('SUM("kriteria_rumah") AS total_kriteria',
-
-            // ))))))))))))))
-            // ->groupBy('data_keluarga.dasa_wisma')->get();
 
             $desa = $user->desa;
 
-            // dd($catatan_keluarga);
+            $dasaWismas = DataDasaWisma::getDasaWismas($desa->id, $rw, $rt, $periode);
+
             return view('admin_desa.data_rekap.data_rekap_pkk_rt', compact(
+                'dasaWismas',
                 'desa',
-                'dasa_wisma',
                 'rt',
                 'rw',
                 'periode',
-                'catatan_keluarga',
                 'desa',
             ));
         }
@@ -289,7 +169,7 @@ class AdminController extends Controller
         public function rekap_kelompok_pkk_rw(Request $request)
         {
             $user = Auth::user();
-
+            $desa = $user->desa;
             $dasa_wisma = $request->query('dasa_wisma');
             $rt = $request->query('rt');
             $rw = $request->query('rw');
@@ -298,12 +178,6 @@ class AdminController extends Controller
 
             $catatan_keluarga = DataKeluarga::query()
                 ->with(['industri', 'pemanfaatan'])
-                // ->where('id_keluarga', $id)
-                // ->where('id_desa', $user->id_desa)
-                // ->where('dasa_wisma', $user->id_desa)
-
-                // ->where('dasa_wisma', $dasa_wismas)
-
                 ->where([
                     // ['dasa_wisma', $dasa_wisma],
                     // ['rt', $rt],
@@ -311,12 +185,6 @@ class AdminController extends Controller
                     ['periode', $periode],
                 ])
                 ->get();
-
-            // $hitung = $request->$catatan_keluarga->where(['dasa_wisma', $dasa_wisma], ['rt', $rt]);
-
-            $desa = $user->desa;
-            // $dasa_wismas = $catatan_keluarga->$requestdistinct();
-            // dd($catatan_keluarga);
 
             return view('admin_desa.data_rekap.data_rekap_pkk_rw', compact(
                 'dasa_wisma',

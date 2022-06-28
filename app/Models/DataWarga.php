@@ -15,11 +15,8 @@ class DataWarga extends Model
     protected $table = "data_warga";
     protected $primaryKey = 'id';
 
-    protected $fillable = [
-       'id_desa','id_kecamatan','id_user', 'id_keluarga','dasa_wisma', 'no_registrasi', 'no_ktp', 'nama', 'jabatan', 'jenis_kelamin', 'tempat_lahir',	'tgl_lahir',
-       'umur','status_perkawinan', 'status_keluarga','status', 'agama', 'alamat','rt','rw', 'kota', 'provinsi', 'pendidikan', 'pekerjaan',
-           'akseptor_kb', 'aktif_posyandu', 'ikut_bkb',	'memiliki_tabungan', 'ikut_kelompok_belajar','ikut_paud_sejenis', 'ikut_koperasi', 'periode'
-    ];
+    protected $guarded = ['id'];
+
 
     public function desa(){
         return $this->belongsTo(Data_Desa::class, 'id_desa');

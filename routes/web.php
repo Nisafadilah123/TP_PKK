@@ -133,14 +133,6 @@ Route::post('/admin_desa/login', [AdminController::class, 'loginPost']);
 Route::post('/admin_desa/logout', [AdminController::class, 'logoutPost'])->name('admin_desa.logout');
 Route::middleware(['user_type:admin_desa'])->group(function(){
     Route::get('/dashboard', [AdminController::class, 'dashboard']);
-    Route::get('/data_pokja1', [AdminController::class, 'data_pokja1']);
-    Route::get('/data_pokja2', [AdminController::class, 'data_pokja2']);
-    Route::get('/data_pokja3', [AdminController::class, 'data_pokja3']);
-    Route::get('/data_pokja4', [AdminController::class, 'data_pokja4']);
-    Route::get('/data_umum', [AdminController::class, 'data_umum']);
-
-    Route::get('/laporan', [AdminController::class, 'data_laporan']);
-    Route::get('/data_sekretariat', [AdminController::class, 'data_sekretariat']);
 
     // data kelompok dasa wisma
     Route::get('/data_kelompok_dasa_wisma', [AdminController::class, 'data_kelompok_dasa_wisma']);
@@ -172,70 +164,12 @@ Route::middleware(['user_type:admin_desa'])->group(function(){
     // rekap kelompok desa
     Route::get('/rekap_kelompok_pkk_desa', [AdminController::class, 'rekap_kelompok_pkk_desa']);
 
-    // rekap laporan pokja 1
-    Route::get('/laporan_pokja_1', [AdminController::class, 'laporan_pokja_1']);
-
-    // rekap laporan pokja 2
-    Route::get('/laporan_pokja_2', [AdminController::class, 'laporan_pokja_2']);
-
-    // rekap laporan pokja 3
-    Route::get('/laporan_pokja_3', [AdminController::class, 'laporan_pokja_3']);
-
-    // rekap laporan pokja 4
-    Route::get('/laporan_pokja_4', [AdminController::class, 'laporan_pokja_4']);
-
-    // rekap laporan data umum
-    Route::get('/laporan_umum', [AdminController::class, 'laporan_umum']);
-
-
-    // form data_pokja1
-    Route::resource('/jml_kader', JumlahKaderPokja1Controller::class);
-    Route::resource('/penghayatan', PenghayatanDanPengamalanController::class);
-    Route::resource('/gotong_royong', GotongRoyongController::class);
-
-    // form data_pokja2
-    Route::resource('/pendidikan', PendidikanController::class);
-    Route::resource('/koperasi', KehidupanBerkoperasiController::class);
-
-    // form data_pokja3
-    Route::resource('/kader', JumlahKaderPokja3Controller::class);
-    Route::resource('/industri', JumlahIndustriRumahTanggaController::class);
-    Route::resource('/rumah', JumlahRumahController::class);
-    Route::resource('/pangan', PanganController::class);
-
-    // form data_pokja4
-    Route::resource('/kader_pokja4', JumlahKaderPokja4Controller::class);
-    Route::resource('/kelestarian', KelestarianLingkunganHidupController::class);
-    Route::resource('/kesehatan', KesehatanPosyanduController::class);
-    Route::resource('/perencanaan', PerencanaanSehatController::class);
-
-    // form data umum
-    Route::resource('/kelompok', JumlahKelompokUmumController::class);
-    Route::resource('/jml_data_umum', JumlahDataUmumController::class);
-    Route::resource('/jml_jiwa_umum', JumlahJiwaDataUmumController::class);
-    Route::resource('/jml_tenaga_umum', JumlahTenagaSekretariatDataUmumController::class);
-    Route::resource('/jml_kader_umum', JumlahKaderDataUmumController::class);
-
     // akun kader desa
     Route::resource('/data_kader', KaderController::class);
 
     // form data kategori pendataan kader
     Route::resource('/kategori_industri', KategoriIndustriRumahController::class);
     Route::resource('/kategori_pemanfaatan', KategoriPemanfaatanLahanController::class);
-
-    // data aset desa
-    Route::resource('/warung', WarungController::class);
-    Route::resource('/data_warung', DataWarungController::class);
-    Route::resource('/taman_bacaan', TamanBacaanController::class);
-    Route::resource('/data_taman_bacaan', DataTamanBacaanController::class);
-    Route::resource('/data_aset_koperasi', KoperasiController::class);
-    Route::resource('/kelompok_simulasi', KelompokSimulasiController::class);
-    Route::resource('/kejar_paket', KejarPaketController::class);
-    Route::resource('/posyandu', PosyanduController::class);
-    Route::resource('/data_kegiatan_posyandu', DataPosyanduController::class);
-    Route::resource('/data_anggota_tp', DataDaftarAnggotaTPController::class);
-    Route::resource('/data_anggota_kader', DataDaftarAnggotaKaderController::class);
-
 
 });
 

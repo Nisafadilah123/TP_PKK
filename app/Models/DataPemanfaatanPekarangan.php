@@ -11,9 +11,8 @@ class DataPemanfaatanPekarangan extends Model
     protected $table = "data_pemanfaatan_pekarangan";
     protected $primaryKey = 'id';
 
-    protected $fillable = [
-        'id_desa','id_kecamatan','id_user','id_keluarga','nama_kategori', 'komoditi', 'jumlah', 'periode'
-    ];
+    protected $guarded = ['id'];
+
 
     public function kecamatan(){
         return $this->belongsTo(DataKecamatan::class, 'id_kecamatan');

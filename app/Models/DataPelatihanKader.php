@@ -10,10 +10,8 @@ class DataPelatihanKader extends Model
     use HasFactory;
     protected $table = "data_pelatihan_kader";
     protected $primaryKey = 'id';
+    protected $guarded = ['id'];
 
-    protected $fillable = [
-        'id_user', 'nama_pelatihan', 'kriteria_kader', 'tahun', 'penyelenggara', 'keterangan'
-    ];
 
     // public function kecamatan(){
     //     return $this->belongsTo(DataKecamatan::class, 'id_kecamatan');

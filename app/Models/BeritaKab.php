@@ -13,9 +13,7 @@ class BeritaKab extends Model
     use HasFactory;
     protected $table = "berita_kab";
     protected $primaryKey = 'id';
+    protected $guarded = ['id'];
 
-    protected $fillable = [
-        'nama_berita', 'desk', 'gambar', 'tgl_publish', 'penulis'
-    ];
 
 }

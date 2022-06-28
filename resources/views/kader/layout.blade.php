@@ -185,7 +185,7 @@
                     <li class="nav-item">
                         <a href="/rekap" class="nav-link {{ Request::is('rekap') ? 'active':'' }}">
                             <i class="nav-icon fas fa-archive"></i>
-                            <p>Data Rekapitulasi dan <br> Catatan Keluarga</p>
+                            <p>Data Rekapitulasi Warga <br>dan Catatan Keluarga</p>
                         </a>
                       </li>
 

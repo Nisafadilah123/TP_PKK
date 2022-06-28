@@ -161,4 +161,26 @@ class DataAgendaKegiatanController extends Controller
         return redirect('/agendaKeg');
 
     }
+
+    public function update_status(Request $request, DataAgenda $agendaKeg)
+    {
+        // proses mengubah data tema warung
+        $request->validate([
+            'status' => 'required',
+        ]);
+        // $update=DB::table('warung_pkk')->where('pukul', $request->pukul)->first();
+        // if ($update != null) {
+        //     Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali pukul. pukul Sudah Ada ');
+
+        //     return redirect('/war$warung');
+        // }
+        // else {
+            $agendaKeg->update($request->all());
+
+            Alert::success('Berhasil', 'Data berhasil di ubah');
+            // dd($jml_kader);
+
+            return redirect('/agendaKeg');
+        // }
+    }
 }

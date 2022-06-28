@@ -34,6 +34,7 @@
                                         <th>Tempat</th>
                                         <th>Tanggal Publsih Agenda</th>
                                         <th>Pukul</th>
+                                        <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>
@@ -49,6 +50,9 @@
                                         <td style="vertical-align: middle;">{{$c->tempat}}</td>
                                         <td style="vertical-align: middle;">{{\Carbon\Carbon::parse($c->tgl_publish)->isoFormat('D MMMM Y')}}</td>
                                         <td style="vertical-align: middle;">{{$c->pukul}}</td>
+                                        <td style="vertical-align: middle;">
+                                            <button class="btn btn-danger">Belum Terlaksana</button>
+                                        </td>
 
 
                                         <td class="text-center">

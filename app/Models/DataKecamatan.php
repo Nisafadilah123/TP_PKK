@@ -11,9 +11,8 @@ class DataKecamatan extends Model
     protected $table = "data_kecamatan";
     protected $primaryKey = 'id';
 
-    protected $fillable = [
-       'kode_kecamatan', 'nama_kecamatan'
-    ];
+    protected $guarded = ['id'];
+
 
     public function desa(){
         return $this->hasMany(Data_Desa::class);

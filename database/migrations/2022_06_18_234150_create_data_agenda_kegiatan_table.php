@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('tema');
             $table->string('tempat');
             $table->date('tgl_publish');
+            $table->int('status');
             $table->string('pukul');
             $table->timestamps();
         });

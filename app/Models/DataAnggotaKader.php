@@ -10,11 +10,7 @@ class DataAnggotaKader extends Model
     use HasFactory;
     protected $table = "data_daftar_anggota_kader";
     protected $primaryKey = 'id';
-
-    protected $fillable = [
-       'id_desa', 'id_kecamatan', 'provinsi', 'kota', 'no_registrasi', 'nama', 'jenis_kelamin', 'fungsi_keanggotaan', 'kader_umum',	'kader_khusus', 'tempat_lahir',
-       'tgl_lahir',  'status', 'alamat', 'pendidikan', 'pekerjaan', 'umur', 'keterangan', 'periode'
-    ];
+    protected $guarded = ['id'];
 
     public function desa(){
         return $this->belongsTo(Data_Desa::class, 'id_desa');

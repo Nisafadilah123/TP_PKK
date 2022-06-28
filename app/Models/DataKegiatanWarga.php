@@ -11,9 +11,8 @@ class DataKegiatanWarga extends Model
     protected $table = "data_kegiatan_warga";
     protected $primaryKey = 'id';
 
-    protected $fillable = [
-        'id_desa','id_kecamatan','id_user','warga','id_kategori', 'aktivitas', 'id_keterangan', 'periode'
-    ];
+    protected $guarded = ['id'];
+
 
     public function kecamatan(){
         return $this->belongsTo(DataKecamatan::class, 'id_kecamatan');

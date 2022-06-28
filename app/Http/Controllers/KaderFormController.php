@@ -78,7 +78,7 @@ class KaderFormController extends Controller
 
     // ngambil nama kepala keluarga
     public function rekap(){
-        $warga = DataKeluarga::all();
+        $warga = DataWarga::with('keluarga')->get();
         // dd($warga);
         return view('kader.rekap', compact('warga'));
     }
@@ -151,7 +151,6 @@ class KaderFormController extends Controller
      {
         $kepala_keluarga = DataWarga::find($id);
 
-        // $keluarga = DataKeluarga::where('id_warga', $kepala_keluarga->id)->first();
         $keluarga = DataKeluarga::first();
 
         // $catatan_keluarga = DataWarga::query()

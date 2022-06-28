@@ -11,9 +11,8 @@ class DataKaderGabung extends Model
     protected $table = "data_kader_gabung_pelatihan";
     protected $primaryKey = 'id';
 
-    protected $fillable = [
-        'id_desa','id_kecamatan', 'id_user','tgl_masuk', 'kedudukan','kota', 'provinsi'
-    ];
+    protected $guarded = ['id'];
+
 
     public function kecamatan(){
         return $this->belongsTo(DataKecamatan::class, 'id_kecamatan');

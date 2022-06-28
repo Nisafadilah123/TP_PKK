@@ -19,12 +19,13 @@
                 {{-- <h3>53<sup style="font-size: 20px">%</sup></h3> --}}
                 {{-- <h3>150</h3> --}}
 
-                <p>Data POKJA I</p>
+                <p>Rekapitulasi Catatan Keluarga dan
+                    <br>Kegiatan Kelompok Dasawisma</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>
               </div>
-              <a href="/data_pokja1" class="small-box-footer"
+              <a href="/data_kelompok_dasa_wisma" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
@@ -36,12 +37,13 @@
               <div class="inner">
                 {{-- <h3>44</h3> --}}
 
-                <p>Data POKJA II</p>
+                <p>Rekapitulasi Catatan Keluarga dan
+                    <br>Kegiatan Kelompok PKK RT</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>
               </div>
-              <a href="/data_pokja2" class="small-box-footer"
+              <a href="/data_kelompok_pkk_rt" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
@@ -53,12 +55,13 @@
               <div class="inner">
                 {{-- <h3>65</h3> --}}
 
-                <p>Data POKJA III</p>
+                <p>Rekapitulasi Catatan Keluarga dan
+                    <br>Kegiatan Kelompok PKK RW</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>
               </div>
-              <a href="/data_pokja3" class="small-box-footer"
+              <a href="/data_kelompok_pkk_rw" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
@@ -70,12 +73,13 @@
               <div class="inner">
                 {{-- <h3>150</h3> --}}
 
-                <p>Data POKJA IV</p>
+                <p>Rekapitulasi Catatan Keluarga dan
+                    <br>Kegiatan Kelompok PKK Dusun</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>
               </div>
-              <a href="/data_pokja4" class="small-box-footer"
+              <a href="/data_kelompok_pkk_dusun" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
@@ -92,12 +96,13 @@
               <div class="inner">
                 {{-- <h3>150</h3> --}}
 
-                <p>Data Sekretariat</p>
+                <p>Rekapitulasi Catatan Keluarga dan
+                    <br>Kegiatan Kelompok TP PKK Desa/Kelurahan</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>
               </div>
-              <a href="/data_sekretariat" class="small-box-footer"
+              <a href="/data_kelompok_pkk_desa" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>

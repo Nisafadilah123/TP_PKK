@@ -107,3 +107,24 @@
 // ->distinct()
 // ->get();
 // $dasa_wismas = DB::table('data_keluarga')->select('dasa_wisma')->distinct();
+
+// $rekap = DB::table('data_keluarga')
+// ->join('data_desa', 'data_desa.id', '=', 'data_keluarga.id_desa')
+// ->select('dasa_wisma', 'rt','rw', 'periode', 'nama_desa')->distinct()->where('dasa_wisma',
+$request->query('dasa_wisma'))
+// ->get();
+
+// $catatan_keluarga = DataKeluarga::
+// leftjoin('data_pemanfaatan_pekarangan', 'data_pemanfaatan_pekarangan.id_keluarga', '=', 'data_keluarga.id')
+// ->leftjoin('data_industri_rumah', 'data_industri_rumah.id_keluarga', '=', 'data_keluarga.id')
+// ->leftjoin('data_kegiatan_warga', 'data_keluarga.id', '=', 'data_kegiatan_warga.id_keluarga')
+// ->leftjoin('kategori_kegiatan', 'data_kegiatan_warga.id_kategori', '=', 'kategori_kegiatan.id')
+
+// ->select(
+// 'data_keluarga.*', 'data_pemanfaatan_pekarangan.*','data_pemanfaatan_pekarangan.id_keluarga as kategori_pemanfaatan',
+// 'data_industri_rumah.*', 'data_kegiatan_warga.*', 'kategori_kegiatan.*'
+// )
+// ->get();
+
+
+// $rekap

@@ -10,10 +10,8 @@ class DataIndustriRumah extends Model
     use HasFactory;
     protected $table = "data_industri_rumah";
     protected $primaryKey = 'id';
+    protected $guarded = ['id'];
 
-    protected $fillable = [
-        'id_desa','id_kecamatan', 'id_user','id_keluarga', 'nama_kategori', 'komoditi', 'volume', 'periode'
-    ];
 
     public function kecamatan(){
         return $this->belongsTo(DataKecamatan::class, 'id_kecamatan');

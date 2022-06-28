@@ -10,11 +10,8 @@ class DataAnggotaTP extends Model
     use HasFactory;
     protected $table = "data_daftar_anggota_tp_pkk";
     protected $primaryKey = 'id';
+    protected $guarded = ['id'];
 
-    protected $fillable = [
-       'id_desa', 'id_kecamatan', 'provinsi', 'nama', 'jenis_kelamin', 'jabatan', 'tempat_lahir', 'tgl_lahir', 'kota', 'status', 'alamat', 'pendidikan', 'pekerjaan',
-       'keterangan', 'periode'
-    ];
 
     public function desa(){
         return $this->belongsTo(Data_Desa::class, 'id_desa');
