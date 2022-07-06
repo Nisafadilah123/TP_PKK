@@ -37,11 +37,10 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php $no=1;?>
 
                                         @foreach ($gabung as $c)
                                     <tr>
-                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         {{-- nama desa yang login --}}
                                         <td style="vertical-align: middle;">{{ucfirst($c->user->name) }}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->desa->nama_desa)}}</td>
@@ -64,7 +63,6 @@
 
                                     </tr>
 
-                                    <?php $no++ ;?>
                                     @endforeach
 
                                     </tbody>

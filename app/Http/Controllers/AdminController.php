@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\DasaWisma;
 use App\Models\Data_Desa;
 use App\Models\DataDasaWisma;
+use App\Models\DataDusun;
 use App\Models\DataKeluarga;
+use App\Models\DataRT;
+use App\Models\DataRW;
 use App\Models\DataWarga;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,9 +20,11 @@ class AdminController extends Controller
         // halaman dashboard
         public function dashboard(){
 
-            // $Variabel = $request->id_kategori+$request->id_room;
+            $kader=User::where('user_type', 'kader_desa')
+            ->where('id_desa', auth()->user()->id_desa)
+            ->get()->count();
 
-            return view('admin_desa.dashboard');
+            return view('admin_desa.dashboard', compact('kader'));
         }
 
 
@@ -135,12 +141,14 @@ class AdminController extends Controller
 
             $rt = $request->query('rt');
             $rw = $request->query('rw');
+            // $dusun = $request->query('dusun');
             $periode = $request->query('periode');
 
             $desa = $user->desa;
 
             $dasaWismas = DataDasaWisma::getDasaWismas($desa->id, $rw, $rt, $periode);
 
+            // dd($dasaWismas);
             return view('admin_desa.data_rekap.data_rekap_pkk_rt', compact(
                 'dasaWismas',
                 'desa',
@@ -157,7 +165,7 @@ class AdminController extends Controller
             $user = Auth::user();
 
             $rw = DB::table('data_keluarga')
-                ->select('id_desa', 'rw', 'periode')
+                ->select('rw', 'periode')
                 ->where('id_desa', $user->id_desa)
                 ->distinct()
                 ->get();
@@ -174,24 +182,14 @@ class AdminController extends Controller
             $rt = $request->query('rt');
             $rw = $request->query('rw');
             $periode = $request->query('periode');
-            // $dasa_wismas = DB::table('data_keluarga')->select('dasa_wisma')->distinct();
 
-            $catatan_keluarga = DataKeluarga::query()
-                ->with(['industri', 'pemanfaatan'])
-                ->where([
-                    // ['dasa_wisma', $dasa_wisma],
-                    // ['rt', $rt],
-                    ['rw', $rw],
-                    ['periode', $periode],
-                ])
-                ->get();
+            $rts = DataRT::getRT($desa->id,$rw,$rt, $periode);
 
+            // dd($rts);
             return view('admin_desa.data_rekap.data_rekap_pkk_rw', compact(
-                'dasa_wisma',
-                'rt',
+                'rts',
                 'rw',
                 'periode',
-                'catatan_keluarga',
                 'desa',
             ));
         }
@@ -199,7 +197,13 @@ class AdminController extends Controller
         // data catatan data dan kegiatan warga kelompok pkk dusun admin desa
         public function data_kelompok_pkk_dusun()
         {
-            $dusun = DB::table('data_keluarga')->select('dusun', 'periode')->distinct()->get();
+            $user = Auth::user();
+
+            $dusun = DB::table('data_keluarga')
+            ->select('dusun', 'periode')
+            ->where('id_desa', $user->id_desa)
+            ->distinct()
+            ->get();
             return view('admin_desa.data_rekap.data_kelompok_pkk_dusun', compact('dusun'));
         }
 
@@ -207,33 +211,21 @@ class AdminController extends Controller
         public function rekap_kelompok_pkk_dusun(Request $request)
         {
             $user = Auth::user();
-
+            $desa = $user->desa;
             $dasa_wisma = $request->query('dasa_wisma');
             $rt = $request->query('rt');
             $rw = $request->query('rw');
-            $periode = $request->query('periode');
             $dusun = $request->query('dusun');
+            $periode = $request->query('periode');
 
-            $catatan_keluarga = DataKeluarga::query()
-                ->with(['industri', 'pemanfaatan'])
-                ->where([
-                    ['dusun', $dusun],
-                    ['periode', $periode],
-                ])
-                ->get();
-
-            // $dusun = DB::table('data_warga')->select('alamat')->get();
-
-            $desa = $user->desa;
-            // $dasa_wismas = $catatan_keluarga->$requestdistinct();
-            dd($dusun);
+            $rws = DataRW::getRW($desa->id,$dusun, $rw,$rt, $periode);
 
             return view('admin_desa.data_rekap.data_rekap_pkk_dusun', compact(
+                'rws',
                 'dusun',
                 'rt',
                 'rw',
                 'periode',
-                'catatan_keluarga',
                 'desa',
             ));
         }
@@ -241,25 +233,39 @@ class AdminController extends Controller
         // data catatan data dan kegiatan warga kelompok pkk desa admin desa
         public function data_kelompok_pkk_desa()
         {
-            $desa = DB::table('data_warga')->select('alamat', 'periode')->distinct()->get();
+            $user = Auth::user();
+
+            $desa = DB::table('data_keluarga')
+            ->select('id_desa', 'periode')
+            ->where('id_desa', $user->id_desa)
+            ->distinct()
+            ->get();
             return view('admin_desa.data_rekap.data_kelompok_pkk_desa', compact('desa'));
         }
 
         // rekap catatan data dan kegiatan warga kelompok desa admin desa
-        public function rekap_kelompok_pkk_desa()
+        public function rekap_pkk_desa(Request $request)
         {
-            $rekap = DB::table('data_warga')
-            ->join('data_desa', 'data_desa.id', '=', 'data_warga.id_desa')
-            ->select('alamat', 'periode', 'nama_desa')->distinct()
-            ->get();
-            $catatan_keluarga = DataWarga::query()
-            ->with([
-                'kegiatan',
-                'kegiatan.kategori_kegiatan',
-                'kegiatan.keterangan_kegiatan',
-                'keluarga'
-            ])->get();
-            return view('admin_desa.data_rekap.data_rekap_pkk_desa', compact('rekap',  'catatan_keluarga'));
+
+            $user = Auth::user();
+            $desa = $user->desa;
+            $kecamatan = $user->kecamatan;
+            $dasa_wisma = $request->query('dasa_wisma');
+            $rt = $request->query('rt');
+            $rw = $request->query('rw');
+            $dusun = $request->query('dusun');
+            $periode = $request->query('periode');
+
+            $dusuns = DataDusun::getDusun($desa->id,$dusun, $rw,$rt, $periode);
+            return view('admin_desa.data_rekap.data_rekap_pkk_desa', compact(
+                'dusuns',
+                'dusun',
+                'kecamatan',
+                'rw',
+                'periode',
+                'desa',
+
+            ));
         }
 
         // rekap catatan data laporan pokja 1

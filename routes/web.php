@@ -161,7 +161,7 @@ Route::middleware(['user_type:admin_desa'])->group(function(){
     Route::get('/data_kelompok_pkk_desa', [AdminController::class, 'data_kelompok_pkk_desa']);
 
     // rekap kelompok desa
-    Route::get('/rekap_kelompok_pkk_desa', [AdminController::class, 'rekap_kelompok_pkk_desa']);
+    Route::get('/rekap_pkk_desa', [AdminController::class, 'rekap_pkk_desa']);
 
     // akun kader desa
     Route::resource('/data_kader', KaderController::class);
@@ -186,7 +186,8 @@ Route::middleware(['user_type:admin_kabupaten'])->group(function(){
     Route::get('/pengguna_kab', [AdminKabController::class, 'data_pengguna_kab']);
     Route::get('/laporan_kab', [AdminKabController::class, 'data_laporan_kab']);
     Route::get('/data_umum_kab', [AdminKabController::class, 'data_umum_kab']);
-    Route::get('/rekap_kegiatan_kab', [AdminKabController::class, 'rekap_kegiatan_kab']);
+    Route::get('/data_kelompok_pkk_kec', [AdminKabController::class, 'data_kelompok_pkk_kec']);
+    Route::get('/rekap_pkk_kec', [AdminKabController::class, 'rekap_pkk_kec']);
 
     //form berita admin kabupaten
     Route::resource('/beritaKab', BeritaController::class);

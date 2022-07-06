@@ -68,10 +68,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $no=1;?>
                                         @foreach ($catatan_keluarga as $keluarga)
                                         <tr>
-                                            <td style="vertical-align: middle;">{{ $no }}</td>
+                                            <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                             <td style="vertical-align: middle;">{{ $keluarga->nama_kepala_rumah_tangga }}</td>
                                             <td>{{ $keluarga->jumlah_KK }}</td>
                                             <td>{{ $keluarga->laki_laki }}</td>
@@ -195,7 +194,6 @@
                                                         @endif
                                                     </td>
                                         </tr>
-                                        <?php $no++ ;?>
                                         @endforeach
                                         <tr>
                                             <td colspan="2"><strong>Jumlah</strong> </td>

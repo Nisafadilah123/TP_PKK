@@ -128,3 +128,15 @@ $request->query('dasa_wisma'))
 
 
 // $rekap
+
+// $rekap = DB::table('data_warga')
+// ->join('data_desa', 'data_desa.id', '=', 'data_warga.id_desa')
+// ->select('alamat', 'periode', 'nama_desa')->distinct()
+// ->get();
+// $catatan_keluarga = DataWarga::query()
+// ->with([
+// 'kegiatan',
+// 'kegiatan.kategori_kegiatan',
+// 'kegiatan.keterangan_kegiatan',
+// 'keluarga'
+// ])->get();

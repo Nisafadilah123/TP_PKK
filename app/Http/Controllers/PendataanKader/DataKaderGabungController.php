@@ -36,7 +36,7 @@ class DataKaderGabungController extends Controller
         ->get();
         // $kec = DB::table('data_kecamatan')->get();
         $kec = DB::table('data_kecamatan')
-        ->where('id', auth()->user()->id_desa)
+        ->where('id', auth()->user()->id_kecamatan)
         ->get();
 
         $kader = DB::table('users')

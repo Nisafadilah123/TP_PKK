@@ -2,7 +2,7 @@
 
 namespace App\Entities;
 
-class DasaWisma
+class RT
 {
     /** @var string */
     public $id;
@@ -47,7 +47,10 @@ class DasaWisma
     public $jumlah_balita_perempuan;
 
     /** @var int */
-    public $jumlah_3_buta;
+    public $jumlah_3_buta_laki;
+
+    /** @var int */
+    public $jumlah_3_buta_perempuan;
 
     /** @var int */
     public $jumlah_PUS;
@@ -80,7 +83,7 @@ class DasaWisma
     public $jumlah_punya_saluran_air;
 
     /** @var int */
-    public $jumlah_punya_jamban;
+    public $jumlah_jamban;
 
     /** @var int */
     public $jumlah_tempel_stiker;
@@ -90,6 +93,9 @@ class DasaWisma
 
     /** @var int */
     public $jumlah_sumber_air_sumur;
+
+    /** @var int */
+    public $jumlah_sumber_air_sungai;
 
     /** @var int */
     public $jumlah_sumber_air_dll;

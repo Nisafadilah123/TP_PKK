@@ -38,7 +38,7 @@ class DataKeluargaController extends Controller
     ->get();
 
     $kec = DB::table('data_kecamatan')
-    ->where('id', auth()->user()->id_desa)
+    ->where('id', auth()->user()->id_kecamatan)
     ->get();
 
     $kad = DB::table('users')
@@ -48,7 +48,7 @@ class DataKeluargaController extends Controller
      $keg = DataKeluarga::all();
      $warga = DataWarga::all();
 
-    //  dd($kad);
+    //  dd($kec);
      return view('kader.data_kegiatan.form.create_data_keluarga', compact( 'warga', 'kec', 'desas', 'kad'));
 
     }

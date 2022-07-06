@@ -40,11 +40,10 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php $no=1;?>
 
                                         @foreach ($warga as $c)
                                     <tr>
-                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         {{-- nama desa yang login --}}
                                         <td style="vertical-align: middle;">{{ucfirst($c->keluarga->dasa_wisma) }}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->keluarga->nama_kepala_rumah_tangga)}}</td>
@@ -80,7 +79,6 @@
 
                                     </tr>
 
-                                    <?php $no++ ;?>
                                     @endforeach
 
                                     </tbody>

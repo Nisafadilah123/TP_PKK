@@ -27,11 +27,10 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php $no=1;?>
 
                                         @foreach ($rt as $c)
                                     <tr>
-                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->rt)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->rw)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
@@ -43,7 +42,6 @@
                                                 'periode' => $c->periode,
                                                 ]) }}">Rekap</a>
                                         </td>
-                                    <?php $no++ ;?>
 
                                     @endforeach
                                     </tbody>

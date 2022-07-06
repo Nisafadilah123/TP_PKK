@@ -39,13 +39,12 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php $no=1;?>
 
                                         @foreach ($beritaKab as $c)
                                     <tr>
-                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         <td style="vertical-align: middle;">{{$c->nama_berita}}</td>
-                                        <td style="vertical-align: middle;">{{$c->desk}}</td>
+                                        <td style="vertical-align: middle;">{!! Str::limit( strip_tags( $c->desk ), 50 ) !!}</td>
                                         <td style="vertical-align: middle;"><img src="/gambar/{{$c->gambar}}" width="100px"></td>
                                         <td style="vertical-align: middle;">{{\Carbon\Carbon::parse($c->tgl_publish)->isoFormat('D MMMM Y')}}</td>
                                         <td style="vertical-align: middle;">{{$c->penulis}}</td>
@@ -64,7 +63,6 @@
                                         </td>
 
                                     </tr>
-                                    <?php $no++ ;?>
 
                                     @endforeach
                                     </tbody>

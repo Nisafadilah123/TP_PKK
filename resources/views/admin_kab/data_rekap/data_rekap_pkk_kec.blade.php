@@ -1,4 +1,4 @@
-@extends('admin_kec.layout')
+@extends('admin_kab.layout')
 
 @section('title', 'Catatan Data Dan Kegiatan Warga Kelompok PKK Kecamatan | Admin Kecamatan PKK Kab. Indramayu')
 
@@ -18,13 +18,11 @@
                                 <strong>
                                     <h6>CATATAN DATA KEGIATAN WARGA</h6>
                                     <h6>TP PKK KECAMATAN</h6>
-                                @foreach ($rekap as $item)
-                                    <h6>TAHUN : {{ucfirst ($item->periode) }}</h6>
-                                    <h6>KECAMATAN : {{ucfirst ($item->nama_kecamatan) }}</h6>
-                                    <h6>KAB/KOTA : {{ucfirst ($item->kota) }}</h6>
-                                    <h6>PROVINSI : {{ucfirst ($item->provinsi) }}</h6>
+                                    <h6>TAHUN : {{ $periode }}</h6>
+                                    <h6>KECAMATAN : {{ $kecamatan }}</h6>
+                                    <h6>KAB/KOTA : INDRAMAYU</h6>
+                                    <h6>PROVINSI : JAWA BARAT</h6>
 
-                                @endforeach
                                 </strong>
                             </center>
 

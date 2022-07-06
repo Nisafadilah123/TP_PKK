@@ -25,20 +25,19 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $no=1;?>
 
                                         @foreach ($dusun as $c)
                                     <tr>
-                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->dusun)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
 
                                         <td class="text-center">
                                             <a class="btn btn-success btn-sm" href="{{ url('rekap_kelompok_pkk_dusun').'?'.http_build_query([
-                                                'dusun' => $dusun
+                                                'dusun' => $c->dusun,
+                                                'periode' => $c->periode,
                                                 ]) }}">Rekap</a>
                                         </td>
-                                    <?php $no++ ;?>
 
                                     @endforeach
                                     </tbody>

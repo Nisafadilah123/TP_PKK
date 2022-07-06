@@ -37,11 +37,10 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php $no=1;?>
 
                                         @foreach ($pelatihan as $key => $row)
                                     <tr>
-                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         {{-- nama desa yang login --}}
                                         {{-- <td style="vertical-align: middle;">{{ucfirst($row->users->id_kader) }}</td> --}}
                                         <td style="vertical-align: middle;">{{ucfirst($row->nama_pelatihan) }}</td>
@@ -67,7 +66,6 @@
 
                                     </tr>
 
-                                    <?php $no++ ;?>
                                     @endforeach
 
                                     </tbody>

@@ -1,8 +1,8 @@
-@extends('admin_desa.layout')
+@extends('admin_kab.layout')
 
-@section('title', 'Data Kelompok PKK Desa TP PKK | Admin Desa/Kelurahan PKK Kab. Indramayu')
+@section('title', 'Data Kelompok PKK Kecamatan TP PKK | Admin Kabupaten PKK Kab. Indramayu')
 
-@section('bread', 'Data Kelompok PKK Desa TP PKK')
+@section('bread', 'Data Kelompok PKK Kecamatan TP PKK')
 @section('container')
 
     <!-- Main content -->
@@ -19,6 +19,7 @@
                                     <thead>
                                         <tr>
                                         <th>No</th>
+                                        <th>Nama Kecamatan</th>
                                         <th>Periode</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -26,14 +27,15 @@
 
                                     <tbody>
 
-                                        @foreach ($desa as $c)
+                                        @foreach ($kecamatan as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->nama_kecamatan)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
 
                                         <td class="text-center">
-                                            <a class="btn btn-success btn-sm" href="{{ url('rekap_pkk_desa').'?'.http_build_query([
-                                                'desa' => $c->id_desa,
+                                            <a class="btn btn-success btn-sm" href="{{ url('rekap_pkk_kec').'?'.http_build_query([
+                                                'kecamatan' => $c->nama_kecamatan,
                                                 'periode' => $c->periode
 
                                             ]) }}">Rekap</a>

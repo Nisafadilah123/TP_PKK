@@ -40,11 +40,10 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php $no=1;?>
 
                                         @foreach ($agenda as $c)
                                     <tr>
-                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         <td style="vertical-align: middle;">{{$c->judul_agenda}}</td>
                                         <td style="vertical-align: middle;">{{$c->tema}}</td>
                                         <td style="vertical-align: middle;">{{$c->tempat}}</td>
@@ -74,7 +73,6 @@
                                         </td>
 
                                     </tr>
-                                    <?php $no++ ;?>
 
                                     @endforeach
                                     </tbody>

@@ -39,7 +39,7 @@
                                         <th rowspan="3" style="text-align:center;">Jumlah Jamban Keluarga</th>
                                         <th colspan="2" style="text-align:center;">Makanan Pokok</th>
                                         <th colspan="6" style="text-align:center;">Warga Mengikuti Kegiatan</th>
-                                        <th rowspan="3" style="text-align: center;">Ket</th>
+                                        {{-- <th rowspan="3" style="text-align: center;">Ket</th> --}}
                                     </tr>
                                     <tr>
                                         <th>Total L</th>
@@ -80,45 +80,78 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php $no=1;?>
-                                            @foreach ( $catatan_keluarga as $data_warga)
+                                        @foreach ($rts as $rt)
                                         <tr>
-                                            <td style="vertical-align: middle;">{{ $no }}</td>
-                                            {{-- <td style="vertical-align: middle;">{{ $dasa_wismas }}</td> --}}
-                                            <td style="vertical-align: middle;">{{ $data_warga->dasa_wisma }}</td>
-
-                                            <td style="vertical-align: middle;">{{ $catatan_keluarga->count('id') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('jumlah_KK') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('laki_laki') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('perempuan') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('jumlah_balita_laki') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('jumlah_balita_perempuan') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('jumlah_3_buta') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('jumlah_PUS') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('jumlah_WUS') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('jumlah_ibu_hamil') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('jumlah_ibu_menyusui') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('jumlah_lansia') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('jumlah_kebutuhan') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('kriteria_rumah') }}</td>
-                                            <td>{{ $catatan_keluarga->count() - $catatan_keluarga->sum('kriteria_rumah') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('punya_tempat_sampah') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('punya_saluran_air') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('punya_jamban') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('tempel_stiker') }}</td>
-                                            <td>{{ $catatan_keluarga->where('sumber_air', 1)->count() }}</td>
-                                            <td>{{ $catatan_keluarga->where('sumber_air', 2)->count() }}</td>
-                                            <td>{{ $catatan_keluarga->where('sumber_air', 4)->count() }}</td>
-                                            <td>{{ $catatan_keluarga->where('makanan_pokok', 1)->count() }}</td>
-                                            <td>{{ $catatan_keluarga->where('makanan_pokok', 0)->count() }}</td>
-                                            <td>{{ $catatan_keluarga->sum('aktivitas_UP2K') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('have_pemanfaatan') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('have_industri') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('have_kegiatan') }}</td>
-
+                                            <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
+                                            <td style="vertical-align: middle;">{{ $rt->rt }}</td>
+                                            <td style="vertical-align: middle;">{{ $rt->jumlah_dasa_wisma }}</td>
+                                            <td style="vertical-align: middle;">{{ $rt->jumlah_KRT }}</td>
+                                            <td style="vertical-align: middle;">{{ $rt->jumlah_KK }}</td>
+                                            <td>{{ $rt->jumlah_laki_laki }}</td>
+                                            <td>{{ $rt->jumlah_perempuan }}</td>
+                                            <td>{{ $rt->jumlah_balita_laki }}</td>
+                                            <td>{{ $rt->jumlah_balita_perempuan }}</td>
+                                            <td>{{ $rt->jumlah_3_buta_laki }}</td>
+                                            <td>{{ $rt->jumlah_3_buta_perempuan }}</td>
+                                            <td>{{ $rt->jumlah_PUS }}</td>
+                                            <td>{{ $rt->jumlah_WUS }}</td>
+                                            <td>{{ $rt->jumlah_ibu_hamil }}</td>
+                                            <td>{{ $rt->jumlah_ibu_menyusui }}</td>
+                                            <td>{{ $rt->jumlah_lansia }}</td>
+                                            <td>{{ $rt->jumlah_kebutuhan }}</td>
+                                            <td>{{ $rt->jumlah_kriteria_rumah_sehat }}</td>
+                                            <td>{{ $rt->jumlah_kriteria_rumah_tidak_sehat }}</td>
+                                            <td>{{ $rt->jumlah_punya_tempat_sampah }}</td>
+                                            <td>{{ $rt->jumlah_punya_saluran_air }}</td>
+                                            <td>{{ $rt->jumlah_tempel_stiker }}</td>
+                                            <td>{{ $rt->jumlah_sumber_air_pdam }}</td>
+                                            <td>{{ $rt->jumlah_sumber_air_sumur }}</td>
+                                            <td>{{ $rt->jumlah_sumber_air_sungai }}</td>
+                                            <td>{{ $rt->jumlah_sumber_air_dll }}</td>
+                                            <td>{{ $rt->jumlah_jamban }}</td>
+                                            <td>{{ $rt->jumlah_makanan_pokok_beras }}</td>
+                                            <td>{{ $rt->jumlah_makanan_pokok_non_beras }}</td>
+                                            <td>{{ $rt->jumlah_aktivitas_UP2K }}</td>
+                                            <td>{{ $rt->jumlah_have_pemanfaatan }}</td>
+                                            <td>{{ $rt->jumlah_have_industri }}</td>
+                                            <td>{{ $rt->jumlah_have_kegiatan }}</td>
                                         </tr>
-                                        <?php $no++;?>
                                         @endforeach
+
+                                        <tr>
+                                            <td colspan="2"><strong>Jumlah</strong> </td>
+                                            <td>{{ $rts->sum('jumlah_dasa_wisma') }}</td>
+                                            <td>{{ $rts->sum('jumlah_KRT') }}</td>
+                                            <td>{{ $rts->sum('jumlah_KK') }}</td>
+                                            <td>{{ $rts->sum('jumlah_laki_laki') }}</td>
+                                            <td>{{ $rts->sum('jumlah_perempuan') }}</td>
+                                            <td>{{ $rts->sum('jumlah_balita_laki') }}</td>
+                                            <td>{{ $rts->sum('jumlah_balita_perempuan') }}</td>
+                                            <td>{{ $rts->sum('jumlah_3_buta_laki') }}</td>
+                                            <td>{{ $rts->sum('jumlah_3_buta_perempuan') }}</td>
+                                            <td>{{ $rts->sum('jumlah_PUS') }}</td>
+                                            <td>{{ $rts->sum('jumlah_WUS') }}</td>
+                                            <td>{{ $rts->sum('jumlah_ibu_hamil') }}</td>
+                                            <td>{{ $rts->sum('jumlah_ibu_menyusui') }}</td>
+                                            <td>{{ $rts->sum('jumlah_lansia') }}</td>
+                                            <td>{{ $rts->sum('jumlah_kebutuhan') }}</td>
+                                            <td>{{ $rts->sum('jumlah_kriteria_rumah_sehat') }}</td>
+                                            <td>{{ $rts->sum('jumlah_kriteria_rumah_tidak_sehat') }}</td>
+                                            <td>{{ $rts->sum('jumlah_punya_tempat_sampah') }}</td>
+                                            <td>{{ $rts->sum('jumlah_punya_saluran_air') }}</td>
+                                            <td>{{ $rts->sum('jumlah_tempel_stiker') }}</td>
+                                            <td>{{ $rts->sum('jumlah_sumber_air_pdam') }}</td>
+                                            <td>{{ $rts->sum('jumlah_sumber_air_sumur') }}</td>
+                                            <td>{{ $rts->sum('jumlah_sumber_air_sungai') }}</td>
+                                            <td>{{ $rts->sum('jumlah_sumber_air_dll') }}</td>
+                                            <td>{{ $rts->sum('jumlah_jamban') }}</td>
+                                            <td>{{ $rts->sum('jumlah_makanan_pokok_beras') }}</td>
+                                            <td>{{ $rts->sum('jumlah_makanan_pokok_non_beras') }}</td>
+                                            <td>{{ $rts->sum('jumlah_aktivitas_UP2K') }}</td>
+                                            <td>{{ $rts->sum('jumlah_have_pemanfaatan') }}</td>
+                                            <td>{{ $rts->sum('jumlah_have_industri') }}</td>
+                                            <td>{{ $rts->sum('jumlah_have_kegiatan') }}</td>
+                                        </tr>
 
                                     </tbody>
                                 </table>

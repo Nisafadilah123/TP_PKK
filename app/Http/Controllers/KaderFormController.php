@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataIndustriRumah;
+use App\Models\DataKegiatanWarga;
 use App\Models\DataKeluarga;
+use App\Models\DataPelatihanKader;
+use App\Models\DataPemanfaatanPekarangan;
 use App\Models\DataWarga;
 use App\Models\KategoriKegiatan;
 use Barryvdh\DomPDF\PDF;
@@ -16,7 +20,35 @@ class KaderFormController extends Controller
     //
     // halaman dashboard
     public function dashboard_kader(){
-        return view('kader.dashboard');
+        $user = Auth::user();
+        $keluarga = DataKeluarga::
+        where('id_desa', $user->id_desa)
+        ->get()->count();
+
+        $warga = DataWarga::
+        where('id_desa', $user->id_desa)
+        ->get()->count();
+
+        $kegiatan = DataKegiatanWarga::
+        where('id_desa', $user->id_desa)
+        ->get()->count();
+
+        $pemanfaatan = DataPemanfaatanPekarangan::
+        where('id_desa', $user->id_desa)
+        ->get()->count();
+
+        $industri = DataIndustriRumah::
+        where('id_desa', $user->id_desa)
+        ->get()->count();
+
+        $rekap = DataWarga::with('keluarga')
+        ->where('id_desa', $user->id_desa)
+        ->get()->count();
+        // $pelatihan = DataPelatihanKader::
+        // where('id_desa', $user->id_desa)
+        // ->get()->count();
+
+        return view('kader.dashboard', compact('keluarga', 'warga', 'kegiatan', 'pemanfaatan', 'industri',  'rekap'));
     }
 
     // halaman data pokja1
@@ -78,7 +110,11 @@ class KaderFormController extends Controller
 
     // ngambil nama kepala keluarga
     public function rekap(){
-        $warga = DataWarga::with('keluarga')->get();
+        $user = Auth::user();
+
+        $warga = DataWarga::with('keluarga')
+        ->where('id_desa', $user->id_desa)
+        ->get();
         // dd($warga);
         return view('kader.rekap', compact('warga'));
     }

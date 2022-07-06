@@ -39,7 +39,6 @@
 
                                     <tbody>
 
-                                        <?php $no=1;?>
 
                                         @foreach ($warga as $c)
                                         {{-- <div class="row">
@@ -47,7 +46,7 @@
                                         </div> --}}
 
                                     <tr>
-                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        <td style="vertical-align: middle;">{{$loop->iteration }}</td>
                                         <td style="vertical-align: middle;">{{ $c->no_registrasi }}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->nama)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->status_keluarga)}} {{ucfirst($c->status)}}</td>
@@ -58,7 +57,6 @@
                                         <td style="vertical-align: middle;">{{ucfirst($c->pendidikan)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->pekerjaan)}}</td>
                                     </tr>
-                                    <?php $no++ ;?>
                                     @endforeach
 
                                     </tbody>

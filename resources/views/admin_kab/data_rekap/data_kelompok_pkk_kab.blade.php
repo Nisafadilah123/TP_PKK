@@ -32,7 +32,7 @@
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
 
                                         <td class="text-center">
-                                            <a class="btn btn-success btn-sm" href="{{ url('rekap_pkk_desa').'?'.http_build_query([
+                                            <a class="btn btn-success btn-sm" href="{{ url('rekap_kelompok_pkk_desa').'?'.http_build_query([
                                                 'desa' => $c->id_desa,
                                                 'periode' => $c->periode
 

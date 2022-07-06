@@ -28,11 +28,10 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php $no=1;?>
 
                                         @foreach ($dasa_wisma as $c)
                                     <tr>
-                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->dasa_wisma)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->rt)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->rw)}}</td>
@@ -48,7 +47,6 @@
                                         </td>
 
                                     </tr>
-                                    <?php $no++ ;?>
 
                                     @endforeach
                                     </tbody>

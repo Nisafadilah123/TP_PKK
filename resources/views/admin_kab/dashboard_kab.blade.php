@@ -31,17 +31,34 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-primary">
               <div class="inner">
                 {{-- <h3>53<sup style="font-size: 20px">%</sup></h3> --}}
-                <h3>150</h3>
+                <h3>{{ $desa }}</h3>
 
-                <p>Data POKJA I</p>
+                <p>Data Desa</p>
               </div>
               <div class="icon">
-                <i class="ion ion-folder"></i>
+                <i class="ion ion-map"></i>
               </div>
-              <a href="#" class="small-box-footer"
+              <a href="/data_desa" class="small-box-footer"
+                >More info <i class="fas fa-arrow-circle-right"></i
+              ></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-light">
+              <div class="inner">
+                <h3>{{ $kecamatan }}</h3>
+
+                <p>Data Kecamatan</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-map"></i>
+              </div>
+              <a href="/data_kecamatan" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
@@ -51,31 +68,14 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>44</h3>
+                <h3>{{$agenda}}</h3>
 
-                <p>Data POKJA II</p>
+                <p>Data Agenda Kegiatan</p>
               </div>
               <div class="icon">
-                <i class="ion ion-folder"></i>
+                <i class="ion ion-calendar"></i>
               </div>
-              <a href="#" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
-              ></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>65</h3>
-
-                <p>Data POKJA III</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-folder"></i>
-              </div>
-              <a href="#" class="small-box-footer"
+              <a href="agendaKeg" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
@@ -86,16 +86,16 @@
         <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-secondary">
               <div class="inner">
-                <h3>150</h3>
+                <h3>{{ $galeri }}</h3>
 
-                <p>Data POKJA IV</p>
+                <p>Data Galeri Kegiatan</p>
               </div>
               <div class="icon">
-                <i class="ion ion-folder"></i>
+                <i class="ion ion-images"></i>
               </div>
-              <a href="#" class="small-box-footer"
+              <a href="galeriKeg" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
@@ -108,10 +108,28 @@
                 {{-- <h3>53<sup style="font-size: 20px">%</sup></h3> --}}
                 <h3>44</h3>
 
-                <p>Data Laporan</p>
+                <p>Data TP PKK Kecamatan</p>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="ion ion-stats-folder"></i>
+              </div>
+              <a href="/data_kelompok_pkk_kec" class="small-box-footer"
+                >More info <i class="fas fa-arrow-circle-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                {{-- <h3>53<sup style="font-size: 20px">%</sup></h3> --}}
+                <h3>44</h3>
+
+                <p>Data TP PKK Kabupaten</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-folder"></i>
               </div>
               <a href="#" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
@@ -130,7 +148,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer"
+              <a href="/data_pengguna" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>

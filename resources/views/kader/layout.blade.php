@@ -161,7 +161,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user-cog"></i>
                         <p>
-                            <p>Data Pelatihan Kader<br> TP PKK</p>
+                            <p>Data Kader TP PKK</p>
                             <i class="fas fa-angle-left right"></i>
                       </p>
                     </a>

@@ -38,11 +38,10 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php $no=1;?>
 
                                         @foreach ($keluarga as $c)
                                     <tr>
-                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         {{-- nama desa yang login --}}
                                         <td style="vertical-align: middle;">{{ucfirst($c->nama_kepala_rumah_tangga) }}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jumlah_anggota_keluarga)}} Orang</td>
@@ -70,7 +69,6 @@
 
                                     </tr>
 
-                                    <?php $no++ ;?>
                                     @endforeach
 
                                     </tbody>
@@ -184,7 +182,7 @@
                                                             Kriteria Rumah : <strong>Sehat</strong><br>
                                                         @else
                                                             Kriteria Rumah : <strong>Kurang Sehat</strong><br>
-                                                        @endif 
+                                                        @endif
 
                                                         @if ($c->aktivitas_UP2K == 1)
                                                             Aktivitaser UP2K: <strong> Ya</strong><br>

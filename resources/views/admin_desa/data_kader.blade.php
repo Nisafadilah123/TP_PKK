@@ -36,11 +36,10 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php $no=1;?>
 
                                         @foreach ($akun as $c)
                                     <tr>
-                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         <td style="vertical-align: middle;">{{$c->name}}</td>
                                         <td style="vertical-align: middle;">{{$c->email}}</td>
                                         <td style="vertical-align: middle;">{{$c->password}}</td>
@@ -64,7 +63,6 @@
 
 
                                     </tr>
-                                    <?php $no++ ;?>
 
                                     @endforeach
                                     </tbody>

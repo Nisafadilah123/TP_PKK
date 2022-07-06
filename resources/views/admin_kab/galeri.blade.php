@@ -38,11 +38,10 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php $no=1;?>
 
                                         @foreach ($galeri as $c)
                                     <tr>
-                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         <td style="vertical-align: middle;">{{$c->nama_gambar}}</td>
                                         <td style="vertical-align: middle;">{{$c->nama_kegiatan}}</td>
                                         <td style="vertical-align: middle;"><img src="/galeri/{{$c->gambar}}" width="100px"></td>
@@ -62,7 +61,6 @@
                                         </td>
 
                                     </tr>
-                                    <?php $no++ ;?>
 
                                     @endforeach
                                     </tbody>

@@ -89,11 +89,10 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php $no=1;?>
 
                                             @foreach ($catatan_keluarga as $data_warga)
                                                 <tr>
-                                                    <td style="vertical-align: middle;">{{ $no }}</td>
+                                                    <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                                     <td style="vertical-align: middle;">{{ucfirst($data_warga->nama)}}</td>
                                                     <td style="vertical-align: middle;">{{ucfirst($data_warga->status_keluarga)}} {{ucfirst($data_warga->status)}}</td>
                                                     <td style="vertical-align: middle;">{{ucfirst($data_warga->status_perkawinan)}}</td>
@@ -118,7 +117,6 @@
                                                     @endforeach
                                                         </tr>
                                             @endforeach
-                                        <?php $no++ ;?>
                                     </tbody>
                                 </table>
                                 {{-- <a href="{{ url('print_cakel', $print_cakel->id_keluarga) }}" target="_blank" class="btn btn-primary" type="button" role="button">

@@ -48,11 +48,10 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php $no=1;?>
 
                                         @foreach ($anggotas as $c)
                                     <tr>
-                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         <td style="vertical-align: middle;">{{$c->desa->nama_desa}}</td>
                                         <td style="vertical-align: middle;">{{$c->kecamatan->nama_kecamatan}}</td>
                                         <td style="vertical-align: middle;">{{$c->no_registrasi}}</td>
@@ -89,7 +88,6 @@
 
 
                                     </tr>
-                                    <?php $no++ ;?>
 
                                     @endforeach
                                     </tbody>

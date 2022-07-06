@@ -12,9 +12,7 @@ class SuperAdminController extends Controller
 {
             // halaman dashboard
             public function dashboard_super(){
-                $desa = Data_Desa::count();
-                $kecamatan = DataKecamatan::count();
-                $user = User::count();
+
 
                 return view('super_admin.dashboard_super', compact('desa', 'kecamatan', 'user'));
             }

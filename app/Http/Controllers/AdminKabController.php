@@ -2,17 +2,28 @@
 
 namespace App\Http\Controllers;
 use App\Models\BeritaKab;
-
+use App\Models\Data_Desa;
+use App\Models\DataAgenda;
+use App\Models\DataGaleri;
+use App\Models\DataKecamatan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminKabController extends Controller
 {
     // halaman dashboard
     public function dashboard_kab(){
         $berita = BeritaKab::count();
-
-        return view('admin_kab.dashboard_kab', compact('berita'));
+        $desa = Data_Desa::count();
+        $kecamatan = DataKecamatan::count();
+        $user = User::count();
+        $agenda = DataAgenda::count();
+        $galeri = DataGaleri::count();
+        // $kecamatan = DataKecamatan::count();
+        // $user = User::count();
+        return view('admin_kab.dashboard_kab', compact('berita', 'desa', 'kecamatan', 'user', 'agenda', 'galeri'));
     }
 
     // halaman data pokja1
@@ -127,10 +138,44 @@ class AdminKabController extends Controller
         return redirect()->route('admin_kabupaten.login');
     }
 
-    // rekap catatan data dan kegiatan warga admin kec
-    public function rekap_kegiatan_kab()
+    // data catatan data dan kegiatan warga kelompok tp pkk kecamatan
+    public function data_kelompok_pkk_kec()
     {
-        return view('admin_kab.rekap_kegiatan_kab');
+        /** @var User */
+        $user = Auth::user();
+
+        $kecamatan = DB::table('data_keluarga')
+        ->join('data_kecamatan', 'data_keluarga.id_kecamatan', '=', 'data_kecamatan.id')
+        ->select('nama_kecamatan', 'periode')
+        // ->where('id_kecamatan', $user->user_type)
+        ->distinct()
+        ->get();
+
+        // $kecamatan = DataKecamatan::where()->get();
+
+        // dd($kecamatan);
+        return view('admin_kab.data_rekap.data_kelompok_pkk_kec', compact('kecamatan'));
+    }
+    // rekap catatan data dan keluarga dan kegiatan warga admin kec
+    public function rekap_pkk_kec(Request $request)
+    {
+        $user = Auth::user();
+        $desa = $user->desa;
+        $kecamatan = $request->query('kecamatan');
+        $dasa_wisma = $request->query('dasa_wisma');
+        $rt = $request->query('rt');
+        $rw = $request->query('rw');
+        $dusun = $request->query('dusun');
+        $periode = $request->query('periode');
+        // dd($kecamatan);
+        return view('admin_kab.data_rekap.data_rekap_pkk_kec', compact(
+            'dusun',
+            'kecamatan',
+            'rw',
+            'periode',
+            'desa',
+
+        ));
     }
 
 }

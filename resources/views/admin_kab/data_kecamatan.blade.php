@@ -32,11 +32,10 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php $no=1;?>
 
                                         @foreach ($kecamatan as $c)
                                     <tr>
-                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         <td style="vertical-align: middle;">{{$c->kode_kecamatan}}</td>
                                         <td style="vertical-align: middle;">{{$c->nama_kecamatan}}</td>
 
@@ -56,7 +55,6 @@
 
 
                                     </tr>
-                                    <?php $no++ ;?>
 
                                     @endforeach
                                     </tbody>

@@ -118,7 +118,7 @@
                 </a>
               </li>
 
-              <li class="nav-item has-treeview">
+              {{-- <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-address-book"></i>
                       <p>Data Daftar Anggota
@@ -140,7 +140,7 @@
                     </a>
                   </li>
                 </ul>
-              </li>
+              </li> --}}
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-archive"></i>
@@ -177,24 +177,12 @@
                   <li class="nav-item">
                     <a href="/data_kelompok_pkk_desa" class="nav-link {{ Request::is('data_kelompok_pkk_desa') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data Kelompok TP PKK Desa</p>
+                      <p>Data TP PKK Desa</p>
                     </a>
                   </li>
                 </ul>
               </li>
 
-              {{-- <li class="nav-item">
-                <a class="nav-link" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-                    <i class="nav-icon fas fa-sign-out-alt"></i>
-                    Keluar
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-              </li> --}}
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin_desa.logout') }}"
                     onclick="event.preventDefault();

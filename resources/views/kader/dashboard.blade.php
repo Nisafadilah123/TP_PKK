@@ -17,14 +17,14 @@
             <div class="small-box bg-success">
               <div class="inner">
                 {{-- <h3>53<sup style="font-size: 20px">%</sup></h3> --}}
-                {{-- <h3>150</h3> --}}
+                <h3>{{ $keluarga }}</h3>
 
-                <p>Data POKJA I</p>
+                <p>Data Keluarga</p>
               </div>
               <div class="icon">
-                <i class="ion ion-folder"></i>
+                <i class="ion ion-person-stalker"></i>
               </div>
-              <a href="/data_pokja1" class="small-box-footer"
+              <a href="/data_keluarga" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
@@ -32,16 +32,16 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-info">
               <div class="inner">
-                {{-- <h3>44</h3> --}}
+                <h3>{{ $warga }}</h3>
 
-                <p>Data POKJA II</p>
+                <p>Data Warga TP PKK</p>
               </div>
               <div class="icon">
-                <i class="ion ion-folder"></i>
+                <i class="ion ion-person"></i>
               </div>
-              <a href="/data_pokja2" class="small-box-footer"
+              <a href="/data_warga" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
@@ -49,16 +49,16 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-primary">
               <div class="inner">
-                {{-- <h3>65</h3> --}}
+            <h3>{{ $kegiatan }}</h3>
 
-                <p>Data POKJA III</p>
+                <p>Data Kegiatan Warga</p>
               </div>
               <div class="icon">
-                <i class="ion ion-folder"></i>
+                <i class="ion ion-pin"></i>
               </div>
-              <a href="/data_pokja3" class="small-box-footer"
+              <a href="/data_kegiatan" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
@@ -66,16 +66,16 @@
 
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-secondary">
               <div class="inner">
-                {{-- <h3>150</h3> --}}
+                <h3>{{ $pemanfaatan }}</h3>
 
-                <p>Data POKJA IV</p>
+                <p>Data Pemanfaatan Tanah dan Pekarangan</p>
               </div>
               <div class="icon">
-                <i class="ion ion-folder"></i>
+                <i class="ion ion-pin"></i>
               </div>
-              <a href="/data_pokja4" class="small-box-footer"
+              <a href="/data_pemanfaatan" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
@@ -88,16 +88,16 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-warning">
               <div class="inner">
-                {{-- <h3>150</h3> --}}
+                <h3>{{ $industri }}</h3>
 
-                <p>Data Sekretariat</p>
+                <p>Data Industri Rumah Tangga</p>
               </div>
               <div class="icon">
-                <i class="ion ion-folder"></i>
+                <i class="ion ion-home"></i>
               </div>
-              <a href="/data_sekretariat" class="small-box-footer"
+              <a href="/data_industri" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
@@ -108,35 +108,20 @@
             <div class="small-box bg-danger">
               <div class="inner">
                 {{-- <h3>53<sup style="font-size: 20px">%</sup></h3> --}}
-                {{-- <h3>44</h3> --}}
+                <h3>{{ $rekap }}</h3>
 
-                <p>Data Laporan</p>
+                <p>Data Rekapitulasi Warga dan Catatan Keluarga</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="/data_laporan" class="small-box-footer"
+              <a href="/rekap" class="small-box-footer"
                 >More info <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3>
 
-                <p>Data Warga TP </p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
-              ></a>
-            </div>
-          </div>
           <!-- ./col -->
           {{-- <div class="col-lg-3 col-6">
             <!-- small box -->

@@ -18,20 +18,14 @@
                                     <h6><strong>REKAPITULASI</strong></h6>
                                     <h6><strong>CATATAN DATA DAN KEGIATAN WARGA</strong> </h6>
                                     <h6><strong>KELOMPOK PKK DESA/KELURAHAN</strong></h6>
-                                @foreach ($rekap as $item)
-
-                                    {{-- <h6>TAHUN : {{ucfirst ($item->periode) }}</h6> --}}
+                                    <h6>TAHUN : {{$periode}}</h6>
 
                                 </center>
 
-                                    <h6>TP PKK Desa/Kel : {{ucfirst ($item->nama_desa) }}</h6>
-                                    <h6>Kecamatan : </h6>
-                                    <h6>Kabupaten : </h6>
-                                    <h6>Provinsi : </h6>
-
-                                @endforeach
-                                    <h6> Desa/Kel : </h6>
-
+                                    <h6>TP PKK Desa/Kel : {{ucfirst ($desa->nama_desa) }}</h6>
+                                    <h6>Kecamatan : {{ucfirst ($kecamatan->nama_kecamatan) }}</h6>
+                                    <h6>Kabupaten : Indramayu</h6>
+                                    <h6>Provinsi : Jawa Barat</h6>
 
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered data" id="add-row" width="6000px">
@@ -49,7 +43,7 @@
                                             <th colspan="3" style="text-align:center;">Sumber Air Keluarga</th>
                                             <th colspan="2" style="text-align:center;">Makanan Pokok</th>
                                             <th colspan="6" style="text-align:center;">Warga Mengikuti Kegiatan</th>
-                                            <th rowspan="3" style="text-align: center;">Ket</th>
+                                            {{-- <th rowspan="3" style="text-align: center;">Ket</th> --}}
                                         </tr>
                                         <tr>
                                             <th>Total L</th>
@@ -89,28 +83,79 @@
                                         </thead>
 
                                         <tbody>
-                                            <?php $no=1;?>
+                                            @foreach ($dusuns as $dusun)
+                                            <tr>
+                                                <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
+                                                <td style="vertical-align: middle;">{{ $dusun->dusun }}</td>
+                                                <td style="vertical-align: middle;">{{ $dusun->jumlah_rw }}</td>
+                                                <td style="vertical-align: middle;">{{ $dusun->jumlah_rt }}</td>
+                                                <td style="vertical-align: middle;">{{ $dusun->jumlah_dasa_wisma }}</td>
+                                                <td style="vertical-align: middle;">{{ $dusun->jumlah_KRT }}</td>
+                                                <td style="vertical-align: middle;">{{ $dusun->jumlah_KK }}</td>
+                                                <td>{{ $dusun->jumlah_laki_laki }}</td>
+                                                <td>{{ $dusun->jumlah_perempuan }}</td>
+                                                <td>{{ $dusun->jumlah_balita_laki }}</td>
+                                                <td>{{ $dusun->jumlah_balita_perempuan }}</td>
+                                                <td>{{ $dusun->jumlah_3_buta }}</td>
+                                                <td>{{ $dusun->jumlah_PUS }}</td>
+                                                <td>{{ $dusun->jumlah_WUS }}</td>
+                                                <td>{{ $dusun->jumlah_ibu_hamil }}</td>
+                                                <td>{{ $dusun->jumlah_ibu_menyusui }}</td>
+                                                <td>{{ $dusun->jumlah_lansia }}</td>
+                                                <td>{{ $dusun->jumlah_kebutuhan }}</td>
+                                                <td>{{ $dusun->jumlah_kriteria_rumah_sehat }}</td>
+                                                <td>{{ $dusun->jumlah_kriteria_rumah_tidak_sehat }}</td>
+                                                <td>{{ $dusun->jumlah_punya_tempat_sampah }}</td>
+                                                <td>{{ $dusun->jumlah_punya_saluran_air }}</td>
+                                                <td>{{ $dusun->jumlah_jumlah_jamban }}</td>
+                                                <td>{{ $dusun->jumlah_tempel_stiker }}</td>
+                                                <td>{{ $dusun->jumlah_sumber_air_pdam }}</td>
+                                                <td>{{ $dusun->jumlah_sumber_air_sumur }}</td>
+                                                <td>{{ $dusun->jumlah_sumber_air_dll }}</td>
+                                                <td>{{ $dusun->jumlah_makanan_pokok_beras }}</td>
+                                                <td>{{ $dusun->jumlah_makanan_pokok_non_beras }}</td>
+                                                <td>{{ $dusun->jumlah_aktivitas_UP2K }}</td>
+                                                <td>{{ $dusun->jumlah_have_pemanfaatan }}</td>
+                                                <td>{{ $dusun->jumlah_have_industri }}</td>
+                                                <td>{{ $dusun->jumlah_have_kegiatan }}</td>
+                                            </tr>
+                                            @endforeach
 
-                                            {{-- @foreach ($warga as $c)
-                                        <tr>
-                                            <td style="vertical-align: middle;">{{ $no }}</td>
-                                            <td style="vertical-align: middle;">{{ $c->no_registrasi }}</td>
-                                            <td style="vertical-align: middle;">{{ucfirst($c->nama)}}</td>
-                                            <td style="vertical-align: middle;">{{ucfirst($c->status)}}</td>
-                                            <td style="vertical-align: middle;">{{ucfirst($c->status_perkawinan)}}</td>
-                                            <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin == 'laki-laki' ? 'laki-laki' :'')}}</td>
-                                            <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin == 'perempuan' ? 'perempuan' :'')}}</td>
-                                            <td style="vertical-align: middle;">{{ucfirst($c->tgl_lahir)}}/{{ ucfirst($c->umur) }} Tahun</td>
-                                            <td style="vertical-align: middle;">{{ucfirst($c->pendidikan)}}</td>
-                                            <td style="vertical-align: middle;">{{ucfirst($c->pekerjaan)}}</td>
-
-
-                                        </tr>
-                                        <?php $no++ ;?>
-
-                                        @endforeach
-                                        </tbody> --}}
-
+                                            <tr>
+                                                <td colspan="2"><strong>Jumlah</strong></td>
+                                                <td>{{ $dusuns->sum('jumlah_rw') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_rt') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_dasa_wisma') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_KRT') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_KK') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_laki_laki') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_perempuan') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_balita_laki') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_balita_perempuan') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_3_buta') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_PUS') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_WUS') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_ibu_hamil') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_ibu_menyusui') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_lansia') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_kebutuhan') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_kriteria_rumah_sehat') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_kriteria_rumah_tidak_sehat') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_punya_tempat_sampah') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_punya_saluran_air') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_jamban') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_tempel_stiker') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_sumber_air_pdam') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_sumber_air_sumur') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_sumber_air_dll') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_makanan_pokok_beras') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_makanan_pokok_non_beras') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_aktivitas_UP2K') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_have_pemanfaatan') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_have_industri') }}</td>
+                                                <td>{{ $dusuns->sum('jumlah_have_kegiatan') }}</td>
+                                            </tr>
+                                        </tbody>
                                     </table>
 
                                 </div>

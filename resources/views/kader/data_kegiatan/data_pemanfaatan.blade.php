@@ -37,11 +37,10 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php $no=1;?>
 
                                         @foreach ($pemanfaatan as $c)
                                     <tr>
-                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                        <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         {{-- nama desa yang login --}}
                                         <td style="vertical-align: middle;">{{ucfirst($c->keluarga->nama_kepala_rumah_tangga) }}</td>
                                         @if ($c->nama_kategori == 1)
@@ -56,7 +55,7 @@
                                             <td style="vertical-align: middle;">Tanaman Keras</td>
                                         @elseif($c->nama_kategori == 6)
                                             <td style="vertical-align: middle;">Lainnya</td>
-                                    
+
                                         @endif
                                         <td style="vertical-align: middle;">{{ucfirst($c->komoditi)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jumlah)}}</td>
@@ -77,7 +76,6 @@
 
                                     </tr>
 
-                                    <?php $no++ ;?>
                                     @endforeach
 
                                     </tbody>
