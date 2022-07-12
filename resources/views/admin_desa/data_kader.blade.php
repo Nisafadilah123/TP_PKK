@@ -25,12 +25,12 @@
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                        <th>Name</th>
+                                        <th>Nama</th>
                                         <th>Email</th>
                                         <th>Password</th>
                                         <th>User Type</th>
-                                        <th>Id Desa</th>
-                                        <th>id kecamatan</th>
+                                        <th>Nama Desa</th>
+                                        <th>Nama kecamatan</th>
                                         <th>Aksi</th>
                                     </tr>
                                     </thead>

@@ -26,6 +26,9 @@ class Desa
     public $nama;
 
     /** @var int */
+    public $jumlah_dusun;
+
+    /** @var int */
     public $jumlah_rw;
 
     /** @var int */
@@ -53,7 +56,10 @@ class Desa
     public $jumlah_balita_perempuan;
 
     /** @var int */
-    public $jumlah_3_buta;
+    public $jumlah_3_buta_laki;
+
+    /** @var int */
+    public $jumlah_3_buta_perempuan;
 
     /** @var int */
     public $jumlah_PUS;
@@ -96,6 +102,9 @@ class Desa
 
     /** @var int */
     public $jumlah_sumber_air_sumur;
+
+    /** @var int */
+    public $jumlah_sumber_air_sungai;
 
     /** @var int */
     public $jumlah_sumber_air_dll;

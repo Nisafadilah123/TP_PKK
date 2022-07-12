@@ -15,38 +15,23 @@
         </ol>
       </div>
       <br><br>
-      <div class="content">
-        <div class="container">
-          <div class="row">
-
-            <div class="col-sm-12">
-                <div class="swiper-wrapper">
-                    @foreach($beritas as $l)
-
-                    <div class="card" style="width: 30rem; margin-right:20px">
-                        <div class="card-body">
-                            <img src="/gambar/{{$l->gambar}}" width="100%" height="20%" class="img-fluid"><br>
-                            <h4 style="font-family: 'Times New Roman', Times, serif">{{$l->nama_berita}}</a></h4>
-                            <h4 style="font-family: 'Times New Roman', Times, serif">{{$l->penulis}} - {{ \Carbon\Carbon::parse($l->tgl_publish)->isoFormat('D MMMM Y') }}</h4>
-                            <h4 style="font-family: 'Times New Roman', Times, serif;overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">{{$l->desk}}</h4>
-                            <a href="{{ url('berita/'.$l->id) }}" class="card-link">Baca Selengkapnya</a>
-                        </div>
-                      </div>
-
-                  @endforeach
-
+      <div class="row">
+            @foreach($beritas as $l)
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="post-box">
+                    <div class="post-img"><img src="assets/img/blog/blog-1.jpg" class="img-fluid" alt=""></div>
+                    <div class="meta">
+                        <span class="post-date">{{ \Carbon\Carbon::parse($l->tgl_publish)->isoFormat('D MMMM Y') }} </span>
+                        <span class="post-author"> / {{$l->penulis}}</span>
+                    </div>
+                    <h3 class="post-title">{{ $l->nama_berita }}</h3>
+                    <p style="font-family: 'Times New Roman', Times, serif;overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">{{ $l->desk }}</p>
+                    <a href="{{ url('berita/'.$l->id) }}" class="readmore stretched-link"><span>Baca Selengkapnya</span><i class="bi bi-arrow-right"></i></a>
+                    </div>
                 </div>
+            @endforeach
 
-
-
-            </div>
-            <!-- /.col-md-6 -->
-
-            <!-- /.col-md-6 -->
-          </div>
-          <!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </div>
+        </div>
 
     </div>
   </section>

@@ -24,7 +24,7 @@
                 <i class="ion ion-folder"></i>
               </div>
               <a href="/beritaKab" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
+                >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
@@ -42,7 +42,7 @@
                 <i class="ion ion-map"></i>
               </div>
               <a href="/data_desa" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
+                >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
@@ -59,7 +59,7 @@
                 <i class="ion ion-map"></i>
               </div>
               <a href="/data_kecamatan" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
+                >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
@@ -76,7 +76,7 @@
                 <i class="ion ion-calendar"></i>
               </div>
               <a href="agendaKeg" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
+                >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
@@ -96,7 +96,7 @@
                 <i class="ion ion-images"></i>
               </div>
               <a href="galeriKeg" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
+                >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
@@ -114,7 +114,7 @@
                 <i class="ion ion-stats-folder"></i>
               </div>
               <a href="/data_kelompok_pkk_kec" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
+                >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
@@ -132,7 +132,7 @@
                 <i class="ion ion-stats-folder"></i>
               </div>
               <a href="#" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
+                >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
@@ -149,7 +149,7 @@
                 <i class="ion ion-person-add"></i>
               </div>
               <a href="/data_pengguna" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
+                >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
@@ -166,7 +166,7 @@
                 <i class="ion ion-pie-graph"></i>
               </div>
               <a href="#" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
+                >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div> --}}

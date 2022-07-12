@@ -28,8 +28,9 @@ class MainController extends Controller
         // $data['warga'] = $warga;
 
         // dd($data);
-
-        return view('main.home', ['berita'=>$berita]);
+        $gal = DataGaleri::all();
+        dd($gal);
+        return view('main.home')->with(compact('berita', 'gal'));
     }
 
     // halaman sejarah

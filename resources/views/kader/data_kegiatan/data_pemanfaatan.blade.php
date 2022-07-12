@@ -70,7 +70,7 @@
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <button type="submit" class="btn btn-danger btn-sm delete">Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-sm delete">Hapus</button>
                                             </form>
                                         </td>
 

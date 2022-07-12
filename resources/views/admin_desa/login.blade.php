@@ -87,7 +87,7 @@
 
 <div class="login-box">
     <div class="login-logo">
-      <a href="../../index2.html"><b>Admin</b>Desa</a>
+      <a href="../../index2.html"><b>Admin</b>Desa/Kelurahan</a>
     </div>
     <!-- /.login-logo -->
     <div class="card">

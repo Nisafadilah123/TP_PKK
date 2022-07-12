@@ -21,7 +21,7 @@ class DataRT
         /** @var Collection<RT> */
         $result = new Collection();
 
-        /** @var Collection<string, Collection<DataKeluarga>> */
+        /** @var Collection<integer, Collection<DataKeluarga>> */
         $rts = DataKeluarga::query()
                 ->with(['industri', 'pemanfaatan'])
                 ->where('id_desa', $id_desa)
@@ -32,24 +32,31 @@ class DataRT
                 ->groupBy('rt');
             // dd($rts);
         foreach ($rts as $keluargas) {
-            // $rtIds = explode('-', $rtId);
-            // // dd($rtIds);
+            // $rtIds = explode('-', $keluargas);
+            // dd($rtIds);
             // if (count($rtIds) < 5) {
             //     continue;
             // }
             $keluarga = $keluargas->first();
+                // dd($keluarga);
 
                 $rt = new RT();
                 $rt->id = $keluarga->id;
                 $rt->id_kecamatan = intval($keluarga->id_kecamatan);
                 $rt->id_desa = intval($keluarga->id_desa);
                 $rt->dusun = $keluarga->dusun;
+                // dd($keluarga->dusun);
+
                 $rt->rw = intval($keluarga->rw);
                 // $rt->rt = intval($keluarga->rt);
                 $rt->nama = $keluarga->nama;
                 $rt->rt = $keluarga->rt;
+                $dasa_wisma = $keluargas->groupBy(function ($item) {
+                    return strtolower($item->dasa_wisma);
+                });
+                $rt->jumlah_dasa_wisma = count($dasa_wisma);
 
-                $rt->jumlah_dasa_wisma = count($keluargas);
+                // dd($keluarga->dasa_wisma);
                 $rt->jumlah_KRT = $keluargas->count('id');
                 $rt->jumlah_KK = $keluargas->sum('jumlah_KK');
                 $rt->jumlah_laki_laki = $keluargas->sum('laki_laki');

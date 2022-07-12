@@ -15,42 +15,56 @@
         </ol>
       </div>
       <br><br>
-      <div class="content">
-        <div class="container">
-          <div class="row">
+      <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
 
-            <div class="col-sm-4 mb-3">
-                <div class="card-deck">
-                    @foreach($berita as $l)
+          <div class="row g-5">
 
-                        <div class="card" style="margin: 15px; width: 1200px">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <img src="/gambar/{{$l->gambar}}" width="1200px" class="img-fluid">
-                                </h5>
-                                {{-- mengarah ke halaman berita sesuai id --}}
-                                <h4 style="font-family: 'Times New Roman', Times, serif">{{$l->nama_berita}}</a></h1>
-                                <h4 style="font-family: 'Times New Roman', Times, serif">Oleh: {{$l->penulis}} - {{ \Carbon\Carbon::parse($l->tgl_publish)->isoFormat('D MMMM Y') }}</h4>
+            <div class="col-lg-12">
 
-                                <p class="card-text" style="font-family: 'Times New Roman', Times, serif">
-                                    {{$l->desk}}
-                                </p>
-                            </div>
-                        </div>
-                    @endforeach
+              <article class="blog-details">
 
-              </div>
+                @foreach($berita as $l)
+
+                @endforeach
+                <div class="post-img">
+                  <img src="/gambar/{{$l->gambar}}" alt="" class="img-fluid">
+                </div>
+
+                <h2 class="title">{{ $l->nama_berita }}</h2>
+
+                <div class="meta-top">
+                  <ul>
+                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">{{ $l->penulis }}</a></li>
+                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2020-01-01">{{ \Carbon\Carbon::parse($l->tgl_publish)->isoFormat('D MMMM Y') }}</time></a></li>
+                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#">12 Comments</a></li>
+                  </ul>
+                </div><!-- End meta top -->
+
+                <div class="content">
+                  <p>
+                    {{$l->desk}}
+                  </p>
+
+
+
+                </div><!-- End post content -->
+
+
+
+              </article><!-- End blog post -->
 
 
 
             </div>
-            <!-- /.col-md-6 -->
 
-            <!-- /.col-md-6 -->
+
           </div>
-          <!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </div>
+
+        </div>
+      </section><!-- End Blog Details Section -->
+
+
 
     </div>
   </section>

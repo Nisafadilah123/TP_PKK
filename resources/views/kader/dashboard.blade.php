@@ -25,7 +25,7 @@
                 <i class="ion ion-person-stalker"></i>
               </div>
               <a href="/data_keluarga" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
+                >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
@@ -42,7 +42,7 @@
                 <i class="ion ion-person"></i>
               </div>
               <a href="/data_warga" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
+                >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
@@ -56,10 +56,10 @@
                 <p>Data Kegiatan Warga</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pin"></i>
+                <i class="ion ion-folder"></i>
               </div>
               <a href="/data_kegiatan" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
+                >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
@@ -73,10 +73,10 @@
                 <p>Data Pemanfaatan Tanah dan Pekarangan</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pin"></i>
+                <i class="ion ion-folder"></i>
               </div>
               <a href="/data_pemanfaatan" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
+                >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
@@ -98,7 +98,7 @@
                 <i class="ion ion-home"></i>
               </div>
               <a href="/data_industri" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
+                >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
@@ -113,10 +113,10 @@
                 <p>Data Rekapitulasi Warga dan Catatan Keluarga</p>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="ion ion-filing"></i>
               </div>
               <a href="/rekap" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
+                >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
@@ -135,7 +135,7 @@
                 <i class="ion ion-pie-graph"></i>
               </div>
               <a href="#" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
+                >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
           </div> --}}

@@ -25,19 +25,13 @@ class DataDusun
         $dusuns = DataKeluarga::query()
                 ->with(['industri', 'pemanfaatan'])
                 ->where('id_desa', $id_desa)
-                // ->where('rt', $rt)
-                // ->where('rw', $rw)
-                // ->where('dusun', $dusun)
+
                 ->where('periode', $periode)
                 ->get()
                 ->groupBy('dusun');
             // dd($dusuns);
         foreach ($dusuns as $keluargas) {
-            // $rtIds = explode('-', $rtId);
-            // // dd($rtIds);
-            // if (count($rtIds) < 5) {
-            //     continue;
-            // }
+
             $keluarga = $keluargas->first();
 
                 $dusun = new Dusun();
@@ -49,9 +43,19 @@ class DataDusun
                 // $dusun->dusun = intval($keluarga->dusun);
                 $dusun->nama = $keluarga->nama;
                 $dusun->dusun = $keluarga->dusun;
-                $dusun->jumlah_rw = count($keluargas);
-                $dusun->jumlah_rt = count($keluargas);
-                $dusun->jumlah_dasa_wisma = count($keluargas);
+                $rw =  $keluargas->groupBy(function ($item) {
+                    return strtolower($item->rw);
+                });
+                $rt =  $keluargas->groupBy(function ($item) {
+                    return strtolower($item->rt);
+                });
+                $dasa_wisma = $keluargas->groupBy(function ($item) {
+                    return strtolower($item->dasa_wisma);
+                });
+
+                $dusun->jumlah_rw = count($rw);
+                $dusun->jumlah_rt = count($rt);
+                $dusun->jumlah_dasa_wisma = count($dasa_wisma);
                 $dusun->jumlah_KRT = $keluargas->count('id');
                 $dusun->jumlah_KK = $keluargas->sum('jumlah_KK');
                 $dusun->jumlah_laki_laki = $keluargas->sum('laki_laki');

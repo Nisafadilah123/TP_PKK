@@ -107,7 +107,7 @@
             >
                <li class="nav-item has-treeview">
                 <a href="/dashboard_kader" class="nav-link {{ Request::is('dashboard_kader') ? 'active':'' }}">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <i class="nav-icon fas fa-home"></i>
                   <p>
                     Dashboard
                   </p>
@@ -118,7 +118,7 @@
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-edit"></i>
                   <p>
-                    Pendataan Keluarga <br> dan Warga TP PKK
+                    Pendataan Keluarga <br> dan Kegiatan Warga TP PKK
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
@@ -157,7 +157,7 @@
                   </ul>
                 </li>
 
-                <li class="nav-item has-treeview">
+                {{-- <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user-cog"></i>
                         <p>
@@ -179,8 +179,8 @@
                                 <p>Data Pelatihan Kader</p>
                             </a>
                         </li>
-                      </ul>
-                    </li>
+                    </ul>
+                </li> --}}
 
                     <li class="nav-item">
                         <a href="/rekap" class="nav-link {{ Request::is('rekap') ? 'active':'' }}">
@@ -237,7 +237,7 @@
 
       <footer class="main-footer">
         <strong
-          >Copyright &copy; Kader PKK Desa.</strong
+          >Copyright &copy; Kader PKK Desa/Kader Dasawisma.</strong
         >
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">

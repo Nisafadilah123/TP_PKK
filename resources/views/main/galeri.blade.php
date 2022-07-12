@@ -27,24 +27,22 @@
                                 {{-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> --}}
                             </div>
 
-                        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="300">
-                            @foreach ($galeri as $i)
-                                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                                        <div class="portfolio-wrap">
-                                            <img src="/galeri/{{$i->gambar}}" class="img-fluid" alt="">
-                                            <div class="portfolio-info">
-                                            <h4>{{$i->nama_gambar}}</h4>
-                                            <p>{{$i->nama_kegiatan}}</p>
-                                            <div class="portfolio-links">
-                                                <a href="/galeri/{{$i->gambar}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{$i->nama_kegiatan}}"><i class="bx bx-plus"></i></a>
-                                                {{-- <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a> --}}
-                                            </div>
-                                            </div>
-                                        </div>
-                                        </div>
-                            @endforeach
+                            <div class="row g-0 portfolio-container">
+                                @foreach ($galeri as $i)
 
-                        </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-app">
+                                    <img src="/galeri/{{$i->gambar}}" class="img-fluid" alt="">
+                                    <div class="portfolio-info">
+                                        <h4>{{$i->nama_gambar}}</h4>
+                                        <p>{{$i->nama_kegiatan}}</p>
+                                        <a href="/galeri/{{$i->gambar}}" title="{{$i->nama_kegiatan}}" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                    </div>
+                                    </div><!-- End Portfolio Item -->
+                                @endforeach
+
+
+                              </div><!-- End Portfolio Container -->
 
                         </div>
                     </section><!-- End Portfolio Section -->

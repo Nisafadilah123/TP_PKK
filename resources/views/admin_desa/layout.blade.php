@@ -82,7 +82,8 @@
             class="brand-image img-circle elevation-3"
             style="opacity: 0.8"
           />
-          <span class="brand-text font-weight-light">TP PKK Desa</span>
+          <p class="brand-text font-weight-light">Tim Penggerak <br>
+             PKK Desa/Kelurahan</p>
         </a>
 
         <!-- Sidebar -->
@@ -104,7 +105,7 @@
             >
                <li class="nav-item has-treeview">
                 <a href="/dashboard" class="nav-link {{ Request::is('dashboard') ? 'active':'' }}">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <i class="nav-icon fas fa-home"></i>
                   <p>
                     Dashboard
                   </p>
@@ -112,7 +113,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="/data_kader" class="nav-link">
+                <a href="/data_kader" class="nav-link {{ Request::is('data_kader') ? 'active':'' }}">
                 <i class="nav-icon fas fa-user"></i>
                   <p>Data Kader TP PKK</p>
                 </a>
@@ -177,7 +178,7 @@
                   <li class="nav-item">
                     <a href="/data_kelompok_pkk_desa" class="nav-link {{ Request::is('data_kelompok_pkk_desa') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data TP PKK Desa</p>
+                      <p>Data TP PKK Desa/Kelurahan</p>
                     </a>
                   </li>
                 </ul>

@@ -25,19 +25,14 @@ class DataRW
         $rws = DataKeluarga::query()
                 ->with(['industri', 'pemanfaatan'])
                 ->where('id_desa', $id_desa)
-                // ->where('rt', $rt)
-                // ->where('rw', $rw)
+
                 ->where('dusun', $dusun)
                 ->where('periode', $periode)
                 ->get()
                 ->groupBy('rw');
             // dd($rws);
         foreach ($rws as $keluargas) {
-            // $rtIds = explode('-', $rtId);
-            // // dd($rtIds);
-            // if (count($rtIds) < 5) {
-            //     continue;
-            // }
+
             $keluarga = $keluargas->first();
 
                 $rw = new RW();
@@ -46,11 +41,17 @@ class DataRW
                 $rw->id_desa = intval($keluarga->id_desa);
                 $rw->dusun = $keluarga->dusun;
                 $rw->rw = intval($keluarga->rw);
-                // $rw->rw = intval($keluarga->rw);
                 $rw->nama = $keluarga->nama;
                 $rw->rw = $keluarga->rw;
-                $rw->jumlah_rt = count($keluargas);
-                $rw->jumlah_dasa_wisma = count($keluargas);
+                $rt =  $keluargas->groupBy(function ($item) {
+                    return strtolower($item->rt);
+                });
+                $dasa_wisma = $keluargas->groupBy(function ($item) {
+                    return strtolower($item->dasa_wisma);
+                });
+                $rw->jumlah_rt = count($rt);
+
+                $rw->jumlah_dasa_wisma = count($dasa_wisma);
                 $rw->jumlah_KRT = $keluargas->count('id');
                 $rw->jumlah_KK = $keluargas->sum('jumlah_KK');
                 $rw->jumlah_laki_laki = $keluargas->sum('laki_laki');

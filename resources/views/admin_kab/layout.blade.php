@@ -113,7 +113,7 @@
                with font-awesome or any other icon font library -->
                <li class="nav-item has-treeview">
                 <a href="/dashboard_kab" class="nav-link {{ Request::is('dashboard_kab') ? 'active':'' }}">
-                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <i class="nav-icon fas fa-home"></i>
                   <p>
                     Dashboard
                     <!-- <i class="right fas fa-angle-left"></i> -->
@@ -158,13 +158,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="/data_kelompok_pkk_kecamatan" class="nav-link {{ Request::is('data_kelompok_pkk_kecamatan') ? 'active':'' }}">
+                    <a href="/data_kelompok_pkk_kec" class="nav-link {{ Request::is('data_kelompok_pkk_kec') ? 'active':'' }}">
                         <i class="far fa-circle nav-icon"></i>
                       <p>Data Kelompok TP PKK<br>Kecamatan</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/data_kelompok_pkk_kabupaten" class="nav-link {{ Request::is('data_kelompok_pkk_kabupaten') ? 'active':'' }}">
+                    <a href="/data_kelompok_pkk_kab" class="nav-link {{ Request::is('data_kelompok_pkk_kab') ? 'active':'' }}">
                         <i class="far fa-circle nav-icon"></i>
                       <p>Data Kelompok PKK<br>Kabupaten</p>
                     </a>

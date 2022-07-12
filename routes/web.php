@@ -75,6 +75,7 @@ use App\Http\Controllers\SuperAdminController;
 use App\Http\Middleware\Authenticate;
 use App\Models\BeritaKab;
 use App\Models\Data_Desa;
+use App\Models\DataGaleri;
 use App\Models\KeteranganKegiatan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -94,9 +95,8 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', [MainController::class, 'home']);
 Route::get('/', function () {
     $berita = BeritaKab::all();
-    // dd($berita);
-
-    return view('main.home', ['berita'=>$berita]);
+    $galeris = DataGaleri::all();
+    return view('main.home', ['berita'=>$berita], ['galeris'=>$galeris]);
 });
 
 Route::get('/sejarah', [MainController::class, 'sejarah']);
@@ -188,7 +188,8 @@ Route::middleware(['user_type:admin_kabupaten'])->group(function(){
     Route::get('/data_umum_kab', [AdminKabController::class, 'data_umum_kab']);
     Route::get('/data_kelompok_pkk_kec', [AdminKabController::class, 'data_kelompok_pkk_kec']);
     Route::get('/rekap_pkk_kec', [AdminKabController::class, 'rekap_pkk_kec']);
-
+    Route::get('/data_kelompok_pkk_kab', [AdminKabController::class, 'data_kelompok_pkk_kab']);
+    Route::get('/rekap_pkk_kab', [AdminKabController::class, 'rekap_pkk_kab']);
     //form berita admin kabupaten
     Route::resource('/beritaKab', BeritaController::class);
     Route::resource('/galeriKeg', DataGaleriController::class);

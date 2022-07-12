@@ -26,16 +26,14 @@
 
                                     <tbody>
 
-                                        @foreach ($desa as $c)
+                                        @foreach ($kabupaten as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
+                                        <td style="vertical-align: middle;">{{($c->periode)}}</td>
 
                                         <td class="text-center">
-                                            <a class="btn btn-success btn-sm" href="{{ url('rekap_kelompok_pkk_desa').'?'.http_build_query([
-                                                'desa' => $c->id_desa,
+                                            <a class="btn btn-success btn-sm" href="{{ url('rekap_pkk_kab').'?'.http_build_query([
                                                 'periode' => $c->periode
-
                                             ]) }}">Rekap</a>
                                         </td>
 

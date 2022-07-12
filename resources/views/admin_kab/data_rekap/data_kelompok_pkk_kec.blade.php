@@ -19,7 +19,7 @@
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                        <th>Nama Kecamatan</th>
+                                        <th>Nama Desa/Kelurahan</th>
                                         <th>Periode</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -35,7 +35,7 @@
 
                                         <td class="text-center">
                                             <a class="btn btn-success btn-sm" href="{{ url('rekap_pkk_kec').'?'.http_build_query([
-                                                'kecamatan' => $c->nama_kecamatan,
+                                                'nama_kecamatan' => $c->nama_kecamatan,
                                                 'periode' => $c->periode
 
                                             ]) }}">Rekap</a>
