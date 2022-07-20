@@ -25,9 +25,12 @@
         <div class="container" data-aos="fade-up">
 
           <div class="section-header">
-            <h2>Sejarah Program Pemberdayaan Kesejahteraan Keluarga (PKK)</h2>
-            <p>Example inner page template</p>
+            <center>
+                <img src="{{ url('../image/remove.png') }}" width="200px">
+            </center><br>
+            <h4>Sejarah Program Pemberdayaan Kesejahteraan Keluarga (PKK)</h4>
           </div>
+
 
           <p style="font-family: 'Times New Roman', Times, serif; text-align: justify; text-indent: 0.5in; font-size:20px;">
             PKK yang merupakan gerakan pembangunan masyarakat bermula dari Seminar Home Economic di Bogor pada tahun 1957, yang menghasilkan rumusan 10 Segi Kehidupan Keluarga.

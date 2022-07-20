@@ -1,6 +1,6 @@
 @extends('kader.layout')
 
-@section('title', 'Catatan Keluarga TP PKK | Kader Desa/Kelurahan PKK Kab. Indramayu')
+@section('title', 'Catatan Keluarga TP PKK | Kader Dasawisma PKK Kab. Indramayu')
 
 @section('bread', 'Catatan Keluarga TP PKK')
 @section('container')
@@ -17,12 +17,12 @@
                             <center><h5><strong> Catatan Keluarga </strong></h5></center>
 
                             <div class="row">
-                                <div class="col-sm-10">
+                                <div class="col-sm-8">
                                     <h6>Catatan Keluarga dari : {{ ucfirst($keluarga->nama_kepala_rumah_tangga) }}</h6>
                                     <h6>Anggota Kelompok Dasawisma : {{ ucfirst($keluarga->dasa_wisma) }}</h6>
                                     <h6>Tahun : {{ ucfirst($keluarga->periode) }}</h6>
                                 </div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-4">
                                     {{-- kriteria rumah --}}
                                     @if ($keluarga->kriteria_rumah == 1)
                                         <h6>Kriteria Rumah : Sehat</h6>
@@ -65,6 +65,7 @@
                                             <th rowspan="2">Status Perkawinan</th>
                                             <th rowspan="2">Jenis Kelamin</th>
                                             <th rowspan="2">Tempat Lahir</th>
+                                            <th rowspan="2">Tanggal Lahir/Umur</th>
                                             <th rowspan="2">Agama</th>
                                             <th rowspan="2">Pendidikan</th>
                                             <th rowspan="2">Pekerjaan</th>
@@ -94,10 +95,11 @@
                                                 <tr>
                                                     <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                                     <td style="vertical-align: middle;">{{ucfirst($data_warga->nama)}}</td>
-                                                    <td style="vertical-align: middle;">{{ucfirst($data_warga->status_keluarga)}} {{ucfirst($data_warga->status)}}</td>
                                                     <td style="vertical-align: middle;">{{ucfirst($data_warga->status_perkawinan)}}</td>
                                                     <td style="vertical-align: middle;">{{ucfirst($data_warga->jenis_kelamin)}}</td>
-                                                    <td style="vertical-align: middle;">{{ucfirst($data_warga->tgl_lahir)}}/{{ ucfirst($data_warga->umur) }} Tahun</td>
+                                                    <td style="vertical-align: middle;">{{ucfirst($data_warga->tempat_lahir)}}</td>
+                                                    <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($data_warga->tgl_lahir)->isoFormat('D MMMM Y') }}/{{ ucfirst($data_warga->umur) }} Tahun</td>
+                                                    <td style="vertical-align: middle;">{{ucfirst($data_warga->agama)}}</td>
                                                     <td style="vertical-align: middle;">{{ucfirst($data_warga->pendidikan)}}</td>
                                                     <td style="vertical-align: middle;">{{ucfirst($data_warga->pekerjaan)}}</td>
                                                     <td style="vertical-align: middle;">{{ucfirst($data_warga->berkebutuhan_khusus)}}</td>

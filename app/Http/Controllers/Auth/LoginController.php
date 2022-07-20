@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
@@ -32,19 +33,24 @@ class LoginController extends Controller
     // protected $redirectTo = RouteServiceProvider::dashboard;
     public function authenticated(){
         if (Auth::user()->user_type == 'superadmin') {
-            return redirect('/dashboard_super')->with('status', 'selamat datang');
+            return redirect('/dashboard_super')->with('sukses', 'selamat datang');
         }
         elseif (Auth::user()->user_type == 'admin_desa') {
-            return redirect('/dashboard')->with('status', 'selamat datang');
+            return redirect('/dashboard')->with('sukses', 'selamat datang');
         }
         elseif ( Auth::user()->user_type == 'admin_kecamatan') {
-            return redirect('/dashboard_kec')->with('status', 'selamat datang');
+            return redirect('/dashboard_kec')->with('sukses', 'selamat datang');
         }
         // elseif ( Auth::guard('kader')->user->user_type == 'kader_desa') {
         //     return redirect('/dashboard_kader')->with('status', 'selamat datang');
         // }
+        elseif ( Auth::user()->user_type == 'kader_desa') {
+            Alert::success('Berhasil', 'Selamat datang');
+
+            return redirect('/dashboard_kader');
+        }
         else {
-            return redirect('/dashboard_kab')->with('status', 'selamat datang');
+            return redirect('/dashboard_kab')->with('sukses', 'selamat datang');
         }
     }
     /**

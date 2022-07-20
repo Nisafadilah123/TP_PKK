@@ -1,6 +1,6 @@
 @extends('kader.layout')
 
-@section('title', 'Tambah Data Keluarga | Kader Desa/Kelurahan PKK Kab. Indramayu')
+@section('title', 'Tambah Data Keluarga | Kader Dasawisma PKK Kab. Indramayu')
 
 @section('bread', 'Tambah Data Keluarga')
 @section('container')
@@ -20,7 +20,7 @@
 
                 <div class="col-md-2">
                     <!-- Tombol yang memicu modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSaya">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalSaya">
                         Klik Info
                     </button>
                 </div>
@@ -786,7 +786,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
                     <a href="/data_keluarga" class="btn btn-outline-primary">
                         <span>Batalkan</span>
                     </a>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Print Data Rekap Data Warga TP PKK | Kader Desa/Kelurahan PKK Kab. Indramayu</title>
+  <title>Print Data Rekap Data Warga TP PKK | Kader Dasawisma PKK Kab. Indramayu</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -23,13 +23,18 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
+            <h6><strong><center>
+                REKAPITULASI DATA WARGA KELUARGA</strong></h6>
+            </center>
 
             <!-- Main content -->
             <div class="invoice p-3 mb-3">
+
               <!-- Table row -->
               <div class="row">
-                <div class="col-12 table-responsive">
+                <div class="table-responsive">
                   <table class="table table-striped table-bordered">
+
                     <thead>
                         <tr>
                         <th rowspan="2">No</th>
@@ -58,7 +63,11 @@
                         <td style="vertical-align: middle;">{{ $no }}</td>
                         <td style="vertical-align: middle;">{{ $c->no_registrasi }}</td>
                         <td style="vertical-align: middle;">{{ucfirst($c->nama)}}</td>
-                        <td style="vertical-align: middle;">{{ucfirst($c->status)}}</td>
+                        @if ($c->status_keluarga=='kepala keluarga')
+                        <td style="vertical-align: middle;">Kepala Keluarga</td>
+                            @else
+                        <td style="vertical-align: middle;">{{ucfirst($c->status_keluarga)}} ({{ucfirst($c->status)}})</td>
+                        @endif
                         <td style="vertical-align: middle;">{{ucfirst($c->status_perkawinan)}}</td>
                         <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin == 'laki-laki' ? 'laki-laki' :'')}}</td>
                         <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin == 'perempuan' ? 'perempuan' :'')}}</td>
@@ -71,6 +80,7 @@
 
                     </tbody>
                   </table>
+                  Tanggal Cetak : {{ Carbon\Carbon::now()->isoFormat('D MMMM Y') }}
                 </div>
                 <!-- /.col -->
               </div>

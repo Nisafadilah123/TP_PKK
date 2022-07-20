@@ -1,4 +1,4 @@
-@extends('admin_desa.layout')
+@extends('admin_kab.layout')
 
 @section('title', 'Data Kelompok PKK Desa TP PKK | Admin Desa/Kelurahan PKK Kab. Indramayu')
 

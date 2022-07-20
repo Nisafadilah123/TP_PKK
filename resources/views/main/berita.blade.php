@@ -36,14 +36,14 @@
                 <div class="meta-top">
                   <ul>
                     <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">{{ $l->penulis }}</a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2020-01-01">{{ \Carbon\Carbon::parse($l->tgl_publish)->isoFormat('D MMMM Y') }}</time></a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#">12 Comments</a></li>
+                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#">{{ \Carbon\Carbon::parse($l->tgl_publish)->isoFormat('D MMMM Y') }}</a></li>
+                    {{-- <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#">12 Comments</a></li> --}}
                   </ul>
                 </div><!-- End meta top -->
 
                 <div class="content">
                   <p>
-                    {{$l->desk}}
+                    {!!$l->desk!!}
                   </p>
 
 

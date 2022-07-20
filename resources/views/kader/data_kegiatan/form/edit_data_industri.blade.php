@@ -1,6 +1,6 @@
 @extends('kader.layout')
 
-@section('title', 'Edit Data Industri Rumah Tangga TP PKK | Kader Desa/Kelurahan PKK Kab. Indramayu')
+@section('title', 'Edit Data Industri Rumah Tangga TP PKK | Kader Dasawisma PKK Kab. Indramayu')
 
 @section('bread', 'Edit Data Industri Rumah Tangga TP PKK')
 @section('container')
@@ -158,7 +158,7 @@
         <!-- /.card-body -->
 
         <div class="card-footer">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Edit</button>
           <a href="/data_industri" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>

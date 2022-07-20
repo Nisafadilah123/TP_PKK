@@ -51,7 +51,9 @@
   <header id="header" class="header fixed-top" data-scrollto-offset="0">
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
-        <a href="/"><img src="{{ url('../image/2.png') }}" alt="" /></a>
+        <a href="/" style="color: black"><img src="{{ url('../image/remove.png') }}" style="padding: 10px 10px 10px 10px;" width="50px" />
+            PEMBERDAYAAN DAN KESEJAHTERAAN KELUARGA (PKK) KAB.INDRAMAYU
+        </a>
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         {{-- <h1>HeroBiz<span>.</span></h1> --}}
@@ -116,7 +118,7 @@
                 ></a>
                 <ul>
                   <li><a href="/pokja1">Program POKJA I</a></li>
-                  <li><a href="/papan1">Papan Data POKJA I</a></li>
+                  {{-- <li><a href="/papan1">Papan Data POKJA I</a></li> --}}
                 </ul>
               </li>
               <li class="dropdown">
@@ -126,7 +128,7 @@
                 ></a>
                 <ul>
                   <li><a href="/pokja2">Program POKJA II</a></li>
-                  <li><a href="/papan2">Papan Data POKJA II</a></li>
+                  {{-- <li><a href="/papan2">Papan Data POKJA II</a></li> --}}
                 </ul>
               </li>
               <li class="dropdown">
@@ -136,7 +138,7 @@
                 ></a>
                 <ul>
                   <li><a href="/pokja3">Program POKJA III</a></li>
-                  <li><a href="papan3">Papan Data POKJA III</a></li>
+                  {{-- <li><a href="papan3">Papan Data POKJA III</a></li> --}}
                 </ul>
               </li>
               <li class="dropdown">
@@ -146,7 +148,7 @@
                 ></a>
                 <ul>
                   <li><a href="/pokja4">Program POKJA IV</a></li>
-                  <li><a href="/papan4">Papan Data POKJA IV</a></li>
+                  {{-- <li><a href="/papan4">Papan Data POKJA IV</a></li> --}}
                 </ul>
               </li>
               <li class="dropdown">
@@ -155,7 +157,7 @@
                 ></a>
                 <ul>
                   <li><a href="/sekretariat">Program Sekretariat</a></li>
-                  <li><a href="/data_umum">Data Umum Sekretariat</a></li>
+                  {{-- <li><a href="/data_umum">Data Umum Sekretariat</a></li> --}}
                 </ul>
               </li>
             </ul>
@@ -203,8 +205,10 @@
     <div class="footer-content">
       <div class="container">
         <div class="row">
-
-          <div class="col-lg-3 col-md-6">
+            <div class="col-lg-3 col-md-4">
+                <img src="{{ url('../image/remove.png') }}" width="200px">
+            </div>
+          <div class="col-lg-3 col-md-4">
             <div class="footer-info">
               <h3>Kontak Kami</h3>
               <p>
@@ -240,11 +244,6 @@
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>SEKRETARIAT TIM PENGGERAK PKK KABUPATEN INDRAMAYU</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-
           </div>
 
         </div>
@@ -291,6 +290,8 @@
 
   <!-- Template Main JS File -->
   <script src="{{ url('assets/js/main.js') }}"></script>
+  <script src="http://maps.googleapis.com/maps/api/js"></script>
+  @stack('script-addon')
 
 </body>
 

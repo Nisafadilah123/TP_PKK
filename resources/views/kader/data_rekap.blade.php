@@ -1,8 +1,8 @@
 @extends('kader.layout')
 
-@section('title', 'Data Rekap Data Warga TP PKK | Kader Desa/Kelurahan PKK Kab. Indramayu')
+@section('title', 'Data Rekap Data Warga | Kader Dasawisma PKK Kab. Indramayu')
 
-@section('bread', 'Data Rekap Data Warga TP PKK')
+@section('bread', 'Data Rekap Data Warga')
 @section('container')
 
     <!-- Main content -->
@@ -15,6 +15,9 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
+                                <h6><strong><center>
+                                    REKAPITULASI DATA WARGA KELUARGA</strong></h6>
+                                </center>
 
                                 <br>
 
@@ -49,7 +52,11 @@
                                         <td style="vertical-align: middle;">{{$loop->iteration }}</td>
                                         <td style="vertical-align: middle;">{{ $c->no_registrasi }}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->nama)}}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->status_keluarga)}} {{ucfirst($c->status)}}</td>
+                                        @if ($c->status_keluarga=='kepala keluarga')
+                                        <td style="vertical-align: middle;">Kepala Keluarga</td>
+                                            @else
+                                        <td style="vertical-align: middle;">{{ucfirst($c->status_keluarga)}} ({{ucfirst($c->status)}})</td>
+                                        @endif
                                         <td style="vertical-align: middle;">{{ucfirst($c->status_perkawinan)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin == 'laki-laki' ? 'laki-laki' :'')}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin == 'perempuan' ? 'perempuan' :'')}}</td>

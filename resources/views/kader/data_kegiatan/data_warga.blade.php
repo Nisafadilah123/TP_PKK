@@ -1,6 +1,6 @@
 @extends('kader.layout')
 
-@section('title', 'Data Warga TP PKK | Kader Desa/Kelurahan PKK Kab. Indramayu')
+@section('title', 'Data Warga TP PKK | Kader Dasawisma PKK Kab. Indramayu')
 
 @section('bread', 'Data Warga TP PKK')
 @section('container')
@@ -106,7 +106,13 @@
                                                             Tempat Lahir : <strong> {{ucfirst($c->tempat_lahir) }} </strong><br>
                                                             Tanggal Lahir : <strong>{{ \Carbon\Carbon::parse($c->tgl_lahir)->isoFormat('D MMMM Y') }}/{{ucfirst($c->umur) }} Tahun</strong><br>
                                                             Status Perkawinan : <strong> {{ucfirst($c->status_perkawinan) }}</strong><br>
-                                                            Status dalam Keluarga : <strong> {{ucfirst($c->status_keluarga) }} ({{ ucfirst($c->status) }})</strong><br>
+                                                            @if ($c->status_keluarga=='kepala keluarga')
+                                                                Status dalam Keluarga :<strong> Kepala Keluarga</strong><br>
+                                                            @else
+                                                                Status dalam Keluarga : <strong> {{ucfirst($c->status_keluarga) }} ({{ ucfirst($c->status) }})</strong><br>
+
+                                                            @endif
+
                                                             Agama : <strong> {{ucfirst($c->agama) }} </strong><br>
                                                             Alamat : <strong> {{ucfirst($c->alamat) }},RT {{ ($c->rt) }}, RW {{ ($c->rt) }},Desa {{ucfirst($c->desa->nama_desa)}}, Kec. {{ucfirst($c->kecamatan->nama_kecamatan)}}
                                                                 Kabupaten {{ucfirst($c->kota) }}, Provinsi {{ucfirst($c->provinsi) }}

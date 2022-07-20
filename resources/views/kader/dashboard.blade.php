@@ -1,6 +1,6 @@
 @extends('kader.layout')
 
-@section('title' , 'Dashboard | Pendataan Keluarga')
+@section('title' , 'Dashboard | Kader Dasawisma PKK Kab. Indramayu')
 @section('bread' , 'Dashboard')
 
 @section('container')
@@ -10,7 +10,13 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
+        {{-- @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+      @endif --}}
+    <!-- Small boxes (Stat box) -->
         <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->

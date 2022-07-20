@@ -82,7 +82,7 @@
             class="brand-image img-circle elevation-3"
             style="opacity: 0.8"
           /> --}}
-          <span class="brand-text font-weight-light">PKK Kabupaten</span>
+          <span class="brand-text font-weight-light">TP PKK Kabupaten</span>
         </a>
 
         <!-- Sidebar -->
@@ -173,28 +173,28 @@
               </li>
 
               <li class="nav-item">
-                <a href="/data_pengguna_super" class="nav-link">
+                <a href="/data_pengguna_super" class="nav-link {{ Request::is('data_pengguna_super') ? 'active':'' }}">
                 <i class="nav-icon fas fa-user"></i>
                   <p>Data Pengguna</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="/beritaKab" class="nav-link">
+                <a href="/beritaKab" class="nav-link {{ Request::is('beritaKab') ? 'active':'' }}">
                 <i class="nav-icon fas fa-newspaper"></i>
                   <p>Data Berita</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="/agendaKeg" class="nav-link">
+                <a href="/agendaKeg" class="nav-link {{ Request::is('agendaKeg') ? 'active':'' }}">
                 <i class="nav-icon fas fa-newspaper"></i>
                   <p>Data Agenda Kegiatan</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="/galeriKeg" class="nav-link">
+                <a href="/galeriKeg" class="nav-link {{ Request::is('galeriKeg') ? 'active':'' }}">
                     <i class="nav-icon fas fa-image"></i>
                     <p>Data Galeri Kegiatan</p>
                 </a>
@@ -1093,7 +1093,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="/dashboard_kab">Home</a></li>
               <li class="breadcrumb-item active">@yield('bread')</li>
             </ol>
           </div>

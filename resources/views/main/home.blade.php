@@ -25,8 +25,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>About Us</h2>
-          <p>Architecto nobis eos vel nam quidem vitae temporibus voluptates qui hic deserunt iusto omnis nam voluptas asperiores sequi tenetur dolores incidunt enim voluptatem magnam cumque fuga.</p>
+          <h2>Tentang Kami</h2>
         </div>
 
         <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
@@ -59,7 +58,6 @@
 
         <div class="section-header">
           <h2>Galeri Kegiatan</h2>
-          <p>Non hic nulla eum consequatur maxime ut vero memo vero totam officiis pariatur eos dolorum sed fug dolorem est possimus esse quae repudiandae. Dolorem id enim officiis sunt deserunt esse soluta consequatur quaerat</p>
         </div>
 
       </div>
@@ -68,13 +66,13 @@
 
         <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order">
 
-          <ul class="portfolio-flters">
+          {{-- <ul class="portfolio-flters">
             <li data-filter="*" class="filter-active">All</li>
             <li data-filter=".filter-app">App</li>
             <li data-filter=".filter-product">Product</li>
             <li data-filter=".filter-branding">Branding</li>
             <li data-filter=".filter-books">Books</li>
-          </ul><!-- End Portfolio Filters -->
+          </ul><!-- End Portfolio Filters --> --}}
 
           <div class="row g-0 portfolio-container">
             @foreach ($galeris as $i)
@@ -188,7 +186,7 @@
                         <span class="post-author"> / {{$l->penulis}}</span>
                     </div>
                     <h3 class="post-title">{{ $l->nama_berita }}</h3>
-                    <p style="font-family: 'Times New Roman', Times, serif;overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">{{ $l->desk }}</p>
+                    <p style="font-family: 'Times New Roman', Times, serif;overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">{!!$l->desk !!}</p>
                     <a href="{{ url('berita/'.$l->id) }}" class="readmore stretched-link"><span>Baca Selengkapnya</span><i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
@@ -200,8 +198,45 @@
 
     </section><!-- End Recent Blog Posts Section -->
 
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+    <div class="container">
 
+      <div class="section-header">
+        <h2>Lokasi</h2>
+      </div>
+
+    </div>
+
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.5108766333938!2d108.3217551141946!3d-6.327781163676679!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6ebbfd9e802a75%3A0x306e051d08ef52f2!2sJl.%20Wiralodra%20No.53%2C%20Lemahabang%2C%20Kec.%20Indramayu%2C%20Kabupaten%20Indramayu%2C%20Jawa%20Barat%2045212!5e0!3m2!1sid!2sid!4v1658315065405!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="container">
 
   </main><!-- End #main -->
 
 @endsection
+
+@push('script-addon')
+
+<script type="text/javascript">
+    function initMap() {
+      const myLatLng = { lat: 22.2734719, lng: 70.7512559 };
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 5,
+        center: myLatLng,
+      });
+
+      new google.maps.Marker({
+        position: myLatLng,
+        map,
+        title: "Hello Rajkot!",
+      });
+    }
+
+    window.initMap = initMap;
+</script>
+
+<script type="text/javascript"
+src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap" ></script>
+
+@endpush

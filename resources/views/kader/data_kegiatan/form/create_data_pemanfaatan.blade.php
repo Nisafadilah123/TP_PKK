@@ -1,6 +1,6 @@
 @extends('kader.layout')
 
-@section('title', 'Tambah Data Pemanfaatan Tanah Pekarangan TP PKK | Kader Desa/Kelurahan PKK Kab. Indramayu')
+@section('title', 'Tambah Data Pemanfaatan Tanah Pekarangan TP PKK | Kader Dasawisma PKK Kab. Indramayu')
 
 @section('bread', 'Tambah Data Pemanfaatan Tanah Pekarangan TP PKK')
 @section('container')
@@ -180,7 +180,7 @@
         <!-- /.card-body -->
 
         <div class="card-footer">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Tambah</button>
           <a href="/data_pemanfaatan" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>

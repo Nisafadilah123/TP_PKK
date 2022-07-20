@@ -1,6 +1,6 @@
 @extends('kader.layout')
 
-@section('title', 'Tambah Data Warga TP PKK | Kader Desa/Kelurahan PKK Kab. Indramayu')
+@section('title', 'Tambah Data Warga TP PKK | Kader Dasawisma PKK Kab. Indramayu')
 
 @section('bread', 'Tambah Data Warga TP PKK')
 @section('container')
@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-md-2">
                     <!-- Tombol yang memicu modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSaya">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalSaya">
                         Klik Info
                     </button>
 
@@ -156,7 +156,7 @@
                         <div class="form-group">
                             <label>No. KTP</label>
                             {{-- No. KTP --}}
-                            <input type="text" class="form-control @error('no_ktp') is-invalid @enderror" name="no_ktp" id="no_ktp" placeholder="Di isi dengan sudah atau belum atas kepemilikan KTP dan atau Kartu Keluarga (KK)" value="{{ old('no_ktp') }}">
+                            <input type="text" class="form-control @error('no_ktp') is-invalid @enderror" name="no_ktp" id="no_ktp" placeholder="Diisi dengan sudah atau belum atas kepemilikan KTP dan atau Kartu Keluarga (KK)" value="{{ old('no_ktp') }}">
                             @error('no_ktp')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -181,7 +181,7 @@
                         <div class="form-group">
                             <label>Nama</label>
                             {{-- nama warga --}}
-                            <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" placeholder="Di isi dengan nama" value="{{ old('nama') }}">
+                            <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" placeholder="Diisi dengan nama warga" value="{{ old('nama') }}">
                             @error('nama')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -194,7 +194,7 @@
                         <div class="form-group">
                             <label>Jabatan</label>
                             {{-- jabatan --}}
-                            <input type="text" class="form-control @error('jabatan') is-invalid @enderror" name="jabatan" id="jabatan" placeholder="Di isi jabatan yang bersangkutan pada di struktural TP PKK" value="{{ old('jabatan') }}">
+                            <input type="text" class="form-control @error('jabatan') is-invalid @enderror" name="jabatan" id="jabatan" placeholder="Diisi jabatan yang bersangkutan pada di struktural TP PKK" value="{{ old('jabatan') }}">
                             @error('jabatan')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -206,7 +206,7 @@
                         <div class="form-group">
                             <label>Tempat lahir</label>
                             {{-- Tempat lahir --}}
-                            <input type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" name="tempat_lahir" id="tempat_lahir" placeholder="Di isi Kota/Kabupaten tempat lahir yang bersangkutan" value="{{ old('tempat_lahir') }}">
+                            <input type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" name="tempat_lahir" id="tempat_lahir" placeholder="Diisi Kota/Kabupaten tempat lahir yang bersangkutan" value="{{ old('tempat_lahir') }}">
                             @error('tempat_lahir')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -219,7 +219,7 @@
                         <div class="form-group">
                             <label>Tanggal lahir</label>
                             {{-- Tanggal lahir --}}
-                            <input type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" name="tgl_lahir" id="tgl_lahir" placeholder="Di isi tanggal lahir" data-date-format="mm/dd/yyyy" value="{{ old('tgl_lahir') }}">
+                            <input type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" name="tgl_lahir" id="tgl_lahir" placeholder="Diisi tanggal lahir" data-date-format="mm/dd/yyyy" value="{{ old('tgl_lahir') }}">
                             @error('tgl_lahir')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -232,7 +232,7 @@
                         <div class="form-group">
                             <label>Umur</label>
                             {{-- umur --}}
-                            <input type="number" class="form-control @error('umur') is-invalid @enderror" name="umur" id="umur" placeholder="Di isi Umur" value="{{ old('umur') }}">
+                            <input type="number" class="form-control @error('umur') is-invalid @enderror" name="umur" id="umur" placeholder="Diisi Umur" value="{{ old('umur') }}">
                             @error('umur')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -440,7 +440,6 @@
                                 <option value="SD/MI">SD/MI</option>
                                 <option value="SMP/Sederajat">SMP/Sederajat</option>
                                 <option value="SMA/Sederajat">SMA/Sederajat</option>
-                                <option value="konghucu">Konghucu</option>
                                 <option value="Diploma">Diploma</option>
                                 <option value="D4/S1">D4/S1</option>
                                 <option value="S2">S2</option>
@@ -673,7 +672,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
                         <a href="/data_warga" class="btn btn-outline-primary">
                             <span>Batalkan</span></a>
                 </div>

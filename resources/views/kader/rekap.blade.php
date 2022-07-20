@@ -1,8 +1,8 @@
 @extends('kader.layout')
 
-@section('title', 'Data Rekap Data Warga TP PKK | Kader Desa/Kelurahan PKK Kab. Indramayu')
+@section('title', 'Data Rekap Data Warga | Kader Dasawisma PKK Kab. Indramayu')
 
-@section('bread', 'Data Rekap Data Warga TP PKK')
+@section('bread', 'Data Rekap Data Warga')
 @section('container')
 
     <!-- Main content -->
@@ -39,7 +39,7 @@
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
 
                                         <td class="text-center">
-                                                <a class="btn btn-success btn-sm" href="{{ url('rekap_data_warga/'.$c->id.'/rekap_data_warga') }}">Rekap</a>
+                                                <a class="btn btn-success btn-sm" href="{{ url('rekap_data_warga/'.$c->id.'/rekap_data_warga') }}">Rekap Data Warga</a>
                                                 @if ($warga != NULL)
                                                     <a class="btn btn-primary btn-sm" href="{{ url('catatan_keluarga/'.$c->id.'/catatan_keluarga') }}">Catatan Keluarga</a>
 

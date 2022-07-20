@@ -69,8 +69,46 @@
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
-            <span class="brand-text font-weight-dark">Selamat Datang Kader {{ (Auth::user()->name) }} TP PKK Desa</span>
+            {{-- <span class="brand-text font-weight-dark">Selamat Datang Kader Dasawisma {{ (Auth::user()->name) }} </span> --}}
+            <ul class="navbar-nav ml-auto">
+                <!-- Messages Dropdown Menu -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-user"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <a href="#" class="dropdown-item">
+                      <!-- Message Start -->
+                      <div class="media">
+                        <div class="media-body">
+                          <h3 class="dropdown-item-title"><center>
+                            {{ (Auth::user()->name) }}
+                          </center>
+                          </h3>
+                          <p class="text-sm"><center>Kader Dasawisma</center></p>
+                        </div>
+                      </div>
+                      <!-- Message End -->
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                      <!-- Message Start -->
+                      <div class="media">
+                        <i class="far fa-user"></i>
+                            <a href="/profil">
+                                <h3 class="dropdown-item-title" style="margin-right:200px">
+                                    Profil Saya
+                                </h3>
 
+                            </a>
+                      </div>
+                      <!-- Message End -->
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                  </div>
+                </li>
         </ul>
       </nav>
       <!-- /.navbar -->
@@ -85,7 +123,8 @@
             class="brand-image img-circle elevation-3"
             style="opacity: 0.8"
           />
-          <span class="brand-text font-weight-light">Kader {{ (Auth::user()->name) }} TP PKK </span>
+          <span class="brand-text font-weight-light">Kader Dasawisma <br>
+            Desa {{ (Auth::user()->desa->nama_desa) }} </span>
         </a>
 
         <!-- Sidebar -->
@@ -93,7 +132,7 @@
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-              <a href="/dashboard_kader" class="d-block">Desa {{ (Auth::user()->desa->nama_desa) }}</a>
+              <a href="/dashboard_kader" class="d-block">{{ (Auth::user()->name) }} </a>
             </div>
           </div>
 
@@ -118,7 +157,7 @@
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-edit"></i>
                   <p>
-                    Pendataan Keluarga <br> dan Kegiatan Warga TP PKK
+                    Pendataan Keluarga <br> dan Kegiatan Warga
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>

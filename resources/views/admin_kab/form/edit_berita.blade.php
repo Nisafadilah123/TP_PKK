@@ -32,10 +32,7 @@
                 <label>Nama Berita</label>
                 <input type="text" class="form-control" name="nama_berita" id="nama_berita" placeholder="Masukkan Nama Berita" required value="{{ucfirst(old('nama_berita', $beritaKab->nama_berita))}}">
             </div>
-            <div class="form-group">
-                <label>Deskripsi Berita</label>
-                <input type="text" class="form-control" name="desk" id="desk" placeholder="Masukkan Deskripsi Berita" required value="{{ucfirst(old('desk', $beritaKab->desk))}}">
-            </div>
+
             <div class="form-group">
                 <label>Tanggal Publsih Berita</label>
                 <input type="date" class="form-control" name="tgl_publish" id="tgl_publish" placeholder="Masukkan Tanggal Publsih Berita" required value="{{ucfirst(old('tgl_publish', $beritaKab->tgl_publish))}}">
@@ -50,12 +47,15 @@
                 <img src="/gambar/{{($beritaKab->gambar)}}" class="img-thumbnail" width="100px">
                 <input name="gambar" type="hidden" name="hidden_image" value="{{asset('gambar/'. $beritaKab->gambar)}}" class="form-control-file" id="hidden_image">
             </div>
-
+            <div class="form-group">
+                <label>Deskripsi Berita</label>
+                <textarea type="text" class="form-control" name="desk" id="desk" rows="5" placeholder="Masukkan Deskripsi Berita" required value="{{old('desk')}}">{{ $beritaKab->desk }}</textarea>
+              </div>
         </div>
         <!-- /.card-body -->
 
         <div class="card-footer">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Edit</button>
           <a href="/beritaKab" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
@@ -65,4 +65,12 @@
     <!-- /.card -->
   </div>
 @endsection
+
+@push('script-addon')
+
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('desk');
+</script>
+@endpush
 

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Print Catatan Keluarga TP PKK | Kader Desa/Kelurahan PKK Kab. Indramayu</title>
+  <title>Print PDF Data Rekap Data Warga TP PKK | Kader Dasawisma PKK Kab. Indramayu</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -15,169 +15,123 @@
   <link rel="stylesheet" href="{{ url('admin/dist/css/adminlte.min.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-  <style>
-    .container{
-        display: flex;
-
-    }
-    .container.flex-container1{
-        width: 300px;
-        font-size: 20px;
-        padding: 100px;
-        margin: 100px;
-        text-align: right;
-
-    }
-    .container.flex-container{
-        width: 500px;
-        text-align: left;
-        font-size: 20px;
-        padding-right: 100px;
-        margin-right: 100px;
-    }
-
-</style>
 </head>
-
-
 <body>
 <div class="wrapper">
     <!-- Content Header (Page header) -->
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12">
+            <div class="col-12 col-md-6 col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <center><h3><strong> Catatan Keluarga </strong></h3></center>
 
-            <!-- Main content -->
-            <div class="invoice p-3 mb-3">
-              <!-- Table row -->
-              <div class="row">
-                <div class="col-12 col-md-6 col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <center><h5><strong> Catatan Keluarga </strong></h5></center><br>
-                            <div class="container">
-                                <div class="flex-container">
-                                    <h6>Catatan Keluarga dari : {{ ucfirst($keluarga->nama_kepala_rumah_tangga) }}</h6>
-                                    <h6>Anggota Kelompok Dasawisma : {{ ucfirst($keluarga->dasa_wisma) }}</h6>
-                                    <h6>Tahun : {{ ucfirst($keluarga->periode) }}</h6>
-                                </div>
+                                <h6>Catatan Keluarga dari : {{ ucfirst($keluarga->nama_kepala_rumah_tangga) }}</h6>
+                                <h6>Anggota Kelompok Dasawisma : {{ ucfirst($keluarga->dasa_wisma) }}</h6>
+                                <h6>Tahun : {{ ucfirst($keluarga->periode) }}</h6>
+                                {{-- kriteria rumah --}}
+                                @if ($keluarga->kriteria_rumah == 1)
+                                    <h6>Kriteria Rumah : Sehat</h6>
+                                @else
+                                    <h6>Kriteria Rumah : Kurang Sehat</h6>
+                                @endif
 
-                                <div class="flex-container1">
-                                    {{-- kriteria rumah --}}
-                                        @if ($keluarga->kriteria_rumah == 1)
-                                            <h6>Kriteria Rumah : Sehat</h6>
-                                        @else
-                                            <h6>Kriteria Rumah : Kurang Sehat</h6>
-                                        @endif
+                                {{-- jamban keluarga --}}
+                                @if ($keluarga->punya_jamban == 1)
+                                    <h6>Jamban Keluarga : Ya/{{ $keluarga->jumlah_jamban }} buah</h6>
+                                @else
+                                    <h6>Jamban Keluarga : Tidak</h6>
+                                @endif
 
-                                        {{-- jamban keluarga --}}
-                                        @if ($keluarga->punya_jamban == 1)
-                                            <h6>Jamban Keluarga : Ya/{{ $keluarga->jumlah_jamban }} buah</h6>
-                                        @else
-                                            <h6>Jamban Keluarga : Tidak</h6>
-                                        @endif
+                                {{-- sumber air --}}
+                                @if ($keluarga->sumber_air == 1)
+                                    <h6>Sumber Air : PDAM</h6>
+                                @elseif ($keluarga->sumber_air == 2)
+                                    <h6>Sumber Air : Sumur</h6>
+                                @elseif ($keluarga->sumber_air == 3)
+                                    <h6>Sumber Air : Sungai</h6>
+                                @elseif ($keluarga->sumber_air == 4)
+                                    <h6>Sumber Air : Lainnya</h6>
+                                @endif
 
-                                        {{-- sumber air --}}
-                                        @if ($keluarga->sumber_air == 1)
-                                            <h6>Sumber Air : PDAM</h6>
-                                        @elseif ($keluarga->sumber_air == 2)
-                                            <h6>Sumber Air : Sumur</h6>
-                                        @elseif ($keluarga->sumber_air == 3)
-                                            <h6>Sumber Air : Sungai</h6>
-                                        @elseif ($keluarga->sumber_air == 4)
-                                            <h6>Sumber Air : Lainnya</h6>
-                                        @endif
-
-                                        {{-- tempat sampah --}}
-                                        @if ($keluarga->punya_tempat_sampah == 1)
-                                            <h6>Tempat Sampah : Ya</h6>
-                                        @else
-                                            <h6>Tempat Sampah : Tidak</h6>
-                                        @endif
-                                </div>
-
-                            </div>
-
-                                    <div class="table-responsive">
-                                        <table border="1" cellspacing="0" width="100%" >
-                                            <thead>
-                                                <tr>
-                                                    <th rowspan="2">No</th>
-                                                    <th rowspan="2">Nama Anggota Keluarga</th>
-                                                    <th rowspan="2">Status Perkawinan</th>
-                                                    <th rowspan="2">Jenis Kelamin</th>
-                                                    <th rowspan="2">Tempat Lahir</th>
-                                                    <th rowspan="2">Agama</th>
-                                                    <th rowspan="2">Pendidikan</th>
-                                                    <th rowspan="2">Pekerjaan</th>
-                                                    <th rowspan="2">Berkebutuhan Khusus</th>
-                                                    <th colspan="8"><center>Kegiatan Yang diikuti</center></th>
-                                                    {{-- <th rowspan="2">Ket</th> --}}
-
-                                                </tr>
-                                                <tr>
-                                                    {{-- <th>Penghayatan Dan Pengamalan Pancasilal</th>
-                                                    <th>Gotong Royong</th>
-                                                    <th>Pendidikan dan Keterampilan</th>
-                                                    <th>Pengembangan Kehidupan Berkoperasi</th>
-                                                    <th>Pangan</th>
-                                                    <th>Sandang</th>
-                                                    <th>Kesehatan</th>
-                                                    <th>Perencanaan Sehat</th> --}}
-                                                    @foreach ($kategori_kegiatans as $kategori_kegiatan)
-                                                        <th>{{ $kategori_kegiatan->nama_kegiatan }}</th>
-                                                    @endforeach
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                <?php $no=1;?>
-
-                                                    @foreach ($catatan_keluarga as $data_warga)
-                                                        <tr>
-                                                            <td style="vertical-align: middle;">{{ $no }}</td>
-                                                            <td style="vertical-align: middle;">{{ucfirst($data_warga->nama)}}</td>
-                                                            <td style="vertical-align: middle;">{{ucfirst($data_warga->status)}}</td>
-                                                            <td style="vertical-align: middle;">{{ucfirst($data_warga->status_perkawinan)}}</td>
-                                                            <td style="vertical-align: middle;">{{ucfirst($data_warga->jenis_kelamin)}}</td>
-                                                            <td style="vertical-align: middle;">{{ucfirst($data_warga->tgl_lahir)}}/{{ ucfirst($data_warga->umur) }} Tahun</td>
-                                                            <td style="vertical-align: middle;">{{ucfirst($data_warga->pendidikan)}}</td>
-                                                            <td style="vertical-align: middle;">{{ucfirst($data_warga->pekerjaan)}}</td>
-                                                            <td style="vertical-align: middle;">{{ucfirst($data_warga->berkebutuhan_khusus)}}</td>
-
-                                                            @foreach ($kategori_kegiatans as $kategori_kegiatan)
-                                                                <td>
-                                                                    @if ($data_kegiatan_wargas = $data_warga->kegiatan)
-                                                                        <ul>
-                                                                            @foreach ($data_kegiatan_wargas as $data_kegiatan_warga)
-                                                                                @if ($data_kegiatan_warga->kategori_kegiatan->id === $kategori_kegiatan->id)
-                                                                                    <li>{{ $data_kegiatan_warga->keterangan_kegiatan->nama_keterangan }}</li>
-                                                                                @endif
-                                                                            @endforeach
-                                                                        </ul>
-                                                                    @endif
-                                                                </td>
-                                                            @endforeach
-                                                        </tr>
-                                                        <?php $no++ ;?>
-
-                                                    @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                {{-- tempat sampah --}}
+                                @if ($keluarga->punya_tempat_sampah == 1)
+                                    <h6>Tempat Sampah : Ya</h6>
+                                @else
+                                    <h6>Tempat Sampah : Tidak</h6>
+                                @endif
                         </div>
+                                <div class="table-responsive">
+                                    <table border="1" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th rowspan="2">No</th>
+                                                <th rowspan="2">Nama Anggota Keluarga</th>
+                                                <th rowspan="2">Status Perkawinan</th>
+                                                <th rowspan="2">Jenis Kelamin</th>
+                                                <th rowspan="2">Tempat Lahir</th>
+                                                <th rowspan="2">Agama</th>
+                                                <th rowspan="2">Pendidikan</th>
+                                                <th rowspan="2">Pekerjaan</th>
+                                                <th rowspan="2">Berkebutuhan Khusus</th>
+                                                <th colspan="8"><center>Kegiatan Yang diikuti</center></th>
+                                                {{-- <th rowspan="2">Ket</th> --}}
 
+                                            </tr>
+                                            <tr>
+                                                {{-- <th>Penghayatan Dan Pengamalan Pancasilal</th>
+                                                <th>Gotong Royong</th>
+                                                <th>Pendidikan dan Keterampilan</th>
+                                                <th>Pengembangan Kehidupan Berkoperasi</th>
+                                                <th>Pangan</th>
+                                                <th>Sandang</th>
+                                                <th>Kesehatan</th>
+                                                <th>Perencanaan Sehat</th> --}}
+                                                @foreach ($kategori_kegiatans as $kategori_kegiatan)
+                                                    <th>{{ $kategori_kegiatan->nama_kegiatan }}</th>
+                                                @endforeach
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <?php $no=1;?>
+
+                                                @foreach ($catatan_keluarga as $data_warga)
+                                                    <tr>
+                                                        <td style="vertical-align: middle;">{{ $no }}</td>
+                                                        <td style="vertical-align: middle;">{{ucfirst($data_warga->nama)}}</td>
+                                                        <td style="vertical-align: middle;">{{ucfirst($data_warga->status)}}</td>
+                                                        <td style="vertical-align: middle;">{{ucfirst($data_warga->status_perkawinan)}}</td>
+                                                        <td style="vertical-align: middle;">{{ucfirst($data_warga->jenis_kelamin)}}</td>
+                                                        <td style="vertical-align: middle;">{{ucfirst($data_warga->tgl_lahir)}}/{{ ucfirst($data_warga->umur) }} Tahun</td>
+                                                        <td style="vertical-align: middle;">{{ucfirst($data_warga->pendidikan)}}</td>
+                                                        <td style="vertical-align: middle;">{{ucfirst($data_warga->pekerjaan)}}</td>
+                                                        <td style="vertical-align: middle;">{{ucfirst($data_warga->berkebutuhan_khusus)}}</td>
+
+                                                        @foreach ($kategori_kegiatans as $kategori_kegiatan)
+                                                            <td>
+                                                                @if ($data_kegiatan_wargas = $data_warga->kegiatan)
+                                                                    <ul>
+                                                                        @foreach ($data_kegiatan_wargas as $data_kegiatan_warga)
+                                                                            @if ($data_kegiatan_warga->kategori_kegiatan->id === $kategori_kegiatan->id)
+                                                                                <li>{{ $data_kegiatan_warga->keterangan_kegiatan->nama_keterangan }}</li>
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </ul>
+                                                                @endif
+                                                            </td>
+                                                        @endforeach
+                                                    </tr>
+                                                @endforeach
+                                                <?php $no++ ;?>
+                                        </tbody>
+                                    </table>
+                                </div>
                     </div>
+
                 </div>
             </div>
-              <!-- /.row -->
-
-
-            </div>
-            <!-- /.invoice -->
-          </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>

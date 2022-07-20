@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Dompdf\Dompdf;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class KaderFormController extends Controller
 {
@@ -49,6 +50,12 @@ class KaderFormController extends Controller
         // ->get()->count();
 
         return view('kader.dashboard', compact('keluarga', 'warga', 'kegiatan', 'pemanfaatan', 'industri',  'rekap'));
+    }
+
+    public function notif()
+    {
+        $message = Session::flash('sukses','Selamat Datang');
+        return view('kader.dashboard', compact('message'));
     }
 
     // halaman data pokja1
@@ -262,22 +269,25 @@ class KaderFormController extends Controller
 
         $kategori_kegiatans = KategoriKegiatan::query()->where('id', '<=', 8)->get();
 
-        return view('kader.print_pdf_cakel', compact('catatan_keluarga', 'keluarga', 'kepala_keluarga', 'kategori_kegiatans'));
+        $html= view('kader.print_pdf_cakel', compact('catatan_keluarga', 'keluarga', 'kepala_keluarga', 'kategori_kegiatans'));
         // // instantiate and use the dompdf class
-        // $dompdf = new Dompdf();
-        // $dompdf->loadHtml($html);
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
 
-        // // (Optional) Setup the paper size and orientation
-        // $dompdf->setPaper('a3', 'landscape');
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('a3', 'landscape');
 
-        // // Render the HTML as PDF
-        // $dompdf->render();
+        // Render the HTML as PDF
+        $dompdf->render();
 
-        // // Output the generated PDF to Browser
-        // $dompdf->stream();
+        // Output the generated PDF to Browser
+        $dompdf->stream();
         $pdf = PDF::loadview('kader.catatan_keluarga');
-    	// return $pdf->download('laporan-pegawai-pdf');
         return $pdf->stream();
 
+    }
+
+    public function profil(){
+        return view('kader.profil_kader');
     }
 }

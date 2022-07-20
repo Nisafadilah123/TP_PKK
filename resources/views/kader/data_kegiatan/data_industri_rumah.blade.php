@@ -1,6 +1,6 @@
 @extends('kader.layout')
 
-@section('title', 'Data Industri Rumah Warga TP PKK | Kader Desa/Kelurahan PKK Kab. Indramayu')
+@section('title', 'Data Industri Rumah Warga TP PKK | Kader Dasawisma PKK Kab. Indramayu')
 
 @section('bread', 'Data Industri Rumah Warga TP PKK')
 @section('container')
@@ -48,18 +48,17 @@
                                         <td style="vertical-align: middle;">{{ucfirst($c->volume)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
                                         <td class="text-center">
+                                            <a class="btn btn-primary btn-sm" href="{{ url('data_industri/'.$c->id.'/edit') }}">Edit</a>
+
+                                            @if(date('Y') <= $c->periode)
                                             <form action="{{ route('data_industri.destroy',$c->id) }}" method="POST">
+                                              @csrf
+                                              @method('DELETE')
 
-                                            {{-- <a class="btn btn-info btn-sm" href="{{ route('sisw.show',$siswa->id) }}">Show</a> --}}
-
-                                                <a class="btn btn-primary btn-sm" href="{{ url('data_industri/'.$c->id.'/edit') }}">Edit</a>
-
-                                                @csrf
-                                                @method('DELETE')
-
-                                                <button type="submit" class="btn btn-danger btn-sm delete">Hapus</button>
+                                              <button type="submit" class="btn btn-danger btn-sm delete">Hapus</button>
                                             </form>
-                                        </td>
+                                            @endif
+                                          </td>
 
                                     </tr>
 

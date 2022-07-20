@@ -206,11 +206,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('/super_admin', [App\Http\Controllers\HomeController::class, 'super'])->name('super_admin');
 
 // Route::get('/super_admin', [DashboardSuperController::class, 'index'])->name('super_admin');
+
+//  halaman kader desa
 Route::get('/kader_desa/login', [KaderFormController::class, 'login'])->name('kader_desa.login');
 Route::post('/kader_desa/login', [KaderFormController::class, 'loginPost']);
 Route::post('/kader_desa/logout', [KaderFormController::class, 'logoutPost'])->name('kader_desa.logout');
 Route::middleware(['user_type:kader_desa'])->group(function(){
-        // halaman kader desa
         Route::get('/dashboard_kader', [KaderFormController::class, 'dashboard_kader']);
 
         // mengambil nama desa
@@ -250,5 +251,8 @@ Route::middleware(['user_type:kader_desa'])->group(function(){
 
     // rekap catatan keluarga
     Route::get('/catatan_keluarga/{id}/catatan_keluarga', [KaderFormController::class, 'catatan_keluarga']);
+
+    // profil kader
+    Route::get('/profil', [KaderFormController::class, 'profil']);
 
 });

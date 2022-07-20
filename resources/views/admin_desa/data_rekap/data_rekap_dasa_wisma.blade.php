@@ -228,6 +228,8 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                <a href="{{ url('print_rekap_dasawisma', $print_pdf->id_keluarga) }}" target="_blank" class="btn btn-success" type="button" role="button">
+                                    <i class="fas fa-print"></i> Cetak ke PDF </a><br>
                             </div>
                         </div>
                     </div>

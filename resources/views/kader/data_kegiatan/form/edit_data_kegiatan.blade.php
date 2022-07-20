@@ -1,6 +1,6 @@
 @extends('kader.layout')
 
-@section('title', 'Edit Data Kegiatan Warga TP PKK | Kader Desa/Kelurahan PKK Kab. Indramayu')
+@section('title', 'Edit Data Kegiatan Warga TP PKK | Kader Dasawisma PKK Kab. Indramayu')
 
 @section('bread', 'Edit Data Kegiatan Warga TP PKK')
 @section('container')
@@ -178,7 +178,7 @@
         <!-- /.card-body -->
 
         <div class="card-footer">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Edit</button>
           <a href="/data_kegiatan" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>
@@ -211,7 +211,7 @@
                     $('#id_keterangan').empty();
                     $('#id_keterangan').append('<option hidden>Pilih Keterangan</option>');
                     $.each(data, function(key, keterangan){
-                        $('select[name="id_keterangan"]').append('<option value="'+ key +'">' + keterangan.nama_keterangan + '</option>');
+                        $('select[name="id_keterangan"]').append('<option value="'+ keterangan.id +'">' + keterangan.nama_keterangan + '</option>');
                     });
                 }else{
                     $('#id_keterangan').empty();
