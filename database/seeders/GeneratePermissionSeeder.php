@@ -37,7 +37,7 @@ class GeneratePermissionSeeder extends Seeder
                     ]);
                 }else if ($value == Role::ROLE_KADER) {
                     $role->syncPermissions([
-                        Permissions::MANAGE_KADER_DESA,
+                        Permissions::MANAGE_KADER_DASAWISMA,
                         Permissions::MANAGE_KADER_KELURAHAN,
                         Permissions::MANAGE_KADER_KECAMATAN,
                         Permissions::MANAGE_KADER_KABUPATEN,

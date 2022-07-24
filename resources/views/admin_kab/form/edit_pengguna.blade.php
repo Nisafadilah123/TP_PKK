@@ -1,8 +1,8 @@
-@extends('admin_desa.layout')
+@extends('admin_kab.layout')
 
-@section('title', 'Edit Data Kader Dasawisma | Admin Desa/Kelurahan PKK Kab. Indramayu')
+@section('title', 'Edit Data Pengguna | Admin Kabupaten PKK Kab. Indramayu')
 
-@section('bread', 'Edit Data Kader Dasawisma')
+@section('bread', 'Edit Data Pengguna')
 @section('container')
 
 <div class="col-md-6">
@@ -21,7 +21,7 @@
         <div class="tab-content">
           <div class="active tab-pane" id="activity">
             <!-- Post -->
-            <form class="form-horizontal" action="{{ url ('data_kader', $data_kader->id) }}" method="POST" enctype="multipart/form-data">
+            <form class="form-horizontal" action="{{ url ('data_pengguna_super', $data_pengguna_super->id) }}" method="POST" enctype="multipart/form-data">
                 @method('PUT')
 
                 @csrf
@@ -39,65 +39,70 @@
                 <div class="form-group row">
                   <label for="inputName" class="col-sm-2 col-form-label">Nama</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" placeholder="Nama" name="name" value="{{$data_kader->name}}" required>
+                    <input type="text" class="form-control" id="name" placeholder="Nama" name="name" value="{{$data_pengguna_super->name}}" required>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" value="{{$data_kader->email}}" required>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" value="{{$data_pengguna_super->email}}" required>
                   </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">User Type</label>
                     <div class="col-sm-10">
-                        <input type="text" readonly class="form-control @error('user_type') is-invalid @enderror" name="user_type" id="user_type" value="kader_dasawisma" required>
-                        @error('user_type')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <select class="form-control @error('user_type') is-invalid @enderror" name="user_type">
+                            @foreach($user_type as $key => $val)
+                                @if($key==old('user_type', $data_pengguna_super->user_type))
+                                <option value="{{ $key }}" selected>{{ $val }}</option>
+                                @else
+                                <option value="{{ $key }}">{{ $val }}</option>
+                                @endif
+                            @endforeach
+                          </select>
+                    @error('user_type')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Kader Dasawisma</label>
+                    <label class="col-sm-2 col-form-label">Nama Kecamatan</label>
                     <div class="col-sm-10">
-                        <select class="form-control" id="id_dasawisma" name="id_dasawisma">
-                            @foreach ($dasawisma as $c)
-                                <option value="{{$c->id}}"{{ $c->id === $c->id_dasawisma ? 'selected' : '' }}>{{ $c->nama_dasawisma }}</option>
+                    <select class="form-control @error('id_kecamatan') is-invalid @enderror" id="id_kecamatan" name="id_kecamatan">
+                            @foreach ($kec as $item)
+                                <option value="{{ $item->id }}" {{ $item->id === $data_pengguna_super->id_kecamatan ? 'selected' : '' }}>{{ $item->nama_kecamatan }}</option>
                             @endforeach
-                            
+
                         </select>
-                        @error('id_dasawisma')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
                     </div>
-                  </div>
+                            @error('nama_kecamatan')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Nama Desa</label>
                     <div class="col-sm-10">
-                        <input type="text" readonly class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Kader" required value="{{ Auth::user()->desa->nama_desa }}">
-                    </div>
-
-                  </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Nama Kecamatan</label>
-                    <div class="col-sm-10">
-                        <input type="text" readonly class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Kader" required value="{{ Auth::user()->kecamatan->nama_kecamatan }}">
+                        <select class="form-control @error('id_desa') is-invalid @enderror" id="id_desa" name="id_desa">
+                            @foreach ($desa as $item)
+                                    <option value="{{ $item->id }}" {{ $item->id === $data_pengguna_super->id_desa ? 'selected' : '' }}>{{ $item->nama_desa }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Foto Profil</label>
                     <input name="foto" type="file" class="form-control-file" id="foto" accept=".img, .jpg, .jpeg, .png" value="{{old('foto')}}">
-                    <img src="{{$data_kader->foto ? Storage::disk('public')->url($data_kader->foto) : null}}" class="img-thumbnail" width="100px">
+                    <img src="{{$data_pengguna_super->foto ? Storage::disk('public')->url($data_pengguna_super->foto) : null}}" class="img-thumbnail" width="100px">
                     {{-- <input name="logo" type="hidden" name="hidden_image" value="{{asset('gambar/'. $c->logo)}}" class="form-control-file" id="hidden_image"> --}}
                 </div>
 
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Edit</button>
-                    <a href="/data_kader" class="btn btn-outline-primary">
+                    <a href="/data_pengguna_super" class="btn btn-outline-primary">
                       <span>Batalkan</span>
                   </a>
                 </div>
@@ -109,7 +114,7 @@
           <div class="tab-pane" id="timeline">
             <!-- The timeline -->
               <!-- timeline time label -->
-              <form class="form-horizontal" action="{{ url ('/data_kader/update/' . $data_kader->id . '/password') }}" method="POST">
+              <form class="form-horizontal" action="{{ url ('/data_pengguna_super/update/' . $data_pengguna_super->id . '/password') }}" method="POST">
                 @csrf
                 <div class="form-group row">
                   <label for="inputName2" class="col-sm-2 col-form-label">Kata Sandi Baru</label>
@@ -136,7 +141,7 @@
                 </div>
                <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Edit</button>
-                    <a href="/data_kader" class="btn btn-outline-primary">
+                    <a href="/data_pengguna_super" class="btn btn-outline-primary">
                       <span>Batalkan</span>
                   </a>
                 </div>

@@ -18,6 +18,7 @@
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css"/> --}}
     <link rel="stylesheet" href="{{url('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{url('admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{url('admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 
     <!-- Favicons -->
     <link href="{{ url ('image/remove.png') }}" rel="icon" />
@@ -113,35 +114,19 @@
               </li>
 
               <li class="nav-item">
-                <a href="/data_kader" class="nav-link {{ Request::is('data_kader') ? 'active':'' }}">
-                <i class="nav-icon fas fa-user"></i>
-                  <p>Data Kader TP PKK</p>
+                <a href="/data_dasawisma" class="nav-link {{ Request::is('data_dasawisma') ? 'active':'' }}">
+                <i class="nav-icon fas fa-folder-open"></i>
+                  <p>Data Dasawisma</p>
                 </a>
               </li>
 
-              {{-- <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-address-book"></i>
-                      <p>Data Daftar Anggota
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
+              <li class="nav-item">
+                <a href="/data_kader" class="nav-link {{ Request::is('data_kader') ? 'active':'' }}">
+                <i class="nav-icon fas fa-user"></i>
+                  <p>Data Kader Dasawisma</p>
                 </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="/data_anggota_tp" class="nav-link {{ Request::is('data_anggota_tp') ? 'active':'' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Data Daftar Anggota TP PKK</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/data_anggota_kader" class="nav-link {{ Request::is('data_anggota_kader') ? 'active':'' }}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Data Daftar Anggota TP PKK <br>
-                        dan Kader</p>
-                    </a>
-                  </li>
-                </ul>
-              </li> --}}
+              </li>
+
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-archive"></i>

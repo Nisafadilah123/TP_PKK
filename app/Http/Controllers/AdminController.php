@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Entities\DasaWisma;
+use App\Exports\RekapKelompokDasaWismaExport;
+use App\Exports\RekapKelompokRTExport;
+use App\Exports\RekapKelompokRWExport;
 use App\Models\Data_Desa;
 use App\Models\DataDasaWisma;
 use App\Models\DataDusun;
+use App\Models\DataKelompokDasawisma;
 use App\Models\DataKeluarga;
 use App\Models\DataRT;
 use App\Models\DataRW;
@@ -14,17 +18,21 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\PDF;
+use Dompdf\Dompdf;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
         // halaman dashboard
         public function dashboard(){
 
-            $kader=User::where('user_type', 'kader_desa')
+            $kader=User::where('user_type', 'kader_dasawisma')
             ->where('id_desa', auth()->user()->id_desa)
             ->get()->count();
 
-            return view('admin_desa.dashboard', compact('kader'));
+            $dasaWismas = DataKelompokDasawisma::count();
+            return view('admin_desa.dashboard', compact('kader', 'dasaWismas'));
         }
 
 
@@ -109,6 +117,7 @@ class AdminController extends Controller
 
             $desa = $user->desa;
 
+
             return view('admin_desa.data_rekap.data_rekap_dasa_wisma', compact(
                 'dasa_wisma',
                 'rt',
@@ -117,6 +126,43 @@ class AdminController extends Controller
                 'catatan_keluarga',
                 'desa',
             ));
+        }
+
+
+        // export rekap dasawisma
+        public function export_rekap_dasawisma(Request $request)
+        {
+            /** @var User */
+            $user = Auth::user();
+
+            $dasa_wisma = $request->query('dasa_wisma');
+            $rt = $request->query('rt');
+            $rw = $request->query('rw');
+            $periode = $request->query('periode');
+
+            $catatan_keluarga = DataKeluarga::query()
+                ->with(['industri', 'pemanfaatan',
+                    ])
+                // ->where('id_keluarga', $id)
+                ->where('id_desa', $user->id_desa)
+                ->where('dasa_wisma', $dasa_wisma)
+                ->where('rt', $rt)
+                ->where('rw', $rw)
+                ->where('periode', $periode)
+                ->get();
+
+            $desa = $user->desa;
+
+            $export = new RekapKelompokDasaWismaExport(compact(
+                'dasa_wisma',
+                'rt',
+                'rw',
+                'periode',
+                'catatan_keluarga',
+                'desa'
+            ));
+
+            return Excel::download($export, 'rekap-kelompok-dasa-wisma.xlsx');
         }
 
         // data catatan data dan kegiatan warga kelompok pkk rt admin desa
@@ -141,7 +187,6 @@ class AdminController extends Controller
 
             $rt = $request->query('rt');
             $rw = $request->query('rw');
-            // $dusun = $request->query('dusun');
             $periode = $request->query('periode');
 
             $desa = $user->desa;
@@ -159,6 +204,30 @@ class AdminController extends Controller
             ));
         }
 
+        // export rekap rt
+        public function export_rekap_rt(Request $request)
+        {
+            /** @var User */
+            $user = Auth::user();
+
+            $rt = $request->query('rt');
+            $rw = $request->query('rw');
+            $periode = $request->query('periode');
+
+            $desa = $user->desa;
+
+            $dasaWismas = DataDasaWisma::getDasaWismas($desa->id, $rw, $rt, $periode);
+
+            $export = new RekapKelompokRTExport(compact(
+                'dasaWismas',
+                'desa',
+                'rt',
+                'rw',
+                'periode'
+            ));
+
+            return Excel::download($export, 'rekap-kelompok-rt.xlsx');
+        }
         // data catatan data dan kegiatan warga kelompok pkk rw admin desa
         public function data_kelompok_pkk_rw()
         {
@@ -193,6 +262,29 @@ class AdminController extends Controller
                 'desa',
             ));
         }
+
+         // export rekap rt
+         public function export_rekap_rw(Request $request)
+         {
+             /** @var User */
+             $user = Auth::user();
+            $desa = $user->desa;
+            $dasa_wisma = $request->query('dasa_wisma');
+            $rt = $request->query('rt');
+            $rw = $request->query('rw');
+            $periode = $request->query('periode');
+
+            $rts = DataRT::getRT($desa->id,$rw,$rt, $periode);
+
+             $export = new RekapKelompokRWExport(compact(
+                'rts',
+                'rw',
+                'periode',
+                'desa',
+             ));
+
+             return Excel::download($export, 'rekap-kelompok-rw.xlsx');
+         }
 
         // data catatan data dan kegiatan warga kelompok pkk dusun admin desa
         public function data_kelompok_pkk_dusun()
@@ -229,6 +321,33 @@ class AdminController extends Controller
                 'desa',
             ));
         }
+
+
+        // export rekap rt
+        public function export_rekap_dusun(Request $request)
+        {
+            /** @var User */
+            $user = Auth::user();
+            $desa = $user->desa;
+            $dasa_wisma = $request->query('dasa_wisma');
+            $rt = $request->query('rt');
+            $rw = $request->query('rw');
+            $dusun = $request->query('dusun');
+            $periode = $request->query('periode');
+
+            $rws = DataRW::getRW($desa->id,$dusun, $rw,$rt, $periode);
+            $export = new RekapKelompokRWExport(compact(
+                'rws',
+                'dusun',
+                'rt',
+                'rw',
+                'periode',
+                'desa',
+            ));
+
+            return Excel::download($export, 'rekap-kelompok-dusun.xlsx');
+        }
+
 
         // data catatan data dan kegiatan warga kelompok pkk desa admin desa
         public function data_kelompok_pkk_desa()
@@ -268,34 +387,6 @@ class AdminController extends Controller
             ));
         }
 
-        // rekap catatan data laporan pokja 1
-        public function laporan_pokja_1()
-        {
-            return view('admin_desa.data_laporan_pokja.data_rekap_pokja_1');
-        }
 
-        // rekap catatan data laporan pokja 2
-        public function laporan_pokja_2()
-        {
-            return view('admin_desa.data_laporan_pokja.data_rekap_pokja_2');
-        }
-
-        // rekap catatan data laporan pokja 3
-        public function laporan_pokja_3()
-        {
-            return view('admin_desa.data_laporan_pokja.data_rekap_pokja_3');
-        }
-
-        // rekap catatan data laporan pokja 4
-        public function laporan_pokja_4()
-        {
-            return view('admin_desa.data_laporan_pokja.data_rekap_pokja_4');
-        }
-
-        // rekap catatan data laporan data umum
-        public function laporan_umum()
-        {
-            return view('admin_desa.data_laporan_pokja.data_rekap_umum');
-        }
 
 }

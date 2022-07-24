@@ -1,8 +1,8 @@
 @extends('admin_kab.layout')
 
-@section('title', 'Data Pengguna Sistem Kegiatan POKJA TP PKK | Suuper Admin PKK Kab. Indramayu')
+@section('title', 'Data Pengguna TP PKK | Suuper Admin PKK Kab. Indramayu')
 
-@section('bread', 'Data Pengguna Sistem Kegiatan POKJA TP PKK')
+@section('bread', 'Data Pengguna TP PKK')
 @section('container')
 
     <!-- Main content -->
@@ -29,6 +29,7 @@
                                         <th>Email</th>
                                         <th>Password</th>
                                         <th>User Type</th>
+                                        <th>Foto</th>
                                         <th>Nama Desa</th>
                                         <th>Nama Kecamatan</th>
                                         <th>Aksi</th>
@@ -44,6 +45,9 @@
                                         <td style="vertical-align: middle;">{{$c->email}}</td>
                                         <td style="vertical-align: middle;">{{$c->password}}</td>
                                         <td style="vertical-align: middle;">{{$c->user_type}}</td>
+                                        {{-- <td style="vertical-align: middle;"><img src="/foto/{{$c->foto}}" width="100px"></td> --}}
+                                        <td style="vertical-align: middle;"><img src="{{$c->foto ? Storage::disk('public')->url($c->foto) : null}}" width="100px"></td>
+
                                         <td style="vertical-align: middle;">
                                             @if ($desa = $c->desa)
                                                 {{ $desa->nama_desa }}
@@ -59,7 +63,6 @@
                                             -
                                         @endif
                                         </td>
-
                                         <td class="text-center">
                                             <form action="{{ route('data_pengguna_super.destroy',$c->id) }}" method="POST">
 

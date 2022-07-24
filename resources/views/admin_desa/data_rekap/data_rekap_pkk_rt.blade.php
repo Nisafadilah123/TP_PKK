@@ -148,6 +148,8 @@
                                 </table>
 
                             </div>
+                            <a href="{{ url('export_rekap_rt').'?'.http_build_query(compact('rt', 'rw', 'periode')) }}" target="_blank" class="btn btn-success" type="button" role="button">
+                                <i class="fas fa-print"></i> Cetak ke Excel </a><br>
                         </div>
 
                     </div>

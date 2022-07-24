@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\AdminDesa;
 use App\Http\Controllers\Controller;
+use App\Models\DataKelompokDasawisma;
 use App\Models\Kader;
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -9,6 +10,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class KaderController extends Controller
 {
@@ -20,11 +22,11 @@ class KaderController extends Controller
     public function index()
     {
         //halaman form data akun kader
-        $akun = User::where('user_type', 'kader_desa')
+        $akun = User::where('user_type', 'kader_dasawisma')
             ->where('id_desa', auth()->user()->id_desa)
             ->get();
-
-        return view('admin_desa.data_kader', compact('akun'));
+        $dasawisma = DataKelompokDasawisma::all();
+        return view('admin_desa.data_kader', compact('akun', 'dasawisma'));
     }
 
     /**
@@ -35,8 +37,9 @@ class KaderController extends Controller
     public function create(Request $request)
     {
         // halaman create kader
-        $data['user_type'] = ['kader_desa' => 'Kader Desa', 'kader_keluruhan' => 'Kader Kelurahan'];
-        return view('admin_desa.form_kader.create_kader', $data);
+        $dasawisma = DataKelompokDasawisma::all();
+        // $data['user_type'] = ['kader_desa' => 'Kader Desa', 'kader_keluruhan' => 'Kader Kelurahan'];
+        return view('admin_desa.form_kader.create_kader', compact('dasawisma'));
     }
 
     /**
@@ -56,7 +59,11 @@ class KaderController extends Controller
             'user_type' => 'required',
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
-
+        ], [
+            'name.required' => 'Masukkan Nama Pengguna',
+            'email.required' => 'Masukkan Email Pengguna',
+            'password.required' => 'Masukkan Password Pengguna',
+            'user_type.required' => 'Lengkapi Deskripsi Berita yang ingin di publish',
         ]);
 
         $kader = new User;
@@ -67,6 +74,13 @@ class KaderController extends Controller
         $kader->id_desa = auth()->user()->id_desa;
         $kader->id_kecamatan = auth()->user()->id_kecamatan;
 
+        if ($request->hasFile('foto')) {
+            $destinationPath = 'foto/';
+            $image = $request->file('foto');
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $result = Storage::disk('public')->putFileAs('foto', $image, $profileImage);
+            $pengguna['foto'] = $result;
+        }
         $kader->save();
         // dd($kader);
         Auth::guard('kader')->login($kader);
@@ -94,9 +108,10 @@ class KaderController extends Controller
      */
     public function edit(User $data_kader)
     {
-        //
+        // halaman edt kader
+        $dasawisma = DataKelompokDasawisma::all();
         $data['user_type'] = ['kader_desa' => 'Kader Desa', 'kader_kelurahan' => 'Kader Kelurahan', 'kader_kecamatan' => 'Kader Kecamatan'];
-        return view('admin_desa.form_kader.edit_kader', $data, compact('data_kader'));
+        return view('admin_desa.form_kader.edit_kader', $data, compact('data_kader', 'dasawisma'));
 
     }
 
@@ -112,12 +127,14 @@ class KaderController extends Controller
         // dd($request->all());
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
+            'email' => 'required|unique:data_kader',
             'user_type' => 'required',
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
-
+        ], [
+            'name.required' => 'Masukkan Nama Pengguna',
+            'email.required' => 'Masukkan Email Pengguna',
+            'user_type.required' => 'Lengkapi Deskripsi Berita yang ingin di publish',
         ]);
 
         $data_kader->name = $request->name;
@@ -127,8 +144,21 @@ class KaderController extends Controller
         $data_kader->user_type = $request->user_type;
         $data_kader->id_desa = auth()->user()->id_desa;
         $data_kader->id_kecamatan = auth()->user()->id_kecamatan;
+        $data_kader->id_dasawisma = $request->id_dasawisma;
 
-        $data_kader->save();
+        if ($request->hasFile('foto')) {
+            if ($data_kader->foto && Storage::disk('public')->exists($data_kader->foto)) {
+                Storage::disk('public')->delete($data_kader->foto);
+            }
+
+            $destinationPath = 'foto/';
+            $image = $request->file('foto');
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $result = Storage::disk('public')->putFileAs('foto', $image, $profileImage);
+            $data_kader->foto = $result;
+        }
+
+        $data_kader->update();
         Alert::success('Berhasil', 'Data berhasil di Ubah');
 
         return redirect('/data_kader');
@@ -142,10 +172,25 @@ class KaderController extends Controller
      */
     public function destroy($data_kader, User $kader)
     {
-        //temukan id gotong_royong
+        //temukan id kader
         $kader::find($data_kader)->delete();
         Alert::success('Berhasil', 'Data berhasil di Hapus');
 
         return redirect('/data_kader')->with('status', 'sukses');
+    }
+
+    public function update_password(Request $request, $id){
+        // dd($request->all());
+        $request->validate([
+            'new_password' => 'required|confirmed',
+        ], [
+            'password.required' =>'Konfirmasi Kata Sandi',
+        ]);
+        $data_kader = User::findOrFail($id);
+        $data_kader->password = Hash::make($request->new_password);
+        $data_kader->save();
+
+        Alert::success('Berhasil', 'Data berhasil di Ubah');
+        return redirect('/data_kader');
     }
 }

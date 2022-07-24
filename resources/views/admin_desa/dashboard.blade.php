@@ -19,8 +19,8 @@
                 {{-- <h3>53<sup style="font-size: 20px">%</sup></h3> --}}
                 {{-- <h3>150</h3> --}}
 
-                <p>Rekapitulasi Catatan Keluarga dan
-                    <br>Kegiatan Kelompok Dasawisma</p>
+                <p>Rekapitulasi Catatan dan
+                    <br>Kegiatan Keluarga Kelompok Dasawisma</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>
@@ -37,8 +37,8 @@
               <div class="inner">
                 {{-- <h3>44</h3> --}}
 
-                <p>Rekapitulasi Catatan Keluarga dan
-                    <br>Kegiatan Kelompok PKK RT</p>
+                <p>Rekapitulasi Catatan dan
+                    <br>Kegiatan Keluarga Kelompok PKK RT</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>
@@ -55,8 +55,8 @@
               <div class="inner">
                 {{-- <h3>65</h3> --}}
 
-                <p>Rekapitulasi Catatan Keluarga dan
-                    <br>Kegiatan Kelompok PKK RW</p>
+                <p>Rekapitulasi Catatan dan
+                    <br>Kegiatan Keluarga Kelompok PKK RW</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>
@@ -73,8 +73,8 @@
               <div class="inner">
                 {{-- <h3>150</h3> --}}
 
-                <p>Rekapitulasi Catatan Keluarga dan
-                    <br>Kegiatan Kelompok PKK Dusun/Lingkungan</p>
+                <p>Rekapitulasi Catatan  dan
+                    <br>Kegiatan Keluarga Kelompok PKK Dusun/Lingkungan</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>
@@ -96,8 +96,8 @@
               <div class="inner">
                 {{-- <h3>150</h3> --}}
 
-                <p>Rekapitulasi Catatan Keluarga dan
-                    <br>Kegiatan Kelompok TP PKK Desa/Kelurahan</p>
+                <p>Rekapitulasi Catatan  dan
+                    <br>Kegiatan Keluarga Kelompok TP PKK Desa/Kelurahan</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>
@@ -115,7 +115,7 @@
               <div class="inner">
                 <h3>{{ $kader }}</h3>
 
-                <p>Data Kader TP PKK </p>
+                <p>Data Kader Dasawisma </p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -126,22 +126,22 @@
             </div>
           </div>
           <!-- ./col -->
-          {{-- <div class="col-lg-3 col-6">
+          <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-danger">
+            <div class="small-box bg-light">
               <div class="inner">
-                <h3>65</h3>
+                <h3>{{ $dasaWismas }}</h3>
 
-                <p>Data POKJA III</p>
+                <p>Data Dasawisma</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="ion ion-folder"></i>
               </div>
-              <a href="#" class="small-box-footer"
+              <a href="/data_dasawisma" class="small-box-footer"
                 >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>
-          </div> --}}
+          </div>
           <!-- ./col -->
         </div>
         <!-- /.row -->

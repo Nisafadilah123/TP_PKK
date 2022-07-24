@@ -23,13 +23,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'user_type',
-        'id_kecamatan',
-        'id_desa',
+    protected $guarded = [
+        'id'
     ];
 
     /**
@@ -58,9 +53,9 @@ class User extends Authenticatable
         return $this->belongsTo(Data_Desa::class, 'id_desa', 'id');
     }
 
-    // public function pelatihan(){
-    //     return $this->belongsTo(DataPelatihanKader::class, 'id_user', 'id');
-    // }
+    public function dasawisma(){
+        return $this->belongsTo(DataKelompokDasawisma::class, 'id_dasawisma', 'id');
+    }
 
     public function kader_gabung(){
         return $this->hasMany(DataKaderGabung::class);
@@ -85,7 +80,5 @@ class User extends Authenticatable
     public function pemanfaatan(){
         return $this->hasMany(DataPemanfaatanPekarangan::class);
     }
-
-
 
 }

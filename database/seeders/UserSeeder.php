@@ -17,53 +17,59 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $super_admin = User::create([
-            'name' => 'Super Admin',
-            'email' => 'superadmin@gmail.com',
-            'password' => Hash::make('superadmin'),
-            'user_type' => 'superadmin',
-            'id_kecamatan' => null,
-            'id_desa' => null,
-        ]);
-        $super_admin->assignRole(Role::ROLE_ADMIN);
+        // $super_admin = User::create([
+        //     'name' => 'Super Admin',
+        //     'email' => 'superadmin@gmail.com',
+        //     'password' => Hash::make('superadmin'),
+        //     'user_type' => 'superadmin',
+        //     'id_kecamatan' => null,
+        //     'id_desa' => null,
+        //      'foto' => null
+        // ]);
+        // $super_admin->assignRole(Role::ROLE_ADMIN);
 
         $admin_kabupaten = User::create([
             'name' => 'Admin PKK Kabupaten',
+            'foto' => null,
+            'id_kecamatan' => null,
             'email' => 'adminkabupaten@gmail.com',
             'password' => Hash::make('adminkabupaten'),
             'user_type' => 'admin_kabupaten',
-            'id_kecamatan' => null,
             'id_desa' => null,
+
         ]);
         $admin_kabupaten->assignRole(Role::ROLE_ADMIN);
 
         // admin desa anjatan
         $admin_desa = User::create([
             'name' => 'Admin PKK Desa Anjatan',
+            'foto' => null,
+            'id_kecamatan' => 1,
             'email' => 'admindesaanjatan@gmail.com',
             'password' => Hash::make('anjatan'),
             'user_type' => 'admin_desa',
-            'id_kecamatan' => 1,
             'id_desa' => 1,
         ]);
         $admin_desa->assignRole(Role::ROLE_ADMIN);
 
         $admin_desa = User::create([
             'name' => 'Admin PKK Desa Anjatan Baru',
+            'foto' => null,
+            'id_kecamatan' => 1,
             'email' => 'admindesaanjatanbaru@gmail.com',
             'password' => Hash::make('anjatanbaru'),
             'user_type' => 'admin_desa',
-            'id_kecamatan' => 1,
             'id_desa' => 2,
         ]);
         $admin_desa->assignRole(Role::ROLE_ADMIN);
 
         $admin_desa = User::create([
             'name' => 'Admin PKK Desa Anjatan Utara',
+            'foto' => null,
+            'id_kecamatan' => 1,
             'email' => 'admindesaanjatanutara@gmail.com',
             'password' => Hash::make('anjatanutara'),
             'user_type' => 'admin_desa',
-            'id_kecamatan' => 1,
             'id_desa' => 3,
         ]);
         $admin_desa->assignRole(Role::ROLE_ADMIN);
@@ -73,6 +79,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesabugis@gmail.com',
             'password' => Hash::make('bugis'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 1,
             'id_desa' => 4,
         ]);
@@ -83,6 +90,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesabugistua@gmail.com',
             'password' => Hash::make('bugistua'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 1,
             'id_desa' => 5,
         ]);
@@ -93,6 +101,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacilandak@gmail.com',
             'password' => Hash::make('cilandak'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 1,
             'id_desa' => 6,
         ]);
@@ -103,6 +112,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacilandaklor@gmail.com',
             'password' => Hash::make('cilandaklor'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 1,
             'id_desa' => 7,
         ]);
@@ -113,6 +123,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakedungwunguanjatan@gmail.com',
             'password' => Hash::make('kedungwunguanjatan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 1,
             'id_desa' => 8,
         ]);
@@ -123,6 +134,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakopyah@gmail.com',
             'password' => Hash::make('kopyah'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 1,
             'id_desa' => 9,
         ]);
@@ -133,6 +145,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalempuyang@gmail.com',
             'password' => Hash::make('lempuyang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 1,
             'id_desa' => 10,
         ]);
@@ -143,6 +156,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamangunjaya@gmail.com',
             'password' => Hash::make('mangunjaya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 1,
             'id_desa' => 11,
         ]);
@@ -153,6 +167,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasalamdarma@gmail.com',
             'password' => Hash::make('salamdarma'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 1,
             'id_desa' => 12,
         ]);
@@ -163,6 +178,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesawanguk@gmail.com',
             'password' => Hash::make('wanguk'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 1,
             'id_desa' => 13,
         ]);
@@ -174,6 +190,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaarahankidul@gmail.com',
             'password' => Hash::make('arahankidul'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 2,
             'id_desa' => 14,
         ]);
@@ -184,6 +201,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaarahanlor@gmail.com',
             'password' => Hash::make('arahanlor'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 2,
             'id_desa' => 15,
         ]);
@@ -194,6 +212,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacidempet@gmail.com',
             'password' => Hash::make('cidempet'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 2,
             'id_desa' => 16,
         ]);
@@ -204,6 +223,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalinggarjati@gmail.com',
             'password' => Hash::make('linggarjati'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 2,
             'id_desa' => 17,
         ]);
@@ -214,6 +234,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapranggong@gmail.com',
             'password' => Hash::make('pranggong'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 2,
             'id_desa' => 18,
         ]);
@@ -224,6 +245,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasukadadih@gmail.com',
             'password' => Hash::make('sukadadi'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 2,
             'id_desa' => 19,
         ]);
@@ -234,6 +256,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasukasari@gmail.com',
             'password' => Hash::make('sukasari'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 2,
             'id_desa' => 20,
         ]);
@@ -244,6 +267,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatawangsari@gmail.com',
             'password' => Hash::make('tawangsari'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 2,
             'id_desa' => 21,
         ]);
@@ -255,6 +279,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesabalongan@gmail.com',
             'password' => Hash::make('balongan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 3,
             'id_desa' => 22,
         ]);
@@ -265,6 +290,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesagelarmendala@gmail.com',
             'password' => Hash::make('gelarmendala'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 3,
             'id_desa' => 23,
         ]);
@@ -275,6 +301,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamajakerta@gmail.com',
             'password' => Hash::make('majakerta'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 3,
             'id_desa' => 24,
         ]);
@@ -285,6 +312,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesarawadalem@gmail.com',
             'password' => Hash::make('rawadalem'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 3,
             'id_desa' => 25,
         ]);
@@ -295,6 +323,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasudimampir@gmail.com',
             'password' => Hash::make('sudimampir'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 3,
             'id_desa' => 27,
         ]);
@@ -305,6 +334,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasudimampirlor@gmail.com',
             'password' => Hash::make('sudimampirlor'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 3,
             'id_desa' => 27,
         ]);
@@ -315,6 +345,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasukareja@gmail.com',
             'password' => Hash::make('sukareja'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 3,
             'id_desa' => 28,
         ]);
@@ -325,6 +356,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasukaurip@gmail.com',
             'password' => Hash::make('sukaurip'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 3,
             'id_desa' => 29,
         ]);
@@ -335,6 +367,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesategalsembadra@gmail.com',
             'password' => Hash::make('tegalsembadra'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 3,
             'id_desa' => 30,
         ]);
@@ -345,6 +378,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesategalurung@gmail.com',
             'password' => Hash::make('tegalurung'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 3,
             'id_desa' => 31,
         ]);
@@ -355,6 +389,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesabangodua@gmail.com',
             'password' => Hash::make('bangodua'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 4,
             'id_desa' => 32,
         ]);
@@ -365,6 +400,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesabeduyut@gmail.com',
             'password' => Hash::make('beduyut'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 4,
             'id_desa' => 33,
         ]);
@@ -375,6 +411,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakaranggetas@gmail.com',
             'password' => Hash::make('karanggetas'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 4,
             'id_desa' => 34,
         ]);
@@ -385,6 +422,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamalangsari@gmail.com',
             'password' => Hash::make('malangsari'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 4,
             'id_desa' => 35,
         ]);
@@ -395,6 +433,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamulyasari@gmail.com',
             'password' => Hash::make('mulyasari'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 4,
             'id_desa' => 36,
         ]);
@@ -405,6 +444,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesarancasari@gmail.com',
             'password' => Hash::make('rancasari'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 4,
             'id_desa' => 37,
         ]);
@@ -415,6 +455,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesategalgirang@gmail.com',
             'password' => Hash::make('tegalgirang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 4,
             'id_desa' => 38,
         ]);
@@ -425,6 +466,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesawanasari@gmail.com',
             'password' => Hash::make('wanasari'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 4,
             'id_desa' => 39,
         ]);
@@ -437,6 +479,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesabongas@gmail.com',
             'password' => Hash::make('bongas'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 5,
             'id_desa' => 40,
         ]);
@@ -447,6 +490,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacipaat@gmail.com',
             'password' => Hash::make('cipaat'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 5,
             'id_desa' => 41,
         ]);
@@ -457,6 +501,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacipedang@gmail.com',
             'password' => Hash::make('cipedang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 5,
             'id_desa' => 42,
         ]);
@@ -467,6 +512,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakertajaya@gmail.com',
             'password' => Hash::make('kertajaya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 5,
             'id_desa' => 43,
         ]);
@@ -477,6 +523,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakertamulya@gmail.com',
             'password' => Hash::make('kertamulya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 5,
             'id_desa' => 44,
         ]);
@@ -487,6 +534,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamargamulya@gmail.com',
             'password' => Hash::make('margamulya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 5,
             'id_desa' => 45,
         ]);
@@ -497,6 +545,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaplawangan@gmail.com',
             'password' => Hash::make('plawangan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 5,
             'id_desa' => 46,
         ]);
@@ -507,6 +556,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasidamulya@gmail.com',
             'password' => Hash::make('sidamulya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 5,
             'id_desa' => 47,
         ]);
@@ -520,6 +570,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacangkring@gmail.com',
             'password' => Hash::make('cangkring'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 6,
             'id_desa' => 48,
         ]);
@@ -530,6 +581,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacantigikulon@gmail.com',
             'password' => Hash::make('cantigikulon'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 6,
             'id_desa' => 49,
         ]);
@@ -540,6 +592,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacantigiwetan@gmail.com',
             'password' => Hash::make('cantigiwetan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 6,
             'id_desa' => 50,
         ]);
@@ -550,6 +603,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalamarantarung@gmail.com',
             'password' => Hash::make('lamarantarung'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 6,
             'id_desa' => 51,
         ]);
@@ -560,6 +614,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapanyingkirankidul@gmail.com',
             'password' => Hash::make('panyingkirankidul'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 6,
             'id_desa' => 52,
         ]);
@@ -570,6 +625,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapanyingkiranlor@gmail.com',
             'password' => Hash::make('panyingkiranlor'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 6,
             'id_desa' => 53,
         ]);
@@ -582,6 +638,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaamis@gmail.com',
             'password' => Hash::make('amis'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 7,
             'id_desa' => 54,
         ]);
@@ -592,6 +649,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacikedunglor@gmail.com',
             'password' => Hash::make('cikedunglor'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 7,
             'id_desa' => 55,
         ]);
@@ -602,6 +660,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacikedungkidul@gmail.com',
             'password' => Hash::make('cikedungkidul'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 7,
             'id_desa' => 56,
         ]);
@@ -612,6 +671,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajambak@gmail.com',
             'password' => Hash::make('jambak'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 7,
             'id_desa' => 57,
         ]);
@@ -622,6 +682,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajatisura@gmail.com',
             'password' => Hash::make('jatisura'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 7,
             'id_desa' => 58,
         ]);
@@ -632,6 +693,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaloyang@gmail.com',
             'password' => Hash::make('loyang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 7,
             'id_desa' => 59,
         ]);
@@ -642,6 +704,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamundakjaya@gmail.com',
             'password' => Hash::make('mundakjaya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 7,
             'id_desa' => 60,
         ]);
@@ -654,6 +717,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesababakanjaya@gmail.com',
             'password' => Hash::make('babakanjaya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 8,
             'id_desa' => 61,
         ]);
@@ -664,6 +728,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesadruntenkulon@gmail.com',
             'password' => Hash::make('druntenkulon'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 8,
             'id_desa' => 62,
         ]);
@@ -674,6 +739,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesadruntenwetan@gmail.com',
             'password' => Hash::make('druntenwetan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 8,
             'id_desa' => 63,
         ]);
@@ -684,6 +750,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesagabuskulon@gmail.com',
             'password' => Hash::make('gabuskulon'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 8,
             'id_desa' => 64,
         ]);
@@ -694,6 +761,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesagabuswetan@gmail.com',
             'password' => Hash::make('gabuswetan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 8,
             'id_desa' => 65,
         ]);
@@ -704,6 +772,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakedokangabus@gmail.com',
             'password' => Hash::make('kedokangabus'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 8,
             'id_desa' => 66,
         ]);
@@ -714,6 +783,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakedungdawa@gmail.com',
             'password' => Hash::make('kedungdawa'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 8,
             'id_desa' => 67,
         ]);
@@ -724,6 +794,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesarancahan@gmail.com',
             'password' => Hash::make('rancahan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 8,
             'id_desa' => 68,
         ]);
@@ -734,6 +805,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesarancamulya@gmail.com',
             'password' => Hash::make('rancamulya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 8,
             'id_desa' => 69,
         ]);
@@ -744,6 +816,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasekarmulya@gmail.com',
             'password' => Hash::make('sekarmulya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 8,
             'id_desa' => 70,
         ]);
@@ -756,6 +829,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesabaleraja@gmail.com',
             'password' => Hash::make('baleraja'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 9,
             'id_desa' => 71,
         ]);
@@ -766,6 +840,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesabantarwaru@gmail.com',
             'password' => Hash::make('bantarwaru'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 9,
             'id_desa' => 72,
         ]);
@@ -776,6 +851,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesagantar@gmail.com',
             'password' => Hash::make('gantar'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 9,
             'id_desa' => 73,
         ]);
@@ -786,6 +862,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamekarjaya@gmail.com',
             'password' => Hash::make('mekarjaya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 9,
             'id_desa' => 74,
         ]);
@@ -796,6 +873,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamekarwaru@gmail.com',
             'password' => Hash::make('mekarwaru'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 9,
             'id_desa' => 75,
         ]);
@@ -806,6 +884,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasanca@gmail.com',
             'password' => Hash::make('sanca'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 9,
             'id_desa' => 76,
         ]);
@@ -816,6 +895,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasituraja@gmail.com',
             'password' => Hash::make('situraja'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 9,
             'id_desa' => 77,
         ]);
@@ -828,6 +908,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaCipancuh@gmail.com',
             'password' => Hash::make('Cipancuh'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 10,
             'id_desa' => 78,
         ]);
@@ -838,6 +919,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesahaurgeulis@gmail.com',
             'password' => Hash::make('haurgeulisoyang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 10,
             'id_desa' => 79,
         ]);
@@ -848,6 +930,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesahaurkolot@gmail.com',
             'password' => Hash::make('haurkolot'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 10,
             'id_desa' => 80,
         ]);
@@ -858,6 +941,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakarangtumaritis@gmail.com',
             'password' => Hash::make('karangtumaritis'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 10,
             'id_desa' => 81,
         ]);
@@ -868,6 +952,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakertanegara@gmail.com',
             'password' => Hash::make('kertanegara'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 10,
             'id_desa' => 82,
         ]);
@@ -878,6 +963,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamekarjati@gmail.com',
             'password' => Hash::make('mekarjati'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 10,
             'id_desa' => 83,
         ]);
@@ -888,6 +974,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasidodadi@gmail.com',
             'password' => Hash::make('sidodadi'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 10,
             'id_desa' => 84,
         ]);
@@ -898,6 +985,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasukajati@gmail.com',
             'password' => Hash::make('sukajati'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 10,
             'id_desa' => 85,
         ]);
@@ -908,6 +996,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasumbermulya@gmail.com',
             'password' => Hash::make('sumbermulya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 10,
             'id_desa' => 86,
         ]);
@@ -918,6 +1007,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesawanakaya@gmail.com',
             'password' => Hash::make('wanakaya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 10,
             'id_desa' => 87,
         ]);
@@ -930,6 +1020,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesadukuh@gmail.com',
             'password' => Hash::make('dukuh'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 88,
         ]);
@@ -940,6 +1031,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakarangsong@gmail.com',
             'password' => Hash::make('karangsong'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 89,
         ]);
@@ -950,6 +1042,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapabeanudik@gmail.com',
             'password' => Hash::make('pabeanudik'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 90,
         ]);
@@ -960,6 +1053,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapekandangan@gmail.com',
             'password' => Hash::make('pekandangan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 91,
         ]);
@@ -970,6 +1064,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapekandanganjaya@gmail.com',
             'password' => Hash::make('pekandanganjaya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 92,
         ]);
@@ -980,6 +1075,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaplumbon@gmail.com',
             'password' => Hash::make('plumbon'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 93,
         ]);
@@ -990,6 +1086,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasingajaya@gmail.com',
             'password' => Hash::make('singajaya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 94,
         ]);
@@ -1000,6 +1097,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasingaraja@gmail.com',
             'password' => Hash::make('singaraja'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 95,
         ]);
@@ -1010,6 +1108,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatambak@gmail.com',
             'password' => Hash::make('tambak'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 96,
         ]);
@@ -1020,6 +1119,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatelukagung@gmail.com',
             'password' => Hash::make('telukagung'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 97,
         ]);
@@ -1030,6 +1130,7 @@ class UserSeeder extends Seeder
             'email' => 'adminkelbojongsari@gmail.com',
             'password' => Hash::make('bojongsari'),
             'user_type' => 'admin_kelurahan',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 98,
         ]);
@@ -1040,6 +1141,7 @@ class UserSeeder extends Seeder
             'email' => 'adminkelkaranganya@gmail.com',
             'password' => Hash::make('karanganyar'),
             'user_type' => 'admin_kelurahan',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 99,
         ]);
@@ -1050,6 +1152,7 @@ class UserSeeder extends Seeder
             'email' => 'adminkelkarangmalang@gmail.com',
             'password' => Hash::make('karangmalang'),
             'user_type' => 'admin_kelurahan',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 100,
         ]);
@@ -1060,6 +1163,7 @@ class UserSeeder extends Seeder
             'email' => 'adminkelkepandean@gmail.com',
             'password' => Hash::make('kepandean'),
             'user_type' => 'admin_kelurahan',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 101,
         ]);
@@ -1070,6 +1174,7 @@ class UserSeeder extends Seeder
             'email' => 'adminkellemahabang@gmail.com',
             'password' => Hash::make('lemahabang'),
             'user_type' => 'admin_kelurahan',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 102,
         ]);
@@ -1080,6 +1185,7 @@ class UserSeeder extends Seeder
             'email' => 'adminkellemahmekar@gmail.com',
             'password' => Hash::make('lemahmekar'),
             'user_type' => 'admin_kelurahan',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 103,
         ]);
@@ -1090,6 +1196,7 @@ class UserSeeder extends Seeder
             'email' => 'adminkelmargadadi@gmail.com',
             'password' => Hash::make('margadadi'),
             'user_type' => 'admin_kelurahan',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 104,
         ]);
@@ -1100,6 +1207,7 @@ class UserSeeder extends Seeder
             'email' => 'adminkelpaoman@gmail.com',
             'password' => Hash::make('paoman'),
             'user_type' => 'admin_kelurahan',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 105,
         ]);
@@ -1112,6 +1220,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesabulakjtb@gmail.com',
             'password' => Hash::make('bulakjtb'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 12,
             'id_desa' => 106,
         ]);
@@ -1122,6 +1231,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesabulaklor@gmail.com',
             'password' => Hash::make('bulaklor'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 12,
             'id_desa' => 107,
         ]);
@@ -1132,6 +1242,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajatibarang@gmail.com',
             'password' => Hash::make('jatibarang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 12,
             'id_desa' => 108,
         ]);
@@ -1142,6 +1253,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajatibarangbaru@gmail.com',
             'password' => Hash::make('jatibarangbaru'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 12,
             'id_desa' => 109,
         ]);
@@ -1152,6 +1264,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajatisawit@gmail.com',
             'password' => Hash::make('jatisawit'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 12,
             'id_desa' => 110,
         ]);
@@ -1162,6 +1275,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajatisawitlor@gmail.com',
             'password' => Hash::make('jatisawitlor'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 12,
             'id_desa' => 111,
         ]);
@@ -1172,6 +1286,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakalimati@gmail.com',
             'password' => Hash::make('kalimati'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 12,
             'id_desa' => 112,
         ]);
@@ -1182,6 +1297,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakebulen@gmail.com',
             'password' => Hash::make('kebulen'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 12,
             'id_desa' => 113,
         ]);
@@ -1192,6 +1308,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakrasak@gmail.com',
             'password' => Hash::make('krasak'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 12,
             'id_desa' => 114,
         ]);
@@ -1202,6 +1319,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalohbenerjtb@gmail.com',
             'password' => Hash::make('lohbenerjtb'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 12,
             'id_desa' => 115,
         ]);
@@ -1212,6 +1330,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalohbenerlor@gmail.com',
             'password' => Hash::make('lohbenerlor'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 12,
             'id_desa' => 116,
         ]);
@@ -1222,6 +1341,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamalangsemirang@gmail.com',
             'password' => Hash::make('malangsemirang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 12,
             'id_desa' => 117,
         ]);
@@ -1232,6 +1352,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapawidean@gmail.com',
             'password' => Hash::make('pawidean'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 12,
             'id_desa' => 118,
         ]);
@@ -1242,6 +1363,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapilangsari@gmail.com',
             'password' => Hash::make('pilangsari'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 12,
             'id_desa' => 119,
         ]);
@@ -1252,6 +1374,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasukalila@gmail.com',
             'password' => Hash::make('sukalila'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 12,
             'id_desa' => 120,
         ]);
@@ -1264,6 +1387,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesadadap@gmail.com',
             'password' => Hash::make('dadap'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 13,
             'id_desa' => 121,
         ]);
@@ -1274,6 +1398,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajuntikebon@gmail.com',
             'password' => Hash::make('juntikebon'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 13,
             'id_desa' => 122,
         ]);
@@ -1284,6 +1409,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajuntikedokan@gmail.com',
             'password' => Hash::make('juntikedokan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 13,
             'id_desa' => 123,
         ]);
@@ -1294,6 +1420,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajuntiweden@gmail.com',
             'password' => Hash::make('juntiweden'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 13,
             'id_desa' => 124,
         ]);
@@ -1304,6 +1431,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajuntinyuat@gmail.com',
             'password' => Hash::make('juntinyuat'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 13,
             'id_desa' => 125,
         ]);
@@ -1314,6 +1442,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalimbangan@gmailcom',
             'password' => Hash::make('limbangan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 13,
             'id_desa' => 126,
         ]);
@@ -1324,6 +1453,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalombang@gmail.com',
             'password' => Hash::make('lombang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 13,
             'id_desa' => 127,
         ]);
@@ -1334,6 +1464,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapondoh@gmail.com',
             'password' => Hash::make('pondoh'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 13,
             'id_desa' => 128,
         ]);
@@ -1344,6 +1475,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaSambirmaya@gmail.com',
             'password' => Hash::make('Sambirmaya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 13,
             'id_desa' => 129,
         ]);
@@ -1354,6 +1486,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasegeran@gmail.com',
             'password' => Hash::make('segeran'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 13,
             'id_desa' => 130,
         ]);
@@ -1364,6 +1497,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasegerankidul@gmail.com',
             'password' => Hash::make('segerankidul'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 13,
             'id_desa' => 131,
         ]);
@@ -1374,6 +1508,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatinumpuk@gmail.com',
             'password' => Hash::make('tinumpuk'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 13,
             'id_desa' => 132,
         ]);
@@ -1385,6 +1520,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesabulak@gmail.com',
             'password' => Hash::make('bulak'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 14,
             'id_desa' => 133,
         ]);
@@ -1395,6 +1531,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacurug@gmail.com',
             'password' => Hash::make('curug'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 14,
             'id_desa' => 134
         ]);
@@ -1405,6 +1542,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaeretankulon@gmail.com',
             'password' => Hash::make('eretankulon'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 14,
             'id_desa' => 135
         ]);
@@ -1415,6 +1553,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaeretanwetan@gmail.com',
             'password' => Hash::make('eretanwetan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 14,
             'id_desa' => 136
         ]);
@@ -1425,6 +1564,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesailir@gmail.com',
             'password' => Hash::make('ilir'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 14,
             'id_desa' => 137
         ]);
@@ -1435,6 +1575,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakaranganyar@gmail.com',
             'password' => Hash::make('karanganyar'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 14,
             'id_desa' => 138
         ]);
@@ -1445,6 +1586,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakarangmulya@gmail.com',
             'password' => Hash::make('karangmulya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 14,
             'id_desa' => 139
         ]);
@@ -1455,6 +1597,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakertawinangun@gmail.com',
             'password' => Hash::make('kertawinangun'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 14,
             'id_desa' => 140
         ]);
@@ -1465,6 +1608,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapareangirang@gmail.com',
             'password' => Hash::make('pareangirang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 14,
             'id_desa' => 141
         ]);
@@ -1475,6 +1619,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapranti@gmail.com',
             'password' => Hash::make('pranti'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 14,
             'id_desa' => 142
         ]);
@@ -1485,6 +1630,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasoge@gmail.com',
             'password' => Hash::make('soge'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 14,
             'id_desa' => 143
         ]);
@@ -1495,6 +1641,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesawirakanan@gmail.com',
             'password' => Hash::make('wirakanan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 14,
             'id_desa' => 144
         ]);
@@ -1505,6 +1652,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesawirapanjunan@gmail.com',
             'password' => Hash::make('wirapanjunan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 14,
             'id_desa' => 145
         ]);
@@ -1517,6 +1665,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesabenda@gmail.com',
             'password' => Hash::make('benda'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 15,
             'id_desa' => 146
         ]);
@@ -1527,6 +1676,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesadukuhjeruk@gmail.com',
             'password' => Hash::make('dukuhjeruk'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 15,
             'id_desa' => 147
         ]);
@@ -1537,6 +1687,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesadukuhtengah@gmail.com',
             'password' => Hash::make('dukuhtengah'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 15,
             'id_desa' => 148
         ]);
@@ -1547,6 +1698,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakaplonganlor@gmail.com',
             'password' => Hash::make('kaplonganlor'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 15,
             'id_desa' => 149
         ]);
@@ -1557,6 +1709,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakarangampel@gmail.com',
             'password' => Hash::make('karangampel'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 15,
             'id_desa' => 150
         ]);
@@ -1567,6 +1720,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakarangampelkidul@gmail.com',
             'password' => Hash::make('karangampelkidul'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 15,
             'id_desa' => 151
         ]);
@@ -1577,6 +1731,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamundu@gmail.com',
             'password' => Hash::make('mundu'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 15,
             'id_desa' => 152
         ]);
@@ -1587,6 +1742,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapringgacala@gmail.com',
             'password' => Hash::make('pringgacala'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 15,
             'id_desa' => 153
         ]);
@@ -1597,6 +1753,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasendang@gmail.com',
             'password' => Hash::make('sendang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 15,
             'id_desa' => 154
         ]);
@@ -1607,6 +1764,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatanjungpura@gmail.com',
             'password' => Hash::make('tanjungpura'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 15,
             'id_desa' => 155
         ]);
@@ -1617,6 +1775,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatanjungsari@gmail.com',
             'password' => Hash::make('tanjungsari'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 15,
             'id_desa' => 156
         ]);
@@ -1629,6 +1788,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaCangkingan@gmail.com',
             'password' => Hash::make('Cangkingan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 16,
             'id_desa' => 157
         ]);
@@ -1639,6 +1799,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajayalaksana@gmail.com',
             'password' => Hash::make('jayalaksana'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 16,
             'id_desa' => 158
         ]);
@@ -1649,6 +1810,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajayawinangun@gmail.com',
             'password' => Hash::make('jayawinangun'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 16,
             'id_desa' => 159
         ]);
@@ -1659,6 +1821,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakaplongan@gmail.com',
             'password' => Hash::make('kaplongan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 16,
             'id_desa' => 160
         ]);
@@ -1669,6 +1832,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakedokanagung@gmail.com',
             'password' => Hash::make('kedokanagung'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 16,
             'id_desa' => 161
         ]);
@@ -1679,6 +1843,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakedokanbunder@gmail.com',
             'password' => Hash::make('kedokanbunder'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 16,
             'id_desa' => 162
         ]);
@@ -1689,6 +1854,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakedokanbunderwetan@gmail.com',
             'password' => Hash::make('kedokanbunderwetan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 16,
             'id_desa' => 163
         ]);
@@ -1701,6 +1867,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajambe@gmail.com',
             'password' => Hash::make('jambe'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 17,
             'id_desa' => 164
         ]);
@@ -1711,6 +1878,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajengkok@gmail.com',
             'password' => Hash::make('jengkok'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 17,
             'id_desa' => 165
         ]);
@@ -1721,6 +1889,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakertasemaya@gmail.com',
             'password' => Hash::make('kertasemaya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 17,
             'id_desa' => 166
         ]);
@@ -1731,6 +1900,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakliwed@gmail.com',
             'password' => Hash::make('kliwed'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 17,
             'id_desa' => 167
         ]);
@@ -1741,6 +1911,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalaranganjambe@gmail.com',
             'password' => Hash::make('lemahayu'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 17,
             'id_desa' => 168
         ]);
@@ -1751,6 +1922,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalemahayu@gmail.com',
             'password' => Hash::make('lemahayu'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 17,
             'id_desa' => 169
         ]);
@@ -1761,6 +1933,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamanguntara@gmail.com',
             'password' => Hash::make('manguntara'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 17,
             'id_desa' => 170
         ]);
@@ -1771,6 +1944,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasukawera@gmail.com',
             'password' => Hash::make('sukawera'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 17,
             'id_desa' => 171
         ]);
@@ -1781,6 +1955,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesategalwirangrong@gmail.com',
             'password' => Hash::make('tegalwirangrong'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 17,
             'id_desa' => 172
         ]);
@@ -1791,6 +1966,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatenajar@gmail.com',
             'password' => Hash::make('tenajar'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 17,
             'id_desa' => 173
         ]);
@@ -1801,6 +1977,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatenajarkidul@gmail.com',
             'password' => Hash::make('tenajarkidul'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 17,
             'id_desa' => 174
         ]);
@@ -1811,6 +1988,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatenajarlor@gmail.com',
             'password' => Hash::make('tenajarlor'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 17,
             'id_desa' => 175
         ]);
@@ -1821,6 +1999,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatulungagung@gmail.com',
             'password' => Hash::make('tulungagung'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 17,
             'id_desa' => 176
         ]);
@@ -1833,6 +2012,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesadukuhjati@gmail.com',
             'password' => Hash::make('dukuhjati'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 18,
             'id_desa' => 177
         ]);
@@ -1843,6 +2023,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakalianyar@gmail.com',
             'password' => Hash::make('kalianyar'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 18,
             'id_desa' => 178
         ]);
@@ -1853,6 +2034,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakapringan@gmail.com',
             'password' => Hash::make('kapringan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 18,
             'id_desa' => 179
         ]);
@@ -1863,6 +2045,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakedungwungu@gmail.com',
             'password' => Hash::make('kedungwungu'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 18,
             'id_desa' => 180
         ]);
@@ -1873,6 +2056,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakrangkeng@gmail.com',
             'password' => Hash::make('krangkeng'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 18,
             'id_desa' => 181
         ]);
@@ -1883,6 +2067,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaluwunggesik@gmail.com',
             'password' => Hash::make('luwunggesik'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 18,
             'id_desa' => 182
         ]);
@@ -1893,6 +2078,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapurwajaya@gmail.com',
             'password' => Hash::make('purwajaya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 18,
             'id_desa' => 183
         ]);
@@ -1903,6 +2089,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasingakerta@gmail.com',
             'password' => Hash::make('singakerta'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 18,
             'id_desa' => 184
         ]);
@@ -1913,6 +2100,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasrengseng@gmail.com',
             'password' => Hash::make('srengseng'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 18,
             'id_desa' => 185
         ]);
@@ -1923,6 +2111,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatanjakan@gmail.com',
             'password' => Hash::make('tanjakan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 18,
             'id_desa' => 186
         ]);
@@ -1933,6 +2122,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesategalmulya@gmail.com',
             'password' => Hash::make('tegalmulya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 18,
             'id_desa' => 187
         ]);
@@ -1945,6 +2135,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajayamulya@gmail.com',
             'password' => Hash::make('jayamulya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 19,
             'id_desa' => 188
         ]);
@@ -1955,6 +2146,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakroya@gmail.com',
             'password' => Hash::make('kroya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 19,
             'id_desa' => 189
         ]);
@@ -1965,6 +2157,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasukaslamet@gmail.com',
             'password' => Hash::make('sukaslamet'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 19,
             'id_desa' => 190
         ]);
@@ -1975,6 +2168,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasukamelang@gmail.com',
             'password' => Hash::make('sukamelang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 19,
             'id_desa' => 191
         ]);
@@ -1985,6 +2179,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasumberjaya@gmail.com',
             'password' => Hash::make('sumberjaya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 19,
             'id_desa' => 192
         ]);
@@ -1995,6 +2190,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasumbon@gmail.com',
             'password' => Hash::make('sumbon'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 19,
             'id_desa' => 193
         ]);
@@ -2005,6 +2201,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatemiyangsari@gmail.com',
             'password' => Hash::make('temiyangsari'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 19,
             'id_desa' => 194
         ]);
@@ -2015,6 +2212,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatanjungngkerta@gmail.com',
             'password' => Hash::make('tanjungngkerta'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 19,
             'id_desa' => 195
         ]);
@@ -2025,6 +2223,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatemiyang@gmail.com',
             'password' => Hash::make('temiyang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 19,
             'id_desa' => 196
         ]);
@@ -2037,6 +2236,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacempeh@gmail.com',
             'password' => Hash::make('cempeh'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 20,
             'id_desa' => 197
         ]);
@@ -2047,6 +2247,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalanggengsari@gmail.com',
             'password' => Hash::make('langgengsari'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 20,
             'id_desa' => 198
         ]);
@@ -2057,6 +2258,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalelea@gmail.com',
             'password' => Hash::make('lelea'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 20,
             'id_desa' => 199
         ]);
@@ -2067,6 +2269,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesanunuk@gmail.com',
             'password' => Hash::make('nunuk'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 20,
             'id_desa' => 200
         ]);
@@ -2077,6 +2280,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapangauban@gmail.com',
             'password' => Hash::make('pangauban'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 20,
             'id_desa' => 201
         ]);
@@ -2087,6 +2291,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatamansari@gmail.com',
             'password' => Hash::make('tamansari'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 20,
             'id_desa' => 202
         ]);
@@ -2097,6 +2302,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesategalasari@gmail.com',
             'password' => Hash::make('tegalasari'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 19,
             'id_desa' => 203
         ]);
@@ -2107,6 +2313,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatempel@gmail.com',
             'password' => Hash::make('tempel'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 20,
             'id_desa' => 204
         ]);
@@ -2117,6 +2324,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatempelkulon@gmail.com',
             'password' => Hash::make('tempelkulon'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 20,
             'id_desa' => 205
         ]);
@@ -2127,6 +2335,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatugu@gmail.com',
             'password' => Hash::make('tugu'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 20,
             'id_desa' => 206
         ]);
@@ -2137,6 +2346,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatunggulpayung@gmail.com',
             'password' => Hash::make('tunggulpayung'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 20,
             'id_desa' => 207
         ]);
@@ -2149,6 +2359,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesabojongslawi@gmail.com',
             'password' => Hash::make('bojongslawi'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 21,
             'id_desa' => 208
         ]);
@@ -2159,6 +2370,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakiajarankulon@gmail.com',
             'password' => Hash::make('kiajarankulon'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 21,
             'id_desa' => 209
         ]);
@@ -2169,6 +2381,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakiajaranwetan@gmail.com',
             'password' => Hash::make('kiajaranwetan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 21,
             'id_desa' => 210
         ]);
@@ -2179,6 +2392,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalangut@gmail.com',
             'password' => Hash::make('langut'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 21,
             'id_desa' => 211
         ]);
@@ -2189,6 +2403,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalanjan@gmail.com',
             'password' => Hash::make('lanjan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 21,
             'id_desa' => 212
         ]);
@@ -2199,6 +2414,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalarangan@gmail.com',
             'password' => Hash::make('larangan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 21,
             'id_desa' => 213
         ]);
@@ -2209,6 +2425,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalegok@gmail.com',
             'password' => Hash::make('legok'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 21,
             'id_desa' => 214
         ]);
@@ -2219,6 +2436,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalohbener@gmail.com',
             'password' => Hash::make('lohbener'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 21,
             'id_desa' => 215
         ]);
@@ -2229,6 +2447,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapamayahan@gmail.com',
             'password' => Hash::make('pamayahan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 21,
             'id_desa' => 216
         ]);
@@ -2239,6 +2458,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesarambatankulon@gmail.com',
             'password' => Hash::make('rambatankulon'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 21,
             'id_desa' => 217
         ]);
@@ -2249,6 +2469,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasindangkerta@gmail.com',
             'password' => Hash::make('sindangkerta'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 21,
             'id_desa' => 218
         ]);
@@ -2259,6 +2480,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesawaru@gmail.com',
             'password' => Hash::make('waru'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 21,
             'id_desa' => 219
         ]);
@@ -2271,6 +2493,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacemara@gmail.com',
             'password' => Hash::make('cemara'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 22,
             'id_desa' => 220
         ]);
@@ -2281,6 +2504,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacemarakulon@gmail.com',
             'password' => Hash::make('cemarakulon'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 22,
             'id_desa' => 221
         ]);
@@ -2291,6 +2515,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajangga@gmail.com',
             'password' => Hash::make('jangga'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 22,
             'id_desa' => 222
         ]);
@@ -2301,6 +2526,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajumbleng@gmail.com',
             'password' => Hash::make('jumbleng'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 22,
             'id_desa' => 223
         ]);
@@ -2311,6 +2537,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakrimun@gmail.com',
             'password' => Hash::make('krimun'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 22,
             'id_desa' => 224
         ]);
@@ -2321,6 +2548,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalosarang@gmail.com',
             'password' => Hash::make('losarang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 22,
             'id_desa' => 225
         ]);
@@ -2331,6 +2559,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamuntur@gmail.com',
             'password' => Hash::make('muntur'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 22,
             'id_desa' => 226
         ]);
@@ -2341,6 +2570,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapangkalan@gmail.com',
             'password' => Hash::make('pangkalan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 22,
             'id_desa' => 227
         ]);
@@ -2351,6 +2581,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapegagan@gmail.com',
             'password' => Hash::make('pegagan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 22,
             'id_desa' => 228
         ]);
@@ -2361,6 +2592,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapuntang@gmail.com',
             'password' => Hash::make('puntang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 22,
             'id_desa' => 229
         ]);
@@ -2371,6 +2603,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesarajaiyang@gmail.com',
             'password' => Hash::make('rajaiyang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 22,
             'id_desa' => 230
         ]);
@@ -2381,6 +2614,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaranjeng@gmail.com',
             'password' => Hash::make('ranjeng'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 22,
             'id_desa' => 231
         ]);
@@ -2391,6 +2625,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasanting@gmail.com',
             'password' => Hash::make('santing'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 22,
             'id_desa' => 232
         ]);
@@ -2403,6 +2638,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaBrondong@gmail.com',
             'password' => Hash::make('Brondong'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 23,
             'id_desa' => 233
         ]);
@@ -2413,6 +2649,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakaranganyarpasekan@gmail.com',
             'password' => Hash::make('karanganyarpasekan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 23,
             'id_desa' => 234
         ]);
@@ -2423,6 +2660,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapabeanilir@gmail.com',
             'password' => Hash::make('pabeanilir'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 23,
             'id_desa' => 235
         ]);
@@ -2433,6 +2671,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapagirikan@gmail.com',
             'password' => Hash::make('pagirikan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 23,
             'id_desa' => 236
         ]);
@@ -2443,6 +2682,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapasekan@gmail.com',
             'password' => Hash::make('pasekan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 23,
             'id_desa' => 237
         ]);
@@ -2453,6 +2693,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatotoran@gmail.com',
             'password' => Hash::make('totoran'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 23,
             'id_desa' => 238
         ]);
@@ -2465,6 +2706,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaarjasari@gmail.com',
             'password' => Hash::make('arjasari'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 24,
             'id_desa' => 239
         ]);
@@ -2475,6 +2717,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesabugel@gmail.com',
             'password' => Hash::make('bugel'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 24,
             'id_desa' => 240
         ]);
@@ -2485,6 +2728,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalimpas@gmail.com',
             'password' => Hash::make('limpas'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 24,
             'id_desa' => 241
         ]);
@@ -2495,6 +2739,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamekarsaripatrolgmail.com',
             'password' => Hash::make('mekarsaripatrol'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 24,
             'id_desa' => 242
         ]);
@@ -2505,6 +2750,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapatrol@gmail.com',
             'password' => Hash::make('patrol'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 24,
             'id_desa' => 243
         ]);
@@ -2515,6 +2761,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapatrolbaru@gmail.com',
             'password' => Hash::make('patrolbaru'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 24,
             'id_desa' => 244
         ]);
@@ -2525,6 +2772,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapatrollor@gmail.com',
             'password' => Hash::make('patrollor'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 24,
             'id_desa' => 245
         ]);
@@ -2535,6 +2783,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasukahaji@gmail.com',
             'password' => Hash::make('sukahaji'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 24,
             'id_desa' => 246
         ]);
@@ -2547,6 +2796,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesababadan@gmail.com',
             'password' => Hash::make('babadan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 25,
             'id_desa' => 247
         ]);
@@ -2557,6 +2807,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesadermayu@gmail.com',
             'password' => Hash::make('dermayu'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 25,
             'id_desa' => 248
         ]);
@@ -2567,6 +2818,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakenanga@gmail.com',
             'password' => Hash::make('kenanga'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 25,
             'id_desa' => 249
         ]);
@@ -2577,6 +2829,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapanyindangankulon@gmail.com',
             'password' => Hash::make('panyindangankulon'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 25,
             'id_desa' => 250
         ]);
@@ -2587,6 +2840,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapanyindanganwetan@gmail.com',
             'password' => Hash::make('panyindanganwetan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 25,
             'id_desa' => 251
         ]);
@@ -2597,6 +2851,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapenganjang@gmail.com',
             'password' => Hash::make('penganjang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 25,
             'id_desa' => 252
         ]);
@@ -2607,6 +2862,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesarambatanwetan@gmail.com',
             'password' => Hash::make('rambatanwetan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 25,
             'id_desa' => 253
         ]);
@@ -2617,6 +2873,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasindang@gmail.com',
             'password' => Hash::make('sindang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 25,
             'id_desa' => 254
         ]);
@@ -2627,6 +2884,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaterusan@gmail.com',
             'password' => Hash::make('terusan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 25,
             'id_desa' => 255
         ]);
@@ -2637,6 +2895,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesawawantara@gmail.com',
             'password' => Hash::make('wawantara'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 25,
             'id_desa' => 256
         ]);
@@ -2649,6 +2908,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesagadingan@gmail.com',
             'password' => Hash::make('gadingan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 26,
             'id_desa' => 257
         ]);
@@ -2659,6 +2919,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalongok@gmail.com',
             'password' => Hash::make('longok'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 26,
             'id_desa' => 258
         ]);
@@ -2669,6 +2930,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamajasari@gmail.com',
             'password' => Hash::make('majasari'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 26,
             'id_desa' => 259
         ]);
@@ -2681,6 +2943,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamajasih@gmail.com',
             'password' => Hash::make('majasih'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 26,
             'id_desa' => 260
         ]);
@@ -2691,6 +2954,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamekargading@gmail.com',
             'password' => Hash::make('mekargading'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 26,
             'id_desa' => 261
         ]);
@@ -2701,6 +2965,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasleman@gmail.com',
             'password' => Hash::make('sleman'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 26,
             'id_desa' => 262
         ]);
@@ -2711,6 +2976,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaslemanlor@gmail.com',
             'password' => Hash::make('slemanlor'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 26,
             'id_desa' => 263
         ]);
@@ -2721,6 +2987,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasliyeg@gmail.com',
             'password' => Hash::make('sliyeg'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 26,
             'id_desa' => 264
         ]);
@@ -2731,6 +2998,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasliyeglor@gmail.com',
             'password' => Hash::make('sliyeglor'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 26,
             'id_desa' => 265
         ]);
@@ -2741,6 +3009,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasudikampiran@gmail.com',
             'password' => Hash::make('sudikampiran'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 26,
             'id_desa' => 266
         ]);
@@ -2751,6 +3020,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatambi@gmail.com',
             'password' => Hash::make('tambi'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 26,
             'id_desa' => 267
         ]);
@@ -2761,6 +3031,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatambilor@gmail.com',
             'password' => Hash::make('tambilor'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 26,
             'id_desa' => 268
         ]);
@@ -2771,6 +3042,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatugusliyeg@gmail.com',
             'password' => Hash::make('tugusliyeg'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 26,
             'id_desa' => 269
         ]);
@@ -2781,6 +3053,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatugukidul@gmail.com',
             'password' => Hash::make('tugukidul'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 26,
             'id_desa' => 270
         ]);
@@ -2791,6 +3064,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesabondan@gmail.com',
             'password' => Hash::make('bondan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 26,
             'id_desa' => 271
         ]);
@@ -2803,6 +3077,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacadangpinggan@gmail.com',
             'password' => Hash::make('cadangpinggan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 27,
             'id_desa' => 272
         ]);
@@ -2813,6 +3088,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacibeber@gmail.com',
             'password' => Hash::make('cibeber'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 27,
             'id_desa' => 273
         ]);
@@ -2823,6 +3099,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesagedangan@gmail.com',
             'password' => Hash::make('gedangan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 27,
             'id_desa' => 274
         ]);
@@ -2833,6 +3110,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesagunungsari@gmail.com',
             'password' => Hash::make('gunungsari'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 27,
             'id_desa' => 275
         ]);
@@ -2843,6 +3121,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasukagumiwang@gmail.com',
             'password' => Hash::make('sukagumiwang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 27,
             'id_desa' => 276
         ]);
@@ -2853,6 +3132,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatersana@gmail.com',
             'password' => Hash::make('tersana'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 27,
             'id_desa' => 277
         ]);
@@ -2865,6 +3145,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesabogor@gmail.com',
             'password' => Hash::make('bogor'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 28,
             'id_desa' => 278
         ]);
@@ -2875,6 +3156,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakaranglayung@gmail.com',
             'password' => Hash::make('karanglayung'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 28,
             'id_desa' => 279
         ]);
@@ -2885,6 +3167,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasukra@gmail.com',
             'password' => Hash::make('sukra'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 28,
             'id_desa' => 280
         ]);
@@ -2895,6 +3178,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasukrawetan@gmail.com',
             'password' => Hash::make('sukrawetan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 28,
             'id_desa' => 281
         ]);
@@ -2905,6 +3189,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasumuradem@gmail.com',
             'password' => Hash::make('sumuradem'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 28,
             'id_desa' => 282
         ]);
@@ -2915,6 +3200,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasumurademtimur@gmail.com',
             'password' => Hash::make('sumurademtimur'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 28,
             'id_desa' => 283
         ]);
@@ -2925,6 +3211,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesatagaltaman@gmail.com',
             'password' => Hash::make('tagaltaman'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 28,
             'id_desa' => 284
         ]);
@@ -2935,6 +3222,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaujunggebang@gmail.com',
             'password' => Hash::make('ujunggebang'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 28,
             'id_desa' => 285
         ]);
@@ -2947,6 +3235,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacibereng@gmail.com',
             'password' => Hash::make('cibereng'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 29,
             'id_desa' => 286
         ]);
@@ -2957,6 +3246,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacikawung@gmail.com',
             'password' => Hash::make('cikawung'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 29,
             'id_desa' => 287
         ]);
@@ -2967,6 +3257,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajatimulya@gmail.com',
             'password' => Hash::make('jatimulya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 29,
             'id_desa' => 288
         ]);
@@ -2977,6 +3268,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesajatimunggul@gmail.com',
             'password' => Hash::make('jatimunggul'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 29,
             'id_desa' => 289
         ]);
@@ -2987,6 +3279,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakarangasem@gmail.com',
             'password' => Hash::make('karangasem'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 29,
             'id_desa' => 290
         ]);
@@ -2997,6 +3290,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakendayakan@gmail.com',
             'password' => Hash::make('kendayakan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 29,
             'id_desa' => 291
         ]);
@@ -3007,6 +3301,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamanggungan@gmail.com',
             'password' => Hash::make('manggungan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 29,
             'id_desa' => 292
         ]);
@@ -3017,6 +3312,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesaplosokerep@gmail.com',
             'password' => Hash::make('plosokerep'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 29,
             'id_desa' => 293
         ]);
@@ -3027,6 +3323,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesarajasinga@gmail.com',
             'password' => Hash::make('rajasinga'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 29,
             'id_desa' => 294
         ]);
@@ -3039,6 +3336,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesabodas@gmail.com',
             'password' => Hash::make('bodas'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 30,
             'id_desa' => 295
         ]);
@@ -3049,6 +3347,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesacangko@gmail.com',
             'password' => Hash::make('cangko'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 30,
             'id_desa' => 296
         ]);
@@ -3059,6 +3358,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesagadel@gmail.com',
             'password' => Hash::make('gadel'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 30,
             'id_desa' => 297
         ]);
@@ -3069,6 +3369,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakarangkerta@gmail.com',
             'password' => Hash::make('karangkerta'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 30,
             'id_desa' => 298
         ]);
@@ -3079,6 +3380,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesakerticala@gmail.com',
             'password' => Hash::make('kerticala'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 30,
             'id_desa' => 299
         ]);
@@ -3089,6 +3391,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesalajer@gmail.com',
             'password' => Hash::make('lajer'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 30,
             'id_desa' => 300
         ]);
@@ -3099,6 +3402,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesamekarsari@gmail.com',
             'password' => Hash::make('mekarsari'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 30,
             'id_desa' => 301
         ]);
@@ -3109,6 +3413,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesapagedangan@gmail.com',
             'password' => Hash::make('pagedangan'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 30,
             'id_desa' => 302
         ]);
@@ -3119,6 +3424,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesarancajawat@gmail.com',
             'password' => Hash::make('rancajawat'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 30,
             'id_desa' => 303
         ]);
@@ -3129,6 +3435,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasukadana@gmail.com',
             'password' => Hash::make('sukadana'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 30,
             'id_desa' => 304
         ]);
@@ -3139,6 +3446,7 @@ class UserSeeder extends Seeder
             'email' => 'admindesasukamulya@gmail.com',
             'password' => Hash::make('sukamulya'),
             'user_type' => 'admin_desa',
+            'foto' => null,
             'id_kecamatan' => 30,
             'id_desa' => 305
         ]);
@@ -3150,6 +3458,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('sukaperna'),
             'user_type' => 'admin_desa',
             'id_kecamatan' => 30,
+            'foto' => null,
             'id_desa' => 306
         ]);
         $admin_desa->assignRole(Role::ROLE_ADMIN);
@@ -3160,6 +3469,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('tukdana'),
             'user_type' => 'admin_desa',
             'id_kecamatan' => 30,
+            'foto' => null,
             'id_desa' => 307
         ]);
         $admin_desa->assignRole(Role::ROLE_ADMIN);
@@ -3171,6 +3481,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('Bangkaloa Ilir'),
             'user_type' => 'admin_desa',
             'id_kecamatan' => 31,
+            'foto' => null,
             'id_desa' => 308
         ]);
         $admin_desa->assignRole(Role::ROLE_ADMIN);
@@ -3181,6 +3492,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('bunder'),
             'user_type' => 'admin_desa',
             'id_kecamatan' => 31,
+            'foto' => null,
             'id_desa' => 309
         ]);
         $admin_desa->assignRole(Role::ROLE_ADMIN);
@@ -3191,6 +3503,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('kalensari'),
             'user_type' => 'admin_desa',
             'id_kecamatan' => 31,
+            'foto' => null,
             'id_desa' => 310
         ]);
         $admin_desa->assignRole(Role::ROLE_ADMIN);
@@ -3201,6 +3514,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('kasmaran'),
             'user_type' => 'admin_desa',
             'id_kecamatan' => 31,
+            'foto' => null,
             'id_desa' => 311
         ]);
         $admin_desa->assignRole(Role::ROLE_ADMIN);
@@ -3211,6 +3525,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('kongsijaya'),
             'user_type' => 'admin_desa',
             'id_kecamatan' => 31,
+            'foto' => null,
             'id_desa' => 312
         ]);
         $admin_desa->assignRole(Role::ROLE_ADMIN);
@@ -3221,6 +3536,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('leuwigede'),
             'user_type' => 'admin_desa',
             'id_kecamatan' => 31,
+            'foto' => null,
             'id_desa' => 313
         ]);
         $admin_desa->assignRole(Role::ROLE_ADMIN);
@@ -3231,6 +3547,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('ujungpondokjaya'),
             'user_type' => 'admin_desa',
             'id_kecamatan' => 31,
+            'foto' => null,
             'id_desa' => 314
         ]);
         $admin_desa->assignRole(Role::ROLE_ADMIN);
@@ -3241,6 +3558,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('ujungaris'),
             'user_type' => 'admin_desa',
             'id_kecamatan' => 31,
+            'foto' => null,
             'id_desa' => 315
         ]);
         $admin_desa->assignRole(Role::ROLE_ADMIN);
@@ -3251,6 +3569,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('ujungjaya'),
             'user_type' => 'admin_desa',
             'id_kecamatan' => 31,
+            'foto' => null,
             'id_desa' => 316
         ]);
         $admin_desa->assignRole(Role::ROLE_ADMIN);
@@ -3261,328 +3580,361 @@ class UserSeeder extends Seeder
             'password' => Hash::make('widasari'),
             'user_type' => 'admin_desa',
             'id_kecamatan' => 31,
+            'foto' => null,
             'id_desa' => 317
         ]);
         $admin_desa->assignRole(Role::ROLE_ADMIN);
 
 
         // Admin PKK Kecamatan
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Anjatan',
-            'email' => 'adminkecamatananjatan@gmail.com',
-            'password' => Hash::make('kecamatananjatan'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 1,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Anjatan',
+        //     'email' => 'adminkecamatananjatan@gmail.com',
+        //     'password' => Hash::make('kecamatananjatan'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 1,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Arahan',
-            'email' => 'adminkecamatanarahan@gmail.com',
-            'password' => Hash::make('kecamatanarahan'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 2,
-            'id_desa' => null,
-        ]);
-        $admin_desa->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Arahan',
+        //     'email' => 'adminkecamatanarahan@gmail.com',
+        //     'password' => Hash::make('kecamatanarahan'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 2,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_desa->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Balongan',
-            'email' => 'adminkecamatanbalongan@gmail.com',
-            'password' => Hash::make('kecamatanbalongan'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 3,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Balongan',
+        //     'email' => 'adminkecamatanbalongan@gmail.com',
+        //     'password' => Hash::make('kecamatanbalongan'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 3,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Bangodua',
-            'email' => 'adminkecamatanbangodua@gmail.com',
-            'password' => Hash::make('kecamatanbangodua'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 4,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Bangodua',
+        //     'email' => 'adminkecamatanbangodua@gmail.com',
+        //     'password' => Hash::make('kecamatanbangodua'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 4,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Bongas',
-            'email' => 'adminkecamatanbongas@gmail.com',
-            'password' => Hash::make('kecamatanbongas'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 5,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Bongas',
+        //     'email' => 'adminkecamatanbongas@gmail.com',
+        //     'password' => Hash::make('kecamatanbongas'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 5,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Cantigi',
-            'email' => 'adminkecamatancantigi@gmail.com',
-            'password' => Hash::make('kecamatancantigi'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 6,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Cantigi',
+        //     'email' => 'adminkecamatancantigi@gmail.com',
+        //     'password' => Hash::make('kecamatancantigi'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 6,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Cikedung',
-            'email' => 'adminkecamatancikedung@gmail.com',
-            'password' => Hash::make('kecamatancikedung'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 7,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Cikedung',
+        //     'email' => 'adminkecamatancikedung@gmail.com',
+        //     'password' => Hash::make('kecamatancikedung'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 7,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Gabuswetan',
-            'email' => 'adminkecamatangabuswetan@gmail.com',
-            'password' => Hash::make('kecamatangabuswetan'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 8,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Gabuswetan',
+        //     'email' => 'adminkecamatangabuswetan@gmail.com',
+        //     'password' => Hash::make('kecamatangabuswetan'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 8,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Gantar',
-            'email' => 'adminkecamatangantar@gmail.com',
-            'password' => Hash::make('kecamatangantar'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 9,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Gantar',
+        //     'email' => 'adminkecamatangantar@gmail.com',
+        //     'password' => Hash::make('kecamatangantar'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 9,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Haurgeulis',
-            'email' => 'adminkecamatanhaurgeulis@gmail.com',
-            'password' => Hash::make('kecamatanhaurgeulis'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 10,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Haurgeulis',
+        //     'email' => 'adminkecamatanhaurgeulis@gmail.com',
+        //     'password' => Hash::make('kecamatanhaurgeulis'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 10,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Indramayu',
-            'email' => 'adminkecamatanindramayu@gmail.com',
-            'password' => Hash::make('kecamatanindramayu'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 11,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Indramayu',
+        //     'email' => 'adminkecamatanindramayu@gmail.com',
+        //     'password' => Hash::make('kecamatanindramayu'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 11,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Jatibarang',
-            'email' => 'adminkecamatanjatibarang@gmail.com',
-            'password' => Hash::make('kecamatanjatibarang'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 12,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Jatibarang',
+        //     'email' => 'adminkecamatanjatibarang@gmail.com',
+        //     'password' => Hash::make('kecamatanjatibarang'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 12,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Juntinyuat',
-            'email' => 'adminkecamatanjuntinyuat@gmail.com',
-            'password' => Hash::make('kecamatanjuntinyuat'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 13,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Juntinyuat',
+        //     'email' => 'adminkecamatanjuntinyuat@gmail.com',
+        //     'password' => Hash::make('kecamatanjuntinyuat'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 13,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Kandanghaur',
-            'email' => 'adminkecamatankandanghaur@gmail.com',
-            'password' => Hash::make('kecamatankandanghaur'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 14,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Kandanghaur',
+        //     'email' => 'adminkecamatankandanghaur@gmail.com',
+        //     'password' => Hash::make('kecamatankandanghaur'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 14,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Karangampel',
-            'email' => 'adminkecamatankarangampel@gmail.com',
-            'password' => Hash::make('kecamatankarangampel'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 15,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Karangampel',
+        //     'email' => 'adminkecamatankarangampel@gmail.com',
+        //     'password' => Hash::make('kecamatankarangampel'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 15,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Kedokan Bunder',
-            'email' => 'adminkecamatankedokanbunder@gmail.com',
-            'password' => Hash::make('kecamatankedokanbunder'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 16,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Kedokan Bunder',
+        //     'email' => 'adminkecamatankedokanbunder@gmail.com',
+        //     'password' => Hash::make('kecamatankedokanbunder'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 16,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Kertasemaya',
-            'email' => 'adminkecamatankertasemaya@gmail.com',
-            'password' => Hash::make('kecamatankertasemaya'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 17,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Kertasemaya',
+        //     'email' => 'adminkecamatankertasemaya@gmail.com',
+        //     'password' => Hash::make('kecamatankertasemaya'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 17,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Krangkeng',
-            'email' => 'adminkecamatankrangkeng@gmail.com',
-            'password' => Hash::make('kecamatankrangkeng'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 18,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Krangkeng',
+        //     'email' => 'adminkecamatankrangkeng@gmail.com',
+        //     'password' => Hash::make('kecamatankrangkeng'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 18,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Anjatan',
-            'email' => 'adminkecamatankroya@gmail.com',
-            'password' => Hash::make('kecamatankroya'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 19,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Anjatan',
+        //     'email' => 'adminkecamatankroya@gmail.com',
+        //     'password' => Hash::make('kecamatankroya'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 19,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Lelea',
-            'email' => 'adminkecamatanlelea@gmail.com',
-            'password' => Hash::make('kecamatanlelea'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 20,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Lelea',
+        //     'email' => 'adminkecamatanlelea@gmail.com',
+        //     'password' => Hash::make('kecamatanlelea'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 20,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Lohbener',
-            'email' => 'adminkecamatanlohbener@gmail.com',
-            'password' => Hash::make('kecamatanlohbener'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 21,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Lohbener',
+        //     'email' => 'adminkecamatanlohbener@gmail.com',
+        //     'password' => Hash::make('kecamatanlohbener'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 21,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Losarang',
-            'email' => 'adminkecamatanlosarang@gmail.com',
-            'password' => Hash::make('kecamatanlosarang'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 22,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Losarang',
+        //     'email' => 'adminkecamatanlosarang@gmail.com',
+        //     'password' => Hash::make('kecamatanlosarang'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 22,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Pasekan',
-            'email' => 'adminkecamatanpasekan@gmail.com',
-            'password' => Hash::make('kecamatanpasekan'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 23,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Pasekan',
+        //     'email' => 'adminkecamatanpasekan@gmail.com',
+        //     'password' => Hash::make('kecamatanpasekan'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 23,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Patrol',
-            'email' => 'adminkecamatanpatrol@gmail.com',
-            'password' => Hash::make('kecamatanpatrol'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 24,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Patrol',
+        //     'email' => 'adminkecamatanpatrol@gmail.com',
+        //     'password' => Hash::make('kecamatanpatrol'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 24,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Sindang',
-            'email' => 'adminkecamatansindang@gmail.com',
-            'password' => Hash::make('kecamatansindang'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 25,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Sindang',
+        //     'email' => 'adminkecamatansindang@gmail.com',
+        //     'password' => Hash::make('kecamatansindang'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 25,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Sliyeg',
-            'email' => 'adminkecamatansliyeg@gmail.com',
-            'password' => Hash::make('kecamatansliyeg'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 26,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Sliyeg',
+        //     'email' => 'adminkecamatansliyeg@gmail.com',
+        //     'password' => Hash::make('kecamatansliyeg'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 26,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Sukagumiwang',
-            'email' => 'adminkecamatansukagumiwang@gmail.com',
-            'password' => Hash::make('kecamatansukagumiwang'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 27,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Sukagumiwang',
+        //     'email' => 'adminkecamatansukagumiwang@gmail.com',
+        //     'password' => Hash::make('kecamatansukagumiwang'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 27,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Sukra',
-            'email' => 'adminkecamatansukra@gmail.com',
-            'password' => Hash::make('kecamatansukra'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 28,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Sukra',
+        //     'email' => 'adminkecamatansukra@gmail.com',
+        //     'password' => Hash::make('kecamatansukra'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 28,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Trisi',
-            'email' => 'adminkecamatantrisi@gmail.com',
-            'password' => Hash::make('kecamatantrisi'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 29,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Trisi',
+        //     'email' => 'adminkecamatantrisi@gmail.com',
+        //     'password' => Hash::make('kecamatantrisi'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 29,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Tukdana',
-            'email' => 'adminkecamatantukdana@gmail.com',
-            'password' => Hash::make('kecamatantukdana'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 30,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Tukdana',
+        //     'email' => 'adminkecamatantukdana@gmail.com',
+        //     'password' => Hash::make('kecamatantukdana'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 30,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
-        $admin_kecamatan = User::create([
-            'name' => 'Admin PKK Kecamatan Widasari',
-            'email' => 'adminkecamatanwidasari@gmail.com',
-            'password' => Hash::make('kecamatanwidasari'),
-            'user_type' => 'admin_kecamatan',
-            'id_kecamatan' => 31,
-            'id_desa' => null,
-        ]);
-        $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
+        // $admin_kecamatan = User::create([
+        //     'name' => 'Admin PKK Kecamatan Widasari',
+        //     'email' => 'adminkecamatanwidasari@gmail.com',
+        //     'password' => Hash::make('kecamatanwidasari'),
+        //     'user_type' => 'admin_kecamatan',
+        // 'foto' => null,
+        //     'id_kecamatan' => 31,
+        //     'id_desa' => null,
+        // ]);
+        // $admin_kecamatan->assignRole(Role::ROLE_ADMIN);
 
         // AKUN Kader
         $kader_desa = User::create([
             'name' => 'Agus',
             'email' => 'agus@gmail.com',
             'password' => Hash::make('agus'),
-            'user_type' => 'kader_desa',
+            'user_type' => 'kader_dasawisma',
+            'foto' => null,
             'id_kecamatan' => 1,
             'id_desa' => 1,
         ]);
@@ -3591,7 +3943,8 @@ class UserSeeder extends Seeder
             'name' => 'Atun',
             'email' => 'atun@gmail.com',
             'password' => Hash::make('atun'),
-            'user_type' => 'kader_desa',
+            'user_type' => 'kader_dasawisma',
+            'foto' => null,
             'id_kecamatan' => 1,
             'id_desa' => 2,
         ]);
@@ -3601,6 +3954,7 @@ class UserSeeder extends Seeder
             'email' => 'amin@gmail.com',
             'password' => Hash::make('amin'),
             'user_type' => 'kader_kelurahan',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 98,
         ]);
@@ -3610,6 +3964,7 @@ class UserSeeder extends Seeder
             'email' => 'bibi@gmail.com',
             'password' => Hash::make('bibi'),
             'user_type' => 'kader_kelurahan',
+            'foto' => null,
             'id_kecamatan' => 11,
             'id_desa' => 99,
         ]);

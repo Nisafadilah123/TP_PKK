@@ -123,8 +123,9 @@
             class="brand-image img-circle elevation-3"
             style="opacity: 0.8"
           />
-          <span class="brand-text font-weight-light">Kader Dasawisma <br>
-            Desa {{ (Auth::user()->desa->nama_desa) }} </span>
+          {{-- <span class="brand-text font-weight-light" style="font-size: 14px">Kader Dasawisma
+            {{ (Auth::user()->dasawisma->nama_dasawisma) }} </span><br> --}}
+            <span class="brand-text font-weight-light">Desa {{ (Auth::user()->desa->nama_desa) }} </span>
         </a>
 
         <!-- Sidebar -->
@@ -230,14 +231,14 @@
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('kader_desa.logout') }}"
+                        <a class="nav-link" href="{{ route('kader_dasawisma.logout') }}"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                             <i class="nav-icon fas fa-sign-out-alt"></i>
                             Keluar
                         </a>
 
-                        <form id="logout-form" action="{{ route('kader_desa.logout') }}" method="POST" class="d-none">
+                        <form id="logout-form" action="{{ route('kader_dasawisma.logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
                       </li>
@@ -276,7 +277,7 @@
 
       <footer class="main-footer">
         <strong
-          >Copyright &copy; Kader PKK Desa/Kader Dasawisma.</strong
+          >Copyright &copy; Kader Dasawisma.</strong
         >
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">

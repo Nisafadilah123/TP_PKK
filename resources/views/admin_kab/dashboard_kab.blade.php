@@ -148,7 +148,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="/data_pengguna" class="small-box-footer"
+              <a href="/data_pengguna_super" class="small-box-footer"
                 >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
               ></a>
             </div>

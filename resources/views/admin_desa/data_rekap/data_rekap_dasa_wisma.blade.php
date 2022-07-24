@@ -228,9 +228,10 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <a href="{{ url('print_rekap_dasawisma', $print_pdf->id_keluarga) }}" target="_blank" class="btn btn-success" type="button" role="button">
-                                    <i class="fas fa-print"></i> Cetak ke PDF </a><br>
+
                             </div>
+                            <a href="{{ url('export_rekap_dasawisma').'?'.http_build_query(compact('dasa_wisma', 'rt', 'rw', 'periode'))  }}" target="_blank" class="btn btn-success" type="button" role="button">
+                                <i class="fas fa-file"></i> Cetak ke Excel </a><br>
                         </div>
                     </div>
                 </div>
@@ -246,6 +247,8 @@
 
   @push('script-addon')
 
+  {{-- <script src="{{url('admin/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+  <script src="{{url('admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script> --}}
 <script>
 $(document).ready( function () {
     $('.data').DataTable();

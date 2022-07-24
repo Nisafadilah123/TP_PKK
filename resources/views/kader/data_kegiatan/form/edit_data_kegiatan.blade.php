@@ -20,9 +20,6 @@
         @csrf
         <div class="card-body">
             <h6 style="color: red">* Semua elemen atribut harus diisi</h6>
-            {{-- <h6 style="color: red">* Keterangan Kegiatan Yang diikuti seperti : Keagamaan, PKBN, Pola Asuh Pencegahan KDRT, Pencegahan Traffocking, Narkoba, Pencegahan
-                Kejahatan Seksual, Kerja Bakti, Jimpitan, Arisan, Rukun Kematian, Bakti Sosial, BKB, PAUD Sejenis, Paket A, Paket B, Paket C, KF (Keaksaraan Fungsional),
-                UP2K, Koperasi</h6> --}}
                 @if (count($errors)>0)
                     <div class="alert alert-danger">
                         <ul>
@@ -89,13 +86,7 @@
                         <label>Nama Kegiatan</label>
                         <select class="form-control @error('id_kategori') is-invalid @enderror" id="id_kategori" name="id_kategori">
                             {{-- Pilih Kegiatan --}}
-                            {{-- @foreach($kategori as $key => $val)
-                                @if($key==old('nama_kategori'))
-                                <option value="{{ $key }}" selected>{{ $val }}</option>
-                                @else
-                                <option value="{{ $key }}">{{ $val }}</option>
-                                @endif
-                            @endforeach --}}
+
                             @foreach ($keg as $item)
                                 <option value="{{ $item->id }}" {{ $item->id === $data_kegiatan->id_kategori ? 'selected' : '' }}>{{ $item->nama_kegiatan }}</option>
                             @endforeach
@@ -141,14 +132,6 @@
                     {{-- <input type="text" class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" id="keterangan" placeholder="Masukkan Keterangan"> --}}
                     <select class="form-control @error('id_keterangan') is-invalid @enderror" id="id_keterangan" name="id_keterangan">
                         {{-- Pilih Kegiatan --}}
-                        {{-- <option hidden> Pilih Keterangan Kegiatan</option> --}}
-                            {{-- @foreach($keterangan as $key => $val)
-                                @if($key==old('keterangan'))
-                                    <option value="{{ $key }}" selected>{{ $val }}</option>
-                                @else
-                                    <option value="{{ $key }}">{{ $val }}</option>
-                                @endif
-                            @endforeach --}}
                             @foreach ($ket as $item)
                                 <option value="{{ $item->id }}" {{ $item->id === $data_kegiatan->id_keterangan ? 'selected' : '' }}>{{ $item->nama_keterangan }}</option>
                             @endforeach

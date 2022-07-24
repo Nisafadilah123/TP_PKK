@@ -3,38 +3,10 @@
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PokjaController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AdminDesa\DataAset\DataPosyanduController;
-use App\Http\Controllers\AdminDesa\DataAset\DataTamanBacaanController;
-use App\Http\Controllers\AdminDesa\DataAset\DataWarungController;
-use App\Http\Controllers\AdminDesa\DataAset\KejarPaketController;
-use App\Http\Controllers\AdminDesa\DataAset\KelompokSimulasiController;
-use App\Http\Controllers\AdminDesa\DataAset\KoperasiController;
-use App\Http\Controllers\AdminDesa\DataAset\PosyanduController;
-use App\Http\Controllers\AdminDesa\DataAset\TamanBacaanController;
-use App\Http\Controllers\AdminDesa\DataAset\WarungController;
-use App\Http\Controllers\AdminDesa\DataDaftarAnggotaKaderController;
-use App\Http\Controllers\AdminDesa\DataDaftarAnggotaTPController;
-use App\Http\Controllers\AdminDesa\DataPokja1\GotongRoyongController;
-use App\Http\Controllers\AdminDesa\DataPokja1\JumlahKaderPokja1Controller;
-use App\Http\Controllers\AdminDesa\DataPokja1\PenghayatanDanPengamalanController;
-use App\Http\Controllers\AdminDesa\DataPokja2\KehidupanBerkoperasiController;
-use App\Http\Controllers\AdminDesa\DataPokja2\PendidikanController;
-use App\Http\Controllers\AdminDesa\DataPokja3\JumlahIndustriRumahTanggaController;
-use App\Http\Controllers\AdminDesa\DataPokja3\JumlahKaderPokja3Controller;
-use App\Http\Controllers\AdminDesa\DataPokja3\JumlahRumahController;
-use App\Http\Controllers\AdminDesa\DataPokja3\PanganController;
-use App\Http\Controllers\AdminDesa\DataPokja4\JumlahKaderPokja4Controller;
-use App\Http\Controllers\AdminDesa\DataPokja4\KelestarianLingkunganHidupController;
-use App\Http\Controllers\AdminDesa\DataPokja4\KesehatanPosyanduController;
-use App\Http\Controllers\AdminDesa\DataPokja4\PerencanaanSehatController;
-use App\Http\Controllers\AdminDesa\DataUmum\JumlahKelompokUmumController;
-use App\Http\Controllers\AdminDesa\DataUmum\JumlahDataUmumController;
-use App\Http\Controllers\AdminDesa\DataUmum\JumlahJiwaDataUmumController;
-use App\Http\Controllers\AdminDesa\DataUmum\JumlahKaderDataUmumController;
-use App\Http\Controllers\AdminDesa\DataUmum\JumlahTenagaSekretariatDataUmumController;
 use App\Http\Controllers\AdminDesa\DataKegiatan\Kategori\KategoriIndustriRumahController;
 use App\Http\Controllers\AdminDesa\DataKegiatan\Kategori\KategoriPemanfaatanLahanController;
 use App\Http\Controllers\AdminDesa\KaderController;
+use App\Http\Controllers\AdminDesa\KelompokDasawismaController;
 use App\Http\Controllers\AdminKab\BeritaController;
 use App\Http\Controllers\AdminKab\DataAgendaKegiatanController;
 use App\Http\Controllers\AdminKab\DataDesaController;
@@ -116,15 +88,15 @@ Route::get('/agenda', [MainController::class, 'agenda']);
 
 // halaman pokja
 Route::get('/pokja1', [PokjaController::class, 'pokja1']);
-Route::get('/papan1', [PokjaController::class, 'papan1']);
+// Route::get('/papan1', [PokjaController::class, 'papan1']);
 Route::get('/pokja2', [PokjaController::class, 'pokja2']);
-Route::get('/papan2', [PokjaController::class, 'papan2']);
+// Route::get('/papan2', [PokjaController::class, 'papan2']);
 Route::get('/pokja3', [PokjaController::class, 'pokja3']);
-Route::get('/papan3', [PokjaController::class, 'papan3']);
+// Route::get('/papan3', [PokjaController::class, 'papan3']);
 Route::get('/pokja4', [PokjaController::class, 'pokja4']);
-Route::get('/papan4', [PokjaController::class, 'papan4']);
+// Route::get('/papan4', [PokjaController::class, 'papan4']);
 Route::get('/sekretariat', [PokjaController::class, 'sekretariat']);
-Route::get('/data_umum', [PokjaController::class, 'data_umum']);
+// Route::get('/data_umum', [PokjaController::class, 'data_umum']);
 
 // halaman admin desa
 Route::get('/admin_desa/login', [AdminController::class, 'login'])->name('admin_desa.login');
@@ -138,33 +110,40 @@ Route::middleware(['user_type:admin_desa'])->group(function(){
 
     // rekap kelompok dasa wisma
     Route::get('/rekap_kelompok_dasa_wisma', [AdminController::class, 'rekap_kelompok_dasa_wisma']);
+    Route::get('/export_rekap_dasawisma', [AdminController::class, 'export_rekap_dasawisma']);
 
     // data kelompok pkk rt
     Route::get('/data_kelompok_pkk_rt', [AdminController::class, 'data_kelompok_pkk_rt']);
 
     // rekap kelompok pkk rt
     Route::get('/rekap_kelompok_pkk_rt', [AdminController::class, 'rekap_kelompok_pkk_rt']);
+    Route::get('/export_rekap_rt', [AdminController::class, 'export_rekap_rt']);
 
     // data kelompok pkk rw
     Route::get('/data_kelompok_pkk_rw', [AdminController::class, 'data_kelompok_pkk_rw']);
 
     // rekap kelompok pkk rw
     Route::get('/rekap_kelompok_pkk_rw', [AdminController::class, 'rekap_kelompok_pkk_rw']);
+    Route::get('/export_rekap_rw', [AdminController::class, 'export_rekap_rw']);
 
     // data kelompok pkk dusun
     Route::get('/data_kelompok_pkk_dusun', [AdminController::class, 'data_kelompok_pkk_dusun']);
 
     // rekap kelompok dusun
     Route::get('/rekap_kelompok_pkk_dusun', [AdminController::class, 'rekap_kelompok_pkk_dusun']);
+    Route::get('/export_rekap_dusun', [AdminController::class, 'export_rekap_dusun']);
 
     // data kelompok pkk desa
     Route::get('/data_kelompok_pkk_desa', [AdminController::class, 'data_kelompok_pkk_desa']);
 
     // rekap kelompok desa
     Route::get('/rekap_pkk_desa', [AdminController::class, 'rekap_pkk_desa']);
+    Route::get('/print_rekap_desa', [AdminController::class, 'print_rekap_desa']);
 
     // akun kader desa
+    Route::post('/data_kader/update/{id}/password', [KaderController::class, 'update_password']);
     Route::resource('/data_kader', KaderController::class);
+    Route::resource('/data_dasawisma', KelompokDasawismaController::class);
 
     // form data kategori pendataan kader
     Route::resource('/kategori_industri', KategoriIndustriRumahController::class);
@@ -179,13 +158,7 @@ Route::post('/admin_kabupaten/login', [AdminKabController::class, 'loginPost']);
 Route::post('/admin_kabupaten/logout', [AdminKabController::class, 'logoutPost'])->name('admin_kabupaten.logout');
 Route::middleware(['user_type:admin_kabupaten'])->group(function(){
     Route::get('/dashboard_kab', [AdminKabController::class, 'dashboard_kab']);
-    Route::get('/data_pokja1_kab', [AdminKabController::class, 'data_pokja1_kab']);
-    Route::get('/data_pokja2_kab', [AdminKabController::class, 'data_pokja2_kab']);
-    Route::get('/data_pokja3_kab', [AdminKabController::class, 'data_pokja3_kab']);
-    Route::get('/data_pokja4_kab', [AdminKabController::class, 'data_pokja4_kab']);
-    Route::get('/pengguna_kab', [AdminKabController::class, 'data_pengguna_kab']);
-    Route::get('/laporan_kab', [AdminKabController::class, 'data_laporan_kab']);
-    Route::get('/data_umum_kab', [AdminKabController::class, 'data_umum_kab']);
+
     Route::get('/data_kelompok_pkk_kec', [AdminKabController::class, 'data_kelompok_pkk_kec']);
     Route::get('/rekap_pkk_kec', [AdminKabController::class, 'rekap_pkk_kec']);
     Route::get('/data_kelompok_pkk_kab', [AdminKabController::class, 'data_kelompok_pkk_kab']);
@@ -196,8 +169,16 @@ Route::middleware(['user_type:admin_kabupaten'])->group(function(){
     Route::resource('/agendaKeg', DataAgendaKegiatanController::class);
     Route::resource('/data_desa', DataDesaController::class);
     Route::resource('/data_kecamatan', DataKecamatanController::class);
+
+    Route::post('/data_pengguna_super/update/{id}/password', [UserController::class, 'update_password']);
     Route::resource('/data_pengguna_super', UserController::class);
 
+    // mengambil nama desa
+    Route::get('getDesa/{id}', function ($id) {
+        $desas = Data_Desa::where('id_kecamatan',$id)->get();
+        // dd($desas);
+        return response()->json($desas);
+    });
 });
 
 Auth::routes();
@@ -208,18 +189,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('/super_admin', [DashboardSuperController::class, 'index'])->name('super_admin');
 
 //  halaman kader desa
-Route::get('/kader_desa/login', [KaderFormController::class, 'login'])->name('kader_desa.login');
-Route::post('/kader_desa/login', [KaderFormController::class, 'loginPost']);
-Route::post('/kader_desa/logout', [KaderFormController::class, 'logoutPost'])->name('kader_desa.logout');
-Route::middleware(['user_type:kader_desa'])->group(function(){
+Route::get('/kader_dasawisma/login', [KaderFormController::class, 'login'])->name('kader_dasawisma.login');
+Route::post('/kader_dasawisma/login', [KaderFormController::class, 'loginPost']);
+Route::post('/kader_dasawisma/logout', [KaderFormController::class, 'logoutPost'])->name('kader_dasawisma.logout');
+Route::middleware(['user_type:kader_dasawisma'])->group(function(){
         Route::get('/dashboard_kader', [KaderFormController::class, 'dashboard_kader']);
-
-        // mengambil nama desa
-        // Route::get('getDesa/{id}', function ($id) {
-        //     $desas = Data_Desa::where('id_kecamatan',$id)->get();
-        //     // dd($desas);
-        //     return response()->json($desas);
-        // });
 
         Route::get('getKeterangan/{id}', function ($id) {
             $keterangan = KeteranganKegiatan::where('id_kegiatan',$id)->get();
@@ -254,5 +228,6 @@ Route::middleware(['user_type:kader_desa'])->group(function(){
 
     // profil kader
     Route::get('/profil', [KaderFormController::class, 'profil']);
-
+    Route::post('/profil/update/{id}', [KaderFormController::class, 'update_profil']);
+    Route::post('/profil/update/{id}/password', [KaderFormController::class, 'update_password']);
 });

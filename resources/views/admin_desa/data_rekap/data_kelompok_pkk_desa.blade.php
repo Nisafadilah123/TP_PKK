@@ -1,8 +1,8 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Data Kelompok PKK Desa TP PKK | Admin Desa/Kelurahan PKK Kab. Indramayu')
+@section('title', 'Data Kelompok PKK Desa | Admin Desa/Kelurahan PKK Kab. Indramayu')
 
-@section('bread', 'Data Kelompok PKK Desa TP PKK')
+@section('bread', 'Data Kelompok PKK Desa')
 @section('container')
 
     <!-- Main content -->

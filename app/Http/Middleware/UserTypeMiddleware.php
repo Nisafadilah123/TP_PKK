@@ -47,7 +47,7 @@ class UserTypeMiddleware
                 //     return redirect()->route('kader_kelurahan.login')->withErrors(['email' => ['Anda harus login sebagai kader desa terlebih dahulu.']]);
                 // }
                 else{
-                    return redirect()->route('kader_desa.login')->withErrors(['email' => ['Anda harus login sebagai kader desa terlebih dahulu.']]);
+                    return redirect()->route('kader_dasawisma.login')->withErrors(['email' => ['Anda harus login sebagai kader desa terlebih dahulu.']]);
                 }
 
 

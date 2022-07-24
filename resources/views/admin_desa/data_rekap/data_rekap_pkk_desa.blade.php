@@ -159,6 +159,8 @@
                                     </table>
 
                                 </div>
+                                <a href="{{ url('print_rekap_desa') }}" target="_blank" class="btn btn-success" type="button" role="button">
+                                    <i class="fas fa-print"></i> Cetak ke PDF </a><br>
                             </div>
 
                         </div>

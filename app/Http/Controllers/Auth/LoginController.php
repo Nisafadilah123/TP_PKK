@@ -44,7 +44,7 @@ class LoginController extends Controller
         // elseif ( Auth::guard('kader')->user->user_type == 'kader_desa') {
         //     return redirect('/dashboard_kader')->with('status', 'selamat datang');
         // }
-        elseif ( Auth::user()->user_type == 'kader_desa') {
+        elseif ( Auth::user()->user_type == 'kader_dasawisma') {
             Alert::success('Berhasil', 'Selamat datang');
 
             return redirect('/dashboard_kader');

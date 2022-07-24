@@ -16,7 +16,7 @@
           </center>
         <p class="login-box-msg">Silahkan Login Kader Dasawisma</p>
 
-        <form method="POST" action="{{ route('kader_desa.login') }}">
+        <form method="POST" action="{{ route('kader_dasawisma.login') }}">
             @csrf
             <div class="row">
                 <div class="col-md-12">

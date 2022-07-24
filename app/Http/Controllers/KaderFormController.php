@@ -9,12 +9,16 @@ use App\Models\DataPelatihanKader;
 use App\Models\DataPemanfaatanPekarangan;
 use App\Models\DataWarga;
 use App\Models\KategoriKegiatan;
+use App\Models\User;
 use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Dompdf\Dompdf;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class KaderFormController extends Controller
 {
@@ -58,26 +62,6 @@ class KaderFormController extends Controller
         return view('kader.dashboard', compact('message'));
     }
 
-    // halaman data pokja1
-    public function data_pokja1(){
-        return view('kader.data_pokja1');
-    }
-
-    // halaman data pokja2
-    public function data_pokja2(){
-        return view('kader.data_pokja2');
-    }
-
-    // halaman data pokja3
-    public function data_pokja3(){
-        return view('kader.data_pokja3');
-    }
-
-    // halaman data pokja4
-    public function data_pokja4(){
-        return view('kader.data_pokja4');
-    }
-
     // halaman login kader desa pendata
     public function login()
     {
@@ -94,7 +78,7 @@ class KaderFormController extends Controller
 
         $credentials['email'] = $request->get('email');
         $credentials['password'] = $request->get('password');
-        $credentials['user_type'] = 'kader_desa';
+        $credentials['user_type'] = 'kader_dasawisma';
         $remember = $request->get('remember');
 
         $attempt = Auth::attempt($credentials, $remember);
@@ -112,7 +96,7 @@ class KaderFormController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('kader_desa.login');
+        return redirect()->route('kader_dasawisma.login');
     }
 
     // ngambil nama kepala keluarga
@@ -288,6 +272,64 @@ class KaderFormController extends Controller
     }
 
     public function profil(){
-        return view('kader.profil_kader');
+        $data_kader = Auth::user();
+
+        return view('kader.profil_kader', compact('data_kader'));
+    }
+
+    public function update_profil(Request $request, $id = null){
+        // dd($request->all());
+        $request->validate([
+            'name' => 'required',
+            // 'email' => 'required',
+            // 'password' => 'required',
+            // 'user_type' => 'required',
+            // 'id_desa' => 'required',
+            // 'id_kecamatan' => 'required',
+
+        ]);
+        $data_kader = Auth::user();
+        $data_kader->name = $request->name;
+        $data_kader->email = $request->email;
+        if ($request->password) {
+            $data_kader->password = Hash::make($request->password);
+        }
+
+        if ($request->hasFile('foto')) {
+            if ($data_kader->foto && Storage::disk('public')->exists($data_kader->foto)) {
+                Storage::disk('public')->delete($data_kader->foto);
+            }
+
+            $destinationPath = 'foto/';
+            $image = $request->file('foto');
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $result = Storage::disk('public')->putFileAs('foto', $image, $profileImage);
+            $data_kader->foto = $result;
+        }
+        $data_kader->save();
+        Alert::success('Berhasil', 'Data berhasil di Ubah');
+        return redirect()->back();
+    }
+
+    public function update_password(Request $request){
+        // dd($request->all());
+        $request->validate([
+            'password' => 'required',
+            'new_password' => 'required|confirmed',
+
+        ], [
+            'password.required' =>'Masukkan Kata Sandi Salah',
+            'new_password.confirmed' => 'Konfirmasi Kata Sandi Baru tidak cocok'
+        ]);
+        $data_kader = Auth::user();
+        if (!Hash::check($request->password, $data_kader->password)) {
+            Alert::error('Gagal', 'Kata sandi lama tidak sesuai');
+            return redirect()->back();
+        }
+        $data_kader->password = Hash::make($request->new_password);
+        $data_kader->save();
+
+        Alert::success('Berhasil', 'Data berhasil di Ubah');
+        return view('kader.profil_kader', compact('data_kader'));
     }
 }

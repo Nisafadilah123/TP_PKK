@@ -17,7 +17,7 @@ class Permissions extends \Spatie\Permission\Models\Permission
 
     // const MANAGE_ROLES = 'can manage roles';
     // const MANAGE_PERMISSIONS = 'can manage permissions';
-    const MANAGE_KADER_DESA = 'can manage kader desa';
+    const MANAGE_KADER_DASAWISMA = 'can manage kader desa';
     const MANAGE_KADER_KELURAHAN = 'can manage kader kelurahan';
     const MANAGE_KADER_KECAMATAN = 'can manage kader kecamatan';
     const MANAGE_KADER_KABUPATEN = 'can manage kader kabupaten';
@@ -35,7 +35,7 @@ class Permissions extends \Spatie\Permission\Models\Permission
 
 //             self::MANAGE_ROLES,
 //             self::MANAGE_PERMISSIONS,
-            self::MANAGE_KADER_DESA,
+            self::MANAGE_KADER_DASAWISMA,
             self::MANAGE_KADER_KELURAHAN,
             self::MANAGE_KADER_KECAMATAN,
             self::MANAGE_KADER_KABUPATEN,
