@@ -89,6 +89,9 @@ class RW
     public $jumlah_jamban;
 
     /** @var int */
+    public $punya_jamban;
+
+    /** @var int */
     public $jumlah_tempel_stiker;
 
     /** @var int */

@@ -41,7 +41,7 @@
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Masukkan Email" required value="{{ old('emaiil') }}">
+            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Masukkan Email" required value="{{ old('email') }}">
             @error('email')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -62,7 +62,7 @@
           <div class="form-group">
             <label>User Type</label>
             <select class="form-control @error('user_type') is-invalid @enderror" name="user_type">
-                <option>Pilih User Type</option>
+                <option hidden>Pilih User Type</option>
 
                 @foreach($user_type as $key => $val)
                     @if($key==old('user_type'))

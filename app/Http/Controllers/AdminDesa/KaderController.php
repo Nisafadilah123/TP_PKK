@@ -54,8 +54,9 @@ class KaderController extends Controller
         // dd($request->all());
         $request->validate([
             'name' => 'required',
-            'email' => 'required|unique:data_kader',
-            'password' => 'required',
+            // 'email' => 'required|unique:data_kader',
+            'email' => 'required',
+            'password' => 'required|min:8',
             'user_type' => 'required',
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
@@ -75,11 +76,15 @@ class KaderController extends Controller
         $kader->id_kecamatan = auth()->user()->id_kecamatan;
 
         if ($request->hasFile('foto')) {
+            if ($kader->foto && Storage::disk('public')->exists($kader->foto)) {
+                Storage::disk('public')->delete($kader->foto);
+            }
+
             $destinationPath = 'foto/';
             $image = $request->file('foto');
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $result = Storage::disk('public')->putFileAs('foto', $image, $profileImage);
-            $pengguna['foto'] = $result;
+            $kader->foto = $result;
         }
         $kader->save();
         // dd($kader);
@@ -158,7 +163,8 @@ class KaderController extends Controller
             $data_kader->foto = $result;
         }
 
-        $data_kader->update();
+        $data_kader->save();
+        // dd($result);
         Alert::success('Berhasil', 'Data berhasil di Ubah');
 
         return redirect('/data_kader');
@@ -182,7 +188,7 @@ class KaderController extends Controller
     public function update_password(Request $request, $id){
         // dd($request->all());
         $request->validate([
-            'new_password' => 'required|confirmed',
+            'new_password' => 'required|confirmed|min:8',
         ], [
             'password.required' =>'Konfirmasi Kata Sandi',
         ]);

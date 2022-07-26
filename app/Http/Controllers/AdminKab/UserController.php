@@ -62,7 +62,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:8',
             'user_type' => 'required',
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
@@ -165,7 +165,8 @@ class UserController extends Controller
             $data_pengguna_super->foto = $result;
         }
 
-        $data_pengguna_super->update();
+        $data_pengguna_super->save();
+        dd($result);
         Alert::success('Berhasil', 'Data berhasil di Ubah');
 
         return redirect('/data_pengguna_super');
@@ -189,7 +190,7 @@ class UserController extends Controller
     public function update_password(Request $request, $id){
         // dd($request->all());
         $request->validate([
-            'new_password' => 'required|confirmed',
+            'new_password' => 'required|confirmed|min:8',
         ], [
             'password.required' =>'Konfirmasi Kata Sandi',
         ]);

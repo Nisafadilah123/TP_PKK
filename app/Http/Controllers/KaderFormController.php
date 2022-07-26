@@ -187,7 +187,7 @@ class KaderFormController extends Controller
         //     ->get();
         $catatan_keluarga = DataWarga::query()
             ->with(['kegiatan', 'kegiatan.kategori_kegiatan',
-                'kegiatan.keterangan_kegiatan', 'keluarga'])
+                'kegiatan.keterangan_kegiatan', 'keluarga', 'dasawisma'])
             ->where('id_keluarga', $id)
             ->get();
         // dump($catatan_keluarga);
@@ -222,7 +222,7 @@ class KaderFormController extends Controller
        //     ->get();
        $catatan_keluarga = DataWarga::query()
            ->with(['kegiatan', 'kegiatan.kategori_kegiatan',
-               'kegiatan.keterangan_kegiatan', 'keluarga'])
+               'kegiatan.keterangan_kegiatan', 'keluarga', 'dasawisma'])
            ->where('id_keluarga', $id)
            ->get();
        // dump($catatan_keluarga);
@@ -246,7 +246,7 @@ class KaderFormController extends Controller
         //     ->get();
         $catatan_keluarga = DataWarga::query()
             ->with(['kegiatan', 'kegiatan.kategori_kegiatan',
-                'kegiatan.keterangan_kegiatan', 'keluarga'])
+                'kegiatan.keterangan_kegiatan', 'keluarga', 'dasawisma'])
             ->where('id_keluarga', $id)
             ->get();
         // dump($catatan_keluarga);

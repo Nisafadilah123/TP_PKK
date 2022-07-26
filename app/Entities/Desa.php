@@ -92,7 +92,10 @@ class Desa
     public $jumlah_punya_saluran_air;
 
     /** @var int */
-    public $jumlah_jumlah_jamban;
+    public $jumlah_jamban;
+
+    /** @var int */
+    public $punya_jamban;
 
     /** @var int */
     public $jumlah_tempel_stiker;

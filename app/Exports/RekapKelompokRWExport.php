@@ -64,7 +64,7 @@ class RekapKelompokRWExport implements FromArray, WithHeadings, WithEvents
                 'sumber_air_2' => $keluarga->jumlah_sumber_air_sumur ?: '0',
                 'sumber_air_3' => $keluarga->jumlah_sumber_air_sungai ?: '0',
                 'sumber_air_4' => $keluarga->jumlah_sumber_air_dll ?: '0',
-                'jumlah_punya_jamban' => $keluarga->jumlah_jamban ?: '0',
+                'jumlah_punya_jamban' => $keluarga->punya_jamban ?: '0',
                 'makanan_pokok' => $keluarga->jumlah_makanan_pokok_beras ?: '0',
                 'makanan_pokok_0' => $keluarga->jumlah_makanan_pokok_non_beras ?: '0',
                 'aktivitas_UP2K' => $keluarga->jumlah_aktivitas_UP2K ?: '0',
@@ -104,7 +104,7 @@ class RekapKelompokRWExport implements FromArray, WithHeadings, WithEvents
             'sumber_air_2' => $rt->sum('jumlah_sumber_air_sumur') ?: '0',
             'sumber_air_3' => $rt->sum('jumlah_sumber_air_sungai') ?: '0',
             'sumber_air_4' => $rt->sum('jumlah_sumber_air_dll') ?: '0',
-            'jumlah_punya_jamban' => $rt->sum('jumlah_jamban') ?: '0',
+            'jumlah_punya_jamban' => $rt->sum('punya_jamban') ?: '0',
             'makanan_pokok' => $rt->sum('jumlah_makanan_pokok_beras') ?: '0',
             'makanan_pokok_0' => $rt->sum('jumlah_makanan_pokok_non_beras') ?: '0',
             'aktivitas_UP2K' => $rt->sum('jumlah_aktivitas_UP2K') ?: '0',
@@ -191,6 +191,13 @@ class RekapKelompokRWExport implements FromArray, WithHeadings, WithEvents
         ];
 
         return [
+            ['REKAPITULASI'],
+            ['CATATAN DATA DAN KEGIATAN WARGA'],
+            ['KELOMPOK PKK RW'],
+            ['RW : ' . $this->rw],
+            ['Desa/Kel : ' . $this->desa->nama_desa],
+            ['Tahun : ' . $this->periode],
+            [],
             $headings,
             $headings2,
         ];
@@ -200,20 +207,31 @@ class RekapKelompokRWExport implements FromArray, WithHeadings, WithEvents
     {
         return [
             AfterSheet::class => function(AfterSheet $event) {
-                $event->sheet->getDelegate()->mergeCells('A1:A2');
-                $event->sheet->getDelegate()->mergeCells('B1:B2');
-                $event->sheet->getDelegate()->mergeCells('C1:C2');
-                $event->sheet->getDelegate()->mergeCells('D1:D2');
-                $event->sheet->getDelegate()->mergeCells('E1:E2');
+                $event->sheet->getDelegate()->mergeCells('A1:AH1');
+                $event->sheet->getDelegate()->mergeCells('A2:AH2');
+                $event->sheet->getDelegate()->mergeCells('A3:AH3');
+                $event->sheet->getDelegate()->mergeCells('A4:AH4');
+                $event->sheet->getDelegate()->mergeCells('A5:AH5');
+                $event->sheet->getDelegate()->mergeCells('A6:AH6');
 
-                $event->sheet->getDelegate()->mergeCells('F1:Q1');
-                $event->sheet->getDelegate()->mergeCells('R1:V1');
-                $event->sheet->getDelegate()->mergeCells('W1:Z1');
-                $event->sheet->getDelegate()->mergeCells('AA1:AA2');
-                $event->sheet->getDelegate()->mergeCells('AB1:AC1');
-                $event->sheet->getDelegate()->mergeCells('AD1:AH1');
+                $event->sheet->getDelegate()->getStyle('A1:A6')->getAlignment()->setHorizontal('center');
 
-                $lastRow = count($this->rt) + 3;
+                $event->sheet->getDelegate()->mergeCells('A8:A9');
+                $event->sheet->getDelegate()->mergeCells('B8:B9');
+                $event->sheet->getDelegate()->mergeCells('C8:C9');
+                $event->sheet->getDelegate()->mergeCells('D8:D9');
+                $event->sheet->getDelegate()->mergeCells('E8:E9');
+
+                $event->sheet->getDelegate()->mergeCells('F8:Q8');
+                $event->sheet->getDelegate()->mergeCells('R8:V8');
+                $event->sheet->getDelegate()->mergeCells('W8:Z8');
+                $event->sheet->getDelegate()->mergeCells('AA8:AA9');
+                $event->sheet->getDelegate()->mergeCells('AB8:AC8');
+                $event->sheet->getDelegate()->mergeCells('AD8:AH8');
+
+                $event->sheet->getDelegate()->getStyle('F8:AH8')->getAlignment()->setHorizontal('center');
+
+                $lastRow = count($this->rt) + 10;
                 $event->sheet->getDelegate()->mergeCells('A'.$lastRow.':B'.$lastRow);
             },
         ];

@@ -36,7 +36,7 @@
                                         <th rowspan="3" style="text-align: center;">Jml. KRT</th>
                                         <th rowspan="3" style="text-align: center;">Jml. KK</th>
                                         <th colspan="12" style="text-align:center;">Jumlah Anggota Keluarga</th>
-                                        <th colspan="6" style="text-align:center;">Jumlah Rumah</th>
+                                        <th colspan="5" style="text-align:center;">Kriteria Rumah</th>
                                         <th colspan="4" style="text-align:center;">Sumber Air Keluarga</th>
                                         <th rowspan="3" style="text-align: center;">Jml. Jamban Keluarga</th>
                                         <th colspan="2" style="text-align:center;">Makanan Pokok</th>
@@ -114,7 +114,7 @@
                                             <td>{{ $kec->jumlah_sumber_air_sumur }}</td>
                                             <td>{{ $kec->jumlah_sumber_air_sungai }}</td>
                                             <td>{{ $kec->jumlah_sumber_air_dll }}</td>
-                                            <td>{{ $kec->jumlah_jamban }}</td>
+                                            <td>{{ $kec->punya_jamban }}</td>
                                             <td>{{ $kec->jumlah_makanan_pokok_beras }}</td>
                                             <td>{{ $kec->jumlah_makanan_pokok_non_beras }}</td>
                                             <td>{{ $kec->jumlah_aktivitas_UP2K }}</td>
@@ -154,7 +154,7 @@
                                             <td>{{ $kecamatans->sum('jumlah_sumber_air_sumur') }}</td>
                                             <td>{{ $kecamatans->sum('jumlah_sumber_air_sungai') }}</td>
                                             <td>{{ $kecamatans->sum('jumlah_sumber_air_dll') }}</td>
-                                            <td>{{ $kecamatans->sum('jumlah_jamban') }}</td>
+                                            <td>{{ $kecamatans->sum('punya_jamban') }}</td>
                                             <td>{{ $kecamatans->sum('jumlah_makanan_pokok_beras') }}</td>
                                             <td>{{ $kecamatans->sum('jumlah_makanan_pokok_non_beras') }}</td>
                                             <td>{{ $kecamatans->sum('jumlah_aktivitas_UP2K') }}</td>
@@ -166,6 +166,9 @@
                                 </table>
 
                             </div>
+                            <a href="{{ url('export_rekap_kab').'?'.http_build_query(compact('kecamatan', 'periode')) }}" target="_blank" class="btn btn-success" type="button" role="button">
+                                <i class="fas fa-print"></i> Cetak ke Excel </a><br>
+
                         </div>
 
                     </div>

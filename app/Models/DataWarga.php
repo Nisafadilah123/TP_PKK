@@ -53,4 +53,8 @@ class DataWarga extends Model
     public function user(){
         return $this->belongsTo(User::class, 'id_user');
     }
+
+    public function dasawisma(){
+        return $this->belongsTo(DataKelompokDasawisma::class, 'id_dasawisma');
+    }
 }

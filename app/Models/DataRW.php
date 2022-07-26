@@ -75,7 +75,7 @@ class DataRW
                 $rw->jumlah_sumber_air_sumur = $keluargas->where('sumber_air', 2)->count();
                 $rw->jumlah_sumber_air_sungai = $keluargas->where('sumber_air', 3)->count();
                 $rw->jumlah_sumber_air_dll = $keluargas->where('sumber_air', 4)->count();
-                $rw->jumlah_jamban = $keluargas->sum('jumlah_jamban');
+                $rw->punya_jamban = $keluargas->sum('punya_jamban');
                 $rw->jumlah_makanan_pokok_beras = $keluargas->where('makanan_pokok', 1)->count();
                 $rw->jumlah_makanan_pokok_non_beras = $keluargas->where('makanan_pokok', 0)->count();
                 $rw->jumlah_aktivitas_UP2K = $keluargas->sum('aktivitas_UP2K');

@@ -184,6 +184,14 @@ class RekapKelompokRTExport implements FromArray, WithHeadings, WithEvents
         ];
 
         return [
+            ['REKAPITULASI'],
+            ['CATATAN DATA DAN KEGIATAN WARGA'],
+            ['KELOMPOK PKK RT'],
+            ['RT : ' . $this->rt],
+            ['RW : ' . $this->rw],
+            ['Desa/Kel : ' . $this->desa->nama_desa],
+            ['Tahun : ' . $this->periode],
+            [],
             $headings,
             $headings2,
         ];
@@ -193,18 +201,30 @@ class RekapKelompokRTExport implements FromArray, WithHeadings, WithEvents
     {
         return [
             AfterSheet::class => function(AfterSheet $event) {
-                $event->sheet->getDelegate()->mergeCells('A1:A2');
-                $event->sheet->getDelegate()->mergeCells('B1:B2');
-                $event->sheet->getDelegate()->mergeCells('C1:C2');
-                $event->sheet->getDelegate()->mergeCells('D1:D2');
+                $event->sheet->getDelegate()->mergeCells('A1:AD1');
+                $event->sheet->getDelegate()->mergeCells('A2:AD2');
+                $event->sheet->getDelegate()->mergeCells('A3:AD3');
+                $event->sheet->getDelegate()->mergeCells('A4:AD4');
+                $event->sheet->getDelegate()->mergeCells('A5:AD5');
+                $event->sheet->getDelegate()->mergeCells('A6:AD6');
+                $event->sheet->getDelegate()->mergeCells('A7:AD7');
 
-                $event->sheet->getDelegate()->mergeCells('E1:O1');
-                $event->sheet->getDelegate()->mergeCells('P1:U1');
-                $event->sheet->getDelegate()->mergeCells('V1:X1');
-                $event->sheet->getDelegate()->mergeCells('Y1:Y1');
-                $event->sheet->getDelegate()->mergeCells('Z1:AC1');
+                $event->sheet->getDelegate()->getStyle('A1:A7')->getAlignment()->setHorizontal('center');
 
-                $lastRow = count($this->dasa_wisma) + 3;
+                $event->sheet->getDelegate()->mergeCells('A9:A10');
+                $event->sheet->getDelegate()->mergeCells('B9:B10');
+                $event->sheet->getDelegate()->mergeCells('C9:C10');
+                $event->sheet->getDelegate()->mergeCells('D9:D10');
+
+                $event->sheet->getDelegate()->mergeCells('E9:O9');
+                $event->sheet->getDelegate()->mergeCells('P9:U9');
+                $event->sheet->getDelegate()->mergeCells('V9:X9');
+                $event->sheet->getDelegate()->mergeCells('Y9:Z9');
+                $event->sheet->getDelegate()->mergeCells('AA9:AD9');
+
+                $event->sheet->getDelegate()->getStyle('E9:AD9')->getAlignment()->setHorizontal('center');
+
+                $lastRow = count($this->dasa_wisma) + 11;
                 $event->sheet->getDelegate()->mergeCells('A'.$lastRow.':B'.$lastRow);
             },
         ];

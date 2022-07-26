@@ -36,7 +36,7 @@
                             <div class="row">
                                 <div class="col-sm-10">
                                     <h6>Catatan Keluarga dari : {{ ucfirst($keluarga->nama_kepala_rumah_tangga) }}</h6>
-                                    <h6>Anggota Kelompok Dasawisma : {{ ucfirst($keluarga->dasa_wisma) }}</h6>
+                                    <h6>Anggota Kelompok Dasawisma : {{ ucfirst($keluarga->dasawisma->nama_dasawisma) }}</h6>
                                     <h6>Tahun : {{ ucfirst($keluarga->periode) }}</h6>
                                 </div>
                                 <div class="col-sm-2">
@@ -112,10 +112,11 @@
                                                         <tr>
                                                             <td style="vertical-align: middle;">{{ $no }}</td>
                                                             <td style="vertical-align: middle;">{{ucfirst($data_warga->nama)}}</td>
-                                                            <td style="vertical-align: middle;">{{ucfirst($data_warga->status)}}</td>
                                                             <td style="vertical-align: middle;">{{ucfirst($data_warga->status_perkawinan)}}</td>
                                                             <td style="vertical-align: middle;">{{ucfirst($data_warga->jenis_kelamin)}}</td>
-                                                            <td style="vertical-align: middle;">{{ucfirst($data_warga->tgl_lahir)}}/{{ ucfirst($data_warga->umur) }} Tahun</td>
+                                                            <td style="vertical-align: middle;">{{ucfirst($data_warga->tempat_lahir)}}</td>
+                                                            <td style="vertical-align: middle;">{{ \Carbon\Carbon::parse($data_warga->tgl_lahir)->isoFormat('D MMMM Y') }}/{{ ucfirst($data_warga->umur) }} Tahun</td>
+                                                            <td style="vertical-align: middle;">{{ucfirst($data_warga->agama)}}</td>
                                                             <td style="vertical-align: middle;">{{ucfirst($data_warga->pendidikan)}}</td>
                                                             <td style="vertical-align: middle;">{{ucfirst($data_warga->pekerjaan)}}</td>
                                                             <td style="vertical-align: middle;">{{ucfirst($data_warga->berkebutuhan_khusus)}}</td>

@@ -9,9 +9,8 @@
 <main id="main">
     <section id="hero-animated" class="hero-animated d-flex align-items-center">
         <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
-          <img src="/image/remove.png" class="img-fluid animated">
+          <img src="/image/remove.png" class="img-fluid animated" width="300px">
           <h4>TENTANG PEMBERDAYAAN & KESEJAHTERAAN KELUARGA (PKK) KAB. INDRAMAYU</h4>
-          <p>Et voluptate esse accusantium accusamus natus reiciendis quidem voluptates similique aut.</p>
           <div class="d-flex">
             <a href="/about" class="btn-get-started scrollto">Baca Selengkapnya</a>
           </div>
@@ -173,7 +172,6 @@
 
         <div class="section-header">
           <h2>Berita PKK</h2>
-          <p>Recent posts form our Blog</p>
         </div>
 
         <div class="row">

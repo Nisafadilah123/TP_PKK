@@ -110,7 +110,7 @@
                                                 <td>{{ $rw->jumlah_sumber_air_sumur }}</td>
                                                 <td>{{ $rw->jumlah_sumber_air_sungai }}</td>
                                                 <td>{{ $rw->jumlah_sumber_air_dll }}</td>
-                                                <td>{{ $rw->jumlah_jamban }}</td>
+                                                <td>{{ $rw->punya_jamban }}</td>
                                                 <td>{{ $rw->jumlah_makanan_pokok_beras }}</td>
                                                 <td>{{ $rw->jumlah_makanan_pokok_non_beras }}</td>
                                                 <td>{{ $rw->jumlah_aktivitas_UP2K }}</td>
@@ -147,7 +147,7 @@
                                                 <td>{{ $rws->sum('jumlah_sumber_air_sumur') }}</td>
                                                 <td>{{ $rws->sum('jumlah_sumber_air_sungai') }}</td>
                                                 <td>{{ $rws->sum('jumlah_sumber_air_dll') }}</td>
-                                                <td>{{ $rws->sum('jumlah_jamban') }}</td>
+                                                <td>{{ $rws->sum('punya_jamban') }}</td>
                                                 <td>{{ $rws->sum('jumlah_makanan_pokok_beras') }}</td>
                                                 <td>{{ $rws->sum('jumlah_makanan_pokok_non_beras') }}</td>
                                                 <td>{{ $rws->sum('jumlah_aktivitas_UP2K') }}</td>

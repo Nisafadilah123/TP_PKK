@@ -139,7 +139,7 @@
                   <li class="nav-item">
                     <a href="/data_kelompok_dasa_wisma" class="nav-link {{ Request::is('data_kelompok_dasa_wisma') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data Kelompok Dasa <br> Wisma TP PKK</p>
+                      <p>Data Kelompok Dasawisma</p>
                     </a>
                   </li>
                   <li class="nav-item">

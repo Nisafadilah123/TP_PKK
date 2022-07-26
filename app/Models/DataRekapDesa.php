@@ -77,7 +77,7 @@ class DataRekapDesa
                 $desa->jumlah_sumber_air_sumur = $keluargas->where('sumber_air', 2)->count();
                 $desa->jumlah_sumber_air_sungai = $keluargas->where('sumber_air', 3)->count();
                 $desa->jumlah_sumber_air_dll = $keluargas->where('sumber_air', 4)->count();
-                $desa->jumlah_jumlah_jamban = $keluargas->sum('jumlah_jamban');
+                $desa->punya_jamban = $keluargas->sum('punya_jamban');
                 $desa->jumlah_makanan_pokok_beras = $keluargas->where('makanan_pokok', 1)->count();
                 $desa->jumlah_makanan_pokok_non_beras = $keluargas->where('makanan_pokok', 0)->count();
                 $desa->jumlah_aktivitas_UP2K = $keluargas->sum('aktivitas_UP2K');

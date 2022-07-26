@@ -77,7 +77,7 @@ class DataDusun
                 $dusun->jumlah_sumber_air_pdam = $keluargas->where('sumber_air', 1)->count();
                 $dusun->jumlah_sumber_air_sumur = $keluargas->where('sumber_air', 2)->count();
                 $dusun->jumlah_sumber_air_dll = $keluargas->where('sumber_air', 4)->count();
-                $dusun->jumlah_jumlah_jamban = $keluargas->sum('jumlah_jamban');
+                $dusun->punya_jamban = $keluargas->sum('punya_jamban');
                 $dusun->jumlah_makanan_pokok_beras = $keluargas->where('makanan_pokok', 1)->count();
                 $dusun->jumlah_makanan_pokok_non_beras = $keluargas->where('makanan_pokok', 0)->count();
                 $dusun->jumlah_aktivitas_UP2K = $keluargas->sum('aktivitas_UP2K');

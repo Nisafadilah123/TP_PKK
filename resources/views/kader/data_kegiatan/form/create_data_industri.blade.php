@@ -1,15 +1,15 @@
 @extends('kader.layout')
 
-@section('title', 'Tambah Data Industri Rumah Tangga TP PKK | Kader Dasawisma PKK Kab. Indramayu')
+@section('title', 'Tambah Data Industri Rumah Tangga | Kader Dasawisma PKK Kab. Indramayu')
 
-@section('bread', 'Tambah Data Industri Rumah Tangga TP PKK')
+@section('bread', 'Tambah Data Industri Rumah Tangga')
 @section('container')
 
 <div class="col-md-8">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Tambah Data Industri Rumah Tangga TP PKK</h3>
+        <h3 class="card-title">Tambah Data Industri Rumah Tangga</h3>
       </div>
       <!-- /.card-header -->
       <!-- form start -->

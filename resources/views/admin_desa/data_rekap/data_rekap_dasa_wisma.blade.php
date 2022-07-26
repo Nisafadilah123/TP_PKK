@@ -17,7 +17,7 @@
                                 <h6><strong>REKAPITULASI</strong></h6>
                                 <h6><strong>CATATAN DATA DAN KEGIATAN WARGA</strong> </h6>
                                 <h6><strong>KELOMPOK DASA WISMA</strong> </h6>
-                                <h6>Dasa Wisma : {{ ucfirst($dasa_wisma) }}</h6>
+                                <h6>Dasa Wisma : {{ ucfirst($dasa_wisma->nama_dasawisma) }}</h6>
                                 <h6>RT : {{ $rt }}</h6>
                                 <h6>RW : {{ $rw }}</h6>
                                 <h6>Desa/Kel : {{ ucfirst($desa->nama_desa) }}</h6>
@@ -230,8 +230,8 @@
                                 </table>
 
                             </div>
-                            <a href="{{ url('export_rekap_dasawisma').'?'.http_build_query(compact('dasa_wisma', 'rt', 'rw', 'periode'))  }}" target="_blank" class="btn btn-success" type="button" role="button">
-                                <i class="fas fa-file"></i> Cetak ke Excel </a><br>
+                            <a href="{{ url('export_rekap_dasawisma').'?'.http_build_query(compact('nama_dasawisma', 'rt', 'rw', 'periode'))  }}" target="_blank" class="btn btn-success" type="button" role="button">
+                                <i class="fas fa-print"></i> Cetak ke Excel </a><br>
                         </div>
                     </div>
                 </div>

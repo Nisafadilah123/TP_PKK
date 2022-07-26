@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\PendataanKader;
 use App\Http\Controllers\Controller;
 use App\Models\Data_Desa;
+use App\Models\DataDasaWisma;
+use App\Models\DataKelompokDasawisma;
 use App\Models\DataKeluarga;
 use App\Models\DataWarga;
 use Illuminate\Http\Request;
@@ -23,7 +25,9 @@ class DataWargaController extends Controller
 
         //halaman data warga
         $warga=DataWarga::all()->where('id_desa', $user->id_desa);
-        return view('kader.data_kegiatan.data_warga', compact('warga'));
+        $dasawisma = DataKelompokDasawisma::all();
+
+        return view('kader.data_kegiatan.data_warga', compact('warga', 'dasawisma'));
     }
 
     /**
@@ -47,8 +51,9 @@ class DataWargaController extends Controller
         ->get();
 
      $kel = DataKeluarga::all();
+     $dasawisma = DataKelompokDasawisma::all();
 
-     return view('kader.data_kegiatan.form.create_data_warga', compact('desas', 'kec', 'kel', 'kad'));
+     return view('kader.data_kegiatan.form.create_data_warga', compact('desas', 'kec', 'kel', 'kad', 'dasawisma'));
 
  }
 
@@ -66,10 +71,11 @@ class DataWargaController extends Controller
         $request->validate([
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
-            'dasa_wisma' => 'required',
+            // 'dasa_wisma' => 'required',
+            'id_dasawisma' => 'required',
             'id_keluarga' => 'required',
             'no_registrasi' => 'required',
-            'no_ktp' => 'required',
+            'no_ktp' => 'required|min:16',
             'nama' => 'required',
             'jabatan' => 'required',
             'jenis_kelamin' => 'required',
@@ -98,7 +104,7 @@ class DataWargaController extends Controller
         ], [
             'id_desa.required' => 'Lengkapi Alamat Desa Warga',
             'id_kecamatan' => 'Lengkapi Alamat Kecamatan Warga',
-            'dasa_wisma.required' => 'Pilih Nama Dasawisma Yang Diikuti Warga',
+            'id_dasa_wisma.required' => 'Pilih Nama Dasawisma Yang Diikuti Warga',
             'id_keluarga.required' => 'Lengkapi Nama Kepala Rumah Tangga',
             'no_registrasi.required' => 'Lengkapi No. Registrasi',
             'no_ktp.required' => 'Lengkapi No. KTP/NIK',
@@ -141,7 +147,7 @@ class DataWargaController extends Controller
             $wargas = new DataWarga;
             $wargas->id_desa = $request->id_desa;
             $wargas->id_kecamatan = $request->id_kecamatan;
-            $wargas->dasa_wisma = $request->dasa_wisma;
+            $wargas->id_dasawisma = $request->id_dasawisma;
             $wargas->id_keluarga = $request->id_keluarga;
             // $wargas->nik_kepala_keluarga = $request->nik_kepala_keluarga == $request->no_ktp ? null : $request->nik_kepala_keluarga;
             $wargas->no_registrasi = $request->no_registrasi;
@@ -222,8 +228,9 @@ class DataWargaController extends Controller
         ->get();
 
         $kel = DataKeluarga::all();
+        $dasawisma = DataKelompokDasawisma::all();
 
-        return view('kader.data_kegiatan.form.edit_data_warga', compact('data_warga','desa','desas','kec', 'kel', 'kad'));
+        return view('kader.data_kegiatan.form.edit_data_warga', compact('data_warga','desa','desas','kec', 'kel', 'kad', 'dasawisma'));
 
     }
 
@@ -242,10 +249,10 @@ class DataWargaController extends Controller
         $request->validate([
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
-            'dasa_wisma' => 'required',
+            'id_dasawisma' => 'required',
             'id_keluarga' => 'required',
             'no_registrasi' => 'required',
-            'no_ktp' => 'required',
+            'no_ktp' => 'required|min:16',
             'nama' => 'required',
             'jabatan' => 'required',
             'jenis_kelamin' => 'required',
@@ -274,7 +281,7 @@ class DataWargaController extends Controller
         ], [
             'id_desa.required' => 'Lengkapi Alamat Desa Warga',
             'id_kecamatan' => 'Lengkapi Alamat Kecamatan Warga',
-            'dasa_wisma.required' => 'Lengkapi Nama Dasawisma Yang Diikuti Warga',
+            'id_dasawisma.required' => 'Lengkapi Nama Dasawisma Yang Diikuti Warga',
             'id_keluarga.required' => 'Lengkapi Nama Kepala Rumah Tangga',
             'no_registrasi.required' => 'Lengkapi No. Registrasi',
             'no_ktp.required' => 'Lengkapi No. KTP/NIK',

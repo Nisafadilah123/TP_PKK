@@ -107,7 +107,7 @@
                                                 <td>{{ $dusun->jumlah_kriteria_rumah_tidak_sehat }}</td>
                                                 <td>{{ $dusun->jumlah_punya_tempat_sampah }}</td>
                                                 <td>{{ $dusun->jumlah_punya_saluran_air }}</td>
-                                                <td>{{ $dusun->jumlah_jumlah_jamban }}</td>
+                                                <td>{{ $dusun->punya_jamban }}</td>
                                                 <td>{{ $dusun->jumlah_tempel_stiker }}</td>
                                                 <td>{{ $dusun->jumlah_sumber_air_pdam }}</td>
                                                 <td>{{ $dusun->jumlah_sumber_air_sumur }}</td>
@@ -143,7 +143,7 @@
                                                 <td>{{ $dusuns->sum('jumlah_kriteria_rumah_tidak_sehat') }}</td>
                                                 <td>{{ $dusuns->sum('jumlah_punya_tempat_sampah') }}</td>
                                                 <td>{{ $dusuns->sum('jumlah_punya_saluran_air') }}</td>
-                                                <td>{{ $dusuns->sum('jumlah_jamban') }}</td>
+                                                <td>{{ $dusuns->sum('punya_jamban') }}</td>
                                                 <td>{{ $dusuns->sum('jumlah_tempel_stiker') }}</td>
                                                 <td>{{ $dusuns->sum('jumlah_sumber_air_pdam') }}</td>
                                                 <td>{{ $dusuns->sum('jumlah_sumber_air_sumur') }}</td>
@@ -159,8 +159,8 @@
                                     </table>
 
                                 </div>
-                                <a href="{{ url('print_rekap_desa') }}" target="_blank" class="btn btn-success" type="button" role="button">
-                                    <i class="fas fa-print"></i> Cetak ke PDF </a><br>
+                                <a href="{{ url('export_rekap_desa').'?'.http_build_query(compact('periode')) }}" target="_blank" class="btn btn-success" type="button" role="button">
+                                    <i class="fas fa-print"></i> Cetak ke Excel </a><br>
                             </div>
 
                         </div>

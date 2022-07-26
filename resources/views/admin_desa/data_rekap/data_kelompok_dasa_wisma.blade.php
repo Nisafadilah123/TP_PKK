@@ -32,14 +32,14 @@
                                         @foreach ($dasa_wisma as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->dasa_wisma)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->nama_dasawisma)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->rt)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->rw)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
 
                                         <td class="text-center">
                                             <a class="btn btn-success btn-sm" href="{{ url('rekap_kelompok_dasa_wisma').'?'.http_build_query([
-                                                'dasa_wisma' => $c->dasa_wisma,
+                                                'nama_dasawisma' => $c->nama_dasawisma,
                                                 'rt' => $c->rt,
                                                 'rw' => $c->rw,
                                                 'periode' => $c->periode,

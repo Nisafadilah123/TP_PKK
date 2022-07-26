@@ -30,7 +30,7 @@
                                         <th>Password</th>
                                         <th>User Type</th>
                                         <th>Kader Dasawisma</th>
-                                        {{-- <th>RT/RW</th> --}}
+                                        <th>RT/RW</th>
                                         <th>Foto</th>
                                         <th>Nama Desa</th>
                                         <th>Nama kecamatan</th>
@@ -50,6 +50,13 @@
                                         <td style="vertical-align: middle;">
                                             @if ($dasawisma = $c->dasawisma)
                                                 {{ $dasawisma->nama_dasawisma }}
+                                            @else
+                                                -
+                                            @endif
+                                        </td>
+                                        <td style="vertical-align: middle;">
+                                            @if ($rt = $c->rt)
+                                                {{ $dasawisma->rt }}/{{ $dsawisma->rw }}
                                             @else
                                                 -
                                             @endif

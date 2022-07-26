@@ -19,7 +19,7 @@
                             <div class="row">
                                 <div class="col-sm-8">
                                     <h6>Catatan Keluarga dari : {{ ucfirst($keluarga->nama_kepala_rumah_tangga) }}</h6>
-                                    <h6>Anggota Kelompok Dasawisma : {{ ucfirst($keluarga->dasa_wisma) }}</h6>
+                                    <h6>Anggota Kelompok Dasawisma : {{ ucfirst($keluarga->dasawisma->nama_dasawisma) }}</h6>
                                     <h6>Tahun : {{ ucfirst($keluarga->periode) }}</h6>
                                 </div>
                                 <div class="col-sm-4">

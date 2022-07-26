@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Exports\RekapKelompokKabupatenExport;
+use App\Exports\RekapKelompokKecamatanExport;
 use App\Models\BeritaKab;
 use App\Models\Data_Desa;
 use App\Models\DataAgenda;
@@ -12,6 +15,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminKabController extends Controller
 {
@@ -104,6 +108,33 @@ class AdminKabController extends Controller
         ));
     }
 
+    // export rekap kecamatan
+    public function export_rekap_kec(Request $request)
+    {
+        /** @var User */
+        $user = Auth::user();
+        $desa = $user->desa;
+        $kecamatan = $request->query('nama_kecamatan');
+        $dasa_wisma = $request->query('dasa_wisma');
+        $rt = $request->query('rt');
+        $rw = $request->query('rw');
+        $dusun = $request->query('dusun');
+        $periode = $request->query('periode');
+
+        $desas = DataRekapDesa::getDesa($dusun, $rw,$rt, $periode);
+
+        $export = new RekapKelompokKecamatanExport(compact(
+            'desas',
+            'kecamatan',
+            'rw',
+            'periode',
+            'desa',
+        ));
+
+        return Excel::download($export, 'rekap-kelompok-kecamatan.xlsx');
+    }
+
+
     public function data_kelompok_pkk_kab()
     {
         /** @var User */
@@ -139,6 +170,32 @@ class AdminKabController extends Controller
             'desa',
 
         ));
+    }
+
+    // export rekap kecamatan
+    public function export_rekap_kab(Request $request)
+    {
+        /** @var User */
+        $user = Auth::user();
+        $desa = $user->desa;
+        $kecamatan = $request->query('nama_kecamatan');
+        $dasa_wisma = $request->query('dasa_wisma');
+        $rt = $request->query('rt');
+        $rw = $request->query('rw');
+        $dusun = $request->query('dusun');
+        $periode = $request->query('periode');
+
+        $kecamatans = DataRekapKecamatan::getKecamatan($dusun, $rw,$rt, $periode);
+
+        $export = new RekapKelompokKabupatenExport(compact(
+            'kecamatans',
+            'kecamatan',
+            'rw',
+            'periode',
+            'desa',
+        ));
+
+        return Excel::download($export, 'rekap-kelompok-kabupaten.xlsx');
     }
 
 }

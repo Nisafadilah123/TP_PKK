@@ -11,6 +11,7 @@ class RekapKelompokDasaWismaExport implements FromArray, WithHeadings, WithEvent
 {
     protected $catatan_keluarga = [];
     protected $dasa_wisma;
+    protected $nama_dasawisma;
     protected $rt;
     protected $rw;
     protected $periode;
@@ -20,6 +21,7 @@ class RekapKelompokDasaWismaExport implements FromArray, WithHeadings, WithEvent
     {
         $this->catatan_keluarga = $data['catatan_keluarga'] ?? [];
         $this->dasa_wisma = $data['dasa_wisma'] ?? null;
+        $this->nama_dasawisma = $data['nama_dasawisma'] ?? null;
         $this->rt = $data['rt'] ?? null;
         $this->rw = $data['rw'] ?? null;
         $this->periode = $data['periode'] ?? null;
@@ -174,6 +176,15 @@ class RekapKelompokDasaWismaExport implements FromArray, WithHeadings, WithEvent
         ];
 
         return [
+            ['REKAPITULASI'],
+            ['CATATAN DATA DAN KEGIATAN WARGA'],
+            ['KELOMPOK DASA WISMA'],
+            ['Dasa Wisma : '.ucfirst($this->nama_dasawisma)],
+            ['RT : ' . $this->rt],
+            ['RW : ' . $this->rw],
+            ['Desa/Kel : ' . $this->desa->nama_desa],
+            ['Tahun : ' . $this->periode],
+            [],
             $headings,
             $headings2,
         ];
@@ -183,17 +194,30 @@ class RekapKelompokDasaWismaExport implements FromArray, WithHeadings, WithEvent
     {
         return [
             AfterSheet::class => function(AfterSheet $event) {
-                $event->sheet->getDelegate()->mergeCells('A1:A2');
-                $event->sheet->getDelegate()->mergeCells('B1:B2');
-                $event->sheet->getDelegate()->mergeCells('C1:C2');
+                $event->sheet->getDelegate()->mergeCells('A1:AC1');
+                $event->sheet->getDelegate()->mergeCells('A2:AC2');
+                $event->sheet->getDelegate()->mergeCells('A3:AC3');
+                $event->sheet->getDelegate()->mergeCells('A4:AC4');
+                $event->sheet->getDelegate()->mergeCells('A5:AC5');
+                $event->sheet->getDelegate()->mergeCells('A6:AC6');
+                $event->sheet->getDelegate()->mergeCells('A7:AC7');
+                $event->sheet->getDelegate()->mergeCells('A8:AC8');
 
-                $event->sheet->getDelegate()->mergeCells('D1:N1');
-                $event->sheet->getDelegate()->mergeCells('O1:T1');
-                $event->sheet->getDelegate()->mergeCells('U1:W1');
-                $event->sheet->getDelegate()->mergeCells('X1:Y1');
-                $event->sheet->getDelegate()->mergeCells('Z1:AC1');
+                $event->sheet->getDelegate()->getStyle('A1:A8')->getAlignment()->setHorizontal('center');
 
-                $lastRow = count($this->catatan_keluarga) + 3;
+                $event->sheet->getDelegate()->mergeCells('A10:A11');
+                $event->sheet->getDelegate()->mergeCells('B10:B11');
+                $event->sheet->getDelegate()->mergeCells('C10:C11');
+
+                $event->sheet->getDelegate()->mergeCells('D10:N10');
+                $event->sheet->getDelegate()->mergeCells('O10:T10');
+                $event->sheet->getDelegate()->mergeCells('U10:W10');
+                $event->sheet->getDelegate()->mergeCells('X10:Y10');
+                $event->sheet->getDelegate()->mergeCells('Z10:AC10');
+
+                $event->sheet->getDelegate()->getStyle('D10:AC10')->getAlignment()->setHorizontal('center');
+
+                $lastRow = count($this->catatan_keluarga) + 12;
                 $event->sheet->getDelegate()->mergeCells('A'.$lastRow.':B'.$lastRow);
             },
         ];

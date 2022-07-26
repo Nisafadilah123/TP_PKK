@@ -82,7 +82,7 @@ class DataKeluarga extends Model
             $this->dusun,
             $this->rw,
             $this->rt,
-            $this->dasa_wisma,
+            $this->dasawisma ? $this->dasawisma->nama_dasawisma : '',
         ]);
     }
 
@@ -171,5 +171,9 @@ class DataKeluarga extends Model
 
     public function user(){
         return $this->belongsTo(User::class, 'id_user');
+    }
+
+    public function dasawisma(){
+        return $this->belongsTo(DataKelompokDasawisma::class, 'id_dasawisma');
     }
 }

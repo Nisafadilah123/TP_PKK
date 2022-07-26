@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Entities\DasaWisma;
 use App\Exports\RekapKelompokDasaWismaExport;
+use App\Exports\RekapKelompokDesaExport;
+use App\Exports\RekapKelompokDusunExport;
 use App\Exports\RekapKelompokRTExport;
 use App\Exports\RekapKelompokRWExport;
+use App\Exporws\RekapKelompokDusunExporw;
 use App\Models\Data_Desa;
 use App\Models\DataDasaWisma;
 use App\Models\DataDusun;
@@ -85,10 +88,13 @@ class AdminController extends Controller
             $user = Auth::user();
 
             $dasa_wisma = DB::table('data_keluarga')
-                ->select('id_desa', 'dasa_wisma',  'rt','rw', 'periode')
-                ->where('id_desa', $user->id_desa)
+                ->join('data_dasawisma', 'data_keluarga.id_dasawisma', '=',  'data_dasawisma.id')
+                ->select('data_keluarga.id_desa', 'nama_dasawisma',  'data_keluarga.rt','data_keluarga.rw', 'data_keluarga.periode')
+                ->where('data_keluarga.id_desa', $user->id_desa)
                 ->distinct()
                 ->get();
+
+            // dd($dasa_wisma);
 
             return view('admin_desa.data_rekap.data_kelompok_dasa_wisma', compact('dasa_wisma'));
         }
@@ -99,24 +105,25 @@ class AdminController extends Controller
             /** @var User */
             $user = Auth::user();
 
-            $dasa_wisma = $request->query('dasa_wisma');
+            $nama_dasawisma = $request->query('nama_dasawisma');
+            $dasa_wisma = DataKelompokDasawisma::where('nama_dasawisma', $nama_dasawisma)->firstOrFail();
             $rt = $request->query('rt');
             $rw = $request->query('rw');
             $periode = $request->query('periode');
 
             $catatan_keluarga = DataKeluarga::query()
-                ->with(['industri', 'pemanfaatan',
+                ->with(['industri', 'pemanfaatan','dasawisma'
                     ])
-                // ->where('id_keluarga', $id)
                 ->where('id_desa', $user->id_desa)
-                ->where('dasa_wisma', $dasa_wisma)
+                ->whereHas('dasawisma', function ($q) use ($nama_dasawisma) {
+                    $q->where('nama_dasawisma', $nama_dasawisma);
+                })
                 ->where('rt', $rt)
                 ->where('rw', $rw)
                 ->where('periode', $periode)
                 ->get();
 
             $desa = $user->desa;
-
 
             return view('admin_desa.data_rekap.data_rekap_dasa_wisma', compact(
                 'dasa_wisma',
@@ -125,6 +132,7 @@ class AdminController extends Controller
                 'periode',
                 'catatan_keluarga',
                 'desa',
+                'nama_dasawisma'
             ));
         }
 
@@ -135,17 +143,19 @@ class AdminController extends Controller
             /** @var User */
             $user = Auth::user();
 
-            $dasa_wisma = $request->query('dasa_wisma');
+            $nama_dasawisma = $request->query('nama_dasawisma');
+            $dasa_wisma = DataKelompokDasawisma::where('nama_dasawisma', $nama_dasawisma)->firstOrFail();
             $rt = $request->query('rt');
             $rw = $request->query('rw');
             $periode = $request->query('periode');
 
             $catatan_keluarga = DataKeluarga::query()
-                ->with(['industri', 'pemanfaatan',
+                ->with(['industri', 'pemanfaatan','dasawisma'
                     ])
-                // ->where('id_keluarga', $id)
                 ->where('id_desa', $user->id_desa)
-                ->where('dasa_wisma', $dasa_wisma)
+                ->whereHas('dasawisma', function ($q) use ($nama_dasawisma) {
+                    $q->where('nama_dasawisma', $nama_dasawisma);
+                })
                 ->where('rt', $rt)
                 ->where('rw', $rw)
                 ->where('periode', $periode)
@@ -159,7 +169,8 @@ class AdminController extends Controller
                 'rw',
                 'periode',
                 'catatan_keluarga',
-                'desa'
+                'desa',
+                'nama_dasawisma'
             ));
 
             return Excel::download($export, 'rekap-kelompok-dasa-wisma.xlsx');
@@ -263,7 +274,7 @@ class AdminController extends Controller
             ));
         }
 
-         // export rekap rt
+         // export rekap rw
          public function export_rekap_rw(Request $request)
          {
              /** @var User */
@@ -323,7 +334,7 @@ class AdminController extends Controller
         }
 
 
-        // export rekap rt
+        // export rekap dusun
         public function export_rekap_dusun(Request $request)
         {
             /** @var User */
@@ -336,7 +347,7 @@ class AdminController extends Controller
             $periode = $request->query('periode');
 
             $rws = DataRW::getRW($desa->id,$dusun, $rw,$rt, $periode);
-            $export = new RekapKelompokRWExport(compact(
+            $export = new RekapKelompokDusunExport(compact(
                 'rws',
                 'dusun',
                 'rt',
@@ -387,6 +398,31 @@ class AdminController extends Controller
             ));
         }
 
+        // export rekap rt
+        public function export_rekap_desa(Request $request)
+        {
+            /** @var User */
+            $user = Auth::user();
+            $desa = $user->desa;
+            $kecamatan = $user->kecamatan;
+            $dasa_wisma = $request->query('dasa_wisma');
+            $rt = $request->query('rt');
+            $rw = $request->query('rw');
+            $dusun = $request->query('dusun');
+            $periode = $request->query('periode');
+
+            $dusuns = DataDusun::getDusun($desa->id,$dusun, $rw,$rt, $periode);
+            $export = new RekapKelompokDesaExport(compact(
+                'dusuns',
+                'dusun',
+                'kecamatan',
+                'rw',
+                'periode',
+                'desa',
+            ));
+
+            return Excel::download($export, 'rekap-kelompok-desa.xlsx');
+        }
 
 
 }

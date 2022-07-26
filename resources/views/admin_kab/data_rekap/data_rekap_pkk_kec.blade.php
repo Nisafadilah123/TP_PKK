@@ -115,7 +115,7 @@
                                             <td>{{ $desa->jumlah_sumber_air_sumur }}</td>
                                             <td>{{ $desa->jumlah_sumber_air_sungai }}</td>
                                             <td>{{ $desa->jumlah_sumber_air_dll }}</td>
-                                            <td>{{ $desa->jumlah_jumlah_jamban }}</td>
+                                            <td>{{ $desa->punya_jamban }}</td>
                                             <td>{{ $desa->jumlah_makanan_pokok_beras }}</td>
                                             <td>{{ $desa->jumlah_makanan_pokok_non_beras }}</td>
                                             <td>{{ $desa->jumlah_aktivitas_UP2K }}</td>
@@ -154,7 +154,7 @@
                                             <td>{{ $desas->sum('jumlah_sumber_air_sumur') }}</td>
                                             <td>{{ $desas->sum('jumlah_sumber_air_sungai') }}</td>
                                             <td>{{ $desas->sum('jumlah_sumber_air_dll') }}</td>
-                                            <td>{{ $desas->sum('jumlah_jamban') }}</td>
+                                            <td>{{ $desas->sum('punya_jamban') }}</td>
                                             <td>{{ $desas->sum('jumlah_makanan_pokok_beras') }}</td>
                                             <td>{{ $desas->sum('jumlah_makanan_pokok_non_beras') }}</td>
                                             <td>{{ $desas->sum('jumlah_aktivitas_UP2K') }}</td>
@@ -167,6 +167,9 @@
                                 </table>
 
                             </div>
+                            <a href="{{ url('export_rekap_kec').'?'.http_build_query(compact('desa', 'periode')) }}" target="_blank" class="btn btn-success" type="button" role="button">
+                                <i class="fas fa-print"></i> Cetak ke Excel </a><br>
+
                         </div>
 
                     </div>

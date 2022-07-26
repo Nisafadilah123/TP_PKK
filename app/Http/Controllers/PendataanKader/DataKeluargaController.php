@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\PendataanKader;
 use App\Http\Controllers\Controller;
+use App\Models\DataKelompokDasawisma;
 use App\Models\DataKeluarga;
 use App\Models\DataWarga;
 use Illuminate\Http\Request;
@@ -22,7 +23,9 @@ class DataKeluargaController extends Controller
 
         //halaman form data keluarga
         $keluarga = DataKeluarga::all()->where('id_desa', $user->id_desa);
-        return view('kader.data_kegiatan.data_keluarga', compact('keluarga'));
+        $dasawisma = DataKelompokDasawisma::all();
+
+        return view('kader.data_kegiatan.data_keluarga', compact('keluarga', 'dasawisma'));
     }
 
     /**
@@ -47,9 +50,10 @@ class DataKeluargaController extends Controller
 
      $keg = DataKeluarga::all();
      $warga = DataWarga::all();
+     $dasawisma = DataKelompokDasawisma::all();
 
     //  dd($kec);
-     return view('kader.data_kegiatan.form.create_data_keluarga', compact( 'warga', 'kec', 'desas', 'kad'));
+     return view('kader.data_kegiatan.form.create_data_keluarga', compact( 'warga', 'kec', 'desas', 'kad', 'dasawisma'));
 
     }
 
@@ -68,8 +72,9 @@ class DataKeluargaController extends Controller
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
             'nama_kepala_rumah_tangga' => 'required',
-            'dasa_wisma' => 'required',
-            'nik_kepala_keluarga' => 'required',
+            // 'dasa_wisma' => 'required',
+            'id_dasawisma' => 'required',
+            'nik_kepala_keluarga' => 'required|min:16',
             'rt' => 'required',
             'rw' => 'required',
             'kota' => 'required',
@@ -101,7 +106,7 @@ class DataKeluargaController extends Controller
             'id_desa.required' => 'Lengkapi Alamat Desa Kegiatan Warga',
             'id_kecamatan' => 'Lengkapi Alamat Kecamatan Kegiatan Warga',
             'nama_kepala_rumah_tangga.required' => 'Lengkapi Nama Warga Kepala Rumah Tangga',
-            'dasa_wisma.required' => 'Lengkapi Nama Dasawisma Yang Diikuti',
+            'id_dasawisma.required' => 'Lengkapi Nama Dasawisma Yang Diikuti',
             'nik_kepala_keluarga.required' => 'Lengkapi NIK Kepala Rumah Tangga',
             'jumlah_anggota_keluarga.required' => 'Lengkapi Jumlah Anggota Keluarga',
             'rt.required' => 'Lengkapi RT',
@@ -142,7 +147,7 @@ class DataKeluargaController extends Controller
             $wargas->id_desa = $request->id_desa;
             $wargas->id_kecamatan = $request->id_kecamatan;
             $wargas->nama_kepala_rumah_tangga = $request->nama_kepala_rumah_tangga;
-            $wargas->dasa_wisma = $request->dasa_wisma;
+            $wargas->id_dasawisma = $request->id_dasawisma;
             $wargas->nik_kepala_keluarga = $request->nik_kepala_keluarga;
             $wargas->kota = $request->kota;
             $wargas->provinsi = $request->provinsi;
@@ -218,10 +223,11 @@ class DataKeluargaController extends Controller
         //halaman edit data keluarga
         $warga = DataWarga::all();
         $kel = DataKeluarga::all();
+        $dasawisma = DataKelompokDasawisma::all();
 
         // dd($keg);
 
-        return view('kader.data_kegiatan.form.edit_data_keluarga', compact('data_keluarga','warga', 'kel', 'desas', 'kec', 'kad'));
+        return view('kader.data_kegiatan.form.edit_data_keluarga', compact('data_keluarga','warga', 'kel', 'desas', 'kec', 'kad', 'dasawisma'));
 
     }
 
@@ -241,8 +247,8 @@ class DataKeluargaController extends Controller
             'id_desa' => 'required',
             'id_kecamatan' => 'required',
             // 'id_warga' => 'required',
-            'dasa_wisma' => 'required',
-            'nik_kepala_keluarga' => 'required',
+            'id_dasawisma' => 'required',
+            'nik_kepala_keluarga' => 'required|min:16',
             'rt' => 'required',
             'rw' => 'required',
             'kota' => 'required',
@@ -273,7 +279,7 @@ class DataKeluargaController extends Controller
         ], [
             'id_desa.required' => 'Pilih Alamat Desa Kegiatan Warga',
             'id_kecamatan' => 'Pilih Alamat Kecamatan Kegiatan Warga',
-            'dasa_wisma.required' => 'Lengkapi Nama Dasawisma Yang Diikuti',
+            'id_dasawisma.required' => 'Lengkapi Nama Dasawisma Yang Diikuti',
             'nik_kepala_keluarga.required' => 'Lengkapi NIK Kepala Rumah Tangga',
             'jumlah_anggota_keluarga.required' => 'Lengkapi Jumlah Anggota Keluarga',
             'rt.required' => 'Lengkapi RT',

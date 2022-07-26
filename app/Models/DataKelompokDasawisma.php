@@ -23,4 +23,12 @@ class DataKelompokDasawisma extends Model
     public function user(){
         return $this->belongsTo(User::class, 'id');
     }
+
+    public function keluarga(){
+        return $this->hasMany(DataKeluarga::class, 'id');
+    }
+
+    public function warga(){
+        return $this->hasMany(DataWarga::class, 'id');
+    }
 }

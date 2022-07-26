@@ -148,7 +148,7 @@ class BeritaController extends Controller
         }
         $beritaKab->save();
 
-        Alert::success('Berhasil', 'Data berhasil di tambahkan');
+        Alert::success('Berhasil', 'Data berhasil di ubah');
 
         return redirect('/beritaKab');
 

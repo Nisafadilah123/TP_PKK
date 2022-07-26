@@ -180,7 +180,7 @@
         <!-- /.card-body -->
 
         <div class="card-footer">
-          <button type="submit" class="btn btn-primary">Tambah</button>
+          <button type="submit" class="btn btn-success">Tambah</button>
           <a href="/data_pemanfaatan" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>

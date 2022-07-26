@@ -22,7 +22,8 @@ return new class extends Migration
             $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan');
             // $table->bigInteger('id_warga')->unsigned();
             // $table->foreign('id_warga')->references('id')->on('data_warga');
-            $table->string('dasa_wisma');
+            // $table->string('dasa_wisma');
+            $table->bigInteger('id_dasawisma')->unsigned()->nullable();
             $table->string('nama_kepala_rumah_tangga');
             $table->string('nik_kepala_keluarga');
             $table->bigInteger('id_user')->unsigned();

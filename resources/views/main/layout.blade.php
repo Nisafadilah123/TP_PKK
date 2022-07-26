@@ -107,7 +107,7 @@
 
           <li class="dropdown">
             <a href="#services"
-              ><span>Pokja & Sekretariat</span>
+              ><span>POKJA</span>
               <i class="bi bi-chevron-down"></i
             ></a>
             <ul>
@@ -151,15 +151,7 @@
                   {{-- <li><a href="/papan4">Papan Data POKJA IV</a></li> --}}
                 </ul>
               </li>
-              <li class="dropdown">
-                <a href="#"
-                  ><span>Sekretariat</span> <i class="bi bi-chevron-right"></i
-                ></a>
-                <ul>
-                  <li><a href="/sekretariat">Program Sekretariat</a></li>
-                  {{-- <li><a href="/data_umum">Data Umum Sekretariat</a></li> --}}
-                </ul>
-              </li>
+
             </ul>
           </li>
 

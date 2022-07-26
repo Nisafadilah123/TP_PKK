@@ -80,7 +80,7 @@ class DataRT
                 $rt->jumlah_sumber_air_sumur = $keluargas->where('sumber_air', 2)->count();
                 $rt->jumlah_sumber_air_sungai = $keluargas->where('sumber_air', 3)->count();
                 $rt->jumlah_sumber_air_dll = $keluargas->where('sumber_air', 4)->count();
-                $rt->jumlah_jamban = $keluargas->sum('jumlah_jamban');
+                $rt->punya_jamban = $keluargas->sum('punya_jamban');
                 $rt->jumlah_makanan_pokok_beras = $keluargas->where('makanan_pokok', 1)->count();
                 $rt->jumlah_makanan_pokok_non_beras = $keluargas->where('makanan_pokok', 0)->count();
                 $rt->jumlah_aktivitas_UP2K = $keluargas->sum('aktivitas_UP2K');

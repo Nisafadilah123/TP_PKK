@@ -45,7 +45,7 @@
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         {{-- nama desa yang login --}}
-                                        <td style="vertical-align: middle;">{{ucfirst($c->keluarga->dasa_wisma) }}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->dasawisma->nama_dasawisma) }}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->keluarga->nama_kepala_rumah_tangga)}}</td>
                                             {{-- @if ($warga = $c->nik_kepala_keluarga)
                                                 {{ $warga }}
@@ -96,7 +96,7 @@
                                                 </div>
                                                         <div class="modal-body">
                                                         <h5>
-                                                            Dasa Wisma : <strong> {{ucfirst($c->keluarga->dasa_wisma) }} </strong><br>
+                                                            Dasawisma : <strong> {{ucfirst($c->dasawisma->nama_dasawisma) }} </strong><br>
                                                             Nama Kepala Rumah Tangga : <strong>{{ucfirst($c->keluarga->nama_kepala_rumah_tangga) }}</strong><br>
                                                             No. Registrasi : <strong> {{ucfirst($c->no_registrasi) }} </strong><br>
                                                             No. KTP/NIK : <strong>{{ucfirst($c->no_ktp) }}</strong><br>

@@ -80,7 +80,7 @@ class DataRekapKecamatan
                 $kecamatans->jumlah_sumber_air_sumur = $keluargas->where('sumber_air', 2)->count();
                 $kecamatans->jumlah_sumber_air_sungai = $keluargas->where('sumber_air', 3)->count();
                 $kecamatans->jumlah_sumber_air_dll = $keluargas->where('sumber_air', 4)->count();
-                $kecamatans->jumlah_jamban = $keluargas->sum('jumlah_jamban');
+                $kecamatans->punya_jamban = $keluargas->sum('punya_jamban');
                 $kecamatans->jumlah_makanan_pokok_beras = $keluargas->where('makanan_pokok', 1)->count();
                 $kecamatans->jumlah_makanan_pokok_non_beras = $keluargas->where('makanan_pokok', 0)->count();
                 $kecamatans->jumlah_aktivitas_UP2K = $keluargas->sum('aktivitas_UP2K');

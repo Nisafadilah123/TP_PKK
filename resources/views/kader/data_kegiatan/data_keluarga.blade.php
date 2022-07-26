@@ -86,7 +86,7 @@
                                             </div>
                                                     <div class="modal-body">
                                                     <h5>
-                                                        Dasa Wisma : <strong> {{ucfirst($c->dasa_wisma) }} </strong><br>
+                                                        Dasawisma : <strong> {{ucfirst($c->dasawisma->nama_dasawisma) }} </strong><br>
                                                         RT <strong>{{ ($c->rt) }}</strong>, RW <strong>{{ ($c->rt) }}</strong> <br>
                                                         Dusun/Lingkungan : <br>
                                                         Desa/Kel : <strong>{{ucfirst($c->desa->nama_desa)}}</strong><br>
