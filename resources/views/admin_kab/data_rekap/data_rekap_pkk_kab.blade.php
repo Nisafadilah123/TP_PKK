@@ -125,7 +125,8 @@
                                         @endforeach
 
                                         <tr>
-                                            <td colspan="2"><strong>Jumlah</strong></td>
+                                            <td><strong>Jumlah</strong></td>
+                                            <td></td>
                                             <td>{{ $kecamatans->sum('jumlah_desa') }}</td>
                                             <td>{{ $kecamatans->sum('jumlah_dusun') }}</td>
                                             <td>{{ $kecamatans->sum('jumlah_rw') }}</td>

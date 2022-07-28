@@ -88,19 +88,21 @@ class AdminKabController extends Controller
     public function rekap_pkk_kec(Request $request)
     {
         $user = Auth::user();
-        $desa = $user->desa;
-        $kecamatan = $request->query('nama_kecamatan');
+        $desa = $request->query('nama_desa');
+        $nama_kecamatan = $request->query('nama_kecamatan');
         $dasa_wisma = $request->query('dasa_wisma');
         $rt = $request->query('rt');
         $rw = $request->query('rw');
         $dusun = $request->query('dusun');
         $periode = $request->query('periode');
+        $kecamatan = DataKecamatan::where('nama_kecamatan', $nama_kecamatan)->firstOrFail();
 
-        $desas = DataRekapDesa::getDesa($dusun, $rw,$rt, $periode);
-        // dd($desas);
+        $desas = DataRekapDesa::getDesa($dusun, $rw,$rt, $periode, $kecamatan->id);
+        // dd($desa);
         return view('admin_kab.data_rekap.data_rekap_pkk_kec', compact(
             'desas',
             'kecamatan',
+            'nama_kecamatan',
             'rw',
             'periode',
             'desa',
@@ -114,18 +116,20 @@ class AdminKabController extends Controller
         /** @var User */
         $user = Auth::user();
         $desa = $user->desa;
-        $kecamatan = $request->query('nama_kecamatan');
+        $nama_kecamatan = $request->query('nama_kecamatan');
         $dasa_wisma = $request->query('dasa_wisma');
         $rt = $request->query('rt');
         $rw = $request->query('rw');
         $dusun = $request->query('dusun');
         $periode = $request->query('periode');
+        $kecamatan = DataKecamatan::where('nama_kecamatan', $nama_kecamatan)->firstOrFail();
 
-        $desas = DataRekapDesa::getDesa($dusun, $rw,$rt, $periode);
+        $desas = DataRekapDesa::getDesa($dusun, $rw,$rt, $periode, $kecamatan->id);
 
         $export = new RekapKelompokKecamatanExport(compact(
             'desas',
             'kecamatan',
+            'nama_kecamatan',
             'rw',
             'periode',
             'desa',

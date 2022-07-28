@@ -17,7 +17,7 @@ class DataRekapDesa
      * @param int $periode
      * @return Collection<Desa> $desas
      */
-    public static function getDesa( $dusun,$rw, $rt, $periode)
+    public static function getDesa( $dusun,$rw, $rt, $periode, $id_kecamatan)
     {
         /** @var Collection<Desa> */
         $result = new Collection();
@@ -26,6 +26,7 @@ class DataRekapDesa
         $desas = DataKeluarga::query()
                 ->with(['industri', 'pemanfaatan'])
                 ->where('periode', $periode)
+                ->where('id_kecamatan', $id_kecamatan)
                 ->get()
                 ->groupBy('dusun_id');
             // dd($desas);
@@ -40,15 +41,9 @@ class DataRekapDesa
                 $dusun =  $keluargas->groupBy(function ($item) {
                     return strtolower($item->dusun);
                 });
-                $rw =  $keluargas->groupBy(function ($item) {
-                    return strtolower($item->rw);
-                });
-                $rt =  $keluargas->groupBy(function ($item) {
-                    return strtolower($item->rt);
-                });
-                $dasa_wisma = $keluargas->groupBy(function ($item) {
-                    return strtolower($item->dasa_wisma);
-                });
+                $rw =  $keluargas->groupBy('rw');
+                $rt =  $keluargas->groupBy('rt');
+                $dasa_wisma = $keluargas->groupBy('id_dasawisma');
 
                 $desa->jumlah_dusun = count($dusun);
                 $desa->jumlah_rw = count($rw);

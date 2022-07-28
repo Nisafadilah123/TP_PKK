@@ -3949,25 +3949,7 @@ class UserSeeder extends Seeder
             'id_desa' => 2,
         ]);
 
-        $kader_kelurahan = User::create([
-            'name' => 'Amin',
-            'email' => 'amin@gmail.com',
-            'password' => Hash::make('amin'),
-            'user_type' => 'kader_kelurahan',
-            'foto' => null,
-            'id_kecamatan' => 11,
-            'id_desa' => 98,
-        ]);
 
-        $kader_kelurahan = User::create([
-            'name' => 'Bibi',
-            'email' => 'bibi@gmail.com',
-            'password' => Hash::make('bibi'),
-            'user_type' => 'kader_kelurahan',
-            'foto' => null,
-            'id_kecamatan' => 11,
-            'id_desa' => 99,
-        ]);
 
     }
 }

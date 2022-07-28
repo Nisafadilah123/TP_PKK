@@ -18,7 +18,7 @@
                                 <h6><strong>CATATAN DATA KEGIATAN WARGA</strong></h6>
                                 <h6><strong>TP PKK KECAMATAN</strong></h6>
                                 <h6><strong>TAHUN : {{ $periode }}</strong></h6>
-                                <h6><strong>KECAMATAN : {{ $kecamatan }}</strong> </h6>
+                                <h6><strong>KECAMATAN : {{ $nama_kecamatan }}</strong> </h6>
                                 <h6><strong>KAB/KOTA : INDRAMAYU</strong> </h6>
                                 <h6><strong>PROVINSI : JAWA BARAT</strong> </h6>
 
@@ -126,7 +126,8 @@
                                         @endforeach
 
                                         <tr>
-                                            <td colspan="2"><strong>Jumlah</strong></td>
+                                            <td><strong>Jumlah</strong></td>
+                                            <td></td>
                                             <td>{{ $desas->sum('jumlah_dusun') }}</td>
                                             <td>{{ $desas->sum('jumlah_rw') }}</td>
                                             <td>{{ $desas->sum('jumlah_rt') }}</td>
@@ -167,7 +168,7 @@
                                 </table>
 
                             </div>
-                            <a href="{{ url('export_rekap_kec').'?'.http_build_query(compact('desa', 'periode')) }}" target="_blank" class="btn btn-success" type="button" role="button">
+                            <a href="{{ url('export_rekap_kec').'?'.http_build_query(compact('nama_kecamatan', 'desa', 'periode')) }}" target="_blank" class="btn btn-success" type="button" role="button">
                                 <i class="fas fa-print"></i> Cetak ke Excel </a><br>
 
                         </div>

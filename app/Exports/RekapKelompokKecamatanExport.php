@@ -14,6 +14,7 @@ class RekapKelompokKecamatanExport implements FromArray, WithHeadings, WithEvent
     protected $desa;
     protected $dusun;
     protected $kecamatan;
+    protected $nama_kecamatan;
 
     /**
     * @return \Illuminate\Support\Collection
@@ -28,6 +29,7 @@ class RekapKelompokKecamatanExport implements FromArray, WithHeadings, WithEvent
         $this->periode = $data['periode'] ?? null;
         $this->desa = $data['desas'] ?? [];
         $this->kecamatan = $data['kecamatan'] ?? null;
+        $this->nama_kecamatan = $data['nama_kecamatan'] ?? null;
 
     }
 
@@ -208,7 +210,7 @@ class RekapKelompokKecamatanExport implements FromArray, WithHeadings, WithEvent
             ['CATATAN DATA DAN KEGIATAN WARGA'],
             ['TP PKK KECAMATAN'],
             ['Tahun : ' . $this->periode],
-            // ['Kecamatan : ' . $this->kecamatan->nama_kecamatan],
+            ['Kecamatan : ' . $this->nama_kecamatan],
             ['Kabupaten : Indramayu'],
             ['Provinsi : Jawa Barat'],
             [],
@@ -228,29 +230,29 @@ class RekapKelompokKecamatanExport implements FromArray, WithHeadings, WithEvent
                 $event->sheet->getDelegate()->mergeCells('A5:AG5');
                 $event->sheet->getDelegate()->mergeCells('A6:AG6');
                 $event->sheet->getDelegate()->mergeCells('A7:AG7');
+                $event->sheet->getDelegate()->mergeCells('A7:AG8');
 
-                $event->sheet->getDelegate()->getStyle('A1:A7')->getAlignment()->setHorizontal('center');
+                $event->sheet->getDelegate()->getStyle('A1:A8')->getAlignment()->setHorizontal('center');
 
-                $event->sheet->getDelegate()->mergeCells('A8:A9');
-                $event->sheet->getDelegate()->mergeCells('B8:B9');
-                $event->sheet->getDelegate()->mergeCells('C8:C9');
-                $event->sheet->getDelegate()->mergeCells('D8:D9');
-                $event->sheet->getDelegate()->mergeCells('E8:E9');
-                $event->sheet->getDelegate()->mergeCells('F8:F9');
-                $event->sheet->getDelegate()->mergeCells('G8:G9');
-                $event->sheet->getDelegate()->mergeCells('H8:H9');
+                $event->sheet->getDelegate()->mergeCells('A9:A10');
+                $event->sheet->getDelegate()->mergeCells('B9:B10');
+                $event->sheet->getDelegate()->mergeCells('C9:C10');
+                $event->sheet->getDelegate()->mergeCells('D9:D10');
+                $event->sheet->getDelegate()->mergeCells('E9:E10');
+                $event->sheet->getDelegate()->mergeCells('F9:F10');
+                $event->sheet->getDelegate()->mergeCells('G9:G10');
+                $event->sheet->getDelegate()->mergeCells('H9:H10');
 
-                $event->sheet->getDelegate()->mergeCells('I8:T8');
-                $event->sheet->getDelegate()->mergeCells('U8:Y8');
-                $event->sheet->getDelegate()->mergeCells('Z8:AC8');
-                $event->sheet->getDelegate()->mergeCells('AD8:AD9');
-                $event->sheet->getDelegate()->mergeCells('AE8:AF8');
-                $event->sheet->getDelegate()->mergeCells('AG8:AJ8');
+                $event->sheet->getDelegate()->mergeCells('I9:T9');
+                $event->sheet->getDelegate()->mergeCells('U9:Y9');
+                $event->sheet->getDelegate()->mergeCells('Z9:AC9');
+                $event->sheet->getDelegate()->mergeCells('AD9:AD10');
+                $event->sheet->getDelegate()->mergeCells('AE9:AF9');
+                $event->sheet->getDelegate()->mergeCells('AG9:AJ9');
 
-                $event->sheet->getDelegate()->getStyle('I8:AJ8')->getAlignment()->setHorizontal('center');
+                $event->sheet->getDelegate()->getStyle('I9:AJ9')->getAlignment()->setHorizontal('center');
 
-
-                $lastRow = count($this->desa) + 10;
+                $lastRow = count($this->desa) + 11;
                 $event->sheet->getDelegate()->mergeCells('A'.$lastRow.':B'.$lastRow);
             },
         ];

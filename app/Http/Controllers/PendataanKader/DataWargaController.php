@@ -24,7 +24,7 @@ class DataWargaController extends Controller
         $user = Auth::user();
 
         //halaman data warga
-        $warga=DataWarga::all()->where('id_desa', $user->id_desa);
+        $warga=DataWarga::all()->where('id_user', $user->id);
         $dasawisma = DataKelompokDasawisma::all();
 
         return view('kader.data_kegiatan.data_warga', compact('warga', 'dasawisma'));

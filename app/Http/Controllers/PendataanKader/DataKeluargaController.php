@@ -22,9 +22,8 @@ class DataKeluargaController extends Controller
         $user = Auth::user();
 
         //halaman form data keluarga
-        $keluarga = DataKeluarga::all()->where('id_desa', $user->id_desa);
+        $keluarga = DataKeluarga::all()->where('id_user', $user->id);
         $dasawisma = DataKelompokDasawisma::all();
-
         return view('kader.data_kegiatan.data_keluarga', compact('keluarga', 'dasawisma'));
     }
 

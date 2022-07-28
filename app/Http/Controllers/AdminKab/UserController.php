@@ -9,6 +9,7 @@ use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -133,7 +134,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $data_pengguna_super)
+    public function update(Request $request, $id)
     {
         // dd($request->all());
         $request->validate([
@@ -146,6 +147,7 @@ class UserController extends Controller
 
         ]);
 
+        $data_pengguna_super = User::findOrFail($id);
         $data_pengguna_super->name = $request->name;
         $data_pengguna_super->email = $request->email;
 
@@ -160,13 +162,13 @@ class UserController extends Controller
 
             $destinationPath = 'foto/';
             $image = $request->file('foto');
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $profileImage = Str::random(5) . date('YmdHis') . "." . $image->getClientOriginalExtension();
             $result = Storage::disk('public')->putFileAs('foto', $image, $profileImage);
             $data_pengguna_super->foto = $result;
         }
 
         $data_pengguna_super->save();
-        dd($result);
+        // dd($result);
         Alert::success('Berhasil', 'Data berhasil di Ubah');
 
         return redirect('/data_pengguna_super');

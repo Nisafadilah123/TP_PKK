@@ -8,6 +8,7 @@ use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -158,7 +159,7 @@ class KaderController extends Controller
 
             $destinationPath = 'foto/';
             $image = $request->file('foto');
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $profileImage = Str::random(5) . date('YmdHis') . "." . $image->getClientOriginalExtension();
             $result = Storage::disk('public')->putFileAs('foto', $image, $profileImage);
             $data_kader->foto = $result;
         }

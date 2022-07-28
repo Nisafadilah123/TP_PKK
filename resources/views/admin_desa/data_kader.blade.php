@@ -27,7 +27,6 @@
                                         <th>No</th>
                                         <th>Nama</th>
                                         <th>Email</th>
-                                        <th>Password</th>
                                         <th>User Type</th>
                                         <th>Kader Dasawisma</th>
                                         <th>RT/RW</th>
@@ -45,7 +44,6 @@
                                         <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         <td style="vertical-align: middle;">{{$c->name}}</td>
                                         <td style="vertical-align: middle;">{{$c->email}}</td>
-                                        <td style="vertical-align: middle;">{{$c->password}}</td>
                                         <td style="vertical-align: middle;">{{$c->user_type}}</td>
                                         <td style="vertical-align: middle;">
                                             @if ($dasawisma = $c->dasawisma)
@@ -55,8 +53,8 @@
                                             @endif
                                         </td>
                                         <td style="vertical-align: middle;">
-                                            @if ($rt = $c->rt)
-                                                {{ $dasawisma->rt }}/{{ $dsawisma->rw }}
+                                            @if ($rt = $c->dasawisma)
+                                                {{ $dasawisma->rt }}/{{ $dasawisma->rw }}
                                             @else
                                                 -
                                             @endif

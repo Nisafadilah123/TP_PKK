@@ -85,23 +85,22 @@
                         </span>
                     @enderror
             </div>
-
+            <div class="form-group">
+                <label>Nama Desa</label>
+                <input type="text" readonly class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Kader" required value="{{ Auth::user()->desa->nama_desa }}">
+            </div>
+            <div class="form-group">
+                <label>Nama Kecamatan</label>
+                    <input type="text" readonly class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Kader" required value="{{ Auth::user()->kecamatan->nama_kecamatan }}">
+            </div>
+            <div class="form-group">
+                <label>Foto Profil</label>
+                <input name="foto" type="file" class="form-control-file" id="foto" accept=".img, .jpg, .jpeg, .png" value="{{old('foto')}}">
+                {{-- <img src="{{asset('gambar/'. $c->logo)}}" class="img-thumbnail" width="100px"> --}}
+                {{-- <input name="logo" type="hidden" name="hidden_image" value="{{asset('gambar/'. $c->logo)}}" class="form-control-file" id="hidden_image"> --}}
+            </div>`
           </div>
-          <div class="form-group">
-            <label>Nama Desa</label>
-            <input type="text" readonly class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Kader" required value="{{ Auth::user()->desa->nama_desa }}">
-          </div>
-        <div class="form-group">
-            <label>Nama Kecamatan</label>
-            <input type="text" readonly class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Kader" required value="{{ Auth::user()->kecamatan->nama_kecamatan }}">
-        </div>
 
-        <div class="form-group">
-            <label>Foto Profil</label>
-            <input name="foto" type="file" class="form-control-file" id="foto" accept=".img, .jpg, .jpeg, .png" value="{{old('foto')}}">
-            {{-- <img src="{{asset('gambar/'. $c->logo)}}" class="img-thumbnail" width="100px"> --}}
-            {{-- <input name="logo" type="hidden" name="hidden_image" value="{{asset('gambar/'. $c->logo)}}" class="form-control-file" id="hidden_image"> --}}
-        </div>`
 
         </div>
         <!-- /.card-body -->

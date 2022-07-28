@@ -25,7 +25,7 @@ class DataKegiatanWargaController extends Controller
         $user = Auth::user();
 
         // halaman data kegiatan
-        $kegiatan=DataKegiatanWarga::all()->where('id_desa', $user->id_desa);
+        $kegiatan=DataKegiatanWarga::all()->where('id_user', $user->id);
         return view('kader.data_kegiatan.data_kegiatan', compact('kegiatan'));
     }
 

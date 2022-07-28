@@ -27,7 +27,7 @@ class DataRekapKecamatan
                 ->with(['industri', 'pemanfaatan'])
                 ->where('periode', $periode)
                 ->get()
-                ->groupBy('dusun_id');
+                ->groupBy('id_kecamatan');
             // dd($desas);
         foreach ($kecamatans as $keluargas) {
             $keluarga = $keluargas->first();
@@ -42,15 +42,9 @@ class DataRekapKecamatan
                 $dusun =  $keluargas->groupBy(function ($item) {
                     return strtolower($item->dusun);
                 });
-                $rw =  $keluargas->groupBy(function ($item) {
-                    return strtolower($item->rw);
-                });
-                $rt =  $keluargas->groupBy(function ($item) {
-                    return strtolower($item->rt);
-                });
-                $dasa_wisma = $keluargas->groupBy(function ($item) {
-                    return strtolower($item->dasa_wisma);
-                });
+                $rw =  $keluargas->groupBy('rw');
+                $rt =  $keluargas->groupBy('rt');
+                $dasa_wisma = $keluargas->groupBy('id_dasawisma');
 
                 $kecamatans->jumlah_desa = count($desa);
                 $kecamatans->jumlah_dusun = count($dusun);

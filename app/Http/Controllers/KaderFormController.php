@@ -14,6 +14,7 @@ use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Dompdf\Dompdf;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -27,27 +28,27 @@ class KaderFormController extends Controller
     public function dashboard_kader(){
         $user = Auth::user();
         $keluarga = DataKeluarga::
-        where('id_desa', $user->id_desa)
+        where('id_user', $user->id)
         ->get()->count();
 
         $warga = DataWarga::
-        where('id_desa', $user->id_desa)
+        where('id_user', $user->id)
         ->get()->count();
 
         $kegiatan = DataKegiatanWarga::
-        where('id_desa', $user->id_desa)
+        where('id_user', $user->id)
         ->get()->count();
 
         $pemanfaatan = DataPemanfaatanPekarangan::
-        where('id_desa', $user->id_desa)
+        where('id_user', $user->id)
         ->get()->count();
 
         $industri = DataIndustriRumah::
-        where('id_desa', $user->id_desa)
+        where('id_user', $user->id)
         ->get()->count();
 
         $rekap = DataWarga::with('keluarga')
-        ->where('id_desa', $user->id_desa)
+        ->where('id_user', $user->id)
         ->get()->count();
         // $pelatihan = DataPelatihanKader::
         // where('id_desa', $user->id_desa)
@@ -104,7 +105,7 @@ class KaderFormController extends Controller
         $user = Auth::user();
 
         $warga = DataWarga::with('keluarga')
-        ->where('id_desa', $user->id_desa)
+        ->where('id_user', $user->id)
         ->get();
         // dd($warga);
         return view('kader.rekap', compact('warga'));
@@ -302,7 +303,7 @@ class KaderFormController extends Controller
 
             $destinationPath = 'foto/';
             $image = $request->file('foto');
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $profileImage = Str::random(5) . date('YmdHis') . "." . $image->getClientOriginalExtension();
             $result = Storage::disk('public')->putFileAs('foto', $image, $profileImage);
             $data_kader->foto = $result;
         }

@@ -123,9 +123,7 @@
             class="brand-image img-circle elevation-3"
             style="opacity: 0.8"
           />
-          {{-- <span class="brand-text font-weight-light" style="font-size: 14px">Kader Dasawisma
-            {{ (Auth::user()->dasawisma->nama_dasawisma) }} </span><br> --}}
-            <span class="brand-text font-weight-light">Desa {{ (Auth::user()->desa->nama_desa) }} </span>
+          <span class="brand-text font-weight-light" style="font-size: 14px">Kader Dasawisma {{ (Auth::user()->name) }}</span><br>
         </a>
 
         <!-- Sidebar -->
@@ -133,7 +131,7 @@
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-              <a href="/dashboard_kader" class="d-block">{{ (Auth::user()->name) }} </a>
+              <a href="/dashboard_kader" class="d-block">Desa {{ (Auth::user()->desa->nama_desa) }} </a>
             </div>
           </div>
 

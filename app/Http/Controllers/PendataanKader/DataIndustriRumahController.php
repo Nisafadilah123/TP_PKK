@@ -23,7 +23,7 @@ class DataIndustriRumahController extends Controller
        // halaman data industri rumah tangga
        $user = Auth::user();
 
-        $industri = DataIndustriRumah::all()->where('id_desa', $user->id_desa);
+        $industri = DataIndustriRumah::all()->where('id_user', $user->id);
        return view('kader.data_kegiatan.data_industri_rumah', compact('industri'));
    }
 

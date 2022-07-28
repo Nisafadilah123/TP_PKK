@@ -1,8 +1,8 @@
 @extends('kader.layout')
 
-@section('title', 'Data Pemanfaatan Tanah Pekarangan PKK | Kader Dasawisma PKK Kab. Indramayu')
+@section('title', 'Data Pemanfaatan Tanah Pekarangan | Kader Dasawisma PKK Kab. Indramayu')
 
-@section('bread', 'Data Pemanfaatan Tanah Pekarangan PKK')
+@section('bread', 'Data Pemanfaatan Tanah Pekarangan ')
 @section('container')
 
     <!-- Main content -->

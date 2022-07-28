@@ -196,8 +196,8 @@
                                         </tr>
                                         @endforeach
                                         <tr>
-                                            <td colspan="2"><strong>Jumlah</strong> </td>
-                                            {{-- <td style="vertical-align: middle;">{{ $catatan_keluarga->count('nama_kepala_rumah_tangga') }}</td> --}}
+                                            <td><strong>Jumlah</strong> </td>
+                                            <td></td>
                                             <td>{{ $catatan_keluarga->sum('jumlah_KK') }}</td>
                                             <td>{{ $catatan_keluarga->sum('laki_laki') }}</td>
                                             <td>{{ $catatan_keluarga->sum('perempuan') }}</td>
