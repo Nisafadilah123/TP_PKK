@@ -9,7 +9,7 @@ use App\Http\Controllers\AdminDesa\KaderController;
 use App\Http\Controllers\AdminDesa\KategoriKegiatanController;
 use App\Http\Controllers\AdminDesa\KelompokDasawismaController;
 use App\Http\Controllers\AdminDesa\KeteranganKegiatanController;
-use App\Http\Controllers\AdminKab\BeritaaController;
+use App\Http\Controllers\AdminKab\BeritaController;
 use App\Http\Controllers\AdminKab\DataAgendaKegiatanController;
 use App\Http\Controllers\AdminKab\DataDesaController;
 use App\Http\Controllers\AdminKab\DataGaleriController;
@@ -175,7 +175,7 @@ Route::middleware(['user_type:admin_kabupaten'])->group(function(){
     Route::get('/export_rekap_kab', [AdminKabController::class, 'export_rekap_kab']);
 
     //form berita admin kabupaten
-    Route::resource('/beritaKab', BeritaaController::class);
+    Route::resource('/beritaKab', BeritaController::class);
     Route::resource('/galeriKeg', DataGaleriController::class);
     Route::resource('/agendaKeg', DataAgendaKegiatanController::class);
     Route::resource('/data_desa', DataDesaController::class);

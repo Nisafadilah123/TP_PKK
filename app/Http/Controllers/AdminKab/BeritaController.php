@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\AdminKab;
+
 use App\Http\Controllers\Controller;
 use App\Models\BeritaKab;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class BeritaaController extends Controller
+class BeritaController extends Controller
 {
     /**
      * Display a listing of the resource.
