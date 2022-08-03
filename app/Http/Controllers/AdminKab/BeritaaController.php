@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class BeritaController extends Controller
+class BeritaaController extends Controller
 {
     /**
      * Display a listing of the resource.
