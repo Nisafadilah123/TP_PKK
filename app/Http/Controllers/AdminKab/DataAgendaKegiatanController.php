@@ -46,21 +46,21 @@ class DataAgendaKegiatanController extends Controller
             'tema' => 'required',
             'tempat' => 'required',
             'tgl_pelaksana' => 'required',
-            'pukul' => 'required',
+            'waktu' => 'required',
 
         ], [
             'judul_agenda.required' => 'Lengkapi Judul Agenda Kegiatan',
             'tema.required' => 'Lengkapi Tema Agenda Kegiatan',
             'tempat.required' => 'Lengkapi Tempat Agenda Kegiatan',
             'tgl_pelaksana.required' => 'Lengkapi Tanggal Pelaksana Agenda Kegiatan',
-            'pukul.required' => 'Lengkapi Waktu Agenda Kegiatan',
+            'waktu.required' => 'Lengkapi Waktu Agenda Kegiatan',
 
         ]);
 
         // cara 1
-        // $insert=DB::table('war$warung')->where('pukul', $request->pukul)->first();
+        // $insert=DB::table('war$warung')->where('waktu', $request->waktu)->first();
         // if ($insert != null) {
-        //     Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali pukul. pukul Sudah Ada ');
+        //     Alert::error('Gagal', 'Data Tidak Berhasil Di Tambahkan, Hanya Bisa Menginputkan Satu kali waktu. waktu Sudah Ada ');
 
         //     return redirect('/war$warung');
         // }
@@ -70,7 +70,7 @@ class DataAgendaKegiatanController extends Controller
             $agendas->tema = $request->tema;
             $agendas->tempat = $request->tempat;
             $agendas->tgl_pelaksana = $request->tgl_pelaksana;
-            $agendas->pukul = $request->pukul;
+            $agendas->waktu = $request->waktu;
             $agendas->status = $request->status;
 
             $agendas->save();
@@ -121,19 +121,19 @@ class DataAgendaKegiatanController extends Controller
             'tema' => 'required',
             'tempat' => 'required',
             'tgl_pelaksana' => 'required',
-            'pukul' => 'required',
+            'waktu' => 'required',
 
         ], [
             'judul_agenda.required' => 'Lengkapi Judul Agenda Kegiatan',
             'tema.required' => 'Lengkapi Tema Agenda Kegiatan',
             'tempat.required' => 'Lengkapi Tempat Agenda Kegiatan',
             'tgl_pelaksana.required' => 'Lengkapi Tanggal Pelaksana Agenda Kegiatan',
-            'pukul.required' => 'Lengkapi Waktu Agenda Kegiatan',
+            'waktu.required' => 'Lengkapi Waktu Agenda Kegiatan',
 
         ]);
-        // $update=DB::table('warung_pkk')->where('pukul', $request->pukul)->first();
+        // $update=DB::table('warung_pkk')->where('waktu', $request->waktu)->first();
         // if ($update != null) {
-        //     Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali pukul. pukul Sudah Ada ');
+        //     Alert::error('Gagal', 'Data Tidak Berhasil Di Ubah, Hanya Bisa Menggunakan Satu kali waktu. waktu Sudah Ada ');
 
         //     return redirect('/war$warung');
         // }

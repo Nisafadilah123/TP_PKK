@@ -48,7 +48,7 @@
                                         <td style="vertical-align: middle;">{{$c->tema}}</td>
                                         <td style="vertical-align: middle;">{{$c->tempat}}</td>
                                         <td style="vertical-align: middle;">{{\Carbon\Carbon::parse($c->tgl_publish)->isoFormat('D MMMM Y')}}</td>
-                                        <td style="vertical-align: middle;">{{$c->pukul}}</td>
+                                        <td style="vertical-align: middle;">{{$c->waktu}}</td>
                                         @if ($c->status == 1)
                                             <td style="vertical-align: middle;"><button class="btn btn-danger">Belum Terlaksana</button></td>
                                         @elseif($c->status ==2)

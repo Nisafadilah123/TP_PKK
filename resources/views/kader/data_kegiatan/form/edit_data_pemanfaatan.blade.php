@@ -1,15 +1,15 @@
 @extends('kader.layout')
 
-@section('title', 'Edit Data Pemanfataan Tanah Pekarangan TP PKK | Kader Dasawisma PKK Kab. Indramayu')
+@section('title', 'Edit Data Pemanfataan Tanah Pekarangan | Kader Dasawisma PKK Kab. Indramayu')
 
-@section('bread', 'Edit Data Pemanfataan Tanah Pekarangan TP PKK')
+@section('bread', 'Edit Data Pemanfataan Tanah Pekarangan')
 @section('container')
 
 <div class="col-md-6">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Edit Data Pemanfataan Tanah Pekarangan TP PKK</h3>
+        <h3 class="card-title">Edit Data Pemanfataan Tanah Pekarangan</h3>
       </div>
       <!-- /.card-header -->
       <!-- form start -->
@@ -103,10 +103,10 @@
                 </div>
 
                 <div class="col-md-6">
-                    <div class="form-group @error('nama_kategori') is-invalid @enderror">
+                    <div class="form-group">
                         <label>Kategori</label>
                         <select class="form-control" id="nama_kategori" name="nama_kategori">
-                            {{-- Pilih nama ketgori --}}
+                            {{-- pilih nama Kategori --}}
                             @foreach($kategori as $key => $val)
                                 @if($key==old('nama_kategori', $data_pemanfaatan->nama_kategori))
                                     <option value="{{ $key }}" selected>{{ $val }}</option>
@@ -115,8 +115,7 @@
                                 @endif
                             @endforeach
                         </select>
-                      </div>
-
+                    </div>
                 </div>
             </div>
             <div class="form-group @error('komoditi') is-invalid @enderror">

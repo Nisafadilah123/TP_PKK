@@ -77,7 +77,7 @@ class Kecamatan
     public $jumlah_lansia;
 
     /** @var int */
-    public $jumlah_kebutuhan;
+    public $jumlah_kebutuhan_khusus;
 
     /** @var int */
     public $jumlah_kriteria_rumah_sehat;

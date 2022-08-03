@@ -33,10 +33,10 @@ return new class extends Migration
             $table->integer('jumlah_anggota_keluarga');
             $table->integer('rt');
             $table->integer('rw');
-            $table->string('kota');
+            $table->string('kabupaten');
             $table->string('provinsi');
-            $table->integer('laki_laki')->nullable();
-            $table->integer('perempuan')->nullable();
+            $table->integer('jumlah_laki')->nullable();
+            $table->integer('jumlah_perempuan')->nullable();
             $table->integer('jumlah_KK');
             $table->integer('jumlah_balita')->nullable();
             $table->integer('jumlah_balita_laki')->nullable();
@@ -49,7 +49,7 @@ return new class extends Migration
             $table->integer('jumlah_ibu_hamil')->nullable();
             $table->integer('jumlah_ibu_menyusui')->nullable();
             $table->integer('jumlah_lansia')->nullable();
-            $table->integer('jumlah_kebutuhan')->nullable();
+            $table->integer('jumlah_kebutuhan_khusus')->nullable();
             $table->string('makanan_pokok');
             $table->string('punya_jamban');
             $table->integer('jumlah_jamban');

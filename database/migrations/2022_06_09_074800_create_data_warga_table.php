@@ -40,12 +40,12 @@ return new class extends Migration
             $table->integer('umur');
             $table->string('status_perkawinan');
             $table->string('status_keluarga');
-            $table->string('status')->nullable();
+            $table->string('status_anggota_keluarga')->nullable();
             $table->string('agama');
             $table->string('alamat');
             $table->integer('rt');
             $table->integer('rw');
-            $table->string('kota');
+            $table->string('kabupaten');
             $table->string('provinsi');
             $table->string('pendidikan');
             $table->string('pekerjaan');

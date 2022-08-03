@@ -54,8 +54,8 @@ class DataRW
                 $rw->jumlah_dasa_wisma = count($dasa_wisma);
                 $rw->jumlah_KRT = $keluargas->count('id');
                 $rw->jumlah_KK = $keluargas->sum('jumlah_KK');
-                $rw->jumlah_laki_laki = $keluargas->sum('laki_laki');
-                $rw->jumlah_perempuan = $keluargas->sum('perempuan');
+                $rw->jumlah_laki_laki = $keluargas->sum('jumlah_laki');
+                $rw->jumlah_perempuan = $keluargas->sum('jumlah_perempuan');
                 $rw->jumlah_balita_laki = $keluargas->sum('jumlah_balita_laki');
                 $rw->jumlah_balita_perempuan = $keluargas->sum('jumlah_balita_perempuan');
                 $rw->jumlah_3_buta_laki = $keluargas->sum('jumlah_3_buta_laki');
@@ -65,7 +65,7 @@ class DataRW
                 $rw->jumlah_ibu_hamil = $keluargas->sum('jumlah_ibu_hamil');
                 $rw->jumlah_ibu_menyusui = $keluargas->sum('jumlah_ibu_menyusui');
                 $rw->jumlah_lansia = $keluargas->sum('jumlah_lansia');
-                $rw->jumlah_kebutuhan = $keluargas->sum('jumlah_kebutuhan');
+                $rw->jumlah_kebutuhan_khusus = $keluargas->sum('jumlah_kebutuhan_khusus');
                 $rw->jumlah_kriteria_rumah_sehat = $keluargas->sum('kriteria_rumah');
                 $rw->jumlah_kriteria_rumah_tidak_sehat = $keluargas->count() - $keluargas->sum('kriteria_rumah');
                 $rw->jumlah_punya_tempat_sampah = $keluargas->sum('punya_tempat_sampah');

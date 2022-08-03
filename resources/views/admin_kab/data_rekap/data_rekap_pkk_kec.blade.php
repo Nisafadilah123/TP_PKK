@@ -105,7 +105,7 @@
                                             <td>{{ $desa->jumlah_ibu_hamil }}</td>
                                             <td>{{ $desa->jumlah_ibu_menyusui }}</td>
                                             <td>{{ $desa->jumlah_lansia }}</td>
-                                            <td>{{ $desa->jumlah_kebutuhan }}</td>
+                                            <td>{{ $desa->jumlah_kebutuhan_khusus }}</td>
                                             <td>{{ $desa->jumlah_kriteria_rumah_sehat }}</td>
                                             <td>{{ $desa->jumlah_kriteria_rumah_tidak_sehat }}</td>
                                             <td>{{ $desa->jumlah_punya_tempat_sampah }}</td>
@@ -145,7 +145,7 @@
                                             <td>{{ $desas->sum('jumlah_ibu_hamil') }}</td>
                                             <td>{{ $desas->sum('jumlah_ibu_menyusui') }}</td>
                                             <td>{{ $desas->sum('jumlah_lansia') }}</td>
-                                            <td>{{ $desas->sum('jumlah_kebutuhan') }}</td>
+                                            <td>{{ $desas->sum('jumlah_kebutuhan_khusus') }}</td>
                                             <td>{{ $desas->sum('jumlah_kriteria_rumah_sehat') }}</td>
                                             <td>{{ $desas->sum('jumlah_kriteria_rumah_tidak_sehat') }}</td>
                                             <td>{{ $desas->sum('jumlah_punya_tempat_sampah') }}</td>

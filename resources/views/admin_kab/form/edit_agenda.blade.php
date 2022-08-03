@@ -63,8 +63,8 @@
             <div class="form-group">
                 {{-- nama pukul --}}
                 <label>Pukul</label>
-                    <input type="text" class="form-control @error('pukul') is-invalid @enderror" name="pukul" id="pukul" placeholder="Diisi dengan Pukul Agenda" value="{{ucfirst(old('pukul', $agendaKeg->pukul))}}">
-                        @error('pukul')
+                    <input type="text" class="form-control @error('waktu') is-invalid @enderror" name="waktu" id="waktu" placeholder="Diisi dengan waktu Agenda" value="{{ucfirst(old('waktu', $agendaKeg->waktu))}}">
+                        @error('waktu')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

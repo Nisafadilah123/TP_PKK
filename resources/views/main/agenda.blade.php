@@ -33,7 +33,7 @@
                             <h5 style="font-family: 'Times New Roman', Times, serif"><li>{{$i->judul_agenda}}</li></h5>
                             <h5 style="font-family: 'Times New Roman', Times, serif"> Tema : {{ $i->tema }}</h5>
                             <h5 style="font-family: 'Times New Roman', Times, serif" id="tgl"> Tanggal : {{\Carbon\Carbon::parse($i->tgl_pelaksana)->isoFormat('D MMMM Y')}}</h5>
-                            <h5 style="font-family: 'Times New Roman', Times, serif"> Waktu : {{$i->pukul}}</h5>
+                            <h5 style="font-family: 'Times New Roman', Times, serif"> Waktu : {{$i->waktu}}</h5>
                             @if ($i->status == 1)
                                 <button class="btn btn-primary">
                                     Belum Terlaksana <br>

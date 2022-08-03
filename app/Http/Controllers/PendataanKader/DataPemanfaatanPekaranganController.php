@@ -97,7 +97,7 @@ class DataPemanfaatanPekaranganController extends Controller
         // pengkondisian tabel
         $insert=DB::table('data_pemanfaatan_pekarangan')->where('id_keluarga', $request->id_keluarga)->first();
         if ($insert != null) {
-            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambah. Warga TP PKK Sudah Ada ');
+            Alert::error('Gagal', 'Data Tidak Berhasil Di Tambah. Keluarga Sudah Ada ');
 
             return redirect('/data_pemanfaatan');
         }

@@ -5,7 +5,7 @@
 @section('bread', 'Tambah Data Industri Rumah Tangga')
 @section('container')
 
-<div class="col-md-8">
+<div class="col-md-6">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
@@ -32,7 +32,7 @@
 
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="form-group @error('id_desa') is-invalid @enderror">
                         {{-- nama desa --}}
                         <label for="exampleFormControlSelect1">Desa</label>
@@ -50,7 +50,7 @@
                     @enderror
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="form-group @error('id_kecamatan') is-invalid @enderror">
                         {{-- nama kecamatan --}}
                         <label for="exampleFormControlSelect1">Kecamatan</label>
@@ -66,20 +66,6 @@
                     @enderror
                 </div>
 
-                <div class="col-md-2">
-                    <div class="form-group @error('id_user') is-invalid @enderror">
-                        {{-- nama kader --}}
-                        @foreach ($kad as $c)
-                            <input type="hidden" class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
-
-                        @endforeach
-                    </div>
-                    @error('id_user')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
             </div>
 
             <div class="row">
@@ -123,18 +109,20 @@
                 </div>
             </div>
 
-          <div class="form-group">
-              {{-- nama komoditi --}}
-            <label>Komoditi</label>
-            <input type="text" class="form-control @error('komoditi') is-invalid @enderror" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi" value="{{ old('komoditi') }}">
-            @error('komoditi')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
-
         <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    {{-- nama komoditi --}}
+                  <label>Komoditi</label>
+                  <input type="text" class="form-control @error('komoditi') is-invalid @enderror" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi" value="{{ old('komoditi') }}">
+                  @error('komoditi')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                  @enderror
+              </div>
+            </div>
+
             <div class="col-md-6">
                 <div class="form-group">
                     {{-- jumlah volume --}}
@@ -147,6 +135,11 @@
                     @enderror
                 </div>
             </div>
+        </div>
+
+
+        <div class="row">
+
             <div class="col-md-6">
                 <div class="form-group @error('periode') is-invalid @enderror">
                     {{-- periode --}}
@@ -161,14 +154,30 @@
                             echo '<option value='.$i.'>'.$i.'</option>';
                           }?>
                     </select>
-                  </div>
+                </div>
                   @error('periode')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-              </div>
-          </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group @error('id_user') is-invalid @enderror">
+                    {{-- nama kader --}}
+                    @foreach ($kad as $c)
+                        <input type="hidden" class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
+
+                    @endforeach
+                </div>
+                @error('id_user')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+
+        </div>
 
     </div>
         <!-- /.card-body -->

@@ -164,8 +164,8 @@
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Kabupaten</label>
                                             {{-- nama kabupaten --}}
-                                                <input type="text" readonly class="form-control @error('kota') is-invalid @enderror" name="kota" id="kota" placeholder="Masukkan Kota" value="Indramayu">
-                                                @error('kota')
+                                                <input type="text" readonly class="form-control @error('kabupaten') is-invalid @enderror" name="kabupaten" id="kabupaten" placeholder="Masukkan kabupaten" value="Indramayu">
+                                                @error('kabupaten')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -257,17 +257,17 @@
                                     </div>
 
                                     <div class="col col-md-12">
-                                        <div class="form-group @error('laki_laki') is-invalid @enderror">
+                                        <div class="form-group @error('jumlah_laki') is-invalid @enderror">
                                             <label>Laki-laki</label>
                                             {{-- Jumlah Anggota Keluarga Laki-laki--}}
                                                 <div class="input-group mb-3">
-                                                    <input type="number" min="0" class="form-control" name="laki_laki" id="laki_laki" placeholder="Diisi Jumlah Anggota Keluarga Laki-laki" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ old('laki_laki', $data_keluarga->laki_laki) }}">
+                                                    <input type="number" min="0" class="form-control" name="jumlah_laki" id="jumlah_laki" placeholder="Diisi Jumlah Anggota Keluarga Laki-laki" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ old('jumlah_laki', $data_keluarga->jumlah_laki) }}">
                                                         <div class="input-group-append">
                                                             <span class="input-group-text" id="basic-addon2">Orang</span>
                                                         </div>
                                                 </div>
                                         </div>
-                                        @error('laki_laki')
+                                        @error('jumlah_laki')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -275,17 +275,17 @@
                                     </div>
 
                                     <div class="col col-md-12">
-                                        <div class="form-group @error('perempuan') is-invalid @enderror">
+                                        <div class="form-group @error('jumlah_perempuan') is-invalid @enderror">
                                             <label>Perempuan</label>
                                             {{-- Jumlah Anggota Keluarga perempuan--}}
                                                 <div class="input-group mb-3">
-                                                    <input type="number" min="0" name="perempuan" class="form-control" placeholder="Diisi Jumlah Anggota Keluarga Perempuan" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ old('perempuan', $data_keluarga->perempuan) }}">
+                                                    <input type="number" min="0" name="jumlah_perempuan" class="form-control" placeholder="Diisi Jumlah Anggota Keluarga Perempuan" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ old('jumlah_perempuan', $data_keluarga->jumlah_perempuan) }}">
                                                         <div class="input-group-append">
                                                             <span class="input-group-text" id="basic-addon2">Orang</span>
                                                         </div>
                                                 </div>
                                         </div>
-                                        @error('perempuan')
+                                        @error('jumlah_perempuan')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -584,14 +584,14 @@
                             </div>
 
                             <div class="col-md-3">
-                                <div class="input-group mb-3 @error('jumlah_kebutuhan') is-invalid @enderror">
+                                <div class="input-group mb-3 @error('jumlah_kebutuhan_khusus') is-invalid @enderror">
                                     {{-- jumlah kebutuhan --}}
-                                    <input type="number" min="0" class="form-control" placeholder="Kebutuhan Khusus" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_kebutuhan" value="{{ old('jumlah_kebutuhan', $data_keluarga->jumlah_kebutuhan) }}">
+                                    <input type="number" min="0" class="form-control" placeholder="Kebutuhan Khusus" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_kebutuhan_khusus" value="{{ old('jumlah_kebutuhan_khusus', $data_keluarga->jumlah_kebutuhan_khusus) }}">
                                     <div class="input-group-append">
                                         <span class="input-group-text" id="basic-addon2">Orang</span>
                                     </div>
                                 </div>
-                                @error('jumlah_kebutuhan')
+                                @error('jumlah_kebutuhan_khusus')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

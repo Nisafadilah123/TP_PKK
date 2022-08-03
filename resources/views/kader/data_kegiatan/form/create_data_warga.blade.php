@@ -157,8 +157,8 @@
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Kabupaten</label>
                                             {{-- nama kabupaten --}}
-                                                <input type="text" readonly class="form-control @error('kota') is-invalid @enderror" name="kota" id="kota" placeholder="Masukkan Kota" value="Indramayu">
-                                                @error('kota')
+                                                <input type="text" readonly class="form-control @error('kabupaten') is-invalid @enderror" name="kabupaten" id="kabupaten" placeholder="Masukkan kabupaten" value="Indramayu">
+                                                @error('kabupaten')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -558,7 +558,7 @@
                                                             value="anggota keluarga">Anggota Keluarga
                                                     </div>
                                                 </div>
-                                                <input type="text" class="form-control" aria-label="Text input with radio button" name="status"
+                                                <input type="text" class="form-control" aria-label="Text input with radio button" name="status_anggota_keluarga"
                                                     placeholder="Status">
                                             </div>
                                         </div>

@@ -73,8 +73,8 @@
                                             <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                             <td style="vertical-align: middle;">{{ $keluarga->nama_kepala_rumah_tangga }}</td>
                                             <td>{{ $keluarga->jumlah_KK }}</td>
-                                            <td>{{ $keluarga->laki_laki }}</td>
-                                            <td>{{ $keluarga->perempuan }}</td>
+                                            <td>{{ $keluarga->jumlah_laki }}</td>
+                                            <td>{{ $keluarga->jumlah_perempuan }}</td>
                                             <td>{{ $keluarga->jumlah_balita_laki }}</td>
                                             <td>{{ $keluarga->jumlah_balita_perempuan }}</td>
                                             <td>{{ $keluarga->jumlah_3_buta }}</td>
@@ -83,7 +83,7 @@
                                             <td>{{ $keluarga->jumlah_ibu_hamil }}</td>
                                             <td>{{ $keluarga->jumlah_ibu_menyusui }}</td>
                                             <td>{{ $keluarga->jumlah_lansia }}</td>
-                                            <td>{{ $keluarga->jumlah_kebutuhan }}</td>
+                                            <td>{{ $keluarga->jumlah_kebutuhan_khusus }}</td>
                                                     <td>
                                                         @if ($keluarga->kriteria_rumah == '1')
                                                             <i class="fas fa-check"></i>
@@ -199,8 +199,8 @@
                                             <td><strong>Jumlah</strong> </td>
                                             <td></td>
                                             <td>{{ $catatan_keluarga->sum('jumlah_KK') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('laki_laki') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('perempuan') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('jumlah_laki') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('jumlah_perempuan') }}</td>
                                             <td>{{ $catatan_keluarga->sum('jumlah_balita_laki') }}</td>
                                             <td>{{ $catatan_keluarga->sum('jumlah_balita_perempuan') }}</td>
                                             <td>{{ $catatan_keluarga->sum('jumlah_3_buta') }}</td>
@@ -209,7 +209,7 @@
                                             <td>{{ $catatan_keluarga->sum('jumlah_ibu_hamil') }}</td>
                                             <td>{{ $catatan_keluarga->sum('jumlah_ibu_menyusui') }}</td>
                                             <td>{{ $catatan_keluarga->sum('jumlah_lansia') }}</td>
-                                            <td>{{ $catatan_keluarga->sum('jumlah_kebutuhan') }}</td>
+                                            <td>{{ $catatan_keluarga->sum('jumlah_kebutuhan_khusus') }}</td>
                                             <td>{{ $catatan_keluarga->sum('kriteria_rumah') }}</td>
                                             <td>{{ $catatan_keluarga->count() - $catatan_keluarga->sum('kriteria_rumah') }}</td>
                                             <td>{{ $catatan_keluarga->sum('punya_tempat_sampah') }}</td>

@@ -88,7 +88,7 @@ class DataWargaController extends Controller
             'alamat' => 'required',
             // 'rt' => 'required',
             // 'rw' => 'required',
-            'kota' => 'required',
+            'kabupaten' => 'required',
             'provinsi' => 'required',
             'pendidikan' => 'required',
             'pekerjaan' => 'required',
@@ -120,7 +120,7 @@ class DataWargaController extends Controller
             'alamat.required' => 'Lengkapi Alamat',
             // 'rt.required' => 'Lengkapi RT',
             // 'rw.required' => 'Lengkapi RW',
-            'kota.required' => 'Lengkapi Kota',
+            'kabupaten.required' => 'Lengkapi kabupaten',
             'provinsi.required' => 'Lengkapi Provinsi',
             'pendidikan.required' => 'Pilih Riwayat Pendidikan Warga',
             'pekerjaan.required' => 'Pilih Pekerjaan Warga',
@@ -160,12 +160,12 @@ class DataWargaController extends Controller
             $wargas->umur = $request->umur;
             $wargas->status_perkawinan = $request->status_perkawinan;
             $wargas->status_keluarga = $request->status_keluarga;
-            $wargas->status = $request->status_keluarga == 'kepala keluarga' ? 'kepala keluarga' : $request->status;
+            $wargas->status_anggota_keluarga = $request->status_keluarga == 'kepala keluarga' ? 'kepala keluarga' : $request->status_anggota_keluarga;
             $wargas->agama = $request->agama;
             $wargas->alamat = $request->alamat;
             $wargas->rt = $request->rt;
             $wargas->rw = $request->rw;
-            $wargas->kota = $request->kota;
+            $wargas->kabupaten = $request->kabupaten;
             $wargas->provinsi = $request->provinsi;
             $wargas->pendidikan = $request->pendidikan;
             $wargas->pekerjaan = $request->pekerjaan;
@@ -220,7 +220,7 @@ class DataWargaController extends Controller
         ->get();
 
         $kec = DB::table('data_kecamatan')
-        ->where('id', auth()->user()->id_desa)
+        ->where('id', auth()->user()->id_kecamatan)
         ->get();
 
         $kad = DB::table('users')
@@ -265,7 +265,7 @@ class DataWargaController extends Controller
             'alamat' => 'required',
             'rt' => 'required',
             'rw' => 'required',
-            'kota' => 'required',
+            'kabupaten' => 'required',
             'provinsi' => 'required',
             'pendidikan' => 'required',
             'pekerjaan' => 'required',
@@ -297,7 +297,7 @@ class DataWargaController extends Controller
             'alamat.required' => 'Lengkapi Alamat',
             'rt.required' => 'Lengkapi RT',
             'rw.required' => 'Lengkapi RW',
-            'kota.required' => 'Lengkapi Kota',
+            'kabupaten.required' => 'Lengkapi kabupaten',
             'provinsi.required' => 'Lengkapi Provinsi',
             'pendidikan.required' => 'Pilih Riwayat Pendidikan Warga',
             'pekerjaan.required' => 'Pilih Pekerjaan Warga',

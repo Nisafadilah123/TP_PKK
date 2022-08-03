@@ -98,7 +98,7 @@
                                             <td>{{ $rt->jumlah_ibu_hamil }}</td>
                                             <td>{{ $rt->jumlah_ibu_menyusui }}</td>
                                             <td>{{ $rt->jumlah_lansia }}</td>
-                                            <td>{{ $rt->jumlah_kebutuhan }}</td>
+                                            <td>{{ $rt->jumlah_kebutuhan_khusus }}</td>
                                             <td>{{ $rt->jumlah_kriteria_rumah_sehat }}</td>
                                             <td>{{ $rt->jumlah_kriteria_rumah_tidak_sehat }}</td>
                                             <td>{{ $rt->jumlah_punya_tempat_sampah }}</td>
@@ -135,7 +135,7 @@
                                             <td>{{ $rts->sum('jumlah_ibu_hamil') }}</td>
                                             <td>{{ $rts->sum('jumlah_ibu_menyusui') }}</td>
                                             <td>{{ $rts->sum('jumlah_lansia') }}</td>
-                                            <td>{{ $rts->sum('jumlah_kebutuhan') }}</td>
+                                            <td>{{ $rts->sum('jumlah_kebutuhan_khusus') }}</td>
                                             <td>{{ $rts->sum('jumlah_kriteria_rumah_sehat') }}</td>
                                             <td>{{ $rts->sum('jumlah_kriteria_rumah_tidak_sehat') }}</td>
                                             <td>{{ $rts->sum('jumlah_punya_tempat_sampah') }}</td>

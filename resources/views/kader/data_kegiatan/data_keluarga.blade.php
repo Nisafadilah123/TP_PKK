@@ -45,8 +45,8 @@
                                         {{-- nama desa yang login --}}
                                         <td style="vertical-align: middle;">{{ucfirst($c->nama_kepala_rumah_tangga) }}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jumlah_anggota_keluarga)}} Orang</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->laki_laki)}} Orang</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->perempuan)}} Orang</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->jumlah_laki)}} Orang</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->jumlah_perempuan)}} Orang</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jumlah_KK)}} KK</td>
 
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
@@ -91,12 +91,10 @@
                                                         Dusun/Lingkungan : <br>
                                                         Desa/Kel : <strong>{{ucfirst($c->desa->nama_desa)}}</strong><br>
                                                         Kec. <strong>{{ucfirst($c->kecamatan->nama_kecamatan)}}</strong>,
-                                                            Kabupaten <strong>{{ucfirst($c->kota) }}</strong>, Provinsi <strong>{{ucfirst($c->provinsi) }}</strong><br>
+                                                            Kabupaten <strong>{{ucfirst($c->kabupaten) }}</strong>, Provinsi <strong>{{ucfirst($c->provinsi) }}</strong><br>
                                                         Nama Kepala Rumah Tangga : <strong>{{ucfirst($c->nama_kepala_rumah_tangga) }}</strong><br>
                                                         Jumlah Anggota Keluarga : <strong> {{ucfirst($c->jumlah_anggota_keluarga) }} </strong>Orang<br>
-                                                        Jumlah Anggota Keluarga Laki-laki : <strong> {{ucfirst($c->laki_laki) }} </strong>Orang<br>
-                                                        Jumlah Anggota Keluarga Perempuan: <strong> {{ucfirst($c->perempuan) }} </strong>Orang<br>
-                                                        Jumlah Kepala Keluarga: <strong> {{ucfirst($c->jumlah_KK) }} </strong>KK<br>
+
                                                         Jumlah Balita :  @if ($warga = $c->jumlah_balita)
                                                                         {{ $warga }} Anak
                                                                         @else
@@ -132,7 +130,7 @@
                                                                         @else
                                                                             - Orang
                                                                         @endif <br>
-                                                        Jumlah Kebutuhan Khusus : @if ($warga = $c->jumlah_kebutuhan)
+                                                        Jumlah Kebutuhan Khusus : @if ($warga = $c->jumlah_kebutuhan_khusus)
                                                                                     {{ $warga }} Orang
                                                                                     @else
                                                                                     - Orang

@@ -109,13 +109,13 @@
                                                             @if ($c->status_keluarga=='kepala keluarga')
                                                                 Status dalam Keluarga :<strong> Kepala Keluarga</strong><br>
                                                             @else
-                                                                Status dalam Keluarga : <strong> {{ucfirst($c->status_keluarga) }} ({{ ucfirst($c->status) }})</strong><br>
+                                                                Status dalam Keluarga : <strong> {{ucfirst($c->status_keluarga) }} ({{ ucfirst($c->status_anggota_keluarga) }})</strong><br>
 
                                                             @endif
 
                                                             Agama : <strong> {{ucfirst($c->agama) }} </strong><br>
                                                             Alamat : <strong> {{ucfirst($c->alamat) }},RT {{ ($c->rt) }}, RW {{ ($c->rt) }},Desa {{ucfirst($c->desa->nama_desa)}}, Kec. {{ucfirst($c->kecamatan->nama_kecamatan)}}
-                                                                Kabupaten {{ucfirst($c->kota) }}, Provinsi {{ucfirst($c->provinsi) }}
+                                                                Kabupaten {{ucfirst($c->kabupaten) }}, Provinsi {{ucfirst($c->provinsi) }}
                                                             </strong><br>
                                                               Pendidikan : <strong> {{ucfirst($c->pendidikan) }} </strong><br>
                                                               Pekerjaan : <strong> {{ucfirst($c->pekerjaan) }} </strong><br>

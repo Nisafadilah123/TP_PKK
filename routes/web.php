@@ -6,7 +6,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminDesa\DataKegiatan\Kategori\KategoriIndustriRumahController;
 use App\Http\Controllers\AdminDesa\DataKegiatan\Kategori\KategoriPemanfaatanLahanController;
 use App\Http\Controllers\AdminDesa\KaderController;
+use App\Http\Controllers\AdminDesa\KategoriKegiatanController;
 use App\Http\Controllers\AdminDesa\KelompokDasawismaController;
+use App\Http\Controllers\AdminDesa\KeteranganKegiatanController;
 use App\Http\Controllers\AdminKab\BeritaController;
 use App\Http\Controllers\AdminKab\DataAgendaKegiatanController;
 use App\Http\Controllers\AdminKab\DataDesaController;
@@ -144,6 +146,10 @@ Route::middleware(['user_type:admin_desa'])->group(function(){
     Route::post('/data_kader/update/{id}/password', [KaderController::class, 'update_password']);
     Route::resource('/data_kader', KaderController::class);
     Route::resource('/data_dasawisma', KelompokDasawismaController::class);
+
+    // form kategori kegiatan
+    Route::resource('/kategori_kegiatan', KategoriKegiatanController::class);
+    Route::resource('/keterangan_kegiatan', KeteranganKegiatanController::class);
 
     // form data kategori pendataan kader
     Route::resource('/kategori_industri', KategoriIndustriRumahController::class);

@@ -76,7 +76,7 @@ class DataKeluargaController extends Controller
             'nik_kepala_keluarga' => 'required|min:16',
             'rt' => 'required',
             'rw' => 'required',
-            'kota' => 'required',
+            'kabupaten' => 'required',
             'provinsi' => 'required',
             'dusun' => 'required',
             // 'perempuan' => 'required',
@@ -148,7 +148,7 @@ class DataKeluargaController extends Controller
             $wargas->nama_kepala_rumah_tangga = $request->nama_kepala_rumah_tangga;
             $wargas->id_dasawisma = $request->id_dasawisma;
             $wargas->nik_kepala_keluarga = $request->nik_kepala_keluarga;
-            $wargas->kota = $request->kota;
+            $wargas->kabupaten = $request->kabupaten;
             $wargas->provinsi = $request->provinsi;
             $wargas->id_user = $request->id_user;
             $wargas->dusun = $request->dusun;
@@ -156,8 +156,8 @@ class DataKeluargaController extends Controller
             $wargas->jumlah_anggota_keluarga = $request->jumlah_anggota_keluarga;
             $wargas->rt = $request->rt;
             $wargas->rw = $request->rw;
-            $wargas->laki_laki = $request->laki_laki;
-            $wargas->perempuan = $request->perempuan;
+            $wargas->jumlah_laki = $request->jumlah_laki;
+            $wargas->jumlah_perempuan = $request->jumlah_perempuan;
             $wargas->jumlah_KK = $request->jumlah_KK;
             $wargas->jumlah_balita = $request->jumlah_balita;
             $wargas->jumlah_balita_laki = $request->jumlah_balita_laki;
@@ -170,7 +170,7 @@ class DataKeluargaController extends Controller
             $wargas->jumlah_ibu_hamil = $request->jumlah_ibu_hamil;
             $wargas->jumlah_ibu_menyusui = $request->jumlah_ibu_menyusui;
             $wargas->jumlah_lansia = $request->jumlah_lansia;
-            $wargas->jumlah_kebutuhan = $request->jumlah_kebutuhan;
+            $wargas->jumlah_kebutuhan_khusus = $request->jumlah_kebutuhan_khusus;
             $wargas->makanan_pokok = $request->makanan_pokok;
             $wargas->punya_jamban = $request->punya_jamban;
             $wargas->jumlah_jamban = $request->jumlah_jamban;
@@ -213,7 +213,7 @@ class DataKeluargaController extends Controller
         ->get();
         // $kec = DB::table('data_kecamatan')->get();
         $kec = DB::table('data_kecamatan')
-        ->where('id', auth()->user()->id_desa)
+        ->where('id', auth()->user()->id_kecamatan)
         ->get();
 
         $kad = DB::table('users')
@@ -250,7 +250,7 @@ class DataKeluargaController extends Controller
             'nik_kepala_keluarga' => 'required|min:16',
             'rt' => 'required',
             'rw' => 'required',
-            'kota' => 'required',
+            'kabupaten' => 'required',
             'provinsi' => 'required',
             'dusun' => 'required',
             // 'perempuan' => 'required',

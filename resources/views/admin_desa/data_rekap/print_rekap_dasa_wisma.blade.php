@@ -95,7 +95,7 @@
                                         <td>{{ $keluarga->jumlah_ibu_hamil }}</td>
                                         <td>{{ $keluarga->jumlah_ibu_menyusui }}</td>
                                         <td>{{ $keluarga->jumlah_lansia }}</td>
-                                        <td>{{ $keluarga->jumlah_kebutuhan }}</td>
+                                        <td>{{ $keluarga->jumlah_kebutuhan_khusus }}</td>
                                                 <td>
                                                     @if ($keluarga->kriteria_rumah == '1')
                                                         <i class="fas fa-check"></i>
@@ -221,7 +221,7 @@
                                         <td>{{ $catatan_keluarga->sum('jumlah_ibu_hamil') }}</td>
                                         <td>{{ $catatan_keluarga->sum('jumlah_ibu_menyusui') }}</td>
                                         <td>{{ $catatan_keluarga->sum('jumlah_lansia') }}</td>
-                                        <td>{{ $catatan_keluarga->sum('jumlah_kebutuhan') }}</td>
+                                        <td>{{ $catatan_keluarga->sum('jumlah_kebutuhan_khusus') }}</td>
                                         <td>{{ $catatan_keluarga->sum('kriteria_rumah') }}</td>
                                         <td>{{ $catatan_keluarga->count() - $catatan_keluarga->sum('kriteria_rumah') }}</td>
                                         <td>{{ $catatan_keluarga->sum('punya_tempat_sampah') }}</td>

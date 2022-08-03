@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class BeritaKab extends Model
 {
     use HasFactory;
-    protected $table = "berita_kab";
+    protected $table = "data_berita";
     protected $primaryKey = 'id';
     protected $guarded = ['id'];
 

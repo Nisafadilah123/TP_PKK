@@ -116,7 +116,7 @@ class KelompokDasawismaController extends Controller
     {
         $request->validate([
             'nama_dasawisma' => 'required',
-            'alamat_dasawisma' => 'required|unique:data_kader',
+            'alamat_dasawisma' => 'required',
             'dusun' => 'required',
             'status' => 'required',
             'id_desa' => 'required',

@@ -115,16 +115,18 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-group @error('periode') is-invalid @enderror">
-                        <label>Periode</label>
                         {{-- pilih periode --}}
-                        <select style="cursor:pointer;" class="form-control " id="periode" name="periode" value="{{ old('periode') }}">
-                            <option hidden> Pilih Tahun</option>
+                        <label>Periode</label>
+                        <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
+                            <option value="{{ $data_dasawisma->periode }}"
+                                {{ $data_dasawisma->periode ? 'selected' : '' }}>{{ $data_dasawisma->periode }}
+                            </option>
                                 <?php
                                 $year = date('Y');
                                 $min = $year ;
                                     $max = $year + 20;
                                 for( $i=$min; $i<=$max; $i++ ) {
-                                echo '<option value='.$i.'>'.$i.'</option>';
+                                echo '<option value="'.$i.'" >'.$i.'</option>';
                             }?>
                         </select>
                     </div>
@@ -139,7 +141,7 @@
         <!-- /.card-body -->
 
         <div class="card-footer">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Edit</button>
           <a href="/data_dasawisma" class="btn btn-outline-primary">
             <span>Batalkan</span>
         </a>

@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('data_agenda_kegiatan', function (Blueprint $table) {
+        Schema::create('data_berita', function (Blueprint $table) {
             $table->id();
-            $table->string('judul_agenda');
-            $table->string('tema');
-            $table->string('tempat');
-            $table->date('tgl_pelaksana');
-            $table->integer('status');
-            $table->string('waktu');
+            $table->string('nama_berita');
+            $table->string('desk');
+            $table->string('gambar');
+            $table->date('tgl_publish');
+            $table->string('penulis');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_agenda_kegiatan');
+        Schema::dropIfExists('data_berita');
     }
 };

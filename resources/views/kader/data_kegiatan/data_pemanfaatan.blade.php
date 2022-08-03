@@ -43,7 +43,7 @@
                                         <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         {{-- nama desa yang login --}}
                                         <td style="vertical-align: middle;">{{ucfirst($c->keluarga->nama_kepala_rumah_tangga) }}</td>
-                                        @if ($c->nama_kategori == 1)
+                                        {{-- @if ($c->nama_kategori == 1)
                                             <td style="vertical-align: middle;">Peternakan</td>
                                         @elseif($c->nama_kategori == 2)
                                             <td style="vertical-align: middle;">Perikanan</td>
@@ -56,7 +56,8 @@
                                         @elseif($c->nama_kategori == 6)
                                             <td style="vertical-align: middle;">Lainnya</td>
 
-                                        @endif
+                                        @endif --}}
+                                        <td style="vertical-align: middle;">{{ucfirst($c->nama_kategori)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->komoditi)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jumlah)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>

@@ -113,6 +113,31 @@
                 </a>
               </li>
 
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-book"></i>
+                  <p>
+                        Data Master
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="/kategori_kegiatan" class="nav-link {{ Request::is('kategori_kegiatan') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Kategori Kegiatan</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/keterangan_kegiatan" class="nav-link {{ Request::is('keterangan_kegiatan') ? 'active':'' }}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Keterangan Kegiatan</p>
+                    </a>
+                  </li>
+
+                </ul>
+              </li>
+
               <li class="nav-item">
                 <a href="/data_dasawisma" class="nav-link {{ Request::is('data_dasawisma') ? 'active':'' }}">
                 <i class="nav-icon fas fa-folder-open"></i>
@@ -126,6 +151,7 @@
                   <p>Data Kader Dasawisma</p>
                 </a>
               </li>
+
 
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">

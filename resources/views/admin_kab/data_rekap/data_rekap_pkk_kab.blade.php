@@ -104,7 +104,7 @@
                                             <td>{{ $kec->jumlah_ibu_hamil }}</td>
                                             <td>{{ $kec->jumlah_ibu_menyusui }}</td>
                                             <td>{{ $kec->jumlah_lansia }}</td>
-                                            <td>{{ $kec->jumlah_kebutuhan }}</td>
+                                            <td>{{ $kec->jumlah_kebutuhan_khusus }}</td>
                                             <td>{{ $kec->jumlah_kriteria_rumah_sehat }}</td>
                                             <td>{{ $kec->jumlah_kriteria_rumah_tidak_sehat }}</td>
                                             <td>{{ $kec->jumlah_punya_tempat_sampah }}</td>
@@ -145,7 +145,7 @@
                                             <td>{{ $kecamatans->sum('jumlah_ibu_hamil') }}</td>
                                             <td>{{ $kecamatans->sum('jumlah_ibu_menyusui') }}</td>
                                             <td>{{ $kecamatans->sum('jumlah_lansia') }}</td>
-                                            <td>{{ $kecamatans->sum('jumlah_kebutuhan') }}</td>
+                                            <td>{{ $kecamatans->sum('jumlah_kebutuhan_khusus') }}</td>
                                             <td>{{ $kecamatans->sum('jumlah_kriteria_rumah_sehat') }}</td>
                                             <td>{{ $kecamatans->sum('jumlah_kriteria_rumah_tidak_sehat') }}</td>
                                             <td>{{ $kecamatans->sum('jumlah_punya_tempat_sampah') }}</td>

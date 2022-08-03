@@ -133,7 +133,7 @@ class AdminKecController extends Controller
         {
             $rekap = DB::table('data_warga')
                     ->join('data_kecamatan', 'data_kecamatan.id', '=', 'data_warga.id_kecamatan')
-                    ->select('alamat', 'periode', 'nama_kecamatan', 'kota','provinsi')->distinct()
+                    ->select('alamat', 'periode', 'nama_kecamatan', 'kabupaten','provinsi')->distinct()
                     ->get();
             $catatan_keluarga = DataWarga::query()
                     ->with([

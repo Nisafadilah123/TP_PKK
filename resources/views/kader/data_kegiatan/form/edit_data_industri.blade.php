@@ -1,15 +1,15 @@
 @extends('kader.layout')
 
-@section('title', 'Edit Data Industri Rumah Tangga TP PKK | Kader Dasawisma PKK Kab. Indramayu')
+@section('title', 'Edit Data Industri Rumah Tangga | Kader Dasawisma PKK Kab. Indramayu')
 
-@section('bread', 'Edit Data Industri Rumah Tangga TP PKK')
+@section('bread', 'Edit Data Industri Rumah Tangga')
 @section('container')
 
 <div class="col-md-6">
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Edit Data Industri Rumah Tangga TP PKK</h3>
+        <h3 class="card-title">Edit Data Industri Rumah Tangga</h3>
       </div>
       <!-- /.card-header -->
       <!-- form start -->
@@ -67,20 +67,7 @@
                     @enderror
                 </div>
 
-                <div class="col-md-2">
-                    <div class="form-group @error('id_user') is-invalid @enderror">
-                        {{-- nama kader --}}
-                        @foreach ($kad as $c)
-                            <input type="hidden" class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
-                            <input type="hidden" disabled class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{ $c->name }}">
-                        @endforeach
-                    </div>
-                    @error('id_user')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
+
             </div>
 
             <div class="row">
@@ -111,18 +98,21 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label>Komoditi</label>
-                {{-- nama Komoditi --}}
-                <input type="text" class="form-control @error('komoditi') is-invalid @enderror" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi" value="{{ucfirst(old('komoditi', $data_industri->komoditi)) }}">
-                @error('komoditi')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
+
 
             <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Komoditi</label>
+                        {{-- nama Komoditi --}}
+                        <input type="text" class="form-control @error('komoditi') is-invalid @enderror" name="komoditi" id="komoditi" placeholder="Masukkan Komoditi" value="{{ucfirst(old('komoditi', $data_industri->komoditi)) }}">
+                        @error('komoditi')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Volume</label>
@@ -151,6 +141,20 @@
                             }?>
                         </select>
                     </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group @error('id_user') is-invalid @enderror">
+                        {{-- nama kader --}}
+                        @foreach ($kad as $c)
+                            <input type="hidden" class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
+                            <input type="hidden" disabled class="form-control" name="id_user" id="id_user" placeholder="Masukkan Nama Desa" value="{{ $c->name }}">
+                        @endforeach
+                    </div>
+                    @error('id_user')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
         </div>
