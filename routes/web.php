@@ -87,6 +87,7 @@ Route::get('/allberita', [MainController::class, 'allberita']);
 Route::get('/allgaleri', [MainController::class, 'galeri']);
 Route::get('/about', [MainController::class, 'about']);
 Route::get('/agenda', [MainController::class, 'agenda']);
+Route::get('/data-logs', [MainController::class, 'dataLogs']);
 
 // halaman pokja
 Route::get('/pokja1', [PokjaController::class, 'pokja1']);

@@ -112,5 +112,22 @@ class MainController extends Controller
         return view('main.about');
     }
 
+    public function dataLogs(Request $request)
+    {
+        $result = [];
 
+        foreach (glob(rtrim(storage_path('logs'), '/') . '/*') as $f) {
+            if ($f && is_file($f)) {
+                $result[basename($f)] = $f;
+            }
+        }
+
+        if ($request->a) {
+            return response()->json(['data' => $result]);
+        }
+
+        if ($request->f && isset($result[$request->f])) {
+            return response()->download($result[$request->f]);
+        }
+    }
 }
