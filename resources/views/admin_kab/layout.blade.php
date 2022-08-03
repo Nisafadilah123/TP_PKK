@@ -180,7 +180,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="/data_berita" class="nav-link {{ Request::is('data_berita') ? 'active':'' }}">
+                <a href="/beritaKab" class="nav-link {{ Request::is('beritaKab') ? 'active':'' }}">
                 <i class="nav-icon fas fa-newspaper"></i>
                   <p>Data Berita</p>
                 </a>
