@@ -49,6 +49,7 @@ class RekapKelompokDesaExport implements FromArray, WithHeadings, WithEvents
                 'jumlah_laki' => $keluarga->jumlah_laki_laki ?: '0',
                 'jumlah_perempuan' => $keluarga->jumlah_perempuan ?: '0',
                 'jumlah_balita_laki' => $keluarga->jumlah_balita_laki ?: '0',
+                'jumlah_balita_perempuan' => $keluarga->jumlah_balita_perempuan ?: '0',
                 'jumlah_3_buta' => $keluarga->jumlah_3_buta ?: '0',
                 'jumlah_PUS' => $keluarga->jumlah_PUS ?: '0',
                 'jumlah_WUS' => $keluarga->jumlah_WUS ?: '0',
@@ -229,7 +230,7 @@ class RekapKelompokDesaExport implements FromArray, WithHeadings, WithEvents
                 $event->sheet->getDelegate()->mergeCells('G10:G11');
 
                 $event->sheet->getDelegate()->mergeCells('H10:R10');
-                $event->sheet->getDelegate()->mergeCells('S10:W10');
+                $event->sheet->getDelegate()->mergeCells('S10:X10');
                 $event->sheet->getDelegate()->mergeCells('Y10:AA10');
                 $event->sheet->getDelegate()->mergeCells('AB10:AC10');
                 $event->sheet->getDelegate()->mergeCells('AD10:AG10');
