@@ -77,7 +77,7 @@ Route::get('/sejarah', [MainController::class, 'sejarah']);
 Route::get('/program', [MainController::class, 'program_pkk']);
 Route::get('/visi', [MainController::class, 'visi']);
 Route::get('/arti', [MainController::class, 'arti']);
-Route::get('/profil', [MainController::class, 'profil']);
+Route::get('/profil_main', [MainController::class, 'profil']);
 Route::get('/struktur', [MainController::class, 'bagan_struktur_kel']);
 Route::get('/pkk', [MainController::class, 'bagan_struktur_pkk']);
 Route::get('/baganmekel', [MainController::class, 'bagan_mekanis_kel']);

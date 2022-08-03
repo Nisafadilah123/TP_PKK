@@ -100,7 +100,7 @@
                 </ul>
               </li>
               <li>
-                <a href="/profil">Profile Pembina dan Ketua TP PKK</a>
+                <a href="/profil_main">Profile Pembina dan Ketua TP PKK</a>
               </li>
             </ul>
           </li>

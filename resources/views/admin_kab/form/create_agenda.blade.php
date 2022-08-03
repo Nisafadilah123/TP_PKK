@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Tanggal Publsih Berita</label>
+                    <label>Tanggal </label>
                     <input type="date" class="form-control" name="tgl_pelaksana" id="tgl_pelaksana" placeholder="Masukkan Tanggal Berita" required value="{{old('date')}}">
                 </div>
 
