@@ -146,7 +146,6 @@
                                                 <td>{{ $rws->sum('jumlah_tempel_stiker') }}</td>
                                                 <td>{{ $rws->sum('jumlah_sumber_air_pdam') }}</td>
                                                 <td>{{ $rws->sum('jumlah_sumber_air_sumur') }}</td>
-                                                <td>{{ $rws->sum('jumlah_sumber_air_sungai') }}</td>
                                                 <td>{{ $rws->sum('jumlah_sumber_air_dll') }}</td>
                                                 <td>{{ $rws->sum('punya_jamban') }}</td>
                                                 <td>{{ $rws->sum('jumlah_makanan_pokok_beras') }}</td>

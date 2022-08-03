@@ -80,6 +80,7 @@ class RekapKelompokDesaExport implements FromArray, WithHeadings, WithEvents
         $result[] = [
             '_index' => 'Jumlah',
             'dusun' => null,
+            'jumlah_rw' => $dusun->sum('jumlah_rw') ?: '0',
             'jumlah_rt' => $dusun->sum('jumlah_rt') ?: '0',
             'jumlah_dasa_wisma' => $dusun->sum('jumlah_dasa_wisma') ?: '0',
             'jumlah_KRT' => $dusun->sum('jumlah_KRT') ?: '0',
