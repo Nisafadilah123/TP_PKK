@@ -38,7 +38,7 @@
           </div>
 
           <div class="form-group">
-            <label>Tanggal Publsih Berita</label>
+            <label>Tanggal Publish Berita</label>
             <input type="date" class="form-control" name="tgl_publish" id="tgl_publish" placeholder="Masukkan Tanggal Berita" required value="{{old('date')}}">
           </div>
           <div class="form-group">

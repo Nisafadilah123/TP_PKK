@@ -34,7 +34,7 @@
             </div>
 
             <div class="form-group">
-                <label>Tanggal Publsih Berita</label>
+                <label>Tanggal Publish Berita</label>
                 <input type="date" class="form-control" name="tgl_publish" id="tgl_publish" placeholder="Masukkan Tanggal Publsih Berita" required value="{{ucfirst(old('tgl_publish', $beritaKab->tgl_publish))}}">
             </div>
             <div class="form-group">
