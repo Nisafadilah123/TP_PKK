@@ -64,3 +64,4 @@
 [0429/185308.827:ERROR:registration_protocol_win.cc(106)] CreateFile: The system cannot find the file specified. (0x2)
 [0429/185308.843:ERROR:registration_protocol_win.cc(106)] CreateFile: The system cannot find the file specified. (0x2)
 [0429/185314.692:ERROR:registration_protocol_win.cc(106)] CreateFile: The system cannot find the file specified. (0x2)
+[0803/234802.309:ERROR:registration_protocol_win.cc(106)] CreateFile: The system cannot find the file specified. (0x2)
