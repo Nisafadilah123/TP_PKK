@@ -42,7 +42,7 @@
               <div class="inner">
                 <h3>{{ $warga }}</h3>
 
-                <p>Data Warga TP PKK</p>
+                <p>Data Warga</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person"></i>

@@ -1,8 +1,8 @@
 @extends('kader.layout')
 
-@section('title', 'Edit Data Keluarga Warga TP PKK | Kader Dasawisma PKK Kab. Indramayu')
+@section('title', 'Edit Data Keluarga | Kader Dasawisma PKK Kab. Indramayu')
 
-@section('bread', 'Edit Data Keluarga Warga TP PKK')
+@section('bread', 'Edit Data Keluarga')
 @section('container')
 
 <div class="container">
@@ -50,9 +50,9 @@
 
 
                         <div class="row">
-                            <div class="col col-md-6">
+                            <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group ">
                                             <label>Dasa Wisma</label>
                                             {{-- <input type="text" class="form-control @error('dasa_wisma') is-invalid @enderror" name="dasa_wisma" id="dasa_wisma" placeholder="Masukkan Nama Dasa Wisma" value="{{ old('dasa_wisma') }}"> --}}
@@ -70,7 +70,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">RT</label>
                                             <input type="number" min="1" class="form-control @error('rt') is-invalid @enderror" name="rt" id="rt" placeholder="Masukkan No. RT" value="{{ old('rt', $data_keluarga->rt ) }}">
@@ -90,7 +90,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('rw') is-invalid @enderror">
                                             <label for="exampleFormControlSelect1">RW</label>
                                             <input type="number" min="1" class="form-control @error('rw') is-invalid @enderror" name="rw" id="rw" placeholder="Masukkan No. RW" value="{{ old('rw', $data_keluarga->rw ) }}">
@@ -110,7 +110,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('rw') is-invalid @enderror">
                                             <label for="exampleFormControlSelect1">Dusun</label>
                                             <input type="text" class="form-control @error('dusun') is-invalid @enderror" name="dusun" id="dusun" placeholder="Masukkan Nama Dusun" value="{{ old('dusun', $data_keluarga->dusun) }}">
@@ -124,9 +124,9 @@
                                 </div>
                             </div>
 
-                            <div class="col col-md-6">
+                            <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('id_desa') is-invalid @enderror">
                                             <label for="exampleFormControlSelect1">Desa</label>
                                             @foreach ($desas as $c)
@@ -143,7 +143,7 @@
 
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('id_kecamatan') is-invalid @enderror">
                                             <label for="exampleFormControlSelect1">Kecamatan</label>
                                             {{-- nama kecamatan --}}
@@ -160,7 +160,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Kabupaten</label>
                                             {{-- nama kabupaten --}}
@@ -173,7 +173,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Provinsi</label>
                                             {{-- nama provinsi --}}
@@ -221,9 +221,9 @@
                         @endif
 
                         <div class="row">
-                            <div class="col col-md-6">
+                            <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Nama Kepala Rumah Tangga</label>
                                             <input type="text" class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" name="nama_kepala_rumah_tangga" id="nama_kepala_rumah_tangga" placeholder="Masukkan Nama Kepala Rumah Tangga" value="{{ old('nama_kepala_rumah_tangga', $data_keluarga->nama_kepala_rumah_tangga) }}">
@@ -243,7 +243,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Jumlah Anggota Keluarga</label>
                                             {{-- Jumlah Anggota Keluarga --}}
@@ -256,7 +256,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('jumlah_laki') is-invalid @enderror">
                                             <label>Laki-laki</label>
                                             {{-- Jumlah Anggota Keluarga Laki-laki--}}
@@ -274,7 +274,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('jumlah_perempuan') is-invalid @enderror">
                                             <label>Perempuan</label>
                                             {{-- Jumlah Anggota Keluarga perempuan--}}
@@ -297,9 +297,9 @@
                                 </div>
                             </div>
 
-                            <div class="col col-md-6">
+                            <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>NIK Kepala Rumah Tangga</label>
                                             <input type="text" class="form-control @error('nik_kepala_keluarga') is-invalid @enderror" name="nik_kepala_keluarga" id="nik_kepala_keluarga" placeholder="Masukkan NIK Kepala Rumah Tangga" value="{{ old('nik_kepala_keluarga', $data_keluarga->nik_kepala_keluarga) }}">
@@ -319,7 +319,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class=-md-6">
                                         <div class="form-group @error('jumlah_KK') is-invalid @enderror">
                                             <label>Jumlah KK</label>
                                             {{-- Jumlah KK--}}
@@ -336,7 +336,7 @@
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('periode') is-invalid @enderror">
                                             {{-- pilih periode --}}
                                             <label>Periode</label>
@@ -360,7 +360,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('id_user') is-invalid @enderror">
                                             {{-- nama kader --}}
                                             @foreach ($kad as $c)
@@ -414,6 +414,7 @@
 
                         <div class="row">
                             <div class="col-md-3">
+                                <label for="exampleFormControlSelect1">Balita</label>
                                 <div class="input-group mb-3 @error('jumlah_balita') is-invalid @enderror">
                                     {{-- jumlah 3 buta --}}
                                     <input type="number" min="0" class="form-control" placeholder="Balita" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_balita" value="{{ old('jumlah_balita', $data_keluarga->jumlah_balita) }}">
@@ -430,173 +431,207 @@
                             </div>
                             <div class="col-md-3 ">
                                 <div class="input-group mb-3">
-                                    {{-- Jumlah Balita laki--}}
-                                    <input type="number" min="0" class="form-control @error('jumlah_balita_laki') is-invalid @enderror" placeholder="Balita Laki-laki" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_balita_laki" value="{{ old('jumlah_balita_laki', $data_keluarga->jumlah_balita_laki) }}">
-                                        @error('jumlah_balita_laki')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">Anak</span>
-                                    </div>
+                                    <label for="exampleFormControlSelect1">Balita Laki-laki</label>
+                                        <div class="input-group mb-3 @error('jumlah_balita_laki') is-invalid @enderror">
+                                        {{-- Jumlah Balita laki--}}
+                                            <input type="number" min="0" class="form-control @error('jumlah_balita_laki') is-invalid @enderror" placeholder="Balita Laki-laki" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_balita_laki" value="{{ old('jumlah_balita_laki', $data_keluarga->jumlah_balita_laki) }}">
+                                                @error('jumlah_balita_laki')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2">Anak</span>
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
 
                             <div class="col-md-3 ">
                                 <div class="input-group mb-3">
+                                    <label for="exampleFormControlSelect1">Balita Perempuan</label>
+                                    <div class="input-group mb-3 @error('jumlah_balita_perempuan') is-invalid @enderror">
+
                                     {{-- Jumlah Balita laki--}}
-                                    <input type="number" min="0" class="form-control @error('jumlah_balita_perempuan') is-invalid @enderror" placeholder="Balita Perempuan" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_balita_perempuan" value="{{ old('jumlah_balita_perempuan', $data_keluarga->jumlah_balita_laki) }}">
-                                        @error('jumlah_balita_perempuan')
+                                        <input type="number" min="0" class="form-control @error('jumlah_balita_perempuan') is-invalid @enderror" placeholder="Balita Perempuan" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_balita_perempuan" value="{{ old('jumlah_balita_perempuan', $data_keluarga->jumlah_balita_laki) }}">
+                                            @error('jumlah_balita_perempuan')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon2">Anak</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="input-group mb-3">
+                                    <label for="exampleFormControlSelect1">Jumlah PUS</label>
+
+                                        <div class="input-group mb-3 @error('jumlah_PUS') is-invalid @enderror">
+                                            {{-- Jumlah PUS--}}
+                                            <input type="number" min="0" class="form-control" placeholder="PUS (Pasangan Usia Subur)" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_PUS" value="{{ old('jumlah_PUS', $data_keluarga->jumlah_PUS) }}">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2">Orang</span>
+                                                </div>
+                                        </div>
+                                    @error('jumlah_PUS')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="input-group mb-3">
+                                    <label for="exampleFormControlSelect1">Jumlah WUS</label>
+
+                                        <div class="input-group mb-3 @error('jumlah_WUS') is-invalid @enderror">
+                                            {{-- Jumlah WUS--}}
+                                            <input type="number" min="0" class="form-control" placeholder="WUS (Pasangan Usia Subur)" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_WUS" value="{{ old('jumlah_WUS', $data_keluarga->jumlah_WUS) }}">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon2">Orang</span>
+                                            </div>
+                                        </div>
+                                    @error('jumlah_WUS')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="input-group mb-3">
+                                    <label for="exampleFormControlSelect1">Jumlah 3 Buta</label>
+
+                                    <div class="input-group mb-3 @error('jumlah_3_buta') is-invalid @enderror">
+                                        {{-- jumlah 3 buta --}}
+                                        <input type="number" min="0" class="form-control" placeholder="3 Buta (Buta Tulis, Buta Baca, Buta Hitung)" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_3_buta" value="{{ old('jumlah_3_buta', $data_keluarga->jumlah_3_buta) }}">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon2">Orang</span>
+                                            </div>
+                                    </div>
+                                    @error('jumlah_3_buta')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="input-group mb-3">
+                                    <label for="exampleFormControlSelect1">Jumlah 3 Buta Laki</label>
+
+                                    <div class="input-group mb-3 @error('jumlah_3_buta_laki') is-invalid @enderror">
+                                        {{-- jumlah 3 buta --}}
+                                        <input type="number" min="0" class="form-control" placeholder="3 Buta (Buta Tulis, Buta Baca, Buta Hitung) Laki-laki" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_3_buta_laki" value="{{ old('jumlah_3_buta_laki', $data_keluarga->jumlah_3_buta_laki) }}">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon2">Orang</span>
+                                            </div>
+                                    </div>
+                                    @error('jumlah_3_buta_laki')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="input-group mb-3">
+                                    <label for="exampleFormControlSelect1">Jumlah 3 Buta Perempuan</label>
+                                        <div class="input-group mb-3 @error('jumlah_3_buta_perempuan') is-invalid @enderror">
+                                            {{-- jumlah 3 buta --}}
+                                            <input type="number" min="0" class="form-control" placeholder="3 Buta (Buta Tulis, Buta Baca, Buta Hitung) Perempuan" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_3_buta_perempuan" value="{{ old('jumlah_3_buta_perempuan', $data_keluarga->jumlah_3_buta_perempuan) }}">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2">Orang</span>
+                                                </div>
+                                        </div>
+                                        @error('jumlah_3_buta_perempuan')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                    <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">Anak</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="input-group mb-3">
+                                    <label for="exampleFormControlSelect1">Jumlah Ibu Hamil</label>
+                                        <div class="input-group mb-3 @error('jumlah_ibu_hamil') is-invalid @enderror">
+                                            {{-- jumlah ibu hamil --}}
+                                            <input type="number" min="0" class="form-control" placeholder="Ibu Hamil" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_ibu_hamil" value="{{ old('jumlah_ibu_hamil', $data_keluarga->jumlah_ibu_hamil) }}">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2">Orang</span>
+                                                </div>
+                                        </div>
+                                        @error('jumlah_ibu_hamil')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="input-group mb-3">
+                                    <label for="exampleFormControlSelect1">Jumlah Ibu Menyusui</label>
+                                        <div class="input-group mb-3 @error('jumlah_ibu_menyusui') is-invalid @enderror">
+                                            {{-- jumlah ibu menyusui --}}
+                                            <input type="number" min="0" class="form-control" placeholder="Ibu Menyusui" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_ibu_menyusui" value="{{ old('jumlah_ibu_menyusui', $data_keluarga->jumlah_ibu_menyusui) }}">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2">Orang</span>
+                                                </div>
+                                        </div>
+                                        @error('jumlah_ibu_menyusui')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="input-group mb-3">
+                                    <label for="exampleFormControlSelect1">Jumlah 3 Buta</label>
+
+                                        <div class="input-group mb-3 @error('jumlah_lansia') is-invalid @enderror">
+                                            {{-- jumlah lansia --}}
+                                            <input type="number" min="0" class="form-control" placeholder="Lansia" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_lansia" value="{{ old('jumlah_lansia', $data_keluarga->jumlah_lansia) }}">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="basic-addon2">Orang</span>
+                                                </div>
+                                        </div>
+                                        @error('jumlah_lansia')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="input-group mb-3">
+                                    <label for="exampleFormControlSelect1">Jumlah 3 Buta</label>
+
+                                    <div class="input-group mb-3 @error('jumlah_kebutuhan_khusus') is-invalid @enderror">
+                                        {{-- jumlah kebutuhan --}}
+                                        <input type="number" min="0" class="form-control" placeholder="Kebutuhan Khusus" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_kebutuhan_khusus" value="{{ old('jumlah_kebutuhan_khusus', $data_keluarga->jumlah_kebutuhan_khusus) }}">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2">Orang</span>
+                                        </div>
                                     </div>
+                                    @error('jumlah_kebutuhan_khusus')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="input-group mb-3 @error('jumlah_PUS') is-invalid @enderror">
-                                    {{-- Jumlah PUS--}}
-                                    <input type="number" min="0" class="form-control" placeholder="PUS (Pasangan Usia Subur)" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_PUS" value="{{ old('jumlah_PUS', $data_keluarga->jumlah_PUS) }}">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">Orang</span>
-                                        </div>
-                                </div>
-                                @error('jumlah_PUS')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="input-group mb-3 @error('jumlah_WUS') is-invalid @enderror">
-                                    {{-- Jumlah WUS--}}
-                                    <input type="number" min="0" class="form-control" placeholder="WUS (Pasangan Usia Subur)" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_WUS" value="{{ old('jumlah_WUS', $data_keluarga->jumlah_WUS) }}">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" id="basic-addon2">Orang</span>
-                                    </div>
-                                </div>
-                                @error('jumlah_WUS')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="input-group mb-3 @error('jumlah_3_buta') is-invalid @enderror">
-                                    {{-- jumlah 3 buta --}}
-                                    <input type="number" min="0" class="form-control" placeholder="3 Buta (Buta Tulis, Buta Baca, Buta Hitung)" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_3_buta" value="{{ old('jumlah_3_buta', $data_keluarga->jumlah_3_buta) }}">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">Orang</span>
-                                        </div>
-                                </div>
-                                @error('jumlah_3_buta')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-
-                            </div>
-                            <div class="col-md-3">
-                                <div class="input-group mb-3 @error('jumlah_3_buta_laki') is-invalid @enderror">
-                                    {{-- jumlah 3 buta --}}
-                                    <input type="number" min="0" class="form-control" placeholder="3 Buta (Buta Tulis, Buta Baca, Buta Hitung) Laki-laki" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_3_buta_laki" value="{{ old('jumlah_3_buta_laki', $data_keluarga->jumlah_3_buta_laki) }}">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">Orang</span>
-                                        </div>
-                                </div>
-                                @error('jumlah_3_buta_laki')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="input-group mb-3 @error('jumlah_3_buta_perempuan') is-invalid @enderror">
-                                    {{-- jumlah 3 buta --}}
-                                    <input type="number" min="0" class="form-control" placeholder="3 Buta (Buta Tulis, Buta Baca, Buta Hitung) Perempuan" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_3_buta_perempuan" value="{{ old('jumlah_3_buta_perempuan', $data_keluarga->jumlah_3_buta_perempuan) }}">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">Orang</span>
-                                        </div>
-                                </div>
-                                @error('jumlah_3_buta_perempuan')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="input-group mb-3 @error('jumlah_ibu_hamil') is-invalid @enderror">
-                                    {{-- jumlah ibu hamil --}}
-                                    <input type="number" min="0" class="form-control" placeholder="Ibu Hamil" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_ibu_hamil" value="{{ old('jumlah_ibu_hamil', $data_keluarga->jumlah_ibu_hamil) }}">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">Orang</span>
-                                        </div>
-                                </div>
-                                @error('jumlah_ibu_hamil')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="input-group mb-3 @error('jumlah_ibu_menyusui') is-invalid @enderror">
-                                    {{-- jumlah ibu menyusui --}}
-                                    <input type="number" min="0" class="form-control" placeholder="Ibu Menyusui" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_ibu_menyusui" value="{{ old('jumlah_ibu_menyusui', $data_keluarga->jumlah_ibu_menyusui) }}">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">Orang</span>
-                                        </div>
-                                </div>
-                                @error('jumlah_ibu_menyusui')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="input-group mb-3 @error('jumlah_lansia') is-invalid @enderror">
-                                    {{-- jumlah lansia --}}
-                                    <input type="number" min="0" class="form-control" placeholder="Lansia" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_lansia" value="{{ old('jumlah_lansia', $data_keluarga->jumlah_lansia) }}">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">Orang</span>
-                                        </div>
-                                </div>
-                                @error('jumlah_lansia')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="input-group mb-3 @error('jumlah_kebutuhan_khusus') is-invalid @enderror">
-                                    {{-- jumlah kebutuhan --}}
-                                    <input type="number" min="0" class="form-control" placeholder="Kebutuhan Khusus" aria-label="Recipient's username" aria-describedby="basic-addon2" name="jumlah_kebutuhan_khusus" value="{{ old('jumlah_kebutuhan_khusus', $data_keluarga->jumlah_kebutuhan_khusus) }}">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" id="basic-addon2">Orang</span>
-                                    </div>
-                                </div>
-                                @error('jumlah_kebutuhan_khusus')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-
                             </div>
 
                         </div>

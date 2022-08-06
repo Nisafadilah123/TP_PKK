@@ -47,9 +47,9 @@
 
 
                         <div class="row">
-                            <div class="col col-md-6">
+                            <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group ">
                                             <label>Dasa Wisma</label>
                                             {{-- <input type="text" class="form-control @error('dasa_wisma') is-invalid @enderror" name="dasa_wisma" id="dasa_wisma" placeholder="Masukkan Nama Dasa Wisma" value="{{ old('dasa_wisma') }}"> --}}
@@ -68,7 +68,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">RT</label>
                                             <input type="number" min="1" class="form-control @error('rt') is-invalid @enderror" name="rt" id="rt" placeholder="Masukkan No. RT" value="{{ old('rt') }}">
@@ -88,7 +88,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('rw') is-invalid @enderror">
                                             <label for="exampleFormControlSelect1">RW</label>
                                             <input type="number" min="1" class="form-control @error('rw') is-invalid @enderror" name="rw" id="rw" placeholder="Masukkan No. RW" value="{{ old('rw') }}">
@@ -108,7 +108,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('rw') is-invalid @enderror">
                                             <label for="exampleFormControlSelect1">Dusun</label>
                                             <input type="text" class="form-control @error('dusun') is-invalid @enderror" name="dusun" id="dusun" placeholder="Masukkan Nama Dusun" value="{{ old('dusun') }}">
@@ -122,9 +122,9 @@
                                 </div>
                             </div>
 
-                            <div class="col col-md-6">
+                            <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('id_desa') is-invalid @enderror">
                                             <label for="exampleFormControlSelect1">Desa</label>
                                             @foreach ($desas as $c)
@@ -141,7 +141,7 @@
 
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('id_kecamatan') is-invalid @enderror">
                                             <label for="exampleFormControlSelect1">Kecamatan</label>
                                             {{-- nama kecamatan --}}
@@ -158,7 +158,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Kabupaten</label>
                                             {{-- nama kabupaten --}}
@@ -171,7 +171,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Provinsi</label>
                                             {{-- nama provinsi --}}
@@ -216,9 +216,9 @@
                         @endif
 
                         <div class="row">
-                            <div class="col col-md-6">
+                            <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Nama Kepala Rumah Tangga</label>
                                             <input type="text" class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" name="nama_kepala_rumah_tangga" id="nama_kepala_rumah_tangga" placeholder="Masukkan Nama Kepala Rumah Tangga" value="{{ old('nama_kepala_rumah_tangga') }}">
@@ -238,7 +238,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Jumlah Anggota Keluarga</label>
                                             {{-- Jumlah Anggota Keluarga --}}
@@ -251,7 +251,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('jumlah_laki') is-invalid @enderror">
                                             <label>Laki-laki</label>
                                             {{-- Jumlah Anggota Keluarga Laki-laki--}}
@@ -269,7 +269,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('jumlah_perempuan') is-invalid @enderror">
                                             <label>Perempuan</label>
                                             {{-- Jumlah Anggota Keluarga perempuan--}}
@@ -292,9 +292,9 @@
                                 </div>
                             </div>
 
-                            <div class="col col-md-6">
+                            <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>NIK Kepala Rumah Tangga</label>
                                             <input type="text" class="form-control @error('nik_kepala_keluarga') is-invalid @enderror" name="nik_kepala_keluarga" id="nik_kepala_keluarga" placeholder="Masukkan NIK Kepala Rumah Tangga" value="{{ old('nik_kepala_keluarga') }}">
@@ -314,7 +314,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('jumlah_KK') is-invalid @enderror">
                                             <label>Jumlah KK</label>
                                             {{-- Jumlah KK--}}
@@ -331,7 +331,7 @@
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('periode') is-invalid @enderror">
                                             {{-- pilih periode --}}
                                             <label>Periode</label>
@@ -353,7 +353,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-12">
                                         <div class="form-group @error('id_user') is-invalid @enderror">
                                             {{-- nama kader --}}
                                             @foreach ($kad as $c)
@@ -620,10 +620,10 @@
                         @endif
 
                         <div class="row">
-                            <div class="col col-md-6">
+                            <div class="col-md-12">
                                 <div class="row">
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('makanan_pokok') is-invalid @enderror">
                                             {{-- pilih Makanan Pokok Sehari-hari--}}
                                             <label class="form-label">Makanan Pokok Sehari-hari </label><br>
@@ -640,7 +640,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('sumber_air') is-invalid @enderror">
                                             {{-- pilih sumber air --}}
                                             <label>Sumber Air Keluarga</label><br>
@@ -660,9 +660,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col col-md-6">
+                            <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('kriteria_rumah') is-invalid @enderror">
                                             {{-- pilih kriteria rumah --}}
                                             <label>Kriteria Rumah</label><br>
@@ -679,7 +679,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('punya_jamban') is-invalid @enderror">
                                             {{-- pilih mempunyai jamban --}}
                                             <label>Mempunyai Jamban Keluarga</label><br>
@@ -714,7 +714,7 @@
 
                                 </div>
                             </div>
-                            <div class="col col-md-12">
+                            <div class="col-md-12">
 
                                 <div class="row">
 
