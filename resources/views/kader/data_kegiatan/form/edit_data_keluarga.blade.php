@@ -669,10 +669,10 @@
                         @endif
 
                         <div class="row">
-                            <div class="col col-md-6">
+                            <div class="col-md-12">
                                 <div class="row">
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('makanan_pokok') is-invalid @enderror">
                                             {{-- pilih Makanan Pokok Sehari-hari--}}
                                             <label class="form-label">Makanan Pokok Sehari-hari </label><br>
@@ -689,7 +689,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('sumber_air') is-invalid @enderror">
                                             {{-- pilih sumber air --}}
                                             <label>Sumber Air Keluarga</label><br>
@@ -709,9 +709,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col col-md-6">
+                            <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('kriteria_rumah') is-invalid @enderror">
                                             {{-- pilih kriteria rumah --}}
                                             <label>Kriteria Rumah</label><br>
@@ -728,7 +728,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('punya_jamban') is-invalid @enderror">
                                             {{-- pilih mempunyai jamban --}}
                                             <label>Mempunyai Jamban Keluarga</label><br>
@@ -763,7 +763,7 @@
 
                                 </div>
                             </div>
-                            <div class="col col-md-12">
+                            <div class="col-md-6">
 
                                 <div class="row">
 
