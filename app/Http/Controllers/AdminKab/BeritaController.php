@@ -7,7 +7,7 @@ use App\Models\BeritaKab;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
-
+use Illuminate\Support\Str;
 class BeritaController extends Controller
 {
     /**
@@ -133,7 +133,7 @@ class BeritaController extends Controller
 
         ]);
             $beritaKab->nama_berita = $request->nama_berita;
-            $beritaKab->desk = $request->desk;
+            $beritaKab->desk = Str::limit($request->desk, 1000);
             $beritaKab->tgl_publish =$request->tgl_publish;
             $beritaKab->penulis = $request->penulis;
 

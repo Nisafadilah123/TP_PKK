@@ -8,6 +8,7 @@ use App\Models\DataWarga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class DataKeluargaController extends Controller
@@ -330,13 +331,26 @@ class DataKeluargaController extends Controller
     */
     public function destroy($data_keluarga, DataKeluarga $kel)
     {
-        //temukan id data keluarga
-        $kel::find($data_keluarga)->delete();
-        Alert::success('Berhasil', 'Data berhasil di Hapus');
+        $kel = $kel::find($data_keluarga);
 
-        return redirect('/data_keluarga');
+        DB::beginTransaction();
 
+        try {
+            //temukan id data keluarga
+            $kel->warga()->delete();
+            $kel->pemanfaatan()->delete();
+            $kel->industri()->delete();
+            $kel->delete();
 
+            DB::commit();
+            Alert::success('Berhasil', 'Data berhasil di Hapus');
 
+            return redirect('/data_keluarga');
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            Log::error($e);
+
+            return redirect()->back();
+        }
     }
 }

@@ -97,16 +97,13 @@
                         <i class="far fa-user"></i>
                             <a href="/profil">
                                 <h3 class="dropdown-item-title" style="margin-right:200px">
-                                    Profil Saya
+                                    Akun Saya
                                 </h3>
 
                             </a>
                       </div>
                       <!-- Message End -->
                     </a>
-
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
                   </div>
                 </li>
         </ul>
