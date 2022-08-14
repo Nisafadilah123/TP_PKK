@@ -184,7 +184,7 @@ class DataKeluargaController extends Controller
             $wargas->save();
 
             DataWarga::where('id', $request->id_kepala_keluarga)->where('status_keluarga', 'kepala keluarga')->update(['id_keluarga' => $wargas->id]);
-            $data_warga = DataWarga::where('id_kepala_data_warga', $wargas->id_kepala_keluarga)->get();
+            $data_warga = DataWarga::where('id_kepala_data_warga', $request->id_kepala_keluarga)->get();
 
             foreach ($data_warga as $warga) {
                 $warga->id_keluarga = $wargas->id;

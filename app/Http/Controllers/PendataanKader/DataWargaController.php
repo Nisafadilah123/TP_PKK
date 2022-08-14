@@ -265,7 +265,7 @@ class DataWargaController extends Controller
             'tgl_lahir' => 'required',
             'umur' => 'required',
             'status_perkawinan' => 'required',
-            'status_keluarga' => 'required',
+            // 'status_keluarga' => 'required',
             'agama' => 'required',
             'alamat' => 'required',
             'rt' => 'required',
@@ -318,7 +318,14 @@ class DataWargaController extends Controller
         ]);
 
         // update data
-            $data_warga->update($request->all());
+            $data_warga->fill($request->all());
+
+            if ($request->id_kepala_data_warga) {
+                $kepala_keluarga = DataWarga::find($request->id_kepala_data_warga);
+                $data_warga->id_keluarga = $kepala_keluarga ? $kepala_keluarga->id_keluarga : null;
+            }
+
+            $data_warga->save();
             Alert::success('Berhasil', 'Data berhasil di ubah');
             // dd($jml_kader);
             return redirect('/data_warga');

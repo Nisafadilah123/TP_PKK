@@ -203,7 +203,7 @@
                                                     <div class="form-check form-check-inline">
                                                         <label class="form-check-label">
                                                             <input type="radio" name="status_keluarga" value="kepala keluarga"
-                                                                class="form-check-input" {{ old('status_keluarga', $data_warga->status_keluarga) == 'kepala keluarga' ? 'checked' : '' }}>Kepala Keluarga
+                                                                class="form-check-input" {{ old('status_keluarga', $data_warga->status_keluarga) == 'kepala keluarga' ? 'checked' : '' }} disabled>Kepala Keluarga
                                                         </label>
                                                     </div>
                                                 </div>
@@ -212,7 +212,7 @@
                                                         <div class="input-group-prepend">
                                                             <div class="input-group-text">
                                                                 <input type="radio" aria-label="Radio button for following text input" name="status_keluarga"
-                                                                    value="anggota keluarga" {{ old('status_keluarga', $data_warga->status_keluarga) != 'kepala keluarga' ? 'checked' : '' }}>Anggota Keluarga
+                                                                    value="anggota keluarga" {{ old('status_keluarga', $data_warga->status_keluarga) != 'kepala keluarga' ? 'checked' : '' }} disabled>Anggota Keluarga
                                                             </div>
                                                         </div>
                                                         <input type="text" class="form-control" aria-label="Text input with radio button" name="status_anggota_keluarga"
@@ -228,6 +228,8 @@
                                         </span>
                                         @enderror --}}
                                     </div>
+
+
 
                                     <div class="col-md-6">
                                         {{-- <div class="form-group">
@@ -249,11 +251,11 @@
                                         <div class="form-group">
                                             <label>Kepala Rumah Tangga</label>
                                                 {{-- Nama Kepala Rumah Tangga --}}
-                                                <select class="form-control" id="id_keluarga" name="id_kepala_data_warga">
+                                                <select class="form-control selectpicker" id="id_keluarga" name="id_kepala_data_warga" data-live-search="true" data-none-selected-text="Pilih Kepala Rumah Tangga">
                                                     {{-- nama dasa wisma --}}
                                                     <option hidden> Pilih Kepala Rumah Tangga</option>
                                                     @foreach ($kepalaKeluargas as $c)
-                                                    <option value="{{$c->id}}">{{ $c->nama }}</option>
+                                                    <option value="{{$c->id}}" data-tokens="{{ $c->nama }}" {{ $c->id == $data_warga->id_kepala_data_warga ? 'selected' : '' }}>{{ $c->nama }}</option>
                                                     @endforeach
                                                 </select>
                                             @error('nama_kepala_rumah_tangga')
@@ -263,8 +265,6 @@
                                             @enderror
                                         </div>
                                     </div>
-
-
 
                                     <div class="col-md-6">
                                         <div class="form-group">
