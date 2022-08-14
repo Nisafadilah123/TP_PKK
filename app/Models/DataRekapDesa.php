@@ -26,7 +26,9 @@ class DataRekapDesa
         $desas = DataKeluarga::query()
                 ->with(['industri', 'pemanfaatan'])
                 ->where('periode', $periode)
-                ->where('id_kecamatan', $id_kecamatan)
+                ->whereHas('kepala_keluarga.desa', function ($q) use ($id_kecamatan) {
+                    $q->where('id_kecamatan', $id_kecamatan);
+                })
                 ->get()
                 ->groupBy('dusun_id');
             // dd($desas);
@@ -34,15 +36,20 @@ class DataRekapDesa
             $keluarga = $keluargas->first();
                 $desa = new Desa();
                 $desa->id = $keluarga->id;
-                $desa->id_kecamatan = intval($keluarga->id_kecamatan);
-                $desa->id_desa = intval($keluarga->id_desa);
+                $desa->id_kecamatan = $keluarga->kepala_keluarga->desa->id_kecamatan ?? null;
+                $desa->id_desa = $keluarga->kepala_keluarga->id_desa ?? null;
                 // $desa->nama = $keluarga->nama;
-                $desa->desa = $keluarga->desa;
+                $desa->desa = $keluarga->kelapa_keluarga->desa ?? null;
+                $desa->nama_desa = $keluarga->kepala_keluarga->desa->nama_desa ?? null;
                 $dusun =  $keluargas->groupBy(function ($item) {
                     return strtolower($item->dusun);
                 });
-                $rw =  $keluargas->groupBy('rw');
-                $rt =  $keluargas->groupBy('rt');
+                $rw =  $keluargas->groupBy(function ($item) {
+                    return $item->kepala_keluarga->rw ?? null;
+                });
+                $rt =  $keluargas->groupBy(function ($item) {
+                    return $item->kepala_keluarga->rt;
+                });
                 $dasa_wisma = $keluargas->groupBy('id_dasawisma');
 
                 $desa->jumlah_dusun = count($dusun);

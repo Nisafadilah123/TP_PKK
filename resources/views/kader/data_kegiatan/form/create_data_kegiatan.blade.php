@@ -39,12 +39,9 @@
                     <div class="form-group @error('id_desa') is-invalid @enderror">
                         {{-- nama desa --}}
                         <label for="exampleFormControlSelect1">Desa</label>
-                        @foreach ($desas as $c)
-                        <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
+                        <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{$desa->id}}">
 
-                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_desa }}">
-
-                        @endforeach
+                        <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" required value="{{ $desa->nama_desa }}">
                     </div>
                     @error('id_desa')
                         <span class="invalid-feedback" role="alert">
@@ -57,10 +54,10 @@
                     <div class="form-group @error('id_kecamatan') is-invalid @enderror">
                         {{-- nama kecamatan --}}
                         <label for="exampleFormControlSelect1">Kecamatan</label>
-                        @foreach ($kec as $c)
-                            <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$c->id}}">
-                            <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{ $c->nama_kecamatan }}">
-                        @endforeach
+
+                        <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{$desa->kecamatan->id ?? ''}}">
+                        <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" required value="{{ $desa->kecamatan->nama_kecamatan ?? '-'}}">
+
                     </div>
                     @error('id_kecamatan')
                         <span class="invalid-feedback" role="alert">
@@ -74,11 +71,11 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Nama Warga</label>
-                        <select class="form-control @error('id_warga') is-invalid @enderror" id="id_warga" name="id_warga">
+                        <select class="form-control selectpicker @error('id_warga') is-invalid @enderror" id="id_warga" name="id_warga" data-live-search="true" data-none-selected-text="Pilih Nama Warga">
                           {{-- nama warga --}}
                           <option hidden> Pilih Nama Warga</option>
                             @foreach ($warga as $c)
-                                <option value="{{$c->id}}">  {{$c->id }}-{{ $c->nama }}</option>
+                                <option value="{{$c->id}}" data-tokens="{{ $c->nama }}">  {{$c->id }}-{{ $c->nama }}</option>
                             @endforeach
                           </select>
                           @error('id_warga')

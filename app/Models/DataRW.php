@@ -24,12 +24,13 @@ class DataRW
         /** @var Collection<string, Collection<DataKeluarga>> */
         $rws = DataKeluarga::query()
                 ->with(['industri', 'pemanfaatan'])
-                ->where('id_desa', $id_desa)
-
+                ->whereHas('kepala_keluarga', function ($q) use ($id_desa) {
+                    $q->where('id_desa', $id_desa);
+                })
                 ->where('dusun', $dusun)
                 ->where('periode', $periode)
                 ->get()
-                ->groupBy('rw');
+                ->groupBy('kepala_keluarga.rw');
             // dd($rws);
         foreach ($rws as $keluargas) {
 
@@ -37,12 +38,11 @@ class DataRW
 
                 $rw = new RW();
                 $rw->id = $keluarga->id;
-                $rw->id_kecamatan = intval($keluarga->id_kecamatan);
-                $rw->id_desa = intval($keluarga->id_desa);
+                $rw->id_kecamatan = $keluarga->kepala_keluarga->desa->id_kecamatan ?? null;
+                $rw->id_desa = $keluarga->kepala_keluarga->id_desa ?? null;
                 $rw->dusun = $keluarga->dusun;
-                $rw->rw = intval($keluarga->rw);
+                $rw->rw = $keluarga->kepala_keluarga->rw ?? null;
                 $rw->nama = $keluarga->nama;
-                $rw->rw = $keluarga->rw;
                 $rt =  $keluargas->groupBy(function ($item) {
                     return strtolower($item->rt);
                 });

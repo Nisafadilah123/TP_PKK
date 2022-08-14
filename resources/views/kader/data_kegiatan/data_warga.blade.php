@@ -45,8 +45,8 @@
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         {{-- nama desa yang login --}}
-                                        <td style="vertical-align: middle;">{{ucfirst($c->dasawisma->nama_dasawisma) }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->keluarga->nama_kepala_rumah_tangga)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->keluarga->dasawisma->nama_dasawisma ?? '-') }}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->kepala_keluarga->nama ?? '')}}</td>
                                             {{-- @if ($warga = $c->nik_kepala_keluarga)
                                                 {{ $warga }}
                                             @else
@@ -96,8 +96,8 @@
                                                 </div>
                                                         <div class="modal-body">
                                                         <h5>
-                                                            Dasawisma : <strong> {{ucfirst($c->dasawisma->nama_dasawisma) }} </strong><br>
-                                                            Nama Kepala Rumah Tangga : <strong>{{ucfirst($c->keluarga->nama_kepala_rumah_tangga) }}</strong><br>
+                                                            Dasawisma : <strong> {{ucfirst($c->keluarga->dasawisma->nama_dasawisma ?? '-') }} </strong><br>
+                                                            Nama Kepala Rumah Tangga : <strong>{{ucfirst($c->kepala_keluarga->nama ?? '') }}</strong><br>
                                                             No. Registrasi : <strong> {{ucfirst($c->no_registrasi) }} </strong><br>
                                                             No. KTP/NIK : <strong>{{ucfirst($c->no_ktp) }}</strong><br>
                                                             Nama : <strong> {{ucfirst($c->nama) }} </strong><br>
@@ -114,7 +114,7 @@
                                                             @endif
 
                                                             Agama : <strong> {{ucfirst($c->agama) }} </strong><br>
-                                                            Alamat : <strong> {{ucfirst($c->alamat) }},RT {{ ($c->rt) }}, RW {{ ($c->rt) }},Desa {{ucfirst($c->desa->nama_desa)}}, Kec. {{ucfirst($c->kecamatan->nama_kecamatan)}}
+                                                            Alamat : <strong> {{ucfirst($c->alamat) }},RT {{ ($c->rt) }}, RW {{ ($c->rt) }},Desa {{ucfirst($c->desa->nama_desa)}}, Kec. {{ucfirst($c->desa->kecamatan->nama_kecamatan??'-')}}
                                                                 Kabupaten {{ucfirst($c->kabupaten) }}, Provinsi {{ucfirst($c->provinsi) }}
                                                             </strong><br>
                                                               Pendidikan : <strong> {{ucfirst($c->pendidikan) }} </strong><br>

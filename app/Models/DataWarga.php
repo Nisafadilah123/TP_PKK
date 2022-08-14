@@ -57,4 +57,22 @@ class DataWarga extends Model
     public function dasawisma(){
         return $this->belongsTo(DataKelompokDasawisma::class, 'id_dasawisma');
     }
+
+    public function kepalaKeluarga(){
+        return $this->belongsTo(static::class, 'id_kepala_data_warga', 'id');
+    }
+
+    public function getKepalaKeluargaAttribute(){
+        if ($this->status_keluarga == 'kepala keluarga') {
+            return $this;
+        }
+
+        $this->load('kepalaKeluarga');
+        return $this->getRelation('kepalaKeluarga');
+    }
+
+    public function warga()
+    {
+        return $this->hasMany(static::class, 'id_kepala_data_warga', 'id');
+    }
 }

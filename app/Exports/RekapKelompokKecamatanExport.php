@@ -42,7 +42,7 @@ class RekapKelompokKecamatanExport implements FromArray, WithHeadings, WithEvent
         foreach ($desa as $keluarga) {
             $data = [
                 '_index' => $i,
-                'desa' => $keluarga->desa->nama_desa,
+                'desa' => $keluarga->nama_desa,
                 'jumlah_dusun' => $keluarga->jumlah_dusun ?: '0',
                 'jumlah_rw' => $keluarga->jumlah_rw ?: '0',
                 'jumlah_rt' => $keluarga->jumlah_rt ?: '0',
@@ -130,7 +130,7 @@ class RekapKelompokKecamatanExport implements FromArray, WithHeadings, WithEvent
         $headings = [
             'No',
             'Nama Desa/Kelurahan',
-            'Jml. Dusun/Lingkungan',
+            'Jml. Dusun',
             'Jml. RW',
             'Jml. RT',
             'Jml. Dasawisma',

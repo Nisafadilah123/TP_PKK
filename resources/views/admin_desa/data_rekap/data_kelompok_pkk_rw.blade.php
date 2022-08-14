@@ -20,6 +20,7 @@
                                         <tr>
                                         <th>No</th>
                                         <th>RW</th>
+                                        <th>Dusun</th>
                                         <th>Periode</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -31,6 +32,7 @@
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->rw)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->dusun)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
 
                                         <td class="text-center">

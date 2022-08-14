@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('data_kecamatan', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_kecamatan');
-            $table->string('nama_kecamatan');
-            $table->string('kabupaten');
-            $table->string('provinsi');
-
-            $table->timestamps();
+        Schema::table('data_warga', function (Blueprint $table) {
+            $table->bigInteger('id_kepala_data_warga')->nullable()->after('id_keluarga');
+            $table->bigInteger('id_keluarga')->unsigned()->nullable()->change();
         });
     }
 
@@ -31,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_kecamatan');
+        Schema::table('data_warga', function (Blueprint $table) {
+            $table->dropColumn('id_kepala_data_warga');
+        });
     }
 };

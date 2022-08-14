@@ -112,8 +112,7 @@
                                         </tr>
                                         @endforeach
                                         <tr>
-                                            <td><strong>Jumlah</strong> </td>
-                                            <td></td>
+                                            <td colspan="2"><strong>Jumlah</strong> </td>
                                             <td>{{ $dasaWismas->sum('jumlah_KRT') }}</td>
                                             <td>{{ $dasaWismas->sum('jumlah_KK') }}</td>
                                             <td>{{ $dasaWismas->sum('jumlah_laki_laki') }}</td>

@@ -21,6 +21,7 @@
 <link href="{{ url ('image/remove.png') }}" rel="icon" />
 <link href="{{ url ('image/remove.png') }}" rel="apple-touch-icon" />
 
+    @stack('css-addon')
 </head>
 <body class="hold-transition login-page">
     @yield('content')

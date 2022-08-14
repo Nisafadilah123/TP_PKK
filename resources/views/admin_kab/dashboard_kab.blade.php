@@ -127,10 +127,11 @@
                 {{-- <h3>53<sup style="font-size: 20px">%</sup></h3> --}}
                 {{-- <h3>44</h3> --}}
 
-                <p>Data TP PKK Kecamatan</p>
+                <p>Rekapitulasi Catatan dan <br>
+                    Kegiatan Warga Kelompok <br> TP PKK Kecamatan</p>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-folder"></i>
+                <i class="ion ion-folder"></i>
               </div>
               <a href="/data_kelompok_pkk_kec" class="small-box-footer"
                 >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i
@@ -145,10 +146,11 @@
                 {{-- <h3>53<sup style="font-size: 20px">%</sup></h3> --}}
                 {{-- <h3>44</h3> --}}
 
-                <p>Data TP PKK Kabupaten</p>
+                <p>Rekapitulasi Catatan dan <br>
+                    Kegiatan Warga Kelompok <br> TP PKK Kabupaten</p>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-folder"></i>
+                <i class="ion ion-folder"></i>
               </div>
               <a href="#" class="small-box-footer"
                 >Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i

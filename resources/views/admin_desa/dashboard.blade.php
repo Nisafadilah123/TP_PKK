@@ -19,8 +19,8 @@
                 {{-- <h3>53<sup style="font-size: 20px">%</sup></h3> --}}
                 {{-- <h3>150</h3> --}}
 
-                <p>Rekapitulasi Catatan dan
-                    <br>Kegiatan Keluarga Kelompok Dasawisma</p>
+                <p>Rekapitulasi Catatan Data dan
+                    <br>Kegiatan Warga Kelompok Dasawisma</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>
@@ -37,8 +37,8 @@
               <div class="inner">
                 {{-- <h3>44</h3> --}}
 
-                <p>Rekapitulasi Catatan dan
-                    <br>Kegiatan Keluarga Kelompok PKK RT</p>
+                <p>Rekapitulasi Catatan Data dan
+                    <br>Kegiatan Warga Kelompok PKK RT</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>
@@ -55,8 +55,8 @@
               <div class="inner">
                 {{-- <h3>65</h3> --}}
 
-                <p>Rekapitulasi Catatan dan
-                    <br>Kegiatan Keluarga Kelompok PKK RW</p>
+                <p>Rekapitulasi Catatan Data dan
+                    <br>Kegiatan Warga Kelompok PKK RW</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>
@@ -73,8 +73,8 @@
               <div class="inner">
                 {{-- <h3>150</h3> --}}
 
-                <p>Rekapitulasi Catatan  dan
-                    <br>Kegiatan Keluarga Kelompok PKK Dusun/Lingkungan</p>
+                <p>Rekapitulasi Catatan Data dan
+                    <br>Kegiatan Warga Kelompok PKK Dusun</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>
@@ -96,8 +96,8 @@
               <div class="inner">
                 {{-- <h3>150</h3> --}}
 
-                <p>Rekapitulasi Catatan  dan
-                    <br>Kegiatan Keluarga Kelompok TP PKK Desa/Kelurahan</p>
+                <p>Rekapitulasi Catatan Data dan
+                    <br>Kegiatan Warga Kelompok <br> TP PKK Desa/Kelurahan</p>
               </div>
               <div class="icon">
                 <i class="ion ion-folder"></i>

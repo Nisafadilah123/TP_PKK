@@ -1,8 +1,8 @@
 @extends('admin_desa.layout')
 
-@section('title', 'Data Kelompok PKK Dusun/Lingkungan  | Admin Desa/Kelurahan PKK Kab. Indramayu')
+@section('title', 'Data Kelompok PKK Dusun  | Admin Desa/Kelurahan PKK Kab. Indramayu')
 
-@section('bread', 'Data Kelompok PKK Dusun/Lingkungan ')
+@section('bread', 'Data Kelompok PKK Dusun ')
 @section('container')
 
     <!-- Main content -->
@@ -19,7 +19,7 @@
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                        <th>Dusun/Lingkungan</th>
+                                        <th>Dusun</th>
                                         <th>Periode</th>
                                         <th>Aksi</th>
                                     </tr>

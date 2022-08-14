@@ -89,12 +89,14 @@ class AdminController extends Controller
 
             $dasa_wisma = DB::table('data_keluarga')
                 ->join('data_dasawisma', 'data_keluarga.id_dasawisma', '=',  'data_dasawisma.id')
-                ->select('data_keluarga.id_desa', 'nama_dasawisma',  'data_keluarga.rt','data_keluarga.rw', 'data_keluarga.periode')
-                ->where('data_keluarga.id_desa', $user->id_desa)
+                ->join('data_warga', function ($q) {
+                    $q->on('data_warga.id_keluarga', '=', 'data_keluarga.id')
+                        ->where('data_warga.status_keluarga', 'kepala keluarga');
+                })
+                ->select('data_warga.id_desa', 'nama_dasawisma',  'data_warga.rt','data_warga.rw', 'data_keluarga.periode')
+                ->where('data_warga.id_desa', $user->id_desa)
                 ->distinct()
                 ->get();
-
-            // dd($dasa_wisma);
 
             return view('admin_desa.data_rekap.data_kelompok_dasa_wisma', compact('dasa_wisma'));
         }
@@ -114,12 +116,14 @@ class AdminController extends Controller
             $catatan_keluarga = DataKeluarga::query()
                 ->with(['industri', 'pemanfaatan','dasawisma'
                     ])
-                ->where('id_desa', $user->id_desa)
+                ->whereHas('kepala_keluarga', function ($q) use ($user, $rt, $rw) {
+                    $q->where('id_desa', $user->id_desa)
+                        ->where('rt', $rt)
+                        ->where('rw', $rw);
+                })
                 ->whereHas('dasawisma', function ($q) use ($nama_dasawisma) {
                     $q->where('nama_dasawisma', $nama_dasawisma);
                 })
-                ->where('rt', $rt)
-                ->where('rw', $rw)
                 ->where('periode', $periode)
                 ->get();
 
@@ -152,12 +156,14 @@ class AdminController extends Controller
             $catatan_keluarga = DataKeluarga::query()
                 ->with(['industri', 'pemanfaatan','dasawisma'
                     ])
-                ->where('id_desa', $user->id_desa)
+                ->whereHas('kepala_keluarga', function ($q) use ($user, $rt, $rw) {
+                    $q->where('id_desa', $user->id_desa)
+                        ->where('rt', $rt)
+                        ->where('rw', $rw);
+                })
                 ->whereHas('dasawisma', function ($q) use ($nama_dasawisma) {
                     $q->where('nama_dasawisma', $nama_dasawisma);
                 })
-                ->where('rt', $rt)
-                ->where('rw', $rw)
                 ->where('periode', $periode)
                 ->get();
 
@@ -182,8 +188,12 @@ class AdminController extends Controller
             $user = Auth::user();
 
             $rt = DB::table('data_keluarga')
-                ->select('rt', 'rw', 'periode')
-                ->where('id_desa', $user->id_desa)
+                ->select('data_warga.rt', 'data_keluarga.dusun', 'data_warga.rw', 'data_keluarga.periode')
+                ->join('data_warga', function ($q) {
+                    $q->on('data_warga.id_keluarga', '=', 'data_keluarga.id')
+                        ->where('data_warga.status_keluarga', 'kepala keluarga');
+                })
+                ->where('data_warga.id_desa', $user->id_desa)
                 ->distinct()
                 ->get();
 
@@ -245,8 +255,12 @@ class AdminController extends Controller
             $user = Auth::user();
 
             $rw = DB::table('data_keluarga')
-                ->select('rw', 'periode')
-                ->where('id_desa', $user->id_desa)
+                ->select('data_warga.rw', 'data_keluarga.dusun', 'data_keluarga.periode')
+                ->join('data_warga', function ($q) {
+                    $q->on('data_warga.id_keluarga', '=', 'data_keluarga.id')
+                        ->where('data_warga.status_keluarga', 'kepala keluarga');
+                })
+                ->where('data_warga.id_desa', $user->id_desa)
                 ->distinct()
                 ->get();
 
@@ -303,8 +317,12 @@ class AdminController extends Controller
             $user = Auth::user();
 
             $dusun = DB::table('data_keluarga')
-            ->select('dusun', 'periode')
-            ->where('id_desa', $user->id_desa)
+            ->select('data_keluarga.dusun', 'data_keluarga.periode')
+            ->join('data_warga', function ($q) {
+                $q->on('data_warga.id_keluarga', '=', 'data_keluarga.id')
+                    ->where('data_warga.status_keluarga', 'kepala keluarga');
+            })
+            ->where('data_warga.id_desa', $user->id_desa)
             ->distinct()
             ->get();
             return view('admin_desa.data_rekap.data_kelompok_pkk_dusun', compact('dusun'));
@@ -366,8 +384,12 @@ class AdminController extends Controller
             $user = Auth::user();
 
             $desa = DB::table('data_keluarga')
-            ->select('id_desa', 'periode')
-            ->where('id_desa', $user->id_desa)
+            ->select('data_warga.id_desa', 'data_keluarga.periode')
+            ->join('data_warga', function ($q) {
+                $q->on('data_warga.id_keluarga', '=', 'data_keluarga.id')
+                    ->where('data_warga.status_keluarga', 'kepala keluarga');
+            })
+            ->where('data_warga.id_desa', $user->id_desa)
             ->distinct()
             ->get();
             return view('admin_desa.data_rekap.data_kelompok_pkk_desa', compact('desa'));

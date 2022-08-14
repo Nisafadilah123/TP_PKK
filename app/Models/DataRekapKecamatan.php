@@ -33,17 +33,22 @@ class DataRekapKecamatan
             $keluarga = $keluargas->first();
                 $kecamatans = new Kecamatan();
                 $kecamatans->id = $keluarga->id;
-                $kecamatans->id_kecamatan = intval($keluarga->id_kecamatan);
-                $kecamatans->id_desa = intval($keluarga->id_desa);
-                $kecamatans->kecamatan = $keluarga->kecamatan;
+                $kecamatans->id_kecamatan = $keluarga->kepala_keluarga->desa->id_kecamatan ?? null;
+                $kecamatans->id_desa = $keluarga->kepala_keluarga->id_desa ?? null;
+                $kecamatans->kecamatan = $keluarga->kepala_keluarga->desa->kecamatan ?? null;
+                $kecamatans->nama_kecamatan = $keluarga->kepala_keluarga->desa->kecamatan->nama_kecamatan ?? null;
                 $desa =  $keluargas->groupBy(function ($item) {
-                    return strtolower($item->nama_desa);
+                    return $item->kepala_keluarga->id_desa ?? null;
                 });
                 $dusun =  $keluargas->groupBy(function ($item) {
                     return strtolower($item->dusun);
                 });
-                $rw =  $keluargas->groupBy('rw');
-                $rt =  $keluargas->groupBy('rt');
+                $rw =  $keluargas->groupBy(function ($item) {
+                    return $item->kepala_keluarga->rw ?? null;
+                });
+                $rt =  $keluargas->groupBy(function ($item) {
+                    return $item->kepala_keluarga->rt ?? null;
+                });
                 $dasa_wisma = $keluargas->groupBy('id_dasawisma');
 
                 $kecamatans->jumlah_desa = count($desa);

@@ -71,7 +71,7 @@
                                         @foreach ($catatan_keluarga as $keluarga)
                                         <tr>
                                             <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
-                                            <td style="vertical-align: middle;">{{ $keluarga->nama_kepala_rumah_tangga }}</td>
+                                            <td style="vertical-align: middle;">{{ $keluarga->kepala_keluarga->nama }}</td>
                                             <td>{{ $keluarga->jumlah_KK }}</td>
                                             <td>{{ $keluarga->jumlah_laki }}</td>
                                             <td>{{ $keluarga->jumlah_perempuan }}</td>

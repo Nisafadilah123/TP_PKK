@@ -17,9 +17,9 @@
                             <center>
                                 <h6><strong>REKAPITULASI</strong></h6>
                                 <h6><strong>CATATAN DATA DAN KEGIATAN WARGA</strong> </h6>
-                                <h6><strong>KELOMPOK PKK DUSUN/LINGKUNGAN</strong> </h6>
+                                <h6><strong>KELOMPOK PKK DUSUN</strong> </h6>
 
-                                <h6>Dusun/Lingkungan : {{ucfirst ($dusun) }}</h6>
+                                <h6>Dusun : {{ucfirst ($dusun) }}</h6>
                                 <h6>Desa/Kel : {{ ucfirst($desa->nama_desa) }}</h6>
                                 <h6>Tahun : {{$periode}}</h6>
                             </center>
@@ -121,8 +121,7 @@
                                             @endforeach
 
                                             <tr>
-                                                <td><strong>Jumlah</strong></td>
-                                                <td></td>
+                                                <td colspan="2"><strong>Jumlah</strong></td>
                                                 <td>{{ $rws->sum('jumlah_rt') }}</td>
                                                 <td>{{ $rws->sum('jumlah_dasa_wisma') }}</td>
                                                 <td>{{ $rws->sum('jumlah_KRT') }}</td>
@@ -146,6 +145,7 @@
                                                 <td>{{ $rws->sum('jumlah_tempel_stiker') }}</td>
                                                 <td>{{ $rws->sum('jumlah_sumber_air_pdam') }}</td>
                                                 <td>{{ $rws->sum('jumlah_sumber_air_sumur') }}</td>
+                                                <td>{{ $rws->sum('jumlah_sumber_air_sungai') }}</td>
                                                 <td>{{ $rws->sum('jumlah_sumber_air_dll') }}</td>
                                                 <td>{{ $rws->sum('punya_jamban') }}</td>
                                                 <td>{{ $rws->sum('jumlah_makanan_pokok_beras') }}</td>

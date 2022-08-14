@@ -18,16 +18,14 @@ return new class extends Migration
             $table->bigInteger('id_desa')->unsigned();
             // $table->foreignID('id_desa');
             $table->foreign('id_desa')->references('id')->on('data_desa');
-            $table->bigInteger('id_kecamatan')->unsigned();
-            // $table->foreignID('id_kecamatan');
-            $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan');
+
 
             $table->string('nama_dasawisma');
             $table->string('alamat_dasawisma');
             $table->string('status');
             $table->string('dusun');
-            $table->integer('rt');
-            $table->integer('rw');
+            $table->integer('rt_dasawisma');
+            $table->integer('rw_dasawisma');
             $table->integer('periode');
             $table->timestamps();
         });

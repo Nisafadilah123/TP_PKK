@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DataKelompokDasawisma;
 use App\Models\DataKeluarga;
 use App\Models\DataWarga;
+use App\Models\Data_Desa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -39,6 +40,7 @@ class DataKeluargaController extends Controller
     $desas = DB::table('data_desa')
     ->where('id', auth()->user()->id_desa)
     ->get();
+    $desa = Data_Desa::where('id', auth()->user()->id_desa)->first();
 
     $kec = DB::table('data_kecamatan')
     ->where('id', auth()->user()->id_kecamatan)
@@ -48,12 +50,13 @@ class DataKeluargaController extends Controller
     ->where('id', auth()->user()->id)
     ->get();
 
-     $keg = DataKeluarga::all();
-     $warga = DataWarga::all();
-     $dasawisma = DataKelompokDasawisma::all();
+    $keg = DataKeluarga::all();
+    $warga = DataWarga::all();
+    $dasawisma = DataKelompokDasawisma::all();
+    $kepalaKeluargas = DataWarga::where('status_keluarga', 'kepala keluarga')->whereDoesntHave('keluarga')->withCount('warga')->get();
 
     //  dd($kec);
-     return view('kader.data_kegiatan.form.create_data_keluarga', compact( 'warga', 'kec', 'desas', 'kad', 'dasawisma'));
+     return view('kader.data_kegiatan.form.create_data_keluarga', compact( 'warga', 'kec', 'desa', 'desas', 'kad', 'dasawisma', 'kepalaKeluargas'));
 
     }
 
@@ -69,20 +72,16 @@ class DataKeluargaController extends Controller
         // dd($request->all());
 
         $request->validate([
-            'id_desa' => 'required',
-            'id_kecamatan' => 'required',
-            'nama_kepala_rumah_tangga' => 'required',
+            // 'id_desa' => 'required',
+            // 'nama_kepala_rumah_tangga' => 'required',
+            'id_kepala_keluarga' => 'required',
             // 'dasa_wisma' => 'required',
             'id_dasawisma' => 'required',
-            'nik_kepala_keluarga' => 'required|min:16',
-            'rt' => 'required',
-            'rw' => 'required',
-            'kabupaten' => 'required',
-            'provinsi' => 'required',
+            // 'nik_kepala_keluarga' => 'required|min:16',
+            // 'rt' => 'required',
+            // 'rw' => 'required',
             'dusun' => 'required',
-            // 'perempuan' => 'required',
             'jumlah_KK' => 'required',
-            // 'jumlah_balita' => 'required',
             'jumlah_anggota_keluarga' => 'required',
             // 'jumlah_WUS' => 'required',
             // 'jumlah_3_buta' => 'required',
@@ -104,8 +103,8 @@ class DataKeluargaController extends Controller
 
         ], [
             'id_desa.required' => 'Lengkapi Alamat Desa Kegiatan Warga',
-            'id_kecamatan' => 'Lengkapi Alamat Kecamatan Kegiatan Warga',
             'nama_kepala_rumah_tangga.required' => 'Lengkapi Nama Warga Kepala Rumah Tangga',
+            'id_kepala_keluarga.required' => 'Lengkapi Kepala Rumah Tangga',
             'id_dasawisma.required' => 'Lengkapi Nama Dasawisma Yang Diikuti',
             'nik_kepala_keluarga.required' => 'Lengkapi NIK Kepala Rumah Tangga',
             'jumlah_anggota_keluarga.required' => 'Lengkapi Jumlah Anggota Keluarga',
@@ -134,7 +133,8 @@ class DataKeluargaController extends Controller
             'periode.required' => 'Pilih Periode',
 
         ]);
-        $insert=DB::table('data_keluarga')->where('nik_kepala_keluarga', $request->nik_kepala_keluarga)->first();
+        // $insert=DB::table('data_keluarga')->where('nik_kepala_keluarga', $request->nik_kepala_keluarga)->first();
+        $insert = DataWarga::where('status_keluarga', 'kepala keluarga')->whereNotNull('id_keluarga')->find($request->id_kepala_keluarga);
         if ($insert != null) {
             Alert::error('Gagal', 'Data Tidak Berhasil Di Tambah. No.KTP Sudah Ada ');
 
@@ -144,19 +144,17 @@ class DataKeluargaController extends Controller
         //cara 1
 
             $wargas = new DataKeluarga;
-            $wargas->id_desa = $request->id_desa;
-            $wargas->id_kecamatan = $request->id_kecamatan;
-            $wargas->nama_kepala_rumah_tangga = $request->nama_kepala_rumah_tangga;
+            // $wargas->id_desa = $request->id_desa;
+            // $wargas->id_kecamatan = $request->id_kecamatan;
+            // $wargas->nama_kepala_rumah_tangga = $request->nama_kepala_rumah_tangga;
             $wargas->id_dasawisma = $request->id_dasawisma;
-            $wargas->nik_kepala_keluarga = $request->nik_kepala_keluarga;
-            $wargas->kabupaten = $request->kabupaten;
-            $wargas->provinsi = $request->provinsi;
+            // $wargas->nik_kepala_keluarga = $request->nik_kepala_keluarga;
             $wargas->id_user = $request->id_user;
             $wargas->dusun = $request->dusun;
 
             $wargas->jumlah_anggota_keluarga = $request->jumlah_anggota_keluarga;
-            $wargas->rt = $request->rt;
-            $wargas->rw = $request->rw;
+            // $wargas->rt = $request->rt;
+            // $wargas->rw = $request->rw;
             $wargas->jumlah_laki = $request->jumlah_laki;
             $wargas->jumlah_perempuan = $request->jumlah_perempuan;
             $wargas->jumlah_KK = $request->jumlah_KK;
@@ -184,6 +182,15 @@ class DataKeluargaController extends Controller
             $wargas->aktivitas_kegiatan_usaha = $request->aktivitas_kegiatan_usaha;
             $wargas->periode = $request->periode;
             $wargas->save();
+
+            DataWarga::where('id', $request->id_kepala_keluarga)->where('status_keluarga', 'kepala keluarga')->update(['id_keluarga' => $wargas->id]);
+            $data_warga = DataWarga::where('id_kepala_data_warga', $wargas->id_kepala_keluarga)->get();
+
+            foreach ($data_warga as $warga) {
+                $warga->id_keluarga = $wargas->id;
+                $warga->save();
+            }
+
             Alert::success('Berhasil', 'Data berhasil di tambahkan');
 
             return redirect('/data_keluarga');
@@ -209,9 +216,7 @@ class DataKeluargaController extends Controller
     public function edit(DataKeluarga $data_keluarga)
     {
         // nama desa yang login
-        $desas = DB::table('data_desa')
-        ->where('id', auth()->user()->id_desa)
-        ->get();
+        $desa = Data_Desa::where('id', auth()->user()->id_desa)->first();
         // $kec = DB::table('data_kecamatan')->get();
         $kec = DB::table('data_kecamatan')
         ->where('id', auth()->user()->id_kecamatan)
@@ -224,11 +229,16 @@ class DataKeluargaController extends Controller
         $warga = DataWarga::all();
         $kel = DataKeluarga::all();
         $dasawisma = DataKelompokDasawisma::all();
+        $kepalaKeluargas = DataWarga::where('status_keluarga', 'kepala keluarga')->where(function ($q) use ($data_keluarga) {
+            $q->whereDoesntHave('keluarga')
+            ->orWhere('id_keluarga', $data_keluarga->id);
+        })
+        ->withCount('warga')->get();
 
+        $kepala_keluarga = $data_keluarga->kepala_keluarga;
         // dd($keg);
 
-        return view('kader.data_kegiatan.form.edit_data_keluarga', compact('data_keluarga','warga', 'kel', 'desas', 'kec', 'kad', 'dasawisma'));
-
+        return view('kader.data_kegiatan.form.edit_data_keluarga', compact('data_keluarga','warga', 'kel', 'desa', 'kec', 'kad', 'dasawisma', 'kepalaKeluargas', 'kepala_keluarga'));
     }
 
     /**
@@ -238,21 +248,20 @@ class DataKeluargaController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, DataKeluarga $data_keluarga)
+    public function update(Request $request, $id)
     {
         // proses mengubah untuk data keluarga
         // dd($request->all());
 
         $request->validate([
-            'id_desa' => 'required',
-            'id_kecamatan' => 'required',
+            // 'id_desa' => 'required',
+            // 'id_kecamatan' => 'required',
             // 'id_warga' => 'required',
             'id_dasawisma' => 'required',
-            'nik_kepala_keluarga' => 'required|min:16',
-            'rt' => 'required',
-            'rw' => 'required',
-            'kabupaten' => 'required',
-            'provinsi' => 'required',
+            // 'nik_kepala_keluarga' => 'required|min:16',
+            'id_kepala_keluarga' => 'required',
+            // 'rt' => 'required',
+            // 'rw' => 'required',
             'dusun' => 'required',
             // 'perempuan' => 'required',
             'jumlah_KK' => 'required',
@@ -280,6 +289,7 @@ class DataKeluargaController extends Controller
             'id_desa.required' => 'Pilih Alamat Desa Kegiatan Warga',
             'id_kecamatan' => 'Pilih Alamat Kecamatan Kegiatan Warga',
             'id_dasawisma.required' => 'Lengkapi Nama Dasawisma Yang Diikuti',
+            'id_kepala_keluarga.required' => 'Lengkapi Kepala Rumah Tangga',
             'nik_kepala_keluarga.required' => 'Lengkapi NIK Kepala Rumah Tangga',
             'jumlah_anggota_keluarga.required' => 'Lengkapi Jumlah Anggota Keluarga',
             'rt.required' => 'Lengkapi RT',
@@ -314,7 +324,28 @@ class DataKeluargaController extends Controller
         //     return redirect('/data_keluarga');
         // }
         // else{
-            $data_keluarga->update($request->all());
+            $data_keluarga = DataKeluarga::findOrFail($id);
+            $id_kepala_keluarga = $data_keluarga->id_kepala_keluarga;
+            $data_keluarga->fill($request->except('id_kepala_keluarga'));
+
+            if ($id_kepala_keluarga != $request->id_kepala_keluarga) {
+                $data_warga = DataWarga::where('id_keluarga', $data_keluarga->id)->get();
+
+                foreach ($data_warga as $warga) {
+                    $warga->id_keluarga = null;
+                    $warga->save();
+                }
+
+                DataWarga::where('id', $request->id_kepala_keluarga)->update(['id_keluarga' => $data_keluarga->id]);
+                $data_warga = DataWarga::where('id_kepala_data_warga', $data_keluarga->id_kepala_keluarga)->get();
+
+                foreach ($data_warga as $warga) {
+                    $warga->id_keluarga = $data_warga->id;
+                    $warga->save();
+                }
+            }
+
+            $data_keluarga->save();
             Alert::success('Berhasil', 'Data berhasil di ubah');
             // dd($jml_kader);
             return redirect('/data_keluarga');

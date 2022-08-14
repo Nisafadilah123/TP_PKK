@@ -76,8 +76,14 @@ class AdminKabController extends Controller
         $user = Auth::user();
 
         $kecamatan = DB::table('data_keluarga')
-        ->join('data_kecamatan', 'data_keluarga.id_kecamatan', '=', 'data_kecamatan.id')
-        ->select('nama_kecamatan', 'periode')
+
+        ->join('data_warga', function ($q) {
+            $q->on('data_warga.id_keluarga', '=', 'data_keluarga.id')
+                ->where('data_warga.status_keluarga', 'kepala keluarga');
+        })
+        ->join('data_desa', 'data_warga.id_desa', '=', 'data_desa.id')
+        ->join('data_kecamatan', 'data_desa.id_kecamatan', '=', 'data_kecamatan.id')
+        ->select('nama_kecamatan', 'data_keluarga.periode')
         // ->where('id_kecamatan', $user->user_type)
         ->distinct()
         ->get();
@@ -145,8 +151,16 @@ class AdminKabController extends Controller
         $user = Auth::user();
 
         $kabupaten = DB::table('data_keluarga')
-        ->join('data_kecamatan', 'data_keluarga.id_kecamatan', '=', 'data_kecamatan.id')
-        ->select('periode')
+        ->join('data_warga', function ($q) {
+            $q->on('data_warga.id_keluarga', '=', 'data_keluarga.id')
+                ->where('data_warga.status_keluarga', 'kepala keluarga');
+        })
+        ->join('data_desa', 'data_warga.id_desa', '=', 'data_desa.id')
+        ->join('data_kecamatan', 'data_desa.id_kecamatan', '=', 'data_kecamatan.id')
+        ->select('data_keluarga.periode')
+
+        // ->join('data_kecamatan', 'data_keluarga.id_kecamatan', '=', 'data_kecamatan.id')
+        ->select('data_keluarga.periode')
         ->distinct()
         ->get();
 

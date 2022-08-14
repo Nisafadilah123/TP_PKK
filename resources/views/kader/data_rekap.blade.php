@@ -55,7 +55,7 @@
                                         @if ($c->status_keluarga=='kepala keluarga')
                                         <td style="vertical-align: middle;">Kepala Keluarga</td>
                                             @else
-                                        <td style="vertical-align: middle;">{{ucfirst($c->status_keluarga)}} ({{ucfirst($c->status)}})</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->status_keluarga)}} ({{ucfirst($c->status_anggota_keluarga)}})</td>
                                         @endif
                                         <td style="vertical-align: middle;">{{ucfirst($c->status_perkawinan)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jenis_kelamin == 'laki-laki' ? 'laki-laki' :'')}}</td>

@@ -38,9 +38,7 @@ class DataKegiatanWargaController extends Controller
     {
         // halaman form tambah data kegiatan
         // nama desa yang login
-        $desas = DB::table('data_desa')
-        ->where('id', auth()->user()->id_desa)
-        ->get();
+        $desa = Data_Desa::find(auth()->user()->id_desa);
         // $kec = DB::table('data_kecamatan')->get();
         $kec = DB::table('data_kecamatan')
         ->where('id', auth()->user()->id_kecamatan)
@@ -88,7 +86,7 @@ class DataKegiatanWargaController extends Controller
         // ];
         //  dd($keg);
         // return view('kader.data_kegiatan.form.create_data_kegiatan', $data, compact('kec', 'warga', 'desas'));
-        return view('kader.data_kegiatan.form.create_data_kegiatan', compact('keg', 'warga', 'desas', 'kec', 'kad', 'kel'));
+        return view('kader.data_kegiatan.form.create_data_kegiatan', compact('keg', 'warga', 'desa', 'kec', 'kad', 'kel'));
 
     }
 
@@ -174,9 +172,8 @@ class DataKegiatanWargaController extends Controller
         $keg = DataWarga::all();
         // $kat = KategoriKegiatan::all();
 
-        $desas = DB::table('data_desa')
-        ->where('id', auth()->user()->id_desa)
-        ->get();
+
+        $desa = Data_Desa::find(auth()->user()->id_desa);
         // $kec = DB::table('data_kecamatan')->get();
         $kec = DB::table('data_kecamatan')
         ->where('id', auth()->user()->id_kecamatan)
@@ -227,7 +224,7 @@ class DataKegiatanWargaController extends Controller
 
         // dd($keg);
 
-        return view('kader.data_kegiatan.form.edit_data_kegiatan', compact('data_kegiatan','keg', 'kec', 'desas','kad','kel', 'ket', 'warga'));
+        return view('kader.data_kegiatan.form.edit_data_kegiatan', compact('data_kegiatan','keg', 'kec', 'desa','kad','kel', 'ket', 'warga'));
 
     }
 

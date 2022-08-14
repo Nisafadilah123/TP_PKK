@@ -110,7 +110,7 @@ class DataKeluarga extends Model
         return $have;
     }
 
-    public function getHavePemanfaatanAtribute()
+    public function getHavePemanfaatanAttribute()
     {
         $have = 0;
 
@@ -175,5 +175,9 @@ class DataKeluarga extends Model
 
     public function dasawisma(){
         return $this->belongsTo(DataKelompokDasawisma::class, 'id_dasawisma');
+    }
+
+    public function kepala_keluarga() {
+        return $this->hasOne(DataWarga::class, 'id_keluarga', 'id')->where('status_keluarga', 'kepala keluarga');
     }
 }

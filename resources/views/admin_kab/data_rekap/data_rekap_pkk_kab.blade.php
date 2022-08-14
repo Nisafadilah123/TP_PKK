@@ -2,7 +2,7 @@
 
 @section('title', 'Catatan Data Dan Kegiatan Warga Kelompok PKK Kabupaten | Admin Kabupaten PKK Kab. Indramayu')
 
-@section('bread', 'Data POKJA I TP PKK Kabupaten')
+@section('bread', 'Catatan Data Dan Kegiatan Warga Kelompok PKK Kabupaten')
 @section('container')
 
     <!-- Main content -->
@@ -85,7 +85,7 @@
                                         @foreach ($kecamatans as $kec)
                                         <tr>
                                             <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
-                                            <td style="vertical-align: middle;">{{ $kec->kecamatan->nama_kecamatan }}</td>
+                                            <td style="vertical-align: middle;">{{ $kec->nama_kecamatan }}</td>
                                             <td style="vertical-align: middle;">{{ $kec->jumlah_desa }}</td>
                                             <td style="vertical-align: middle;">{{ $kec->jumlah_dusun }}</td>
                                             <td style="vertical-align: middle;">{{ $kec->jumlah_rw }}</td>
@@ -125,8 +125,7 @@
                                         @endforeach
 
                                         <tr>
-                                            <td><strong>Jumlah</strong></td>
-                                            <td></td>
+                                            <td colspan="2"><strong>Jumlah</strong></td>
                                             <td>{{ $kecamatans->sum('jumlah_desa') }}</td>
                                             <td>{{ $kecamatans->sum('jumlah_dusun') }}</td>
                                             <td>{{ $kecamatans->sum('jumlah_rw') }}</td>

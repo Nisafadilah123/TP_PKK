@@ -104,8 +104,9 @@ class KaderFormController extends Controller
     public function rekap(){
         $user = Auth::user();
 
-        $warga = DataWarga::with('keluarga')
-        ->where('id_user', $user->id)
+        $warga = DataKeluarga::whereHas('kepala_keluarga', function ($q) use($user) {
+            $q->where('id_user', $user->id);
+        })
         ->get();
         // dd($warga);
         return view('kader.rekap', compact('warga'));
@@ -113,7 +114,7 @@ class KaderFormController extends Controller
 
      // halaman data rekap data warga pkk
     public function rekap_data_warga($id){
-        $kepala_keluarga = DataWarga::findOrFail($id);
+        $kepala_keluarga = DataWarga::where('id_keluarga', $id)->where('status_keluarga', 'kepala_keluarga')->first();
 
         // $warga = DataWarga::where('nik_kepala_keluarga', $kepala_keluarga->no_ktp)
         // ->get();
@@ -235,7 +236,7 @@ class KaderFormController extends Controller
 
      // print halaman data rekap data warga pkk
      public function print_pdf_cakel($id){
-        $kepala_keluarga = DataWarga::find($id)->first();
+        $kepala_keluarga = DataWarga::find($id);
 
         // $keluarga = DataKeluarga::where('id_warga', $kepala_keluarga->id)->first();
         $keluarga = DataKeluarga::first();

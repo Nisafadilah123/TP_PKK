@@ -52,14 +52,15 @@ class KelompokDasawismaController extends Controller
             'dusun' => 'required',
             'status' => 'required',
             'id_desa' => 'required',
-            'id_kecamatan' => 'required',
-            'rt' => 'required',
-            'rw' => 'required'
+            'rt_dasawisma' => 'required',
+            'rw_dasawisma' => 'required'
         ], [
             'nama_dasawisma.required' => 'Masukkan Nama Dasawisma',
             'alamat_dasawisma.required' => 'Masukkan Alamat Dasawisma',
             'dusun.required' => 'Masukkan Dusun Dasawisma',
             'status.required' => 'Pilih Status',
+            'rt_dasawisma.required' => 'Masukkan Nama Dasawisma',
+            'rw_dasawisma.required' => 'Masukkan Nama Dasawisma',
         ]);
 
         $dawis = new DataKelompokDasawisma;
@@ -67,10 +68,9 @@ class KelompokDasawismaController extends Controller
         $dawis->alamat_dasawisma = $request->alamat_dasawisma;
         $dawis->dusun = $request->dusun;
         $dawis->status = $request->status;
-        $dawis->rt = $request->rt;
-        $dawis->rw = $request->rw;
+        $dawis->rt_dasawisma = $request->rt_dasawisma;
+        $dawis->rw_dasawisma = $request->rw_dasawisma;
         $dawis->id_desa = auth()->user()->id_desa;
-        $dawis->id_kecamatan = auth()->user()->id_kecamatan;
         $dawis->periode = $request->periode;
 
 
@@ -120,24 +120,24 @@ class KelompokDasawismaController extends Controller
             'dusun' => 'required',
             'status' => 'required',
             'id_desa' => 'required',
-            'id_kecamatan' => 'required',
-            'rt' => 'required',
-            'rw' => 'required'
+            'rt_dasawisma' => 'required',
+            'rw_dasawisma' => 'required'
         ], [
             'nama_dasawisma.required' => 'Masukkan Nama Dasawisma',
             'alamat_dasawisma.required' => 'Masukkan Alamat Dasawisma',
             'dusun.required' => 'Masukkan Dusun Dasawisma',
             'status.required' => 'Pilih Status',
+            'rt_dasawisma.required' => 'Masukkan Nama Dasawisma',
+            'rw_dasawisma.required' => 'Masukkan Nama Dasawisma',
         ]);
 
         $data_dasawisma->nama_dasawisma = $request->nama_dasawisma;
         $data_dasawisma->alamat_dasawisma = $request->alamat_dasawisma;
         $data_dasawisma->dusun = $request->dusun;
-        $data_dasawisma->rt = $request->rt;
-        $data_dasawisma->rw = $request->rw;
+        $data_dasawisma->rt_dasawisma = $request->rt_dasawisma;
+        $data_dasawisma->rw_dasawisma = $request->rw_dasawisma;
         $data_dasawisma->status = $request->status;
         $data_dasawisma->id_desa = auth()->user()->id_desa;
-        $data_dasawisma->id_kecamatan = auth()->user()->id_kecamatan;
 
         $data_dasawisma->update();
         Alert::success('Berhasil', 'Data berhasil di Ubah');

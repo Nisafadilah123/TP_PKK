@@ -22,9 +22,11 @@ class DataDasaWisma
         /** @var Collection<string, Collection<DataKeluarga>> */
         $dataDasaWismas = DataKeluarga::query()
             ->with(['industri', 'pemanfaatan'])
-            ->where('id_desa', $id_desa)
-            ->where('rw', $rw)
-            ->where('rt', $rt)
+            ->whereHas('kepala_keluarga', function ($q) use ($id_desa, $rw, $rt) {
+                $q->where('id_desa', $id_desa)
+                    ->where('rw', $rw)
+                    ->where('rt', $rt);
+            })
             ->where('periode', $periode)
             ->get()
             ->groupBy('dasa_wisma_id');

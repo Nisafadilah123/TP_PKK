@@ -58,8 +58,8 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label>RT</label>
-                        <input type="number" class="form-control @error('rt') is-invalid @enderror" name="rt" id="rt" placeholder="Isi RT" required value="{{ old('rt') }}">
-                        @error('rt')
+                        <input type="number" class="form-control @error('rt_dasawisma') is-invalid @enderror" name="rt_dasawisma" id="rt_dasawisma" placeholder="Isi RT Dasawisma" required value="{{ old('rt_dasawisma') }}">
+                        @error('rt_dasawisma')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -69,8 +69,8 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label>RW</label>
-                        <input type="number" class="form-control @error('rw') is-invalid @enderror" name="rw" id="rw" placeholder="Isi RW" required value="{{ old('rw') }}">
-                        @error('rw')
+                        <input type="number" class="form-control @error('rw_dasawisma') is-invalid @enderror" name="rw_dasawisma" id="rw_dasawisma" placeholder="Isi RW Dasawisma" required value="{{ old('rw_dasawisma') }}">
+                        @error('rw_dasawisma')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -108,10 +108,7 @@
                     <label>Nama Desa</label>
                     <input type="text" readonly class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Kader" required value="{{ Auth::user()->desa->nama_desa }}">
                   </div>
-                <div class="form-group">
-                    <label>Nama Kecamatan</label>
-                    <input type="text" readonly class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Kader" required value="{{ Auth::user()->kecamatan->nama_kecamatan }}">
-                </div>
+
                 <div class="col-md-2">
                     <div class="form-group @error('periode') is-invalid @enderror">
                         <label>Periode</label>

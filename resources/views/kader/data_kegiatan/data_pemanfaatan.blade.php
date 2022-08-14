@@ -42,7 +42,7 @@
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         {{-- nama desa yang login --}}
-                                        <td style="vertical-align: middle;">{{ucfirst($c->keluarga->nama_kepala_rumah_tangga) }}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->keluarga->kepala_keluarga->nama ?? '-') }}</td>
                                         {{-- @if ($c->nama_kategori == 1)
                                             <td style="vertical-align: middle;">Peternakan</td>
                                         @elseif($c->nama_kategori == 2)

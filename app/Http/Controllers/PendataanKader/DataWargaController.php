@@ -50,10 +50,12 @@ class DataWargaController extends Controller
         ->where('id', auth()->user()->id)
         ->get();
 
+     $desa = Data_Desa::find(auth()->user()->id_desa);
      $kel = DataKeluarga::all();
      $dasawisma = DataKelompokDasawisma::all();
+     $kepalaKeluargas = DataWarga::where('status_keluarga', 'kepala keluarga')->get();
 
-     return view('kader.data_kegiatan.form.create_data_warga', compact('desas', 'kec', 'kel', 'kad', 'dasawisma'));
+     return view('kader.data_kegiatan.form.create_data_warga', compact('desas', 'desa', 'kec', 'kel', 'kad', 'dasawisma', 'kepalaKeluargas'));
 
  }
 
@@ -70,10 +72,10 @@ class DataWargaController extends Controller
         // validasi data
         $request->validate([
             'id_desa' => 'required',
-            'id_kecamatan' => 'required',
             // 'dasa_wisma' => 'required',
-            'id_dasawisma' => 'required',
-            'id_keluarga' => 'required',
+            // 'id_dasawisma' => 'required',
+            // 'id_keluarga' => 'required',
+            // 'id_kepala_data_warga' => 'required',
             'no_registrasi' => 'required',
             'no_ktp' => 'required|min:16',
             'nama' => 'required',
@@ -86,10 +88,10 @@ class DataWargaController extends Controller
             'status_keluarga' => 'required',
             'agama' => 'required',
             'alamat' => 'required',
-            // 'rt' => 'required',
-            // 'rw' => 'required',
-            'kabupaten' => 'required',
-            'provinsi' => 'required',
+            'rt' => 'required',
+            'rw' => 'required',
+            // 'kabupaten' => 'required',
+            // 'provinsi' => 'required',
             'pendidikan' => 'required',
             'pekerjaan' => 'required',
             'akseptor_kb' => 'required',
@@ -106,6 +108,7 @@ class DataWargaController extends Controller
             'id_kecamatan' => 'Lengkapi Alamat Kecamatan Warga',
             'id_dasa_wisma.required' => 'Pilih Nama Dasawisma Yang Diikuti Warga',
             'id_keluarga.required' => 'Lengkapi Nama Kepala Rumah Tangga',
+            'id_kepala_data_warga.required' => 'Lengkapi Nama Kepala Rumah Tangga',
             'no_registrasi.required' => 'Lengkapi No. Registrasi',
             'no_ktp.required' => 'Lengkapi No. KTP/NIK',
             'nama.required' => 'Lengkapi Nama',
@@ -118,8 +121,8 @@ class DataWargaController extends Controller
             'status_keluarga.required' => 'Pilih Status Keluarga',
             'agama.required' => 'Pilih Agama',
             'alamat.required' => 'Lengkapi Alamat',
-            // 'rt.required' => 'Lengkapi RT',
-            // 'rw.required' => 'Lengkapi RW',
+            'rt.required' => 'Lengkapi RT',
+            'rw.required' => 'Lengkapi RW',
             'kabupaten.required' => 'Lengkapi kabupaten',
             'provinsi.required' => 'Lengkapi Provinsi',
             'pendidikan.required' => 'Pilih Riwayat Pendidikan Warga',
@@ -146,9 +149,9 @@ class DataWargaController extends Controller
 
             $wargas = new DataWarga;
             $wargas->id_desa = $request->id_desa;
-            $wargas->id_kecamatan = $request->id_kecamatan;
-            $wargas->id_dasawisma = $request->id_dasawisma;
+            // $wargas->id_dasawisma = $request->id_dasawisma;
             $wargas->id_keluarga = $request->id_keluarga;
+            $wargas->id_kepala_data_warga = $request->id_kepala_data_warga;
             // $wargas->nik_kepala_keluarga = $request->nik_kepala_keluarga == $request->no_ktp ? null : $request->nik_kepala_keluarga;
             $wargas->no_registrasi = $request->no_registrasi;
             $wargas->no_ktp = $request->no_ktp;
@@ -165,8 +168,8 @@ class DataWargaController extends Controller
             $wargas->alamat = $request->alamat;
             $wargas->rt = $request->rt;
             $wargas->rw = $request->rw;
-            $wargas->kabupaten = $request->kabupaten;
-            $wargas->provinsi = $request->provinsi;
+            // $wargas->kabupaten = $request->kabupaten;
+            // $wargas->provinsi = $request->provinsi;
             $wargas->pendidikan = $request->pendidikan;
             $wargas->pekerjaan = $request->pekerjaan;
             $wargas->akseptor_kb = $request->akseptor_kb;
@@ -179,6 +182,10 @@ class DataWargaController extends Controller
             $wargas->periode = $request->periode;
             $wargas->id_user = $request->id_user;
 
+            if ($request->id_kepala_data_warga) {
+                $kepala_keluarga = DataWarga::find($request->id_kepala_data_warga);
+                $wargas->id_keluarga = $kepala_keluarga ? $kepala_keluarga->id_keluarga : null;
+            }
             // simpan data
             $wargas->save();
             Alert::success('Berhasil', 'Data berhasil di tambahkan');
@@ -208,16 +215,14 @@ class DataWargaController extends Controller
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function edit(DataWarga $data_warga)
+    public function edit($id)
     {
         // halaman form edit data warga
-        $desa = DataWarga::with('desa')->first(); // pemanggilan tabel data warga
+        $data_warga = DataWarga::find($id); // pemanggilan tabel data warga
          // nama desa yang login
         // $desas = DB::table('data_desa')->get();
         // $kec = DB::table('data_kecamatan')->get();
-        $desas = DB::table('data_desa')
-        ->where('id', auth()->user()->id_desa)
-        ->get();
+        $desa = Data_Desa::find(auth()->user()->id_desa);
 
         $kec = DB::table('data_kecamatan')
         ->where('id', auth()->user()->id_kecamatan)
@@ -229,8 +234,9 @@ class DataWargaController extends Controller
 
         $kel = DataKeluarga::all();
         $dasawisma = DataKelompokDasawisma::all();
+        $kepalaKeluargas = DataWarga::where('status_keluarga', 'kepala keluarga')->get();
 
-        return view('kader.data_kegiatan.form.edit_data_warga', compact('data_warga','desa','desas','kec', 'kel', 'kad', 'dasawisma'));
+        return view('kader.data_kegiatan.form.edit_data_warga', compact('data_warga','desa','kec', 'kel', 'kad', 'dasawisma','kepalaKeluargas'));
 
     }
 
@@ -248,9 +254,8 @@ class DataWargaController extends Controller
         // validasi data
         $request->validate([
             'id_desa' => 'required',
-            'id_kecamatan' => 'required',
-            'id_dasawisma' => 'required',
-            'id_keluarga' => 'required',
+            // 'id_dasawisma' => 'required',
+            // 'id_keluarga' => 'required',
             'no_registrasi' => 'required',
             'no_ktp' => 'required|min:16',
             'nama' => 'required',
@@ -265,8 +270,8 @@ class DataWargaController extends Controller
             'alamat' => 'required',
             'rt' => 'required',
             'rw' => 'required',
-            'kabupaten' => 'required',
-            'provinsi' => 'required',
+            // 'kabupaten' => 'required',
+            // 'provinsi' => 'required',
             'pendidikan' => 'required',
             'pekerjaan' => 'required',
             'akseptor_kb' => 'required',

@@ -24,12 +24,13 @@ class DataRT
         /** @var Collection<integer, Collection<DataKeluarga>> */
         $rts = DataKeluarga::query()
                 ->with(['industri', 'pemanfaatan'])
-                ->where('id_desa', $id_desa)
-                // ->where('rt', $rt)
-                ->where('rw', $rw)
+                ->whereHas('kepala_keluarga', function ($q) use ($id_desa, $rw) {
+                    $q->where('id_desa', $id_desa)
+                        ->where('rw', $rw);
+                })
                 ->where('periode', $periode)
                 ->get()
-                ->groupBy('rt');
+                ->groupBy('kepala_keluarga.rt');
             // dd($rts);
         foreach ($rts as $keluargas) {
             // $rtIds = explode('-', $keluargas);
@@ -42,15 +43,15 @@ class DataRT
 
                 $rt = new RT();
                 $rt->id = $keluarga->id;
-                $rt->id_kecamatan = intval($keluarga->id_kecamatan);
-                $rt->id_desa = intval($keluarga->id_desa);
+                $rt->id_kecamatan = $keluarga->kepala_keluarga->desa->id_kecamatan ?? null;
+                $rt->id_desa = $keluarga->kepala_keluarga->id_desa ?? null;
                 $rt->dusun = $keluarga->dusun;
                 // dd($keluarga->dusun);
 
-                $rt->rw = intval($keluarga->rw);
+                $rt->rw = $keluarga->kepala_keluarga->rw ?? null;
                 // $rt->rt = intval($keluarga->rt);
                 $rt->nama = $keluarga->nama;
-                $rt->rt = $keluarga->rt;
+                $rt->rt = $keluarga->kepala_keluarga->rt ?? null;
                 $dasa_wisma = $keluargas->groupBy(function ($item) {
                     return strtolower($item->dasa_wisma);
                 });

@@ -18,11 +18,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('id_desa')->unsigned();
             $table->foreign('id_desa')->references('id')->on('data_desa');
-            $table->bigInteger('id_kecamatan')->unsigned();
-            $table->foreign('id_kecamatan')->references('id')->on('data_kecamatan');
-            // $table->bigInteger('id_warga')->unsigned();
-            // $table->foreign('id_warga')->references('id')->on('data_warga');
-            // $table->string('dasa_wisma');
+
             $table->bigInteger('id_dasawisma')->unsigned()->nullable();
             $table->string('nama_kepala_rumah_tangga');
             $table->string('nik_kepala_keluarga');
@@ -33,8 +29,6 @@ return new class extends Migration
             $table->integer('jumlah_anggota_keluarga');
             $table->integer('rt');
             $table->integer('rw');
-            $table->string('kabupaten');
-            $table->string('provinsi');
             $table->integer('jumlah_laki')->nullable();
             $table->integer('jumlah_perempuan')->nullable();
             $table->integer('jumlah_KK');

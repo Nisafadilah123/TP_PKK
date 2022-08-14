@@ -35,7 +35,7 @@
                                         @foreach ($warga as $c)
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
-                                        <td style="vertical-align: middle;">{{ucfirst($c->keluarga->nama_kepala_rumah_tangga)}}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->kepala_keluarga->nama ?? '-')}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->periode)}}</td>
 
                                         <td class="text-center">

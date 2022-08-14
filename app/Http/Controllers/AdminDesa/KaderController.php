@@ -60,7 +60,7 @@ class KaderController extends Controller
             'password' => 'required|min:8',
             'user_type' => 'required',
             'id_desa' => 'required',
-            'id_kecamatan' => 'required',
+            'id_dasawisma' => 'required',
         ], [
             'name.required' => 'Masukkan Nama Pengguna',
             'email.required' => 'Masukkan Email Pengguna',
@@ -74,7 +74,7 @@ class KaderController extends Controller
         $kader->password = Hash::make($request->password);
         $kader->user_type = $request->user_type;
         $kader->id_desa = auth()->user()->id_desa;
-        $kader->id_kecamatan = auth()->user()->id_kecamatan;
+        $kader->id_dasawisma = $request->id_dasawisma;
 
         if ($request->hasFile('foto')) {
             if ($kader->foto && Storage::disk('public')->exists($kader->foto)) {
@@ -136,7 +136,7 @@ class KaderController extends Controller
             'email' => 'required|unique:data_kader',
             'user_type' => 'required',
             'id_desa' => 'required',
-            'id_kecamatan' => 'required',
+            'id_dasawisma' => 'required',
         ], [
             'name.required' => 'Masukkan Nama Pengguna',
             'email.required' => 'Masukkan Email Pengguna',
@@ -149,7 +149,6 @@ class KaderController extends Controller
             $data_kader->password = Hash::make($request->password);
         $data_kader->user_type = $request->user_type;
         $data_kader->id_desa = auth()->user()->id_desa;
-        $data_kader->id_kecamatan = auth()->user()->id_kecamatan;
         $data_kader->id_dasawisma = $request->id_dasawisma;
 
         if ($request->hasFile('foto')) {

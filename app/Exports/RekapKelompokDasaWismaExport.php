@@ -40,7 +40,7 @@ class RekapKelompokDasaWismaExport implements FromArray, WithHeadings, WithEvent
         foreach ($catatan_keluarga as $keluarga) {
             $data = [
                 '_index' => $i,
-                'nama_kepala_rumah_tangga' => $keluarga->nama_kepala_rumah_tangga,
+                'nama_kepala_rumah_tangga' => $keluarga->kepala_keluarga->nama ?? '-',
                 'jumlah_KK' => $keluarga->jumlah_KK ?: '0',
                 'jumlah_laki' => $keluarga->jumlah_laki ?: '0',
                 'jumlah_perempuan' => $keluarga->jumlah_perempuan ?: '0',

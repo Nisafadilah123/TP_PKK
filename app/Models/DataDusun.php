@@ -24,8 +24,9 @@ class DataDusun
         /** @var Collection<string, Collection<DataKeluarga>> */
         $dusuns = DataKeluarga::query()
                 ->with(['industri', 'pemanfaatan'])
-                ->where('id_desa', $id_desa)
-
+                ->whereHas('kepala_keluarga', function ($q) use ($id_desa) {
+                    $q->where('id_desa', $id_desa);
+                })
                 ->where('periode', $periode)
                 ->get()
                 ->groupBy('dusun');
@@ -36,18 +37,15 @@ class DataDusun
 
                 $dusun = new Dusun();
                 $dusun->id = $keluarga->id;
-                $dusun->id_kecamatan = intval($keluarga->id_kecamatan);
-                $dusun->id_desa = intval($keluarga->id_desa);
+                $dusun->id_kecamatan = $keluarga->kepala_keluarga->desa->id_kecamatan ?? null;
+                $dusun->id_desa = $keluarga->kepala_keluarga->id_desa ?? null;
                 $dusun->dusun = $keluarga->dusun;
-                $dusun->dusun = intval($keluarga->dusun);
-                // $dusun->dusun = intval($keluarga->dusun);
                 $dusun->nama = $keluarga->nama;
-                $dusun->dusun = $keluarga->dusun;
                 $rw =  $keluargas->groupBy(function ($item) {
-                    return strtolower($item->rw);
+                    return $item->kepala_keluarga->rw ?? null;
                 });
                 $rt =  $keluargas->groupBy(function ($item) {
-                    return strtolower($item->rt);
+                    return $item->kepala_keluarga->rt ?? null;
                 });
                 $dasa_wisma = $keluargas->groupBy(function ($item) {
                     return strtolower($item->dasa_wisma);

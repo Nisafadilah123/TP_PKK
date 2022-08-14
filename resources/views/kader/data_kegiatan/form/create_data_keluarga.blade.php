@@ -55,7 +55,7 @@
                                             {{-- <input type="text" class="form-control @error('dasa_wisma') is-invalid @enderror" name="dasa_wisma" id="dasa_wisma" placeholder="Masukkan Nama Dasa Wisma" value="{{ old('dasa_wisma') }}"> --}}
                                             <select class="form-control" id="id_dasawisma" name="id_dasawisma">
                                                 {{-- nama dasa wisma --}}
-                                                <option value="" hidden> Pilih Dasa Wisma</option>
+                                                <option hidden> Pilih Dasa Wisma</option>
                                                 @foreach ($dasawisma as $c)
                                                     <option value="{{$c->id}}">{{ $c->nama_dasawisma }}</option>
                                                 @endforeach
@@ -69,17 +69,40 @@
                                     </div>
 
                                     <div class="col-md-6">
+                                        {{-- <div class="form-group">
+                                            <label>Kepala Rumah Tangga</label>
+                                            <input type="text" class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" name="nama_kepala_rumah_tangga" id="nama_kepala_rumah_tangga" placeholder="Masukkan Nama Kepala Rumah Tangga" value="{{ old('nama_kepala_rumah_tangga') }}">
+
+
+                                            @error('nama_kepala_rumah_tangga')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div> --}}
+
+                                        <div class="form-group">
+                                            <label>Kepala Rumah Tangga</label>
+                                                {{-- Nama Kepala Rumah Tangga --}}
+                                                <select class="form-control selectpicker" id="id_keluarga" name="id_kepala_keluarga" data-live-search="true" data-none-selected-text="Pilih Kepala Rumah Tangga">
+                                                    {{-- nama dasa wisma --}}
+                                                    <option hidden> Pilih Kepala Rumah Tangga</option>
+                                                    @foreach ($kepalaKeluargas as $c)
+                                                    <option value="{{$c->id}}" data-tokens="{{ $c->nama }}" data-rt="{{ $c->rt }}" data-rw="{{ $c->rw }}" data-desa="{{ $c->desa->nama_desa ?? '' }}" data-kecamatan="{{ $c->desa->kecamatan->nama_kecamatan ?? '' }}" data-kabupaten="{{ $c->desa->kecamatan->kabupaten ?? '' }}" data-provinsi="{{ $c->desa->kecamatan->provinsi ?? '' }}" data-jumlah_anggota_keluarga="{{ $c->warga_count + 1 }}" data-nik_kepala_keluarga="{{ $c->no_ktp }}">{{ $c->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            @error('nama_kepala_rumah_tangga')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">RT</label>
-                                            <input type="number" min="1" class="form-control @error('rt') is-invalid @enderror" name="rt" id="rt" placeholder="Masukkan No. RT" value="{{ old('rt') }}">
-
-                                                {{-- <select class="form-control" id="rt" name="rt"> --}}
-                                                    {{-- nomor rt --}}
-                                                    {{-- <option value="" hidden> Pilih RT</option>
-                                                    @foreach ($warga as $c)
-                                                        <option value="{{$c->id}}">{{ $c->rt }}</option>
-                                                    @endforeach
-                                                </select> --}}
+                                            <input type="number" readonly min="1" class="form-control @error('rt') is-invalid @enderror" name="rt" id="rt" placeholder="Masukkan No. RT" value="{{ old('rt') }}">
                                         </div>
                                         @error('rt')
                                             <span class="invalid-feedback" role="alert">
@@ -91,15 +114,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group @error('rw') is-invalid @enderror">
                                             <label for="exampleFormControlSelect1">RW</label>
-                                            <input type="number" min="1" class="form-control @error('rw') is-invalid @enderror" name="rw" id="rw" placeholder="Masukkan No. RW" value="{{ old('rw') }}">
+                                            <input type="number" readonly min="1" class="form-control @error('rw') is-invalid @enderror" name="rw" id="rw" placeholder="Masukkan No. RW" value="{{ old('rw') }}">
 
-                                            {{-- <select class="form-control " id="rw" name="rw"> --}}
-                                                {{-- nama rw --}}
-                                                {{-- <option value="" hidden> Pilih RW</option>
-                                                @foreach ($warga as $c)
-                                                    <option value="{{$c->id}}">{{ $c->rw }}</option>
-                                                @endforeach
-                                            </select> --}}
+
                                         </div>
                                         @error('rw')
                                             <span class="invalid-feedback" role="alert">
@@ -119,19 +136,13 @@
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
-                            </div>
 
-                            <div class="col-md-12">
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group @error('id_desa') is-invalid @enderror">
                                             <label for="exampleFormControlSelect1">Desa</label>
-                                            @foreach ($desas as $c)
-                                                <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
-                                                <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" value="{{ $c->nama_desa }}">
+                                            {{-- <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" value="{{$desa->id ?? ''}}"> --}}
+                                            <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" value="{{ $desa->nama_desa ?? '' }}">
 
-                                            @endforeach
                                         </div>
                                         @error('id_desa')
                                             <span class="invalid-feedback" role="alert">
@@ -145,11 +156,7 @@
                                         <div class="form-group @error('id_kecamatan') is-invalid @enderror">
                                             <label for="exampleFormControlSelect1">Kecamatan</label>
                                             {{-- nama kecamatan --}}
-                                            @foreach ($kec as $c)
-                                            <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
-                                            <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Desa" value="{{ $c->nama_kecamatan }}">
-
-                                            @endforeach
+                                            <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Kecamatan" value="{{ $desa->kecamatan->nama_kecamatan ?? '' }}" disabled>
                                         </div>
                                         @error('id_kecamatan')
                                             <span class="invalid-feedback" role="alert">
@@ -162,7 +169,7 @@
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Kabupaten</label>
                                             {{-- nama kabupaten --}}
-                                                <input type="text" readonly class="form-control @error('kabupaten') is-invalid @enderror" name="kabupaten" id="kabupaten" placeholder="Masukkan kabupaten" value="Indramayu">
+                                                <input type="text" readonly class="form-control @error('kabupaten') is-invalid @enderror" name="kabupaten" id="kabupaten" placeholder="Masukkan kabupaten" value="{{ $desa->kecamatan->kabupaten ?? '' }}">
                                                 @error('kabupaten')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -175,7 +182,7 @@
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Provinsi</label>
                                             {{-- nama provinsi --}}
-                                                <input type="text" readonly class="form-control @error('provinsi') is-invalid @enderror" name="provinsi" id="provinsi" placeholder="Masukkan Provisni" value="Jawa Barat">
+                                                <input type="text" readonly class="form-control @error('provinsi') is-invalid @enderror" name="provinsi" id="provinsi" placeholder="Masukkan Provisni" value="{{ $desa->kecamatan->provinsi ?? '' }}">
                                                 @error('provinsi')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -218,26 +225,6 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Nama Kepala Rumah Tangga</label>
-                                            <input type="text" class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" name="nama_kepala_rumah_tangga" id="nama_kepala_rumah_tangga" placeholder="Masukkan Nama Kepala Rumah Tangga" value="{{ old('nama_kepala_rumah_tangga') }}">
-
-                                            {{-- <select class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" id="id_warga" name="id_warga"> --}}
-                                                {{-- Pilih Nama Kepala Rumah Tangga --}}
-                                                {{-- <option value="" hidden> Pilih Nama Kepala Rumah Tangga</option>
-                                                @foreach ($warga as $c)
-                                                    <option value="{{$c->id}}">{{ $c->nik_kepala_keluarga }} - {{ $c->nama_kepala_rumah_tangga }}</option>
-                                                @endforeach
-                                            </select> --}}
-                                            @error('nama_kepala_rumah_tangga')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Jumlah Anggota Keluarga</label>
@@ -288,24 +275,12 @@
                                     </div>
 
 
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>NIK Kepala Rumah Tangga</label>
                                             <input type="text" class="form-control @error('nik_kepala_keluarga') is-invalid @enderror" name="nik_kepala_keluarga" id="nik_kepala_keluarga" placeholder="Masukkan NIK Kepala Rumah Tangga" value="{{ old('nik_kepala_keluarga') }}">
 
-                                            {{-- <select class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" id="id_warga" name="id_warga"> --}}
-                                                {{-- Pilih Nama Kepala Rumah Tangga --}}
-                                                {{-- <option value="" hidden> Pilih Nama Kepala Rumah Tangga</option>
-                                                @foreach ($warga as $c)
-                                                    <option value="{{$c->id}}">{{ $c->nik_kepala_keluarga }} - {{ $c->nama_kepala_rumah_tangga }}</option>
-                                                @endforeach
-                                            </select> --}}
+
                                             @error('nik_kepala_keluarga')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -336,13 +311,13 @@
                                             {{-- pilih periode --}}
                                             <label>Periode</label>
                                             <select style="cursor:pointer;" class="form-control" id="periode" name="periode">
-                                                <option value="" hidden> Pilih Tahun</option>
+                                                <option hidden> Pilih Tahun</option>
                                                     <?php
                                                     $year = date('Y');
                                                     $min = $year ;
                                                         $max = $year + 20;
                                                     for( $i=$min; $i<=$max; $i++ ) {
-                                                    echo '<option value='.$i.'>'.$i.'</option>';
+                                                    echo '<option value="'.$i.'" '.(old('period') == $i ? ' selected' : '').'>'.$i.'</option>';
                                                 }?>
                                             </select>
                                         </div>
@@ -630,7 +605,7 @@
                                             <select class="form-control @error('makanan_pokok') is-invalid @enderror" id="makanan_pokok" name="makanan_pokok">
                                                 <option value="" hidden>Pilih Makanan Pokok</option>
                                                 <option value="1">Beras</option>
-                                                <option value="2">Non Beras</option>
+                                                <option value="0">Non Beras</option>
                                             </select>
                                         </div>
                                         @error('makanan_pokok')
@@ -923,7 +898,6 @@
 @endsection
 
 @push('script-addon')
-
 <script type="text/javascript">
 
     $(function() {
@@ -958,6 +932,17 @@
 
 <script>
     $(document).ready(function() {
+    $(document).on('changed.bs.select', '[name="id_kepala_keluarga"]', function () {
+        var data = $(this).find('option:selected').data();
+        $('[name="rt"]').val(data.rt);
+        $('[name="rw"]').val(data.rw);
+        $('[name="id_desa"]').val(data.desa);
+        $('[name="id_kecamatan"]').val(data.kecamatan);
+        $('[name="kabupaten"]').val(data.kabupaten);
+        $('[name="provinsi"]').val(data.provinsi);
+        $('[name="jumlah_anggota_keluarga"]').val(data.jumlah_anggota_keluarga);
+        $('[name="nik_kepala_keluarga"]').val(data.nik_kepala_keluarga);
+    });
     $('#id_kecamatan').on('change', function() {
        var categoryID = $(this).val();
        console.log('cek data kecamatan');

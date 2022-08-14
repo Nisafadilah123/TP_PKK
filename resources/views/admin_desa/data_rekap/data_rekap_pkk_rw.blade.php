@@ -119,8 +119,7 @@
                                         @endforeach
 
                                         <tr>
-                                            <td><strong>Jumlah</strong> </td>
-                                            <td></td>
+                                            <td colspan="2"><strong>Jumlah</strong> </td>
                                             <td>{{ $rts->sum('jumlah_dasa_wisma') }}</td>
                                             <td>{{ $rts->sum('jumlah_KRT') }}</td>
                                             <td>{{ $rts->sum('jumlah_KK') }}</td>

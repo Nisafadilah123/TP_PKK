@@ -4,6 +4,7 @@ namespace App\Http\Controllers\PendataanKader;
 use App\Http\Controllers\Controller;
 use App\Models\DataIndustriRumah;
 use App\Models\DataKeluarga;
+use App\Models\Data_Desa;
 use App\Models\DataWarga;
 use App\Models\KategoriIndustriRumah;
 use Illuminate\Http\Request;
@@ -36,9 +37,7 @@ class DataIndustriRumahController extends Controller
    {
        // halaman form tambah data industri rumah tangga
     // nama desa yang login
-    $desas = DB::table('data_desa')
-    ->where('id', auth()->user()->id_desa)
-    ->get();
+    $desa = Data_Desa::find(auth()->user()->id_desa);
     // $kec = DB::table('data_kecamatan')->get();
     $kec = DB::table('data_kecamatan')
     ->where('id', auth()->user()->id_kecamatan)
@@ -58,7 +57,7 @@ class DataIndustriRumahController extends Controller
         'Lain-lain' => 'Lain-lain',
     ];
 
-    return view('kader.data_kegiatan.form.create_data_industri',$data, compact('kec','desas', 'kel', 'kad'));
+    return view('kader.data_kegiatan.form.create_data_industri',$data, compact('kec','desa', 'kel', 'kad'));
 
 }
 
@@ -75,8 +74,8 @@ class DataIndustriRumahController extends Controller
        // validasi data
        $request->validate([
            'id_keluarga' => 'required',
-           'id_desa' => 'required',
-           'id_kecamatan' => 'required',
+        //    'id_desa' => 'required',
+        //    'id_kecamatan' => 'required',
            'id_user' => 'required',
            'nama_kategori' => 'required',
            'komoditi' => 'required',
@@ -102,8 +101,8 @@ class DataIndustriRumahController extends Controller
        }
        else {
            $industris = new DataIndustriRumah();
-           $industris->id_desa = $request->id_desa;
-           $industris->id_kecamatan = $request->id_kecamatan;
+        //    $industris->id_desa = $request->id_desa;
+        //    $industris->id_kecamatan = $request->id_kecamatan;
            $industris->id_keluarga = $request->id_keluarga;
            $industris->id_user = $request->id_user;
            $industris->nama_kategori = $request->nama_kategori;
@@ -141,6 +140,7 @@ class DataIndustriRumahController extends Controller
    {
        //halaman form edit data industri rumah tangga
        $kel = DataKeluarga::all();
+       $desa = Data_Desa::find(auth()->user()->id_desa);
     //    $katins = KategoriIndustriRumah::all();
         $data['kategori'] = [
             'Pangan' => 'Pangan',
@@ -150,9 +150,6 @@ class DataIndustriRumahController extends Controller
             'Lain-lain' => 'Lain-lain',
         ];
 
-       $desas = DB::table('data_desa')
-       ->where('id', auth()->user()->id_desa)
-       ->get();
        // $kec = DB::table('data_kecamatan')->get();
        $kec = DB::table('data_kecamatan')
        ->where('id', auth()->user()->id_desa)
@@ -163,7 +160,7 @@ class DataIndustriRumahController extends Controller
         ->get();
        // dd($kel);
 
-       return view('kader.data_kegiatan.form.edit_data_industri', $data, compact('data_industri','kel', 'kec', 'desas', 'kad'));
+       return view('kader.data_kegiatan.form.edit_data_industri', $data, compact('data_industri','kel', 'kec', 'desa', 'kad'));
 
    }
 
@@ -181,8 +178,8 @@ class DataIndustriRumahController extends Controller
        // validasi data
        $request->validate([
         'id_keluarga' => 'required',
-        'id_desa' => 'required',
-        'id_kecamatan' => 'required',
+        // 'id_desa' => 'required',
+        // 'id_kecamatan' => 'required',
         'nama_kategori' => 'required',
         'komoditi' => 'required',
         'volume' => 'required',

@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DataKeluarga;
 use App\Models\DataPemanfaatanPekarangan;
 use App\Models\DataWarga;
+use App\Models\Data_Desa;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\KategoriPemanfaatanLahan;
 
@@ -36,9 +37,7 @@ class DataPemanfaatanPekaranganController extends Controller
     {
         // halaman form tambah data pemanfaatan tanah
      // nama desa yang login
-     $desas = DB::table('data_desa')
-     ->where('id', auth()->user()->id_desa)
-     ->get();
+     $desa = Data_Desa::find(auth()->user()->id_desa);
      // $kec = DB::table('data_kecamatan')->get();
      $kec = DB::table('data_kecamatan')
      ->where('id', auth()->user()->id_kecamatan)
@@ -50,6 +49,7 @@ class DataPemanfaatanPekaranganController extends Controller
 
      $kel = DataKeluarga::all(); // pemanggilan tabel data warga pekarangan
     //  $kat = KategoriPemanfaatanLahan::all(); // pemanggilan tabel kategori pemanfaatan tanah
+
     $data['kategori'] = [
         'Peternakan' => 'Peternakan',
         'Perikanan' => 'Perikanan',
@@ -58,7 +58,7 @@ class DataPemanfaatanPekaranganController extends Controller
         'Tanaman Keras' => 'Tanaman Keras',
         'Lainnya' => 'Lainnya',
     ];
-    return view('kader.data_kegiatan.form.create_data_pemanfaatan', $data, compact('kec', 'kel', 'desas', 'kad'));
+    return view('kader.data_kegiatan.form.create_data_pemanfaatan', $data, compact('kec', 'kel', 'desa', 'kad'));
 
  }
 
@@ -145,9 +145,8 @@ class DataPemanfaatanPekaranganController extends Controller
         $kel = DataKeluarga::all();
         // $kat = KategoriPemanfaatanLahan::all();
 
-        $desas = DB::table('data_desa')
-       ->where('id', auth()->user()->id_desa)
-       ->get();
+
+        $desa = Data_Desa::find(auth()->user()->id_desa);
        // $kec = DB::table('data_kecamatan')->get();
        $kec = DB::table('data_kecamatan')
        ->where('id', auth()->user()->id_desa)
@@ -165,7 +164,7 @@ class DataPemanfaatanPekaranganController extends Controller
         'Lainnya' => 'Lainnya',
     ];
 
-        return view('kader.data_kegiatan.form.edit_data_pemanfaatan',$data, compact('data_pemanfaatan','kel', 'desas', 'kec', 'kad'));
+        return view('kader.data_kegiatan.form.edit_data_pemanfaatan',$data, compact('data_pemanfaatan','kel', 'desa', 'kec', 'kad'));
 
     }
 

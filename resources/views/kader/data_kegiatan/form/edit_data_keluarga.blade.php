@@ -71,6 +71,35 @@
                                     </div>
 
                                     <div class="col-md-6">
+                                        {{-- <div class="form-group">
+                                            <label>Nama Kepala Rumah Tangga</label>
+                                            <input type="text" class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" name="nama_kepala_rumah_tangga" id="nama_kepala_rumah_tangga" placeholder="Masukkan Nama Kepala Rumah Tangga" value="{{ old('nama_kepala_rumah_tangga', $data_keluarga->nama_kepala_rumah_tangga) }}">
+                                            @error('nama_kepala_rumah_tangga')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div> --}}
+
+                                        <div class="form-group">
+                                            <label>Kepala Rumah Tangga</label>
+                                                {{-- Nama Kepala Rumah Tangga --}}
+                                                <select class="form-control selectpicker" id="id_keluarga" name="id_kepala_keluarga" data-live-search="true" data-none-selected-text="Pilih Kepala Rumah Tangga">
+                                                    {{-- nama dasa wisma --}}
+                                                    <option hidden> Pilih Kepala Rumah Tangga</option>
+                                                    @foreach ($kepalaKeluargas as $c)
+                                                    <option value="{{$c->id}}" {{ $kepala_keluarga->id == $c->id ? 'selected' : '' }} data-tokens="{{ $c->nama }}" data-rt="{{ $c->rt }}" data-rw="{{ $c->rw }}" data-desa="{{ $c->desa->nama_desa ?? '' }}" data-kecamatan="{{ $c->desa->kecamatan->nama_kecamatan ?? '' }}" data-kabupaten="{{ $c->desa->kecamatan->kabupaten ?? '' }}" data-provinsi="{{ $c->desa->kecamatan->provinsi ?? '' }}" data-jumlah_anggota_keluarga="{{ $c->warga_count + 1 }}" data-nik_kepala_keluarga="{{ $c->no_ktp }}">{{ $c->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            @error('nama_kepala_rumah_tangga')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">RT</label>
                                             <input type="number" min="1" class="form-control @error('rt') is-invalid @enderror" name="rt" id="rt" placeholder="Masukkan No. RT" value="{{ old('rt', $data_keluarga->rt ) }}">
@@ -121,19 +150,13 @@
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
-                            </div>
 
-                            <div class="col-md-12">
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group @error('id_desa') is-invalid @enderror">
                                             <label for="exampleFormControlSelect1">Desa</label>
-                                            @foreach ($desas as $c)
-                                                <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" value="{{$c->id}}">
-                                                <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" value="{{ $c->nama_desa }}">
+                                            {{-- <input type="hidden" class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" value="{{$c->id}}"> --}}
+                                            <input type="text" disabled class="form-control" name="id_desa" id="id_desa" placeholder="Masukkan Nama Desa" value="{{ old('id_desa', $desa->nama_desa ?? '') }}">
 
-                                            @endforeach
                                         </div>
                                         @error('id_desa')
                                             <span class="invalid-feedback" role="alert">
@@ -147,11 +170,7 @@
                                         <div class="form-group @error('id_kecamatan') is-invalid @enderror">
                                             <label for="exampleFormControlSelect1">Kecamatan</label>
                                             {{-- nama kecamatan --}}
-                                            @foreach ($kec as $c)
-                                            <input type="hidden" class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Kecamatan" value="{{$c->id}}">
-                                            <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Kecamatan" value="{{ $c->nama_kecamatan }}">
-
-                                            @endforeach
+                                            <input type="text" disabled class="form-control" name="id_kecamatan" id="id_kecamatan" placeholder="Masukkan Nama Kecamatan" value="{{ old('id_kecamatan', $desa->kecamatan->nama_kecamatan ?? '') }}" disabled>
                                         </div>
                                         @error('id_kecamatan')
                                             <span class="invalid-feedback" role="alert">
@@ -164,7 +183,7 @@
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Kabupaten</label>
                                             {{-- nama kabupaten --}}
-                                                <input type="text" readonly class="form-control @error('kabupaten') is-invalid @enderror" name="kabupaten" id="kabupaten" placeholder="Masukkan kabupaten" value="Indramayu">
+                                                <input type="text" readonly class="form-control @error('kabupaten') is-invalid @enderror" name="kabupaten" id="kabupaten" placeholder="Masukkan kabupaten" value="{{ $desa->kecamatan->kabupaten ?? '' }}">
                                                 @error('kabupaten')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -177,7 +196,7 @@
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Provinsi</label>
                                             {{-- nama provinsi --}}
-                                                <input type="text" readonly class="form-control @error('provinsi') is-invalid @enderror" name="provinsi" id="provinsi" placeholder="Masukkan Provisni" value="Jawa Barat">
+                                                <input type="text" readonly class="form-control @error('provinsi') is-invalid @enderror" name="provinsi" id="provinsi" placeholder="Masukkan Provisni" value="{{ $desa->kecamatan->provinsi ?? '' }}">
                                                 @error('provinsi')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -223,25 +242,6 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Nama Kepala Rumah Tangga</label>
-                                            <input type="text" class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" name="nama_kepala_rumah_tangga" id="nama_kepala_rumah_tangga" placeholder="Masukkan Nama Kepala Rumah Tangga" value="{{ old('nama_kepala_rumah_tangga', $data_keluarga->nama_kepala_rumah_tangga) }}">
-
-                                            {{-- <select class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" id="id_warga" name="id_warga"> --}}
-                                                {{-- Pilih Nama Kepala Rumah Tangga --}}
-                                                {{-- <option value="" hidden> Pilih Nama Kepala Rumah Tangga</option>
-                                                @foreach ($warga as $c)
-                                                    <option value="{{$c->id}}">{{ $c->nik_kepala_keluarga }} - {{ $c->nama_kepala_rumah_tangga }}</option>
-                                                @endforeach
-                                            </select> --}}
-                                            @error('nama_kepala_rumah_tangga')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -292,34 +292,20 @@
                                         @enderror
                                     </div>
 
-
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <div class="form-group">
                                             <label>NIK Kepala Rumah Tangga</label>
                                             <input type="text" class="form-control @error('nik_kepala_keluarga') is-invalid @enderror" name="nik_kepala_keluarga" id="nik_kepala_keluarga" placeholder="Masukkan NIK Kepala Rumah Tangga" value="{{ old('nik_kepala_keluarga', $data_keluarga->nik_kepala_keluarga) }}">
 
-                                            {{-- <select class="form-control @error('nama_kepala_rumah_tangga') is-invalid @enderror" id="id_warga" name="id_warga"> --}}
-                                                {{-- Pilih Nama Kepala Rumah Tangga --}}
-                                                {{-- <option value="" hidden> Pilih Nama Kepala Rumah Tangga</option>
-                                                @foreach ($warga as $c)
-                                                    <option value="{{$c->id}}">{{ $c->nik_kepala_keluarga }} - {{ $c->nama_kepala_rumah_tangga }}</option>
-                                                @endforeach
-                                            </select> --}}
                                             @error('nik_kepala_keluarga')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
-                                    </div>
+                                    </div> --}}
 
-                                    <div class=-md-6">
+                                    <div class="col-md-6">
                                         <div class="form-group @error('jumlah_KK') is-invalid @enderror">
                                             <label>Jumlah KK</label>
                                             {{-- Jumlah KK--}}
@@ -679,7 +665,7 @@
                                             <select class="form-control @error('makanan_pokok') is-invalid @enderror" id="makanan_pokok" name="makanan_pokok">
                                                 <option value="" hidden>Pilih Makanan Pokok</option>
                                                 <option value="1" {{ $data_keluarga->makanan_pokok == '1' ? 'selected' : '' }}>Beras</option>
-                                                <option value="2" {{ $data_keluarga->makanan_pokok == '2' ? 'selected' : '' }}>Non Beras</option>
+                                                <option value="0" {{ $data_keluarga->makanan_pokok == '2' ? 'selected' : '' }}>Non Beras</option>
                                             </select>
                                         </div>
                                         @error('makanan_pokok')
@@ -895,11 +881,24 @@
 </div>
 @endsection
 
-@push('script-addon')
 
+@push('script-addon')
 <script type="text/javascript">
 
     $(function() {
+
+
+    $(document).on('changed.bs.select', '[name="id_kepala_keluarga"]', function () {
+        var data = $(this).find('option:selected').data();
+        $('[name="rt"]').val(data.rt);
+        $('[name="rw"]').val(data.rw);
+        $('[name="id_desa"]').val(data.desa);
+        $('[name="id_kecamatan"]').val(data.kecamatan);
+        $('[name="kabupaten"]').val(data.kabupaten);
+        $('[name="provinsi"]').val(data.provinsi);
+        $('[name="nik_kepala_keluarga"]').val(data.nik_kepala_keluarga);
+    });
+    $('[name="id_kepala_keluarga"]').trigger('changed.bs.select');
 
       $( "#datepicker" ).datepicker({
 

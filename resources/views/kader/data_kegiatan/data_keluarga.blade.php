@@ -43,7 +43,7 @@
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         {{-- nama desa yang login --}}
-                                        <td style="vertical-align: middle;">{{ucfirst($c->nama_kepala_rumah_tangga) }}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->kepala_keluarga->nama ?? '-') }}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jumlah_anggota_keluarga)}} Orang</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jumlah_laki)}} Orang</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->jumlah_perempuan)}} Orang</td>
@@ -87,12 +87,12 @@
                                                     <div class="modal-body">
                                                     <h5>
                                                         Dasawisma : <strong> {{ucfirst($c->dasawisma->nama_dasawisma) }} </strong><br>
-                                                        RT <strong>{{ ($c->rt) }}</strong>, RW <strong>{{ ($c->rt) }}</strong> <br>
-                                                        Dusun/Lingkungan : <br>
-                                                        Desa/Kel : <strong>{{ucfirst($c->desa->nama_desa)}}</strong><br>
-                                                        Kec. <strong>{{ucfirst($c->kecamatan->nama_kecamatan)}}</strong>,
-                                                            Kabupaten <strong>{{ucfirst($c->kabupaten) }}</strong>, Provinsi <strong>{{ucfirst($c->provinsi) }}</strong><br>
-                                                        Nama Kepala Rumah Tangga : <strong>{{ucfirst($c->nama_kepala_rumah_tangga) }}</strong><br>
+                                                        RT <strong>{{ ($c->kepala_keluarga->rt ?? '-') }}</strong>, RW <strong>{{ ($c->kepala_keluarga->rw ?? '-') }}</strong> <br>
+                                                        Dusun : {{ $c->dusun }} <br>
+                                                        Desa/Kel : <strong>{{ucfirst($c->kepala_keluarga->desa->nama_desa ?? '-')}}</strong><br>
+                                                        Kec. <strong>{{ucfirst($c->kepala_keluarga->desa->kecamatan->nama_kecamatan ?? '-')}}</strong>,
+                                                            Kabupaten <strong>{{ucfirst($c->kepala_keluarga->desa->kecamatan->kabupaten ?? '-') }}</strong>, Provinsi <strong>{{ucfirst($c->kepala_keluarga->desa->kecamatan->provinsi ?? '-') }}</strong><br>
+                                                        Nama Kepala Rumah Tangga : <strong>{{ucfirst($c->kepala_keluarga->nama ?? '-') }}</strong><br>
                                                         Jumlah Anggota Keluarga : <strong> {{ucfirst($c->jumlah_anggota_keluarga) }} </strong>Orang<br>
 
                                                         Jumlah Balita :  @if ($warga = $c->jumlah_balita)

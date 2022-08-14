@@ -42,7 +42,7 @@
                                     <tr>
                                         <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         {{-- nama desa yang login --}}
-                                        <td style="vertical-align: middle;">{{ucfirst($c->keluarga->nama_kepala_rumah_tangga) }}</td>
+                                        <td style="vertical-align: middle;">{{ucfirst($c->keluarga->kepala_keluarga->nama ?? '-') }}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->nama_kategori)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->komoditi)}}</td>
                                         <td style="vertical-align: middle;">{{ucfirst($c->volume)}}</td>

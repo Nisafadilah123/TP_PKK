@@ -183,7 +183,7 @@
                   <li class="nav-item">
                     <a href="/data_kelompok_pkk_dusun" class="nav-link {{ Request::is('data_kelompok_pkk_dusun') ? 'active':'' }}">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Data Kelompok PKK Dusun/ <br> Lingkungan</p>
+                      <p>Data Kelompok PKK Dusun</p>
                     </a>
                   </li>
                   <li class="nav-item">

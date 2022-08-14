@@ -197,8 +197,8 @@ class RekapKelompokDusunExport implements FromArray, WithHeadings, WithEvents
         return [
             ['REKAPITULASI'],
             ['CATATAN DATA DAN KEGIATAN WARGA'],
-            ['KELOMPOK PKK DUSUN/LINGKUNGAN'],
-            ['Dusun/Lingkungan : ' . $this->dusun],
+            ['KELOMPOK PKK DUSUN'],
+            ['Dusun : ' . $this->dusun],
             ['Desa/Kel : ' . $this->desa->nama_desa],
             ['Tahun : ' . $this->periode],
             [],

@@ -46,24 +46,16 @@
                                         <td style="vertical-align: middle;">{{$c->email}}</td>
                                         <td style="vertical-align: middle;">{{$c->user_type}}</td>
                                         <td style="vertical-align: middle;">
-                                            @if ($dasawisma = $c->dasawisma)
-                                                {{ $dasawisma->nama_dasawisma }}
-                                            @else
-                                                -
-                                            @endif
+                                            {{ $c->dasawisma->nama_dasawisma ?? '-' }}
                                         </td>
                                         <td style="vertical-align: middle;">
-                                            @if ($rt = $c->dasawisma)
-                                                {{ $dasawisma->rt }}/{{ $dasawisma->rw }}
-                                            @else
-                                                -
-                                            @endif
+                                            {{ $c->dasawisma->rt_dasawisma ?? '-' }}/{{ $c->dasawisma->rw_dasawisma ?? '-' }}
                                         </td>
 
                                         <td style="vertical-align: middle;"><img src="{{$c->foto ? Storage::disk('public')->url($c->foto) : null}}" width="100px"></td>
 
                                         <td style="vertical-align: middle;">{{$c->desa->nama_desa}}</td>
-                                        <td style="vertical-align: middle;">{{$c->kecamatan->nama_kecamatan}}</td>
+                                        <td style="vertical-align: middle;">{{$c->desa->kecamatan->nama_kecamatan ?? '-'}}</td>
 
                                         <td class="text-center">
                                             <form action="{{ route('data_kader.destroy',$c->id) }}" method="POST">

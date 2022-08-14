@@ -87,7 +87,7 @@
                                         @foreach ($desas as $desa)
                                         <tr>
                                             <td style="vertical-align: middle;">{{ $loop->iteration }}</td>
-                                            <td style="vertical-align: middle;">{{ $desa->desa->nama_desa }}</td>
+                                            <td style="vertical-align: middle;">{{ $desa->nama_desa }}</td>
                                             <td style="vertical-align: middle;">{{ $desa->jumlah_dusun }}</td>
                                             <td style="vertical-align: middle;">{{ $desa->jumlah_rw }}</td>
                                             <td style="vertical-align: middle;">{{ $desa->jumlah_rt }}</td>
